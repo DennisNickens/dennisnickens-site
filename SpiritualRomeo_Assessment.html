@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spiritual Romeo – Know Yourself Assessment</title>
+<style>
+:root{
+  --purple:#5b2d8e;
+  --purple-dark:#3d1f63;
+  --gold:#c9a84c;
+  --gold-light:#f0d080;
+  --white:#fff;
+  --off-white:#f9f6f0;
+  --gray:#666;
+  --light-gray:#eee;
+  --radius:12px;
+  --shadow:0 4px 24px rgba(0,0,0,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Georgia',serif;background:var(--off-white);color:#222;min-height:100vh;}
+
+/* NAV */
+.top-bar{background:var(--purple-dark);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
+.top-bar .brand{color:var(--gold);font-size:1.3rem;font-weight:bold;letter-spacing:.05em;text-decoration:none;}
+.back-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:6px 16px;border-radius:20px;cursor:pointer;font-size:.85rem;}
+.back-btn:hover{background:var(--gold);color:var(--purple-dark);}
+
+/* SCREENS */
+.screen{display:none;padding:32px 16px;max-width:900px;margin:0 auto;}
+.screen.active{display:block;}
+
+/* ---- PRICING SCREEN ---- */
+.pricing-header{text-align:center;margin-bottom:36px;}
+.pricing-header h1{font-size:2rem;color:var(--purple-dark);margin-bottom:10px;}
+.pricing-header p{color:var(--gray);font-size:1.05rem;max-width:560px;margin:0 auto;}
+.tier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-bottom:20px;}
+.tier-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 24px;position:relative;border:2px solid transparent;transition:border-color .2s;}
+.tier-card:hover{border-color:var(--gold);}
+.tier-card.featured{border-color:var(--gold);}
+.featured-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--purple-dark);font-size:.75rem;font-weight:bold;padding:4px 16px;border-radius:20px;white-space:nowrap;}
+.tier-label{font-size:.78rem;font-weight:bold;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
+.tier-name{font-size:1.35rem;color:var(--purple-dark);font-weight:bold;margin-bottom:6px;}
+.tier-price{font-size:2.2rem;color:var(--purple-dark);font-weight:bold;margin-bottom:4px;}
+.tier-price span{font-size:.9rem;font-weight:normal;color:var(--gray);}
+.tier-tagline{font-size:.88rem;color:var(--gray);margin-bottom:18px;font-style:italic;}
+.tier-includes{list-style:none;margin-bottom:24px;}
+.tier-includes li{font-size:.88rem;padding:5px 0;border-bottom:1px solid var(--light-gray);display:flex;align-items:flex-start;gap:8px;}
+.tier-includes li:last-child{border-bottom:none;}
+.tier-includes .check{color:#4caf50;font-size:1rem;flex-shrink:0;}
+.tier-includes .lock{color:#bbb;font-size:.9rem;flex-shrink:0;}
+.tier-includes .locked-text{color:#bbb;}
+.select-tier-btn{width:100%;padding:13px;background:var(--purple);color:var(--white);border:none;border-radius:8px;font-size:1rem;cursor:pointer;transition:background .2s;}
+.select-tier-btn:hover{background:var(--purple-dark);}
+.tier-card.featured .select-tier-btn{background:var(--gold);color:var(--purple-dark);}
+.tier-card.featured .select-tier-btn:hover{background:var(--gold-light);}
+.money-back{text-align:center;color:var(--gray);font-size:.83rem;margin-top:16px;}
+
+/* ---- INTAKE SCREEN ---- */
+.intake-wrap{max-width:600px;margin:0 auto;}
+.intake-header{text-align:center;margin-bottom:32px;}
+.intake-header h2{color:var(--purple-dark);font-size:1.6rem;margin-bottom:8px;}
+.intake-header p{color:var(--gray);}
+.intake-question{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;margin-bottom:20px;}
+.intake-question h3{color:var(--purple-dark);margin-bottom:18px;font-size:1.1rem;line-height:1.5;}
+.intake-options{display:flex;flex-direction:column;gap:10px;}
+.intake-option{padding:12px 16px;border:2px solid var(--light-gray);border-radius:8px;cursor:pointer;font-size:.93rem;transition:all .2s;}
+.intake-option:hover,.intake-option.selected{border-color:var(--purple);background:#f4eeff;color:var(--purple-dark);}
+.intake-nav{display:flex;justify-content:flex-end;gap:12px;margin-top:24px;}
+.btn-primary{background:var(--purple);color:var(--white);border:none;padding:12px 28px;border-radius:8px;font-size:1rem;cursor:pointer;}
+.btn-primary:hover{background:var(--purple-dark);}
+.btn-secondary{background:transparent;color:var(--purple);border:2px solid var(--purple);padding:12px 28px;border-radius:8px;font-size:1rem;cursor:pointer;}
+
+/* ---- PAYMENT SCREEN ---- */
+.payment-wrap{max-width:560px;margin:0 auto;text-align:center;}
+.payment-wrap h2{color:var(--purple-dark);font-size:1.6rem;margin-bottom:8px;}
+.payment-summary{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;margin:28px 0;text-align:left;}
+.payment-summary h3{color:var(--purple-dark);margin-bottom:16px;}
+.payment-line{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--light-gray);font-size:.95rem;}
+.payment-line:last-child{border-bottom:none;font-weight:bold;font-size:1.1rem;color:var(--purple-dark);}
+.payment-note{color:var(--gray);font-size:.85rem;margin-bottom:20px;}
+.pay-btn{background:var(--gold);color:var(--purple-dark);border:none;padding:16px 40px;border-radius:10px;font-size:1.1rem;font-weight:bold;cursor:pointer;width:100%;}
+.pay-btn:hover{background:var(--gold-light);}
+.demo-note{margin-top:12px;font-size:.8rem;color:var(--gray);font-style:italic;}
+
+/* ---- ASSESSMENT SCREEN ---- */
+.assessment-wrap{max-width:680px;margin:0 auto;}
+.assessment-header{text-align:center;margin-bottom:28px;}
+.module-badge{display:inline-block;background:var(--purple);color:var(--white);padding:4px 16px;border-radius:20px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;}
+.assessment-header h2{color:var(--purple-dark);font-size:1.5rem;}
+.progress-wrap{background:var(--light-gray);border-radius:20px;height:8px;margin-bottom:8px;overflow:hidden;}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--purple),var(--gold));border-radius:20px;transition:width .4s;}
+.progress-label{text-align:right;font-size:.78rem;color:var(--gray);margin-bottom:24px;}
+.question-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;margin-bottom:20px;}
+.question-number{font-size:.8rem;color:var(--gold);font-weight:bold;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;}
+.question-text{font-size:1.1rem;color:var(--purple-dark);line-height:1.6;margin-bottom:20px;}
+.options-grid{display:flex;flex-direction:column;gap:10px;}
+.option-btn{padding:14px 18px;border:2px solid var(--light-gray);border-radius:8px;background:var(--white);font-size:.93rem;text-align:left;cursor:pointer;transition:all .2s;color:#333;}
+.option-btn:hover,.option-btn.selected{border-color:var(--purple);background:#f4eeff;color:var(--purple-dark);}
+.question-nav{display:flex;justify-content:space-between;align-items:center;margin-top:20px;}
+
+/* ---- RESULTS SCREEN ---- */
+.results-wrap{max-width:760px;margin:0 auto;}
+.results-header{text-align:center;margin-bottom:36px;}
+.results-header h1{color:var(--purple-dark);font-size:1.9rem;margin-bottom:8px;}
+.results-header p{color:var(--gray);}
+.profile-section{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;margin-bottom:24px;}
+.profile-type-banner{background:linear-gradient(135deg,var(--purple-dark),var(--purple));color:var(--white);border-radius:10px;padding:20px 24px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.profile-type-banner h2{font-size:1.5rem;}
+.type-badge{background:var(--gold);color:var(--purple-dark);padding:6px 18px;border-radius:20px;font-weight:bold;font-size:1.1rem;}
+.section-title{font-size:1rem;font-weight:bold;color:var(--purple-dark);border-bottom:2px solid var(--gold);padding-bottom:6px;margin:20px 0 12px;}
+.overview-text{color:#444;line-height:1.7;font-size:.95rem;}
+.traits-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.trait-pill{background:#f0e8ff;color:var(--purple-dark);padding:5px 14px;border-radius:20px;font-size:.82rem;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:560px){.two-col{grid-template-columns:1fr;}}
+.do-dont-box{border-radius:8px;padding:16px;}
+.do-box{background:#e8f5e9;}
+.dont-box{background:#fce4e4;}
+.do-dont-box h4{font-size:.85rem;font-weight:bold;margin-bottom:10px;}
+.do-box h4{color:#2e7d32;}
+.dont-box h4{color:#c62828;}
+.do-dont-box ul{list-style:none;}
+.do-dont-box ul li{font-size:.87rem;padding:3px 0;display:flex;gap:6px;}
+.do-dont-box ul li::before{content:"•";flex-shrink:0;}
+.stress-box{background:#fff3e0;border-left:4px solid #f57c00;padding:14px 18px;border-radius:0 8px 8px 0;margin-bottom:8px;}
+.stress-box p{font-size:.88rem;color:#555;line-height:1.6;}
+.action-steps{counter-reset:steps;}
+.action-step{display:flex;gap:14px;margin-bottom:12px;align-items:flex-start;}
+.step-num{background:var(--gold);color:var(--purple-dark);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:.85rem;flex-shrink:0;margin-top:2px;}
+.step-text{font-size:.92rem;color:#444;line-height:1.6;}
+.combined-insight{background:linear-gradient(135deg,#f9f0ff,#fff8e7);border:1px solid var(--gold);border-radius:var(--radius);padding:24px;margin-bottom:24px;}
+.combined-insight h3{color:var(--purple-dark);margin-bottom:12px;font-size:1.1rem;}
+.combined-insight p{color:#444;font-size:.93rem;line-height:1.7;}
+.upgrade-card{background:var(--white);border:2px dashed var(--gold);border-radius:var(--radius);padding:24px;text-align:center;margin-bottom:24px;}
+.upgrade-card h3{color:var(--purple-dark);margin-bottom:8px;}
+.upgrade-card p{color:var(--gray);font-size:.9rem;margin-bottom:18px;}
+.upgrade-btn{background:var(--gold);color:var(--purple-dark);border:none;padding:12px 32px;border-radius:8px;font-size:1rem;font-weight:bold;cursor:pointer;}
+.upgrade-btn:hover{background:var(--gold-light);}
+.restart-btn{display:block;margin:20px auto 0;background:transparent;color:var(--purple);border:2px solid var(--purple);padding:12px 32px;border-radius:8px;font-size:.95rem;cursor:pointer;}
+.restart-btn:hover{background:var(--purple);color:var(--white);}
+
+/* SCORE BAR */
+.score-bars{margin-bottom:16px;}
+.score-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.score-label{width:130px;font-size:.85rem;color:var(--gray);text-align:right;}
+.score-track{flex:1;background:var(--light-gray);border-radius:20px;height:14px;overflow:hidden;}
+.score-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--purple),var(--gold));}
+.score-pct{width:36px;font-size:.8rem;color:var(--gray);}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a class="brand" href="SpiritualRomeo_Website.html">✦ Spiritual Romeo</a>
+  <button class="back-btn" onclick="goHome()">← Back to Site</button>
+</div>
+
+<!-- ============================================================ -->
+<!--  SCREEN 1: PRICING / TIER SELECTION                          -->
+<!-- ============================================================ -->
+<div class="screen active" id="screen-pricing">
+  <div class="pricing-header">
+    <h1>Know Yourself Assessment</h1>
+    <p>Unlock a deeper understanding of who you are — your personality, how you give and receive love, and how you learn best. Choose the level that's right for you.</p>
+  </div>
+  <div class="tier-grid">
+
+    <!-- TIER 1 -->
+    <div class="tier-card">
+      <div class="tier-label">Tier 1</div>
+      <div class="tier-name">Personality Profile</div>
+      <div class="tier-price">$47 <span>one-time</span></div>
+      <div class="tier-tagline">Discover your core DISC style</div>
+      <ul class="tier-includes">
+        <li><span class="check">✔</span> 20-question DISC assessment</li>
+        <li><span class="check">✔</span> Full personality type profile</li>
+        <li><span class="check">✔</span> Motivational characteristics</li>
+        <li><span class="check">✔</span> Communication DOs &amp; DON'Ts</li>
+        <li><span class="check">✔</span> Stress behavior analysis</li>
+        <li><span class="check">✔</span> 3-step personal action plan</li>
+        <li><span class="lock">🔒</span> <span class="locked-text">Love Languages profile</span></li>
+        <li><span class="lock">🔒</span> <span class="locked-text">Learning Style blueprint</span></li>
+      </ul>
+      <button class="select-tier-btn" onclick="selectTier(1)">Get Started — $47</button>
+    </div>
+
+    <!-- TIER 2 -->
+    <div class="tier-card featured">
+      <div class="featured-badge">Most Popular</div>
+      <div class="tier-label">Tier 2</div>
+      <div class="tier-name">Relationship Blueprint</div>
+      <div class="tier-price">$97 <span>one-time</span></div>
+      <div class="tier-tagline">DISC + Love Languages combined</div>
+      <ul class="tier-includes">
+        <li><span class="check">✔</span> Everything in Tier 1</li>
+        <li><span class="check">✔</span> 20-question Love Languages assessment</li>
+        <li><span class="check">✔</span> Love language profile + insights</li>
+        <li><span class="check">✔</span> What fills vs. drains your tank</li>
+        <li><span class="check">✔</span> DISC × Love Language combined insight</li>
+        <li><span class="check">✔</span> Relationship communication guide</li>
+        <li><span class="lock">🔒</span> <span class="locked-text">Learning Style blueprint</span></li>
+      </ul>
+      <button class="select-tier-btn" onclick="selectTier(2)">Get Started — $97</button>
+    </div>
+
+    <!-- TIER 3 -->
+    <div class="tier-card">
+      <div class="tier-label">Tier 3</div>
+      <div class="tier-name">Complete Blueprint</div>
+      <div class="tier-price">$197 <span>one-time</span></div>
+      <div class="tier-tagline">The full picture — all three frameworks</div>
+      <ul class="tier-includes">
+        <li><span class="check">✔</span> Everything in Tiers 1 &amp; 2</li>
+        <li><span class="check">✔</span> 20-question Learning Style assessment</li>
+        <li><span class="check">✔</span> VARK learning profile</li>
+        <li><span class="check">✔</span> Unified personal blueprint</li>
+        <li><span class="check">✔</span> Personalized coaching recommendations</li>
+        <li><span class="check">✔</span> Priority coaching session offer</li>
+        <li><span class="check">✔</span> Downloadable results summary</li>
+      </ul>
+      <button class="select-tier-btn" onclick="selectTier(3)">Get Started — $197</button>
+    </div>
+
+  </div>
+  <p class="money-back">🔒 Secure checkout &nbsp;|&nbsp; 100% satisfaction guarantee &nbsp;|&nbsp; Instant access to results</p>
+</div>
+
+<!-- ============================================================ -->
+<!--  SCREEN 2: INTAKE QUESTIONS                                   -->
+<!-- ============================================================ -->
+<div class="screen" id="screen-intake">
+  <div class="intake-wrap">
+    <div class="intake-header">
+      <h2>Before We Begin…</h2>
+      <p>A few quick questions so your results speak directly to your life.</p>
+    </div>
+    <div id="intake-body"></div>
+    <div class="intake-nav">
+      <button class="btn-secondary" id="intake-back-btn" onclick="intakeBack()">Back</button>
+      <button class="btn-primary" id="intake-next-btn" onclick="intakeNext()">Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  SCREEN 3: PAYMENT CONFIRMATION                               -->
+<!-- ============================================================ -->
+<div class="screen" id="screen-payment">
+  <div class="payment-wrap">
+    <h2>Complete Your Order</h2>
+    <p style="color:var(--gray);margin-bottom:8px;">One payment. Lifetime access to your results.</p>
+    <div class="payment-summary" id="payment-summary"></div>
+    <p class="payment-note">You will complete your assessment immediately after payment. Results are delivered instantly.</p>
+    <button class="pay-btn" onclick="completePayment()">🔒 Pay &amp; Begin Assessment</button>
+    <p class="demo-note">Demo mode: clicking above simulates payment and launches the assessment.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  SCREEN 4: ASSESSMENT                                         -->
+<!-- ============================================================ -->
+<div class="screen" id="screen-assessment">
+  <div class="assessment-wrap">
+    <div class="assessment-header">
+      <div class="module-badge" id="module-badge">DISC Assessment</div>
+      <h2 id="module-title">Personality Profile</h2>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="progress-bar"></div></div>
+    <div class="progress-label" id="progress-label"></div>
+    <div id="question-area"></div>
+    <div class="question-nav">
+      <button class="btn-secondary" id="q-back-btn" onclick="prevQuestion()">← Back</button>
+      <button class="btn-primary" id="q-next-btn" onclick="nextQuestion()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  SCREEN 5: RESULTS                                            -->
+<!-- ============================================================ -->
+<div class="screen" id="screen-results">
+  <div class="results-wrap">
+    <div class="results-header">
+      <h1>Your Personal Blueprint</h1>
+      <p>Based on your responses, here is what the data reveals about you.</p>
+    </div>
+    <div id="results-body"></div>
+    <button class="restart-btn" onclick="restart()">Start a New Assessment</button>
+  </div>
+</div>
+
+<script>
+/* ================================================================
+   DATA
+   ================================================================ */
+
+const DISC_QUESTIONS = [
+  {q:"When tackling a new project, you tend to:",opts:[{t:"Take charge and set the direction immediately",k:"D"},{t:"Energize others and build enthusiasm for the work",k:"I"},{t:"Create a step-by-step plan everyone agrees on",k:"S"},{t:"Research thoroughly before committing to an approach",k:"C"}]},
+  {q:"In a disagreement, you are most likely to:",opts:[{t:"State your position firmly and push for resolution",k:"D"},{t:"Appeal to relationships and find common emotional ground",k:"I"},{t:"Listen carefully and seek a compromise everyone can live with",k:"S"},{t:"Lay out the facts and let logic resolve the issue",k:"C"}]},
+  {q:"Others would describe you as:",opts:[{t:"Decisive and results-oriented",k:"D"},{t:"Enthusiastic and people-oriented",k:"I"},{t:"Patient and dependable",k:"S"},{t:"Analytical and detail-focused",k:"C"}]},
+  {q:"Your greatest strength in a team is:",opts:[{t:"Driving the team toward the goal",k:"D"},{t:"Keeping morale high and people motivated",k:"I"},{t:"Providing consistent, reliable support",k:"S"},{t:"Ensuring accuracy and quality",k:"C"}]},
+  {q:"Under significant stress, you tend to:",opts:[{t:"Become more aggressive or controlling",k:"D"},{t:"Become disorganized or overly emotional",k:"I"},{t:"Become passive or overly accommodating",k:"S"},{t:"Become overly critical or withdrawn",k:"C"}]},
+  {q:"You feel most successful when:",opts:[{t:"You have achieved a difficult goal",k:"D"},{t:"People around you are inspired and happy",k:"I"},{t:"Everything is running smoothly and harmoniously",k:"S"},{t:"The work is correct and meets high standards",k:"C"}]},
+  {q:"Your biggest fear is:",opts:[{t:"Losing control or being taken advantage of",k:"D"},{t:"Being rejected or losing social approval",k:"I"},{t:"Sudden change or loss of security",k:"S"},{t:"Being wrong or criticized for poor work",k:"C"}]},
+  {q:"When communicating, you prefer to be:",opts:[{t:"Direct and brief — get to the point",k:"D"},{t:"Expressive and story-driven",k:"I"},{t:"Warm and conversational",k:"S"},{t:"Precise and evidence-based",k:"C"}]},
+  {q:"You make decisions by:",opts:[{t:"Trusting your instincts and moving fast",k:"D"},{t:"Checking in with people and gauging how they feel",k:"I"},{t:"Weighing how it affects everyone involved",k:"S"},{t:"Gathering all available data first",k:"C"}]},
+  {q:"In a leadership role, you naturally:",opts:[{t:"Set ambitious targets and hold people accountable",k:"D"},{t:"Inspire and motivate through vision and energy",k:"I"},{t:"Build consensus and keep the team united",k:"S"},{t:"Establish clear processes and quality standards",k:"C"}]},
+  {q:"When given a new task, your first instinct is to:",opts:[{t:"Start immediately and figure it out as you go",k:"D"},{t:"Talk it through with others to get excited about it",k:"I"},{t:"Make sure you understand expectations clearly before starting",k:"S"},{t:"Read the instructions thoroughly and plan in detail",k:"C"}]},
+  {q:"In social settings you are most often:",opts:[{t:"The one steering conversations toward a purpose",k:"D"},{t:"The energetic center drawing people in",k:"I"},{t:"The warm, attentive listener people gravitate toward",k:"S"},{t:"The thoughtful observer who speaks with precision",k:"C"}]},
+  {q:"You are most frustrated by:",opts:[{t:"Slow progress, indecision, and inefficiency",k:"D"},{t:"Pessimism, rigidity, or lack of enthusiasm",k:"I"},{t:"Conflict, instability, or broken trust",k:"S"},{t:"Sloppiness, vagueness, or rushing past details",k:"C"}]},
+  {q:"Your work style is best described as:",opts:[{t:"Fast-paced and results-focused",k:"D"},{t:"Collaborative and energetic",k:"I"},{t:"Steady and methodical",k:"S"},{t:"Thorough and systematic",k:"C"}]},
+  {q:"When someone disagrees with your idea, you:",opts:[{t:"Defend it confidently and push back",k:"D"},{t:"Try to win them over with enthusiasm",k:"I"},{t:"Genuinely consider their perspective",k:"S"},{t:"Ask for their evidence and evaluate it logically",k:"C"}]},
+  {q:"You are energized by:",opts:[{t:"Challenges, competition, and winning",k:"D"},{t:"People, fun, recognition, and new experiences",k:"I"},{t:"Stability, harmony, and meaningful relationships",k:"S"},{t:"Accuracy, mastery, and solving complex problems",k:"C"}]},
+  {q:"When a rule or policy seems wrong, you:",opts:[{t:"Challenge it directly and push for change",k:"D"},{t:"Rally others to your perspective",k:"I"},{t:"Work within it unless asked to change it",k:"S"},{t:"Formally document your concerns through proper channels",k:"C"}]},
+  {q:"Your ideal work environment has:",opts:[{t:"Clear goals, authority, and freedom to act",k:"D"},{t:"People, energy, creativity, and recognition",k:"I"},{t:"Teamwork, routine, and a supportive culture",k:"S"},{t:"Structure, clear expectations, and quality standards",k:"C"}]},
+  {q:"When receiving feedback, you prefer:",opts:[{t:"Brief, direct, and actionable points",k:"D"},{t:"Delivered warmly with encouragement",k:"I"},{t:"Gently, privately, and with support for improvement",k:"S"},{t:"Detailed, specific, and evidence-based",k:"C"}]},
+  {q:"People who know you well would say your superpower is:",opts:[{t:"Getting things done — no matter what",k:"D"},{t:"Making people feel seen, valued, and energized",k:"I"},{t:"Being the steady rock others can always count on",k:"S"},{t:"Thinking through problems with depth and precision",k:"C"}]}
+];
+
+const LOVE_QUESTIONS = [
+  {q:"After a hard week, what would mean the most to you?",opts:[{t:"Your partner telling you specifically what they love about you",k:"WA"},{t:"Your partner doing something thoughtful without being asked",k:"AS"},{t:"Receiving a small, meaningful gift",k:"RG"},{t:"Spending uninterrupted, focused time together",k:"QT"},{t:"A long, comforting embrace",k:"PT"}]},
+  {q:"You feel most connected to your partner when:",opts:[{t:"They express admiration and affirmation verbally",k:"WA"},{t:"They handle something stressful so you don't have to",k:"AS"},{t:"They surprise you with something that shows they were thinking of you",k:"RG"},{t:"You have their full, undivided attention",k:"QT"},{t:"You are physically close — holding hands, sitting together",k:"PT"}]},
+  {q:"What would hurt most in a relationship?",opts:[{t:"Constant criticism or lack of encouragement",k:"WA"},{t:"Feeling like you have to do everything alone",k:"AS"},{t:"Forgotten milestones — birthdays, anniversaries",k:"RG"},{t:"Your partner being distracted during conversations",k:"QT"},{t:"A long period of physical distance or disconnection",k:"PT"}]},
+  {q:"A perfect date looks like:",opts:[{t:"Your partner telling you how much you mean to them",k:"WA"},{t:"Your partner planning the entire evening for you",k:"AS"},{t:"Receiving a thoughtful keepsake from the night",k:"RG"},{t:"Deep, meaningful conversation with no phones",k:"QT"},{t:"Being close — dancing, cuddling, physical warmth",k:"PT"}]},
+  {q:"You know someone loves you when:",opts:[{t:"They say 'I love you' and mean it often",k:"WA"},{t:"They show up and take care of things without being asked",k:"AS"},{t:"They bring you something that reminded them of you",k:"RG"},{t:"They carve out dedicated time just for you",k:"QT"},{t:"They reach for your hand or pull you close",k:"PT"}]},
+  {q:"In conflict, what would help you feel loved again?",opts:[{t:"Hearing sincere, specific words of apology and appreciation",k:"WA"},{t:"Your partner doing something concrete to make things better",k:"AS"},{t:"A meaningful peace offering or gesture gift",k:"RG"},{t:"Sitting down together to fully talk it through",k:"QT"},{t:"A genuine hug that says 'we're okay'",k:"PT"}]},
+  {q:"What makes you feel most valued at work or in a team?",opts:[{t:"Public recognition and verbal praise for your contributions",k:"WA"},{t:"Others volunteering to help when you're overwhelmed",k:"AS"},{t:"An award, bonus, or thoughtful token of appreciation",k:"RG"},{t:"One-on-one time with leadership who really listens",k:"QT"},{t:"A pat on the back or high-five that feels genuine",k:"PT"}]},
+  {q:"Your partner is traveling. What would feel most loving?",opts:[{t:"A heartfelt text expressing how much they miss you",k:"WA"},{t:"Coming home to find they handled something important before leaving",k:"AS"},{t:"A small surprise gift waiting when they return",k:"RG"},{t:"A long, distraction-free video call every evening",k:"QT"},{t:"The first thing they do when home is embrace you",k:"PT"}]},
+  {q:"After an achievement, you most want your partner to:",opts:[{t:"Celebrate it with enthusiastic, specific praise",k:"WA"},{t:"Handle dinner or chores so you can fully enjoy it",k:"AS"},{t:"Mark the moment with a memento or keepsake",k:"RG"},{t:"Set aside dedicated time to hear all about it",k:"QT"},{t:"Physically celebrate — hug, hold, or be close",k:"PT"}]},
+  {q:"The 'little things' that matter most to you are:",opts:[{t:"'I'm proud of you' or 'You handled that so well'",k:"WA"},{t:"Coffee made the way you like it without asking",k:"AS"},{t:"A card slipped into your bag just because",k:"RG"},{t:"A walk together with no agenda but each other",k:"QT"},{t:"Falling asleep holding hands",k:"PT"}]},
+  {q:"If your love tank is running low, you most need:",opts:[{t:"To hear kind, sincere words",k:"WA"},{t:"For someone to step up and lighten your load",k:"AS"},{t:"A tangible reminder that you are thought of",k:"RG"},{t:"Focused, quality time with no distractions",k:"QT"},{t:"Close physical presence and warmth",k:"PT"}]},
+  {q:"In a long-distance relationship, you'd miss most:",opts:[{t:"Regular messages of love and encouragement",k:"WA"},{t:"Having someone handle the daily details of life together",k:"AS"},{t:"The tradition of little gifts and surprises",k:"RG"},{t:"Long, deep conversations that go late into the night",k:"QT"},{t:"Simply being in the same room",k:"PT"}]},
+  {q:"When you are sick, you want your partner to:",opts:[{t:"Reassure you that you'll be okay and tell you they love you",k:"WA"},{t:"Handle everything — medicine, meals, errands",k:"AS"},{t:"Bring you something comforting and thoughtful",k:"RG"},{t:"Stay close and keep you company",k:"QT"},{t:"Hold your hand and be physically present",k:"PT"}]},
+  {q:"What most communicates love to you?",opts:[{t:"'You are the best thing in my life'",k:"WA"},{t:"'I already took care of that for you'",k:"AS"},{t:"'I saw this and thought of you'",k:"RG"},{t:"'Let's turn off the phones and just be us tonight'",k:"QT"},{t:"A firm, warm, lingering embrace",k:"PT"}]},
+  {q:"You feel most secure in a relationship when:",opts:[{t:"Your partner regularly affirms their love and commitment",k:"WA"},{t:"You see them consistently showing up through actions",k:"AS"},{t:"They remember and honor the details that matter to you",k:"RG"},{t:"You have regular, meaningful time together",k:"QT"},{t:"There is easy, comfortable physical closeness",k:"PT"}]},
+  {q:"A gift that would touch you most deeply would be:",opts:[{t:"A handwritten letter with heartfelt, specific words",k:"WA"},{t:"Someone organizing something difficult on your behalf",k:"AS"},{t:"A carefully chosen item that reflects your personality",k:"RG"},{t:"A trip or experience — just the two of you",k:"QT"},{t:"A massage, spa day, or any physical pampering",k:"PT"}]},
+  {q:"When you think about feeling loved, what image comes to mind?",opts:[{t:"A moment where someone said exactly the right thing",k:"WA"},{t:"Someone working hard on your behalf",k:"AS"},{t:"Unwrapping something unexpected and meaningful",k:"RG"},{t:"Hours of uninterrupted connection",k:"QT"},{t:"Being held close",k:"PT"}]},
+  {q:"In a healthy relationship, the most important thing is:",opts:[{t:"Consistent verbal affirmation and encouragement",k:"WA"},{t:"Both partners actively serving each other",k:"AS"},{t:"Thoughtful gestures and meaningful traditions",k:"RG"},{t:"Protected, intentional time for each other",k:"QT"},{t:"Physical warmth, closeness, and affection",k:"PT"}]},
+  {q:"When someone truly 'gets' you, they know to:",opts:[{t:"Speak well of you — in private and in public",k:"WA"},{t:"Help without waiting to be asked",k:"AS"},{t:"Remember the small things that matter to you",k:"RG"},{t:"Give you their full presence and attention",k:"QT"},{t:"Offer comfort through touch when you are struggling",k:"PT"}]},
+  {q:"Your love story would be defined by:",opts:[{t:"Words that built each other up over a lifetime",k:"WA"},{t:"Two people who always had each other's backs",k:"AS"},{t:"A collection of meaningful moments and mementos",k:"RG"},{t:"Deep conversations, shared adventures, and real connection",k:"QT"},{t:"A relationship full of warmth, closeness, and affection",k:"PT"}]}
+];
+
+const LEARNING_QUESTIONS = [
+  {q:"When learning something brand new, you prefer to:",opts:[{t:"Read a book, article, or watch a clear diagram",k:"V"},{t:"Listen to an explanation or recorded lecture",k:"A"},{t:"Read examples, case studies, and real situations",k:"R"},{t:"Try it hands-on, even if you make mistakes",k:"K"}]},
+  {q:"You remember instructions best when they are:",opts:[{t:"Written down with visuals, charts, or diagrams",k:"V"},{t:"Explained verbally in a clear, logical sequence",k:"A"},{t:"Given in context — stories, examples, real cases",k:"R"},{t:"Shown through a demonstration you then practice",k:"K"}]},
+  {q:"When studying for something important, you tend to:",opts:[{t:"Create color-coded notes, mind maps, or highlighted summaries",k:"V"},{t:"Read aloud, record yourself, or discuss with others",k:"A"},{t:"Find real-world examples and scenarios to analyze",k:"R"},{t:"Practice, role-play, or build something",k:"K"}]},
+  {q:"You find it easiest to follow a new process when:",opts:[{t:"You have a visual flowchart or step-by-step guide",k:"V"},{t:"Someone walks you through it verbally",k:"A"},{t:"You understand the context and why it matters",k:"R"},{t:"You can physically walk through it yourself",k:"K"}]},
+  {q:"During a training session, you learn most when:",opts:[{t:"The slides are clear, visual, and well-organized",k:"V"},{t:"The facilitator explains things clearly and engagingly",k:"A"},{t:"Real stories and case studies are used to illustrate points",k:"R"},{t:"There are activities, simulations, or practical exercises",k:"K"}]},
+  {q:"When you're confused about something, you:",opts:[{t:"Draw it out or look for a diagram",k:"V"},{t:"Talk it through with someone or look for a podcast/explanation",k:"A"},{t:"Find a real example of it in action",k:"R"},{t:"Try doing it and learn from the attempt",k:"K"}]},
+  {q:"Your ideal coach or mentor would:",opts:[{t:"Send you well-organized written materials with visuals",k:"V"},{t:"Have long, detailed conversations walking you through things",k:"A"},{t:"Share stories from their own experience and case examples",k:"R"},{t:"Get you doing the work from day one",k:"K"}]},
+  {q:"When you read something important, you are most likely to:",opts:[{t:"Underline, highlight, or diagram key ideas",k:"V"},{t:"Read it aloud or summarize it verbally",k:"A"},{t:"Think about when you've seen this in real life",k:"R"},{t:"Take notes you can act on immediately",k:"K"}]},
+  {q:"You feel most confident in a new skill when:",opts:[{t:"You can see it clearly demonstrated with visuals",k:"V"},{t:"It has been explained in detail",k:"A"},{t:"You understand the context and have seen it applied",k:"R"},{t:"You have actually practiced it multiple times",k:"K"}]},
+  {q:"At a conference or workshop, you get the most value from:",opts:[{t:"Well-designed slides, infographics, and visual summaries",k:"V"},{t:"Keynote speakers with powerful, clear delivery",k:"A"},{t:"Panel discussions with real experiences shared",k:"R"},{t:"Workshops, breakouts, and practical exercises",k:"K"}]},
+  {q:"Your notes tend to look like:",opts:[{t:"Organized layouts with arrows, boxes, and color",k:"V"},{t:"Detailed written summaries of what was said",k:"A"},{t:"Stories, examples, and quotes from real situations",k:"R"},{t:"Action items and bullet points of what to do",k:"K"}]},
+  {q:"When explaining something to someone else, you:",opts:[{t:"Draw a diagram, use a whiteboard, or show them visually",k:"V"},{t:"Explain it step by step using words",k:"A"},{t:"Tell a story or give a real-world example",k:"R"},{t:"Show them — then have them try it",k:"K"}]},
+  {q:"You are most engaged in a learning environment that:",opts:[{t:"Uses clear visuals, good design, and organized information",k:"V"},{t:"Prioritizes clear verbal instruction and discussion",k:"A"},{t:"Connects everything to real life and meaningful context",k:"R"},{t:"Keeps you actively doing, building, or practicing",k:"K"}]},
+  {q:"Feedback helps you most when it is:",opts:[{t:"Written clearly with visual examples",k:"V"},{t:"Delivered verbally with detailed explanation",k:"A"},{t:"Given through examples of better approaches",k:"R"},{t:"Demonstrated so you can immediately try again",k:"K"}]},
+  {q:"You get most frustrated with learning when:",opts:[{t:"Content is cluttered, disorganized, or hard to visualize",k:"V"},{t:"The instruction is unclear, rushed, or poorly explained",k:"A"},{t:"There is no connection to real situations or context",k:"R"},{t:"You are stuck listening or watching without being able to try",k:"K"}]},
+  {q:"To prepare for an important conversation or presentation, you:",opts:[{t:"Create an outline or visual aid you can reference",k:"V"},{t:"Practice saying it aloud repeatedly",k:"A"},{t:"Think through real examples you can reference",k:"R"},{t:"Role-play it or go through a full dry run",k:"K"}]},
+  {q:"Your ideal book is:",opts:[{t:"Full of charts, frameworks, and well-designed visuals",k:"V"},{t:"Conversational, with clear explanations and quotable insights",k:"A"},{t:"Story-driven with real case studies and examples",k:"R"},{t:"Practical, with exercises, tools, and workbooks",k:"K"}]},
+  {q:"When you hit a learning plateau, you typically:",opts:[{t:"Create a new visual summary of everything you know",k:"V"},{t:"Find a podcast, audio course, or someone to talk to",k:"A"},{t:"Seek out new case studies or talk to people with experience",k:"R"},{t:"Set a challenge or project that forces you to apply what you know",k:"K"}]},
+  {q:"Technology helps your learning most when it:",opts:[{t:"Offers interactive visuals, videos, and well-formatted content",k:"V"},{t:"Includes audio lectures, discussions, or verbal explanations",k:"A"},{t:"Shares real stories, testimonials, and case applications",k:"R"},{t:"Gives you simulations, practice tools, and projects",k:"K"}]},
+  {q:"The learning style you would most like to develop is:",opts:[{t:"Better visual organization and diagramming",k:"V"},{t:"Stronger ability to process and retain verbal information",k:"A"},{t:"Learning more from real-world observation and context",k:"R"},{t:"Building confidence through more practice and application",k:"K"}]}
+];
+
+/* ================================================================
+   PROFILES
+   ================================================================ */
+
+const DISC_PROFILES = {
+  D:{
+    name:"Dominant",letter:"D",color:"#b71c1c",
+    overview:"You are a natural leader who thrives on challenge, control, and results. You are direct, decisive, and driven — obstacles are simply problems waiting to be solved. You move fast, think big, and expect others to keep up.",
+    traits:["Results-oriented","Direct communicator","High sense of urgency","Natural problem-solver","Independent thinker","Competitive"],
+    motivators:["Winning and achieving goals","Authority and control over outcomes","Direct challenges that test your capability","Freedom to act without bureaucratic obstruction","Recognition for results delivered"],
+    strengths:["Gets things done quickly and decisively","Drives teams toward ambitious goals","Thrives under pressure","Takes initiative without being told"],
+    growthAreas:["Patience with others' pace","Listening before responding","Delegating without micromanaging","Acknowledging emotional needs in others"],
+    dos:["Be direct and confident — they respect directness","Give them control and let them lead","Present options, not just one path","Focus on results and outcomes, not process"],
+    donts:["Waste their time with unnecessary small talk","Micromanage or hover","Present vague goals without clear outcomes","Be passive or indecisive around them"],
+    underStress:"Under pressure, the D style can become aggressive, controlling, and dismissive of others' input. They may push harder rather than pausing to recalibrate. If stress intensifies, watch for tunnel vision and impatience.",
+    actionPlan:["Identify one area where you're moving too fast and build in a checkpoint to hear others' perspectives before acting.","Practice acknowledging one team member or partner per day — results matter, but so do the people producing them.","Before your next major decision, write down two potential downsides and how you'd handle them. Winning includes managing risk."]
+  },
+  I:{
+    name:"Influencer",letter:"I",color:"#e65100",
+    overview:"You are an energizer. Wherever you go, people feel your presence — optimistic, enthusiastic, and genuinely compelling. You are a natural communicator who builds bridges, rallies people around big ideas, and thrives in environments where connection and creativity flourish.",
+    traits:["Outgoing and enthusiastic","Highly verbal","Visionary and optimistic","People-oriented","Collaborative","Persuasive"],
+    motivators:["Social recognition and approval","Opportunities to collaborate and connect","Creative freedom and new experiences","Positive environments and uplifting people","Being seen as likeable and influential"],
+    strengths:["Inspires and motivates others","Builds relationships quickly","Communicates vision compellingly","Creates energy and excitement around ideas"],
+    growthAreas:["Following through on commitments","Staying focused on one priority","Listening as much as speaking","Handling criticism without taking it personally"],
+    dos:["Engage them socially — build rapport first","Give enthusiastic, public recognition","Allow time for stories and emotional expression","Brainstorm together rather than dictating"],
+    donts:["Be cold, blunt, or purely task-focused","Criticize them publicly","Ignore their ideas or dismiss their enthusiasm","Overload them with details without context"],
+    underStress:"The I style under stress may become disorganized, overly emotional, or people-pleasing to the point of dishonesty. They may avoid difficult conversations or make rash promises they can't keep. Watch for scattered energy and seeking validation.",
+    actionPlan:["Choose your top three commitments for the week and treat them like non-negotiables. Follow-through builds the credibility that matches your charisma.","When someone is sharing a concern with you, practice staying silent and summarizing what they said before responding. Your listening is as powerful as your speaking.","Identify one long-term goal and create a simple 30-day milestone map. Your vision is powerful — structure helps you land it."]
+  },
+  S:{
+    name:"Steady",letter:"S",color:"#1b5e20",
+    overview:"You are the heartbeat of every team and relationship you're in. Patient, loyal, and deeply empathetic, you create stability and safety around you. You may not seek the spotlight, but you are often the reason things actually work — and the person everyone turns to when they need a steady hand.",
+    traits:["Patient and reliable","Excellent listener","Team-focused","Consistent and methodical","Conflict-averse","Warm and caring"],
+    motivators:["Harmony and stable relationships","Sincere appreciation for effort","Security and predictability","Being part of a close, trusted team","Making a real difference in others' lives"],
+    strengths:["Builds deep, long-term loyalty","Creates environments of trust and safety","Works steadily toward goals without fanfare","Mediates conflict with grace and care"],
+    growthAreas:["Asserting personal needs and boundaries","Embracing and initiating change","Saying no when overcommitted","Sharing honest opinions even when uncomfortable"],
+    dos:["Be sincere, warm, and genuinely personal","Give advance notice when change is coming","Show appreciation for their effort, not just results","Create space for them to share their thoughts"],
+    donts:["Surprise them with sudden major changes","Pressure them for quick decisions","Be cold, task-only, or all-business","Take their reliability for granted"],
+    underStress:"The S style under stress may become passive, resentful, or emotionally withdrawn. They internalize conflict rather than addressing it, and their accommodating nature can tip into martyrdom. Watch for silent withdrawal and resentment.",
+    actionPlan:["This week, practice one moment of assertiveness — express a need or boundary that you would normally keep to yourself. Your voice matters more than you know.","When change is coming, write down one thing you control within it. Anchoring to your agency reduces the anxiety of the unknown.","Identify someone who depends on your steadiness and tell them why you value the relationship. Giving words to what you feel deepens the connections you already cherish."]
+  },
+  C:{
+    name:"Conscientious",letter:"C",color:"#1a237e",
+    overview:"You are a master of depth and precision. Where others move fast and guess, you slow down and think. You ask the questions others don't think to ask, catch the errors others miss, and bring a quality of intellectual rigor that elevates everything you touch. You are the standard-bearer.",
+    traits:["Analytical and systematic","High standards","Detail-oriented","Objective and evidence-based","Quality-focused","Independent thinker"],
+    motivators:["Mastery and deep expertise","Accuracy and doing things the right way","Clearly defined expectations","Working independently at a high level","Recognition for quality of thought and work"],
+    strengths:["Produces exceptionally accurate, quality work","Identifies flaws and risks before they become problems","Thinks through issues with depth and rigor","Maintains high personal and professional standards"],
+    growthAreas:["Making decisions without perfect information","Accepting 'good enough' when appropriate","Expressing emotions and building personal rapport","Delegating without over-specifying every detail"],
+    dos:["Give them data, evidence, and well-organized information","Allow time for thorough analysis before expecting decisions","Acknowledge the quality of their thinking specifically","Respect their need for defined systems and standards"],
+    donts:["Make decisions on gut feeling without sharing your reasoning","Rush them or demand snap judgments","Dismiss their questions as being 'too detail-focused'","Change plans frequently without clear rationale"],
+    underStress:"The C style under stress may become hypercritical, paralyzed by perfectionism, or socially withdrawn. They may lose confidence under ambiguous or rapidly changing conditions. Watch for analysis paralysis and isolation.",
+    actionPlan:["Choose one current project where you are waiting for more information before acting — and decide right now what 'good enough information' looks like to proceed.","Schedule one conversation this week that has nothing to do with work. Practice connecting before correcting.","Write down three things you did well this week. Your growth is real — build the habit of acknowledging your own excellence."]
+  }
+};
+
+const LOVE_PROFILES = {
+  WA:{
+    name:"Words of Affirmation",abbr:"WA",
+    overview:"Your primary love language is Words of Affirmation. Verbal expressions of love, appreciation, and encouragement are the fuel your emotional tank runs on. The right words at the right moment can transform your entire day — and the wrong ones can linger far longer than the person who said them intended.",
+    traits:["Highly responsive to verbal praise","Sensitive to criticism and tone","Motivated by encouragement","Values specific, sincere compliments","Remembers meaningful things said to them"],
+    fillsTank:["Sincere compliments — specific and heartfelt","Verbal 'I love you' said with meaning","Being praised in front of others","Written notes, cards, and messages","Hearing what you appreciate about them regularly"],
+    drainsYou:["Harsh or careless criticism","Silence when they needed encouragement","Sarcasm intended as humor","Rarely hearing appreciation verbalized","Being taken for granted without acknowledgment"],
+    communicateNeeds:["Ask directly: 'I feel most loved when you tell me specifically what you appreciate about me'","Share examples: 'When you said ___ last week, it stayed with me'","Set a gentle tone: 'Words matter to me more than most people realize'"],
+    actionPlan:["Tell a key person in your life one specific thing you appreciate about them today — and do it consistently. Your love language flourishes in reciprocal environments.","When you feel emotionally low, check whether your words tank is empty. Ask for what you need: 'I just need to hear that I'm on the right track.'","Guard your self-talk. If verbal affirmation from others matters to you deeply, the words you say to yourself matter equally."]
+  },
+  AS:{
+    name:"Acts of Service",abbr:"AS",
+    overview:"Your primary love language is Acts of Service. Actions speak your language — not words, not gifts, but someone rolling up their sleeves and doing something meaningful on your behalf. When someone helps without being asked, handles what's weighing on you, or simply shows up to serve, that is love made real.",
+    traits:["Values effort over expression","Attuned to who is contributing and who isn't","Service-oriented in their own love","Notices help most when it is unprompted","Feels respected when others take responsibility"],
+    fillsTank:["Help given proactively, without asking","Tasks handled when they are overwhelmed","A partner or friend managing difficult logistics","Coming home to something already done","Being served with care during hard seasons"],
+    drainsYou:["Having to ask multiple times for the same help","Feeling like the only one pulling weight","Empty words not backed by action","Being left to handle everything alone","Laziness or a lack of follow-through from those close to you"],
+    communicateNeeds:["Be specific: 'It means so much to me when you just take care of ___ without being asked'","Appreciate reciprocity: acknowledge acts of service given to you so others know it lands","Set the standard: 'I show love by doing — and I feel loved the same way'"],
+    actionPlan:["Identify one recurring task in a key relationship where you silently carry the load. Have a clear conversation about sharing it rather than building quiet resentment.","When someone does something for you, name it aloud: 'That meant a lot to me.' It trains the people around you to speak your language.","Practice offering service to others even before it's needed. Living your love language generously creates the relational culture you want to be in."]
+  },
+  RG:{
+    name:"Receiving Gifts",abbr:"RG",
+    overview:"Your primary love language is Receiving Gifts. This is not about materialism — it is about the meaning behind the gesture. When someone takes the time to find, create, or present something that says 'I was thinking of you,' you feel genuinely seen and loved. The thought truly is the gift.",
+    traits:["Values the symbolism and meaning of gifts","Notices and remembers thoughtful gestures","Sensitive to forgotten milestones","Cherishes keepsakes and mementos","Expresses love through giving as well"],
+    fillsTank:["Surprises that show the person was thinking of you","Meaningful gifts tied to shared memories","Remembrance of special dates and milestones","Handmade or personal items over generic ones","Small tokens given 'just because'"],
+    drainsYou:["Forgotten birthdays, anniversaries, or milestones","Receiving something clearly generic or thoughtless","Feeling like an afterthought","Relationships where giving is one-sided","Gestures made only when required, never spontaneous"],
+    communicateNeeds:["Explain the language: 'Gifts are how I know someone was thinking about me — it's not about the price'","Share examples: 'When you brought me back that small thing from your trip, it stayed with me for weeks'","Create shared rituals: suggest establishing small gift traditions for your relationship"],
+    actionPlan:["Share a specific meaningful gift you've received with someone close to you and explain why it mattered. Helping others understand your language invites them to speak it better.","Create a 'think of you' habit for someone you love — a small, meaningful gesture once a week that shows your attention.","When a milestone is approaching, communicate it clearly rather than testing whether they remember. Love works best when we teach each other how to express it."]
+  },
+  QT:{
+    name:"Quality Time",abbr:"QT",
+    overview:"Your primary love language is Quality Time. Undivided, focused, intentional presence is what tells you that you are a priority. It is not about being in the same room — it is about being truly together. Distracted time feels worse than no time at all.",
+    traits:["Feels deeply loved through undivided attention","Hurt by distraction during conversations","Values shared experiences over material things","Invests deeply in one-on-one connection","Presence is the highest expression of love for them"],
+    fillsTank:["Phone-free, fully present time together","Meaningful conversations that go deep","Shared activities chosen intentionally","Regular 'just us' time protected on the calendar","Eye contact, active listening, and full engagement"],
+    drainsYou:["Distracted conversations (phones, screens, multitasking)","Constantly postponed plans","Time together that feels perfunctory or rushed","Feeling like an obligation rather than a choice","Investing deeply and getting surface-level back"],
+    communicateNeeds:["Ask directly: 'Can we have an hour tonight with no phones and just connect?'","Explain the cost: 'When you're distracted while I'm talking, I feel like I'm not a priority'","Make it easy: suggest simple, specific quality time activities regularly"],
+    actionPlan:["Schedule one protected connection window per week in your calendar — treat it like a non-negotiable meeting with someone you love.","Practice the 10-minute rule: for the first 10 minutes after seeing someone important, give them your full, genuine attention with no screen in sight.","Reflect on whether the time you're spending in key relationships is quantitatively present but qualitatively absent. Presence is more than proximity."]
+  },
+  PT:{
+    name:"Physical Touch",abbr:"PT",
+    overview:"Your primary love language is Physical Touch. Warmth, closeness, and physical connection are your clearest signal that you are loved and safe. This is not only about romance — it's about the reassurance that comes from a hand on the shoulder, a genuine embrace, or simply sitting close to someone who matters.",
+    traits:["Responds deeply to warmth and physical closeness","Feels disconnected without regular affection","Attuned to the quality and intention of touch","Naturally expressive through physical affection","Feels safest in relationships with consistent closeness"],
+    fillsTank:["Long, genuine embraces",  "Casual, comfortable physical closeness","Touch during difficult moments — a hand, a hug","Affection given freely, not only when earned","Physical presence during illness or emotional pain"],
+    drainsYou:["Physical coldness or withdrawal","Affection given only as a transaction","Long periods of distance without connection","Touch that feels obligatory or half-hearted","Feeling physically isolated in a relationship"],
+    communicateNeeds:["Normalize it: 'I'm someone who feels most loved through physical closeness — it's how I know we're connected'","Be specific: 'When I'm stressed, the most loving thing you can do is hold my hand or just sit close'","Build rituals: suggest small, consistent physical gestures that become part of your relational rhythm"],
+    actionPlan:["Identify one person in your life who naturally communicates through physical touch and lean into that connection. These relationships are likely among your most nourishing.","If a key relationship lacks physical warmth, have a gentle, honest conversation about what connection means to you rather than suffering in silence.","Be intentional with touch — give the kind of physical affirmation that costs nothing but means everything."]
+  }
+};
+
+const LEARNING_PROFILES = {
+  V:{
+    name:"Visual Learner",letter:"V",
+    overview:"You think in pictures, patterns, and organized space. Information lands best when it is structured, visually clear, and aesthetically coherent. You instinctively reach for diagrams, color, and spatial organization to make sense of complexity — and you often 'see' solutions others are still talking through.",
+    traits:["Thinks in images and spatial patterns","Strong visual memory","Prefers organized, well-designed content","Creates diagrams, charts, and color-coded notes","Easily overwhelmed by walls of unformatted text"],
+    bestEnvironment:["Clean, uncluttered, visually organized spaces","Content with clear headers, diagrams, and visual hierarchy","Color-coded systems and visual reference materials","Whiteboards, sticky notes, and visual frameworks"],
+    studyHabits:["Create mind maps and concept diagrams","Use color-coding for different categories","Build visual timelines for sequential learning","Watch demonstrations before attempting independently","Sketch out ideas before writing them"],
+    coachingApproach:["Always open with a visual framework before detail","Provide written summaries with diagrams","Use whiteboard sessions for complex concepts","Share structured, visually clean resources rather than dense text"],
+    actionPlan:["Choose one ongoing challenge in your life and create a one-page visual map of it — causes, effects, options, and outcomes. Your visual intelligence is a problem-solving superpower.","Build a personal reference board for your current goals using images, charts, and visual anchors. Seeing your goals changes how you pursue them.","Share your visual learning style with coaches and mentors so they can give you the kind of input that actually lands."]
+  },
+  A:{
+    name:"Auditory Learner",letter:"A",
+    overview:"You process the world through sound, rhythm, and spoken word. Ideas become real to you when they are spoken aloud — explained, discussed, and heard. You often need to articulate something to fully understand it, and your memory is closely tied to the way things were said and by whom.",
+    traits:["Learns through conversation and verbal explanation","Strong auditory memory","Thinks out loud to process ideas","Retains what is said better than what is written","Naturally attuned to tone, cadence, and nuance"],
+    bestEnvironment:["Discussion-based learning","Audio recordings and verbal instructions","Group conversations and verbal debriefs","Low visual clutter — words and sounds take priority"],
+    studyHabits:["Read notes aloud and record yourself","Find podcasts and audio courses on topics of growth","Discuss ideas with a study partner or mentor","Create verbal summaries of what you've learned","Use rhythm, rhyme, or verbal anchors to retain information"],
+    coachingApproach:["Invest in verbal check-ins and coaching conversations","Summarize key points out loud at the end of sessions","Encourage talking through challenges rather than writing them","Use storytelling and verbal case studies as teaching tools"],
+    actionPlan:["Start a daily practice of speaking three things you are grateful for or three insights from the day aloud — your verbal processing accelerates when it becomes a habit.","Find an audio-based learning resource (podcast, audiobook, mentorship call) for one of your current growth priorities and commit to it for 30 days.","When you're stuck on a problem, talk it through with someone. Your verbal processing often unlocks the breakthrough before the conversation is even over."]
+  },
+  R:{
+    name:"Reading/Writing Learner",letter:"R",
+    overview:"You are a learner of words — reading them, writing them, organizing them. You think through text, take detailed notes, and trust information more when it is written down. You naturally process complexity through writing, and you absorb knowledge most deeply through well-crafted text and real-world examples.",
+    traits:["Strong reader with excellent retention","Thinks through writing and note-taking","Drawn to examples, case studies, and real scenarios","Prefers detailed written instructions","Journals, makes lists, and documents ideas naturally"],
+    bestEnvironment:["Libraries, quiet spaces, and text-rich environments","Written study guides and detailed outlines","Case study-driven curricula","Access to written resources, articles, and books"],
+    studyHabits:["Take detailed notes and rewrite them for retention","Read broadly and annotate key passages","Create written summaries and reference documents","Keep a learning journal to process new information","Seek out case studies and biographies of people who've mastered the subject"],
+    coachingApproach:["Send written pre-work before coaching sessions","Provide case studies, examples, and reading materials","Encourage journaling and written reflection","Follow conversations with a written summary of key insights and next steps"],
+    actionPlan:["Start a 'Lessons Learned' journal. After every significant experience, write down what happened, what you learned, and what you'd do differently. Your growth compounds when it's documented.","Identify one book or long-form resource in each of your growth areas and build it into a reading rhythm. Your learning style thrives on deep, sustained reading.","When you are coaching or teaching others, write out key insights afterward. The act of writing crystallizes your own understanding as much as theirs."]
+  },
+  K:{
+    name:"Kinesthetic Learner",letter:"K",
+    overview:"You learn by doing. Theory doesn't stick until you've lived it — touched it, tried it, applied it. You are a natural experimenter who figures things out through action, and your greatest breakthroughs happen in the doing, not the hearing or reading. You learn faster through imperfect action than perfect preparation.",
+    traits:["Action-oriented learner","Hands-on and experiential","Restless with purely theoretical input","Learns from trial, error, and iteration","Highly attuned to real-world application"],
+    bestEnvironment:["Labs, workshops, and practice-based settings","Active role-plays and simulations","Real projects with real stakes","Freedom to try, fail, and try again","Physical movement during learning when possible"],
+    studyHabits:["Build or create something to demonstrate understanding","Use role-play and simulation to practice","Take notes on what to do, not just what to know","Set up real-world experiments for concepts you're studying","Teach others — explaining what you know by doing it cements it"],
+    coachingApproach:["Lead with challenges and practical exercises","Assign projects rather than reading homework","Debrief experiences rather than delivering lectures","Use role-play for high-stakes conversations or scenarios"],
+    actionPlan:["The next time you are trying to learn something new, don't wait until you feel ready. Set up a low-risk experiment in the next 48 hours. Your learning accelerates with your action.","Build a 'laboratory mindset': treat every new experience as data. What worked? What didn't? What's the next experiment? This approach turns your entire life into a classroom.","Find a mentor or accountability partner who will push you to apply what you're learning — not just absorb it. Your growth lives in action."]
+  }
+};
+
+/* ================================================================
+   INTAKE QUESTIONS
+   ================================================================ */
+const INTAKE_QS = [
+  {q:"What is your primary reason for taking this assessment?",opts:["Improve my romantic relationship","Improve communication at work","Personal growth and self-awareness","Prepare for coaching or counseling","Understand my leadership style"]},
+  {q:"Which area of your life feels most out of alignment right now?",opts:["Intimate relationships","Career and leadership","Communication with others","Personal habits and routines","I'm not sure — I just feel stuck"]},
+  {q:"How would you describe your current stage of growth?",opts:["Just starting my self-discovery journey","I know some things but want to go deeper","I'm actively working with a coach or counselor","I'm a coach/leader investing in my own development","I'm rebuilding after a major life transition"]}
+];
+
+/* ================================================================
+   STATE & APP
+   ================================================================ */
+const state = {
+  tier:null, intakeStep:0, intakeAnswers:[],
+  queue:[], currentAssessment:0, currentQ:0,
+  answers:{disc:[],love:[],learning:[]},
+  results:{}
+};
+
+const tierInfo = {
+  1:{label:"Tier 1 — Personality Profile",price:"$47",modules:"DISC Personality Assessment (20 questions)"},
+  2:{label:"Tier 2 — Relationship Blueprint",price:"$97",modules:"DISC Assessment + Love Languages Assessment (40 questions)"},
+  3:{label:"Tier 3 — Complete Blueprint",price:"$197",modules:"DISC + Love Languages + Learning Styles Assessment (60 questions)"}
+};
+
+function goHome(){window.location.href='SpiritualRomeo_Website.html';}
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* TIER SELECTION */
+function selectTier(t){
+  state.tier=t;
+  state.queue = t===1?['disc']:t===2?['disc','love']:['disc','love','learning'];
+  state.intakeStep=0; state.intakeAnswers=[];
+  renderIntake();
+  showScreen('intake');
+}
+
+/* INTAKE */
+function renderIntake(){
+  const q=INTAKE_QS[state.intakeStep];
+  const saved=state.intakeAnswers[state.intakeStep]||null;
+  let html=`<div class="intake-question"><h3>${q.q}</h3><div class="intake-options">`;
+  q.opts.forEach((o,i)=>{
+    const sel=(saved===i)?'selected':'';
+    html+=`<div class="intake-option ${sel}" onclick="selectIntakeOpt(${i},this)">${o}</div>`;
+  });
+  html+=`</div></div>`;
+  document.getElementById('intake-body').innerHTML=html;
+  document.getElementById('intake-back-btn').style.display=state.intakeStep>0?'':'none';
+}
+
+function selectIntakeOpt(i,el){
+  document.querySelectorAll('.intake-option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  state.intakeAnswers[state.intakeStep]=i;
+}
+
+function intakeNext(){
+  if(state.intakeAnswers[state.intakeStep]===undefined){
+    alert('Please choose an answer to continue.');return;
+  }
+  state.intakeStep++;
+  if(state.intakeStep>=INTAKE_QS.length){showPayment();}
+  else{renderIntake();}
+}
+
+function intakeBack(){
+  if(state.intakeStep>0){state.intakeStep--;renderIntake();}
+  else{showScreen('pricing');}
+}
+
+/* PAYMENT */
+function showPayment(){
+  const ti=tierInfo[state.tier];
+  let html=`<h3>Order Summary</h3>
+    <div class="payment-line"><span>Assessment Package</span><span>${ti.label}</span></div>
+    <div class="payment-line"><span>Includes</span><span style="font-size:.82rem;max-width:200px;text-align:right">${ti.modules}</span></div>
+    <div class="payment-line"><span>Total</span><span>${ti.price}</span></div>`;
+  document.getElementById('payment-summary').innerHTML=html;
+  showScreen('payment');
+}
+
+function completePayment(){
+  state.currentAssessment=0; state.currentQ=0;
+  state.answers={disc:[],love:[],learning:[]};
+  launchAssessment();
+  showScreen('assessment');
+}
+
+/* ASSESSMENT */
+const moduleData={
+  disc:{key:'disc',badge:'DISC Assessment',title:'Personality Profile',questions:DISC_QUESTIONS,total:20},
+  love:{key:'love',badge:'Love Languages Assessment',title:'Love & Relationship Style',questions:LOVE_QUESTIONS,total:20},
+  learning:{key:'learning',badge:'Learning Styles Assessment',title:'How You Learn Best',questions:LEARNING_QUESTIONS,total:20}
+};
+
+function launchAssessment(){
+  const mod=moduleData[state.queue[state.currentAssessment]];
+  document.getElementById('module-badge').textContent=mod.badge;
+  document.getElementById('module-title').textContent=mod.title;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const mod=moduleData[state.queue[state.currentAssessment]];
+  const q=mod.questions[state.currentQ];
+  const ansArr=state.answers[mod.key];
+  const saved=ansArr[state.currentQ];
+  const totalDone=state.queue.slice(0,state.currentAssessment).reduce((a,k)=>a+moduleData[k].total,0)+state.currentQ;
+  const totalAll=state.queue.reduce((a,k)=>a+moduleData[k].total,0);
+  const pct=Math.round((totalDone/totalAll)*100);
+
+  document.getElementById('progress-bar').style.width=pct+'%';
+  document.getElementById('progress-label').textContent=`Question ${state.currentQ+1} of ${mod.total} — ${pct}% complete`;
+
+  let html=`<div class="question-card">
+    <div class="question-number">Question ${state.currentQ+1} of ${mod.total}</div>
+    <div class="question-text">${q.q}</div>
+    <div class="options-grid">`;
+  q.opts.forEach((o,i)=>{
+    const sel=(saved===i)?'selected':'';
+    html+=`<button class="option-btn ${sel}" onclick="selectAnswer(${i},this)">${o.t}</button>`;
+  });
+  html+=`</div></div>`;
+  document.getElementById('question-area').innerHTML=html;
+  document.getElementById('q-back-btn').style.display=(state.currentQ>0||state.currentAssessment>0)?'':'none';
+}
+
+function selectAnswer(i,el){
+  document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  const mod=moduleData[state.queue[state.currentAssessment]];
+  state.answers[mod.key][state.currentQ]=i;
+}
+
+function nextQuestion(){
+  const mod=moduleData[state.queue[state.currentAssessment]];
+  if(state.answers[mod.key][state.currentQ]===undefined){
+    alert('Please select an answer before continuing.');return;
+  }
+  state.currentQ++;
+  if(state.currentQ>=mod.total){
+    state.currentAssessment++;
+    state.currentQ=0;
+    if(state.currentAssessment>=state.queue.length){
+      computeResults();showScreen('results');return;
+    }
+    launchAssessment();
+  } else {renderQuestion();}
+}
+
+function prevQuestion(){
+  if(state.currentQ>0){state.currentQ--;renderQuestion();}
+  else if(state.currentAssessment>0){
+    state.currentAssessment--;
+    const mod=moduleData[state.queue[state.currentAssessment]];
+    state.currentQ=mod.total-1;
+    launchAssessment();
+  }
+}
+
+/* SCORING */
+function scoreModule(key,qArr,answersArr){
+  const counts={};
+  answersArr.forEach((ansIdx,qi)=>{
+    if(ansIdx===undefined)return;
+    const k=qArr[qi].opts[ansIdx].k;
+    counts[k]=(counts[k]||0)+1;
+  });
+  let top=null,topScore=0;
+  Object.entries(counts).forEach(([k,v])=>{if(v>topScore){topScore=v;top=k;}});
+  return {top,counts};
+}
+
+function computeResults(){
+  if(state.queue.includes('disc')){
+    const r=scoreModule('disc',DISC_QUESTIONS,state.answers.disc);
+    state.results.disc=r;
+  }
+  if(state.queue.includes('love')){
+    const r=scoreModule('love',LOVE_QUESTIONS,state.answers.love);
+    state.results.love=r;
+  }
+  if(state.queue.includes('learning')){
+    const r=scoreModule('learning',LEARNING_QUESTIONS,state.answers.learning);
+    state.results.learning=r;
+  }
+}
+
+/* RESULTS RENDERING */
+function renderResults(){
+  let html='';
+
+  /* DISC */
+  if(state.results.disc){
+    const r=state.results.disc;
+    const p=DISC_PROFILES[r.top];
+    const total=Object.values(r.counts).reduce((a,b)=>a+b,0)||1;
+    html+=`<div class="profile-section">
+      <div class="profile-type-banner" style="background:linear-gradient(135deg,${p.color}dd,${p.color}99)">
+        <h2>DISC Personality Profile</h2><div class="type-badge">${p.letter} — ${p.name}</div>
+      </div>
+      <p class="overview-text">${p.overview}</p>
+      <div class="section-title">Your Traits</div>
+      <div class="traits-grid">${p.traits.map(t=>`<span class="trait-pill">${t}</span>`).join('')}</div>
+      <div class="section-title">Score Breakdown</div>
+      <div class="score-bars">
+        ${['D','I','S','C'].map(k=>{
+          const cnt=r.counts[k]||0;
+          const pct=Math.round((cnt/total)*100);
+          const labels={D:'Dominant (D)',I:'Influencer (I)',S:'Steady (S)',C:'Conscientious (C)'};
+          return `<div class="score-row"><div class="score-label">${labels[k]}</div><div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div><div class="score-pct">${pct}%</div></div>`;
+        }).join('')}
+      </div>
+      <div class="section-title">What Motivates You</div>
+      <ul style="padding-left:18px;color:#444;font-size:.92rem;line-height:1.9">${p.motivators.map(m=>`<li>${m}</li>`).join('')}</ul>
+      <div class="section-title">Communication DOs &amp; DON'Ts</div>
+      <div class="two-col">
+        <div class="do-dont-box do-box"><h4>✔ DO</h4><ul>${p.dos.map(d=>`<li><span>→</span>${d}</li>`).join('')}</ul></div>
+        <div class="do-dont-box dont-box"><h4>✘ DON'T</h4><ul>${p.donts.map(d=>`<li><span>→</span>${d}</li>`).join('')}</ul></div>
+      </div>
+      <div class="section-title">Under Stress</div>
+      <div class="stress-box"><p>${p.underStress}</p></div>
+      <div class="section-title">Your 3-Step Action Plan</div>
+      <div class="action-steps">${p.actionPlan.map((s,i)=>`<div class="action-step"><div class="step-num">${i+1}</div><div class="step-text">${s}</div></div>`).join('')}</div>
+    </div>`;
+  }
+
+  /* LOVE LANGUAGES */
+  if(state.results.love){
+    const r=state.results.love;
+    const p=LOVE_PROFILES[r.top];
+    const total=Object.values(r.counts).reduce((a,b)=>a+b,0)||1;
+    const llLabels={WA:'Words of Affirmation',AS:'Acts of Service',RG:'Receiving Gifts',QT:'Quality Time',PT:'Physical Touch'};
+    html+=`<div class="profile-section">
+      <div class="profile-type-banner">
+        <h2>Love Language Profile</h2><div class="type-badge">${p.abbr} — ${p.name}</div>
+      </div>
+      <p class="overview-text">${p.overview}</p>
+      <div class="section-title">Your Traits</div>
+      <div class="traits-grid">${p.traits.map(t=>`<span class="trait-pill">${t}</span>`).join('')}</div>
+      <div class="section-title">Score Breakdown</div>
+      <div class="score-bars">
+        ${['WA','AS','RG','QT','PT'].map(k=>{
+          const cnt=r.counts[k]||0;
+          const pct=Math.round((cnt/total)*100);
+          return `<div class="score-row"><div class="score-label" style="width:160px;font-size:.78rem">${llLabels[k]}</div><div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div><div class="score-pct">${pct}%</div></div>`;
+        }).join('')}
+      </div>
+      <div class="section-title">What Fills Your Tank</div>
+      <ul style="padding-left:18px;color:#444;font-size:.92rem;line-height:1.9">${p.fillsTank.map(m=>`<li>${m}</li>`).join('')}</ul>
+      <div class="section-title">What Drains You</div>
+      <ul style="padding-left:18px;color:#444;font-size:.92rem;line-height:1.9">${p.drainsYou.map(m=>`<li>${m}</li>`).join('')}</ul>
+      <div class="section-title">How to Communicate Your Needs</div>
+      <ul style="padding-left:18px;color:#444;font-size:.92rem;line-height:1.9">${p.communicateNeeds.map(m=>`<li>${m}</li>`).join('')}</ul>
+      <div class="section-title">Your 3-Step Action Plan</div>
+      <div class="action-steps">${p.actionPlan.map((s,i)=>`<div class="action-step"><div class="step-num">${i+1}</div><div class="step-text">${s}</div></div>`).join('')}</div>
+    </div>`;
+  }
+
+  /* COMBINED INSIGHT (Tier 2+) */
+  if(state.tier>=2 && state.results.disc && state.results.love){
+    const dp=DISC_PROFILES[state.results.disc.top];
+    const lp=LOVE_PROFILES[state.results.love.top];
+    html+=`<div class="combined-insight">
+      <h3>✦ Combined Insight — ${dp.name} × ${lp.name}</h3>
+      <p>As a <strong>${dp.name}</strong> personality who connects most deeply through <strong>${lp.name}</strong>, you bring a distinctive relational pattern: your drive and directness are your power, and the way you give and receive love reveals what softens and centers you. Pay special attention to how the needs of your love language can sometimes conflict with your DISC style's default communication patterns — and how closing that gap is the foundation of transformational relationships.</p>
+    </div>`;
+  }
+
+  /* LEARNING STYLES (Tier 3) */
+  if(state.results.learning){
+    const r=state.results.learning;
+    const p=LEARNING_PROFILES[r.top];
+    const total=Object.values(r.counts).reduce((a,b)=>a+b,0)||1;
+    const lsLabels={V:'Visual',A:'Auditory',R:'Reading/Writing',K:'Kinesthetic'};
+    html+=`<div class="profile-section">
+      <div class="profile-type-banner" style="background:linear-gradient(135deg,#1a237e,#283593)">
+        <h2>Learning Style Profile</h2><div class="type-badge">${p.letter} — ${p.name}</div>
+      </div>
+      <p class="overview-text">${p.overview}</p>
+      <div class="section-title">Score Breakdown</div>
+      <div class="score-bars">
+        ${['V','A','R','K'].map(k=>{
+          const cnt=r.counts[k]||0;
+          const pct=Math.round((cnt/total)*100);
+          return `<div class="score-row"><div class="score-label">${lsLabels[k]}</div><div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div><div class="score-pct">${pct}%</div></div>`;
+        }).join('')}
+      </div>
+      <div class="section-title">Best Learning Environment</div>
+      <ul style="padding-left:18px;color:#444;font-size:.92rem;line-height:1.9">${p.bestEnvironment.map(m=>`<li>${m}</li>`).join('')}</ul>
+      <div class="section-title">Study Habits That Work For You</div>
+      <ul style="padding-left:18px;color:#444;font-size:.92rem;line-height:1.9">${p.studyHabits.map(m=>`<li>${m}</li>`).join('')}</ul>
+      <div class="section-title">Coaching Approach That Serves You Best</div>
+      <ul style="padding-left:18px;color:#444;font-size:.92rem;line-height:1.9">${p.coachingApproach.map(m=>`<li>${m}</li>`).join('')}</ul>
+      <div class="section-title">Your 3-Step Action Plan</div>
+      <div class="action-steps">${p.actionPlan.map((s,i)=>`<div class="action-step"><div class="step-num">${i+1}</div><div class="step-text">${s}</div></div>`).join('')}</div>
+    </div>`;
+  }
+
+  /* TIER 3 UNIFIED BLUEPRINT */
+  if(state.tier===3 && state.results.disc && state.results.love && state.results.learning){
+    const dp=DISC_PROFILES[state.results.disc.top];
+    const lp=LOVE_PROFILES[state.results.love.top];
+    const lsp=LEARNING_PROFILES[state.results.learning.top];
+    html+=`<div class="combined-insight" style="border-color:var(--purple)">
+      <h3>✦ Your Unified Blueprint — ${dp.letter} | ${lp.abbr} | ${lsp.letter}</h3>
+      <p>You are a <strong>${dp.name}</strong> who gives and receives love through <strong>${lp.name}</strong> and learns best as a <strong>${lsp.name}</strong>. These three dimensions together create a complete picture of how you operate, connect, and grow. Bring this blueprint into your coaching, your relationships, and your daily choices — and watch how quickly things begin to shift.</p>
+    </div>
+    <div class="profile-section" style="background:linear-gradient(135deg,#f9f0ff,#fff8e7);border:1px solid var(--gold)">
+      <h3 style="color:var(--purple-dark);margin-bottom:12px;">Priority Coaching Session</h3>
+      <p style="color:#444;font-size:.93rem;line-height:1.7;margin-bottom:16px;">You've completed the Complete Blueprint. The next step is a 1-on-1 session with Dennis Nickens (Spiritual Romeo) to walk through your results, identify your highest-leverage growth area, and build a personalized action strategy.</p>
+      <button class="pay-btn" onclick="alert('Coaching booking coming soon! Contact dennis@tp-llc.com to schedule.')" style="max-width:320px;">Book Your Coaching Session</button>
+    </div>`;
+  }
+
+  /* UPGRADE NUDGES */
+  if(state.tier===1){
+    html+=`<div class="upgrade-card">
+      <h3>Unlock Your Love Language Profile</h3>
+      <p>Upgrade to Tier 2 and discover how you give and receive love, what fills your emotional tank, and how to communicate your needs in every relationship.</p>
+      <button class="upgrade-btn" onclick="restart();selectTier(2)">Upgrade to Tier 2 — $97</button>
+    </div>`;
+  }
+  if(state.tier===2){
+    html+=`<div class="upgrade-card">
+      <h3>Complete Your Blueprint with Learning Styles</h3>
+      <p>Upgrade to Tier 3 and discover how you learn best, receive personalized coaching recommendations, and unlock your complete unified blueprint.</p>
+      <button class="upgrade-btn" onclick="restart();selectTier(3)">Upgrade to Tier 3 — $197</button>
+    </div>`;
+  }
+
+  document.getElementById('results-body').innerHTML=html;
+}
+
+function restart(){
+  state.tier=null;state.intakeStep=0;state.intakeAnswers=[];
+  state.queue=[];state.currentAssessment=0;state.currentQ=0;
+  state.answers={disc:[],love:[],learning:[]};state.results={};
+  showScreen('pricing');
+}
+
+/* Auto-render results when screen shown */
+const origShowScreen=showScreen;
+window.showScreen=function(id){
+  origShowScreen(id);
+  if(id==='results'){renderResults();}
+};
+</script>
+</body>
+</html>

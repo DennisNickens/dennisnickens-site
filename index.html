@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,281 +6,123 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dennis Nickens — Spiritual Romeo | Relationship Coach</title>
 <meta name="description" content="Dennis Nickens AKA Spiritual Romeo — Relationship coach helping 500+ couples build the love they've always wanted. Book your free consultation today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <style>
-/* ── HOME-SPECIFIC ── */
+/* ════════════════════════════════════════
+   HOME PAGE — UPDATED DESIGN
+   ════════════════════════════════════════ */
 
-/* HERO */
+/* ── NAV LOGO CROWN ── */
+.nav-logo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7C3AED, #3B82F6);
+  box-shadow: 0 4px 20px rgba(124,58,237,0.5);
+  position: relative;
+  flex-shrink: 0;
+}
+.nav-logo-crown {
+  font-size: 11px;
+  line-height: 1;
+  color: #FFD700;
+  margin-bottom: -2px;
+  filter: drop-shadow(0 0 4px rgba(255,215,0,0.8));
+}
+.nav-logo-sr {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: #FFD700;
+  letter-spacing: 1px;
+  text-shadow: 0 0 12px rgba(255,215,0,0.6);
+}
+.nav-brand-text .nav-name {
+  font-family: 'Dancing Script', cursive;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+}
+.nav-brand-text .nav-sub {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #FFD700;
+  opacity: 0.85;
+}
+
+/* ── HERO ── */
 .hero {
   min-height: 100vh;
-  display: flex; align-items: center;
+  display: flex;
+  align-items: center;
   padding: 120px 48px 80px;
-  position: relative; overflow: hidden;
-}
-.hero::before {
-  content:'';
-  position:absolute; inset:0;
-  background:
-    radial-gradient(ellipse at 30% 60%, rgba(124,58,237,0.18) 0%, transparent 55%),
-    radial-gradient(ellipse at 75% 25%, rgba(59,130,246,0.14) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 100%, rgba(124,58,237,0.10) 0%, transparent 45%);
-  pointer-events:none;
+  position: relative;
+  overflow: hidden;
 }
 .hero-inner {
-  max-width:1140px; margin:0 auto;
-  display:grid; grid-template-columns:1fr 460px;
-  gap:72px; align-items:center;
-  position:relative; z-index:1; width:100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
-
-/* Photo */
-.hero-photo-wrap {
-  position:relative;
-  display:flex; justify-content:center;
-  order: 2;
-}
-.hero-photo-wrap::before {
-  content:'';
-  position:absolute; inset:-20px;
-  border-radius:26px;
-  background: linear-gradient(135deg, rgba(124,58,237,0.6), rgba(59,130,246,0.4), rgba(255,215,0,0.2));
-  filter:blur(28px); z-index:0;
-}
-.hero-photo-wrap::after {
-  content:'';
-  position:absolute; inset:-2px;
-  border-radius:24px;
-  border:1.5px solid rgba(255,215,0,0.3);
-  z-index:0;
-}
-.hero-photo {
-  width:100%; max-width:460px; height:580px;
-  object-fit:cover; object-position:center top;
-  border-radius:22px;
-  position:relative; z-index:1;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-  animation: glowPulse 5s ease-in-out infinite;
-}
-
-/* Text */
-.hero-text { order:1; }
-.hero-eyebrow {
-  display:inline-block;
-  background: rgba(255,215,0,0.12);
-  border:1px solid rgba(255,215,0,0.35);
-  color:var(--gold);
-  font-size:11px; font-weight:700;
-  letter-spacing:2.5px; text-transform:uppercase;
-  padding:7px 18px; border-radius:30px;
-  margin-bottom:24px;
-}
-.hero-title {
-  font-family:'Playfair Display',serif;
-  font-size:clamp(42px,5.5vw,76px);
-  font-weight:900; line-height:1.08;
-  margin-bottom:12px;
-}
-.hero-title .gold { color:var(--gold); }
-.hero-name {
-  font-family:'Playfair Display',serif;
-  font-size:clamp(18px,2vw,26px);
-  color:var(--purple-light);
-  font-weight:700; margin-bottom:24px;
-  letter-spacing:0.5px;
-}
-.hero-sub {
-  font-size:17px; color:var(--muted);
-  line-height:1.85; max-width:500px;
-  margin-bottom:40px;
-}
-.hero-cta { display:flex; flex-direction:column; gap:16px; align-items:flex-start; }
-.hero-trust {
-  display:flex; align-items:center; gap:10px;
-  font-size:13px; color:rgba(255,255,255,0.55);
-}
-.hero-stars { color:var(--gold); letter-spacing:2px; }
-.hero-trust strong { color:rgba(255,255,255,0.8); }
-
-/* STATS STRIP */
-.stats-strip {
-  position:relative; z-index:1;
-  background: rgba(124,58,237,0.08);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  padding:32px 48px;
-  display:flex; justify-content:center; gap:80px; flex-wrap:wrap;
-}
-.stat { text-align:center; }
-.stat-num {
-  font-family:'Playfair Display',serif;
-  font-size:38px; font-weight:900;
-  background:linear-gradient(135deg,var(--purple-light),var(--gold));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  background-clip:text; display:block; line-height:1.1;
-}
-.stat-lbl { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:4px; }
-
-/* WHY ME */
-.why-grid {
-  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
-  margin-top:56px;
-}
-.why-card { text-align:center; }
-.why-icon {
-  width:64px; height:64px; border-radius:50%;
-  background:linear-gradient(135deg,var(--purple),var(--blue));
-  display:flex; align-items:center; justify-content:center;
-  font-size:26px; margin:0 auto 20px;
-  box-shadow:0 8px 24px var(--glow-p);
-}
-.why-card h3 {
-  font-family:'Playfair Display',serif;
-  font-size:20px; margin-bottom:10px; color:var(--white);
-}
-.why-card p { font-size:14px; color:var(--muted); line-height:1.7; }
-
-/* ABOUT STRIP */
-.about-strip {
-  background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(59,130,246,0.08));
-  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
-}
-.about-strip-inner {
-  max-width:1140px; margin:0 auto;
-  display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center;
-}
-.about-strip-text .section-tag { display:block; }
-.about-strip-text blockquote {
-  font-family:'Playfair Display',serif;
-  font-size:22px; font-style:italic;
-  color:var(--white); line-height:1.65;
-  border-left:3px solid var(--gold);
-  padding-left:24px; margin:24px 0 32px;
-}
-.about-strip-img {
-  position:relative;
-  border-radius:var(--radius);
-  overflow:hidden;
-  box-shadow:0 30px 70px rgba(0,0,0,0.4);
-}
-.about-strip-img img {
-  width:100%; height:420px;
-  object-fit:cover; object-position:center top;
-  border-radius:var(--radius);
-}
-.about-strip-img::after {
-  content:'';
-  position:absolute; inset:0;
-  border-radius:var(--radius);
-  border:2px solid rgba(255,215,0,0.2);
-}
-
-/* SERVICES PREVIEW */
-.services-grid {
-  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
-  margin-top:56px;
-}
-.service-card { position:relative; overflow:hidden; }
-.service-card::before {
-  content:'';
-  position:absolute; inset:0;
-  background:linear-gradient(135deg,var(--purple),var(--blue));
-  opacity:0; transition:opacity 0.35s ease;
-  border-radius:var(--radius);
-}
-.service-card:hover::before { opacity:1; }
-.service-card > * { position:relative; z-index:1; }
-.service-num {
-  font-family:'Playfair Display',serif;
-  font-size:48px; font-weight:900;
-  color:var(--purple); opacity:0.35; line-height:1;
-  margin-bottom:12px; transition:color 0.3s;
-}
-.service-card:hover .service-num { color:var(--gold); opacity:0.6; }
-.service-card h3 {
-  font-family:'Playfair Display',serif;
-  font-size:20px; margin-bottom:10px; color:var(--white);
-}
-.service-card p { font-size:14px; color:var(--muted); line-height:1.7; margin-bottom:20px; }
-.service-tag {
-  display:inline-block; font-size:11px; font-weight:700;
-  letter-spacing:1.5px; text-transform:uppercase;
-  background:var(--gold-pale); color:var(--gold);
-  padding:5px 14px; border-radius:20px;
-  transition:all 0.3s;
-}
-.service-card:hover .service-tag { background:rgba(255,255,255,0.2); color:var(--white); }
-
-/* TESTIMONIAL STRIP */
-.testimonial-strip { background:rgba(10,12,25,0.6); }
-.testimonials-row {
-  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
-  margin-top:56px;
-}
-.testi-card {
-  background:rgba(255,255,255,0.05);
-  border:1px solid var(--border);
-  border-radius:var(--radius); padding:32px 28px;
-  transition:all var(--transition);
-}
-.testi-card:hover {
-  border-color:rgba(255,215,0,0.3);
-  transform:translateY(-4px);
-}
-.testi-stars { color:var(--gold); font-size:16px; letter-spacing:3px; margin-bottom:16px; }
-.testi-text {
-  font-size:15px; color:rgba(255,255,255,0.8);
-  line-height:1.75; font-style:italic; margin-bottom:24px;
-}
-.testi-author { display:flex; align-items:center; gap:12px; }
-.testi-avatar {
-  width:44px; height:44px; border-radius:50%;
-  background:linear-gradient(135deg,var(--purple),var(--blue));
-  display:flex; align-items:center; justify-content:center;
-  font-family:'Playfair Display',serif;
-  font-size:18px; font-weight:700; color:var(--gold);
-  flex-shrink:0;
-}
-.testi-name { font-weight:700; font-size:14px; }
-.testi-loc { font-size:12px; color:var(--muted); }
-
-/* CTA SECTION */
-.cta-section {
-  background:linear-gradient(135deg, #1E1B4B 0%, #0F172A 50%, #1a1040 100%);
-  border-top:1px solid var(--border);
-  text-align:center;
-}
-.cta-section .section-title { font-size:clamp(32px,4vw,56px); }
-.cta-section .section-sub { margin:0 auto 40px; }
-.cta-buttons { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
-
-/* MOBILE */
-@media(max-width:900px){
-  .hero { padding:100px 24px 60px; }
-  .hero-inner { grid-template-columns:1fr; gap:48px; text-align:center; }
-  .hero-photo-wrap { order:1; }
-  .hero-text { order:2; }
-  .hero-photo { max-width:320px; height:400px; }
-  .hero-cta { align-items:center; }
-  .hero-sub { margin:0 auto 36px; }
-  .stats-strip { gap:40px; padding:28px 24px; }
-  .why-grid, .services-grid, .testimonials-row { grid-template-columns:1fr; }
-  .about-strip-inner { grid-template-columns:1fr; gap:40px; }
-  .cta-buttons { flex-direction:column; align-items:center; }
-}
+.hero-photo-wrap { position: relative; display: flex; justify-content: center; order: 1; }
+.hero-photo { width: 100%; max-width: 500px; height: 620px; object-fit: cover; object-position: center top; border-radius: 24px; position: relative; z-index: 1; box-shadow: 0 40px 100px rgba(0,0,0,0.6); display: block; }
+.hero-text { order: 2; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.4); color: #FFD700; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 8px 20px; border-radius: 30px; margin-bottom: 28px; }
+.hero-welcome { font-family: 'Dancing Script', cursive; font-size: clamp(36px, 3.5vw, 52px); font-weight: 700; color: rgba(255,255,255,0.7); margin-bottom: 8px; line-height: 1; }
+.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(40px, 5vw, 68px); font-weight: 900; line-height: 1.08; margin-bottom: 24px; }
+.hero-title .gold { background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.85; max-width: 480px; margin-bottom: 44px; font-weight: 300; }
+.hero-actions { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+.hero-trust { display: flex; align-items: center; gap: 12px; font-size: 13px; color: rgba(255,255,255,0.5); }
+.hero-trust-stars { color: #FFD700; letter-spacing: 2px; font-size: 14px; }
+.hero-trust strong { color: rgba(255,255,255,0.8); }
+.stats-strip { position: relative; z-index: 1; background: rgba(124,58,237,0.08); border-top: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); padding: 36px 48px; display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; }
+.stat { text-align: center; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 900; background: linear-gradient(135deg, #A78BFA, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block; line-height: 1.1; }
+.stat-lbl { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 2px; margin-top: 6px; }
+.services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.service-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 36px 28px; position: relative; overflow: hidden; transition: all 0.35s ease; }
+.service-card:hover { border-color: rgba(255,215,0,0.3); background: rgba(124,58,237,0.12); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(124,58,237,0.2); }
+.service-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+.service-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+.service-card p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 24px; }
+.service-price { font-size: 13px; font-weight: 700; color: #FFD700; letter-spacing: 1px; }
+.service-badge { position: absolute; top: 20px; right: 20px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(255,215,0,0.12); color: #FFD700; border: 1px solid rgba(255,215,0,0.3); padding: 4px 12px; border-radius: 20px; }
+.testi-highlight { background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(59,130,246,0.06)); border: 1px solid rgba(255,255,255,0.07); border-radius: 24px; padding: 56px 64px; text-align: center; max-width: 900px; margin: 0 auto; position: relative; }
+.testi-highlight p { font-family: 'Playfair Display', serif; font-size: clamp(18px, 2.2vw, 26px); font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.65; margin-bottom: 32px; }
+.testi-highlight-author { display: flex; align-items: center; gap: 14px; justify-content: center; }
+.testi-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #7C3AED, #3B82F6); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #FFD700; }
+.testi-info strong { font-size: 15px; color: #fff; display: block; }
+.testi-info span { font-size: 12px; color: rgba(255,255,255,0.45); }
+.testi-stars-row { color: #FFD700; font-size: 16px; letter-spacing: 3px; margin-bottom: 24px; }
+.cta-section { background: linear-gradient(135deg, #1E1B4B 0%, #0F172A 50%, #1a1040 100%); border-top: 1px solid rgba(255,255,255,0.07); text-align: center; position: relative; overflow: hidden; }
+.cta-section .section-title { font-size: clamp(32px, 4vw, 58px); }
+.cta-section .section-sub { margin: 0 auto 48px; max-width: 560px; font-size: 17px; }
+.cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+@media (max-width: 960px) { .hero { padding: 100px 24px 60px; } .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; } .hero-photo { max-width: 320px; height: 400px; } .hero-actions { align-items: center; } .stats-strip { gap: 40px; padding: 28px 24px; } .services-grid { grid-template-columns: 1fr; } .testi-highlight { padding: 40px 28px; } .cta-buttons { flex-direction: column; align-items: center; } }
 </style>
 </head>
 <body>
-
 <canvas id="particles-canvas"></canvas>
-
-<!-- ══ NAV ══ -->
 <nav id="navbar">
   <a href="index.html" class="nav-brand">
-    <div class="nav-logo">SR</div>
-    <div class="nav-brand-text">
-      <span class="nav-name">Dennis Nickens</span>
-      <span class="nav-sub">AKA Spiritual Romeo</span>
-    </div>
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">♛</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html" class="active">Home</a></li>
@@ -288,311 +131,83 @@
     <li><a href="testimonials.html">Testimonials</a></li>
     <li><a href="book.html" class="nav-cta">Book Now</a></li>
   </ul>
-  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
-
-<!-- ══ HERO ══ -->
 <section class="hero">
   <div class="hero-inner">
-
+    <div class="hero-photo-wrap animate-faderight">
+      <img src="images/dennis-hero-seated.jpg" onerror="this.src='images/dennis-hero.jpg'" alt="Dennis Nickens — Spiritual Romeo" class="hero-photo">
+    </div>
     <div class="hero-text">
-      <div class="hero-eyebrow animate-fadeup">✨ Relationship Coach &amp; Consultant</div>
-      <h1 class="hero-title animate-fadeup delay-1">
-        Transform Your<br><span class="gold">Relationships</span>
-      </h1>
-      <p class="hero-name animate-fadeup delay-2">I'm Dennis Nickens, AKA Spiritual Romeo</p>
-      <p class="hero-sub animate-fadeup delay-3">
-        Here to help you build the relationship you've always wanted —
-        with clarity, confidence, and the deeper connection you deserve.
-      </p>
-      <div class="hero-cta animate-fadeup delay-4">
+      <div class="hero-eyebrow animate-fadeup">✦ Relationship Coach &amp; Consultant</div>
+      <div class="hero-welcome animate-fadeup delay-1">Welcome</div>
+      <h1 class="hero-title animate-fadeup delay-2">Transform Your<br><span class="gold">Relationships</span></h1>
+      <p class="hero-sub animate-fadeup delay-3">I'm Dennis Nickens, AKA Spiritual Romeo — here to help you build the relationship you've always wanted, with clarity, confidence, and the deeper connection you deserve.</p>
+      <div class="hero-actions animate-fadeup delay-4">
         <a href="book.html" class="btn btn-gold">Book Your Free Consultation</a>
-        <div class="hero-trust">
-          <span class="hero-stars">★★★★★</span>
-          <span>Trusted by <strong>500+ couples</strong> worldwide</span>
-        </div>
+        <div class="hero-trust"><span class="hero-trust-stars">★★★★★</span><span>Trusted by <strong>500+ couples</strong> worldwide</span></div>
       </div>
     </div>
-
-    <div class="hero-photo-wrap animate-faderight delay-2">
-      <img src="images/dennis-hero.jpg" alt="Dennis Nickens — Spiritual Romeo" class="hero-photo">
-    </div>
-
   </div>
 </section>
-
-<!-- ══ STATS ══ -->
 <div class="stats-strip">
-  <div class="stat animate-fadeup">
-    <span class="stat-num">500+</span>
-    <span class="stat-lbl">Couples Transformed</span>
-  </div>
-  <div class="stat animate-fadeup delay-1">
-    <span class="stat-num">10+</span>
-    <span class="stat-lbl">Years Experience</span>
-  </div>
-  <div class="stat animate-fadeup delay-2">
-    <span class="stat-num">98%</span>
-    <span class="stat-lbl">Client Satisfaction</span>
-  </div>
-  <div class="stat animate-fadeup delay-3">
-    <span class="stat-num">Free</span>
-    <span class="stat-lbl">First Consultation</span>
-  </div>
+  <div class="stat animate-fadeup"><span class="stat-num">500+</span><span class="stat-lbl">Couples Transformed</span></div>
+  <div class="stat animate-fadeup delay-1"><span class="stat-num">10+</span><span class="stat-lbl">Years Experience</span></div>
+  <div class="stat animate-fadeup delay-2"><span class="stat-num">98%</span><span class="stat-lbl">Client Satisfaction</span></div>
+  <div class="stat animate-fadeup delay-3"><span class="stat-num">Free</span><span class="stat-lbl">First Consultation</span></div>
 </div>
-
-<!-- ══ WHY DENNIS ══ -->
 <section class="section">
   <div class="section-inner">
-    <span class="section-tag animate-fadeup">Why Choose Spiritual Romeo</span>
-    <h2 class="section-title animate-fadeup delay-1">A Proven Approach to<br><span style="color:var(--purple-light)">Real Love</span></h2>
-    <p class="section-sub animate-fadeup delay-2">My coaching method blends spiritual wisdom, proven psychology, and real-world experience to create lasting transformation.</p>
-
-    <div class="why-grid">
-      <div class="card why-card animate-fadeup delay-1">
-        <div class="why-icon">💡</div>
-        <h3>Deep Understanding</h3>
-        <p>I help you uncover the root of relationship patterns — not just surface symptoms — so real change can happen.</p>
-      </div>
-      <div class="card why-card animate-fadeup delay-2">
-        <div class="why-icon">❤️</div>
-        <h3>Proven Results</h3>
-        <p>500+ couples have transformed their love lives using the Spiritual Romeo method. Real results, real relationships.</p>
-      </div>
-      <div class="card why-card animate-fadeup delay-3">
-        <div class="why-icon">🚀</div>
-        <h3>Personalized Path</h3>
-        <p>No cookie-cutter advice. Every session is tailored to your unique situation, goals, and relationship dynamics.</p>
-      </div>
+    <div style="max-width:600px;margin:0 auto 56px;text-align:center">
+      <span class="section-tag animate-fadeup">What I Offer</span>
+      <h2 class="section-title animate-fadeup delay-1">Coaching Built<br><span style="color:#A78BFA">For You</span></h2>
+      <p class="section-sub animate-fadeup delay-2">Whether you're single, dating, or in a relationship — there's a path forward.</p>
     </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══ ABOUT STRIP ══ -->
-<section class="section about-strip">
-  <div class="about-strip-inner">
-    <div class="about-strip-text animate-fadeleft">
-      <span class="section-tag">About Dennis</span>
-      <h2 class="section-title">More Than a Coach —<br>A Guide</h2>
-      <blockquote>"Love isn't just a feeling — it's a skill. And every skill can be learned, refined, and mastered."</blockquote>
-      <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:28px;">
-        Dennis Nickens has spent over a decade helping individuals and couples navigate the complexities of love, communication, and commitment. His approach combines spiritual insight with practical tools that create real, lasting change.
-      </p>
-      <a href="about.html" class="btn btn-outline">Learn More About Dennis</a>
-    </div>
-    <div class="about-strip-img animate-faderight delay-2">
-      <img src="images/dennis-hero.jpg" alt="Dennis Nickens">
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══ SERVICES PREVIEW ══ -->
-<section class="section">
-  <div class="section-inner">
-    <span class="section-tag animate-fadeup">What I Offer</span>
-    <h2 class="section-title animate-fadeup delay-1">Coaching Paths Built<br><span style="color:var(--purple-light)">For You</span></h2>
-    <p class="section-sub animate-fadeup delay-2">Whether you're single, dating, or in a committed relationship — there's a path forward.</p>
-
     <div class="services-grid">
-      <div class="card service-card animate-fadeup delay-1">
-        <div class="service-num">01</div>
-        <h3>1-on-1 Coaching</h3>
-        <p>Deep, personalized sessions focused on your specific situation, goals, and breakthroughs. The fastest path to transformation.</p>
-        <span class="service-tag">Most Popular</span>
-      </div>
-      <div class="card service-card animate-fadeup delay-2">
-        <div class="service-num">02</div>
-        <h3>Couples Coaching</h3>
-        <p>Rebuild trust, reignite connection, and learn the communication tools that will strengthen your relationship for life.</p>
-        <span class="service-tag">Highly Rated</span>
-      </div>
-      <div class="card service-card animate-fadeup delay-3">
-        <div class="service-num">03</div>
-        <h3>Group Programs</h3>
-        <p>Join a community of like-minded individuals on the journey to better relationships. Affordable, powerful, and transformative.</p>
-        <span class="service-tag">Community</span>
-      </div>
+      <div class="service-card animate-fadeup delay-1"><span class="service-badge">Most Popular</span><span class="service-icon">💡</span><h3>1-on-1 Coaching</h3><p>Deep, personalized sessions focused on your situation, goals, and breakthroughs. The fastest path to transformation.</p><span class="service-price">From $150 / session</span></div>
+      <div class="service-card animate-fadeup delay-2"><span class="service-badge">Highly Rated</span><span class="service-icon">❤️</span><h3>Couples Coaching</h3><p>Rebuild trust, reignite connection, and learn communication tools that will strengthen your bond for life.</p><span class="service-price">From $225 / session</span></div>
+      <div class="service-card animate-fadeup delay-3"><span class="service-icon">🚀</span><h3>Group Programs</h3><p>Join a community on the journey to better relationships. Affordable, powerful, and transformative.</p><span class="service-price">$97 / month</span></div>
     </div>
-
-    <div style="text-align:center;margin-top:48px;" class="animate-fadeup delay-4">
-      <a href="services.html" class="btn btn-purple">View All Services</a>
-    </div>
+    <div style="text-align:center;margin-top:48px" class="animate-fadeup delay-4"><a href="services.html" class="btn btn-outline">View All Services</a></div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- ══ TESTIMONIALS PREVIEW ══ -->
-<section class="section testimonial-strip">
+<section class="section">
   <div class="section-inner">
-    <span class="section-tag animate-fadeup">Success Stories</span>
-    <h2 class="section-title animate-fadeup delay-1">What Clients Are Saying</h2>
-
-    <div class="testimonials-row">
-      <div class="testi-card animate-fadeup delay-1">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Dennis completely changed how my husband and I communicate. We went from the edge of divorce to the best year of our marriage."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">M</div>
-          <div><div class="testi-name">Michelle T.</div><div class="testi-loc">Charlotte, NC</div></div>
-        </div>
-      </div>
-      <div class="testi-card animate-fadeup delay-2">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"I was single for 7 years and convinced something was wrong with me. After 3 sessions with Dennis, I understood myself on a whole new level."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">J</div>
-          <div><div class="testi-name">James R.</div><div class="testi-loc">Atlanta, GA</div></div>
-        </div>
-      </div>
-      <div class="testi-card animate-fadeup delay-3">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Spiritual Romeo isn't just a coach — he's a life-changer. His insight, warmth, and practical tools are unlike anything I've experienced."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">A</div>
-          <div><div class="testi-name">Angela W.</div><div class="testi-loc">Dallas, TX</div></div>
-        </div>
-      </div>
+    <div style="text-align:center;margin-bottom:48px"><span class="section-tag animate-fadeup">Success Stories</span></div>
+    <div class="testi-highlight animate-fadeup delay-1">
+      <div class="testi-stars-row">★★★★★</div>
+      <p>"Dennis completely changed how my husband and I communicate. We went from the edge of divorce to the best year of our marriage. Spiritual Romeo isn't just a coach — he's a life-changer."</p>
+      <div class="testi-highlight-author"><div class="testi-avatar">M</div><div class="testi-info"><strong>Michelle T.</strong><span>Charlotte, NC</span></div></div>
     </div>
-
-    <div style="text-align:center;margin-top:48px;" class="animate-fadeup delay-4">
-      <a href="testimonials.html" class="btn btn-outline">Read More Stories</a>
-    </div>
+    <div style="text-align:center;margin-top:40px" class="animate-fadeup delay-2"><a href="testimonials.html" class="btn btn-outline">Read More Stories</a></div>
   </div>
 </section>
-
-<!-- ══ CTA SECTION ══ -->
 <section class="section cta-section">
-  <div class="section-inner" style="text-align:center;">
+  <div class="section-inner">
     <span class="section-tag animate-fadeup">Ready to Start?</span>
-    <h2 class="section-title animate-fadeup delay-1">Your Best Relationship<br>Starts <span style="color:var(--gold)">Today</span></h2>
+    <h2 class="section-title animate-fadeup delay-1">Your Best Relationship<br>Starts <span style="color:#FFD700">Today</span></h2>
     <p class="section-sub animate-fadeup delay-2">Book your free 30-minute consultation. No pressure, no commitment — just a real conversation about where you are and where you want to be.</p>
-    <div class="cta-buttons animate-fadeup delay-3">
-      <a href="book.html" class="btn btn-gold">Book Free Consultation</a>
-      <a href="services.html" class="btn btn-outline">Explore Services</a>
-    </div>
+    <div class="cta-buttons animate-fadeup delay-3"><a href="book.html" class="btn btn-gold">Book Free Consultation</a><a href="services.html" class="btn btn-outline">Explore Services</a></div>
   </div>
 </section>
-
-<!-- ══ FOOTER ══ -->
 <footer>
-  <div class="footer-brand">
-    <div class="nav-logo" style="margin-bottom:14px;">SR</div>
-    <p>Dennis Nickens AKA Spiritual Romeo — helping individuals and couples build the love they've always wanted.</p>
-  </div>
-  <div class="footer-col">
-    <h4>Quick Links</h4>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="testimonials.html">Testimonials</a>
-    <a href="book.html">Book Now</a>
-  </div>
-  <div class="footer-col">
-    <h4>Contact</h4>
-    <p>📧 dennis@tp-llc.com</p>
-    <p>📍 Indian Trail, NC</p>
-    <p style="margin-top:16px;font-size:12px;">Free consultation available</p>
-  </div>
+  <div class="footer-brand"><div class="nav-logo-wrap" style="margin:0 auto 16px"><span class="nav-logo-crown">♛</span><span class="nav-logo-sr">SR</span></div><p>Dennis Nickens AKA Spiritual Romeo — helping individuals and couples build the love they've always wanted.</p></div>
+  <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="testimonials.html">Testimonials</a><a href="book.html">Book Now</a></div>
+  <div class="footer-col"><h4>Contact</h4><p>📧 dennis@tp-llc.com</p><p>📍 Indian Trail, NC</p></div>
 </footer>
-<div class="footer-bottom">
-  <span>© 2026 Dennis Nickens — Spiritual Romeo. All rights reserved.</span>
-  <a href="book.html">Book a Free Consultation →</a>
-</div>
-
+<div class="footer-bottom"><span>© 2026 Dennis Nickens — Spiritual Romeo. All rights reserved.</span><a href="book.html">Book a Free Consultation →</a></div>
 <script>
-// ── NAV SCROLL ──
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
-});
-
-// ── HAMBURGER ──
-function toggleMenu() {
-  document.getElementById('navLinks').classList.toggle('open');
-}
-
-// ── PARTICLE CANVAS ──
-const canvas = document.getElementById('particles-canvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener('resize', resize);
-
-class Particle {
-  constructor() { this.reset(); }
-  reset() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.vx = (Math.random() - 0.5) * 0.4;
-    this.vy = (Math.random() - 0.5) * 0.4;
-    this.radius = Math.random() * 1.8 + 0.4;
-    this.alpha = Math.random() * 0.5 + 0.1;
-    this.color = Math.random() > 0.6 ? '#7C3AED' : Math.random() > 0.5 ? '#3B82F6' : '#FFD700';
-  }
-  update() {
-    this.x += this.vx; this.y += this.vy;
-    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.globalAlpha = this.alpha;
-    ctx.fill();
-    ctx.globalAlpha = 1;
-  }
-}
-
-for (let i = 0; i < 90; i++) particles.push(new Particle());
-
-function drawLines() {
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 120) {
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = '#7C3AED';
-        ctx.globalAlpha = (1 - dist/120) * 0.12;
-        ctx.lineWidth = 0.6;
-        ctx.stroke();
-        ctx.globalAlpha = 1;
-      }
-    }
-  }
-}
-
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => { p.update(); p.draw(); });
-  drawLines();
-  requestAnimationFrame(animate);
-}
-animate();
-
-// ── SCROLL ANIMATIONS ──
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.style.animationPlayState = 'running'; });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.animate-fadeup, .animate-fadeleft, .animate-faderight').forEach(el => {
-  el.style.animationPlayState = 'paused';
-  observer.observe(el);
-});
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+const canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');let particles=[];
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);
+class Particle{constructor(){this.reset();}reset(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.radius=Math.random()*1.6+.3;this.alpha=Math.random()*.45+.08;const r=Math.random();this.color=r>.65?'#7C3AED':r>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;ctx.fill();ctx.globalAlpha=1;}}
+for(let i=0;i<80;i++)particles.push(new Particle());
+function drawLines(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<110){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='#7C3AED';ctx.globalAlpha=(1-dist/110)*.10;ctx.lineWidth=.5;ctx.stroke();ctx.globalAlpha=1;}}}}
+function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw();});drawLines();requestAnimationFrame(animate);}animate();
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.style.animationPlayState='running';});},{threshold:.08});
+document.querySelectorAll('.animate-fadeup,.animate-fadeleft,.animate-faderight').forEach(el=>{el.style.animationPlayState='paused';observer.observe(el);});
 </script>
 </body>
 </html>

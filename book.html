@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Consultation — Dennis Nickens Spiritual Romeo</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.page-hero{padding:160px 48px 80px;position:relative;z-index:1;text-align:center;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(40px,5vw,72px);font-weight:900;}
+.page-hero p{font-size:18px;color:var(--muted);max-width:560px;margin:20px auto 0;line-height:1.8;}
+
+.book-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.book-info h2{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:16px;}
+.book-info p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:24px;}
+.book-steps{display:flex;flex-direction:column;gap:20px;margin-top:36px;}
+.book-step{display:flex;gap:16px;align-items:flex-start;}
+.step-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--blue));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--gold);flex-shrink:0;}
+.step-text h4{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:4px;}
+.step-text p{font-size:13px;color:var(--muted);line-height:1.6;margin:0;}
+
+.book-form-wrap{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--radius);padding:48px;}
+.book-form-wrap h3{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:8px;}
+.book-form-wrap .sub{font-size:14px;color:var(--muted);margin-bottom:32px;}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:20px;}
+.form-group label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple-light);}
+.form-group input,.form-group textarea,.form-group select{background:rgba(255,255,255,.06);border:1.5px solid var(--border);border-radius:10px;color:var(--white);padding:13px 16px;font-family:'Inter',sans-serif;font-size:15px;transition:all .2s;width:100%;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--purple);outline:none;box-shadow:0 0 0 3px rgba(124,58,237,.15);}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.3);}
+.form-group select option{background:#1E1B4B;color:var(--white);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.btn-submit{width:100%;background:linear-gradient(135deg,var(--gold-dim),var(--gold));color:#0F172A;font-family:'Inter',sans-serif;font-size:16px;font-weight:700;padding:16px;border:none;border-radius:50px;cursor:pointer;transition:all .25s;margin-top:8px;letter-spacing:.3px;}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 30px var(--glow-g);}
+.form-note{text-align:center;font-size:12px;color:var(--muted);margin-top:12px;}
+.success-msg{display:none;text-align:center;padding:40px 20px;}
+.success-msg .icon{font-size:60px;margin-bottom:16px;}
+.success-msg h3{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold);margin-bottom:12px;}
+.success-msg p{color:var(--muted);font-size:15px;line-height:1.7;}
+
+.guarantees{display:flex;flex-direction:column;gap:14px;margin-top:36px;}
+.guarantee{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted);}
+.guarantee-icon{font-size:20px;}
+
+@media(max-width:900px){
+  .page-hero{padding:120px 24px 60px;}
+  .book-layout{grid-template-columns:1fr;}
+  .book-form-wrap{padding:32px 24px;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<canvas id="particles-canvas"></canvas>
+<nav id="navbar">
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">SR</div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="book.html" class="nav-cta active">Book Now</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <span class="section-tag animate-fadeup">Let's Connect</span>
+  <h1 class="animate-fadeup delay-1">Book Your Free<br><span style="color:var(--gold)">Consultation</span></h1>
+  <p class="animate-fadeup delay-2">30 minutes. No pressure. Just a real conversation about where you are and where you want to be.</p>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="book-layout">
+
+      <div class="book-info animate-fadeleft">
+        <h2>What Happens on Your Free Call?</h2>
+        <p>This isn't a sales call. It's a genuine conversation where I listen, ask the right questions, and help you see your situation more clearly — whether we work together or not.</p>
+
+        <div class="book-steps">
+          <div class="book-step">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <h4>You Share Your Situation</h4>
+              <p>Tell me where you are — relationship challenges, goals, what's not working. I listen without judgment.</p>
+            </div>
+          </div>
+          <div class="book-step">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <h4>I Give You Clarity</h4>
+              <p>I'll help you see patterns and possibilities you might be missing. Real insight, right now.</p>
+            </div>
+          </div>
+          <div class="book-step">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <h4>We Explore Next Steps</h4>
+              <p>If there's a fit, we'll talk about how we can work together. If not, I'll still point you in the right direction.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guarantees">
+          <div class="guarantee"><span class="guarantee-icon">✅</span>100% free — no credit card needed</div>
+          <div class="guarantee"><span class="guarantee-icon">🔒</span>Everything shared is confidential</div>
+          <div class="guarantee"><span class="guarantee-icon">⏱️</span>30 minutes, respectful of your time</div>
+          <div class="guarantee"><span class="guarantee-icon">❤️</span>Zero pressure — just real conversation</div>
+        </div>
+      </div>
+
+      <div class="book-form-wrap animate-faderight delay-2">
+        <div id="formContainer">
+          <h3>Request Your Free Session</h3>
+          <p class="sub">Fill out the form below and I'll personally reach out within 24 hours to schedule.</p>
+
+          <form id="bookForm" onsubmit="submitForm(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="Your first name" required>
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Your last name" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="(555) 555-5555">
+            </div>
+            <div class="form-group">
+              <label>I'm Looking For Help With</label>
+              <select required>
+                <option value="" disabled selected>Select one...</option>
+                <option>I'm single and want to find the right relationship</option>
+                <option>I'm in a relationship and want to improve it</option>
+                <option>My partner and I are struggling and need help</option>
+                <option>I want to heal from a past relationship</option>
+                <option>I'm newly married / preparing for marriage</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Tell Me a Little About Your Situation</label>
+              <textarea rows="4" placeholder="What's going on, and what would you love to change?"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Send My Request →</button>
+            <p class="form-note">Or email directly: <a href="mailto:dennis@tp-llc.com" style="color:var(--gold);">dennis@tp-llc.com</a></p>
+          </form>
+        </div>
+
+        <div class="success-msg" id="successMsg">
+          <div class="icon">🎉</div>
+          <h3>You're On Your Way!</h3>
+          <p>Thank you for reaching out. I'll personally review your message and get back to you within 24 hours to schedule your free consultation.<br><br>Check your email for a confirmation.</p>
+          <br>
+          <a href="index.html" class="btn btn-gold" style="display:inline-block;margin-top:8px;">Back to Home</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand"><div class="nav-logo" style="margin-bottom:14px;">SR</div><p>Dennis Nickens AKA Spiritual Romeo.</p></div>
+  <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="testimonials.html">Testimonials</a><a href="book.html">Book Now</a></div>
+  <div class="footer-col"><h4>Contact</h4><p>📧 dennis@tp-llc.com</p><p>📍 Indian Trail, NC</p></div>
+</footer>
+<div class="footer-bottom"><span>© 2026 Dennis Nickens — Spiritual Romeo.</span><a href="book.html">Book Free Consultation →</a></div>
+
+<script>
+function submitForm(e){
+  e.preventDefault();
+  document.getElementById('formContainer').style.display='none';
+  document.getElementById('successMsg').style.display='block';
+}
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40));
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+const canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');let particles=[];
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);
+class Particle{constructor(){this.reset();}reset(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-.5)*.4;this.vy=(Math.random()-.5)*.4;this.radius=Math.random()*1.8+.4;this.alpha=Math.random()*.4+.1;this.color=Math.random()>.6?'#7C3AED':Math.random()>.5?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;ctx.fill();ctx.globalAlpha=1;}}
+for(let i=0;i<70;i++)particles.push(new Particle());
+function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animate);}animate();
+</script>
+</body>
+</html>

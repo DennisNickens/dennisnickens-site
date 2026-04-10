@@ -3,1011 +3,596 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spiritual Romeo — Dennis Nickens | Relationship Intelligence</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Dennis Nickens — Spiritual Romeo | Relationship Coach</title>
+<meta name="description" content="Dennis Nickens AKA Spiritual Romeo — Relationship coach helping 500+ couples build the love they've always wanted. Book your free consultation today.">
+<link rel="stylesheet" href="css/style.css">
 <style>
-:root{
-  --bg:#060012;--bg2:#0D0025;
-  --purple:#7C3AED;--purp-dk:#4C1D95;--purp-lt:#A855F7;
-  --blue:#06B6D4;--blue-mid:#3B82F6;--neon:#00E5FF;
-  --gold:#C9A84C;--white:#FFFFFF;
-  --muted:rgba(255,255,255,.62);
-  --card-bg:rgba(255,255,255,.04);--card-bd:rgba(124,58,237,.28);
-  --gp:rgba(124,58,237,.45);--gb:rgba(6,182,212,.4);
+/* ── HOME-SPECIFIC ── */
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 120px 48px 80px;
+  position: relative; overflow: hidden;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;}
-
-/* ── CANVAS ── */
-#cosmos{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
-
-/* ── PAGE SWITCHING ── */
-.page{display:none;}
-.page.active{display:block;}
-
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(6,0,18,.88);backdrop-filter:blur(22px);border-bottom:1px solid rgba(124,58,237,.18);}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white);cursor:pointer;}
-.logo-badge{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--blue-mid));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:16px;box-shadow:0 0 18px var(--gp);}
-.logo-name{font-family:'Playfair Display',serif;font-size:16px;letter-spacing:.5px;}
-.nav-links{display:flex;gap:6px;list-style:none;}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all .2s;cursor:pointer;}
-.nav-links a:hover{color:var(--white);background:rgba(124,58,237,.15);}
-.nav-links a.nav-active{color:var(--white);background:rgba(124,58,237,.2);border-bottom:2px solid var(--purp-lt);}
-.btn-nav{background:linear-gradient(135deg,var(--purple),var(--blue-mid));color:white;border:none;padding:11px 26px;border-radius:50px;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 4px 22px var(--gp);transition:all .2s;letter-spacing:.4px;}
-.btn-nav:hover{transform:translateY(-1px);box-shadow:0 8px 30px var(--gp);}
-
-/* ── SHARED SECTION STYLES ── */
-.section{position:relative;z-index:1;padding:104px 24px;}
-.section-inner{max-width:1120px;margin:0 auto;}
-.tag{display:block;font-size:11px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--neon);margin-bottom:18px;}
-.title{font-family:'Playfair Display',serif;font-size:clamp(34px,4.5vw,58px);font-weight:900;line-height:1.12;margin-bottom:22px;}
-.sub{font-size:17px;line-height:1.78;color:var(--muted);max-width:600px;margin-bottom:56px;}
-.btn-primary{background:linear-gradient(135deg,var(--purple),var(--blue-mid));color:white;border:none;padding:18px 44px;border-radius:50px;font-family:'Inter',sans-serif;font-weight:700;font-size:16px;cursor:pointer;box-shadow:0 8px 36px var(--gp);transition:all .25s;text-decoration:none;display:inline-block;letter-spacing:.4px;}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 44px var(--gp),0 0 70px var(--gb);}
-.btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.28);padding:18px 44px;border-radius:50px;font-family:'Inter',sans-serif;font-weight:600;font-size:16px;cursor:pointer;transition:all .25s;text-decoration:none;display:inline-block;}
-.btn-ghost:hover{border-color:var(--purp-lt);box-shadow:0 0 28px var(--gp);}
-.e-card{background:var(--card-bg);border:1px solid var(--card-bd);border-radius:22px;padding:38px 30px;transition:all .3s;position:relative;overflow:hidden;}
-.e-card:hover{transform:translateY(-7px);box-shadow:0 24px 64px rgba(124,58,237,.22),0 0 100px rgba(6,182,212,.08);border-color:rgba(124,58,237,.55);}
-.e-num{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;background:linear-gradient(135deg,var(--purp-lt),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:.35;margin-bottom:8px;line-height:1;}
-.e-icon{font-size:40px;margin-bottom:18px;display:block;}
-.e-title{font-family:'Playfair Display',serif;font-size:23px;font-weight:700;margin-bottom:14px;}
-.e-desc{color:var(--muted);font-size:15px;line-height:1.78;}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-
-/* ── HERO ── */
-.hero{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:130px 24px 90px;}
-.hero-inner{max-width:880px;margin:0 auto;}
-.hero-tag{display:inline-block;background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.3);border-radius:50px;padding:8px 22px;font-size:11px;font-weight:700;letter-spacing:3.5px;color:var(--neon);text-transform:uppercase;margin-bottom:30px;}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(54px,8vw,104px);font-weight:900;line-height:1.02;letter-spacing:-2px;margin-bottom:24px;}
-.line1{display:block;color:var(--white);}
-.line2{display:block;background:linear-gradient(90deg,var(--purp-lt),var(--neon),var(--blue-mid),var(--purp-lt));background-size:250% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shine 4s linear infinite;font-style:italic;}
-@keyframes shine{0%{background-position:0% center}100%{background-position:250% center}}
-.hero-sub{font-size:19px;line-height:1.78;color:var(--muted);max-width:640px;margin:0 auto 44px;}
-.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:60px;}
-.hero-pills{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
-.pill{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:10px 20px;font-size:13px;font-weight:500;color:var(--muted);}
-.dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--purp-lt),var(--neon));box-shadow:0 0 8px var(--gb);animation:throb 2s ease-in-out infinite;}
-@keyframes throb{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
-.pill:nth-child(2) .dot{animation-delay:.5s;}.pill:nth-child(3) .dot{animation-delay:1s;}
-
-/* ── STATS ── */
-.stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(13,0,37,.9);border-top:1px solid rgba(124,58,237,.18);border-bottom:1px solid rgba(124,58,237,.18);}
-.stat{padding:34px 20px;text-align:center;border-right:1px solid rgba(124,58,237,.12);}
-.stat:last-child{border-right:none;}
-.stat-num{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;background:linear-gradient(135deg,var(--purp-lt),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;}
-.stat-lbl{font-size:12px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;}
-
-/* ── STEPS ── */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;position:relative;}
-.step-connector{position:absolute;top:74px;left:calc(16.67% + 20px);right:calc(16.67% + 20px);height:2px;background:linear-gradient(90deg,var(--purple),var(--neon),var(--purple));background-size:200% auto;animation:shine 2.5s linear infinite;z-index:2;}
-.step-card{background:rgba(255,255,255,.03);border:1px solid rgba(124,58,237,.18);border-radius:22px;padding:44px 28px;text-align:center;transition:all .3s;}
-.step-card:hover{border-color:rgba(124,58,237,.5);box-shadow:0 12px 50px rgba(124,58,237,.18);}
-.step-circle{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--blue-mid));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-weight:800;font-size:20px;box-shadow:0 0 28px var(--gp);position:relative;z-index:3;}
-.step-card h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin:14px 0 12px;}
-.step-card p{color:var(--muted);font-size:15px;line-height:1.75;}
-
-/* ── LOVE CARDS ── */
-.love-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:44px;}
-.love-card{background:rgba(255,255,255,.04);border:1px solid rgba(124,58,237,.22);border-radius:20px;padding:30px 16px;text-align:center;transition:all .3s;}
-.love-card:hover{border-color:var(--neon);box-shadow:0 0 36px rgba(6,182,212,.2);transform:translateY(-5px);}
-.l-icon{font-size:38px;margin-bottom:12px;}
-.l-name{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;margin-bottom:8px;}
-.l-desc{font-size:12px;color:var(--muted);line-height:1.65;}
-
-/* ── INSIGHT ── */
-.insight{background:linear-gradient(135deg,rgba(76,29,149,.35),rgba(6,182,212,.12));border:1px solid rgba(124,58,237,.35);border-radius:28px;padding:52px 56px;text-align:center;position:relative;overflow:hidden;}
-.insight::before{content:'';position:absolute;top:-60%;left:-60%;width:220%;height:220%;background:radial-gradient(circle,rgba(124,58,237,.07) 0%,transparent 65%);animation:spin 14s linear infinite;}
-@keyframes spin{100%{transform:rotate(360deg)}}
-.insight blockquote{font-family:'Playfair Display',serif;font-size:clamp(17px,2.3vw,26px);font-style:italic;line-height:1.62;margin-bottom:22px;position:relative;z-index:1;}
-.insight-attr{color:var(--gold);font-size:14px;font-weight:600;letter-spacing:1px;position:relative;z-index:1;}
-
-/* ── TESTIMONIALS ── */
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px;}
-.t-card{background:rgba(255,255,255,.04);border:1px solid rgba(124,58,237,.18);border-radius:20px;padding:34px 26px;transition:all .3s;position:relative;overflow:hidden;}
-.t-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--blue-mid));transform:scaleX(0);transition:transform .35s;transform-origin:left;}
-.t-card:hover::before{transform:scaleX(1);}
-.t-card:hover{border-color:rgba(124,58,237,.45);box-shadow:0 8px 44px rgba(124,58,237,.14);}
-.stars{color:var(--gold);font-size:15px;letter-spacing:3px;margin-bottom:14px;}
-.t-card blockquote{font-size:14px;line-height:1.82;color:rgba(255,255,255,.8);font-style:italic;margin-bottom:22px;}
-.t-author{display:flex;align-items:center;gap:12px;}
-.avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--blue-mid));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;box-shadow:0 0 14px var(--gp);flex-shrink:0;}
-.t-name{font-weight:600;font-size:14px;}
-.t-role{font-size:12px;color:var(--muted);}
-
-/* ── SERVICES / PRICING ── */
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
-.price-card{background:rgba(255,255,255,.04);border:1px solid rgba(124,58,237,.22);border-radius:24px;padding:40px 30px;transition:all .3s;position:relative;}
-.price-card.featured{border:2px solid var(--purple);box-shadow:0 0 60px rgba(124,58,237,.2);}
-.price-card:hover{transform:translateY(-6px);}
-.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--purple),var(--blue-mid));padding:6px 20px;border-radius:50px;font-size:12px;font-weight:700;letter-spacing:1px;white-space:nowrap;}
-.price-icon{font-size:44px;margin-bottom:16px;}
-.price-cat{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--neon);margin-bottom:8px;}
-.price-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:12px;}
-.price-desc{color:var(--muted);font-size:14px;line-height:1.75;margin-bottom:20px;}
-.price-features{list-style:none;margin-bottom:28px;}
-.price-features li{color:var(--muted);font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:8px;}
-.price-features li::before{content:'✓';color:var(--neon);font-weight:700;flex-shrink:0;margin-top:1px;}
-.price-amount{font-family:'Playfair Display',serif;font-size:38px;font-weight:900;background:linear-gradient(135deg,var(--purp-lt),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:24px;}
-.price-amount span{font-size:16px;color:var(--muted);font-weight:400;-webkit-text-fill-color:var(--muted);}
-
-/* ── STORE ── */
-.store-tabs{display:flex;gap:8px;margin-bottom:36px;}
-.store-tab{background:rgba(255,255,255,.05);border:1px solid rgba(124,58,237,.2);border-radius:50px;padding:10px 22px;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;}
-.store-tab.active,.store-tab:hover{background:rgba(124,58,237,.25);border-color:var(--purple);color:var(--white);}
-.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-.product-card{background:rgba(255,255,255,.04);border:1px solid rgba(124,58,237,.18);border-radius:20px;overflow:hidden;transition:all .3s;}
-.product-card:hover{transform:translateY(-5px);box-shadow:0 16px 50px rgba(124,58,237,.18);border-color:rgba(124,58,237,.45);}
-.product-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;}
-.product-badge{position:absolute;top:12px;right:12px;background:var(--purple);padding:4px 12px;border-radius:50px;font-size:11px;font-weight:700;letter-spacing:1px;}
-.product-body{padding:22px;}
-.product-cat{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--neon);text-transform:uppercase;margin-bottom:6px;}
-.product-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:8px;}
-.product-desc{color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:16px;}
-.product-footer{display:flex;align-items:center;justify-content:space-between;}
-.product-price{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;background:linear-gradient(135deg,var(--gold),#f0d070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.btn-add{background:linear-gradient(135deg,var(--purple),var(--blue-mid));color:white;border:none;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;}
-.btn-add:hover{box-shadow:0 4px 20px var(--gp);}
-
-/* ── ABOUT ── */
-.about-hero{position:relative;z-index:1;padding:140px 24px 80px;text-align:center;}
-.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1100px;margin:0 auto;padding:80px 24px;}
-.about-photo-wrap{background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);border-radius:28px;height:480px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.about-photo-wrap::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(6,182,212,.08));}
-.about-badge-pill{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--purple),var(--blue-mid));border-radius:50px;padding:10px 22px;font-size:13px;font-weight:700;white-space:nowrap;box-shadow:0 4px 24px var(--gp);}
-.cred-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0;}
-.cred{background:rgba(255,255,255,.04);border:1px solid rgba(124,58,237,.2);border-radius:14px;padding:16px;}
-.cred-icon{font-size:22px;margin-bottom:8px;}
-.cred h4{font-size:14px;font-weight:700;margin-bottom:4px;}
-.cred p{font-size:12px;color:var(--muted);line-height:1.6;}
-.story-block{background:rgba(255,255,255,.03);border:1px solid rgba(124,58,237,.15);border-radius:20px;padding:36px;margin-bottom:20px;display:flex;gap:24px;align-items:flex-start;}
-.story-icon{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--blue-mid));display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;box-shadow:0 0 20px var(--gp);}
-.story-block h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:12px;}
-.story-block p{color:var(--muted);font-size:15px;line-height:1.8;}
-
-/* ── WATCH ── */
-.yt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;}
-.yt-card{background:rgba(255,255,255,.04);border:1px solid rgba(124,58,237,.18);border-radius:20px;overflow:hidden;cursor:pointer;transition:all .3s;}
-.yt-card:hover{transform:translateY(-5px);box-shadow:0 12px 50px rgba(124,58,237,.18);}
-.yt-thumb{height:180px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--purp-dk),#1a0040);position:relative;}
-.yt-play{width:52px;height:52px;border-radius:50%;background:rgba(255,0,0,.85);display:flex;align-items:center;justify-content:center;font-size:20px;}
-.yt-duration{position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.75);padding:3px 8px;border-radius:4px;font-size:12px;font-weight:600;}
-.yt-body{padding:20px;}
-.yt-cat{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--neon);text-transform:uppercase;margin-bottom:6px;}
-.yt-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;line-height:1.4;margin-bottom:8px;}
-.yt-meta{font-size:12px;color:var(--muted);}
-.yt-subscribe{display:inline-flex;align-items:center;gap:10px;background:#FF0000;color:white;border:none;padding:14px 28px;border-radius:8px;font-weight:700;font-size:15px;cursor:pointer;transition:all .2s;}
-.yt-subscribe:hover{background:#cc0000;transform:translateY(-2px);}
-
-/* ── ASSESSMENT PAGE ── */
-.assess-hero{position:relative;z-index:1;padding:140px 24px 60px;text-align:center;}
-.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
-.tier-card{background:rgba(255,255,255,.04);border:1px solid rgba(124,58,237,.22);border-radius:24px;padding:40px 28px;text-align:center;transition:all .3s;position:relative;}
-.tier-card.featured{border:2px solid var(--purple);box-shadow:0 0 60px rgba(124,58,237,.2);}
-.tier-card:hover{transform:translateY(-6px);}
-.tier-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--purple),var(--blue-mid));padding:6px 20px;border-radius:50px;font-size:12px;font-weight:700;white-space:nowrap;}
-.tier-icon{font-size:52px;margin-bottom:16px;}
-.tier-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:8px;}
-.tier-desc{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:20px;}
-.tier-includes{list-style:none;margin-bottom:28px;text-align:left;}
-.tier-includes li{color:var(--muted);font-size:14px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;gap:8px;align-items:flex-start;}
-.tier-includes li::before{content:'✓';color:var(--neon);font-weight:700;flex-shrink:0;}
-.tier-price{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;background:linear-gradient(135deg,var(--purp-lt),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:24px;}
-
-/* ── CORPORATE ── */
-.corp-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;max-width:1100px;margin:0 auto;}
-.corp-features{display:flex;flex-direction:column;gap:20px;margin:28px 0;}
-.corp-feature{display:flex;gap:18px;align-items:flex-start;background:rgba(255,255,255,.03);border:1px solid rgba(124,58,237,.15);border-radius:16px;padding:22px;}
-.corp-feat-icon{font-size:28px;flex-shrink:0;}
-.corp-feature h4{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:6px;}
-.corp-feature p{color:var(--muted);font-size:14px;line-height:1.7;}
-.corp-cta-box{background:linear-gradient(135deg,rgba(124,58,237,.25),rgba(6,182,212,.1));border:1px solid rgba(124,58,237,.35);border-radius:28px;padding:44px 36px;}
-.corp-cta-box h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:14px;}
-.corp-cta-box p{color:var(--muted);font-size:15px;line-height:1.75;margin-bottom:24px;}
-.corp-list{list-style:none;margin-bottom:28px;}
-.corp-list li{color:var(--muted);font-size:14px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;gap:8px;}
-.corp-list li::before{content:'→';color:var(--neon);}
-
-/* ── EMAIL / LEAD ── */
-.email-row{display:flex;gap:12px;max-width:530px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
-.e-input{flex:1;min-width:250px;padding:16px 24px;border-radius:50px;border:1px solid rgba(124,58,237,.35);background:rgba(255,255,255,.06);color:white;font-family:'Inter',sans-serif;font-size:15px;outline:none;transition:border-color .2s;}
-.e-input:focus{border-color:var(--neon);}
-.e-input::placeholder{color:rgba(255,255,255,.3);}
-
-/* ── FOOTER CTA ── */
-.f-cta{position:relative;z-index:1;text-align:center;padding:120px 24px;background:linear-gradient(180deg,transparent,rgba(76,29,149,.12));}
-footer{position:relative;z-index:1;text-align:center;padding:28px;border-top:1px solid rgba(124,58,237,.12);font-size:13px;color:rgba(255,255,255,.28);}
-
-/* ── RESPONSIVE ── */
-@media(max-width:960px){
-  .stats{grid-template-columns:repeat(2,1fr);}
-  .steps,.grid-3,.testi-grid,.price-grid,.tier-grid,.product-grid,.yt-grid{grid-template-columns:1fr;}
-  .step-connector{display:none;}
-  .love-grid{grid-template-columns:repeat(2,1fr);}
-  .about-inner,.corp-inner{grid-template-columns:1fr;}
-  .grid-2{grid-template-columns:1fr;}
-  nav{padding:14px 20px;}
-  .nav-links{gap:2px;}
-  .nav-links a{padding:8px 10px;font-size:13px;}
-  .insight{padding:36px 24px;}
+.hero::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 30% 60%, rgba(124,58,237,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 25%, rgba(59,130,246,0.14) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(124,58,237,0.10) 0%, transparent 45%);
+  pointer-events:none;
 }
-@media(max-width:600px){
-  .love-grid,.cred-grid{grid-template-columns:1fr;}
-  .stats{grid-template-columns:repeat(2,1fr);}
-  .hero h1{letter-spacing:-1px;}
+.hero-inner {
+  max-width:1140px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 460px;
+  gap:72px; align-items:center;
+  position:relative; z-index:1; width:100%;
+}
+
+/* Photo */
+.hero-photo-wrap {
+  position:relative;
+  display:flex; justify-content:center;
+  order: 2;
+}
+.hero-photo-wrap::before {
+  content:'';
+  position:absolute; inset:-20px;
+  border-radius:26px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.6), rgba(59,130,246,0.4), rgba(255,215,0,0.2));
+  filter:blur(28px); z-index:0;
+}
+.hero-photo-wrap::after {
+  content:'';
+  position:absolute; inset:-2px;
+  border-radius:24px;
+  border:1.5px solid rgba(255,215,0,0.3);
+  z-index:0;
+}
+.hero-photo {
+  width:100%; max-width:460px; height:580px;
+  object-fit:cover; object-position:center top;
+  border-radius:22px;
+  position:relative; z-index:1;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  animation: glowPulse 5s ease-in-out infinite;
+}
+
+/* Text */
+.hero-text { order:1; }
+.hero-eyebrow {
+  display:inline-block;
+  background: rgba(255,215,0,0.12);
+  border:1px solid rgba(255,215,0,0.35);
+  color:var(--gold);
+  font-size:11px; font-weight:700;
+  letter-spacing:2.5px; text-transform:uppercase;
+  padding:7px 18px; border-radius:30px;
+  margin-bottom:24px;
+}
+.hero-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,5.5vw,76px);
+  font-weight:900; line-height:1.08;
+  margin-bottom:12px;
+}
+.hero-title .gold { color:var(--gold); }
+.hero-name {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(18px,2vw,26px);
+  color:var(--purple-light);
+  font-weight:700; margin-bottom:24px;
+  letter-spacing:0.5px;
+}
+.hero-sub {
+  font-size:17px; color:var(--muted);
+  line-height:1.85; max-width:500px;
+  margin-bottom:40px;
+}
+.hero-cta { display:flex; flex-direction:column; gap:16px; align-items:flex-start; }
+.hero-trust {
+  display:flex; align-items:center; gap:10px;
+  font-size:13px; color:rgba(255,255,255,0.55);
+}
+.hero-stars { color:var(--gold); letter-spacing:2px; }
+.hero-trust strong { color:rgba(255,255,255,0.8); }
+
+/* STATS STRIP */
+.stats-strip {
+  position:relative; z-index:1;
+  background: rgba(124,58,237,0.08);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:32px 48px;
+  display:flex; justify-content:center; gap:80px; flex-wrap:wrap;
+}
+.stat { text-align:center; }
+.stat-num {
+  font-family:'Playfair Display',serif;
+  font-size:38px; font-weight:900;
+  background:linear-gradient(135deg,var(--purple-light),var(--gold));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text; display:block; line-height:1.1;
+}
+.stat-lbl { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:4px; }
+
+/* WHY ME */
+.why-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  margin-top:56px;
+}
+.why-card { text-align:center; }
+.why-icon {
+  width:64px; height:64px; border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex; align-items:center; justify-content:center;
+  font-size:26px; margin:0 auto 20px;
+  box-shadow:0 8px 24px var(--glow-p);
+}
+.why-card h3 {
+  font-family:'Playfair Display',serif;
+  font-size:20px; margin-bottom:10px; color:var(--white);
+}
+.why-card p { font-size:14px; color:var(--muted); line-height:1.7; }
+
+/* ABOUT STRIP */
+.about-strip {
+  background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(59,130,246,0.08));
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+}
+.about-strip-inner {
+  max-width:1140px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center;
+}
+.about-strip-text .section-tag { display:block; }
+.about-strip-text blockquote {
+  font-family:'Playfair Display',serif;
+  font-size:22px; font-style:italic;
+  color:var(--white); line-height:1.65;
+  border-left:3px solid var(--gold);
+  padding-left:24px; margin:24px 0 32px;
+}
+.about-strip-img {
+  position:relative;
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:0 30px 70px rgba(0,0,0,0.4);
+}
+.about-strip-img img {
+  width:100%; height:420px;
+  object-fit:cover; object-position:center top;
+  border-radius:var(--radius);
+}
+.about-strip-img::after {
+  content:'';
+  position:absolute; inset:0;
+  border-radius:var(--radius);
+  border:2px solid rgba(255,215,0,0.2);
+}
+
+/* SERVICES PREVIEW */
+.services-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  margin-top:56px;
+}
+.service-card { position:relative; overflow:hidden; }
+.service-card::before {
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  opacity:0; transition:opacity 0.35s ease;
+  border-radius:var(--radius);
+}
+.service-card:hover::before { opacity:1; }
+.service-card > * { position:relative; z-index:1; }
+.service-num {
+  font-family:'Playfair Display',serif;
+  font-size:48px; font-weight:900;
+  color:var(--purple); opacity:0.35; line-height:1;
+  margin-bottom:12px; transition:color 0.3s;
+}
+.service-card:hover .service-num { color:var(--gold); opacity:0.6; }
+.service-card h3 {
+  font-family:'Playfair Display',serif;
+  font-size:20px; margin-bottom:10px; color:var(--white);
+}
+.service-card p { font-size:14px; color:var(--muted); line-height:1.7; margin-bottom:20px; }
+.service-tag {
+  display:inline-block; font-size:11px; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  background:var(--gold-pale); color:var(--gold);
+  padding:5px 14px; border-radius:20px;
+  transition:all 0.3s;
+}
+.service-card:hover .service-tag { background:rgba(255,255,255,0.2); color:var(--white); }
+
+/* TESTIMONIAL STRIP */
+.testimonial-strip { background:rgba(10,12,25,0.6); }
+.testimonials-row {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  margin-top:56px;
+}
+.testi-card {
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--border);
+  border-radius:var(--radius); padding:32px 28px;
+  transition:all var(--transition);
+}
+.testi-card:hover {
+  border-color:rgba(255,215,0,0.3);
+  transform:translateY(-4px);
+}
+.testi-stars { color:var(--gold); font-size:16px; letter-spacing:3px; margin-bottom:16px; }
+.testi-text {
+  font-size:15px; color:rgba(255,255,255,0.8);
+  line-height:1.75; font-style:italic; margin-bottom:24px;
+}
+.testi-author { display:flex; align-items:center; gap:12px; }
+.testi-avatar {
+  width:44px; height:44px; border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:18px; font-weight:700; color:var(--gold);
+  flex-shrink:0;
+}
+.testi-name { font-weight:700; font-size:14px; }
+.testi-loc { font-size:12px; color:var(--muted); }
+
+/* CTA SECTION */
+.cta-section {
+  background:linear-gradient(135deg, #1E1B4B 0%, #0F172A 50%, #1a1040 100%);
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+.cta-section .section-title { font-size:clamp(32px,4vw,56px); }
+.cta-section .section-sub { margin:0 auto 40px; }
+.cta-buttons { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero { padding:100px 24px 60px; }
+  .hero-inner { grid-template-columns:1fr; gap:48px; text-align:center; }
+  .hero-photo-wrap { order:1; }
+  .hero-text { order:2; }
+  .hero-photo { max-width:320px; height:400px; }
+  .hero-cta { align-items:center; }
+  .hero-sub { margin:0 auto 36px; }
+  .stats-strip { gap:40px; padding:28px 24px; }
+  .why-grid, .services-grid, .testimonials-row { grid-template-columns:1fr; }
+  .about-strip-inner { grid-template-columns:1fr; gap:40px; }
+  .cta-buttons { flex-direction:column; align-items:center; }
 }
 </style>
 </head>
 <body>
 
-<canvas id="cosmos"></canvas>
+<canvas id="particles-canvas"></canvas>
 
-<!-- ═══ NAV ═══ -->
-<nav>
-  <div class="logo" onclick="showPage('home')">
-    <div class="logo-badge">SR</div>
-    <span class="logo-name">Spiritual Romeo</span>
-  </div>
-  <ul class="nav-links">
-    <li><a onclick="showPage('home')"    data-nav="home">Home</a></li>
-    <li><a onclick="showPage('about')"   data-nav="about">About</a></li>
-    <li><a onclick="showPage('assess')"  data-nav="assess">Assessment</a></li>
-    <li><a onclick="showPage('services')" data-nav="services">Services</a></li>
-    <li><a onclick="showPage('store')"   data-nav="store">Store</a></li>
-    <li><a onclick="showPage('watch')"   data-nav="watch">Watch</a></li>
+<!-- ══ NAV ══ -->
+<nav id="navbar">
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">SR</div>
+    <div class="nav-brand-text">
+      <span class="nav-name">Dennis Nickens</span>
+      <span class="nav-sub">AKA Spiritual Romeo</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="book.html" class="nav-cta">Book Now</a></li>
   </ul>
-  <button class="btn-nav" onclick="showPage('services')">Book a Session</button>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-inner">
 
-<!-- ████████████████████  HOME PAGE  ████████████████████ -->
-<div class="page active" data-page="home">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-tag">Relationship Intelligence · Dennis Nickens</div>
-      <h1>
-        <span class="line1">Stop Guessing.</span>
-        <span class="line2">Start Connecting.</span>
+    <div class="hero-text">
+      <div class="hero-eyebrow animate-fadeup">✨ Relationship Coach &amp; Consultant</div>
+      <h1 class="hero-title animate-fadeup delay-1">
+        Transform Your<br><span class="gold">Relationships</span>
       </h1>
-      <p class="hero-sub">Your personality, your love language, and your learning style are the three keys to transforming every relationship in your life — romantic, family, or professional.</p>
-      <div class="hero-ctas">
-        <button class="btn-primary" onclick="showPage('assess')">Find My Relationship Path →</button>
-        <button class="btn-ghost" onclick="showPage('services')">Book a Session</button>
-      </div>
-      <div class="hero-pills">
-        <div class="pill"><div class="dot"></div>DISC Assessment</div>
-        <div class="pill"><div class="dot"></div>Five Love Languages</div>
-        <div class="pill"><div class="dot"></div>Learning Styles</div>
+      <p class="hero-name animate-fadeup delay-2">I'm Dennis Nickens, AKA Spiritual Romeo</p>
+      <p class="hero-sub animate-fadeup delay-3">
+        Here to help you build the relationship you've always wanted —
+        with clarity, confidence, and the deeper connection you deserve.
+      </p>
+      <div class="hero-cta animate-fadeup delay-4">
+        <a href="book.html" class="btn btn-gold">Book Your Free Consultation</a>
+        <div class="hero-trust">
+          <span class="hero-stars">★★★★★</span>
+          <span>Trusted by <strong>500+ couples</strong> worldwide</span>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat"><div class="stat-num">500+</div><div class="stat-lbl">Clients Transformed</div></div>
-    <div class="stat"><div class="stat-num">28</div><div class="stat-lbl">Years Leading People</div></div>
-    <div class="stat"><div class="stat-num">6+</div><div class="stat-lbl">Books Published</div></div>
-    <div class="stat"><div class="stat-num">3-in-1</div><div class="stat-lbl">Framework System</div></div>
+    <div class="hero-photo-wrap animate-faderight delay-2">
+      <img src="images/dennis-hero.jpg" alt="Dennis Nickens — Spiritual Romeo" class="hero-photo">
+    </div>
+
   </div>
+</section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section" style="background:rgba(13,0,37,.85);position:relative;z-index:1;">
-    <div class="section-inner">
-      <span class="tag">The Process</span>
-      <h2 class="title">How Spiritual Romeo Works</h2>
-      <p class="sub">A proven three-stage journey — from self-understanding to transformed relationships.</p>
-      <div class="steps">
-        <div class="step-connector"></div>
-        <div class="step-card">
-          <div class="step-circle">1</div>
-          <span style="font-size:38px;display:block;">🦅</span>
-          <h3>Know Yourself</h3>
-          <p>We start with your DISC profile — Eagle, Parrot, Dove, or Owl. Understanding your behavioral wiring is the foundation of everything.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-circle">2</div>
-          <span style="font-size:38px;display:block;">💞</span>
-          <h3>Speak Love</h3>
-          <p>Next we identify your love language and map it to your DISC type — revealing exactly where the disconnect happens and why your tank feels empty.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-circle">3</div>
-          <span style="font-size:38px;display:block;">📖</span>
-          <h3>Build Together</h3>
-          <p>Finally, we discover how you learn — Visual, Auditory, Reading/Writing, or Kinesthetic — so every session is built in the format that actually sticks.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ══ STATS ══ -->
+<div class="stats-strip">
+  <div class="stat animate-fadeup">
+    <span class="stat-num">500+</span>
+    <span class="stat-lbl">Couples Transformed</span>
+  </div>
+  <div class="stat animate-fadeup delay-1">
+    <span class="stat-num">10+</span>
+    <span class="stat-lbl">Years Experience</span>
+  </div>
+  <div class="stat animate-fadeup delay-2">
+    <span class="stat-num">98%</span>
+    <span class="stat-lbl">Client Satisfaction</span>
+  </div>
+  <div class="stat animate-fadeup delay-3">
+    <span class="stat-num">Free</span>
+    <span class="stat-lbl">First Consultation</span>
+  </div>
+</div>
 
-  <!-- FRAMEWORK -->
-  <section class="section" style="position:relative;z-index:1;">
-    <div class="section-inner" style="text-align:center;">
-      <span class="tag">The Spiritual Romeo Framework</span>
-      <h2 class="title">Three Frameworks.<br><span style="background:linear-gradient(90deg,var(--purp-lt),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;">One Complete System.</span></h2>
-      <p class="sub" style="margin:0 auto 56px;">Nobody else is combining all three of these together. This is your edge — and your transformation.</p>
-      <div class="grid-3">
-        <div class="e-card" style="text-align:center;">
-          <div class="e-num">01</div><span class="e-icon">🦅</span>
-          <div class="e-title">DISC Assessment</div>
-          <p class="e-desc">Eagle (driven), Parrot (social), Dove (steady), or Owl (analytical)? Certified profiling reveals who you are, how you lead, and why you react in every relationship.</p>
-        </div>
-        <div class="e-card" style="text-align:center;">
-          <div class="e-num">02</div><span class="e-icon">💞</span>
-          <div class="e-title">Five Love Languages</div>
-          <p class="e-desc">Everyone has an emotional love tank — and it needs the right fuel. We close the gap by mapping your love language directly to your DISC type.</p>
-        </div>
-        <div class="e-card" style="text-align:center;">
-          <div class="e-num">03</div><span class="e-icon">📖</span>
-          <div class="e-title">Learning Style Integration</div>
-          <p class="e-desc">Growth only sticks when it's delivered in your learning language — Visual, Auditory, Reading/Writing, or Kinesthetic. Every session is built for how your brain is wired.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ══ WHY DENNIS ══ -->
+<section class="section">
+  <div class="section-inner">
+    <span class="section-tag animate-fadeup">Why Choose Spiritual Romeo</span>
+    <h2 class="section-title animate-fadeup delay-1">A Proven Approach to<br><span style="color:var(--purple-light)">Real Love</span></h2>
+    <p class="section-sub animate-fadeup delay-2">My coaching method blends spiritual wisdom, proven psychology, and real-world experience to create lasting transformation.</p>
 
-  <!-- LOVE TANK -->
-  <section class="section" style="background:rgba(13,0,37,.82);position:relative;z-index:1;">
-    <div class="section-inner" style="text-align:center;">
-      <span class="tag">The Concept That Changes Everything</span>
-      <h2 class="title">You Both Have a Love Tank.<br>Are You Filling It With the Right Fuel?</h2>
-      <p class="sub" style="margin:0 auto 48px;">Every person has an emotional "love tank." When it's full, life thrives. When it runs empty — disconnection, resentment, and arguments follow. The problem isn't a lack of effort. It's the wrong fuel.</p>
-      <div class="love-grid">
-        <div class="love-card"><div class="l-icon">💬</div><div class="l-name">Words of Affirmation</div><div class="l-desc">Heartfelt compliments and encouragement. "I'm proud of you" fills the tank instantly.</div></div>
-        <div class="love-card"><div class="l-icon">⚡</div><div class="l-name">Acts of Service</div><div class="l-desc">Cooking a meal, handling a task without being asked — love in motion, not words.</div></div>
-        <div class="love-card"><div class="l-icon">🎁</div><div class="l-name">Receiving Gifts</div><div class="l-desc">Not materialism — it's the symbol. "I was thinking about you" expressed through a gesture.</div></div>
-        <div class="love-card"><div class="l-icon">⏰</div><div class="l-name">Quality Time</div><div class="l-desc">Full, undivided attention. Phone down, eyes forward — presence, not just proximity.</div></div>
-        <div class="love-card"><div class="l-icon">🤍</div><div class="l-name">Physical Touch</div><div class="l-desc">A hug that lingers, a hand on the shoulder — touch communicates safety and love.</div></div>
+    <div class="why-grid">
+      <div class="card why-card animate-fadeup delay-1">
+        <div class="why-icon">💡</div>
+        <h3>Deep Understanding</h3>
+        <p>I help you uncover the root of relationship patterns — not just surface symptoms — so real change can happen.</p>
       </div>
-      <div class="insight">
-        <blockquote>"Most couples aren't falling out of love — they're filling each other's tanks with the wrong fuel. You pour in Acts of Service. They're starving for Words of Affirmation. Both of you are trying. Neither of you feels loved. That gap is exactly what we fix."</blockquote>
-        <div class="insight-attr">— Dennis Nickens, Spiritual Romeo</div>
+      <div class="card why-card animate-fadeup delay-2">
+        <div class="why-icon">❤️</div>
+        <h3>Proven Results</h3>
+        <p>500+ couples have transformed their love lives using the Spiritual Romeo method. Real results, real relationships.</p>
       </div>
-      <div style="margin-top:40px;">
-        <button class="btn-primary" onclick="showPage('assess')" style="font-size:17px;padding:20px 50px;">Discover Your Love Language →</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="section" style="position:relative;z-index:1;">
-    <div class="section-inner">
-      <span class="tag">Real Results</span>
-      <h2 class="title">What Clients Are Saying</h2>
-      <div class="testi-grid">
-        <div class="t-card"><div class="stars">★★★★★</div><blockquote>"Finding out I was an Eagle and that my love language was Quality Time completely rewired how I show up. The assessment alone was worth everything."</blockquote><div class="t-author"><div class="avatar">M</div><div><div class="t-name">Marcus T.</div><div class="t-role">Couples Coaching Client</div></div></div></div>
-        <div class="t-card"><div class="stars">★★★★★</div><blockquote>"I had no idea my family was speaking five different love languages at dinner every night. After one session with Dennis I could finally see it."</blockquote><div class="t-author"><div class="avatar">A</div><div><div class="t-name">Angela R.</div><div class="t-role">Family Coaching Client</div></div></div></div>
-        <div class="t-card"><div class="stars">★★★★★</div><blockquote>"Dennis showed me I was only speaking one language — and my team had four different ones. After the workshop, everything changed."</blockquote><div class="t-author"><div class="avatar">J</div><div><div class="t-name">James K.</div><div class="t-role">Corporate Workshop</div></div></div></div>
-        <div class="t-card"><div class="stars">★★★★★</div><blockquote>"We both loved each other but neither of us felt loved. Dennis explained the love tank concept and it clicked. That session saved our marriage."</blockquote><div class="t-author"><div class="avatar">T</div><div><div class="t-name">Tanya B.</div><div class="t-role">Couples Intensive</div></div></div></div>
-        <div class="t-card"><div class="stars">★★★★★</div><blockquote>"I'm a Dove — and I had no idea how much that was driving my fear of conflict. Dennis's DISC breakdown gave me complete clarity for the first time."</blockquote><div class="t-author"><div class="avatar">K</div><div><div class="t-name">Keisha M.</div><div class="t-role">Self-Discovery Client</div></div></div></div>
-        <div class="t-card"><div class="stars">★★★★★</div><blockquote>"I hired Dennis for a full-day DISC session with my team of 22. The ROI was immediate — meetings shorter, conflicts fewer. He's the real deal."</blockquote><div class="t-author"><div class="avatar">R</div><div><div class="t-name">Raymond H.</div><div class="t-role">Corporate VP, Healthcare</div></div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER CTA -->
-  <section class="f-cta">
-    <div class="section-inner">
-      <div style="width:74px;height:74px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--blue-mid));display:flex;align-items:center;justify-content:center;margin:0 auto 26px;font-family:'Playfair Display',serif;font-weight:900;font-size:26px;box-shadow:0 0 50px var(--gp),0 0 100px var(--gb);">SR</div>
-      <h2 class="title" style="text-align:center;">Ready to Transform<br>Every Relationship in Your Life?</h2>
-      <p style="color:var(--muted);font-size:17px;max-width:580px;margin:22px auto 44px;line-height:1.78;">Start with a free 20-minute Discovery Call. We'll talk about where you are, where you want to be, and which path is right for you.</p>
-      <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;">
-        <button class="btn-primary" onclick="showPage('services')" style="font-size:17px;padding:21px 48px;">Book My Free Call with Dennis</button>
-        <button class="btn-ghost" onclick="showPage('store')">Shop the Store</button>
-      </div>
-    </div>
-  </section>
-  <footer><p>© 2026 <span style="color:var(--purp-lt);">Spiritual Romeo</span> · Dennis Nickens · dennisnickens.com</p></footer>
-
-</div><!-- end home page -->
-
-
-<!-- ████████████████████  ABOUT PAGE  ████████████████████ -->
-<div class="page" data-page="about">
-
-  <section class="about-hero">
-    <span class="tag">About Dennis Nickens</span>
-    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(44px,6vw,80px);font-weight:900;margin-bottom:20px;">The Man Behind<br><span style="background:linear-gradient(90deg,var(--purp-lt),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;">Spiritual Romeo</span></h1>
-    <p style="font-size:18px;color:var(--muted);max-width:620px;margin:0 auto;line-height:1.78;">Relationship consultant, author, speaker, and systems-driven strategist — helping individuals and organizations build stronger, healthier, more purposeful relationships.</p>
-  </section>
-
-  <div class="about-inner" style="position:relative;z-index:1;">
-    <div>
-      <div class="about-photo-wrap">
-        <div style="font-size:80px;position:relative;z-index:1;">📸</div>
-        <div style="color:var(--purp-lt);font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-top:12px;position:relative;z-index:1;">Your Photo Here</div>
-        <div style="color:var(--muted);font-size:13px;text-align:center;margin-top:6px;position:relative;z-index:1;">Brown paisley blazer<br>arms crossed, big smile</div>
-        <div class="about-badge-pill">U.S. Army Master Sergeant · 28 Years of Service</div>
-      </div>
-    </div>
-    <div>
-      <span class="tag">His Story</span>
-      <h2 class="title" style="font-size:clamp(28px,3.5vw,42px);">Success Always Comes Down to <em style="color:var(--purp-lt);">Relationships.</em></h2>
-      <p style="color:var(--muted);font-size:16px;line-height:1.82;margin-bottom:20px;">Dennis Nickens — widely known as <strong style="color:var(--white);">Spiritual Romeo</strong> — spent 28 distinguished years in the United States Army, retiring at the rank of Master Sergeant. He led, trained, and developed people from diverse backgrounds under high-pressure environments — and through that experience, discovered one universal truth.</p>
-      <div class="insight" style="margin-bottom:28px;padding:28px 32px;">
-        <blockquote style="font-size:18px;">"Success in any environment — whether on the battlefield, in business, or at home — always comes down to <em>relationships.</em>"</blockquote>
-      </div>
-      <div class="cred-grid">
-        <div class="cred"><div class="cred-icon">🎖️</div><h4>U.S. Army Master Sergeant (Ret.)</h4><p>28 years leading and developing people under pressure</p></div>
-        <div class="cred"><div class="cred-icon">🎓</div><h4>DISC Certified Practitioner</h4><p>Certified to assess and teach DISC behavioral profiles</p></div>
-        <div class="cred"><div class="cred-icon">💞</div><h4>Five Love Languages Specialist</h4><p>Trained in Gary Chapman's proven relationship framework</p></div>
-        <div class="cred"><div class="cred-icon">📚</div><h4>Author of 6+ Books</h4><p>On relationships, leadership, fatherhood, and purpose</p></div>
-      </div>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;">
-        <button class="btn-primary" onclick="showPage('assess')">Take the Assessment</button>
-        <button class="btn-ghost" onclick="showPage('services')">Book a Call</button>
+      <div class="card why-card animate-fadeup delay-3">
+        <div class="why-icon">🚀</div>
+        <h3>Personalized Path</h3>
+        <p>No cookie-cutter advice. Every session is tailored to your unique situation, goals, and relationship dynamics.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- Story Blocks -->
-  <section class="section" style="position:relative;z-index:1;background:rgba(13,0,37,.8);">
-    <div class="section-inner">
-      <span class="tag">His Approach</span>
-      <h2 class="title">A Systems-Based Approach<br>to Human Connection</h2>
-      <div class="story-block">
-        <div class="story-icon">⚙️</div>
-        <div><h3>Three Frameworks. One System.</h3><p>What separates Dennis from traditional consultants is his ability to combine multiple proven frameworks into one cohesive system — DISC Personality Assessment, The Five Love Languages, and The Four Learning Styles — creating a comprehensive relationship blueprint that gives individuals clarity in how they communicate, connect emotionally, and grow.</p></div>
+<div class="divider"></div>
+
+<!-- ══ ABOUT STRIP ══ -->
+<section class="section about-strip">
+  <div class="about-strip-inner">
+    <div class="about-strip-text animate-fadeleft">
+      <span class="section-tag">About Dennis</span>
+      <h2 class="section-title">More Than a Coach —<br>A Guide</h2>
+      <blockquote>"Love isn't just a feeling — it's a skill. And every skill can be learned, refined, and mastered."</blockquote>
+      <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:28px;">
+        Dennis Nickens has spent over a decade helping individuals and couples navigate the complexities of love, communication, and commitment. His approach combines spiritual insight with practical tools that create real, lasting change.
+      </p>
+      <a href="about.html" class="btn btn-outline">Learn More About Dennis</a>
+    </div>
+    <div class="about-strip-img animate-faderight delay-2">
+      <img src="images/dennis-hero.jpg" alt="Dennis Nickens">
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ SERVICES PREVIEW ══ -->
+<section class="section">
+  <div class="section-inner">
+    <span class="section-tag animate-fadeup">What I Offer</span>
+    <h2 class="section-title animate-fadeup delay-1">Coaching Paths Built<br><span style="color:var(--purple-light)">For You</span></h2>
+    <p class="section-sub animate-fadeup delay-2">Whether you're single, dating, or in a committed relationship — there's a path forward.</p>
+
+    <div class="services-grid">
+      <div class="card service-card animate-fadeup delay-1">
+        <div class="service-num">01</div>
+        <h3>1-on-1 Coaching</h3>
+        <p>Deep, personalized sessions focused on your specific situation, goals, and breakthroughs. The fastest path to transformation.</p>
+        <span class="service-tag">Most Popular</span>
       </div>
-      <div class="story-block">
-        <div class="story-icon">💡</div>
-        <div><h3>From Confusion to Clarity</h3><p>Too many people struggle in relationships because they lack understanding — of themselves and of others. Dennis's approach is designed to change that. When individuals engage with his platform, they discover why communication breaks down, why certain patterns keep repeating, and why intentions are so often misunderstood. More importantly, they're given practical tools to correct those issues.</p></div>
+      <div class="card service-card animate-fadeup delay-2">
+        <div class="service-num">02</div>
+        <h3>Couples Coaching</h3>
+        <p>Rebuild trust, reignite connection, and learn the communication tools that will strengthen your relationship for life.</p>
+        <span class="service-tag">Highly Rated</span>
       </div>
-      <div class="story-block">
-        <div class="story-icon">✍️</div>
-        <div><h3>Author with a Purpose</h3><p>Dennis has authored more than six books, each centered on relationships, leadership, personal growth, and purpose — spanning marriage and commitment, singleness and self-development, fatherhood and family structure. His writing is direct, relatable, and rooted in real-life experience — designed not just to inspire, but to challenge readers to take action.</p></div>
-      </div>
-      <div class="story-block">
-        <div class="story-icon">🎯</div>
-        <div><h3>The Mission</h3><p>Dennis Nickens operates with a clear and unwavering mission: to guide people in aligning with who they are, strengthening how they connect with others, and equipping them with the tools needed to succeed in every area of life — and leave a legacy that impacts the next generation.</p>
-        <p style="margin-top:14px;font-style:italic;color:var(--purp-lt);font-weight:600;font-size:17px;">"Information alone doesn't change lives — application does."</p></div>
+      <div class="card service-card animate-fadeup delay-3">
+        <div class="service-num">03</div>
+        <h3>Group Programs</h3>
+        <p>Join a community of like-minded individuals on the journey to better relationships. Affordable, powerful, and transformative.</p>
+        <span class="service-tag">Community</span>
       </div>
     </div>
-  </section>
-  <footer><p>© 2026 <span style="color:var(--purp-lt);">Spiritual Romeo</span> · Dennis Nickens · dennisnickens.com</p></footer>
-</div><!-- end about page -->
 
-
-<!-- ████████████████████  ASSESSMENT PAGE  ████████████████████ -->
-<div class="page" data-page="assess">
-
-  <section class="assess-hero" style="position:relative;z-index:1;">
-    <span class="tag">Your Personalized Journey Starts Here</span>
-    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(44px,6vw,80px);font-weight:900;margin-bottom:20px;">The Spiritual Romeo<br><span style="background:linear-gradient(90deg,var(--purp-lt),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Relationship Assessment</span></h1>
-    <p style="font-size:18px;color:var(--muted);max-width:600px;margin:0 auto 20px;line-height:1.78;">60 questions. Three frameworks. One complete picture of how you communicate, connect, and grow.</p>
-    <p style="font-size:15px;color:rgba(255,255,255,.5);max-width:500px;margin:0 auto 48px;line-height:1.7;">Choose the assessment level that's right for where you are right now. Every tier delivers your personalized Relationship Blueprint.</p>
-    <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
-      <div class="pill"><div class="dot"></div>DISC Profile</div>
-      <div class="pill"><div class="dot"></div>Love Languages</div>
-      <div class="pill"><div class="dot"></div>Learning Styles</div>
+    <div style="text-align:center;margin-top:48px;" class="animate-fadeup delay-4">
+      <a href="services.html" class="btn btn-purple">View All Services</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" style="position:relative;z-index:1;padding-top:0;">
-    <div class="section-inner">
-      <div class="tier-grid">
+<div class="divider"></div>
 
-        <!-- Tier 1 -->
-        <div class="tier-card">
-          <div class="tier-icon">🧠</div>
-          <div class="tier-name">DISC Foundations</div>
-          <div class="tier-desc">Start with your DISC behavioral profile — the most powerful tool for understanding how you're wired in every relationship.</div>
-          <ul class="tier-includes">
-            <li>Complete DISC behavioral assessment (20 Qs)</li>
-            <li>Eagle / Parrot / Dove / Owl type reveal</li>
-            <li>Strengths + blind spots breakdown</li>
-            <li>How your DISC type shows up in conflict</li>
-            <li>Personalized results delivered instantly</li>
-          </ul>
-          <div class="tier-price">$47</div>
-          <a href="SpiritualRomeo_Assessment.html" class="btn-primary" style="width:100%;text-align:center;display:block;">Start DISC Assessment</a>
+<!-- ══ TESTIMONIALS PREVIEW ══ -->
+<section class="section testimonial-strip">
+  <div class="section-inner">
+    <span class="section-tag animate-fadeup">Success Stories</span>
+    <h2 class="section-title animate-fadeup delay-1">What Clients Are Saying</h2>
+
+    <div class="testimonials-row">
+      <div class="testi-card animate-fadeup delay-1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Dennis completely changed how my husband and I communicate. We went from the edge of divorce to the best year of our marriage."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div><div class="testi-name">Michelle T.</div><div class="testi-loc">Charlotte, NC</div></div>
         </div>
-
-        <!-- Tier 2 - Featured -->
-        <div class="tier-card featured">
-          <div class="tier-badge">⚡ Most Popular</div>
-          <div class="tier-icon">💞</div>
-          <div class="tier-name">DISC + Love Languages</div>
-          <div class="tier-desc">Understand your behavioral style AND your love language — mapped together for the most personalized reading available.</div>
-          <ul class="tier-includes">
-            <li>Everything in DISC Foundations</li>
-            <li>Five Love Languages assessment (20 Qs)</li>
-            <li>Your love language mapped to your DISC type</li>
-            <li>The "wrong fuel" gap analysis</li>
-            <li>How to speak your partner's language</li>
-            <li>PDF report delivered within 48 hours</li>
-          </ul>
-          <div class="tier-price">$97</div>
-          <a href="SpiritualRomeo_Assessment.html" class="btn-primary" style="width:100%;text-align:center;display:block;">Start Full Assessment</a>
-        </div>
-
-        <!-- Tier 3 -->
-        <div class="tier-card">
-          <div class="tier-icon">🏆</div>
-          <div class="tier-name">Complete Blueprint</div>
-          <div class="tier-desc">The full Spiritual Romeo experience — all three frameworks combined into your complete Relationship Blueprint.</div>
-          <ul class="tier-includes">
-            <li>Everything in DISC + Love Languages</li>
-            <li>Learning Style assessment (VARK framework)</li>
-            <li>Visual / Auditory / Reading / Kinesthetic reveal</li>
-            <li>Your complete 3-in-1 Relationship Blueprint</li>
-            <li>Custom coaching recommendations</li>
-            <li>Priority PDF report + 30-min debrief call</li>
-          </ul>
-          <div class="tier-price">$197</div>
-          <a href="SpiritualRomeo_Assessment.html" class="btn-primary" style="width:100%;text-align:center;display:block;">Get My Full Blueprint</a>
-        </div>
-
       </div>
-
-      <!-- CTA -->
-      <div style="text-align:center;margin-top:64px;">
-        <div class="insight" style="max-width:720px;margin:0 auto 36px;">
-          <blockquote style="font-size:18px;">"You don't have to figure this out alone. The assessment gives you a mirror — and for many people, it's the first time they've ever really seen themselves clearly in a relationship context."</blockquote>
-          <div class="insight-attr">— Dennis Nickens, Spiritual Romeo</div>
+      <div class="testi-card animate-fadeup delay-2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I was single for 7 years and convinced something was wrong with me. After 3 sessions with Dennis, I understood myself on a whole new level."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">J</div>
+          <div><div class="testi-name">James R.</div><div class="testi-loc">Atlanta, GA</div></div>
         </div>
-        <p style="color:var(--muted);font-size:15px;margin-bottom:24px;">Not sure which tier is right for you? Book a free 20-minute call and we'll decide together.</p>
-        <button class="btn-ghost" onclick="showPage('services')">Book a Free Discovery Call</button>
       </div>
-    </div>
-  </section>
-  <footer><p>© 2026 <span style="color:var(--purp-lt);">Spiritual Romeo</span> · Dennis Nickens · dennisnickens.com</p></footer>
-</div><!-- end assessment page -->
-
-
-<!-- ████████████████████  SERVICES PAGE  ████████████████████ -->
-<div class="page" data-page="services">
-
-  <section class="assess-hero" style="position:relative;z-index:1;">
-    <span class="tag">Work With Dennis</span>
-    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(44px,6vw,80px);font-weight:900;margin-bottom:20px;">Book a<br><span style="background:linear-gradient(90deg,var(--purp-lt),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Coaching Session</span></h1>
-    <p style="font-size:18px;color:var(--muted);max-width:600px;margin:0 auto;line-height:1.78;">Choose the level of support that matches where you are right now. Every journey starts with a conversation.</p>
-  </section>
-
-  <!-- Individual Coaching -->
-  <section class="section" style="position:relative;z-index:1;padding-top:0;">
-    <div class="section-inner">
-      <span class="tag">Individual Coaching</span>
-      <h2 class="title">Private Sessions with Dennis</h2>
-      <div class="price-grid">
-
-        <div class="price-card">
-          <div class="price-icon">🔍</div>
-          <div class="price-cat">Entry Level</div>
-          <div class="price-name">Relationship Blueprint Assessment</div>
-          <div class="price-desc">Take the full DISC + Love Language + Learning Style assessment and receive a personalized written report. The perfect first step.</div>
-          <ul class="price-features">
-            <li>Complete DISC behavioral profile</li>
-            <li>Love Language mapping (by DISC type)</li>
-            <li>Learning style identification</li>
-            <li>Personalized PDF report in 48 hrs</li>
-          </ul>
-          <div class="price-amount">$47</div>
-          <a href="SpiritualRomeo_Assessment.html" class="btn-primary" style="width:100%;text-align:center;display:block;">Get My Blueprint</a>
-        </div>
-
-        <div class="price-card featured">
-          <div class="price-badge">⚡ Most Popular</div>
-          <div class="price-icon">🎯</div>
-          <div class="price-cat">1-on-1 Coaching</div>
-          <div class="price-name">Private Coaching Session</div>
-          <div class="price-desc">A focused 60-minute session with Dennis. Come with a specific relationship challenge — leave with clarity, tools, and a plan.</div>
-          <ul class="price-features">
-            <li>60-minute 1-on-1 with Dennis</li>
-            <li>DISC assessment included (first session)</li>
-            <li>Custom action plan delivered after</li>
-            <li>Available for individuals or couples</li>
-          </ul>
-          <div class="price-amount">$197 <span>/ session</span></div>
-          <button class="btn-primary" style="width:100%;">Book My Session</button>
-        </div>
-
-        <div class="price-card">
-          <div class="price-icon">🚀</div>
-          <div class="price-cat">Premium Coaching</div>
-          <div class="price-name">3-Month Transformation Package</div>
-          <div class="price-desc">The full Spiritual Romeo experience. Six sessions over 3 months, full assessment suite, workbook, and between-session support.</div>
-          <ul class="price-features">
-            <li>6 bi-weekly 60-min sessions</li>
-            <li>Full DISC + Love Language assessment</li>
-            <li>Personalized relationship blueprint</li>
-            <li>Workbook + email check-ins included</li>
-          </ul>
-          <div class="price-amount">$997 <span>/ 3 months</span></div>
-          <button class="btn-primary" style="width:100%;">Apply Now</button>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Corporate -->
-  <section class="section" style="background:rgba(13,0,37,.85);position:relative;z-index:1;">
-    <div class="section-inner">
-      <span class="tag">For Businesses &amp; Organizations</span>
-      <h2 class="title">Hire Dennis for Your Team</h2>
-      <div class="corp-inner">
-        <div>
-          <p style="color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:28px;">Bring the Spiritual Romeo framework into your workplace. Dennis delivers DISC assessments, team workshops, and relational intelligence training that transforms how your people communicate, collaborate, and lead.</p>
-          <div class="corp-features">
-            <div class="corp-feature">
-              <div class="corp-feat-icon">🏢</div>
-              <div><h4>Corporate DISC Assessment Day</h4><p>Half-day or full-day on-site or virtual session. Every team member assessed, debriefed, and given their personal profile.</p></div>
-            </div>
-            <div class="corp-feature">
-              <div class="corp-feat-icon">🎤</div>
-              <div><h4>Keynote &amp; Workshop Speaker</h4><p>Dennis delivers powerful, interactive presentations on relationship intelligence, personality dynamics, and communication at retreats, conferences, and company events.</p></div>
-            </div>
-            <div class="corp-feature">
-              <div class="corp-feat-icon">📊</div>
-              <div><h4>Leadership Coaching Program</h4><p>A multi-session program for leadership teams — building emotional intelligence, communication fluency, and team cohesion at the executive level.</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="corp-cta-box">
-          <h3>Let's Talk About Your Team</h3>
-          <p>Every corporate engagement is custom-built for your team size, culture, and goals. Pricing varies based on scope — let's start with a conversation.</p>
-          <ul class="corp-list">
-            <li>Teams of 5 to 500+</li>
-            <li>In-person or virtual delivery</li>
-            <li>Individual DISC reports for all participants</li>
-            <li>Custom workshop materials included</li>
-            <li>Follow-up coaching sessions available</li>
-            <li>Available nationwide</li>
-          </ul>
-          <button class="btn-primary" style="width:100%;font-size:16px;">Request Corporate Pricing</button>
-          <p style="text-align:center;margin-top:14px;font-size:13px;color:rgba(255,255,255,.4);">Typically responds within 24 hours</p>
+      <div class="testi-card animate-fadeup delay-3">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Spiritual Romeo isn't just a coach — he's a life-changer. His insight, warmth, and practical tools are unlike anything I've experienced."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div><div class="testi-name">Angela W.</div><div class="testi-loc">Dallas, TX</div></div>
         </div>
       </div>
     </div>
-  </section>
-  <footer><p>© 2026 <span style="color:var(--purp-lt);">Spiritual Romeo</span> · Dennis Nickens · dennisnickens.com</p></footer>
-</div><!-- end services page -->
 
-
-<!-- ████████████████████  STORE PAGE  ████████████████████ -->
-<div class="page" data-page="store">
-
-  <section class="assess-hero" style="position:relative;z-index:1;">
-    <span class="tag">The Spiritual Romeo Store</span>
-    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(44px,6vw,80px);font-weight:900;margin-bottom:20px;">Books, Games,<br><span style="background:linear-gradient(90deg,var(--purp-lt),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Merch &amp; More</span></h1>
-    <p style="font-size:18px;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.78;">Everything you need to go deeper — on your own time, at your own pace.</p>
-  </section>
-
-  <section class="section" style="position:relative;z-index:1;padding-top:0;">
-    <div class="section-inner">
-      <div class="store-tabs">
-        <button class="store-tab active" onclick="filterStore('all',this)">All</button>
-        <button class="store-tab" onclick="filterStore('books',this)">📚 Books</button>
-        <button class="store-tab" onclick="filterStore('games',this)">🎲 Games</button>
-        <button class="store-tab" onclick="filterStore('merch',this)">👕 Merch</button>
-      </div>
-      <div class="product-grid" id="store-grid">
-
-        <div class="product-card" data-cat="books">
-          <div class="product-img" style="background:linear-gradient(135deg,#4C1D95,#7C3AED);">
-            <span>📖</span><div class="product-badge">NEW</div>
-          </div>
-          <div class="product-body">
-            <div class="product-cat">Book — Physical</div>
-            <div class="product-name">The Spiritual Romeo Blueprint</div>
-            <div class="product-desc">Dennis's flagship book on understanding yourself and building healthy relationships through DISC, Love Languages, and Learning Styles.</div>
-            <div class="product-footer"><div class="product-price">$24.99</div><button class="btn-add">Add to Cart</button></div>
-          </div>
-        </div>
-
-        <div class="product-card" data-cat="books">
-          <div class="product-img" style="background:linear-gradient(135deg,#065F46,#06B6D4);">
-            <span>📲</span><div class="product-badge" style="background:var(--blue);">INSTANT</div>
-          </div>
-          <div class="product-body">
-            <div class="product-cat">Digital Download</div>
-            <div class="product-name">The Blueprint — Digital Edition</div>
-            <div class="product-desc">Instant download PDF. Get the full Spiritual Romeo framework right now — read on any device, anytime.</div>
-            <div class="product-footer"><div class="product-price">$14.99</div><button class="btn-add">Buy Now</button></div>
-          </div>
-        </div>
-
-        <div class="product-card" data-cat="books">
-          <div class="product-img" style="background:linear-gradient(135deg,#78350F,#C9A84C);">
-            <span>✍️</span>
-          </div>
-          <div class="product-body">
-            <div class="product-cat">Workbook</div>
-            <div class="product-name">The Relationship Blueprint Workbook</div>
-            <div class="product-desc">Guided exercises to discover your DISC type, identify your love language, and map your learning style. 60+ pages.</div>
-            <div class="product-footer"><div class="product-price">$19.99</div><button class="btn-add">Add to Cart</button></div>
-          </div>
-        </div>
-
-        <div class="product-card" data-cat="books">
-          <div class="product-img" style="background:linear-gradient(135deg,#1E3A5F,#3B82F6);">
-            <span>🧠</span><div class="product-badge" style="background:var(--blue-mid);">BUNDLE</div>
-          </div>
-          <div class="product-body">
-            <div class="product-cat">Digital Bundle</div>
-            <div class="product-name">The Full Blueprint Bundle</div>
-            <div class="product-desc">Digital book + Workbook PDF + DISC guide + Love Language map. Everything in one download.</div>
-            <div class="product-footer"><div class="product-price">$39.99</div><button class="btn-add">Buy Bundle</button></div>
-          </div>
-        </div>
-
-        <div class="product-card" data-cat="games">
-          <div class="product-img" style="background:linear-gradient(135deg,#1E3A5F,#7C3AED);">
-            <span>🎲</span><div class="product-badge" style="background:#FF6B35;">COMING SOON</div>
-          </div>
-          <div class="product-body">
-            <div class="product-cat">Relationship Game</div>
-            <div class="product-name">The Love Language Connection Game</div>
-            <div class="product-desc">A relationship-building card game for couples and families. Discover each other's love languages while having fun.</div>
-            <div class="product-footer"><div class="product-price">$34.99</div><button class="btn-add">Pre-Order</button></div>
-          </div>
-        </div>
-
-        <div class="product-card" data-cat="games">
-          <div class="product-img" style="background:linear-gradient(135deg,#4C1D95,#A855F7);">
-            <span>🃏</span><div class="product-badge" style="background:#FF6B35;">COMING SOON</div>
-          </div>
-          <div class="product-body">
-            <div class="product-cat">Relationship Game</div>
-            <div class="product-name">DISC Personality Card Game</div>
-            <div class="product-desc">An interactive game teaching DISC personality types through real relationship scenarios. Perfect for date nights and teams.</div>
-            <div class="product-footer"><div class="product-price">$29.99</div><button class="btn-add">Pre-Order</button></div>
-          </div>
-        </div>
-
-        <div class="product-card" data-cat="merch">
-          <div class="product-img" style="background:linear-gradient(135deg,#111,#333);">
-            <span>👕</span>
-          </div>
-          <div class="product-body">
-            <div class="product-cat">Apparel</div>
-            <div class="product-name">Spiritual Romeo Classic Tee</div>
-            <div class="product-desc">Premium quality unisex tee featuring the SR crest logo in gold on black. Sizes S–3XL.</div>
-            <div class="product-footer"><div class="product-price">$32.00</div><button class="btn-add">Add to Cart</button></div>
-          </div>
-        </div>
-
-        <div class="product-card" data-cat="merch">
-          <div class="product-img" style="background:linear-gradient(135deg,#4C1D95,#7C3AED);">
-            <span>🧢</span>
-          </div>
-          <div class="product-body">
-            <div class="product-cat">Apparel</div>
-            <div class="product-name">Spiritual Romeo Crown Hoodie</div>
-            <div class="product-desc">Heavyweight pullover hoodie with embroidered crown logo. Deep purple with gold embroidery. Limited run.</div>
-            <div class="product-footer"><div class="product-price">$58.00</div><button class="btn-add">Add to Cart</button></div>
-          </div>
-        </div>
-
-      </div>
+    <div style="text-align:center;margin-top:48px;" class="animate-fadeup delay-4">
+      <a href="testimonials.html" class="btn btn-outline">Read More Stories</a>
     </div>
-  </section>
-  <footer><p>© 2026 <span style="color:var(--purp-lt);">Spiritual Romeo</span> · Dennis Nickens · dennisnickens.com</p></footer>
-</div><!-- end store page -->
+  </div>
+</section>
 
-
-<!-- ████████████████████  WATCH PAGE  ████████████████████ -->
-<div class="page" data-page="watch">
-
-  <section class="assess-hero" style="position:relative;z-index:1;">
-    <span class="tag">Watch &amp; Learn</span>
-    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(44px,6vw,80px);font-weight:900;margin-bottom:20px;">Dennis<br><span style="background:linear-gradient(90deg,var(--purp-lt),var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">on YouTube</span></h1>
-    <p style="font-size:18px;color:var(--muted);max-width:580px;margin:0 auto 36px;line-height:1.78;">Free relationship insights, DISC breakdowns, love language deep dives, and real talk about building better bonds — every week.</p>
-    <button class="yt-subscribe">
-      <svg width="22" height="16" viewBox="0 0 22 16" fill="white"><path d="M21.5 2.5s-.2-1.5-.9-2.2c-.8-.9-1.8-.9-2.2-.9C15.8 0 11 0 11 0S6.2 0 3.6.4c-.4.1-1.4.1-2.2.9-.7.7-.9 2.2-.9 2.2S.3 4.2.3 5.9v1.6c0 1.7.2 3.4.2 3.4s.2 1.5.9 2.2c.8.9 1.9.9 2.4.9C5.3 14.2 11 14.2 11 14.2s4.8 0 7.4-.4c.4-.1 1.4-.1 2.2-.9.7-.7.9-2.2.9-2.2s.2-1.7.2-3.4V5.9c0-1.7-.2-3.4-.2-3.4z"/><polygon points="8.8,10.1 8.8,4 14.5,7.1" fill="#FF0000"/></svg>
-      Subscribe on YouTube
-    </button>
-  </section>
-
-  <section class="section" style="position:relative;z-index:1;padding-top:0;">
-    <div class="section-inner">
-      <div class="yt-grid">
-        <div class="yt-card">
-          <div class="yt-thumb" style="background:linear-gradient(135deg,#4C1D95,#7C3AED);"><div class="yt-play">▶</div><div class="yt-duration">12:34</div></div>
-          <div class="yt-body"><div class="yt-cat">DISC Series</div><div class="yt-title">What Your DISC Type Says About How You Love</div><div class="yt-meta">Coming Soon · Spiritual Romeo</div></div>
-        </div>
-        <div class="yt-card">
-          <div class="yt-thumb" style="background:linear-gradient(135deg,#1E3A5F,#06B6D4);"><div class="yt-play">▶</div><div class="yt-duration">8:47</div></div>
-          <div class="yt-body"><div class="yt-cat">Love Languages</div><div class="yt-title">Why You Don't Feel Loved (Even When They Try)</div><div class="yt-meta">Coming Soon · Spiritual Romeo</div></div>
-        </div>
-        <div class="yt-card">
-          <div class="yt-thumb" style="background:linear-gradient(135deg,#065F46,#3B82F6);"><div class="yt-play">▶</div><div class="yt-duration">15:22</div></div>
-          <div class="yt-body"><div class="yt-cat">Relationship Repair</div><div class="yt-title">5 Signs You and Your Partner Speak Different Love Languages</div><div class="yt-meta">Coming Soon · Spiritual Romeo</div></div>
-        </div>
-        <div class="yt-card">
-          <div class="yt-thumb" style="background:linear-gradient(135deg,#78350F,#C9A84C);"><div class="yt-play">▶</div><div class="yt-duration">19:05</div></div>
-          <div class="yt-body"><div class="yt-cat">DISC Deep Dive</div><div class="yt-title">Are You an Eagle, Parrot, Dove, or Owl? Full DISC Breakdown</div><div class="yt-meta">Coming Soon · Spiritual Romeo</div></div>
-        </div>
-        <div class="yt-card">
-          <div class="yt-thumb" style="background:linear-gradient(135deg,#4C1D95,#06B6D4);"><div class="yt-play">▶</div><div class="yt-duration">11:18</div></div>
-          <div class="yt-body"><div class="yt-cat">Self-Discovery</div><div class="yt-title">How Your Learning Style is Sabotaging Your Growth</div><div class="yt-meta">Coming Soon · Spiritual Romeo</div></div>
-        </div>
-        <div class="yt-card">
-          <div class="yt-thumb" style="background:linear-gradient(135deg,#1E3A5F,#7C3AED);"><div class="yt-play">▶</div><div class="yt-duration">22:44</div></div>
-          <div class="yt-body"><div class="yt-cat">Couples Series</div><div class="yt-title">The Love Tank Is Empty — Here's How to Fill It the Right Way</div><div class="yt-meta">Coming Soon · Spiritual Romeo</div></div>
-        </div>
-      </div>
-
-      <!-- Email capture for channel -->
-      <div style="text-align:center;margin-top:72px;background:linear-gradient(135deg,rgba(76,29,149,.3),rgba(6,182,212,.1));border:1px solid rgba(124,58,237,.25);border-radius:28px;padding:56px 40px;">
-        <div style="font-size:44px;margin-bottom:16px;">🔔</div>
-        <h2 class="title" style="margin-bottom:14px;">Get Notified When We Go Live</h2>
-        <p style="color:var(--muted);font-size:16px;max-width:480px;margin:0 auto 32px;line-height:1.78;">Be the first to know when Dennis drops a new video. Plus get the free Relationship Language Quick Guide just for signing up.</p>
-        <div class="email-row">
-          <input type="email" class="e-input" placeholder="Your email address" />
-          <button class="btn-primary" style="padding:16px 28px;" onclick="this.textContent='You\'re in! ✓';this.style.background='linear-gradient(135deg,#059669,#06B6D4)';">Notify Me →</button>
-        </div>
-      </div>
+<!-- ══ CTA SECTION ══ -->
+<section class="section cta-section">
+  <div class="section-inner" style="text-align:center;">
+    <span class="section-tag animate-fadeup">Ready to Start?</span>
+    <h2 class="section-title animate-fadeup delay-1">Your Best Relationship<br>Starts <span style="color:var(--gold)">Today</span></h2>
+    <p class="section-sub animate-fadeup delay-2">Book your free 30-minute consultation. No pressure, no commitment — just a real conversation about where you are and where you want to be.</p>
+    <div class="cta-buttons animate-fadeup delay-3">
+      <a href="book.html" class="btn btn-gold">Book Free Consultation</a>
+      <a href="services.html" class="btn btn-outline">Explore Services</a>
     </div>
-  </section>
-  <footer><p>© 2026 <span style="color:var(--purp-lt);">Spiritual Romeo</span> · Dennis Nickens · dennisnickens.com</p></footer>
-</div><!-- end watch page -->
+  </div>
+</section>
 
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-brand">
+    <div class="nav-logo" style="margin-bottom:14px;">SR</div>
+    <p>Dennis Nickens AKA Spiritual Romeo — helping individuals and couples build the love they've always wanted.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="book.html">Book Now</a>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <p>📧 dennis@tp-llc.com</p>
+    <p>📍 Indian Trail, NC</p>
+    <p style="margin-top:16px;font-size:12px;">Free consultation available</p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 Dennis Nickens — Spiritual Romeo. All rights reserved.</span>
+  <a href="book.html">Book a Free Consultation →</a>
+</div>
 
-<!-- ════════════════════════════════════════
-     JAVASCRIPT — PAGE SWITCHING + CANVAS
-════════════════════════════════════════ -->
 <script>
-/* ── PAGE SWITCHING ── */
-function showPage(name) {
-  // Hide all pages
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  // Show target page
-  const target = document.querySelector('[data-page="' + name + '"]');
-  if (target) target.classList.add('active');
-  // Scroll to top
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  // Update nav active state
-  document.querySelectorAll('.nav-links a[data-nav]').forEach(a => a.classList.remove('nav-active'));
-  const activeLink = document.querySelector('.nav-links a[data-nav="' + name + '"]');
-  if (activeLink) activeLink.classList.add('nav-active');
+// ── NAV SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── HAMBURGER ──
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
 }
 
-/* ── STORE FILTER ── */
-function filterStore(cat, btn) {
-  document.querySelectorAll('.store-tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.product-card[data-cat]').forEach(card => {
-    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
-  });
+// ── PARTICLE CANVAS ──
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.radius = Math.random() * 1.8 + 0.4;
+    this.alpha = Math.random() * 0.5 + 0.1;
+    this.color = Math.random() > 0.6 ? '#7C3AED' : Math.random() > 0.5 ? '#3B82F6' : '#FFD700';
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.globalAlpha = this.alpha;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  }
 }
 
-/* ── ELECTRIC PARTICLE CANVAS ── */
-(function(){
-  const canvas = document.getElementById('cosmos');
-  const ctx    = canvas.getContext('2d');
-  let W, H, nodes=[], sparks=[], frame=0;
-  let mx=-9999, my=-9999;
+for (let i = 0; i < 90; i++) particles.push(new Particle());
 
-  function resize(){
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  class Node {
-    constructor(){
-      this.x  = Math.random() * W;
-      this.y  = Math.random() * H;
-      this.vx = (Math.random()-.5) * 0.38;
-      this.vy = (Math.random()-.5) * 0.38;
-      this.r     = Math.random() * 2.2 + 1;
-      this.phase = Math.random() * Math.PI * 2;
-      this.spd   = Math.random() * 0.018 + 0.008;
-      this.col   = Math.random() < 0.55 ? [124,58,237] : [6,182,212];
-      this.glow  = 0;
-    }
-    update(){
-      this.x += this.vx; this.y += this.vy;
-      this.phase += this.spd;
-      if(this.x < -20)  this.x = W+20;
-      if(this.x > W+20) this.x = -20;
-      if(this.y < -20)  this.y = H+20;
-      if(this.y > H+20) this.y = -20;
-      const dx=this.x-mx, dy=this.y-my;
-      this.glow = Math.max(0, 1 - Math.sqrt(dx*dx+dy*dy)/160);
-    }
-    draw(){
-      const pulse = Math.sin(this.phase)*.5+.5;
-      const r     = this.r * (1 + pulse*.4);
-      const alpha = .35 + pulse*.35 + this.glow*.4;
-      const [cr,cg,cb] = this.col;
-      if(this.glow > 0.05){
-        ctx.beginPath(); ctx.arc(this.x, this.y, r*7, 0, Math.PI*2);
-        const rg=ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,r*7);
-        rg.addColorStop(0,`rgba(${cr},${cg},${cb},${this.glow*.18})`);
-        rg.addColorStop(1,'transparent');
-        ctx.fillStyle=rg; ctx.fill();
-      }
-      ctx.beginPath(); ctx.arc(this.x, this.y, r, 0, Math.PI*2);
-      ctx.fillStyle=`rgba(${cr},${cg},${cb},${alpha})`; ctx.fill();
-    }
-  }
-
-  class Spark {
-    constructor(a,b){
-      this.a=a; this.b=b; this.t=0;
-      this.spd=Math.random()*.014+.007;
-      this.done=false;
-      this.col=Math.random()<.5 ? [168,85,247] : [0,229,255];
-    }
-    update(){ this.t+=this.spd; if(this.t>=1) this.done=true; }
-    draw(){
-      const x=this.a.x+(this.b.x-this.a.x)*this.t;
-      const y=this.a.y+(this.b.y-this.a.y)*this.t;
-      const alpha=Math.sin(this.t*Math.PI);
-      const [cr,cg,cb]=this.col;
-      ctx.beginPath(); ctx.arc(x,y,7,0,Math.PI*2);
-      const rg=ctx.createRadialGradient(x,y,0,x,y,7);
-      rg.addColorStop(0,`rgba(${cr},${cg},${cb},${alpha*.5})`);
-      rg.addColorStop(1,'transparent');
-      ctx.fillStyle=rg; ctx.fill();
-      ctx.beginPath(); ctx.arc(x,y,2.4,0,Math.PI*2);
-      ctx.fillStyle=`rgba(${cr},${cg},${cb},${alpha})`; ctx.fill();
-    }
-  }
-
-  function init(){
-    resize();
-    const count=Math.min(Math.floor((W*H)/15000),90);
-    nodes=Array.from({length:count},()=>new Node());
-    sparks=[];
-  }
-
-  function loop(){
-    ctx.clearRect(0,0,W,H);
-    frame++;
-    const MAXD=165;
-    for(let i=0;i<nodes.length;i++){
-      for(let j=i+1;j<nodes.length;j++){
-        const ni=nodes[i],nj=nodes[j];
-        const dx=ni.x-nj.x,dy=ni.y-nj.y;
-        const dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<MAXD){
-          const t=1-dist/MAXD;
-          const boost=Math.max(ni.glow,nj.glow);
-          const a=t*.22+boost*.25;
-          const grad=ctx.createLinearGradient(ni.x,ni.y,nj.x,nj.y);
-          grad.addColorStop(0,`rgba(124,58,237,${a})`);
-          grad.addColorStop(.5,`rgba(6,182,212,${a*1.4})`);
-          grad.addColorStop(1,`rgba(124,58,237,${a})`);
-          ctx.beginPath(); ctx.moveTo(ni.x,ni.y); ctx.lineTo(nj.x,nj.y);
-          ctx.strokeStyle=grad; ctx.lineWidth=boost>.25?1.4:.7; ctx.stroke();
-          if(frame%80===0 && Math.random()<.07) sparks.push(new Spark(ni,nj));
-        }
+function drawLines() {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 120) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = '#7C3AED';
+        ctx.globalAlpha = (1 - dist/120) * 0.12;
+        ctx.lineWidth = 0.6;
+        ctx.stroke();
+        ctx.globalAlpha = 1;
       }
     }
-    for(const n of nodes){ n.update(); n.draw(); }
-    sparks=sparks.filter(s=>!s.done);
-    for(const s of sparks){ s.update(); s.draw(); }
-    requestAnimationFrame(loop);
   }
+}
 
-  window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-  window.addEventListener('touchmove',e=>{
-    if(e.touches[0]){mx=e.touches[0].clientX;my=e.touches[0].clientY;}
-  },{passive:true});
-  window.addEventListener('resize',()=>{
-    resize();
-    nodes.forEach(n=>{ if(n.x>W) n.x=Math.random()*W; if(n.y>H) n.y=Math.random()*H; });
-  });
-  window.addEventListener('click',e=>{
-    const near=nodes.filter(n=>{
-      const dx=n.x-e.clientX,dy=n.y-e.clientY;
-      return Math.sqrt(dx*dx+dy*dy)<200;
-    }).slice(0,5);
-    for(let i=0;i<near.length-1;i++){
-      sparks.push(new Spark(near[i],near[i+1]));
-      sparks.push(new Spark(near[i+1],near[i]));
-    }
-  });
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  drawLines();
+  requestAnimationFrame(animate);
+}
+animate();
 
-  init(); loop();
-})();
+// ── SCROLL ANIMATIONS ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.style.animationPlayState = 'running'; });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.animate-fadeup, .animate-fadeleft, .animate-faderight').forEach(el => {
+  el.style.animationPlayState = 'paused';
+  observer.observe(el);
+});
 </script>
-
 </body>
 </html>

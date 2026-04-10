@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Dennis Nickens Spiritual Romeo</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.page-hero { padding:160px 48px 80px; position:relative; z-index:1; text-align:center; }
+.page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(40px,5vw,72px); font-weight:900; }
+.page-hero p { font-size:18px; color:var(--muted); max-width:560px; margin:20px auto 0; line-height:1.8; }
+
+.services-full { display:flex; flex-direction:column; gap:32px; margin-top:56px; }
+.service-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:40px;
+  background:var(--card-bg); border:1px solid var(--border);
+  border-radius:var(--radius); padding:48px;
+  align-items:center; transition:all .3s;
+}
+.service-row:hover { border-color:rgba(124,58,237,.5); box-shadow:0 20px 60px rgba(0,0,0,.3); }
+.service-row.reverse { direction:rtl; }
+.service-row.reverse > * { direction:ltr; }
+.service-icon-wrap {
+  width:100px; height:100px; border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex; align-items:center; justify-content:center;
+  font-size:40px; margin-bottom:24px;
+  box-shadow:0 10px 30px var(--glow-p);
+}
+.service-info h2 { font-family:'Playfair Display',serif; font-size:28px; margin-bottom:12px; }
+.service-info p { font-size:15px; color:var(--muted); line-height:1.8; margin-bottom:20px; }
+.service-includes { margin-bottom:28px; }
+.service-includes h4 { font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+.service-includes li { font-size:14px; color:var(--muted); padding:6px 0; display:flex; align-items:center; gap:10px; }
+.service-includes li::before { content:'✓'; color:var(--purple-light); font-weight:700; }
+.service-price { font-family:'Playfair Display',serif; font-size:24px; color:var(--gold); margin-bottom:8px; }
+.service-price span { font-size:14px; color:var(--muted); font-family:'Inter',sans-serif; }
+.service-visual {
+  border-radius:var(--radius); overflow:hidden;
+  background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(59,130,246,.1));
+  border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  min-height:300px; font-size:80px;
+}
+
+@media(max-width:900px){
+  .page-hero{padding:120px 24px 60px;}
+  .service-row{grid-template-columns:1fr;padding:32px 24px;}
+  .service-row.reverse{direction:ltr;}
+}
+</style>
+</head>
+<body>
+<canvas id="particles-canvas"></canvas>
+<nav id="navbar">
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">SR</div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="book.html" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <span class="section-tag animate-fadeup">Coaching &amp; Consulting</span>
+  <h1 class="animate-fadeup delay-1">Services Built to<br><span style="color:var(--gold)">Transform</span></h1>
+  <p class="animate-fadeup delay-2">Every path is personalized. Every session is purposeful. Every outcome is possible.</p>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="services-full">
+
+      <div class="service-row animate-fadeup delay-1">
+        <div class="service-info">
+          <div class="service-icon-wrap">👥</div>
+          <h2>1-on-1 Relationship Coaching</h2>
+          <p>My signature private coaching experience. We go deep into your relationship patterns, communication style, and blocks — then build a personalized roadmap to the love life you want.</p>
+          <div class="service-includes">
+            <h4>What's Included</h4>
+            <ul>
+              <li>60-minute sessions (weekly or bi-weekly)</li>
+              <li>Custom relationship assessment</li>
+              <li>Homework & exercises between sessions</li>
+              <li>Email support between sessions</li>
+              <li>Progress tracking & milestone reviews</li>
+            </ul>
+          </div>
+          <div class="service-price">Starting at $150 <span>/ session</span></div>
+          <a href="book.html" class="btn btn-gold">Book a Free Consultation</a>
+        </div>
+        <div class="service-visual">💎</div>
+      </div>
+
+      <div class="service-row reverse animate-fadeup delay-2">
+        <div class="service-visual">❤️‍🔥</div>
+        <div class="service-info">
+          <div class="service-icon-wrap">💑</div>
+          <h2>Couples Coaching</h2>
+          <p>Whether you're rebuilding after a rough patch or just want to take your relationship to the next level — this program is built to help you and your partner truly understand each other.</p>
+          <div class="service-includes">
+            <h4>What's Included</h4>
+            <ul>
+              <li>Joint sessions with both partners</li>
+              <li>Communication skills deep-dive</li>
+              <li>Conflict resolution framework</li>
+              <li>Intimacy &amp; connection exercises</li>
+              <li>Follow-up check-ins</li>
+            </ul>
+          </div>
+          <div class="service-price">Starting at $225 <span>/ session</span></div>
+          <a href="book.html" class="btn btn-purple">Book Free Couples Consult</a>
+        </div>
+      </div>
+
+      <div class="service-row animate-fadeup delay-3">
+        <div class="service-info">
+          <div class="service-icon-wrap">🌱</div>
+          <h2>Group Coaching Program</h2>
+          <p>Join a community of growth-minded individuals on the same journey. Affordable, powerful, and rich with shared breakthroughs. New cohorts start monthly.</p>
+          <div class="service-includes">
+            <h4>What's Included</h4>
+            <ul>
+              <li>Weekly group coaching calls (90 min)</li>
+              <li>Private community access</li>
+              <li>Full curriculum &amp; workbooks</li>
+              <li>Guest expert sessions</li>
+              <li>Lifetime access to recordings</li>
+            </ul>
+          </div>
+          <div class="service-price">$97 <span>/ month</span></div>
+          <a href="book.html" class="btn btn-gold">Join the Next Cohort</a>
+        </div>
+        <div class="service-visual">🚀</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:rgba(10,12,25,.6);border-top:1px solid var(--border);text-align:center;">
+  <div class="section-inner">
+    <span class="section-tag">Not Sure Where to Start?</span>
+    <h2 class="section-title">Let's Talk First — It's Free</h2>
+    <p class="section-sub" style="margin:0 auto 40px;">Book a free 30-minute consultation and I'll help you figure out exactly what path is right for you.</p>
+    <a href="book.html" class="btn btn-gold">Book Free Consultation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand"><div class="nav-logo" style="margin-bottom:14px;">SR</div><p>Dennis Nickens AKA Spiritual Romeo.</p></div>
+  <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="testimonials.html">Testimonials</a><a href="book.html">Book Now</a></div>
+  <div class="footer-col"><h4>Contact</h4><p>📧 dennis@tp-llc.com</p><p>📍 Indian Trail, NC</p></div>
+</footer>
+<div class="footer-bottom"><span>© 2026 Dennis Nickens — Spiritual Romeo.</span><a href="book.html">Book Free Consultation →</a></div>
+<script>
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40));
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+const canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');let particles=[];
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);
+class Particle{constructor(){this.reset();}reset(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-.5)*.4;this.vy=(Math.random()-.5)*.4;this.radius=Math.random()*1.8+.4;this.alpha=Math.random()*.4+.1;this.color=Math.random()>.6?'#7C3AED':Math.random()>.5?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;ctx.fill();ctx.globalAlpha=1;}}
+for(let i=0;i<70;i++)particles.push(new Particle());
+function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animate);}animate();
+</script>
+</body>
+</html>

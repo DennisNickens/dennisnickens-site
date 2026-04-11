@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store — Dennis Nickens | Spiritual Romeo</title>
+  <meta name="description" content="Shop books, courses, and resources from Dennis Nickens AKA Spiritual Romeo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+      <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="SpiritualRomeo_Assessment.html">Assessment</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="book.html" class="nav-cta">Book Now</a></li>
+      <li><a href="store.html" class="active">Store</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <section class="section" style="padding-top:140px">
+    <div class="section-inner" style="text-align:center">
+      <span class="section-tag animate-fadeup">Shop</span>
+      <h1 class="section-title animate-fadeup delay-1" style="font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,64px);font-weight:900;margin-bottom:24px">The Spiritual Romeo <span style="color:#FFD700">Store</span></h1>
+      <p class="section-sub animate-fadeup delay-2" style="max-width:600px;margin:0 auto 60px;font-size:17px;color:rgba(255,255,255,0.6)">Books, courses, and resources to help you transform your relationships. Coming soon.</p>
+
+      <div style="max-width:500px;margin:0 auto;padding:60px 40px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:24px" class="animate-fadeup delay-3">
+        <div style="font-size:64px;margin-bottom:24px">&#128218;</div>
+        <h2 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff;margin-bottom:16px">Coming Soon</h2>
+        <p style="font-size:15px;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:32px">We're preparing an exclusive collection of relationship guides, digital courses, and merchandise. Stay tuned!</p>
+        <a href="book.html" class="btn btn-gold">Book a Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand"><div class="nav-logo-wrap" style="margin:0 auto 16px"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div><p>Dennis Nickens AKA Spiritual Romeo — helping individuals and couples build the love they've always wanted.</p></div>
+    <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="SpiritualRomeo_Assessment.html">Assessment</a><a href="testimonials.html">Testimonials</a><a href="book.html">Book Now</a><a href="store.html">Store</a></div>
+    <div class="footer-col"><h4>Contact</h4><p>&#128231; dennis@tp-llc.com</p><p>&#128205; Indian Trail, NC</p></div>
+  </footer>
+  <div class="footer-bottom"><span>&copy; 2026 Dennis Nickens — Spiritual Romeo. All rights reserved.</span><a href="book.html">Book a Free Consultation &rarr;</a></div>
+
+  <script>
+    window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+    function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+    const canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');let particles=[];
+    function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);
+    class Particle{constructor(){this.reset();}reset(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.radius=Math.random()*1.6+.3;this.alpha=Math.random()*.45+.08;const r=Math.random();this.color=r>.65?'#7C3AED':r>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;ctx.fill();ctx.globalAlpha=1;}}
+    for(let i=0;i<80;i++)particles.push(new Particle());
+    function drawLines(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<110){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='#7C3AED';ctx.globalAlpha=(1-dist/110)*.10;ctx.lineWidth=.5;ctx.stroke();ctx.globalAlpha=1;}}}}
+    function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw();});drawLines();requestAnimationFrame(animate);}animate();
+    const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.style.animationPlayState='running';});},{threshold:.08});
+    document.querySelectorAll('.animate-fadeup,.animate-fadeleft,.animate-faderight').forEach(el=>{el.style.animationPlayState='paused';observer.observe(el);});
+  </script>
+</body>
+</html>

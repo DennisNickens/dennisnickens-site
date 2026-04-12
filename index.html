@@ -6,9 +6,8 @@
 <title>Dennis Nickens — Spiritual Romeo | Relationship Coach</title>
 <meta name="description" content="Dennis Nickens AKA Spiritual Romeo — Relationship coach helping 500+ couples build the love they've always wanted. Book your free consultation today.">
 <script>
-// Show splash page on first visit
-if(!sessionStorage.getItem('splashSeen')){
-  sessionStorage.setItem('splashSeen','1');
+// Always show splash page unless coming from splash.html
+if(document.referrer.indexOf('splash.html')===-1){
   window.location.replace('splash.html');
 }
 </script>

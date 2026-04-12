@@ -163,16 +163,18 @@ body{
     <div class="splash-tagline">&#10022; Spiritual Romeo &#10022;</div>
     <h1 class="splash-title">Dennis<br><span class="gold">Nickens</span></h1>
     <p class="splash-sub">AKA Spiritual Romeo</p>
-    <a href="index.html" class="splash-enter">Enter the Experience</a>
+    
     <div class="splash-progress-wrap"><div class="splash-progress-bar"></div></div>
-    <p class="splash-hint">Entering automatically&hellip;</p>
+    <p class="splash-hint">Entering in <span id="splash-countdown">10</span> seconds&hellip;</p>
   </div>
 
   <script>
   // ── AUTO REDIRECT ──
+  // Countdown
+  var sc=10;var si=setInterval(function(){sc--;var el=document.getElementById('splash-countdown');if(el)el.textContent=sc;if(sc<=0)clearInterval(si);},1000);
   setTimeout(function(){
     window.location.href='index.html';
-},5200);
+},10000);
 
 // ── ROTATING GLOBE ──
 (function(){

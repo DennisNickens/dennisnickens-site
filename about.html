@@ -37,32 +37,46 @@
 
     /* HERO */
     .about-hero {
-      padding: 160px 48px 80px;
+      padding: 120px 48px 60px;
       position: relative; z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
+    }
+    .about-photo-wrap {
+      margin-bottom: 32px;
+    }
+    .about-photo-wrap img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      box-shadow: 0 0 40px rgba(201,168,76,0.25);
     }
     .about-hero .badge {
       display: inline-block;
       font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
       color: var(--gold); border: 1px solid var(--gold);
-      padding: 6px 18px; border-radius: 20px; margin-bottom: 24px;
+      padding: 6px 18px; border-radius: 20px; margin-bottom: 20px;
     }
     .about-hero h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(40px, 6vw, 72px);
       font-weight: 900; line-height: 1.1;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     .about-hero .aka {
       font-size: 20px; color: var(--gold); font-style: italic;
-      margin-bottom: 32px;
     }
 
     /* SECTIONS */
     .about-section {
       position: relative; z-index: 1;
       max-width: 820px; margin: 0 auto;
-      padding: 64px 48px;
+      padding: 52px 48px;
       border-bottom: 1px solid rgba(201,168,76,0.1);
     }
     .about-section:last-of-type { border-bottom: none; }
@@ -73,27 +87,27 @@
     .section-num {
       font-family: 'Playfair Display', serif;
       font-size: 13px; color: rgba(201,168,76,0.4);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .about-section h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(26px, 3vw, 38px);
-      font-weight: 700; margin-bottom: 28px;
+      font-weight: 700; margin-bottom: 22px;
       line-height: 1.2;
     }
     .about-section p {
-      font-size: 17px; line-height: 1.85;
+      font-size: 17px; line-height: 1.8;
       color: rgba(255,255,255,0.88);
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
     .about-section p:last-child { margin-bottom: 0; }
     .highlight-box {
       background: rgba(201,168,76,0.08);
       border-left: 3px solid var(--gold);
-      padding: 20px 24px;
-      margin: 28px 0;
+      padding: 18px 22px;
+      margin: 22px 0;
       border-radius: 0 8px 8px 0;
-      font-size: 17px; line-height: 1.8;
+      font-size: 17px; line-height: 1.75;
       color: rgba(255,255,255,0.92);
       font-style: italic;
     }
@@ -102,15 +116,15 @@
     .about-cta {
       position: relative; z-index: 1;
       text-align: center;
-      padding: 80px 48px 120px;
+      padding: 72px 48px 100px;
     }
     .about-cta h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(28px, 4vw, 44px);
-      font-weight: 700; margin-bottom: 16px;
+      font-weight: 700; margin-bottom: 14px;
     }
     .about-cta p {
-      font-size: 17px; color: var(--muted); margin-bottom: 36px; max-width: 560px; margin-left: auto; margin-right: auto;
+      font-size: 17px; color: var(--muted); margin-bottom: 32px; max-width: 560px; margin-left: auto; margin-right: auto;
     }
     .btn-gold {
       display: inline-block;
@@ -125,7 +139,7 @@
     /* FOOTER */
     footer {
       position: relative; z-index: 1;
-      text-align: center; padding: 40px 48px;
+      text-align: center; padding: 36px 48px;
       border-top: 1px solid rgba(201,168,76,0.15);
       color: var(--muted); font-size: 13px;
     }
@@ -135,6 +149,7 @@
       nav { padding: 16px 20px; }
       .nav-links { gap: 16px; }
       .about-hero, .about-section, .about-cta { padding-left: 24px; padding-right: 24px; }
+      .about-photo-wrap img { width: 180px; height: 180px; }
     }
   </style>
 </head>
@@ -154,9 +169,12 @@
 
 <!-- HERO -->
 <div class="about-hero">
+  <div class="about-photo-wrap">
+    <img src="Dennis20191110_0044_2.jpg" alt="Dennis Nickens, Relationship Consultant">
+  </div>
   <div class="badge">Relationship Consultant</div>
   <h1>Dennis Nickens</h1>
-  <div class="aka">aka "Spiritual Romeo"</div>
+  <div class="aka">aka &ldquo;Spiritual Romeo&rdquo;</div>
 </div>
 
 <!-- SECTION 01 -->
@@ -164,10 +182,9 @@
   <div class="section-num">01</div>
   <div class="section-label">The Foundation</div>
   <h2>Where It All Began</h2>
-  <p>Growing up in a two-parent household, my parents worked very hard to give me the best opportunities possible. Like many parents in our community, they poured everything they had into providing. But here's the reality: working hard doesn't always mean having access to the roadmap. My parents weren't educated on the finer details of helping me connect the dots, understanding how to study effectively, how to advocate for my own learning style, and how to see myself as someone capable of success even when the grades didn't reflect it.</p>
-  <p>So I wasn't the kid who made good grades. Not because I couldn't. Because I needed information delivered my way, and nobody showed my parents or me how to ask for it.</p>
-  <div class="highlight-box">That lesson became my compass. I realized that most people aren't failing to grow; they're failing to receive information in a way that sticks for them.</div>
-  <p>Today, this is exactly how I consult: I don't assume my teaching style fits you. I learn how you're drawn to information, then adapt my approach so the message actually lands.</p>
+  <p>Growing up in a two-parent household, my parents worked very hard to give me the best opportunities possible. Like many parents in our community, they poured everything they had into providing. But here&rsquo;s the reality: working hard doesn&rsquo;t always mean having access to the roadmap. My parents weren&rsquo;t educated on the finer details of helping me connect the dots, understanding how to study effectively, how to advocate for my own learning style, and how to see myself as someone capable of success even when the grades didn&rsquo;t reflect it.</p>
+  <p>So I wasn&rsquo;t the kid who made good grades. Not because I couldn&rsquo;t. Because I needed information delivered my way, and nobody showed my parents or me how to ask for it. That lesson became my compass. I realized that most people aren&rsquo;t failing to grow; they&rsquo;re failing to receive information in a way that sticks for them.</p>
+  <p>Today, this is exactly how I consult: I don&rsquo;t assume my teaching style fits you. I learn how you&rsquo;re drawn to information, then adapt my approach so the message actually lands.</p>
 </div>
 
 <!-- SECTION 02 -->
@@ -175,8 +192,7 @@
   <div class="section-num">02</div>
   <div class="section-label">The Military Years</div>
   <h2>28 Years of Learning People</h2>
-  <p>That hunger to learn people, to really see them, is what I brought into 28 years of military service.</p>
-  <p>The structure gave me discipline. The rank of Master Sergeant taught me to focus and lock in on a mission. But my real education came from watching people: observing what works, having conversations that revealed perspectives I never considered, and applying that insight immediately. By the time I retired in 2025, I knew: leadership isn't about barking orders, it's about understanding the person receiving them.</p>
+  <p>That hunger to learn people, to really see them, is what I brought into 28 years of military service. The structure gave me discipline. The rank of Master Sergeant taught me to focus and lock in on a mission. But my real education came from watching people: observing what works, having conversations that revealed perspectives I never considered, and applying that insight immediately. By the time I retired in 2025, I knew: leadership isn&rsquo;t about barking orders, it&rsquo;s about understanding the person receiving them.</p>
   <p>Now, when I work with business owners and leaders, I teach this same principle. Before you can lead effectively, you must learn how each person processes direction, what motivates them, and how they need to receive feedback.</p>
 </div>
 
@@ -185,29 +201,26 @@
   <div class="section-num">03</div>
   <div class="section-label">From Personal Struggle to Purpose</div>
   <h2>The Hard Lessons I Now Teach</h2>
-  <p>The principles I teach aren't theory; they're survival lessons I learned the hard way.</p>
-  <p>I was single for several years, then went through a divorce, emerging with clarity I never had before. I learned to relax into the process of making good choices in picking a mate, understanding that choosing someone isn't about them, it's about knowing the desires of your own heart, not appealing to your flesh.</p>
-  <p>When you distinguish joy from happiness, you focus on substance over surface. This is what I now teach my clients: whether you're single, married, or contemplating divorce, I walk you through discerning lasting connection from fleeting attraction, using the same discernment that led me to someone I could truly grow with.</p>
+  <p>The principles I teach aren&rsquo;t theory; they&rsquo;re survival lessons I learned the hard way. I was single for several years, then went through a divorce, emerging with clarity I never had before. I learned to relax into the process of making good choices in picking a mate, understanding that choosing someone isn&rsquo;t about them, it&rsquo;s about knowing the desires of your own heart, not appealing to your flesh.</p>
+  <p>When you distinguish joy from happiness, you focus on substance over surface. This is what I now teach my clients: whether you&rsquo;re single, married, or contemplating divorce, I walk you through discerning lasting connection from fleeting attraction, using the same discernment that led me to someone I could truly grow with.</p>
   <p>Working for business owners and the federal government for nearly 15 years, I learned to lean into the people who make you look good. Today, I teach leaders exactly this: how to identify what keeps your best people coming back, and how to build loyalty by understanding what drives each individual.</p>
 </div>
 
 <!-- SECTION 04 -->
 <div class="about-section">
   <div class="section-num">04</div>
-  <div class="section-label">How I Became "Spiritual Romeo"</div>
+  <div class="section-label">How I Became &ldquo;Spiritual Romeo&rdquo;</div>
   <h2>A Name Earned in the Room</h2>
-  <p>That commitment to understanding before leading earned me my nickname.</p>
-  <p>On the Divinely Connected Prayer Call, I taught on having a solid foundation for relationship stability. Dr. James Smith declared, "My brother, you broke that down so good. I'm calling you Spiritual Romeo."</p>
-  <p>To me, Spiritual Romeo means using the Word of God to lead and direct my life. In my consulting, I bring that same spiritual grounding and practical application, whether you're navigating marriage, business partnerships, or professional relationships. I help you build foundations that hold when pressure comes.</p>
+  <p>That commitment to understanding before leading earned me my nickname. On the Divinely Connected Prayer Call, I taught on having a solid foundation for relationship stability. Dr. James Smith declared, &ldquo;My brother, you broke that down so good. I&rsquo;m calling you Spiritual Romeo.&rdquo;</p>
+  <p>To me, Spiritual Romeo means using the Word of God to lead and direct my life. In my consulting, I bring that same spiritual grounding and practical application, whether you&rsquo;re navigating marriage, business partnerships, or professional relationships. I help you build foundations that hold when pressure comes.</p>
 </div>
 
 <!-- SECTION 05 -->
 <div class="about-section">
   <div class="section-num">05</div>
-  <div class="section-label">Why "Consultant," Not "Coach"</div>
+  <div class="section-label">Why &ldquo;Consultant,&rdquo; Not &ldquo;Coach&rdquo;</div>
   <h2>A Dialogue, Not a Lecture</h2>
-  <p>That same energy, practical, personal, rooted in faith, is why I don't call myself a coach.</p>
-  <p>Coaches prescribe. I consult, because this is a dialogue, not a lecture. You bring your desires and challenges. I bring a process refined over a decade of helping people understand who they are and what they need. My consulting style is collaborative: I don't hand you answers. I help you discover that you already hold them, once we clarify your wiring.</p>
+  <p>That same energy, practical, personal, rooted in faith, is why I don&rsquo;t call myself a coach. Coaches prescribe. I consult, because this is a dialogue, not a lecture. You bring your desires and challenges. I bring a process refined over a decade of helping people understand who they are and what they need. My consulting style is collaborative: I don&rsquo;t hand you answers. I help you discover that you already hold them, once we clarify your wiring.</p>
 </div>
 
 <!-- SECTION 06 -->
@@ -215,9 +228,7 @@
   <div class="section-num">06</div>
   <div class="section-label">My Approach</div>
   <h2>Practical, Pressurized, and Personal</h2>
-  <p>What people love most: I put humor in how I talk, and I make it practical. I remove pressure and make growth as easy as possible.</p>
-  <p>I don't teach one way. I learn how you're wired, how you process, relate, and decide, then construct our work around your specific design. This is my consulting method: personalized insight beats generic advice every time.</p>
-  <p>No cookie cutter solutions. No perfection required, just putting in the work to be perfected.</p>
+  <p>What people love most: I put humor in how I talk, and I make it practical. I remove pressure and make growth as easy as possible. I don&rsquo;t teach one way. I learn how you&rsquo;re wired, how you process, relate, and decide, then construct our work around your specific design. This is my consulting method: personalized insight beats generic advice every time. No cookie cutter solutions. No perfection required, just putting in the work to be perfected.</p>
 </div>
 
 <!-- SECTION 07 -->
@@ -225,9 +236,8 @@
   <div class="section-num">07</div>
   <div class="section-label">The Mission</div>
   <h2>Game Changing Work at Every Life Stage</h2>
-  <p>That dedication to personalized growth is why I'm drawn to game changing work.</p>
-  <p>When I find something that transforms how people live, lead, or connect, I believe it's my responsibility to get that information to as many people as possible. This is why I consult across every life stage and setting. The principles are universal; my application is personal.</p>
-  <p>I'm not here to change anyone. I'm here to help you see the light, to be in a space you genuinely enjoy being in. It's about becoming perfected through intentional work.</p>
+  <p>That dedication to personalized growth is why I&rsquo;m drawn to game changing work. When I find something that transforms how people live, lead, or connect, I believe it&rsquo;s my responsibility to get that information to as many people as possible. This is why I consult across every life stage and setting. The principles are universal; my application is personal.</p>
+  <p>I&rsquo;m not here to change anyone. I&rsquo;m here to help you see the light, to be in a space you genuinely enjoy being in. It&rsquo;s about becoming perfected through intentional work.</p>
 </div>
 
 <!-- SECTION 08 -->
@@ -235,24 +245,22 @@
   <div class="section-num">08</div>
   <div class="section-label">The Promise</div>
   <h2>Military Precision. Personal Care.</h2>
-  <p>That mission comes with a standard I held for 28 years in uniform: I'm not here to waste your time.</p>
-  <p>Every engagement is an investment. And your return is always bigger than what you put in. This is my commitment to every client who walks through my door: military precision, personal care, and a guarantee that you'll leave with clarity you didn't have when you arrived.</p>
+  <p>That mission comes with a standard I held for 28 years in uniform: I&rsquo;m not here to waste your time. Every engagement is an investment. And your return is always bigger than what you put in. This is my commitment to every client who walks through my door: military precision, personal care, and a guarantee that you&rsquo;ll leave with clarity you didn&rsquo;t have when you arrived.</p>
   <div class="highlight-box">Be all you can be, at a superior level.</div>
 </div>
 
 <!-- CTA -->
 <div class="about-cta">
   <h2>Ready to Discover Your Wiring?</h2>
-  <p>Take the assessment and get the clarity you've been looking for.</p>
+  <p>Take the assessment and get the clarity you&rsquo;ve been looking for.</p>
   <a href="SpiritualRomeo_Assessment.html" class="btn-gold">Take the Assessment</a>
 </div>
 
 <footer>
-  <p>&copy; 2026 Dennis Nickens ,  Spiritual Romeo. All rights reserved. | <a href="mailto:dennis@dennisnickens.com">dennis@dennisnickens.com</a></p>
+  <p>&copy; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved. | <a href="mailto:dennis@dennisnickens.com">dennis@dennisnickens.com</a></p>
 </footer>
 
 <script>
-  // Particle background
   (function(){
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');

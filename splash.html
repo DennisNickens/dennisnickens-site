@@ -1,307 +1,299 @@
 <!DOCTYPE html>
-  <html lang="en">
+<html lang="en">
   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dennis Nickens — Spiritual Romeo | Welcome</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dennis Nickens — Spiritual Romeo | Welcome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Dancing+Script:wght@700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html,body{width:100%;height:100%;overflow:hidden;}
-body{
-    background:#0F172A;
-  color:#fff;
-    font-family:'Inter',sans-serif;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-height:100vh;
-  position:relative;
-}
-
-/* ── GLOBE CANVAS BACKGROUND ── */
-#globe-canvas{
-  position:fixed;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-}
-
-/* ── PARTICLES ── */
-#particles-canvas{
-  position:fixed;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-}
-
-/* ── SPLASH CONTENT ── */
-.splash-wrap{
-    position:relative;
-  z-index:10;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:24px;
-  padding:40px 24px;
-  animation:splashIn 1.2s ease both;
-}
-
-@keyframes splashIn{
-    from{opacity:0;transform:translateY(30px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-.splash-logo{
-    width:80px;height:80px;
-  border-radius:18px;
-  background:linear-gradient(135deg,#7C3AED,#3B82F6);
-  box-shadow:0 0 40px rgba(124,58,237,0.6),0 0 80px rgba(59,130,246,0.3);
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  animation:logoPulse 2s ease-in-out infinite;
-}
-@keyframes logoPulse{
-    0%,100%{box-shadow:0 0 40px rgba(124,58,237,0.6),0 0 80px rgba(59,130,246,0.3);}
-  50%{box-shadow:0 0 60px rgba(124,58,237,0.9),0 0 120px rgba(59,130,246,0.5);}
-}
-.splash-logo-crown{font-size:16px;color:#FFD700;filter:drop-shadow(0 0 6px rgba(255,215,0,0.9));line-height:1;margin-bottom:-3px;}
-.splash-logo-sr{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:#FFD700;text-shadow:0 0 16px rgba(255,215,0,0.7);}
-
-.splash-tagline{
-    font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;
-  color:#FFD700;opacity:0.85;
-    animation:splashIn 1.2s ease 0.2s both;
-}
-
-.splash-title{
-    font-family:'Playfair Display',serif;
-  font-size:clamp(36px,6vw,72px);
-  font-weight:900;
-  line-height:1.05;
-  animation:splashIn 1.2s ease 0.4s both;
-}
-.splash-title .gold{
-  background:linear-gradient(135deg,#FFD700,#FFA500);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-
-.splash-sub{
-    font-family:'Dancing Script',cursive;
-  font-size:clamp(20px,3vw,30px);
-  color:rgba(255,255,255,0.65);
-  animation:splashIn 1.2s ease 0.6s both;
-}
-
-/* ── ENTER BUTTON ── */
-.splash-enter{
-    display:inline-block;
-  margin-top:16px;
-  padding:16px 48px;
-  background:linear-gradient(135deg,#C9A84C,#FFD700);
-  color:#0F172A;
-  font-family:'Inter',sans-serif;
-  font-size:16px;
-  font-weight:700;
-  letter-spacing:1px;
-  border-radius:50px;
-  border:none;
-  cursor:pointer;
-  text-decoration:none;
-  box-shadow:0 6px 30px rgba(255,215,0,0.4);
-  transition:all 0.3s ease;
-  animation:splashIn 1.2s ease 0.8s both;
-}
-.splash-enter:hover{
-    transform:translateY(-3px);
-  box-shadow:0 12px 40px rgba(255,215,0,0.6);
-  }
-
-/* ── PROGRESS BAR ── */
-.splash-progress-wrap{
-    width:200px;
-  height:3px;
-  background:rgba(255,255,255,0.1);
-  border-radius:2px;
-  overflow:hidden;
-  animation:splashIn 1.2s ease 1s both;
-}
-.splash-progress-bar{
-    height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#7C3AED,#FFD700);
-      border-radius:2px;
-  animation:progress 4s linear 1s forwards;
-}
-@keyframes progress{
-    from{width:0%;}
-  to{width:100%;}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html,body{width:100%;height:100%;overflow:hidden;}
+    body{
+        background:#0F172A;
+        color:#fff;
+        font-family:'Inter',sans-serif;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        min-height:100vh;
+        position:relative;
     }
-.splash-hint{
-      font-size:11px;
-  color:rgba(255,255,255,0.35);
-  letter-spacing:1px;
-  animation:splashIn 1.2s ease 1s both;
-}
-</style>
+
+    /* GLOBE CANVAS BACKGROUND */
+    #globe-canvas{
+        position:fixed;
+        inset:0;
+        z-index:0;
+        pointer-events:none;
+    }
+
+    /* PARTICLES */
+    #particles-canvas{
+        position:fixed;
+        inset:0;
+        z-index:1;
+        pointer-events:none;
+    }
+
+    /* SPLASH CONTENT */
+    .splash-wrap{
+        position:relative;
+        z-index:10;
+        text-align:center;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:20px;
+        padding:40px 24px;
+        animation:splashIn 1.2s ease both;
+    }
+
+    @keyframes splashIn{
+        from{opacity:0;transform:translateY(30px);}
+        to{opacity:1;transform:translateY(0);}
+    }
+
+    /* PHOTO PORTRAIT */
+    .splash-photo-wrap{
+        position:relative;
+        width:160px;
+        height:160px;
+        animation:splashIn 1.2s ease 0.1s both;
+    }
+    .splash-photo{
+        width:160px;
+        height:160px;
+        border-radius:50%;
+        object-fit:cover;
+        object-position:top center;
+        border:3px solid rgba(255,215,0,0.5);
+        box-shadow:0 0 40px rgba(124,58,237,0.6),0 0 80px rgba(59,130,246,0.3),0 0 0 6px rgba(255,215,0,0.15);
+        animation:photoPulse 3s ease-in-out infinite;
+    }
+    @keyframes photoPulse{
+        0%,100%{box-shadow:0 0 40px rgba(124,58,237,0.6),0 0 80px rgba(59,130,246,0.3),0 0 0 6px rgba(255,215,0,0.15);}
+        50%{box-shadow:0 0 60px rgba(124,58,237,0.9),0 0 120px rgba(59,130,246,0.5),0 0 0 8px rgba(255,215,0,0.3);}
+    }
+
+    .splash-tagline{
+        font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;
+        color:#FFD700;opacity:0.85;
+        animation:splashIn 1.2s ease 0.3s both;
+    }
+
+    .splash-title{
+        font-family:'Playfair Display',serif;
+        font-size:clamp(36px,6vw,68px);
+        font-weight:900;
+        line-height:1.05;
+        animation:splashIn 1.2s ease 0.5s both;
+    }
+    .splash-title .gold{
+        background:linear-gradient(135deg,#FFD700,#FFA500);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+
+    .splash-sub{
+        font-family:'Dancing Script',cursive;
+        font-size:clamp(18px,3vw,28px);
+        color:rgba(255,255,255,0.65);
+        animation:splashIn 1.2s ease 0.7s both;
+    }
+
+    /* PROGRESS BAR */
+    .splash-progress-wrap{
+        width:200px;
+        height:3px;
+        background:rgba(255,255,255,0.1);
+        border-radius:2px;
+        overflow:hidden;
+        animation:splashIn 1.2s ease 0.9s both;
+    }
+    .splash-progress-bar{
+        height:100%;
+        width:0%;
+        background:linear-gradient(90deg,#7C3AED,#FFD700);
+        border-radius:2px;
+        animation:progress 7s linear 1s forwards;
+    }
+    @keyframes progress{
+        from{width:0%;}
+        to{width:100%;}
+    }
+    .splash-hint{
+        font-size:11px;
+        color:rgba(255,255,255,0.35);
+        letter-spacing:1px;
+        animation:splashIn 1.2s ease 1s both;
+    }
+    #splash-countdown{
+        color:#FFD700;
+        font-weight:700;
+    }
+    </style>
   </head>
   <body>
 
-  <!-- Rotating Globe Background -->
-  <canvas id="globe-canvas"></canvas>
+      <!-- Rotating Globe Background -->
+      <canvas id="globe-canvas"></canvas>canvas>
 
-    <!-- Particles Overlay -->
-<canvas id="particles-canvas"></canvas>
+      <!-- Particles Overlay -->
+      <canvas id="particles-canvas"></canvas>canvas>
 
-<!-- Splash Content -->
-  <div class="splash-wrap">
-    <div class="splash-logo">
-      <span class="splash-logo-crown">&#9819;</span>
-      <span class="splash-logo-sr">SR</span>
-    </div>
-    <div class="splash-tagline">&#10022; Spiritual Romeo &#10022;</div>
-    <h1 class="splash-title">Dennis<br><span class="gold">Nickens</span></h1>
-    <p class="splash-sub">AKA Spiritual Romeo</p>
-    
-    <div class="splash-progress-wrap"><div class="splash-progress-bar"></div></div>
-    <p class="splash-hint">Entering in <span id="splash-countdown">10</span> seconds&hellip;</p>
-  </div>
+      <!-- Splash Content -->
+      <div class="splash-wrap">
 
-  <script>
-  // ── AUTO REDIRECT ──
-  // Countdown
-  var sc=10;var si=setInterval(function(){sc--;var el=document.getElementById('splash-countdown');if(el)el.textContent=sc;if(sc<=0)clearInterval(si);},1000);
-  setTimeout(function(){
-    window.location.href='index.html';
-},10000);
+            <!-- Portrait Photo -->
+            <div class="splash-photo-wrap">
+                    <img class="splash-photo" src="Dennis20191110_0010.jpg" alt="Dennis Nickens" onerror="this.style.display='none';document.querySelector('.splash-logo-fallback').style.display='flex';">
+                    <div class="splash-logo-fallback" style="display:none;width:160px;height:160px;border-radius:50%;background:linear-gradient(135deg,#7C3AED,#3B82F6);align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#FFD700;">SR</div>div>
+            </div>div>
 
-// ── ROTATING GLOBE ──
-(function(){
-  const canvas=document.getElementById('globe-canvas');
-  const ctx=canvas.getContext('2d');
-  let W,H,cx,cy,R,rot=0;
+            <div class="splash-tagline">✦ Spiritual Romeo ✦</div>div>
 
-  function resize(){
-    W=canvas.width=window.innerWidth;
-    H=canvas.height=window.innerHeight;
-    cx=W/2; cy=H/2;
-    R=Math.min(W,H)*0.38;
-}
-  resize();
-  window.addEventListener('resize',resize);
+            <h1 class="splash-title">
+                    <span class="gold">Dennis</span>span><br>Nickens
+            </h1>h1>
 
-  // Latitude/longitude lines
-  function drawGlobe(){
-    ctx.clearRect(0,0,W,H);
+            <p class="splash-sub">Relationship Consultant</p>p>
 
-    // Outer glow
-    const grd=ctx.createRadialGradient(cx,cy,R*0.2,cx,cy,R*1.2);
-    grd.addColorStop(0,'rgba(124,58,237,0.08)');
-    grd.addColorStop(0.5,'rgba(59,130,246,0.05)');
-    grd.addColorStop(1,'transparent');
-    ctx.beginPath();
-    ctx.arc(cx,cy,R*1.2,0,Math.PI*2);
-    ctx.fillStyle=grd;
-    ctx.fill();
+            <div class="splash-progress-wrap">
+                    <div class="splash-progress-bar"></div>div>
+            </div>div>
 
-    ctx.save();
+            <p class="splash-hint">Entering in <span id="splash-countdown">7</span>span> seconds…</p>p>
 
-    // Draw longitude lines (vertical)
-    const numLon=12;
-    for(let i=0;i<numLon;i++){
-      const angle=rot+(i/numLon)*Math.PI*2;
-      // Project 3D longitude line onto 2D ellipse
-      const cosA=Math.cos(angle);
-      ctx.beginPath();
-      // Each longitude is an ellipse: x-axis = R*|cos(angle)|, y-axis = R
-      const rx=Math.abs(cosA)*R;
-      const opacity=0.08+0.12*Math.abs(cosA);
-      ctx.strokeStyle=`rgba(124,58,237,${opacity})`;
-      ctx.lineWidth=1;
-      if(rx>1){
-        ctx.ellipse(cx,cy,rx,R,0,0,Math.PI*2);
-        ctx.stroke();
-}
-}
+      </div>div>
 
-    // Draw latitude lines (horizontal)
-    const numLat=8;
-    for(let j=1;j<numLat;j++){
-      const phi=(j/numLat)*Math.PI;
-      const y=cy+R*Math.cos(phi);
-      const r=R*Math.sin(phi);
-      const opacity=0.06+0.06*Math.sin(phi);
-      ctx.beginPath();
-      ctx.ellipse(cx,y,r,r*0.25,0,0,Math.PI*2);
-      ctx.strokeStyle=`rgba(59,130,246,${opacity})`;
-      ctx.lineWidth=0.8;
-      ctx.stroke();
-}
+    <script>
+        // SESSION STORAGE CHECK — skip splash if user has already visited this session
+        if (sessionStorage.getItem('splashSeen')) {
+              window.location.replace('index.html');
+        }
 
-    // Equator highlight
-    ctx.beginPath();
-    ctx.ellipse(cx,cy,R,R*0.25,0,0,Math.PI*2);
-    ctx.strokeStyle='rgba(255,215,0,0.12)';
-    ctx.lineWidth=1.5;
-    ctx.stroke();
+        // Mark splash as seen for this session
+        sessionStorage.setItem('splashSeen', '1');
 
-    // Globe circle outline
-    ctx.beginPath();
-    ctx.arc(cx,cy,R,0,Math.PI*2);
-    ctx.strokeStyle='rgba(124,58,237,0.2)';
-    ctx.lineWidth=1.5;
-    ctx.stroke();
+        // AUTO REDIRECT after 7 seconds
+        var sc = 7;
+        var si = setInterval(function(){
+              sc--;
+              var el = document.getElementById('splash-countdown');
+              if (el) el.textContent = sc;
+              if (sc <= 0) clearInterval(si);
+        }, 1000);
+        setTimeout(function(){
+              window.location.href = 'index.html';
+        }, 7000);
 
-    ctx.restore();
+        // ROTATING GLOBE
+        (function(){
+              const canvas = document.getElementById('globe-canvas');
+              const ctx = canvas.getContext('2d');
+              let W, H, cx, cy, R, rot = 0;
+              function resize(){
+                      W = canvas.width = window.innerWidth;
+                      H = canvas.height = window.innerHeight;
+                      cx = W/2; cy = H/2;
+                      R = Math.min(W, H) * 0.38;
+              }
+              resize();
+              window.addEventListener('resize', resize);
+              function drawGlobe(){
+                      ctx.clearRect(0, 0, W, H);
+                      const grd = ctx.createRadialGradient(cx, cy, R*0.2, cx, cy, R*1.2);
+                      grd.addColorStop(0, 'rgba(124,58,237,0.08)');
+                      grd.addColorStop(0.5, 'rgba(59,130,246,0.05)');
+                      grd.addColorStop(1, 'transparent');
+                      ctx.beginPath();
+                      ctx.arc(cx, cy, R*1.2, 0, Math.PI*2);
+                      ctx.fillStyle = grd;
+                      ctx.fill();
+                      ctx.save();
+                      const numLon = 12;
+                      for(let i = 0; i < numLon; i++){
+                                const angle = rot + (i/numLon)*Math.PI*2;
+                                const cosA = Math.cos(angle);
+                                const rx = Math.abs(cosA)*R;
+                                const opacity = 0.08 + 0.12*Math.abs(cosA);
+                                ctx.strokeStyle = `rgba(124,58,237,${opacity})`;
+                                ctx.lineWidth = 1;
+                                if(rx > 1){
+                                            ctx.beginPath();
+                                            ctx.ellipse(cx, cy, rx, R, 0, 0, Math.PI*2);
+                                            ctx.stroke();
+                                }
+                      }
+                      const numLat = 8;
+                      for(let j = 1; j < numLat; j++){
+                                const phi = (j/numLat)*Math.PI;
+                                const y = cy + R*Math.cos(phi);
+                                const r = R*Math.sin(phi);
+                                const opacity = 0.06 + 0.06*Math.sin(phi);
+                                ctx.beginPath();
+                                ctx.ellipse(cx, y, r, r*0.25, 0, 0, Math.PI*2);
+                                ctx.strokeStyle = `rgba(59,130,246,${opacity})`;
+                                ctx.lineWidth = 0.8;
+                                ctx.stroke();
+                      }
+                      ctx.beginPath();
+                      ctx.ellipse(cx, cy, R, R*0.25, 0, 0, Math.PI*2);
+                      ctx.strokeStyle = 'rgba(255,215,0,0.12)';
+                      ctx.lineWidth = 1.5;
+                      ctx.stroke();
+                      ctx.beginPath();
+                      ctx.arc(cx, cy, R, 0, Math.PI*2);
+                      ctx.strokeStyle = 'rgba(124,58,237,0.2)';
+                      ctx.lineWidth = 1.5;
+                      ctx.stroke();
+                      ctx.restore();
+                      rot += 0.003;
+                      requestAnimationFrame(drawGlobe);
+              }
+              drawGlobe();
+        })();
 
-    rot+=0.003;
-    requestAnimationFrame(drawGlobe);
-}
-  drawGlobe();
-})();
-
-// ── PARTICLES ──
-(function(){
-  const canvas=document.getElementById('particles-canvas');
-  const ctx=canvas.getContext('2d');
-  let particles=[];
-
-  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-  resize();
-  window.addEventListener('resize',resize);
-
-  class Particle{
-    constructor(){this.reset();}
-    reset(){
-      this.x=Math.random()*canvas.width;
-      this.y=Math.random()*canvas.height;
-      this.vx=(Math.random()-.5)*.3;
-      this.vy=(Math.random()-.5)*.3;
-      this.radius=Math.random()*1.4+.3;
-      this.alpha=Math.random()*.4+.06;
-      const r=Math.random();
-      this.color=r>.65?'#7C3AED':r>.35?'#3B82F6':'#FFD700';
-    }
-    update(){
-      this.x+=this.vx;this.y+=this.vy;
-      if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();
-    }
-    draw(){
-      ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
-      ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;ctx.fill();ctx.globalAlpha=1;
-    }
-}
-
-  for(let i=0;i<60;i++)particles.push(new Particle());
-
-  function animate(){
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach(p=>{p.update();p.draw();});
-    requestAnimationFrame(animate);
-  }
-  animate();
-})();
-</script>
-</body>
-</html>
+        // PARTICLES
+        (function(){
+              const canvas = document.getElementById('particles-canvas');
+              const ctx = canvas.getContext('2d');
+              let particles = [];
+              function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+              resize();
+              window.addEventListener('resize', resize);
+              class Particle{
+                      constructor(){ this.reset(); }
+                      reset(){
+                                this.x = Math.random()*canvas.width;
+                                this.y = Math.random()*canvas.height;
+                                this.vx = (Math.random()-.5)*.3;
+                                this.vy = (Math.random()-.5)*.3;
+                                this.radius = Math.random()*1.4+.3;
+                                this.alpha = Math.random()*.4+.06;
+                                const r = Math.random();
+                                this.color = r>.65?'#7C3AED':r>.35?'#3B82F6':'#FFD700';
+                      }
+                      update(){
+                                this.x += this.vx; this.y += this.vy;
+                                if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height) this.reset();
+                      }
+                      draw(){
+                                ctx.beginPath(); ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+                                ctx.fillStyle=this.color; ctx.globalAlpha=this.alpha; ctx.fill(); ctx.globalAlpha=1;
+                      }
+              }
+              for(let i=0;i<60;i++) particles.push(new Particle());
+              function animate(){
+                      ctx.clearRect(0,0,canvas.width,canvas.height);
+                      particles.forEach(p=>{p.update();p.draw();});
+                      requestAnimationFrame(animate);
+              }
+              animate();
+        })();
+    </script>
+  </body>
+</html>html>
+    </script>
+  </body>
+  </style></title>
+  </head>

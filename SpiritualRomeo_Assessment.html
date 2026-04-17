@@ -20,8 +20,25 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Georgia',serif;background:var(--off-white);color:#222;min-height:100vh;}
 
-/* NAV */
-.top-bar{background:var(--purple-dark);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
+/* SITE NAV */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(15,23,42,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,215,0,0.15);height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;transition:background 0.3s;}
+#navbar.scrolled{background:rgba(15,23,42,0.99);}
+.nav-brand{display:flex;align-items:center;gap:13px;text-decoration:none;}
+.nav-logo-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#7C3AED,#3B82F6);flex-shrink:0;}
+.nav-logo-crown{font-size:10px;color:#FFD700;line-height:1;}
+.nav-logo-sr{font-family:'Georgia',serif;font-size:16px;font-weight:900;color:#FFD700;}
+.nav-brand-text{display:flex;flex-direction:column;line-height:1.2;}
+.nav-brand-text .nav-name{font-family:'Georgia',serif;font-size:15px;font-weight:700;color:#fff;}
+.nav-brand-text .nav-sub{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FFD700;opacity:0.85;}
+.nav-links{display:flex;gap:8px;list-style:none;margin:0;padding:0;}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;padding:6px 10px;border-radius:4px;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:#FFD700;}
+.nav-links .nav-cta{background:linear-gradient(135deg,#7C3AED,#3B82F6);color:#fff!important;padding:8px 16px;border-radius:20px;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;}
+@media(max-width:768px){#navbar{padding:0 20px;}.nav-links{display:none;}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:rgba(15,23,42,0.98);padding:20px;gap:12px;z-index:998;}.nav-hamburger{display:flex;}}
+/* TOP-BAR (assessment internal nav) */
+.top-bar{background:var(--purple-dark);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;margin-top:70px;}
 .top-bar .brand{color:var(--gold);font-size:1.3rem;font-weight:bold;letter-spacing:.05em;text-decoration:none;}
 .back-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:6px 16px;border-radius:20px;cursor:pointer;font-size:.85rem;}
 .back-btn:hover{background:var(--gold);color:var(--purple-dark);}
@@ -150,6 +167,22 @@ body{font-family:'Georgia',serif;background:var(--off-white);color:#222;min-heig
 </style>
 </head>
 <body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="SpiritualRomeo_Assessment.html" class="active">Assessment</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="book.html" class="nav-cta">Book Now</a></li>
+    <li><a href="store.html">Store</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
 
 <div class="top-bar">
   <a class="brand" href="SpiritualRomeo_Website.html">✦ Spiritual Romeo</a>
@@ -859,6 +892,10 @@ window.showScreen=function(id){
   origShowScreen(id);
   if(id==='results'){renderResults();}
 };
+</script>
+<script>
+window.addEventListener('scroll',function(){var n=document.getElementById('navbar');if(n)n.classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){var nl=document.getElementById('navLinks');if(nl)nl.classList.toggle('open');}
 </script>
 </body>
 </html>

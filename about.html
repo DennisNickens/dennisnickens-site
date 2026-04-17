@@ -45,16 +45,19 @@
       text-align: center;
     }
     .about-photo-wrap {
-      margin-bottom: 20px;
+      margin-bottom: 32px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
     .about-photo-wrap img {
-      width: 220px;
-      height: 220px;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: 50%;
-      border: 3px solid var(--gold);
-      box-shadow: 0 0 40px rgba(201,168,76,0.25);
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 60px rgba(201,168,76,0.20), 0 16px 80px rgba(0,0,0,0.5);
+      display: block;
     }
     .about-hero .badge {
       display: inline-block;
@@ -170,7 +173,7 @@
 <!-- HERO -->
 <div class="about-hero">
   <div class="about-photo-wrap">
-    <img src="Dennis20191110_0044_2.jpg" alt="Dennis Nickens, Relationship Consultant">
+    <img src="images/dennis-nickens-hero.jpg" alt="Dennis Nickens, Relationship Consultant">
   </div>
   <div class="badge">Relationship Consultant</div>
   <h1>Dennis Nickens</h1>

@@ -1,309 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dennis Nickens — Spiritual Romeo | Welcome</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Dancing+Script:wght@700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-    html,body{width:100%;height:100%;overflow:hidden;}
-    body{
-        background:#0F172A;
-        color:#fff;
-        font-family:'Inter',sans-serif;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        min-height:100vh;
-        position:relative;
-    }
-
-    /* GLOBE CANVAS BACKGROUND */
-    #globe-canvas{
-        position:fixed;
-        inset:0;
-        z-index:0;
-        pointer-events:none;
-    }
-
-    /* PARTICLES */
-    #particles-canvas{
-        position:fixed;
-        inset:0;
-        z-index:1;
-        pointer-events:none;
-    }
-
-    /* SPLASH LAYOUT — photo left, text right */
-    .splash-wrap{
-        position:relative;
-        z-index:10;
-        display:flex;
-        flex-direction:row;
-        align-items:center;
-        justify-content:center;
-        gap:52px;
-        padding:32px 48px;
-        max-width:1100px;
-        width:100%;
-        animation:splashIn 1.2s ease both;
-    }
-    @media(max-width:700px){
-        .splash-wrap{flex-direction:column;gap:24px;padding:24px 16px;}
-    }
-    @keyframes splashIn{
-        from{opacity:0;transform:translateY(20px);}
-        to{opacity:1;transform:translateY(0);}
-    }
-
-    /* FULL PHOTO — rectangular, no crop */
-    .splash-photo-wrap{
-        flex:0 0 auto;
-        animation:splashIn 1.2s ease 0.1s both;
-    }
-    .splash-photo{
-        display:block;
-        width:auto;
-        height:82vh;
-        max-height:580px;
-        max-width:420px;
-        object-fit:contain;
-        border-radius:8px;
-        box-shadow:
-            0 0 0 1px rgba(255,215,0,0.3),
-            0 0 40px rgba(124,58,237,0.5),
-            0 8px 60px rgba(0,0,0,0.6);
-    }
-    @media(max-width:700px){
-        .splash-photo{height:50vw;max-height:300px;max-width:85vw;}
-    }
-
-    /* TEXT PANEL */
-    .splash-text{
-        flex:0 0 auto;
-        display:flex;
-        flex-direction:column;
-        gap:20px;
-        text-align:left;
-        max-width:360px;
-    }
-    @media(max-width:700px){
-        .splash-text{text-align:center;max-width:100%;}
-    }
-
-    .splash-tagline{
-        font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;
-        color:#FFD700;opacity:0.9;
-        animation:splashIn 1.2s ease 0.3s both;
-    }
-    .splash-title{
-        font-family:'Playfair Display',serif;
-        font-size:clamp(40px,5vw,72px);
-        font-weight:900;line-height:1.0;
-        animation:splashIn 1.2s ease 0.5s both;
-    }
-    .splash-title .gold{
-        background:linear-gradient(135deg,#FFD700,#FFA500);
-        -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-    }
-    .splash-divider{
-        width:60px;height:2px;
-        background:linear-gradient(90deg,#FFD700,transparent);
-        animation:splashIn 1.2s ease 0.6s both;
-    }
-    .splash-sub{
-        font-family:'Dancing Script',cursive;
-        font-size:clamp(20px,2.5vw,28px);
-        color:rgba(255,255,255,0.7);
-        animation:splashIn 1.2s ease 0.7s both;
-    }
-    .splash-desc{
-        font-size:13px;line-height:1.7;
-        color:rgba(255,255,255,0.45);letter-spacing:0.5px;
-        animation:splashIn 1.2s ease 0.8s both;
-    }
-    .splash-progress-wrap{
-        width:180px;height:2px;
-        background:rgba(255,255,255,0.1);
-        border-radius:2px;overflow:hidden;
-        animation:splashIn 1.2s ease 0.9s both;
-    }
-    .splash-progress-bar{
-        height:100%;width:0%;
-        background:linear-gradient(90deg,#7C3AED,#FFD700);
-        border-radius:2px;
-        animation:progress 7s linear 1s forwards;
-    }
-    @keyframes progress{from{width:0%;}to{width:100%;}}
-    .splash-hint{
-        font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1px;
-        animation:splashIn 1.2s ease 1s both;
-    }
-    #splash-countdown{color:#FFD700;font-weight:700;}
-    </style>
-  </head>
-  <body>
-
-    <canvas id="globe-canvas"></canvas>
-    <canvas id="particles-canvas"></canvas>
-
-    <div class="splash-wrap">
-        <div class="splash-photo-wrap">
-              <img class="splash-photo" src="Dennis20191110_0044_2.jpg" alt="Dennis Nickens">
-        </div>
-        <div class="splash-text">
-              <div class="splash-tagline">✦ Spiritual Romeo ✦</div>
-              <h1 class="splash-title"><span class="gold">Dennis</span> Nickens</h1>
-              <div class="splash-divider"></div>
-              <p class="splash-sub">Relationship Consultant</p>
-              <p class="splash-desc">Helping individuals and couples<br>build the love they’ve always wanted.</p>
-              <div class="splash-progress-wrap">
-                    <div class="splash-progress-bar"></div>
-              </div>
-              <p class="splash-hint">Entering in <span id="splash-countdown">7</span> seconds…</p>
-        </div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dennis Nickens — Spiritual Romeo | Welcome</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Dancing+Script:wght@700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;overflow:hidden;}
+body{background:#0F172A;color:#fff;font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;position:relative;}
+#globe-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+#particles-canvas{position:fixed;inset:0;z-index:1;pointer-events:none;}
+.splash-wrap{position:relative;z-index:10;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:52px;padding:32px 48px;max-width:1100px;width:100%;animation:splashIn 1.2s ease both;}
+@media(max-width:700px){.splash-wrap{flex-direction:column;gap:24px;padding:24px 16px;}}
+@keyframes splashIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.splash-photo-wrap{flex:0 0 auto;animation:splashIn 1.2s ease 0.1s both;}
+.splash-photo{display:block;width:auto;height:82vh;max-height:580px;max-width:420px;object-fit:contain;border-radius:8px;box-shadow:0 0 0 1px rgba(255,215,0,0.3),0 0 40px rgba(124,58,237,0.5),0 8px 60px rgba(0,0,0,0.6);}
+@media(max-width:700px){.splash-photo{height:50vw;max-height:300px;max-width:85vw;}}
+.splash-text{flex:0 0 auto;display:flex;flex-direction:column;gap:20px;text-align:left;max-width:360px;}
+@media(max-width:700px){.splash-text{text-align:center;max-width:100%;}}
+.splash-tagline{font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:#FFD700;opacity:0.9;animation:splashIn 1.2s ease 0.3s both;}
+.splash-name{font-family:'Playfair Display',serif;font-size:clamp(40px,5vw,68px);font-weight:900;line-height:1.05;animation:splashIn 1.2s ease 0.5s both;}
+.splash-name .gold{background:linear-gradient(135deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.splash-divider{width:60px;height:2px;background:linear-gradient(90deg,#FFD700,transparent);animation:splashIn 1.2s ease 0.6s both;}
+.splash-sub{font-family:'Dancing Script',cursive;font-size:clamp(20px,2.5vw,28px);color:rgba(255,255,255,0.75);animation:splashIn 1.2s ease 0.7s both;}
+.splash-role{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);animation:splashIn 1.2s ease 0.75s both;}
+.splash-desc{font-size:14px;line-height:1.75;color:rgba(255,255,255,0.45);letter-spacing:0.3px;animation:splashIn 1.2s ease 0.8s both;}
+.splash-progress-wrap{width:200px;height:2px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;animation:splashIn 1.2s ease 0.9s both;}
+.splash-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#7C3AED,#FFD700);border-radius:2px;animation:progress 7s linear 1s forwards;}
+@keyframes progress{from{width:0%;}to{width:100%;}}
+.splash-hint{font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1px;animation:splashIn 1.2s ease 1s both;}
+#splash-countdown{color:#FFD700;font-weight:700;}
+.splash-skip{display:inline-block;margin-top:2px;font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:1px;cursor:pointer;border:none;background:none;text-decoration:underline;padding:0;font-family:'Inter',sans-serif;}
+.splash-skip:hover{color:rgba(255,215,0,0.6);}
+</style>
+</head>
+<body>
+<canvas id="globe-canvas"></canvas>
+<canvas id="particles-canvas"></canvas>
+<div class="splash-wrap">
+  <div class="splash-photo-wrap">
+    <img class="splash-photo" src="dennis-hero-new.jpg" onerror="this.onerror=null;this.src='Dennis20191110_0044_2.jpg';" alt="Dennis Nickens">
+  </div>
+  <div class="splash-text">
+    <div class="splash-tagline">&#10022; Spiritual Romeo &#10022;</div>
+    <h1 class="splash-name"><span class="gold">Dennis</span><br>Nickens</h1>
+    <div class="splash-divider"></div>
+    <p class="splash-sub">Spiritual Romeo</p>
+    <p class="splash-role">Relationship Consultant</p>
+    <p class="splash-desc">Helping individuals and couples<br>build the love they've always wanted.</p>
+    <div class="splash-progress-wrap">
+      <div class="splash-progress-bar"></div>
     </div>
-
-    <script>
-      // ── SPLASH GATE ────────────────────────────────────────────────────────
-      // Uses a cookie so it resets properly when the browser/tab is fresh.
-      // The cookie expires after 30 minutes of inactivity.
-      // "Typing the URL directly" in a new tab = fresh state = splash shows.
-      // "Clicking Home" within the same navigation session = cookie exists = skip splash.
-
-      function getCookie(name) {
-          var match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
-          return match ? decodeURIComponent(match[1]) : null;
-      }
-      function setCookie(name, value, minutes) {
-          var expires = new Date(Date.now() + minutes * 60 * 1000).toUTCString();
-          document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
-      }
-
-      // If the cookie already exists, user came here via internal navigation — skip splash
-      if (getCookie('splashSeen') === '1') {
-          window.location.replace('index.html');
-      }
-
-      // Mark splash as seen — expires in 30 minutes
-      // (reset happens when tab is closed or after 30 min of inactivity)
-      setCookie('splashSeen', '1', 30);
-
-      // ── COUNTDOWN + AUTO-REDIRECT ──────────────────────────────────────────────
-      var sc = 7;
-      var si = setInterval(function() {
-          sc--;
-          var el = document.getElementById('splash-countdown');
-          if (el) el.textContent = sc;
-          if (sc <= 0) clearInterval(si);
-      }, 1000);
-      setTimeout(function() {
-          window.location.href = 'index.html';
-      }, 7000);
-
-      // ── ROTATING GLOBE ─────────────────────────────────────────────────────────
-      (function() {
-          var canvas = document.getElementById('globe-canvas');
-          var ctx = canvas.getContext('2d');
-          var W, H, cx, cy, R, rot = 0;
-          function resize() {
-              W = canvas.width = window.innerWidth;
-              H = canvas.height = window.innerHeight;
-              cx = W / 2; cy = H / 2;
-              R = Math.min(W, H) * 0.42;
-          }
-          resize();
-          window.addEventListener('resize', resize);
-          function drawGlobe() {
-              ctx.clearRect(0, 0, W, H);
-              var grd = ctx.createRadialGradient(cx, cy, R * 0.2, cx, cy, R * 1.2);
-              grd.addColorStop(0, 'rgba(124,58,237,0.07)');
-              grd.addColorStop(0.5, 'rgba(59,130,246,0.04)');
-              grd.addColorStop(1, 'transparent');
-              ctx.beginPath();
-              ctx.arc(cx, cy, R * 1.2, 0, Math.PI * 2);
-              ctx.fillStyle = grd;
-              ctx.fill();
-              ctx.save();
-              for (var i = 0; i < 12; i++) {
-                  var angle = rot + (i / 12) * Math.PI * 2;
-                  var cosA = Math.cos(angle);
-                  var rx = Math.abs(cosA) * R;
-                  if (rx > 1) {
-                      ctx.beginPath();
-                      ctx.ellipse(cx, cy, rx, R, 0, 0, Math.PI * 2);
-                      ctx.strokeStyle = 'rgba(124,58,237,' + (0.06 + 0.1 * Math.abs(cosA)) + ')';
-                      ctx.lineWidth = 1;
-                      ctx.stroke();
-                  }
-              }
-              for (var j = 1; j < 8; j++) {
-                  var phi = (j / 8) * Math.PI;
-                  var ly = cy + R * Math.cos(phi);
-                  var lr = R * Math.sin(phi);
-                  ctx.beginPath();
-                  ctx.ellipse(cx, ly, lr, lr * 0.25, 0, 0, Math.PI * 2);
-                  ctx.strokeStyle = 'rgba(59,130,246,' + (0.05 + 0.05 * Math.sin(phi)) + ')';
-                  ctx.lineWidth = 0.8;
-                  ctx.stroke();
-              }
-              ctx.beginPath();
-              ctx.ellipse(cx, cy, R, R * 0.25, 0, 0, Math.PI * 2);
-              ctx.strokeStyle = 'rgba(255,215,0,0.10)';
-              ctx.lineWidth = 1.5;
-              ctx.stroke();
-              ctx.beginPath();
-              ctx.arc(cx, cy, R, 0, Math.PI * 2);
-              ctx.strokeStyle = 'rgba(124,58,237,0.15)';
-              ctx.lineWidth = 1.5;
-              ctx.stroke();
-              ctx.restore();
-              rot += 0.003;
-              requestAnimationFrame(drawGlobe);
-          }
-          drawGlobe();
-      })();
-
-      // ── PARTICLES ───────────────────────────────────────────────────────────
-      (function() {
-          var canvas = document.getElementById('particles-canvas');
-          var ctx = canvas.getContext('2d');
-          var particles = [];
-          function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-          resize();
-          window.addEventListener('resize', resize);
-          function Particle() { this.reset(); }
-          Particle.prototype.reset = function() {
-              this.x = Math.random() * canvas.width;
-              this.y = Math.random() * canvas.height;
-              this.vx = (Math.random() - 0.5) * 0.3;
-              this.vy = (Math.random() - 0.5) * 0.3;
-              this.radius = Math.random() * 1.4 + 0.3;
-              this.alpha = Math.random() * 0.4 + 0.06;
-              var r = Math.random();
-              this.color = r > 0.65 ? '#7C3AED' : r > 0.35 ? '#3B82F6' : '#FFD700';
-          };
-          Particle.prototype.update = function() {
-              this.x += this.vx; this.y += this.vy;
-              if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
-          };
-          Particle.prototype.draw = function() {
-              ctx.beginPath();
-              ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-              ctx.fillStyle = this.color;
-              ctx.globalAlpha = this.alpha;
-              ctx.fill();
-              ctx.globalAlpha = 1;
-          };
-          for (var i = 0; i < 60; i++) particles.push(new Particle());
-          function animate() {
-              ctx.clearRect(0, 0, canvas.width, canvas.height);
-              particles.forEach(function(p) { p.update(); p.draw(); });
-              requestAnimationFrame(animate);
-          }
-          animate();
-      })();
-    </script>
-  </body>
+    <p class="splash-hint">Entering in <span id="splash-countdown">7</span> seconds&hellip;</p>
+    <button class="splash-skip" onclick="goHome()">Enter now &rarr;</button>
+  </div>
+</div>
+<script>
+(function(){
+  if(sessionStorage.getItem('splashSeen')==='1'){window.location.replace('index.html');return;}
+  sessionStorage.setItem('splashSeen','1');
+})();
+function goHome(){window.location.href='index.html';}
+var sc=7;
+var si=setInterval(function(){sc--;var el=document.getElementById('splash-countdown');if(el)el.textContent=sc;if(sc<=0)clearInterval(si);},1000);
+setTimeout(function(){goHome();},7000);
+(function(){var gc=document.getElementById('globe-canvas');var gx=gc.getContext('2d');var gW,gH,gcx,gcy,gR,grot=0;function gResize(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;gcx=gW/2;gcy=gH/2;gR=Math.min(gW,gH)*0.42;}gResize();window.addEventListener('resize',gResize);function drawGlobe(){gx.clearRect(0,0,gW,gH);var grd=gx.createRadialGradient(gcx,gcy,gR*0.1,gcx,gcy,gR*1.3);grd.addColorStop(0,'rgba(124,58,237,0.07)');grd.addColorStop(0.6,'rgba(59,130,246,0.04)');grd.addColorStop(1,'transparent');gx.beginPath();gx.arc(gcx,gcy,gR*1.3,0,Math.PI*2);gx.fillStyle=grd;gx.fill();for(var i=0;i<14;i++){var ang=grot+(i/14)*Math.PI*2;var ca=Math.cos(ang);var rx=Math.abs(ca)*gR;var op=0.05+0.1*Math.abs(ca);gx.strokeStyle='rgba(124,58,237,'+op+')';gx.lineWidth=0.8;if(rx>2){gx.beginPath();gx.ellipse(gcx,gcy,rx,gR,0,0,Math.PI*2);gx.stroke();}}for(var j=1;j<9;j++){var phi=(j/9)*Math.PI;var ly=gcy+gR*Math.cos(phi);var lr=gR*Math.sin(phi);var lop=0.04+0.05*Math.sin(phi);gx.beginPath();gx.ellipse(gcx,ly,lr,lr*0.22,0,0,Math.PI*2);gx.strokeStyle='rgba(59,130,246,'+lop+')';gx.lineWidth=0.7;gx.stroke();}gx.beginPath();gx.ellipse(gcx,gcy,gR,gR*0.22,0,0,Math.PI*2);gx.strokeStyle='rgba(255,215,0,0.08)';gx.lineWidth=1.2;gx.stroke();gx.beginPath();gx.arc(gcx,gcy,gR,0,Math.PI*2);gx.strokeStyle='rgba(124,58,237,0.15)';gx.lineWidth=1.2;gx.stroke();grot+=0.003;requestAnimationFrame(drawGlobe);}drawGlobe();})();
+(function(){var canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');var particles=[];function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);function Particle(){this.reset();}Particle.prototype.reset=function(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.radius=Math.random()*1.6+.3;this.alpha=Math.random()*.45+.08;var r=Math.random();this.color=r>.65?'#7C3AED':r>.35?'#3B82F6':'#FFD700';};Particle.prototype.update=function(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();};Particle.prototype.draw=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;ctx.fill();ctx.globalAlpha=1;};for(var i=0;i<80;i++)particles.push(new Particle());function drawLines(){for(var i=0;i<particles.length;i++){for(var j=i+1;j<particles.length;j++){var dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<110){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='#7C3AED';ctx.globalAlpha=(1-dist/110)*.10;ctx.lineWidth=.5;ctx.stroke();ctx.globalAlpha=1;}}}}function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(function(p){p.update();p.draw();});drawLines();requestAnimationFrame(animate);}animate();})();
+</script>
+</body>
 </html>

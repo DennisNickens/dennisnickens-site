@@ -6,9 +6,10 @@
 <title>Dennis Nickens: Spiritual Romeo | Relationship Consultant</title>
 <meta name="description" content="Dennis Nickens AKA Spiritual Romeo, Relationship Consultant helping 500+ couples build the love they've always wanted. Book your free consultation today.">
 <script>
-// Splash gate — uses cookie to match splash.html logic
-function getCookie(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):null;}
-if(!getCookie('splashSeen')){window.location.replace('splash.html');}
+// Splash gate — uses sessionStorage so it resets on each new browser session.
+// Typing dennisnickens.com in a new tab = fresh sessionStorage = splash shows.
+// Clicking Home nav link within same session = flag already set = skip splash.
+if(!sessionStorage.getItem('splashSeen')){window.location.replace('splash.html');}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

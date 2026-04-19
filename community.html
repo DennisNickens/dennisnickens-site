@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Join the Dennis Nickens Spiritual Romeo Community — connect with others on their relationship transformation journey.">
+  <title>Community — Dennis Nickens Spiritual Romeo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .nav-logo-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,#7C3AED,#3B82F6);box-shadow:0 4px 20px rgba(124,58,237,0.5);position:relative;flex-shrink:0;}
+    .nav-logo-crown{font-size:11px;line-height:1;color:#FFD700;margin-bottom:-2px;filter:drop-shadow(0 0 4px rgba(255,215,0,0.8));}
+    .nav-logo-sr{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:#FFD700;letter-spacing:1px;text-shadow:0 0 12px rgba(255,215,0,0.6);}
+    .nav-brand-text .nav-name{font-family:'Dancing Script',cursive;font-size:20px;font-weight:700;color:#fff;line-height:1.1;}
+    .nav-brand-text .nav-sub{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FFD700;opacity:.85;}
+    .community-hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:140px 48px 80px;position:relative;z-index:1;}
+    .community-hero-inner{max-width:800px;margin:0 auto;text-align:center;}
+    .community-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:60px;}
+    .community-card{background:rgba(255,255,255,0.04);border:1px solid rgba(124,58,237,0.25);border-radius:18px;padding:36px 30px;text-align:center;transition:all 0.25s ease;}
+    .community-card:hover{border-color:rgba(124,58,237,0.5);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.3);}
+    .community-card-icon{font-size:48px;margin-bottom:20px;}
+    .community-card h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:12px;}
+    .community-card p{font-size:15px;color:rgba(255,255,255,0.68);line-height:1.75;}
+    .community-cta{margin-top:60px;text-align:center;}
+    @media(max-width:900px){.community-hero{padding:120px 24px 60px;}}
+  </style>
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+      <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="SpiritualRomeo_Assessment.html">Assessment</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="community.html" class="active">Community</a></li>
+      <li><a href="book.html" class="nav-cta">Book Now</a></li>
+      <li><a href="store.html">Store</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <section class="community-hero">
+    <div class="community-hero-inner animate-fadeup">
+      <span class="section-tag">&#10022; JOIN THE MOVEMENT</span>
+      <h1 class="section-title" style="margin-bottom:20px;">The <span style="color:var(--gold)">Community</span></h1>
+      <p style="font-size:18px;color:rgba(255,255,255,0.72);line-height:1.8;max-width:640px;margin:0 auto 48px;">Connect with hundreds of couples, singles, and families who are building the love lives they deserve. Share wins, ask questions, and grow together.</p>
+
+      <div class="community-grid">
+        <div class="community-card animate-fadeup delay-1">
+          <div class="community-card-icon">&#128172;</div>
+          <h3>Real Conversations</h3>
+          <p>Ask questions, share experiences, and get support from people who understand your journey.</p>
+        </div>
+        <div class="community-card animate-fadeup delay-2">
+          <div class="community-card-icon">&#127942;</div>
+          <h3>Celebrate Wins</h3>
+          <p>Share your breakthroughs and transformations with a community that cheers you on.</p>
+        </div>
+        <div class="community-card animate-fadeup delay-3">
+          <div class="community-card-icon">&#128161;</div>
+          <h3>Weekly Insights</h3>
+          <p>Get exclusive relationship tips, live Q&As, and early access to new resources.</p>
+        </div>
+      </div>
+
+      <div class="community-cta">
+        <a href="book.html" class="btn btn-gold" style="margin-right:16px;">Book Free Consultation</a>
+        <a href="testimonials.html" class="btn btn-outline">Read Success Stories</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">
+      <div class="nav-logo-wrap" style="margin-bottom:16px;"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+      <p>Dennis Nickens AKA Spiritual Romeo, helping individuals and couples build the love they've always wanted.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="SpiritualRomeo_Assessment.html">Assessment</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="community.html">Community</a>
+      <a href="book.html">Book Now</a>
+      <a href="store.html">Store</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>&#128231; dennis@dennisnickens.com</p>
+      <p>&#128205; Indian Trail, NC</p>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</span>
+    <a href="book.html">Book a Free Consultation &rarr;</a>
+  </div>
+
+  <script>
+    window.addEventListener('scroll', function(){
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+    function toggleMenu(){ document.getElementById('navLinks').classList.toggle('open'); }
+
+    var canvas = document.getElementById('particles-canvas'), ctx = canvas.getContext('2d');
+    var particles = [];
+    function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resize(); window.addEventListener('resize', resize);
+    function Particle(){ this.reset(); }
+    Particle.prototype.reset = function(){ this.x=Math.random()*canvas.width; this.y=Math.random()*canvas.height; this.vx=(Math.random()-.5)*.35; this.vy=(Math.random()-.5)*.35; this.radius=Math.random()*1.6+.3; this.alpha=Math.random()*.45+.08; var r=Math.random(); this.color=r>.65?'#7C3AED':r>.35?'#3B82F6':'#FFD700'; };
+    Particle.prototype.update = function(){ this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset(); };
+    Particle.prototype.draw = function(){ ctx.beginPath(); ctx.arc(this.x,this.y,this.radius,0,Math.PI*2); ctx.fillStyle=this.color; ctx.globalAlpha=this.alpha; ctx.fill(); ctx.globalAlpha=1; };
+    for(var i=0;i<80;i++) particles.push(new Particle());
+    function animate(){ ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(function(p){ p.update(); p.draw(); }); requestAnimationFrame(animate); }
+    animate();
+
+    var observer = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting) e.target.style.animationPlayState='running'; }); }, {threshold:.08});
+    document.querySelectorAll('.animate-fadeup').forEach(function(el){ el.style.animationPlayState='paused'; observer.observe(el); });
+  </script>
+</body>
+</html>

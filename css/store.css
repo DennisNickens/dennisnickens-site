@@ -176,6 +176,14 @@
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
+
+/* Real cover image — allow full image to show */
+.book-cover-placeholder.digw-store-thumb {
+  height: auto;
+  min-height: 260px;
+  overflow: visible;
+  background: #1e293b;
+}
 .book-cover-inner {
   display: flex; gap: 0;
   height: 220px; width: 155px;

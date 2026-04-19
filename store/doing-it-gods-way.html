@@ -1,75 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doing It God's Way (It Works) — Dennis Nickens | Spiritual Romeo Store</title>
-<meta name="description" content="Faith-centered relationship guidance from Dennis Nickens — helping you align your relationships with God's design.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/store.css">
-<style>
-  /* === DOING IT GOD'S WAY COVER STYLES === */
-  .product-book-cover {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border-radius: 18px;
-    overflow: hidden;
-    min-height: 520px;
-    width: 100%;
-    max-width: 460px;
-    margin: 0 auto;
-  }
-  .book-bg-atmosphere {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255,215,0,0.18) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 80% at 30% 70%, rgba(124,58,237,0.22) 0%, transparent 60%),
-      radial-gradient(ellipse 70% 70% at 70% 40%, rgba(59,130,246,0.18) 0%, transparent 60%),
-      linear-gradient(180deg, #0F172A 0%, #1a1040 40%, #0d1f3c 100%);
-    z-index: 0;
-  }
-  .book-bg-atmosphere::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='520'%3E%3Cdefs%3E%3CradialGradient id='a' cx='50%25' cy='20%25' r='60%25'%3E%3Cstop offset='0' stop-color='%23FFD700' stop-opacity='.15'/%3E%3Cstop offset='1' stop-color='transparent'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cellipse cx='200' cy='80' rx='180' ry='120' fill='url(%23a)'/%3E%3Cline x1='200' y1='0' x2='80' y2='520' stroke='rgba(255,215,0,0.04)' stroke-width='40'/%3E%3Cline x1='200' y1='0' x2='320' y2='520' stroke='rgba(124,58,237,0.06)' stroke-width='30'/%3E%3Cline x1='200' y1='0' x2='50' y2='520' stroke='rgba(59,130,246,0.05)' stroke-width='20'/%3E%3C/svg%3E") center/cover;
-    z-index: 1;
-  }
-  .digw-cover-img {
-    position: relative;
-    z-index: 2;
-    width: 260px;
-    max-width: 70%;
-    height: auto;
-    border-radius: 6px;
-    box-shadow:
-      0 8px 40px rgba(0,0,0,0.7),
-      0 0 60px rgba(255,215,0,0.15),
-      0 0 120px rgba(124,58,237,0.12);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    display: block;
-  }
-  .digw-cover-img:hover {
-    transform: scale(1.04) translateY(-6px);
-    box-shadow:
-      0 20px 60px rgba(0,0,0,0.8),
-      0 0 80px rgba(255,215,0,0.22),
-      0 0 150px rgba(124,58,237,0.18);
-  }
-  @media (max-width: 900px) {
-    .product-book-cover { min-height: 360px; }
-    .digw-cover-img { width: 200px; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Doing It God's Way—It Works by Dennis S. Nickens (The Spiritual Romeo). The biblical blueprint for friendship transitioning into healthy marriage. 177 pages of faith-centered relationship wisdom. Published 2015.">
+  <title>Doing It God's Way—It Works | Dennis S. Nickens, The Spiritual Romeo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/store.css">
+  <style>
+    /* === NAV LOGO (inline styles carried over) === */
+    .nav-logo-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,#7C3AED,#3B82F6);box-shadow:0 4px 20px rgba(124,58,237,0.5);position:relative;flex-shrink:0;}
+    .nav-logo-crown{font-size:11px;line-height:1;color:#FFD700;margin-bottom:-2px;filter:drop-shadow(0 0 4px rgba(255,215,0,0.8));}
+    .nav-logo-sr{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:#FFD700;letter-spacing:1px;text-shadow:0 0 12px rgba(255,215,0,0.6);}
+    .nav-brand-text .nav-name{font-family:'Dancing Script',cursive;font-size:20px;font-weight:700;color:#fff;line-height:1.1;}
+    .nav-brand-text .nav-sub{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FFD700;opacity:.85;}
+
+    /* === BOOK COVER ATMOSPHERE === */
+    .product-book-cover{display:flex;align-items:center;justify-content:center;position:relative;border-radius:18px;overflow:hidden;min-height:520px;width:100%;max-width:460px;margin:0 auto;}
+    .book-bg-atmosphere{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(255,215,0,0.18) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 30% 70%,rgba(124,58,237,0.22) 0%,transparent 60%),radial-gradient(ellipse 70% 70% at 70% 40%,rgba(59,130,246,0.18) 0%,transparent 60%),linear-gradient(180deg,#0F172A 0%,#1a1040 40%,#0d1f3c 100%);z-index:0;}
+    .digw-cover-img{position:relative;z-index:2;width:260px;max-width:70%;height:auto;border-radius:6px;box-shadow:0 8px 40px rgba(0,0,0,0.7),0 0 60px rgba(255,215,0,0.15),0 0 120px rgba(124,58,237,0.12);transition:transform 0.4s ease,box-shadow 0.4s ease;display:block;}
+    .digw-cover-img:hover{transform:scale(1.04) translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.8),0 0 80px rgba(255,215,0,0.22),0 0 150px rgba(124,58,237,0.18);}
+
+    /* === DIGW SALES PAGE LAYOUT === */
+    .digw-hero {
+      padding-top: 100px; /* account for fixed nav (70px) + breathing room */
+      padding-bottom: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .digw-hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .digw-cover-col {
+      position: sticky;
+      top: 90px; /* fixed nav height + gap */
+    }
+    .digw-book-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,215,0,0.1);
+      border: 1px solid rgba(255,215,0,0.3);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #FFD700;
+      margin-bottom: 20px;
+    }
+    .digw-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.18;
+      margin-bottom: 14px;
+    }
+    .digw-headline em {
+      color: #FFD700;
+      font-style: italic;
+    }
+    .digw-subheadline {
+      font-size: 16px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+      margin-bottom: 28px;
+      font-style: italic;
+      border-left: 3px solid #7C3AED;
+      padding-left: 16px;
+    }
+    .digw-book-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .digw-meta-chip {
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(124,58,237,0.3);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+    }
+    .digw-body {
+      font-size: 16px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.85;
+      margin-bottom: 28px;
+    }
+    .digw-body strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    .digw-arrows {
+      list-style: none;
+      margin: 0 0 28px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .digw-arrows li {
+      display: flex;
+      gap: 14px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.6;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(124,58,237,0.18);
+      border-radius: 10px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .digw-arrows li:hover {
+      border-color: rgba(255,215,0,0.3);
+      background: rgba(255,215,0,0.04);
+    }
+    .digw-arrows li .arrow-icon {
+      flex-shrink: 0;
+      color: #FFD700;
+      font-weight: 700;
+      font-size: 16px;
+      margin-top: 1px;
+    }
+    .digw-section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(124,58,237,0.4), transparent);
+      margin: 32px 0;
+    }
+    .digw-checks {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .digw-checks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+    }
+    .digw-checks li::before {
+      content: '✓';
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: rgba(124,58,237,0.2);
+      border: 1px solid rgba(124,58,237,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #7C3AED;
+    }
+    .digw-cta-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: #FFD700;
+      text-align: center;
+      padding: 24px;
+      background: rgba(255,215,0,0.05);
+      border: 1px solid rgba(255,215,0,0.2);
+      border-radius: 12px;
+      margin-bottom: 28px;
+    }
+    .digw-buy-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 32px;
+    }
+    .digw-price-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .digw-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 900;
+      color: #FFD700;
+    }
+    .digw-price-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+    .digw-ebook-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: rgba(59,130,246,0.08);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 10px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .digw-ebook-option:hover { border-color: rgba(59,130,246,0.5); background: rgba(59,130,246,0.12); }
+    .digw-ebook-option label { font-size: 14px; color: rgba(255,255,255,0.8); cursor: pointer; }
+    .digw-ebook-option label strong { color: #3B82F6; }
+    .digw-btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .digw-btn-cart {
+      flex: 1;
+      background: linear-gradient(135deg, #C9A84C, #FFD700);
+      color: #0F172A;
+      border: none;
+      border-radius: 50px;
+      padding: 16px 28px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      letter-spacing: 0.3px;
+      box-shadow: 0 6px 22px rgba(255,215,0,0.35);
+    }
+    .digw-btn-cart:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(255,215,0,0.45); }
+    .digw-btn-preview {
+      flex: 1;
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.25);
+      border-radius: 50px;
+      padding: 16px 28px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .digw-btn-preview:hover { border-color: #FFD700; color: #FFD700; transform: translateY(-2px); }
+    .digw-trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .digw-trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* === AUTHOR SECTION === */
+    .digw-author-section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 60px 48px;
+    }
+    .digw-author-inner {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      align-items: start;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 24px;
+      padding: 40px;
+    }
+    .digw-author-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      border: 3px solid rgba(255,215,0,0.4);
+      box-shadow: 0 0 30px rgba(124,58,237,0.3);
+      display: block;
+      margin: 0 auto;
+    }
+    .digw-author-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+    .digw-author-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .digw-author-aka {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .digw-author-bio {
+      font-size: 15px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+    }
+
+    /* === SOCIAL PROOF BANNER === */
+    .digw-social-proof {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 48px 48px;
+    }
+    .digw-social-proof-inner {
+      background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(59,130,246,0.1));
+      border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 16px;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .digw-social-proof-text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.6;
+    }
+    .digw-social-proof-text strong { color: #fff; }
+    .digw-stars { font-size: 20px; flex-shrink: 0; }
+
+    /* === AUDIENCE CHIPS === */
+    .digw-audience {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 48px 60px;
+    }
+    .digw-audience-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 14px;
+    }
+    .digw-audience-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .digw-audience-chip {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      transition: all 0.2s;
+    }
+    .digw-audience-chip:hover { border-color: rgba(255,215,0,0.3); color: #FFD700; }
+
+    /* === MOBILE RESPONSIVE === */
+    @media (max-width: 960px) {
+      .digw-hero { padding-top: 90px; }
+      .digw-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 24px;
+      }
+      .digw-cover-col { position: static; max-width: 360px; margin: 0 auto; }
+      .digw-checks { grid-template-columns: 1fr; }
+      .digw-author-inner { grid-template-columns: 1fr; text-align: center; }
+      .digw-author-photo { margin: 0 auto 20px; }
+      .digw-btn-group { flex-direction: column; }
+      .digw-social-proof-inner { flex-direction: column; text-align: center; }
+      .digw-author-section, .digw-social-proof, .digw-audience { padding-left: 24px; padding-right: 24px; }
+    }
+    @media (max-width: 600px) {
+      .digw-hero { padding-top: 80px; }
+      .digw-headline { font-size: 24px; }
+      .product-book-cover { min-height: 380px; }
+      .digw-cover-img { width: 200px; }
+    }
+  </style>
 </head>
 <body>
-<canvas id="particles-canvas"></canvas>
+  <canvas id="particles-canvas"></canvas>
+
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 <div class="cart-drawer" id="cartDrawer">
   <div class="cart-header"><h3>Your Cart</h3><button class="cart-close" onclick="toggleCart()">&times;</button></div>
@@ -83,6 +418,7 @@
     <button onclick="toggleCart()" class="btn btn-outline" style="width:100%;text-align:center;margin-top:10px;padding:12px">Continue Shopping</button>
   </div>
 </div>
+
 <nav id="navbar">
   <a href="../index.html" class="nav-brand">
     <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
@@ -106,6 +442,7 @@
   </div>
 </nav>
 
+
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
   <a href="../store.html">Store</a>
@@ -115,51 +452,175 @@
   <span>Doing It God's Way (It Works)</span>
 </div>
 
-<!-- PRODUCT HERO -->
-    <section class="product-page-hero">
-      <div class="product-page-inner">
-        <!-- Book Cover -->
-        <div class="animate-faderight">
-          <div class="product-book-cover" style="background:none;padding:0;position:relative;">
-            <!-- Spiritual background behind cover -->
-            <div class="book-bg-atmosphere"></div>
-            <img
-              src="../images/doing-it-gods-way-cover.jpg"
-              alt="Doing It God's Way (It Works) by Dennis Nickens"
-              class="digw-cover-img"
-            />
+
+  <!-- ============================================================
+       DIGW SALES PAGE HERO
+  ============================================================ -->
+  <div class="digw-hero">
+    <div class="digw-hero-inner">
+
+      <!-- LEFT: BOOK COVER (sticky on desktop) -->
+      <div class="digw-cover-col animate-faderight">
+        <div class="product-book-cover">
+          <div class="book-bg-atmosphere"></div>
+          <img
+            src="../images/doing-it-gods-way-cover.jpg"
+            alt="Doing It God's Way—It Works by Dennis S. Nickens"
+            class="digw-cover-img"
+          />
+        </div>
+
+        <!-- Book meta chips below cover -->
+        <div class="digw-book-meta" style="margin-top:16px;justify-content:center;">
+          <span class="digw-meta-chip">&#128197; Published 2015</span>
+          <span class="digw-meta-chip">&#128218; 177 Pages</span>
+          <span class="digw-meta-chip">&#9312; Faith &amp; Relationships</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: SALES COPY + BUY BOX -->
+      <div class="product-page-info animate-fadeleft">
+
+        <!-- Eyebrow badge -->
+        <div class="digw-book-badge">&#128218; Book</div>
+
+        <!-- Title block -->
+        <h1 class="digw-headline">
+          Doing It God's Way—<em>It Works</em>
+        </h1>
+        <p style="font-family:'Playfair Display',serif;font-size:16px;color:rgba(255,255,255,0.55);font-style:italic;margin-bottom:24px;line-height:1.4;">
+          Friendship Transitioning Into A Healthy Marriage
+        </p>
+
+        <!-- Hook headline -->
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.2vw,26px);font-weight:700;color:#FFD700;margin-bottom:12px;line-height:1.3;">
+          &#8220;What If Your Marriage Was Built Before You Ever Said &#8216;I Do&#8217;?&#8221;
+        </h2>
+
+        <!-- Subheadline -->
+        <p class="digw-subheadline">
+          The blueprint for relationships isn&#8217;t found in dating apps or Hollywood—it&#8217;s been in Genesis all along.
+        </p>
+
+        <!-- Body copy -->
+        <div class="digw-body">
+          <p style="margin-bottom:16px;">Most people spend more time planning a <strong>wedding</strong> than preparing for a <strong>marriage</strong>. They chase chemistry, ignore compatibility, and wonder why the fire fizzles.</p>
+          <p style="margin-bottom:16px;"><strong>Dennis S. Nickens</strong>—known as &#8220;The Spiritual Romeo&#8221;—went straight to the Source. In <em>Doing It God&#8217;s Way—It Works</em>, he unpacks the original design for love, partnership, and covenant:</p>
+        </div>
+
+        <!-- Arrow points -->
+        <ul class="digw-arrows">
+          <li><span class="arrow-icon">&#8594;</span><span>Why God created man <strong>FIRST</strong>—and what he needed to learn before meeting &#8220;her&#8221;</span></li>
+          <li><span class="arrow-icon">&#8594;</span><span>The sacred reason Eve was formed from Adam&#8217;s rib <em>(and why it changes how you see your spouse)</em></span></li>
+          <li><span class="arrow-icon">&#8594;</span><span>The difference between a marriage <strong>CONTRACT</strong> and a blood <strong>COVENANT</strong></span></li>
+          <li><span class="arrow-icon">&#8594;</span><span>The <strong>10 questions</strong> every couple must answer before the altar—including the ones nobody wants to ask</span></li>
+          <li><span class="arrow-icon">&#8594;</span><span>How to transition from &#8220;me&#8221; to &#8220;we&#8221; without losing your God-given purpose</span></li>
+        </ul>
+
+        <p class="digw-body" style="margin-bottom:24px;">This isn&#8217;t another relationship book filled with feel-good fluff. This is a <strong>spiritual roadmap</strong> for singles ready to stop playing games, couples ready to build on rock instead of sand, and parents ready to show their children what marriage is supposed to look like.</p>
+
+        <div class="digw-section-divider"></div>
+
+        <!-- Checklist for skimmers -->
+        <ul class="digw-checks">
+          <li>Biblical foundation from Genesis to Revelation</li>
+          <li>Practical application for real-world relationships</li>
+          <li>10 must-ask questions before marriage</li>
+          <li>Guidance on raising relationship-ready children</li>
+          <li>Healing for those recovering from past hurts</li>
+          <li>For singles, couples &amp; ministry leaders</li>
+        </ul>
+
+        <!-- CTA quote -->
+        <div class="digw-cta-quote">
+          &#8220;Stop guessing at love. Start building it God&#8217;s way.&#8221;
+        </div>
+
+        <!-- BUY BOX -->
+        <div class="digw-buy-box">
+          <div class="digw-price-row">
+            <span class="digw-price">$TBD</span>
+            <span class="digw-price-label">/ book</span>
+          </div>
+
+          <div class="digw-ebook-option">
+            <input type="checkbox" id="digitalDownload" name="digitalDownload" style="width:16px;height:16px;accent-color:#3B82F6;flex-shrink:0;">
+            <label for="digitalDownload">Add <strong>Digital E-Book</strong> version (+$TBD) — instant delivery</label>
+          </div>
+
+          <div class="digw-btn-group">
+            <button class="digw-btn-cart" onclick="addBookToCart('Doing It God\'s Way (It Works)','TBD')">
+              Add to Cart &#8594;
+            </button>
+            <button class="digw-btn-preview" onclick="window.open('#preview','_blank')">
+              Preview First Chapter
+            </button>
+          </div>
+
+          <div class="digw-trust-badges">
+            <span class="digw-trust-badge">&#9989; Free shipping over $50</span>
+            <span class="digw-trust-badge">&#128226; Instant digital delivery</span>
+            <span class="digw-trust-badge">&#128274; Secure checkout</span>
           </div>
         </div>
-        <!-- Book Info -->
-    <div class="product-page-info animate-fadeleft">
-      <div class="product-page-eyebrow">&#128218; Book</div>
-      <h1 class="product-page-title">Doing It God's Way (It Works)</h1>
-      <p class="product-page-desc">In <em>Doing It God's Way (It Works)</em>, Dennis Nickens cuts through the noise of modern relationship advice to deliver time-tested, faith-centered wisdom that actually works. Whether you're single, dating, or married, this book reveals how aligning your relationships with God's design unlocks the love, peace, and commitment you've always desired. With raw honesty and practical guidance drawn from years of consulting experience, Dennis shows you that when you do it God's way — it works every time.</p>
-      <!-- Digital Download Option -->
-      <div class="digital-option">
-        <input type="checkbox" id="digitalDownload" name="digitalDownload">
-        <label for="digitalDownload">Add <strong>Digital E-Book</strong> version (+$TBD)</label>
+
+      </div><!-- /product-page-info -->
+    </div><!-- /digw-hero-inner -->
+  </div><!-- /digw-hero -->
+
+  <!-- ============================================================
+       SOCIAL PROOF BANNER
+  ============================================================ -->
+  <div class="digw-social-proof">
+    <div class="digw-social-proof-inner">
+      <span class="digw-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <p class="digw-social-proof-text">
+        <strong>Join thousands who&#8217;ve discovered the difference between dating and purpose-driven partnership.</strong>
+        Readers from singles groups, marriage ministries, and counseling centers across the country trust Dennis S. Nickens to deliver truth without compromise.
+      </p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       ABOUT THE AUTHOR
+  ============================================================ -->
+  <div class="digw-author-section">
+    <div class="digw-author-inner">
+      <div>
+        <img
+          src="../images/dennis-nickens-hero.jpg"
+          alt="Dennis S. Nickens, The Spiritual Romeo"
+          class="digw-author-photo"
+        />
       </div>
-      <!-- Price & Add to Cart -->
-      <div class="add-cart-row">
-        <div>
-          <div class="product-page-price">$TBD <span>/ book</span></div>
-        </div>
-        <button class="btn btn-gold" onclick="addBookToCart('Doing It God's Way (It Works)','TBD')">
-          Add to Cart &rarr;
-        </button>
-      </div>
-      <!-- Trust badges -->
-      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06)">
-        <span style="font-size:12px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:6px">&#9989; Free shipping over $50</span>
-        <span style="font-size:12px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:6px">&#128196; Instant digital delivery</span>
-        <span style="font-size:12px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:6px">&#128274; Secure checkout</span>
+      <div>
+        <p class="digw-author-label">&#10022; About the Author</p>
+        <h3 class="digw-author-name">Dennis S. Nickens</h3>
+        <p class="digw-author-aka">AKA &#8220;The Spiritual Romeo&#8221; — Relationship Consultant</p>
+        <p class="digw-author-bio">
+          Dennis S. Nickens is a faith-centered relationship consultant, speaker, and author based in Indian Trail, NC. Known as &#8220;The Spiritual Romeo,&#8221; he has guided 500+ couples toward deeper, more God-honoring relationships. His approach bridges scripture with real-world practicality—no fluff, no compromise. <em>Doing It God&#8217;s Way—It Works</em> is his foundational text, drawn from Genesis and grounded in years of consulting experience.
+        </p>
       </div>
     </div>
   </div>
-</section>
 
-<!-- RELATED PRODUCTS -->
+  <!-- ============================================================
+       WHO THIS BOOK IS FOR
+  ============================================================ -->
+  <div class="digw-audience">
+    <p class="digw-audience-label">This book is for</p>
+    <div class="digw-audience-chips">
+      <span class="digw-audience-chip">&#128149; Singles tired of dead-end relationships</span>
+      <span class="digw-audience-chip">&#128141; Couples considering engagement</span>
+      <span class="digw-audience-chip">&#128106; Parents investing in their children&#8217;s future</span>
+      <span class="digw-audience-chip">&#9997; Ministry leaders &amp; counselors</span>
+      <span class="digw-audience-chip">&#128147; Anyone healing from divorce or betrayal</span>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="divider" style="margin:0 48px 0;"></div>
+
 <section class="related-section">
   <div class="related-inner">
     <h2 class="related-section-title">Also Available for <span style="color:#FFD700">Doing It God's Way (It Works)</span></h2>
@@ -257,6 +718,7 @@
   <a href="../store.html" class="btn btn-outline">&#8592; Back to Store</a>
 </div>
 
+
 <footer>
   <div class="footer-brand"><div class="nav-logo-wrap" style="margin:0 auto 16px"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div><p>Dennis Nickens AKA Spiritual Romeo — helping individuals and couples build the love they've always wanted.</p></div>
   <div class="footer-col"><h4>Quick Links</h4><a href="../index.html">Home</a><a href="../about.html">About</a><a href="../SpiritualRomeo_Assessment.html">Assessment</a><a href="../testimonials.html">Testimonials</a><a href="../book.html">Book Now</a><a href="../store.html">Store</a></div>
@@ -278,4 +740,6 @@ const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isI
 document.querySelectorAll('.animate-fadeup,.animate-fadeleft,.animate-faderight').forEach(el=>{el.style.animationPlayState='paused';observer.observe(el);});
 </script>
 </body>
+</html>
+
 </html>

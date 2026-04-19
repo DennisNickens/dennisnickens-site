@@ -244,6 +244,84 @@
       object-position: center;
       background: #1e293b;
     }
+  
+    /* ===== VARIANT SELECTOR ===== */
+    .digw-variants { margin-bottom: 20px; }
+    .digw-variants-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+    .digw-variant-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .digw-variant-option { cursor: pointer; }
+    .digw-variant-option input[type="checkbox"] { display: none; }
+    .digw-variant-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      border: 2px solid rgba(124,58,237,0.25);
+      border-radius: 10px;
+      background: rgba(15,23,42,0.6);
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .digw-variant-option input:checked + .digw-variant-card {
+      border-color: #7C3AED;
+      background: rgba(124,58,237,0.15);
+    }
+    .digw-variant-icon { font-size: 1.3rem; }
+    .digw-variant-name {
+      flex: 1;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #e2e8f0;
+    }
+    .digw-variant-price {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #FFD700;
+    }
+    .digw-variant-badge {
+      position: absolute;
+      top: -8px;
+      right: 12px;
+      background: #3B82F6;
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+    /* Order total */
+    .digw-order-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-top: 1px solid rgba(124,58,237,0.2);
+      border-bottom: 1px solid rgba(124,58,237,0.2);
+      margin-bottom: 18px;
+    }
+    .digw-total-label {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+    .digw-total-amount {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #FFD700;
+    }
   </style>
 </head>
 <body>
@@ -327,13 +405,46 @@
         <p class="digw-cta-quote">Stop guessing at love. Start building it God's way.</p>
 
         <!-- Buy Box -->
+        <!-- Buy Box -->
         <div class="digw-buy-box">
-          <div class="digw-price-row">
-            <span class="digw-price">$14.99</span>
+          <!-- Variant Selector -->
+          <div class="digw-variants">
+            <p class="digw-variants-label">Choose your format:</p>
+            <div class="digw-variant-options">
+              <label class="digw-variant-option">
+                <input type="checkbox" name="digw-variant" value="book" data-price="14.99" data-label="Physical Book" checked>
+                <span class="digw-variant-card">
+                  <span class="digw-variant-icon">📖</span>
+                  <span class="digw-variant-name">Physical Book</span>
+                  <span class="digw-variant-price">$14.99</span>
+                </span>
+              </label>
+              <label class="digw-variant-option">
+                <input type="checkbox" name="digw-variant" value="ebook" data-price="7.99" data-label="E-book (Instant Download)">
+                <span class="digw-variant-card">
+                  <span class="digw-variant-icon">📱</span>
+                  <span class="digw-variant-name">E-book</span>
+                  <span class="digw-variant-price">$7.99</span>
+                  <span class="digw-variant-badge">Instant Download</span>
+                </span>
+              </label>
+              <label class="digw-variant-option">
+                <input type="checkbox" name="digw-variant" value="tshirt" data-price="24.99" data-label="Companion T-Shirt">
+                <span class="digw-variant-card">
+                  <span class="digw-variant-icon">👕</span>
+                  <span class="digw-variant-name">Companion T-Shirt</span>
+                  <span class="digw-variant-price">$24.99</span>
+                </span>
+              </label>
+            </div>
           </div>
-          <p class="digw-format">Paperback &nbsp;|&nbsp; Also available as eBook</p>
+          <!-- Dynamic total -->
+          <div class="digw-order-total" id="digwTotal">
+            <span class="digw-total-label">Total:</span>
+            <span class="digw-total-amount" id="digwTotalAmt">$14.99</span>
+          </div>
           <div class="digw-btn-row">
-            <a href="#" class="digw-btn-primary" onclick="addToCart('doing-it-gods-way', 'Doing It God's Way It Works', 14.99); return false;">Add to Cart</a>
+            <button class="digw-btn-primary" onclick="digwAddToCart(); return false;">Add to Cart</button>
             <a href="#preview" class="digw-btn-secondary">Preview First Chapter</a>
           </div>
           <div class="digw-trust">
@@ -365,6 +476,91 @@ function drawLines(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particl
 function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw();});drawLines();requestAnimationFrame(animate);}animate();
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.style.animationPlayState='running';});},{threshold:.08});
 document.querySelectorAll('.animate-fadeup,.animate-fadeleft,.animate-faderight').forEach(el=>{el.style.animationPlayState='paused';observer.observe(el);});
+
+  // ===== CART SYSTEM =====
+  let cartData = JSON.parse(localStorage.getItem('sr_cart') || '{}');
+
+  function saveCart() {
+    localStorage.setItem('sr_cart', JSON.stringify(cartData));
+  }
+
+  function renderCart() {
+    const itemsEl = document.getElementById('cartItems');
+    const countEl = document.querySelector('.cart-count');
+    if (!itemsEl) return;
+    const keys = Object.keys(cartData);
+    let total = 0;
+    itemsEl.innerHTML = keys.length === 0
+      ? '<p style="color:#94a3b8;text-align:center;padding:20px">Your cart is empty</p>'
+      : keys.map(k => {
+          const item = cartData[k];
+          total += item.price * item.qty;
+          return '<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08)">' +
+            '<div><p style="margin:0;color:#e2e8f0;font-size:0.9rem">' + item.label + '</p>' +
+            '<p style="margin:2px 0 0;color:#94a3b8;font-size:0.8rem">Qty: ' + item.qty + ' x $' + item.price.toFixed(2) + '</p></div>' +
+            '<button onclick="removeFromCart('' + k + '')" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:1.1rem">&#x2715;</button>' +
+            '</div>';
+        }).join('');
+    const totalLine = keys.length > 0
+      ? '<div style="display:flex;justify-content:space-between;padding:14px 0 0;font-weight:700"><span style="color:#e2e8f0">Total</span><span style="color:#FFD700">$' + total.toFixed(2) + '</span></div>'
+      : '';
+    itemsEl.innerHTML += totalLine;
+    if (countEl) countEl.textContent = keys.reduce((s, k) => s + cartData[k].qty, 0) || '';
+  }
+
+  function addToCart(id, label, price) {
+    if (cartData[id]) { cartData[id].qty++; }
+    else { cartData[id] = { label, price, qty: 1 }; }
+    saveCart();
+    renderCart();
+    toggleCart();
+  }
+
+  function removeFromCart(id) {
+    delete cartData[id];
+    saveCart();
+    renderCart();
+  }
+
+  function toggleCart() {
+    const overlay = document.querySelector('.cart-overlay');
+    if (overlay) overlay.classList.toggle('open');
+  }
+
+  // ===== VARIANT SELECTOR =====
+  function digwUpdateTotal() {
+    const checkboxes = document.querySelectorAll('.digw-variant-option input[type="checkbox"]');
+    let total = 0;
+    checkboxes.forEach(cb => { if (cb.checked) total += parseFloat(cb.dataset.price); });
+    const totalEl = document.getElementById('digwTotalAmt');
+    if (totalEl) totalEl.textContent = total > 0 ? '$' + total.toFixed(2) : '$0.00';
+  }
+
+  function digwAddToCart() {
+    const checkboxes = document.querySelectorAll('.digw-variant-option input[type="checkbox"]');
+    let added = 0;
+    checkboxes.forEach(cb => {
+      if (cb.checked) {
+        const id = 'digw-' + cb.value;
+        const label = 'Doing It God's Way: ' + cb.dataset.label;
+        const price = parseFloat(cb.dataset.price);
+        if (cartData[id]) { cartData[id].qty++; }
+        else { cartData[id] = { label, price, qty: 1 }; }
+        added++;
+      }
+    });
+    if (added > 0) { saveCart(); renderCart(); toggleCart(); }
+  }
+
+  // Bind variant checkboxes on load
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', digwUpdateTotal);
+    });
+    digwUpdateTotal();
+    renderCart();
+  });
+
 </script>
 </body>
 </html>

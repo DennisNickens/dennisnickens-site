@@ -1,1 +1,206 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Stepping Up &#8212; Dennis Nickens | Spiritual Romeo Store</title><meta name="description" content="Owning your role and showing up fully in every relationship."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/store.css"></head><body><canvas id="particles-canvas"></canvas><div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div><div class="cart-drawer" id="cartDrawer"><div class="cart-header"><h3>Your Cart</h3><button class="cart-close" onclick="toggleCart()">&times;</button></div><div class="cart-items" id="cartItems"><div class="cart-empty" id="cartEmpty"><div style="font-size:48px;margin-bottom:16px">&#128722;</div><p>Your cart is empty</p></div></div><div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div><p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px">Shipping &amp; taxes calculated at checkout</p><a href="../checkout.html" class="btn btn-gold" style="width:100%;text-align:center;display:block">Proceed to Checkout</a><button onclick="toggleCart()" class="btn btn-outline" style="width:100%;text-align:center;margin-top:10px;padding:12px">Continue Shopping</button></div></div><nav id="navbar"><a href="../index.html" class="nav-brand"><div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div><div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div></a><ul class="nav-links" id="navLinks"><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../SpiritualRomeo_Assessment.html">Assessment</a></li><li><a href="../testimonials.html">Testimonials</a></li><li><a href="../book.html" class="nav-cta">Book Now</a></li><li><a href="../store.html" class="active">Store</a></li></ul><div style="display:flex;align-items:center;gap:12px"><button class="cart-btn" id="cartBtn" onclick="toggleCart()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg><span class="cart-count" id="cartCount" style="display:none">0</span></button><div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div></div></nav><div class="breadcrumb"><a href="../store.html">Store</a><span>&#8250;</span><a href="../store.html">Books</a><span>&#8250;</span><span>Stepping Up</span></div><section class="product-page-hero"><div class="product-page-inner"><div class="animate-faderight"><div class="product-book-cover"><div class="product-book-3d"><div class="book-spine"></div><div class="book-front"><span class="book-icon">&#128170;</span><p class="book-cover-title">Stepping Up</p></div></div><p class="cover-note">&#128247; Book cover image coming soon</p></div></div><div class="product-page-info animate-fadeleft"><div class="product-page-eyebrow">&#128218; Book</div><h1 class="product-page-title">Stepping Up</h1><p class="product-page-desc"><em>Stepping Up</em> is a challenge and a charge. Dennis Nickens speaks directly to those who know they have more to give — in their relationships, their families, and their own lives. This book dismantles the excuses and provides a clear, practical roadmap for becoming the person your partner, family, and community need you to be.</p><div class="digital-option"><input type="checkbox" id="digitalDownload" name="digitalDownload"><label for="digitalDownload">Add <strong>Digital E-Book</strong> version (+$TBD)</label></div><div class="add-cart-row"><div><div class="product-page-price">$TBD <span>/ book</span></div></div><button class="btn btn-gold" onclick="addBookToCart('Stepping Up','TBD')">Add to Cart &rarr;</button></div><div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06)"><span style="font-size:12px;color:rgba(255,255,255,0.35)">&#9989; Free shipping over $50</span><span style="font-size:12px;color:rgba(255,255,255,0.35)">&#128196; Instant digital delivery</span><span style="font-size:12px;color:rgba(255,255,255,0.35)">&#128274; Secure checkout</span></div></div></div></section><section class="related-section"><div class="related-inner"><h2 class="related-section-title">Also Available for <span style="color:#FFD700">Stepping Up</span></h2><div class="related-grid"><div class="rp-card"><div class="rp-img-placeholder"><span>&#128196;</span><p>E-Book</p></div><div class="rp-title">Stepping Up E-Book</div><p class="rp-desc">Download instantly and read on any device.</p><div class="rp-footer"><span class="rp-price">$TBD</span><button class="btn btn-gold btn-sm" onclick="SRCart.add('Stepping Up E-Book','TBD',{icon:'&#128196;',format:'Digital Download'})">Add to Cart</button></div></div><div class="rp-card"><div class="rp-img-placeholder"><span>&#128218;</span><p>Stepping Up Workbook</p></div><div class="rp-title">Stepping Up Workbook</div><p class="rp-desc">Companion workbook with exercises and reflection prompts.</p><div class="rp-footer"><span class="rp-price">$TBD</span><button class="btn btn-gold btn-sm" onclick="SRCart.add('Stepping Up Workbook','TBD',{icon:'&#128218;'})">Add to Cart</button></div></div><div class="rp-card"><div class="rp-img-placeholder" style="background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(59,130,246,0.08))"><span>&#128085;</span><p>T-Shirt</p></div><div class="rp-title">Stepping Up T-Shirt</div><p class="rp-desc">Book-inspired design. Premium quality tee.</p><div class="size-selector" style="margin-bottom:10px"><label>Size:</label><div class="size-options"><button class="size-btn" onclick="selectSize(this)">S</button><button class="size-btn" onclick="selectSize(this)">M</button><button class="size-btn" onclick="selectSize(this)">L</button><button class="size-btn" onclick="selectSize(this)">XL</button><button class="size-btn" onclick="selectSize(this)">2XL</button><button class="size-btn" onclick="selectSize(this)">3XL</button></div></div><div class="color-selector" style="margin-bottom:10px"><label>Color:</label><div class="color-options"><button class="color-swatch" style="background:#0F172A" title="Navy" onclick="selectColor(this)"></button><button class="color-swatch" style="background:#1a1a1a" title="Black" onclick="selectColor(this)"></button><button class="color-swatch" style="background:#fff;border:1px solid rgba(255,255,255,0.2)" title="White" onclick="selectColor(this)"></button><button class="color-swatch" style="background:#7C3AED" title="Purple" onclick="selectColor(this)"></button></div></div><div class="rp-footer"><span class="rp-price">$TBD</span><button class="btn btn-gold btn-sm" onclick="addToCartFromCard(this,'Stepping Up T-Shirt','TBD')">Add to Cart</button></div></div></div></div></section><section class="bundle-section"><div class="bundle-inner"><h2 class="bundle-section-title">&#127873; Save More with a <span style="color:#FFD700">Bundle</span></h2><div class="bundle-grid"><div class="bundle-card"><span class="bundle-badge">BUNDLE 1</span><div class="bundle-title">Book + Workbook</div><div class="bundle-items"><div class="bundle-item">Stepping Up (Book)</div><div class="bundle-item">Stepping Up Workbook</div></div><div class="bundle-price-row"><span class="bundle-price">$TBD</span><span class="bundle-save">Save $TBD</span></div><button class="btn btn-gold" style="width:100%" onclick="addBundleToCart('Stepping Up: Book + Workbook','TBD')">Add Bundle to Cart</button></div><div class="bundle-card"><span class="bundle-badge">BUNDLE 2</span><div class="bundle-title">Book + Workbook + T-Shirt</div><div class="bundle-items"><div class="bundle-item">Stepping Up (Book)</div><div class="bundle-item">Stepping Up Workbook</div><div class="bundle-item">Stepping Up T-Shirt</div></div><div class="bundle-price-row"><span class="bundle-price">$TBD</span><span class="bundle-save">Best Value</span></div><button class="btn btn-gold" style="width:100%" onclick="addBundleToCart('Stepping Up: Complete Bundle','TBD')">Add Bundle to Cart</button></div><div class="bundle-card"><span class="bundle-badge">BUNDLE 3</span><div class="bundle-title">Book + T-Shirt</div><div class="bundle-items"><div class="bundle-item">Stepping Up (Book)</div><div class="bundle-item">Stepping Up T-Shirt</div></div><div class="bundle-price-row"><span class="bundle-price">$TBD</span><span class="bundle-save">Save $TBD</span></div><button class="btn btn-gold" style="width:100%" onclick="addBundleToCart('Stepping Up: Book + T-Shirt','TBD')">Add Bundle to Cart</button></div></div></div></section><div style="text-align:center;padding:0 0 80px;position:relative;z-index:1"><a href="../store.html" class="btn btn-outline">&#8592; Back to Store</a></div><footer><div class="footer-brand"><div class="nav-logo-wrap" style="margin:0 auto 16px"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div><p>Dennis Nickens AKA Spiritual Romeo.</p></div><div class="footer-col"><h4>Quick Links</h4><a href="../index.html">Home</a><a href="../about.html">About</a><a href="../store.html">Store</a><a href="../book.html">Book Now</a></div><div class="footer-col"><h4>Contact</h4><p>&#128231; dennis@dennisnickens.com</p><p>&#128205; Indian Trail, NC</p></div></footer><div class="footer-bottom"><span>&copy; 2026 Dennis Nickens &#8212; Spiritual Romeo. All rights reserved.</span><a href="../book.html">Book a Free Consultation &rarr;</a></div><script src="../js/cart.js"></script><script>window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}const canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');let particles=[];function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);class Particle{constructor(){this.reset();}reset(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.radius=Math.random()*1.6+.3;this.alpha=Math.random()*.45+.08;const r=Math.random();this.color=r>.65?'#7C3AED':r>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;ctx.fill();ctx.globalAlpha=1;}}for(let i=0;i<60;i++)particles.push(new Particle());function drawLines(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<110){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='#7C3AED';ctx.globalAlpha=(1-dist/110)*.10;ctx.lineWidth=.5;ctx.stroke();ctx.globalAlpha=1;}}}}function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw();});drawLines();requestAnimationFrame(animate);}animate();</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stepping Up: Leadership Principles For Today's Challenges by Dennis Nickens, The Spiritual Romeo. Practical leadership wisdom for men ready to lead with purpose.">
+  <title>Stepping Up: Leadership Principles For Today's Challenges | Dennis Nickens, The Spiritual Romeo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/store.css">
+  <style>
+    .digw-page-wrap{max-width:1100px;margin:0 auto;padding:100px 24px 60px;}
+    .digw-breadcrumb{font-size:0.85rem;color:#94a3b8;margin-bottom:36px;}
+    .digw-breadcrumb a{color:#94a3b8;text-decoration:none;}
+    .digw-breadcrumb a:hover{color:#FFD700;}
+    .digw-breadcrumb span{margin:0 6px;}
+    .digw-hero{display:grid;grid-template-columns:320px 1fr;gap:56px;align-items:start;margin-bottom:60px;}
+    .digw-cover-col{position:sticky;top:90px;}
+    .digw-cover-wrap{width:100%;max-width:320px;border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 40px rgba(124,58,237,0.2);}
+    .digw-cover-wrap img{display:block;width:100%;height:auto;max-height:460px;object-fit:contain;object-position:center;background:#1e293b;}
+    .digw-copy-col{display:flex;flex-direction:column;gap:0;}
+    .digw-subtitle{font-size:0.9rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#7C3AED;margin-bottom:10px;}
+    .digw-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:#FFFFFF;line-height:1.15;margin-bottom:6px;}
+    .digw-title em{font-style:italic;color:#FFD700;}
+    .digw-byline{font-size:0.95rem;color:#94a3b8;margin-bottom:28px;}
+    .digw-byline strong{color:#cbd5e1;}
+    .digw-divider{width:60px;height:3px;background:linear-gradient(90deg,#7C3AED,#3B82F6);border-radius:2px;margin-bottom:28px;}
+    .digw-para{font-size:1.05rem;line-height:1.8;color:#cbd5e1;margin-bottom:22px;}
+    .digw-cta-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;color:#FFD700;border-left:3px solid #FFD700;padding-left:18px;margin:28px 0 32px;line-height:1.5;}
+    .digw-buy-box{background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(59,130,246,0.08));border:1px solid rgba(124,58,237,0.3);border-radius:12px;padding:28px 24px;}
+    .digw-variants{margin-bottom:20px;}
+    .digw-variants-label{font-size:0.85rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:12px;}
+    .digw-variant-options{display:flex;flex-direction:column;gap:10px;}
+    .digw-variant-option{cursor:pointer;}
+    .digw-variant-option input[type="checkbox"]{display:none;}
+    .digw-variant-card{display:flex;align-items:center;gap:12px;padding:13px 16px;border:2px solid rgba(124,58,237,0.25);border-radius:10px;background:rgba(15,23,42,0.6);transition:border-color 0.2s,background 0.2s;position:relative;}
+    .digw-variant-option input:checked + .digw-variant-card{border-color:#7C3AED;background:rgba(124,58,237,0.15);}
+    .digw-variant-icon{font-size:1.3rem;}
+    .digw-variant-name{flex:1;font-size:0.95rem;font-weight:500;color:#e2e8f0;}
+    .digw-variant-price{font-size:1rem;font-weight:700;color:#FFD700;}
+    .digw-variant-badge{position:absolute;top:-8px;right:12px;background:#3B82F6;color:#fff;font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px;}
+    .digw-order-total{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-top:1px solid rgba(124,58,237,0.2);border-bottom:1px solid rgba(124,58,237,0.2);margin-bottom:18px;}
+    .digw-total-label{font-size:0.9rem;color:#94a3b8;font-weight:500;}
+    .digw-total-amount{font-size:1.5rem;font-weight:700;color:#FFD700;}
+    .digw-btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px;}
+    .digw-btn-primary{flex:1;min-width:160px;padding:15px 24px;background:linear-gradient(135deg,#7C3AED,#3B82F6);color:#fff;font-size:1rem;font-weight:600;border:none;border-radius:8px;cursor:pointer;text-align:center;text-decoration:none;transition:opacity 0.2s,transform 0.2s;display:inline-block;}
+    .digw-btn-primary:hover{opacity:0.9;transform:translateY(-1px);}
+    .digw-btn-secondary{flex:1;min-width:160px;padding:15px 24px;background:transparent;color:#7C3AED;font-size:1rem;font-weight:600;border:2px solid #7C3AED;border-radius:8px;cursor:pointer;text-align:center;text-decoration:none;transition:background 0.2s,color 0.2s;display:inline-block;}
+    .digw-btn-secondary:hover{background:rgba(124,58,237,0.12);color:#fff;}
+    .digw-trust{display:flex;gap:18px;flex-wrap:wrap;font-size:0.8rem;color:#64748b;}
+    .digw-trust span::before{content:"✓ ";color:#22c55e;}
+    @media(max-width:860px){.digw-hero{grid-template-columns:1fr;gap:32px;}.digw-cover-col{position:static;display:flex;justify-content:center;}.digw-cover-wrap{max-width:240px;}.digw-page-wrap{padding-top:90px;}}
+    @media(max-width:480px){.digw-cover-wrap{max-width:200px;}.digw-btn-row{flex-direction:column;}.digw-title{font-size:1.7rem;}}
+  </style>
+</head>
+<body>
+<canvas id="particles-canvas"></canvas>
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header"><h3>Your Cart</h3><button class="cart-close" onclick="toggleCart()">&times;</button></div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty"><div style="font-size:48px;margin-bottom:16px">&#128722;</div><p>Your cart is empty</p></div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+    <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px">Shipping &amp; taxes calculated at checkout</p>
+    <a href="../checkout.html" class="btn btn-gold" style="width:100%;text-align:center;display:block">Proceed to Checkout</a>
+    <button onclick="toggleCart()" class="btn btn-outline" style="width:100%;text-align:center;margin-top:10px;padding:12px">Continue Shopping</button>
+  </div>
+</div>
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../SpiritualRomeo_Assessment.html">Assessment</a></li>
+    <li><a href="../testimonials.html">Testimonials</a></li>
+    <li><a href="../community.html">Community</a></li>
+    <li><a href="../book.html" class="nav-cta">Book Now</a></li>
+    <li><a href="../store.html" class="active">Store</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px">
+    <button class="cart-btn" id="cartBtn" onclick="toggleCart()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
+      <span class="cart-count" id="cartCount" style="display:none">0</span>
+    </button>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="digw-page-wrap">
+  <nav class="digw-breadcrumb" aria-label="breadcrumb">
+    <a href="../index.html">Home</a>
+    <span>&#8250;</span>
+    <a href="../store.html">Store</a>
+    <span>&#8250;</span>
+    Stepping Up
+  </nav>
+
+  <div class="digw-hero">
+    <div class="digw-cover-col">
+      <div class="digw-cover-wrap">
+        <img src="../images/stepping-up-cover.jpg" alt="Stepping Up: Leadership Principles For Today's Challenges book cover by Dennis Nickens" width="320">
+      </div>
+    </div>
+
+    <div class="digw-copy-col">
+      <p class="digw-subtitle">Leadership Principles For Today's Challenges</p>
+      <h1 class="digw-title">Stepping Up <em>Leadership Principles For Today's Challenges</em></h1>
+      <p class="digw-byline">By <strong>Dennis Nickens</strong>, AKA "The Spiritual Romeo"</p>
+      <div class="digw-divider"></div>
+      <p class="digw-para">Leadership has never been more demanding — or more necessary. Whether you lead a family, a team, a business, or a community, the challenges of today require a different kind of leader. Stepping Up gives you the principles to rise to the moment with clarity, courage, and conviction.</p>
+      <p class="digw-para">Dennis Nickens draws from years of real-world experience to deliver leadership wisdom that is both practical and purpose-driven. Learn how to lead under pressure, communicate with authority, build trust with those who follow you, and make decisions that reflect your values even when the stakes are high. This isn't theory — it's the blueprint for stepping up when it matters most.</p>
+      <p class="digw-cta-quote">The world doesn't need more managers. It needs more leaders. Step up.</p>
+
+      <div class="digw-buy-box">
+        <div class="digw-variants">
+          <p class="digw-variants-label">Choose your format:</p>
+          <div class="digw-variant-options">
+            <label class="digw-variant-option">
+              <input type="checkbox" name="su-variant" value="book" data-price="14.99" data-label="Physical Book" checked>
+              <span class="digw-variant-card">
+                <span class="digw-variant-icon">&#128214;</span>
+                <span class="digw-variant-name">Physical Book</span>
+                <span class="digw-variant-price">$14.99</span>
+              </span>
+            </label>
+            <label class="digw-variant-option">
+              <input type="checkbox" name="su-variant" value="ebook" data-price="7.99" data-label="E-Book (Instant Download)">
+              <span class="digw-variant-card">
+                <span class="digw-variant-icon">&#128241;</span>
+                <span class="digw-variant-name">E-Book</span>
+                <span class="digw-variant-price">$7.99</span>
+                <span class="digw-variant-badge">Instant Download</span>
+              </span>
+            </label>
+            <label class="digw-variant-option">
+              <input type="checkbox" name="su-variant" value="workbook" data-price="12.99" data-label="Workbook">
+              <span class="digw-variant-card">
+                <span class="digw-variant-icon">&#128218;</span>
+                <span class="digw-variant-name">Workbook</span>
+                <span class="digw-variant-price">$12.99</span>
+              </span>
+            </label>
+            <label class="digw-variant-option">
+              <input type="checkbox" name="su-variant" value="tshirt" data-price="24.99" data-label="Companion T-Shirt">
+              <span class="digw-variant-card">
+                <span class="digw-variant-icon">&#128085;</span>
+                <span class="digw-variant-name">Companion T-Shirt</span>
+                <span class="digw-variant-price">$24.99</span>
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="digw-order-total" id="suTotal">
+          <span class="digw-total-label">Total:</span>
+          <span class="digw-total-amount" id="suTotalAmt">$14.99</span>
+        </div>
+        <div class="digw-btn-row">
+          <button class="digw-btn-primary" onclick="suAddToCart(); return false;">Add to Cart</button>
+          <a href="../store.html" class="digw-btn-secondary">&#8592; Back to Store</a>
+        </div>
+        <div class="digw-trust">
+          <span>Secure Checkout</span>
+          <span>Faith-Based Content</span>
+          <span>Instant Confirmation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand"><div class="nav-logo-wrap" style="margin:0 auto 16px"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div><p>Dennis Nickens AKA Spiritual Romeo — helping individuals and couples build the love they've always wanted.</p></div>
+  <div class="footer-col"><h4>Quick Links</h4><a href="../index.html">Home</a><a href="../about.html">About</a><a href="../SpiritualRomeo_Assessment.html">Assessment</a><a href="../testimonials.html">Testimonials</a><a href="../book.html">Book Now</a><a href="../store.html">Store</a></div>
+  <div class="footer-col"><h4>Contact</h4><p>&#128231; dennis@dennisnickens.com</p><p>&#128205; Indian Trail, NC</p></div>
+</footer>
+<div class="footer-bottom"><span>&copy; 2026 Dennis Nickens — Spiritual Romeo. All rights reserved.</span><a href="../book.html">Book a Free Consultation &rarr;</a></div>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+const canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');let particles=[];
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);
+class Particle{constructor(){this.reset();}reset(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.radius=Math.random()*1.6+.3;this.alpha=Math.random()*.45+.08;const r=Math.random();this.color=r>.65?'#7C3AED':r>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;ctx.fill();ctx.globalAlpha=1;}}
+for(let i=0;i<60;i++)particles.push(new Particle());
+function drawLines(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<110){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='#7C3AED';ctx.globalAlpha=(1-dist/110)*.10;ctx.lineWidth=.5;ctx.stroke();ctx.globalAlpha=1;}}}}
+function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw();});drawLines();requestAnimationFrame(animate);}animate();
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.style.animationPlayState='running';});},{threshold:.08});
+document.querySelectorAll('.animate-fadeup,.animate-fadeleft,.animate-faderight').forEach(el=>{el.style.animationPlayState='paused';observer.observe(el);});
+let cartData=JSON.parse(localStorage.getItem('sr_cart')||'{}');
+function saveCart(){localStorage.setItem('sr_cart',JSON.stringify(cartData));}
+function renderCart(){const itemsEl=document.getElementById('cartItems');const countEl=document.querySelector('.cart-count');if(!itemsEl)return;const keys=Object.keys(cartData);let total=0;let html='';if(keys.length===0){html='<p style="color:#94a3b8;text-align:center;padding:20px">Your cart is empty</p>';}else{keys.forEach(function(k){const item=cartData[k];total+=item.price*item.qty;html+='<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08)">';html+='<div><p style="margin:0;color:#e2e8f0;font-size:0.9rem">'+item.label+'</p>';html+='<p style="margin:2px 0 0;color:#94a3b8;font-size:0.8rem">Qty: '+item.qty+'</p></div>';html+='<button data-remove="'+k+'" class="cart-remove-btn" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:1.2rem">&times;</button>';html+='</div>';});html+='<div style="display:flex;justify-content:space-between;padding:14px 0 0;font-weight:700"><span style="color:#e2e8f0">Total</span><span style="color:#FFD700">$'+total.toFixed(2)+'</span></div>';}itemsEl.innerHTML=html;const qty=keys.reduce(function(s,k){return s+cartData[k].qty;},0);if(countEl)countEl.textContent=qty||'';}
+function toggleCart(){const overlay=document.querySelector('.cart-overlay');if(overlay)overlay.classList.toggle('open');}
+document.addEventListener('click',function(e){const btn=e.target.closest('[data-remove]');if(btn){delete cartData[btn.getAttribute('data-remove')];saveCart();renderCart();}});
+function suUpdateTotal(){let total=0;document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){if(cb.checked)total+=parseFloat(cb.dataset.price);});const el=document.getElementById('suTotalAmt');if(el)el.textContent=total>0?'$'+total.toFixed(2):'$0.00';}
+function suAddToCart(){let added=0;document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){if(cb.checked){const id='su-'+cb.value;const label='Stepping Up: '+cb.dataset.label;const price=parseFloat(cb.dataset.price);if(cartData[id]){cartData[id].qty++;}else{cartData[id]={label:label,price:price,qty:1};}added++;}});if(added>0){saveCart();renderCart();toggleCart();}}
+document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){cb.addEventListener('change',suUpdateTotal);});suUpdateTotal();renderCart();});
+</script>
+</body>
+</html>

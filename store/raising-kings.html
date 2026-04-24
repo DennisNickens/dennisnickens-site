@@ -221,5 +221,6 @@ function rkUpdateTotal(){let total=0;document.querySelectorAll('.digw-variant-op
 function rkAddToCart(){let added=0;document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){if(cb.checked){const id='rk-'+cb.value;const label='Raising Kings: '+cb.dataset.label;const price=parseFloat(cb.dataset.price);if(cartData[id]){cartData[id].qty++;}else{cartData[id]={label:label,price:price,qty:1};}added++;}});if(added>0){saveCart();renderCart();toggleCart();}}
 document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){cb.addEventListener('change',rkUpdateTotal);});rkUpdateTotal();renderCart();});
 </script>
+<!-- price fix v2 -->
 </body>
 </html>

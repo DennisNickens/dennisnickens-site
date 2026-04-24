@@ -123,11 +123,11 @@
           <p class="digw-variants-label">Choose your format:</p>
           <div class="digw-variant-options">
             <label class="digw-variant-option">
-              <input type="checkbox" name="su-variant" value="book" data-price="14.99" data-label="Physical Book" checked>
+              <input type="checkbox" name="su-variant" value="book" data-price="29.95" data-label="Physical Book" checked>
               <span class="digw-variant-card">
                 <span class="digw-variant-icon">&#128214;</span>
                 <span class="digw-variant-name">Physical Book</span>
-                <span class="digw-variant-price">$14.99</span>
+                <span class="digw-variant-price"></span>9.95</span>
               </span>
             </label>
             <label class="digw-variant-option">
@@ -140,11 +140,12 @@
               </span>
             </label>
             <label class="digw-variant-option">
-              <input type="checkbox" name="su-variant" value="workbook" data-price="12.99" data-label="Workbook">
+              <input type="checkbox" name="su-variant" value="workbook" data-price="14.95" data-label="Workbook">
               <span class="digw-variant-card">
                 <span class="digw-variant-icon">&#128218;</span>
                 <span class="digw-variant-name">Workbook</span>
-                <span class="digw-variant-price">$12.99</span>
+                <span class="digw-variant-price"><span class="digw-variant-name">Workbook</span>
+                <span class="digw-variant-price">4.95</span>
               </span>
             </label>
             <label class="digw-variant-option">
@@ -155,11 +156,29 @@
                 <span class="digw-variant-price">$24.99</span>
               </span>
             </label>
+          <label class="digw-variant-option">
+              <input type="checkbox" name="su-variant" value="bundle-book-workbook" data-price="39.95" data-label="Bundle: Book + Workbook">
+              <span class="digw-variant-card">
+                <span class="digw-variant-icon">📦</span>
+                <span class="digw-variant-name">Bundle: Book + Workbook</span>
+                <span class="digw-variant-price">$39.95</span>
+                <span class="digw-variant-badge">Save $5</span>
+              </span>
+            </label>
+            <label class="digw-variant-option">
+              <input type="checkbox" name="su-variant" value="bundle-book-workbook-tshirt" data-price="62.95" data-label="Bundle: Book + Workbook + T-Shirt">
+              <span class="digw-variant-card">
+                <span class="digw-variant-icon">🎁</span>
+                <span class="digw-variant-name">Bundle: Book + Workbook + T-Shirt</span>
+                <span class="digw-variant-price">$62.95</span>
+                <span class="digw-variant-badge">Best Value</span>
+              </span>
+            </label>
           </div>
         </div>
         <div class="digw-order-total" id="suTotal">
           <span class="digw-total-label">Total:</span>
-          <span class="digw-total-amount" id="suTotalAmt">$14.99</span>
+          <span class="digw-total-amount" id="suTotalAmt">$29.95</span>
         </div>
         <div class="digw-btn-row">
           <button class="digw-btn-primary" onclick="suAddToCart(); return false;">Add to Cart</button>

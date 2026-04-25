@@ -4,679 +4,903 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Alignment Assessment | Dennis Nickens — Spiritual Romeo</title>
-<meta name="description" content="Discover your path forward. Take the Alignment Assessment with Dennis Nickens, Spiritual Romeo — Behavior & Communication Consultant.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="The Alignment Assessment — A consulting-based assessment designed to give you clarity and direction based on how you are uniquely wired.">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;scroll-behavior:smooth}
-body{font-family:"Inter",sans-serif;background:#FAF9F6;color:#2C2C2C;min-height:100vh;overflow-x:hidden}
-:root{--navy:#1A237E;--gold:#D4AF37;--cream:#FAF9F6;--charcoal:#4A4A4A;--light-gold:#F5E6A3;--soft-white:#FFFFFF;--shadow:rgba(0,0,0,0.12)}
-a{text-decoration:none;color:inherit}
-.back-link{position:fixed;top:24px;left:28px;z-index:100;display:flex;align-items:center;gap:8px;color:var(--charcoal);font-size:14px;font-weight:500;padding:8px 14px;border-radius:40px;background:rgba(255,255,255,0.85);backdrop-filter:blur(8px);border:1px solid rgba(26,35,126,0.12);transition:all 0.2s ease;cursor:pointer}
-.back-link:hover{background:var(--navy);color:#fff;transform:translateX(-2px)}
-.back-link svg{width:16px;height:16px;flex-shrink:0}
-.hero{min-height:100vh;display:flex;align-items:stretch}
-.hero-photo{flex:0 0 55%;position:relative;overflow:hidden}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
-.hero-photo-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 70%,rgba(250,249,246,0.5))}
-.hero-content{flex:0 0 45%;display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 56px;background:var(--cream)}
-.brand-mark{display:flex;align-items:center;gap:12px;margin-bottom:40px}
-.brand-mark .monogram{width:52px;height:52px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:"Playfair Display",serif;font-weight:700;font-size:22px;letter-spacing:-1px;flex-shrink:0}
-.brand-mark .brand-text{display:flex;flex-direction:column}
-.brand-mark .brand-name{font-family:"Playfair Display",serif;font-weight:700;font-size:15px;color:var(--navy);line-height:1.2}
-.brand-mark .brand-sub{font-size:11px;font-weight:500;color:var(--charcoal);letter-spacing:1.5px;text-transform:uppercase;line-height:1.4}
-.eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-.headline{font-family:"Playfair Display",serif;font-size:clamp(40px,4.5vw,60px);font-weight:800;color:var(--navy);line-height:1.1;margin-bottom:20px}
-.headline span{color:var(--gold);font-style:italic}
-.subheadline{font-size:clamp(18px,2vw,22px);font-weight:300;color:var(--charcoal);line-height:1.6;margin-bottom:48px;max-width:400px}
-.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--gold);color:var(--navy);font-family:"Inter",sans-serif;font-size:18px;font-weight:700;padding:20px 44px;border-radius:14px;border:none;cursor:pointer;transition:all 0.22s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 4px 16px rgba(212,175,55,0.3);letter-spacing:0.3px;width:100%;max-width:380px;text-align:center}
-.cta-btn:hover{transform:scale(1.05);box-shadow:0 8px 24px rgba(0,0,0,0.13),0 4px 16px rgba(212,175,55,0.4)}
-.cta-btn:active{transform:scale(0.98)}
-.cta-btn svg{width:20px;height:20px;flex-shrink:0}
-.trust-note{margin-top:20px;font-size:13px;color:#888;display:flex;align-items:center;gap:6px}
-.trust-note::before{content:"✓";color:var(--gold);font-weight:700}
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(15,20,60,0.7);backdrop-filter:blur(6px);z-index:1000;align-items:center;justify-content:center;padding:20px}
-.modal-overlay.active{display:flex}
-.modal-box{background:var(--soft-white);border-radius:24px;padding:48px 44px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 24px 64px rgba(15,20,60,0.25)}
-.modal-close{position:absolute;top:20px;right:20px;background:none;border:none;cursor:pointer;color:#aaa;font-size:24px;padding:4px;border-radius:50%;transition:all 0.2s;display:flex;align-items:center;justify-content:center;width:36px;height:36px}
-.modal-close:hover{background:#f0f0f0;color:#333}
-.progress-wrap{margin-bottom:32px}
-.progress-label{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:10px;letter-spacing:0.5px}
-.progress-bar{height:4px;background:#E8E8E8;border-radius:99px;overflow:hidden}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--navy),var(--gold));border-radius:99px;transition:width 0.4s ease}
-.question-block{display:none}
-.question-block.active{display:block;animation:fadeSlide 0.35s ease}
-@keyframes fadeSlide{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
-.q-number{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.q-text{font-family:"Playfair Display",serif;font-size:clamp(20px,2.5vw,26px);font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:28px}
-.options-grid{display:flex;flex-direction:column;gap:12px}
-.option-card{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border:2px solid #E8E8E8;border-radius:12px;cursor:pointer;transition:all 0.18s ease;background:#fff}
-.option-card:hover{border-color:var(--navy);background:#F6F7FF}
-.option-card.selected{border-color:var(--navy);background:#EEF0FF}
-.option-icon{font-size:22px;flex-shrink:0;line-height:1;margin-top:2px}
-.option-label{font-size:15px;font-weight:500;color:#2C2C2C;line-height:1.4}
-.option-desc{font-size:13px;color:#888;margin-top:3px;font-weight:400}
-.nav-row{display:flex;gap:12px;margin-top:28px}
-.btn-back{flex:0 0 auto;padding:14px 24px;border:2px solid #E0E0E0;background:none;border-radius:10px;font-size:14px;font-weight:600;color:#666;cursor:pointer;transition:all 0.18s}
-.btn-back:hover{border-color:var(--charcoal);color:var(--charcoal)}
-.btn-next{flex:1;padding:14px 32px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.2s;letter-spacing:0.3px}
-.btn-next:hover{background:#0d1660;transform:translateY(-1px)}
-.btn-next:disabled{opacity:0.4;cursor:not-allowed;transform:none}
-.result-block{display:none;animation:fadeSlide 0.4s ease}
-.result-block.active{display:block}
-.result-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--navy),#2d3ab0);color:#fff;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:8px 18px;border-radius:40px;margin-bottom:20px}
-.result-title{font-family:"Playfair Display",serif;font-size:clamp(24px,3vw,32px);font-weight:800;color:var(--navy);margin-bottom:12px;line-height:1.25}
-.result-desc{font-size:15px;color:var(--charcoal);line-height:1.7;margin-bottom:28px}
-.assessment-card{background:linear-gradient(135deg,#EEF0FF 0%,#FDF9E8 100%);border:2px solid rgba(26,35,126,0.12);border-radius:16px;padding:24px 28px;margin-bottom:24px}
-.assessment-card h4{font-family:"Playfair Display",serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
-.assessment-card p{font-size:14px;color:var(--charcoal);line-height:1.6}
-.assessment-includes{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:14px}
-.assessment-includes li{font-size:13px;color:var(--charcoal);padding-left:20px;position:relative;line-height:1.5}
-.assessment-includes li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:10px;top:2px}
-.btn-start-assessment{width:100%;padding:18px;background:var(--gold);color:var(--navy);border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.22s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 4px 16px rgba(212,175,55,0.3);letter-spacing:0.3px;margin-bottom:12px}
-.btn-start-assessment:hover{transform:scale(1.03);box-shadow:0 8px 24px rgba(0,0,0,0.13)}
-.btn-start-assessment:active{transform:scale(0.98)}
-.btn-retake{width:100%;padding:13px;background:none;border:2px solid #E0E0E0;border-radius:12px;font-size:14px;font-weight:600;color:#888;cursor:pointer;transition:all 0.18s}
-.btn-retake:hover{border-color:var(--charcoal);color:var(--charcoal)}
-.invoice-block{display:none;animation:fadeSlide 0.4s ease}
-.invoice-block.active{display:block}
-.invoice-header{text-align:center;padding-bottom:24px;border-bottom:1px solid #eee;margin-bottom:28px}
-.invoice-header .invoice-icon{font-size:48px;margin-bottom:12px;display:block}
-.invoice-header h3{font-family:"Playfair Display",serif;font-size:26px;font-weight:800;color:var(--navy);margin-bottom:8px}
-.invoice-header p{font-size:14px;color:#888}
-.invoice-items{display:flex;flex-direction:column;gap:14px;margin-bottom:28px}
-.invoice-item{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#F8F8F8;border-radius:10px;gap:16px}
-.invoice-item .item-name{font-size:14px;font-weight:600;color:#2C2C2C}
-.invoice-item .item-detail{font-size:12px;color:#888;margin-top:2px}
-.invoice-item .item-included{font-size:12px;font-weight:700;color:var(--navy);background:#EEF0FF;padding:4px 10px;border-radius:20px;flex-shrink:0}
-.invoice-cta{background:linear-gradient(135deg,var(--navy),#2d3ab0);border-radius:16px;padding:24px;text-align:center;color:#fff;margin-bottom:16px}
-.invoice-cta p{font-size:14px;opacity:0.85;margin-bottom:14px;line-height:1.5}
-.btn-book-call{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);font-weight:700;font-size:15px;padding:14px 32px;border-radius:10px;border:none;cursor:pointer;transition:all 0.2s}
-.btn-book-call:hover{transform:scale(1.04)}
-.invoice-note{text-align:center;font-size:12px;color:#aaa;line-height:1.5}
-@media(max-width:900px){
-.hero{flex-direction:column;min-height:auto}
-.hero-photo{flex:none;height:55vw;min-height:280px;max-height:420px}
-.hero-photo img{object-position:center 15%}
-.hero-photo-overlay{background:linear-gradient(to bottom,transparent 60%,rgba(250,249,246,0.6))}
-.hero-content{flex:none;padding:44px 28px 60px;text-align:center;align-items:center}
-.brand-mark{justify-content:center}
-.subheadline{max-width:100%}
-.cta-btn{max-width:100%}
-.back-link{top:14px;left:14px;font-size:13px;padding:6px 12px}
-}
-@media(max-width:500px){
-.hero-content{padding:32px 20px 48px}
-.modal-box{padding:32px 24px;border-radius:16px}
-.q-text{font-size:20px}
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Georgia',serif;background:#FAF9F6;color:#4A4A4A;min-height:100vh}
+a{color:#1A237E;text-decoration:none}
+a:hover{text-decoration:underline}
 
-/* Multi-select option cards */
-.multi-option-card{display:flex;align-items:center;gap:14px;padding:13px 18px;border:2px solid #E8E8E8;border-radius:12px;cursor:pointer;transition:all 0.18s ease;background:#fff;user-select:none}
-.multi-option-card:hover{border-color:var(--navy);background:#F6F7FF}
-.multi-option-card.selected{border-color:var(--navy);background:#EEF0FF}
-.multi-option-card .check-box{width:22px;height:22px;border:2px solid #D0D0D0;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.18s;background:#fff}
-.multi-option-card.selected .check-box{background:var(--navy);border-color:var(--navy)}
-.multi-option-card.selected .check-box::after{content:"";display:block;width:6px;height:10px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(45deg) translateY(-1px)}
-.multi-option-card .option-label{font-size:15px;font-weight:500;color:#2C2C2C;line-height:1.3}
-.multi-select-hint{font-size:12px;color:#aaa;margin-top:10px;text-align:center;letter-spacing:0.3px}
-.options-grid.multi{gap:10px}
+/* LANDING PAGE */
+.back-link{position:absolute;top:20px;left:28px;font-size:14px;color:#1A237E;z-index:10;font-family:'Arial',sans-serif}
+.back-link:hover{text-decoration:underline}
+.hero{display:flex;min-height:100vh;position:relative}
+.hero-photo{flex:0 0 55%;position:relative;overflow:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.hero-content{flex:0 0 45%;display:flex;flex-direction:column;justify-content:center;padding:60px 48px;background:#FAF9F6}
+.brand-mark{margin-bottom:24px}
+.brand-mark .name{font-family:'Arial',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#1A237E}
+.brand-mark .subtitle{font-family:'Arial',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#D4AF37;margin-top:3px}
+.hero-headline{font-size:clamp(38px,4.5vw,62px);font-weight:700;color:#1A237E;line-height:1.1;margin-bottom:16px}
+.hero-sub{font-size:clamp(17px,2vw,22px);font-weight:400;color:#4A4A4A;line-height:1.5;margin-bottom:12px}
+.hero-tagline{font-size:13px;font-style:italic;color:#888;line-height:1.6;margin-bottom:32px;border-left:3px solid #D4AF37;padding-left:14px}
+.hero-quote{font-size:14px;font-style:italic;color:#666;margin-bottom:36px}
+.btn-primary{display:inline-block;background:#D4AF37;color:#1A237E;font-family:'Arial',sans-serif;font-size:18px;font-weight:700;padding:18px 40px;border-radius:14px;border:none;cursor:pointer;transition:transform 0.15s ease,box-shadow 0.15s ease;letter-spacing:0.5px}
+.btn-primary:hover{transform:scale(1.05);box-shadow:0 8px 28px rgba(212,175,55,0.45)}
+.btn-primary:active{transform:scale(0.98)}
+
+/* MODAL OVERLAY */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,15,40,0.72);z-index:1000;align-items:center;justify-content:center;padding:16px}
+.modal-overlay.active{display:flex}
+.modal-box{background:#FAF9F6;border-radius:20px;max-width:680px;width:100%;max-height:92vh;overflow-y:auto;position:relative}
+.modal-header{background:#1A237E;color:#fff;padding:28px 36px 20px;border-radius:20px 20px 0 0}
+.modal-header .step-label{font-family:'Arial',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;margin-bottom:6px}
+.modal-header h2{font-size:22px;font-weight:700;line-height:1.3}
+.modal-header p{font-size:14px;color:rgba(255,255,255,0.8);margin-top:8px;line-height:1.5}
+.progress-bar-wrap{background:rgba(255,255,255,0.2);height:6px;border-radius:3px;margin-top:16px}
+.progress-bar{background:#D4AF37;height:6px;border-radius:3px;transition:width 0.4s ease}
+.modal-body{padding:28px 36px}
+.q-title{font-size:17px;font-weight:700;color:#1A237E;margin-bottom:18px;line-height:1.4}
+.q-note{font-size:13px;color:#888;font-style:italic;margin-bottom:16px}
+
+/* QUESTION CARDS */
+.option-card{background:#fff;border:2px solid #e8e4dc;border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer;transition:all 0.2s;display:flex;align-items:flex-start;gap:12px}
+.option-card:hover{border-color:#D4AF37;background:#fffdf5}
+.option-card.selected{border-color:#1A237E;background:#f0f2ff}
+.option-card .opt-letter{width:28px;height:28px;border-radius:50%;background:#1A237E;color:#fff;font-family:'Arial',sans-serif;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.option-card.selected .opt-letter{background:#D4AF37;color:#1A237E}
+.option-card .opt-text{font-size:15px;color:#4A4A4A;line-height:1.45;padding-top:3px}
+
+/* MULTI-SELECT */
+.multi-option-card{background:#fff;border:2px solid #e8e4dc;border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer;transition:all 0.2s;display:flex;align-items:flex-start;gap:12px}
+.multi-option-card:hover{border-color:#D4AF37;background:#fffdf5}
+.multi-option-card.selected{border-color:#1A237E;background:#f0f2ff}
+.check-box{width:22px;height:22px;border:2px solid #ccc;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px;transition:all 0.2s}
+.multi-option-card.selected .check-box{background:#1A237E;border-color:#1A237E;color:#fff}
+.check-icon{display:none;font-size:13px;color:#fff;font-weight:700}
+.multi-option-card.selected .check-icon{display:block}
+
+.modal-nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:20px;border-top:1px solid #eee}
+.btn-back{background:none;border:none;color:#888;font-size:14px;cursor:pointer;font-family:'Arial',sans-serif;padding:8px 0}
+.btn-back:hover{color:#1A237E}
+.btn-next{background:#1A237E;color:#fff;border:none;border-radius:10px;padding:12px 32px;font-family:'Arial',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.2s;opacity:0.4;pointer-events:none}
+.btn-next.enabled{opacity:1;pointer-events:all}
+.btn-next.enabled:hover{background:#0e1660;transform:translateY(-1px)}
+
+/* ASSESSMENT SCREEN */
+.assessment-screen{display:none;position:fixed;inset:0;background:#FAF9F6;z-index:2000;overflow-y:auto;padding:0}
+.assessment-screen.active{display:block}
+.assessment-header{background:#1A237E;color:#fff;padding:20px 36px;position:sticky;top:0;z-index:10}
+.assessment-header .assess-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.assess-brand{font-family:'Arial',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,0.8)}
+.assess-timer{font-family:'Arial',sans-serif;font-size:13px;color:#D4AF37}
+.assess-section-label{font-family:'Arial',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:#D4AF37;margin-bottom:4px}
+.assess-progress-text{font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:8px}
+.assess-prog-wrap{background:rgba(255,255,255,0.2);height:8px;border-radius:4px}
+.assess-prog-bar{background:#D4AF37;height:8px;border-radius:4px;transition:width 0.3s}
+.assessment-body{max-width:720px;margin:0 auto;padding:36px 24px 80px}
+.assess-q-title{font-size:19px;font-weight:700;color:#1A237E;margin-bottom:10px;line-height:1.4}
+.assess-q-sub{font-size:13px;color:#888;font-style:italic;margin-bottom:20px}
+.assess-option{background:#fff;border:2px solid #e8e4dc;border-radius:10px;padding:14px 18px;margin-bottom:10px;cursor:pointer;transition:all 0.2s;font-size:15px;color:#4A4A4A;line-height:1.45;display:flex;gap:12px;align-items:flex-start}
+.assess-option:hover{border-color:#D4AF37;background:#fffdf5}
+.assess-option.selected{border-color:#1A237E;background:#f0f2ff;font-weight:600;color:#1A237E}
+.assess-option .a-letter{width:26px;height:26px;border-radius:50%;background:#eee;color:#888;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Arial',sans-serif}
+.assess-option.selected .a-letter{background:#1A237E;color:#fff}
+.assess-q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+.btn-assess-back{background:none;border:1px solid #ccc;color:#888;border-radius:8px;padding:10px 22px;font-size:14px;cursor:pointer;font-family:'Arial',sans-serif}
+.btn-assess-next{background:#1A237E;color:#fff;border:none;border-radius:10px;padding:12px 36px;font-family:'Arial',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.2s;opacity:0.4;pointer-events:none}
+.btn-assess-next.enabled{opacity:1;pointer-events:all}
+.btn-assess-next.enabled:hover{background:#0e1660}
+.assess-save-note{font-size:11px;color:#aaa;font-style:italic;margin-top:8px;text-align:center}
+
+/* HOOK RESULT */
+.hook-screen{display:none;position:fixed;inset:0;background:#FAF9F6;z-index:2000;overflow-y:auto}
+.hook-screen.active{display:block}
+.hook-inner{max-width:700px;margin:0 auto;padding:60px 24px}
+.hook-badge{display:inline-block;background:#D4AF37;color:#1A237E;font-family:'Arial',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px}
+.hook-headline{font-size:clamp(24px,3.5vw,38px);font-weight:700;color:#1A237E;margin-bottom:16px;line-height:1.3}
+.hook-body{font-size:17px;color:#4A4A4A;line-height:1.7;margin-bottom:12px}
+.hook-insight{background:#1A237E;color:#fff;border-radius:16px;padding:28px 32px;margin:24px 0;font-size:15px;line-height:1.7}
+.hook-insight strong{color:#D4AF37;font-size:16px;display:block;margin-bottom:8px}
+.hook-divider{text-align:center;font-family:'Arial',sans-serif;font-size:13px;color:#888;margin:24px 0;letter-spacing:1px}
+.btn-see-blueprint{display:inline-block;background:#D4AF37;color:#1A237E;font-family:'Arial',sans-serif;font-size:18px;font-weight:700;padding:18px 44px;border-radius:14px;border:none;cursor:pointer;transition:all 0.2s;margin-top:8px}
+.btn-see-blueprint:hover{transform:scale(1.04);box-shadow:0 8px 28px rgba(212,175,55,0.45)}
+
+/* BLUEPRINT PAGE */
+.blueprint-screen{display:none;position:fixed;inset:0;background:#FAF9F6;z-index:2000;overflow-y:auto}
+.blueprint-screen.active{display:block}
+.blueprint-inner{max-width:820px;margin:0 auto;padding:50px 24px 80px}
+.blueprint-headline{font-size:clamp(26px,3.5vw,40px);font-weight:700;color:#1A237E;margin-bottom:8px}
+.blueprint-sub{font-size:17px;color:#4A4A4A;margin-bottom:36px}
+.recommended-card{background:#1A237E;color:#fff;border-radius:18px;padding:32px;margin-bottom:24px;position:relative}
+.rec-badge{position:absolute;top:-12px;left:32px;background:#D4AF37;color:#1A237E;font-family:'Arial',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:10px}
+.rec-title{font-size:20px;font-weight:700;color:#D4AF37;margin-bottom:12px;margin-top:10px}
+.rec-includes{list-style:none;margin-bottom:20px}
+.rec-includes li{font-size:14px;padding:5px 0;color:rgba(255,255,255,0.9);padding-left:20px;position:relative;line-height:1.5}
+.rec-includes li:before{content:"✓";position:absolute;left:0;color:#D4AF37;font-weight:700}
+.rec-price{font-size:28px;font-weight:700;color:#D4AF37;margin-bottom:18px}
+.btn-choose-rec{background:#D4AF37;color:#1A237E;border:none;border-radius:12px;padding:15px 36px;font-family:'Arial',sans-serif;font-size:17px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.btn-choose-rec:hover{transform:scale(1.04);box-shadow:0 6px 20px rgba(212,175,55,0.5)}
+.or-divider{text-align:center;margin:28px 0;position:relative}
+.or-divider:before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#ddd}
+.or-divider span{background:#FAF9F6;padding:0 16px;position:relative;font-family:'Arial',sans-serif;font-size:14px;color:#888;font-weight:700;letter-spacing:1px}
+.or-sub{text-align:center;font-size:14px;color:#888;margin-top:-16px;margin-bottom:24px}
+.custom-card{background:#fff;border:2px solid #e8e4dc;border-radius:18px;padding:28px 32px;text-align:center}
+.custom-card h3{font-size:19px;font-weight:700;color:#1A237E;margin-bottom:8px}
+.custom-card p{font-size:14px;color:#888;margin-bottom:18px}
+.btn-customize{background:#1A237E;color:#fff;border:none;border-radius:12px;padding:14px 36px;font-family:'Arial',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.btn-customize:hover{background:#0e1660;transform:translateY(-1px)}
+
+/* BUILD YOUR OWN */
+.build-screen{display:none;position:fixed;inset:0;background:#FAF9F6;z-index:2000;overflow-y:auto}
+.build-screen.active{display:block}
+.build-inner{max-width:820px;margin:0 auto;padding:40px 24px 120px}
+.build-headline{font-size:clamp(22px,3vw,34px);font-weight:700;color:#1A237E;margin-bottom:6px}
+.build-sub{font-size:15px;color:#888;margin-bottom:30px}
+.add-section{margin-bottom:28px}
+.add-section-title{font-family:'Arial',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;border-bottom:1px solid #e8e4dc;padding-bottom:8px;margin-bottom:14px}
+.add-item{background:#fff;border:2px solid #e8e4dc;border-radius:12px;padding:16px 20px;margin-bottom:10px;display:flex;align-items:flex-start;gap:14px;cursor:pointer;transition:all 0.2s}
+.add-item:hover{border-color:#D4AF37}
+.add-item.checked{border-color:#1A237E;background:#f0f2ff}
+.add-item.required{opacity:0.8;cursor:default;border-color:#D4AF37!important;background:#fffdf5}
+.add-check{width:22px;height:22px;border:2px solid #ccc;border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px;transition:all 0.2s}
+.add-item.checked .add-check,.add-item.required .add-check{background:#1A237E;border-color:#1A237E;color:#fff}
+.add-item.required .add-check{background:#D4AF37;border-color:#D4AF37;color:#1A237E}
+.add-check-icon{display:none;font-size:12px;font-weight:700}
+.add-item.checked .add-check-icon,.add-item.required .add-check-icon{display:block}
+.add-info{flex:1}
+.add-name{font-size:15px;font-weight:700;color:#1A237E;margin-bottom:3px}
+.add-desc{font-size:13px;color:#666;line-height:1.5}
+.add-price{font-family:'Arial',sans-serif;font-size:15px;font-weight:700;color:#4A4A4A;flex-shrink:0;margin-top:2px}
+.sticky-total{position:fixed;bottom:0;left:0;right:0;background:#1A237E;color:#fff;padding:16px 24px;z-index:10;display:flex;align-items:center;justify-content:space-between;box-shadow:0 -4px 20px rgba(0,0,0,0.15)}
+.sticky-total .total-label{font-family:'Arial',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);letter-spacing:1px;text-transform:uppercase}
+.sticky-total .total-amount{font-size:26px;font-weight:700;color:#D4AF37;line-height:1}
+.btn-checkout{background:#D4AF37;color:#1A237E;border:none;border-radius:12px;padding:13px 32px;font-family:'Arial',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.btn-checkout:hover{transform:scale(1.04);box-shadow:0 4px 16px rgba(212,175,55,0.5)}
+
+/* CHECKOUT CONFIRMATION */
+.checkout-screen{display:none;position:fixed;inset:0;background:#FAF9F6;z-index:2000;overflow-y:auto}
+.checkout-screen.active{display:block}
+.checkout-inner{max-width:640px;margin:0 auto;padding:60px 24px}
+.checkout-icon{font-size:56px;text-align:center;margin-bottom:16px}
+.checkout-headline{font-size:clamp(22px,3vw,34px);font-weight:700;color:#1A237E;text-align:center;margin-bottom:10px}
+.checkout-sub{font-size:16px;color:#666;text-align:center;margin-bottom:32px;line-height:1.6}
+.checkout-summary{background:#fff;border:2px solid #e8e4dc;border-radius:16px;padding:24px}
+.checkout-line{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0ece4;font-size:14px;color:#4A4A4A}
+.checkout-line:last-child{border:none;font-weight:700;font-size:16px;color:#1A237E;padding-top:12px}
+.checkout-line .line-name{color:#4A4A4A}
+.checkout-line .line-price{font-weight:700;color:#1A237E}
+.checkout-total-line{display:flex;justify-content:space-between;font-size:18px;font-weight:700;color:#1A237E;padding-top:12px;border-top:2px solid #1A237E;margin-top:8px}
+.btn-pay{display:block;width:100%;background:#D4AF37;color:#1A237E;font-family:'Arial',sans-serif;font-size:18px;font-weight:700;padding:18px;border-radius:14px;border:none;cursor:pointer;margin-top:24px;transition:all 0.2s;text-align:center}
+.btn-pay:hover{transform:scale(1.02);box-shadow:0 6px 24px rgba(212,175,55,0.45)}
+.checkout-note{font-size:12px;color:#aaa;text-align:center;margin-top:14px;font-style:italic;line-height:1.6}
+.consulting-note{background:#f0f2ff;border-radius:12px;padding:18px 20px;margin-top:20px;font-size:13px;color:#1A237E;line-height:1.6;border-left:4px solid #D4AF37}
+.consulting-note strong{display:block;margin-bottom:4px;font-size:14px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{flex-direction:column;min-height:auto}
+  .hero-photo{flex:none;height:55vw;min-height:240px}
+  .hero-content{padding:32px 24px 40px}
+  .hero-headline{font-size:32px}
+  .btn-primary{display:block;text-align:center}
+  .modal-box{max-height:96vh}
+  .modal-header{padding:20px 22px 16px}
+  .modal-body{padding:20px 22px}
+  .assessment-header{padding:14px 20px}
+  .assessment-body{padding:24px 16px 100px}
+  .blueprint-inner,.build-inner,.hook-inner,.checkout-inner{padding-left:16px;padding-right:16px}
+  .recommended-card{padding:24px 20px}
+  .sticky-total{flex-wrap:wrap;gap:10px}
+  .sticky-total .total-amount{font-size:22px}
+}
 </style>
 </head>
 <body>
-<a href="index.html" class="back-link">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-Back to Home
-</a>
-<section class="hero">
-  <div class="hero-photo">
-    <img src="images/Dennis20191110_0053.jpg" alt="Dennis Nickens — Spiritual Romeo, Behavior & Communication Consultant, welcoming you with warmth and confidence" loading="eager">
-    <div class="hero-photo-overlay"></div>
+
+<!-- LANDING PAGE -->
+<div id="landingPage">
+  <a href="index.html" class="back-link">← Back to Home</a>
+  <section class="hero">
+    <div class="hero-photo">
+      <img src="images/Dennis20191110_0053.jpg" alt="Dennis Nickens — Spiritual Romeo, Behavior & Communication Consultant" loading="eager">
+    </div>
+    <div class="hero-content">
+      <div class="brand-mark">
+        <div class="name">Dennis Nickens · Spiritual Romeo</div>
+        <div class="subtitle">Behavior &amp; Communication Consultant · Leadership Consulting</div>
+      </div>
+      <h1 class="hero-headline">The Alignment Assessment</h1>
+      <p class="hero-sub">Let's get you the clarity you need.</p>
+      <p class="hero-tagline">This is not a generic personality test. This is a consulting-based assessment designed to give you clarity and direction based on how you are uniquely wired.</p>
+      <p class="hero-quote">"I don't just tell you who you are — I help you understand what to do with it."</p>
+      <button class="btn-primary" onclick="startAssessment()">Start My Assessment</button>
+    </div>
+  </section>
+</div>
+
+<!-- QUESTIONNAIRE MODAL (Step 1 of 3) -->
+<div id="questionnaireModal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="step-label" id="qStepLabel">Step 1 of 5</div>
+      <h2 id="qTitle">Welcome to The Alignment Assessment</h2>
+      <p id="qWelcome">Before we begin, let's make sure you get the right experience. Answer these 5 quick questions so we can direct you to the assessment that fits your situation.</p>
+      <div class="progress-bar-wrap"><div class="progress-bar" id="qProgressBar" style="width:20%"></div></div>
+    </div>
+    <div class="modal-body">
+      <!-- Q1 -->
+      <div id="qBlock1">
+        <div class="q-title">Q1. What best describes your current focus?</div>
+        <div id="q1Options">
+          <div class="option-card" onclick="selectOption(this,1,'personal')">
+            <span class="opt-letter">A</span><span class="opt-text">Understanding myself better (Personal growth)</span>
+          </div>
+          <div class="option-card" onclick="selectOption(this,1,'romantic')">
+            <span class="opt-letter">B</span><span class="opt-text">Improving my relationship or finding the right partner (Romantic)</span>
+          </div>
+          <div class="option-card" onclick="selectOption(this,1,'professional')">
+            <span class="opt-letter">C</span><span class="opt-text">Building better connections at work (Professional)</span>
+          </div>
+          <div class="option-card" onclick="selectOption(this,1,'leadership')">
+            <span class="opt-letter">D</span><span class="opt-text">Leading a team or organization more effectively (Leadership)</span>
+          </div>
+          <div class="option-card" onclick="selectOption(this,1,'family')">
+            <span class="opt-letter">E</span><span class="opt-text">Understanding my family dynamics better (Family)</span>
+          </div>
+        </div>
+        <div class="modal-nav">
+          <button class="btn-back" onclick="closeQuestionnaire()">✕ Close</button>
+          <button class="btn-next" id="q1Next" onclick="goToQ(2)">Continue →</button>
+        </div>
+      </div>
+      <!-- Q2 -->
+      <div id="qBlock2" style="display:none">
+        <div class="q-title">Q2. Who else will this involve?</div>
+        <div id="q2Options">
+          <div class="option-card" onclick="selectOption(this,2,'solo')"><span class="opt-letter">A</span><span class="opt-text">Just me</span></div>
+          <div class="option-card" onclick="selectOption(this,2,'partner')"><span class="opt-letter">B</span><span class="opt-text">Me and my partner / future partner</span></div>
+          <div class="option-card" onclick="selectOption(this,2,'colleagues')"><span class="opt-letter">C</span><span class="opt-text">Me and my colleagues / employees</span></div>
+          <div class="option-card" onclick="selectOption(this,2,'team')"><span class="opt-letter">D</span><span class="opt-text">My entire team or organization</span></div>
+          <div class="option-card" onclick="selectOption(this,2,'family')"><span class="opt-letter">E</span><span class="opt-text">My family (spouse + children)</span></div>
+        </div>
+        <div class="modal-nav">
+          <button class="btn-back" onclick="goToQ(1)">← Back</button>
+          <button class="btn-next" id="q2Next" onclick="goToQ(3)">Continue →</button>
+        </div>
+      </div>
+      <!-- Q3 -->
+      <div id="qBlock3" style="display:none">
+        <div class="q-title">Q3. What outcome matters most to you right now?</div>
+        <div id="q3Options">
+          <div class="option-card" onclick="selectOption(this,3,'clarity')"><span class="opt-letter">A</span><span class="opt-text">Clarity on who I am and why I do what I do</span></div>
+          <div class="option-card" onclick="selectOption(this,3,'romantic_conn')"><span class="opt-letter">B</span><span class="opt-text">Understanding how I connect with others romantically</span></div>
+          <div class="option-card" onclick="selectOption(this,3,'work_comm')"><span class="opt-letter">C</span><span class="opt-text">Better communication and collaboration at work</span></div>
+          <div class="option-card" onclick="selectOption(this,3,'lead_align')"><span class="opt-letter">D</span><span class="opt-text">Stronger leadership and team alignment</span></div>
+          <div class="option-card" onclick="selectOption(this,3,'family_harmony')"><span class="opt-letter">E</span><span class="opt-text">Harmony and understanding in my household</span></div>
+        </div>
+        <div class="modal-nav">
+          <button class="btn-back" onclick="goToQ(2)">← Back</button>
+          <button class="btn-next" id="q3Next" onclick="goToQ(4)">Continue →</button>
+        </div>
+      </div>
+      <!-- Q4 -->
+      <div id="qBlock4" style="display:none">
+        <div class="q-title">Q4. Are you looking for immediate insight or ongoing strategic support?</div>
+        <div id="q4Options">
+          <div class="option-card" onclick="selectOption(this,4,'results_only')"><span class="opt-letter">A</span><span class="opt-text">Just give me the assessment and my results</span></div>
+          <div class="option-card" onclick="selectOption(this,4,'results_plan')"><span class="opt-letter">B</span><span class="opt-text">I want my results PLUS a strategic plan to apply it</span></div>
+          <div class="option-card" onclick="selectOption(this,4,'results_consult')"><span class="opt-letter">C</span><span class="opt-text">I need my results PLUS consulting to implement</span></div>
+          <div class="option-card" onclick="selectOption(this,4,'full_team')"><span class="opt-letter">D</span><span class="opt-text">I need this for my whole team/family — bring in the consultant</span></div>
+        </div>
+        <div class="modal-nav">
+          <button class="btn-back" onclick="goToQ(3)">← Back</button>
+          <button class="btn-next" id="q4Next" onclick="goToQ(5)">Continue →</button>
+        </div>
+      </div>
+      <!-- Q5 -->
+      <div id="qBlock5" style="display:none">
+        <div class="q-title">Q5. How deep do you want to go?</div>
+        <div id="q5Options">
+          <div class="option-card" onclick="selectOption(this,5,'self_guided')"><span class="opt-letter">A</span><span class="opt-text">Self-guided — give me the blueprint and I'll run with it</span></div>
+          <div class="option-card" onclick="selectOption(this,5,'guided')"><span class="opt-letter">B</span><span class="opt-text">Guided — advise me on my results and strategic next steps</span></div>
+          <div class="option-card" onclick="selectOption(this,5,'partnered')"><span class="opt-letter">C</span><span class="opt-text">Partnered — work WITH me to build my strategic framework</span></div>
+          <div class="option-card" onclick="selectOption(this,5,'full_partner')"><span class="opt-letter">D</span><span class="opt-text">Full partnership — build the system for me and my people</span></div>
+        </div>
+        <div class="modal-nav">
+          <button class="btn-back" onclick="goToQ(4)">← Back</button>
+          <button class="btn-next" id="q5Next" onclick="finishQuestionnaire()">See My Assessment →</button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="hero-content">
-    <div class="brand-mark">
-      <div class="monogram">SR</div>
-      <div class="brand-text">
-        <span class="brand-name">Dennis Nickens</span>
-        <span class="brand-sub">Spiritual Romeo</span>
-      </div>
+</div>
+
+<!-- FULL ASSESSMENT SCREEN (40-52 questions) -->
+<div id="assessmentScreen" class="assessment-screen">
+  <div class="assessment-header">
+    <div class="assess-top">
+      <span class="assess-brand">Dennis Nickens · The Alignment Assessment</span>
+      <span class="assess-timer" id="assessTimer">⏱ ~10 min remaining</span>
     </div>
-    <p class="eyebrow">✦ Behavior &amp; Communication Consultant</p>
-    <h1 class="headline">The Alignment<br><span>Assessment</span></h1>
-    <p class="subheadline">Let's get you the clarity you need.</p>
-    <button class="cta-btn" id="startAssessmentBtn" onclick="openQuestionnaire()">
-      Start My Assessment
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    </button>
-    <p class="trust-note">Free · No commitment · Takes 3 minutes</p>
+    <div class="assess-section-label" id="assessSectionLabel">Section 1: Behavior</div>
+    <div class="assess-progress-text" id="assessProgressText">Question 1 of 47</div>
+    <div class="assess-prog-wrap"><div class="assess-prog-bar" id="assessProgBar" style="width:2%"></div></div>
   </div>
-</section>
-<div class="modal-overlay" id="questionnaireModal">
-  <div class="modal-box" id="modalBox">
-    <button class="modal-close" onclick="closeModal()" aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-    </button>
-    <div class="progress-wrap" id="progressWrap">
-      <div class="progress-label" id="progressLabel">Step 1 of 5</div>
-      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
+  <div class="assessment-body">
+    <div id="assessQBlock">
+      <!-- Questions rendered by JS -->
     </div>
-    <div class="question-block active" id="q1">
-      <p class="q-number">Question 1 of 5</p>
-      <h2 class="q-text">Which area(s) are you looking to improve or receive guidance in?</h2>
-      <p style="font-size:13px;color:#888;margin-bottom:20px;font-weight:500;letter-spacing:0.3px;">SELECT ALL THAT APPLY</p>
-      <div class="options-grid multi" id="q1MultiGrid">
-        <div class="multi-option-card" data-value="personal-growth" onclick="toggleMultiOption(this,1)">
-          <div class="check-box"></div>
-          <div class="option-label">🌱 Personal Growth</div>
-        </div>
-        <div class="multi-option-card" data-value="dating-single" onclick="toggleMultiOption(this,1)">
-          <div class="check-box"></div>
-          <div class="option-label">💫 Dating / Single Life</div>
-        </div>
-        <div class="multi-option-card" data-value="marriage-relationship" onclick="toggleMultiOption(this,1)">
-          <div class="check-box"></div>
-          <div class="option-label">💍 Marriage / Romantic Relationship</div>
-        </div>
-        <div class="multi-option-card" data-value="family-relationships" onclick="toggleMultiOption(this,1)">
-          <div class="check-box"></div>
-          <div class="option-label">👨‍👩‍👧 Family Relationships</div>
-        </div>
-        <div class="multi-option-card" data-value="parenting" onclick="toggleMultiOption(this,1)">
-          <div class="check-box"></div>
-          <div class="option-label">🧒 Parenting</div>
-        </div>
-        <div class="multi-option-card" data-value="teacher-student" onclick="toggleMultiOption(this,1)">
-          <div class="check-box"></div>
-          <div class="option-label">📚 Teacher / Student Communication</div>
-        </div>
-        <div class="multi-option-card" data-value="learning-education" onclick="toggleMultiOption(this,1)">
-          <div class="check-box"></div>
-          <div class="option-label">🎓 Learning / Education</div>
-        </div>
-        <div class="multi-option-card" data-value="business" onclick="toggleMultiOption(this,1)">
-          <div class="check-box"></div>
-          <div class="option-label">🏢 Business</div>
-        </div>
-        <div class="multi-option-card" data-value="employee-development" onclick="toggleMultiOption(this,1)">
-          <div class="check-box"></div>
-          <div class="option-label">💼 Employee Development</div>
-        </div>
-        <div class="multi-option-card" data-value="leadership" onclick="toggleMultiOption(this,1)">
-          <div class="check-box"></div>
-          <div class="option-label">🌟 Leadership</div>
-        </div>
-        <div class="multi-option-card" data-value="other" onclick="toggleMultiOption(this,1)">
-          <div class="check-box"></div>
-          <div class="option-label">✨ Other</div>
-        </div>
-      </div>
-      <p class="multi-select-hint">You can select more than one</p>
-      <div class="nav-row"><button class="btn-next" id="q1Next" onclick="nextQuestion(1)" disabled>Continue &rarr;</button></div>
+    <div class="assess-q-nav" id="assessNav">
+      <button class="btn-assess-back" id="assessBackBtn" onclick="assessBack()">← Back</button>
+      <button class="btn-assess-next" id="assessNextBtn" onclick="assessNext()">Next →</button>
+    </div>
+    <div class="assess-save-note">Progress saves automatically — you can pause and return.</div>
+  </div>
+</div>
+
+<!-- HOOK RESULT SCREEN -->
+<div id="hookScreen" class="hook-screen">
+  <div class="hook-inner">
+    <div class="hook-badge">Your Initial Insight</div>
+    <h2 class="hook-headline" id="hookHeadline">Based on your responses…</h2>
+    <p class="hook-body" id="hookBody"></p>
+    <div class="hook-insight" id="hookInsight">
+      <strong id="hookInsightTitle">Primary Misalignment Identified</strong>
+      <span id="hookInsightBody"></span>
+    </div>
+    <p class="hook-body" style="font-size:15px;color:#888;" id="hookTeaser"></p>
+    <div class="hook-divider">— Your full Blueprint goes much deeper —</div>
+    <button class="btn-see-blueprint" onclick="showBlueprint()">See My Full Blueprint →</button>
+  </div>
+</div>
+
+<!-- BLUEPRINT TWO-PATH PAGE -->
+<div id="blueprintScreen" class="blueprint-screen">
+  <div class="blueprint-inner">
+    <h2 class="blueprint-headline">Your Alignment Blueprint is Ready</h2>
+    <p class="blueprint-sub" id="blueprintSub">Based on your assessment, here's what we recommend:</p>
+
+    <div class="recommended-card" id="recommendedCard">
+      <div class="rec-badge">✦ Recommended for You</div>
+      <div class="rec-title" id="recTitle">Loading...</div>
+      <ul class="rec-includes" id="recIncludes"></ul>
+      <div class="rec-price" id="recPrice"></div>
+      <button class="btn-choose-rec" onclick="chooseRecommended()">Choose This Package →</button>
     </div>
 
-    <div class="question-block" id="q2">
-      <p class="q-number">Question 2 of 5</p>
-      <h2 class="q-text">How would you describe the biggest challenge you're facing?</h2>
-      <div class="options-grid" data-question="2">
-        <div class="option-card" data-value="communication" onclick="selectOption(this)">
-          <span class="option-icon">🗣️</span>
-          <div><div class="option-label">We struggle to communicate</div><div class="option-desc">Conversations escalate, feelings go unheard, or topics get avoided</div></div>
-        </div>
-        <div class="option-card" data-value="disconnection" onclick="selectOption(this)">
-          <span class="option-icon">💔</span>
-          <div><div class="option-label">I feel disconnected or stuck</div><div class="option-desc">Something feels off, distant, or like we're just going through the motions</div></div>
-        </div>
-        <div class="option-card" data-value="patterns" onclick="selectOption(this)">
-          <span class="option-icon">🔄</span>
-          <div><div class="option-label">We keep repeating the same patterns</div><div class="option-desc">Same arguments, same results, no matter what we try</div></div>
-        </div>
-        <div class="option-card" data-value="growth" onclick="selectOption(this)">
-          <span class="option-icon">🚀</span>
-          <div><div class="option-label">I want to level up, not fix a crisis</div><div class="option-desc">Things are okay but I know there's a higher level available</div></div>
-        </div>
-      </div>
-      <div class="nav-row"><button class="btn-back" onclick="prevQuestion(2)">← Back</button><button class="btn-next" id="q2Next" onclick="nextQuestion(2)" disabled>Continue &rarr;</button></div>
+    <div class="or-divider"><span>— OR —</span></div>
+    <p class="or-sub">Want something different? Build your own.</p>
+
+    <div class="custom-card">
+      <h3>Build Your Own Blueprint</h3>
+      <p>Start with the base assessment and add only what you need.</p>
+      <button class="btn-customize" onclick="showBuildOwn()">Customize My Blueprint →</button>
     </div>
-    <div class="question-block" id="q3">
-      <p class="q-number">Question 3 of 5</p>
-      <h2 class="q-text">Who is involved in the situation you want to address?</h2>
-      <div class="options-grid" data-question="3">
-        <div class="option-card" data-value="solo" onclick="selectOption(this)">
-          <span class="option-icon">🧘</span>
-          <div><div class="option-label">Just me — this is about my own journey</div><div class="option-desc">Individual coaching, self-discovery, or personal development</div></div>
+  </div>
+</div>
+
+<!-- BUILD YOUR OWN SCREEN -->
+<div id="buildScreen" class="build-screen">
+  <div class="build-inner">
+    <h2 class="build-headline">Build Your Blueprint</h2>
+    <p class="build-sub">Check only what you need. Your base assessment is included.</p>
+
+    <div class="add-section">
+      <div class="add-section-title">The Base (Required)</div>
+      <div class="add-item required" data-price="97" data-key="base">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info">
+          <div class="add-name">The Alignment Assessment + Basic Blueprint</div>
+          <div class="add-desc">40-52 question comprehensive assessment · 8-page PDF: Behavior, Communication, Processing profiles · Basic Misalignment Map · Generic 30-Day Action Plan</div>
         </div>
-        <div class="option-card" data-value="couple" onclick="selectOption(this)">
-          <span class="option-icon">👫</span>
-          <div><div class="option-label">Me and my partner</div><div class="option-desc">Couples work, marriage, or romantic partnership</div></div>
-        </div>
-        <div class="option-card" data-value="group" onclick="selectOption(this)">
-          <span class="option-icon">👥</span>
-          <div><div class="option-label">A group or team</div><div class="option-desc">Family unit, workplace team, organization, or community</div></div>
-        </div>
+        <div class="add-price">$97</div>
       </div>
-      <div class="nav-row"><button class="btn-back" onclick="prevQuestion(3)">← Back</button><button class="btn-next" id="q3Next" onclick="nextQuestion(3)" disabled>Continue &rarr;</button></div>
-    </div>
-    <div class="question-block" id="q4">
-      <p class="q-number">Question 4 of 5</p>
-      <h2 class="q-text">How urgently do you feel the need for change?</h2>
-      <div class="options-grid" data-question="4">
-        <div class="option-card" data-value="crisis" onclick="selectOption(this)">
-          <span class="option-icon">🔥</span>
-          <div><div class="option-label">This is critical — I need help now</div><div class="option-desc">Things are at a breaking point or I'm in active pain</div></div>
-        </div>
-        <div class="option-card" data-value="important" onclick="selectOption(this)">
-          <span class="option-icon">⏰</span>
-          <div><div class="option-label">Important but not emergency</div><div class="option-desc">I'm ready to invest time and energy in real change</div></div>
-        </div>
-        <div class="option-card" data-value="exploring" onclick="selectOption(this)">
-          <span class="option-icon">🧭</span>
-          <div><div class="option-label">I'm exploring my options</div><div class="option-desc">Curious and open, gathering information before committing</div></div>
-        </div>
-      </div>
-      <div class="nav-row"><button class="btn-back" onclick="prevQuestion(4)">← Back</button><button class="btn-next" id="q4Next" onclick="nextQuestion(4)" disabled>Continue &rarr;</button></div>
-    </div>
-    <div class="question-block" id="q5">
-      <p class="q-number">Question 5 of 5</p>
-      <h2 class="q-text">What does success look like for you?</h2>
-      <div class="options-grid" data-question="5">
-        <div class="option-card" data-value="harmony" onclick="selectOption(this)">
-          <span class="option-icon">☮️</span>
-          <div><div class="option-label">Peace, harmony, and deeper connection</div><div class="option-desc">Feeling truly understood and loved by those around me</div></div>
-        </div>
-        <div class="option-card" data-value="confidence" onclick="selectOption(this)">
-          <span class="option-icon">💪</span>
-          <div><div class="option-label">Confidence, clarity, and purpose</div><div class="option-desc">Knowing who I am and moving forward with intention</div></div>
-        </div>
-        <div class="option-card" data-value="results" onclick="selectOption(this)">
-          <span class="option-icon">🎯</span>
-          <div><div class="option-label">Measurable results and breakthroughs</div><div class="option-desc">Tangible shifts I can see, feel, and build on</div></div>
-        </div>
-        <div class="option-card" data-value="freedom" onclick="selectOption(this)">
-          <span class="option-icon">🕊️</span>
-          <div><div class="option-label">Freedom from what's been holding me back</div><div class="option-desc">Breaking old patterns and stepping into who I'm meant to be</div></div>
-        </div>
-      </div>
-      <div class="nav-row"><button class="btn-back" onclick="prevQuestion(5)">← Back</button><button class="btn-next" id="q5Next" onclick="showRecommendation()" disabled>See My Recommendation &rarr;</button></div>
-    </div>
-    <!-- Recommendation Results -->
-    <div class="result-block" id="resultCouples">
-      <span class="result-badge">✦ Your Match</span>
-      <h2 class="result-title">The Couples Alignment Assessment</h2>
-      <p class="result-desc">Based on your answers, you and your partner are ready for deep, guided work that creates lasting change. This assessment will reveal the exact communication and connection gaps holding you both back — and the roadmap to bridge them.</p>
-      <div class="assessment-card">
-        <h4>Your Focus Areas</h4>
-        <p>Based on your selections, your assessment will cover:</p>
-        <div id="dynamicFocusAreasCouples" style="margin-top:14px;"></div>
-      </div>
-      <button class="btn-start-assessment" onclick="showInvoice('couples')">Begin The Assessment &rarr;</button>
-      <button class="btn-retake" onclick="retakeQuestionnaire()">← Retake questionnaire</button>
-    </div>
-    <div class="result-block" id="resultIndividual">
-      <span class="result-badge">✦ Your Match</span>
-      <h2 class="result-title">The Individual Alignment Assessment</h2>
-      <p class="result-desc">You're ready to go deeper into yourself. This assessment is designed to cut through the noise and help you see clearly who you are, how you communicate, and what's truly available to you next.</p>
-      <div class="assessment-card">
-        <h4>Your Focus Areas</h4>
-        <p>Based on your selections, your assessment will cover:</p>
-        <div id="dynamicFocusAreasIndividual" style="margin-top:14px;"></div>
-      </div>
-      <button class="btn-start-assessment" onclick="showInvoice('individual')">Begin The Assessment &rarr;</button>
-      <button class="btn-retake" onclick="retakeQuestionnaire()">← Retake questionnaire</button>
-    </div>
-    <div class="result-block" id="resultProfessional">
-      <span class="result-badge">✦ Your Match</span>
-      <h2 class="result-title">The Professional Alignment Assessment</h2>
-      <p class="result-desc">You're ready to elevate how you lead, communicate, and show up in your professional world. This assessment reveals your leadership communication style and the specific shifts that unlock your next level.</p>
-      <div class="assessment-card">
-        <h4>Your Focus Areas</h4>
-        <p>Based on your selections, your assessment will cover:</p>
-        <div id="dynamicFocusAreasProfessional" style="margin-top:14px;"></div>
-      </div>
-      <button class="btn-start-assessment" onclick="showInvoice('professional')">Begin The Assessment &rarr;</button>
-      <button class="btn-retake" onclick="retakeQuestionnaire()">← Retake questionnaire</button>
     </div>
 
-    <!-- Dynamic Focus Areas used across all result types -->
-
-    <!-- Result: Family Alignment Assessment -->
-    <div class="result-block" id="resultFamily">
-      <span class="result-badge">✦ Your Match</span>
-      <h2 class="result-title">The Family Alignment Assessment</h2>
-      <p class="result-desc">Your answers point to the heart of your home. This assessment is designed to map how your family communicates, connects, and where the gaps are — so you can build the harmony you know is possible.</p>
-      <div class="assessment-card">
-        <h4>Your Focus Areas</h4>
-        <p>Based on your selections, your assessment will cover:</p>
-        <div id="dynamicFocusAreas" style="margin-top:14px;"></div>
+    <div class="add-section">
+      <div class="add-section-title">Communication Deep-Dive</div>
+      <div class="add-item" data-price="47" data-key="love_lang" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">Love Languages Deep Dive</div><div class="add-desc">Full ranking of all 5 Love Languages with expression vs. reception analysis</div></div>
+        <div class="add-price">+$47</div>
       </div>
-      <button class="btn-start-assessment" onclick="showInvoice('family')">Begin The Assessment &rarr;</button>
-      <button class="btn-retake" onclick="retakeQuestionnaire()">← Retake questionnaire</button>
+      <div class="add-item" data-price="97" data-key="team_comm" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">Team Communication Audit</div><div class="add-desc">Detailed audit of team communication patterns and friction points</div></div>
+        <div class="add-price">+$97</div>
+      </div>
     </div>
 
-    <!-- Result: Learning Alignment Assessment -->
-    <div class="result-block" id="resultLearning">
-      <span class="result-badge">✦ Your Match</span>
-      <h2 class="result-title">The Learning Alignment Assessment</h2>
-      <p class="result-desc">You're ready to understand how you — or those in your care — best absorb and process information. This assessment reveals your learning style, communication patterns in educational settings, and the strategies that unlock real retention and growth.</p>
-      <div class="assessment-card">
-        <h4>Your Focus Areas</h4>
-        <p>Based on your selections, your assessment will cover:</p>
-        <div id="dynamicFocusAreasLearning" style="margin-top:14px;"></div>
+    <div class="add-section">
+      <div class="add-section-title">Processing Deep-Dive</div>
+      <div class="add-item" data-price="47" data-key="learning_style" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">Learning Style Integration Plan</div><div class="add-desc">Full VARK profile with percentages + integration strategies for your environment</div></div>
+        <div class="add-price">+$47</div>
       </div>
-      <button class="btn-start-assessment" onclick="showInvoice('learning')">Begin The Assessment &rarr;</button>
-      <button class="btn-retake" onclick="retakeQuestionnaire()">← Retake questionnaire</button>
+      <div class="add-item" data-price="67" data-key="decision_fw" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">Decision-Making Framework</div><div class="add-desc">Custom framework based on how you process information under pressure</div></div>
+        <div class="add-price">+$67</div>
+      </div>
     </div>
 
-    <!-- Result: Comprehensive Multi-Area Alignment Blueprint -->
-    <div class="result-block" id="resultComprehensive">
-      <span class="result-badge">✦ Your Match</span>
-      <h2 class="result-title">The Alignment Blueprint</h2>
-      <p class="result-desc">You've identified multiple areas where you're ready to grow. Your Alignment Blueprint is a comprehensive, multi-area assessment that delivers targeted insights and recommendations for every area of your life you selected — nothing gets left behind.</p>
-      <div class="assessment-card">
-        <h4>Your Personalized Focus Areas</h4>
-        <p>Your blueprint will address each of the following in depth:</p>
-        <div id="dynamicFocusAreasComp" style="margin-top:14px;"></div>
+    <div class="add-section">
+      <div class="add-section-title">Strategic Consulting</div>
+      <div class="add-item" data-price="147" data-key="debrief" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">30-Minute Strategic Debrief</div><div class="add-desc">Dennis advises you on your results, identifies critical misalignments, and outlines your strategic priorities</div></div>
+        <div class="add-price">+$147</div>
       </div>
-      <button class="btn-start-assessment" onclick="showInvoice('comprehensive')">Begin The Assessment &rarr;</button>
-      <button class="btn-retake" onclick="retakeQuestionnaire()">← Retake questionnaire</button>
+      <div class="add-item" data-price="247" data-key="consult_60" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">60-Minute Strategy Consultation</div><div class="add-desc">In-depth analysis of your alignment profile + custom strategic framework built for your specific situation</div></div>
+        <div class="add-price">+$247</div>
+      </div>
+      <div class="add-item" data-price="97" data-key="review_30" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">30-Day Strategy Review</div><div class="add-desc">15-minute consultation to assess progress, adjust strategy, and ensure alignment with objectives</div></div>
+        <div class="add-price">+$97</div>
+      </div>
+      <div class="add-item" data-price="397" data-key="consult_90" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">90-Day Consulting Engagement</div><div class="add-desc">Three 30-minute strategic consultations over 90 days + priority email access for ongoing advisory</div></div>
+        <div class="add-price">+$397</div>
+      </div>
     </div>
 
-    <!-- Invoice Screen -->
-    <div class="invoice-block" id="invoiceScreen">
-      <div class="invoice-header">
-        <span class="invoice-icon">📋</span>
-        <h3>Here's What You're Receiving</h3>
-        <p>Your personalized Alignment Assessment package includes everything below.</p>
+    <div class="add-section">
+      <div class="add-section-title">Relationship &amp; Family</div>
+      <div class="add-item" data-price="147" data-key="partner_assess" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">Partner Assessment</div><div class="add-desc">Full second assessment + compatibility report + joint dynamics analysis</div></div>
+        <div class="add-price">+$147</div>
       </div>
-      <div class="invoice-items" id="invoiceItems">
-        <!-- Populated by JS based on type -->
+      <div class="add-item" data-price="97" data-key="family_member" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">Family Member Add-On (per person)</div><div class="add-desc">Individual assessment + family dynamics integration report</div></div>
+        <div class="add-price">+$97</div>
       </div>
-      <div class="invoice-cta">
-        <p>Your results will be reviewed personally by Dennis Nickens.<br>A follow-up consultation will be scheduled to walk through your findings together.</p>
-        <button class="btn-book-call" onclick="bookConsultation()">
-          Book My Free Consultation
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </button>
+      <div class="add-item" data-price="297" data-key="couples_session" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">Joint Strategy Consultation (Couples)</div><div class="add-desc">60-minute joint session analyzing both profiles and building unified communication strategy</div></div>
+        <div class="add-price">+$297</div>
       </div>
-      <p class="invoice-note">Your information is private and never shared. Pricing is personalized to your situation and provided only after your consultation.</p>
     </div>
-  </div><!-- /modal-box -->
-</div><!-- /modal-overlay -->
+
+    <div class="add-section">
+      <div class="add-section-title">Leadership &amp; Organizational Consulting</div>
+      <div class="add-item" data-price="47" data-key="team_member" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">Additional Team Member (per person)</div><div class="add-desc">Individual assessment for each team member, integrated into the group report</div></div>
+        <div class="add-price">+$47</div>
+      </div>
+      <div class="add-item" data-price="197" data-key="team_dynamics" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">Team Dynamics Analysis</div><div class="add-desc">Comprehensive assessment of team communication patterns, leadership alignment gaps, and organizational behavior mapping</div></div>
+        <div class="add-price">+$197</div>
+      </div>
+      <div class="add-item" data-price="1497" data-key="workshop" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">Half-Day Leadership Workshop</div><div class="add-desc">Dennis facilitates on-site or virtual session — team alignment exercises, communication strategy training, leadership action planning</div></div>
+        <div class="add-price">+$1,497</div>
+      </div>
+      <div class="add-item" data-price="497" data-key="exec_consult" onclick="toggleAddon(this)">
+        <div class="add-check"><span class="add-check-icon">✓</span></div>
+        <div class="add-info"><div class="add-name">Executive Leadership Consulting (3 sessions)</div><div class="add-desc">One-on-one strategic advisory with team leader to implement alignment frameworks and drive organizational change</div></div>
+        <div class="add-price">+$497</div>
+      </div>
+    </div>
+
+    <div style="height:80px"></div>
+  </div>
+  <div class="sticky-total">
+    <div>
+      <div class="total-label">Your Total</div>
+      <div class="total-amount" id="buildTotal">$97</div>
+    </div>
+    <button class="btn-checkout" onclick="proceedToCheckout()">Unlock My Blueprint — <span id="buildTotalBtn">$97</span></button>
+  </div>
+</div>
+
+<!-- CHECKOUT SCREEN -->
+<div id="checkoutScreen" class="checkout-screen">
+  <div class="checkout-inner">
+    <div class="checkout-icon">🔐</div>
+    <h2 class="checkout-headline">Unlock Your Alignment Blueprint</h2>
+    <p class="checkout-sub">Review your selections below. After payment, your Blueprint will be delivered immediately.</p>
+    <div class="checkout-summary" id="checkoutSummary"></div>
+    <div class="consulting-note">
+      <strong>What happens next?</strong>
+      After payment you will receive your full Alignment Blueprint PDF by email. If consulting sessions are included, a calendar booking link will be sent. If partner or family assessments are included, invitation links will be delivered automatically.
+    </div>
+    <button class="btn-pay" id="payBtn" onclick="confirmPayment()">Unlock My Blueprint — <span id="checkoutTotalBtn">$97</span></button>
+    <p class="checkout-note">Secure checkout powered by Stripe · SSL encrypted · 100% confidential</p>
+  </div>
+</div>
+
+<!-- CONFIRMATION SCREEN -->
+<div id="confirmScreen" class="checkout-screen" style="display:none">
+  <div class="checkout-inner" style="text-align:center">
+    <div class="checkout-icon">✅</div>
+    <h2 class="blueprint-headline" style="text-align:center">Your Blueprint Is On Its Way!</h2>
+    <p style="font-size:17px;color:#666;margin:16px 0 28px;line-height:1.6;">Check your email — your full Alignment Blueprint PDF will arrive within minutes. If you booked consulting sessions, your calendar link is included.</p>
+    <div style="background:#f0f2ff;border-radius:16px;padding:24px;margin-bottom:24px;text-align:left">
+      <div style="font-size:13px;font-family:Arial,sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#D4AF37;margin-bottom:10px">What You Receive</div>
+      <ul style="list-style:none;font-size:14px;color:#4A4A4A;line-height:2" id="confirmList"></ul>
+    </div>
+    <a href="index.html" style="display:inline-block;background:#1A237E;color:#fff;font-family:Arial,sans-serif;font-size:16px;font-weight:700;padding:14px 36px;border-radius:12px;margin-top:8px">← Back to Home</a>
+  </div>
+</div>
+
 <script>
-var answers = {};
-var selectedAreas = []; // multi-select array for Q1
-var currentQuestion = 1;
-var totalQuestions = 5;
+// ===================== STATE =====================
+var qAnswers = {};
+var assessAnswers = {};
+var assessType = 'personal';
+var q4Answer = 'results_only';
+var q5Answer = 'self_guided';
+var selectedAddons = {base: true};
+var currentAssessQ = 0;
 
-// ── Multi-select toggle for Q1 ──────────────────────────────────────────────
-function toggleMultiOption(card, qNum) {
-  card.classList.toggle('selected');
-  var value = card.getAttribute('data-value');
-  var idx = selectedAreas.indexOf(value);
-  if (idx === -1) {
-    selectedAreas.push(value);
-  } else {
-    selectedAreas.splice(idx, 1);
-  }
-  // Enable/disable Continue based on whether at least one is selected
-  var nextBtn = document.getElementById('q' + qNum + 'Next');
-  if (nextBtn) nextBtn.disabled = selectedAreas.length === 0;
-}
-
-// ── Single-select for Q2–Q5 (unchanged) ──────────────────────────────────────
-function selectOption(card) {
-  var grid = card.closest('.options-grid');
-  var qNum = grid.getAttribute('data-question');
-  grid.querySelectorAll('.option-card').forEach(function(c) { c.classList.remove('selected'); });
-  card.classList.add('selected');
-  answers['q' + qNum] = card.getAttribute('data-value');
-  var nextBtn = document.getElementById('q' + qNum + 'Next');
-  if (nextBtn) nextBtn.disabled = false;
-}
-
-function openQuestionnaire() {
+// ===================== QUESTIONNAIRE LOGIC =====================
+function startAssessment() {
   document.getElementById('questionnaireModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-  resetQuestionnaire();
 }
-
-function closeModal() {
+function closeQuestionnaire() {
   document.getElementById('questionnaireModal').classList.remove('active');
-  document.body.style.overflow = '';
+}
+function selectOption(el, qNum, val) {
+  var container = document.getElementById('q' + qNum + 'Options');
+  container.querySelectorAll('.option-card').forEach(function(c){c.classList.remove('selected')});
+  el.classList.add('selected');
+  qAnswers['q'+qNum] = val;
+  var btn = document.getElementById('q'+qNum+'Next');
+  if(btn){ btn.classList.add('enabled'); }
+}
+function goToQ(num) {
+  for(var i=1;i<=5;i++){ document.getElementById('qBlock'+i).style.display='none'; }
+  document.getElementById('qBlock'+num).style.display='block';
+  var pct = (num/5)*100;
+  document.getElementById('qProgressBar').style.width = pct+'%';
+  document.getElementById('qStepLabel').textContent = 'Step '+num+' of 5';
+  // Reset next btn state based on whether answer already chosen
+  var nextId = num < 5 ? 'q'+num+'Next' : 'q5Next';
+  var btn = document.getElementById(nextId);
+  if(btn && qAnswers['q'+num]){ btn.classList.add('enabled'); }
+  document.querySelector('.modal-header h2').textContent = [
+    '','What is your current focus?','Who else will this involve?',
+    'What outcome matters most?','Immediate insight or ongoing support?','How deep do you want to go?'
+  ][num];
+  document.getElementById('qWelcome').textContent = '';
+}
+function finishQuestionnaire() {
+  // Determine assessment type from Q1+Q2
+  var q1 = qAnswers.q1 || 'personal';
+  var q2 = qAnswers.q2 || 'solo';
+  if(q1==='personal' && (q2==='solo' || q2==='partner')) assessType='personal';
+  else if(q1==='romantic') assessType='romantic';
+  else if(q1==='professional' && (q2==='colleagues'||q2==='team')) assessType='professional';
+  else if(q1==='leadership') assessType='leadership';
+  else if(q1==='family') assessType='family';
+  else assessType='personal';
+  q4Answer = qAnswers.q4 || 'results_only';
+  q5Answer = qAnswers.q5 || 'self_guided';
+  closeQuestionnaire();
+  startFullAssessment();
 }
 
-document.getElementById('questionnaireModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
+// ===================== FULL ASSESSMENT QUESTIONS =====================
+var assessQuestions = [
+  // SECTION 1: BEHAVIOR (15 questions)
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'In most situations, how do you naturally approach challenges?',opts:['I take charge immediately and push through obstacles','I persuade and energize others to find a solution together','I prefer to work steadily and support whoever is leading','I research carefully and analyze before taking action']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'How do others typically describe your communication style?',opts:['Direct, confident, results-focused','Enthusiastic, expressive, inspiring','Patient, dependable, team-oriented','Precise, thorough, detail-oriented']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'When you are under significant pressure or stress, you tend to:',opts:['Become more forceful and demand immediate results','Become emotional or talk excessively','Become more passive and conflict-avoidant','Become hyper-critical of yourself and others']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'What motivates you most day-to-day?',opts:['Winning, achieving, and being in control','Recognition, approval, and fun','Security, stability, and loyalty','Accuracy, quality, and doing things right']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'In a meeting, you are most likely to:',opts:['Lead the conversation and push for decisions','Be the one generating ideas and building energy','Listen, support others, and offer steady perspective','Ask clarifying questions and take thorough notes']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'How do you typically respond to sudden change?',opts:['I embrace it — change is an opportunity','I get excited and involve others immediately','I need time to adjust — I prefer stability','I evaluate the change carefully before adapting']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'When you make a mistake at work or in a relationship, you usually:',opts:['Acknowledge it quickly and move on','Talk about it openly and seek reassurance','Reflect quietly and feel responsible for a while','Analyze what went wrong in detail before moving on']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'Under extreme pressure, which behavior shows up most?',opts:['I become controlling or aggressive','I become overly reactive or dramatic','I shut down emotionally or become indecisive','I become overly critical or paralyzed by perfectionism']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'How do you adapt your behavior in a new environment?',opts:['I assert myself and establish my presence early','I socialize, network, and build relationships quickly','I observe first and blend in before participating','I learn the rules and systems before engaging']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'When making a major decision, you primarily rely on:',opts:['Your own gut and confidence','Feedback and input from others','Precedent, loyalty, and what has worked before','Data, facts, and thorough analysis']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'How do you feel about rules and structure?',opts:['I follow rules only if they make sense to me','I prefer flexibility over rigid structure','I appreciate clear expectations and guidelines','I believe rules exist for good reason and follow them carefully']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'Your natural pace in life and work is:',opts:['Fast and urgent — I want results now','Energetic and spontaneous — I follow inspiration','Steady and consistent — I keep a sustainable rhythm','Deliberate and methodical — I do things thoroughly']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'Which fear most affects your behavior?',opts:['Being taken advantage of or losing control','Being rejected or disliked','Change, conflict, or losing stability','Being wrong, criticized, or making a major mistake']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'In relationships, your natural role tends to be:',opts:['The leader or decision-maker','The encourager and connector','The supporter and peacemaker','The planner and quality-controller']},
+  {section:'Section 1 of 5: Behavior',secNum:1,q:'How do you typically handle conflict?',opts:['Head-on — I address it directly and immediately','I try to talk it out and repair the emotional connection','I avoid it as long as possible — I prefer peace','I need time to process it before addressing it logically']},
 
-function updateProgress(step) {
-  var pct = (step / totalQuestions) * 100;
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressLabel').textContent = 'Step ' + step + ' of ' + totalQuestions;
+  // SECTION 2: COMMUNICATION (12 questions)
+  {section:'Section 2 of 5: Communication',secNum:2,q:'When someone you care about does something meaningful for you, what matters most?',opts:['They told me sincerely how much I mean to them','They gave me their full, undivided attention','They did something practical and helpful for me','They gave me a heartfelt gift or token of appreciation','They physically showed affection — a hug, touch, or gesture']},
+  {section:'Section 2 of 5: Communication',secNum:2,q:'Which feels most hurtful to you when missing from a relationship?',opts:['Lack of verbal appreciation or kind words','Being ignored or feeling emotionally disconnected','Nobody stepping up to help or carry the load with me','Feeling forgotten — no gestures, no tokens of care','Lack of physical presence, warmth, or touch']},
+  {section:'Section 2 of 5: Communication',secNum:2,q:'When you want to express love or care, you naturally:',opts:['Say it out loud — compliments and words of affirmation','Create dedicated, focused time together','Handle things for them — acts of service','Find or make something meaningful to give them','Use touch, physical closeness, and presence']},
+  {section:'Section 2 of 5: Communication',secNum:2,q:'How do you prefer to receive feedback or criticism?',opts:['Directly and bluntly — just tell me the truth','Privately and sensitively, framed with care','With context and examples so I understand the impact','In writing so I can process it on my own time']},
+  {section:'Section 2 of 5: Communication',secNum:2,q:'When stress hits, how does your communication change?',opts:['I get louder, more forceful, and dominant','I over-explain, over-share, or talk in circles','I go quiet and shut down emotionally','I become hyperanalytical and hyper-critical in how I speak']},
+  {section:'Section 2 of 5: Communication',secNum:2,q:'In an argument, your biggest communication challenge is:',opts:['Being too blunt and making others feel attacked','Being too emotional and hard to follow','Avoiding the issue and not saying what you really feel','Being so measured and logical that people feel dismissed']},
+  {section:'Section 2 of 5: Communication',secNum:2,q:'When you share something personal, you most want the listener to:',opts:['Be real and honest with me, even if it is hard to hear','Be fully present and emotionally engaged','Help me find a solution or take action','Let me finish without interrupting, then respond thoughtfully']},
+  {section:'Section 2 of 5: Communication',secNum:2,q:'How do you express appreciation for others?',opts:['I say it directly and often','I make time specifically for them','I help them with things without being asked','I remember details and acknowledge special moments','I hug, high-five, or stay physically close']},
+  {section:'Section 2 of 5: Communication',secNum:2,q:'What communication pattern causes you the most friction?',opts:['People who are vague, slow, or non-committal','People who are cold, distant, or emotionally flat','People who are confrontational or aggressive','People who are imprecise, disorganized, or overly emotional']},
+  {section:'Section 2 of 5: Communication',secNum:2,q:'Which statement resonates most with how you love?',opts:['A simple "I am proud of you" changes everything','Time together — really together — means the world to me','Show me you care by helping carry the load','The thoughtfulness behind a gift moves me more than its size','Being held close says what words cannot']},
+  {section:'Section 2 of 5: Communication',secNum:2,q:'In professional settings, your communication strength is:',opts:['Clarity, directness, and decisiveness','Inspiration, energy, and building rapport','Reliability, consistency, and follow-through','Precision, documentation, and thoroughness']},
+  {section:'Section 2 of 5: Communication',secNum:2,q:'When information is delivered poorly, you most feel:',opts:['Frustrated by the lack of clarity and wasted time','Disconnected because the messenger was cold or uninspiring','Anxious because I am unsure what is expected','Distrustful because the data seems inaccurate or incomplete']},
+
+  // SECTION 3: PROCESSING (12 questions)
+  {section:'Section 3 of 5: Processing',secNum:3,q:'How do you learn best?',opts:['Seeing it — diagrams, charts, visual demonstrations','Hearing it — lectures, audio, talking it through','Reading and writing — notes, articles, written guides','Doing it — hands-on, trial and error, real practice']},
+  {section:'Section 3 of 5: Processing',secNum:3,q:'When you need to understand something complex, you first:',opts:['Look for a visual map, chart, or graphic','Talk to someone who can explain it out loud','Read everything available on the subject','Jump in and figure it out through experience']},
+  {section:'Section 3 of 5: Processing',secNum:3,q:'When you are flooded with too much information, you:',opts:['Make a visual diagram or mind map to sort it out','Talk through it with someone to think out loud','Make detailed written lists or outlines to organize it','Step away and come back with a fresh perspective']},
+  {section:'Section 3 of 5: Processing',secNum:3,q:'In a training or workshop, you retain information best when:',opts:['There are slides, visuals, or demonstrations','The facilitator speaks engagingly and explains clearly','You receive handouts, notes, or something to read','You get to apply it in a real exercise or activity']},
+  {section:'Section 3 of 5: Processing',secNum:3,q:'When you learn a new skill, which step matters most?',opts:['Seeing someone model the skill clearly first','Having someone walk you through it verbally','Reading the manual or instructions thoroughly first','Trying it yourself and learning from the result']},
+  {section:'Section 3 of 5: Processing',secNum:3,q:'When you make an important decision, you rely most on:',opts:['Mental images of the outcomes and scenarios','Talking it out until the logic clicks verbally','Writing out pros, cons, and options in detail','Your gut instinct from direct experience']},
+  {section:'Section 3 of 5: Processing',secNum:3,q:'What kind of environment helps you concentrate best?',opts:['Clean, visually organized, minimal clutter','Ambient sound or music in the background','Quiet, with written materials to reference','Active environment where you can move or do something']},
+  {section:'Section 3 of 5: Processing',secNum:3,q:'When you receive instructions, you prefer them:',opts:['Shown visually — a diagram, model, or demonstration','Spoken clearly and directly in conversation','Written down in step-by-step format','Given briefly so you can figure out the rest yourself']},
+  {section:'Section 3 of 5: Processing',secNum:3,q:'How do you remember information best?',opts:['By creating or reviewing visual associations','By repeating it aloud or discussing it','By writing it down and reviewing notes','By doing it repeatedly until it becomes muscle memory']},
+  {section:'Section 3 of 5: Processing',secNum:3,q:'When overloaded by decisions, your instinct is to:',opts:['Draw or map out options visually','Talk it through with someone you trust','Make a written list and evaluate each option','Move, do something physical, and let clarity come naturally']},
+  {section:'Section 3 of 5: Processing',secNum:3,q:'Which learning frustration resonates most with you?',opts:['When there is no visual to make sense of the concept','When the explanation is dry and delivered without energy','When nothing is written down and I have to rely on memory','When I am not allowed to practice — just lectured at']},
+  {section:'Section 3 of 5: Processing',secNum:3,q:'Which statement describes how you process emotions?',opts:['I need to see the big picture before I can feel settled','I need to talk about it — out loud — to work through it','I need to journal or write to understand what I am feeling','I need to move my body or take action before I can process']},
+
+  // SECTION 4: ALIGNMENT CROSSOVER (7 questions)
+  {section:'Section 4 of 5: Alignment',secNum:4,q:'Where do you notice the most friction in your relationships?',opts:['I act one way but communicate another — inconsistency confuses people','I think I am being clear but others feel unheard or dismissed','I know what I want but I cannot explain it in a way that lands','I say the right things but my actions do not match my words']},
+  {section:'Section 4 of 5: Alignment',secNum:4,q:'In high-pressure situations, where do you tend to break down?',opts:['My behavior becomes reactive but my communication shuts down','My communication becomes chaotic but my decisions slow down','My processing becomes scattered and I act impulsively','All three collapse — behavior, communication, and thinking']},
+  {section:'Section 4 of 5: Alignment',secNum:4,q:'When you try to grow or improve yourself, what gets in the way most?',opts:['I know what to do but I cannot sustain the behavior','I talk about changing but I never fully commit to the action','I understand the plan intellectually but I cannot apply it practically','I start strong but I lose focus when results are not immediate']},
+  {section:'Section 4 of 5: Alignment',secNum:4,q:'Which scenario feels most like your life right now?',opts:['I am performing well on the outside but feeling misaligned inside','I am communicating but nothing seems to be truly connecting','I am trying to lead or contribute but I feel unseen or misunderstood','I feel stuck — like I know what I need but I keep repeating old patterns']},
+  {section:'Section 4 of 5: Alignment',secNum:4,q:'When your behavior, communication, and thinking are all working together, you feel:',opts:['Unstoppable — clear, confident, and fully in my power','Magnetic — people are drawn to me and everything flows','Focused — sharp, productive, and deeply effective','Grounded — peaceful, purposeful, and deeply aligned']},
+  {section:'Section 4 of 5: Alignment',secNum:4,q:'Where do your relationships or leadership most break down?',opts:['I react before I think, then regret it later','I say things I do not mean when I am stressed','I shut down when I should speak up','I overanalyze and miss the moment entirely']},
+  {section:'Section 4 of 5: Alignment',secNum:4,q:'How aligned do you feel between who you ARE and how you SHOW UP daily?',opts:['Very misaligned — I feel like two different people','Somewhat misaligned — I have moments of authenticity but they are inconsistent','Mostly aligned — occasional slippage under pressure','Fully aligned — I show up consistently as myself in most areas']},
+
+  // SECTION 5: CONTEXT & GOALS (5 questions)
+  {section:'Section 5 of 5: Context & Goals',secNum:5,q:'What specific outcome would make this assessment feel completely worth it?',opts:['Finally understanding WHY I keep repeating patterns that hold me back','Getting a concrete framework I can apply immediately to one key relationship','Building a communication strategy I can use with my team, family, or partner','Creating a personalized blueprint that aligns who I am with how I lead or love']},
+  {section:'Section 5 of 5: Context & Goals',secNum:5,q:'What have you already tried to address this challenge?',opts:['Books, podcasts, or self-help content — but it felt generic','Therapy or counseling — but it focused on the past, not the strategy','Personality tests like MBTI or StrengthsFinder — but no one helped me apply it','Nothing structured — this is my first real attempt at this level of clarity']},
+  {section:'Section 5 of 5: Context & Goals',secNum:5,q:'What is your biggest fear going into this process?',opts:['That the results will confirm something I already know but do not want to face','That it will be too generic to be useful','That I will get clarity but still not know what to do with it','That I will not follow through once I have the information']},
+  {section:'Section 5 of 5: Context & Goals',secNum:5,q:'In six months, if this assessment and consulting worked perfectly, you would be:',opts:['Consistently showing up as the best version of myself — in relationships and leadership','Having deeper, more authentic connections with the people who matter most','Leading with clarity and confidence — and getting real results from my team','Aligned — fully at peace with who I am and how I operate in the world']},
+  {section:'Section 5 of 5: Context & Goals',secNum:5,q:'What level of commitment are you willing to bring to this process?',opts:['I will do the work — I want real, lasting change','I want to understand myself — and I will apply what resonates','I am exploring for now — but I am open to going deeper','I am fully committed — I want the complete transformation']}
+];
+
+var totalAssessQs = assessQuestions.length;
+
+// ===================== ASSESSMENT ENGINE =====================
+function startFullAssessment() {
+  currentAssessQ = 0;
+  assessAnswers = {};
+  document.getElementById('assessmentScreen').classList.add('active');
+  renderAssessQ(0);
 }
 
-function nextQuestion(from) {
-  var current = document.getElementById('q' + from);
-  var next = document.getElementById('q' + (from + 1));
-  if (!next) return;
-  // Save Q1 multi-select into answers
-  if (from === 1) {
-    answers.q1 = selectedAreas.slice(); // copy array
+function renderAssessQ(idx) {
+  var q = assessQuestions[idx];
+  if(!q) return;
+  var total = assessQuestions.length;
+  var pct = Math.round(((idx+1)/total)*100);
+  var remaining = Math.max(1, Math.ceil((total - idx) * 0.15));
+
+  document.getElementById('assessSectionLabel').textContent = q.section;
+  document.getElementById('assessProgressText').textContent = 'Question ' + (idx+1) + ' of ' + total;
+  document.getElementById('assessProgBar').style.width = pct + '%';
+  document.getElementById('assessTimer').textContent = '\u23F1 ~' + remaining + ' min remaining';
+
+  var letters = ['A','B','C','D','E'];
+  var html = '<div class="assess-q-title">' + q.q + '</div>';
+  q.opts.forEach(function(opt,i){
+    var sel = assessAnswers[idx] === i ? ' selected' : '';
+    html += '<div class="assess-option' + sel + '" onclick="pickAssessOpt(this,' + idx + ',' + i + ')">';
+    html += '<span class="a-letter">' + letters[i] + '</span>';
+    html += '<span>' + opt + '</span></div>';
+  });
+  document.getElementById('assessQBlock').innerHTML = html;
+
+  var nextBtn = document.getElementById('assessNextBtn');
+  if(assessAnswers[idx] !== undefined){ nextBtn.classList.add('enabled'); } else { nextBtn.classList.remove('enabled'); }
+
+  var backBtn = document.getElementById('assessBackBtn');
+  backBtn.style.visibility = idx === 0 ? 'hidden' : 'visible';
+
+  if(idx === total-1){ nextBtn.textContent = 'Submit Assessment'; } else { nextBtn.textContent = 'Next \u2192'; }
+}
+
+function pickAssessOpt(el, qIdx, optIdx) {
+  document.querySelectorAll('.assess-option').forEach(function(e){e.classList.remove('selected')});
+  el.classList.add('selected');
+  assessAnswers[qIdx] = optIdx;
+  document.getElementById('assessNextBtn').classList.add('enabled');
+  // Auto-save to localStorage
+  try { localStorage.setItem('alignment_progress', JSON.stringify({q: qIdx, answers: assessAnswers, type: assessType})); } catch(e){}
+}
+
+function assessNext() {
+  if(assessAnswers[currentAssessQ] === undefined) return;
+  if(currentAssessQ >= assessQuestions.length-1) {
+    document.getElementById('assessmentScreen').classList.remove('active');
+    showHookResult();
+    return;
   }
-  current.classList.remove('active');
-  next.classList.add('active');
-  currentQuestion = from + 1;
-  updateProgress(from + 1);
-  document.getElementById('modalBox').scrollTop = 0;
+  currentAssessQ++;
+  renderAssessQ(currentAssessQ);
 }
 
-function prevQuestion(from) {
-  var current = document.getElementById('q' + from);
-  var prev = document.getElementById('q' + (from - 1));
-  if (!prev) return;
-  current.classList.remove('active');
-  prev.classList.add('active');
-  currentQuestion = from - 1;
-  updateProgress(from - 1);
-  document.getElementById('modalBox').scrollTop = 0;
+function assessBack() {
+  if(currentAssessQ <= 0) return;
+  currentAssessQ--;
+  renderAssessQ(currentAssessQ);
 }
 
-// ── Recommendation logic: uses all selected areas ──────────────────────────
-function showRecommendation() {
-  for (var i = 1; i <= 5; i++) {
-    var el = document.getElementById('q' + i);
-    if (el) el.classList.remove('active');
-  }
-  document.getElementById('progressWrap').style.display = 'none';
-
-  var areas = answers.q1 || selectedAreas;
-  var urgency = answers.q4 || '';
-  var who = answers.q3 || '';
-
-  // Determine primary category cluster
-  var hasCouples = areas.indexOf('marriage-relationship') !== -1 || areas.indexOf('dating-single') !== -1;
-  var hasProfessional = areas.indexOf('leadership') !== -1 || areas.indexOf('business') !== -1 || areas.indexOf('employee-development') !== -1;
-  var hasFamily = areas.indexOf('family-relationships') !== -1 || areas.indexOf('parenting') !== -1;
-  var hasLearning = areas.indexOf('learning-education') !== -1 || areas.indexOf('teacher-student') !== -1;
-  var hasPersonal = areas.indexOf('personal-growth') !== -1 || areas.indexOf('other') !== -1;
-
-  // Who override
-  if (who === 'couple') hasCouples = true;
-  if (who === 'group') hasProfessional = true;
-
-  // Choose result type — multi-area gets comprehensive blueprint
-  var resultId;
-  var totalCategories = (hasCouples ? 1 : 0) + (hasProfessional ? 1 : 0) + (hasFamily ? 1 : 0) + (hasLearning ? 1 : 0) + (hasPersonal ? 1 : 0);
-
-  if (totalCategories >= 3) {
-    resultId = 'resultComprehensive';
-  } else if (hasCouples && hasProfessional) {
-    resultId = 'resultComprehensive';
-  } else if (hasCouples) {
-    resultId = 'resultCouples';
-  } else if (hasProfessional) {
-    resultId = 'resultProfessional';
-  } else if (hasFamily) {
-    resultId = 'resultFamily';
-  } else if (hasLearning) {
-    resultId = 'resultLearning';
-  } else {
-    resultId = 'resultIndividual';
-  }
-
-  // Build dynamic focus areas list
-  buildFocusAreas(areas, resultId);
-
-  // Build the dynamic focus areas for the chosen result
-  buildFocusAreas(areas, resultId);
-
-  document.getElementById(resultId).classList.add('active');
-  document.getElementById('modalBox').scrollTop = 0;
-}
-
-// Maps each selected area to its key focus themes
-var areaFocusMap = {
-  'personal-growth':        ['Self-awareness & identity', 'Confidence & mindset shifts', 'Breaking limiting patterns', 'Personal alignment score'],
-  'dating-single':          ['Attraction & communication style', 'Readiness & relationship patterns', 'What you bring to a partnership', 'Dating behavior blueprint'],
-  'marriage-relationship':  ['Connection & intimacy patterns', 'Conflict resolution & communication', 'Expectations & unspoken needs', 'Partnership alignment score'],
-  'family-relationships':   ['Family communication dynamics', 'Boundary & role clarity', 'Generational patterns', 'Family alignment insights'],
-  'parenting':              ['Parenting communication style', 'Understanding your child behavior', 'Connection vs. correction balance', 'Parent-child alignment profile'],
-  'teacher-student':        ['Classroom communication style', 'Student engagement strategies', 'Behavioral patterns in learning', 'Teacher effectiveness profile'],
-  'learning-education':     ['How you process information', 'Your optimal learning style (VARK)', 'Study & retention strategies', 'Learning alignment blueprint'],
-  'business':               ['Business communication style', 'Leadership & decision-making', 'Team dynamics & culture', 'Business behavior profile'],
-  'employee-development':   ['Workplace behavior & motivation', 'Team communication patterns', 'Management style alignment', 'Employee growth roadmap'],
-  'leadership':             ['Leadership communication archetype', 'Influence & authority patterns', 'Blind spots affecting your team', 'Leadership development plan'],
-  'other':                  ['Personalized discovery session', 'Custom behavior & communication mapping', 'Tailored growth insights', 'Custom alignment blueprint']
+// ===================== HOOK RESULT =====================
+var hookData = {
+  personal:  {headline:'You Are Operating Below Your True Capacity', body:'Based on your responses, you are currently experiencing a misalignment between how you naturally behave and how you communicate those behaviors to yourself and others.', insightTitle:'Primary Misalignment: Behavior vs. Self-Awareness', insight:'Your profile shows high adaptability — but that adaptability has a cost. You are adjusting to environments and people in ways that are creating internal friction. The gap between who you are and how you show up is creating exhaustion, inconsistency, and a quiet sense that something is off.', teaser:'Your full Blueprint identifies the three specific alignment gaps in your wiring — and gives you a precise strategic framework to close them.'},
+  romantic:  {headline:'Your Relationship Patterns Are Not Random', body:'Based on your responses, there is a measurable gap between how you naturally communicate connection and how your partner receives or expresses it. This is not a character flaw — it is a wiring mismatch.', insightTitle:'Primary Misalignment: Communication vs. Connection', insight:'Your assessment reveals a pattern where your dominant Love Language is not being expressed or received in the way that actually lands for you or your partner. This is creating a cycle of effort without impact — you are both trying, but something keeps getting lost in translation.', teaser:'Your full Blueprint maps this dynamic precisely and gives you a communication strategy designed specifically for your relational wiring.'},
+  professional:{headline:'Your Workplace Friction Has a Source', body:'Based on your responses, the friction you are experiencing professionally is rooted in a misalignment between your behavioral style and your communication approach under pressure.', insightTitle:'Primary Misalignment: Behavior Under Stress vs. Team Communication', insight:'Your profile shows that your natural strengths at work get undermined when pressure increases. The behavior pattern you default to under stress is creating friction in collaboration, trust, and communication effectiveness — even when your intentions are good.', teaser:'Your full Blueprint identifies the exact pressure points and delivers a professional communication strategy tailored to your specific style.'},
+  leadership:{headline:'Your Leadership Has Untapped Leverage', body:'Based on your responses, there is a significant gap between your leadership potential and your current execution. The alignment between how you lead, how you communicate, and how your team receives you needs strategic attention.', insightTitle:'Primary Misalignment: Leadership Style vs. Team Alignment', insight:'Your assessment reveals that your natural leadership strengths are being filtered through a communication and processing style that is creating friction with your team. The result is lower trust, reduced buy-in, and a team that is capable of more but not fully unlocked.', teaser:'Your full Blueprint maps your leadership alignment profile and builds the exact framework needed to close the gap between your vision and your team execution.'},
+  family:    {headline:'The Disconnection in Your Home Has a Pattern', body:'Based on your responses, the challenges in your family dynamic are rooted in behavioral and communication misalignments — not a lack of love, but a gap in how love and expectations are being expressed and received.', insightTitle:'Primary Misalignment: Family Communication vs. Individual Wiring', insight:'Your profile reveals that each person in your family dynamic has a different processing and communication style — and without a shared framework, these differences create recurring friction, misunderstanding, and emotional distance. The good news is that this is entirely addressable.', teaser:'Your full Blueprint maps the communication dynamics in your family system and delivers a strategic framework for alignment, harmony, and deeper connection.'}
 };
 
-function buildFocusAreas(areas, resultId) {
-  // Pick the right container based on result type
-  var containerMap = {
-    'resultFamily': 'dynamicFocusAreas',
-    'resultLearning': 'dynamicFocusAreasLearning',
-    'resultComprehensive': 'dynamicFocusAreasComp',
-    'resultCouples': 'dynamicFocusAreasCouples',
-    'resultIndividual': 'dynamicFocusAreasIndividual',
-    'resultProfessional': 'dynamicFocusAreasProfessional'
-  };
-  var containerId = containerMap[resultId] || 'dynamicFocusAreas';
-  var container = document.getElementById(containerId);
-  if (!container) return;
-  var html = '';
-  areas.forEach(function(area) {
-    var themes = areaFocusMap[area];
-    if (!themes) return;
-    var label = document.querySelector('#q1MultiGrid [data-value="' + area + '"] .option-label');
-    var areaName = label ? label.textContent.trim() : area;
-    html += '<div style="margin-bottom:18px;">';
-    html += '<div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px;letter-spacing:0.3px;">' + areaName + '</div>';
-    html += '<div style="display:flex;flex-wrap:wrap;gap:6px;">';
-    themes.forEach(function(t) {
-      html += '<span style="font-size:12px;background:#EEF0FF;color:var(--navy);padding:4px 10px;border-radius:20px;font-weight:500;">' + t + '</span>';
-    });
-    html += '</div></div>';
-  });
-  container.innerHTML = html || '<p style="color:#888;font-size:13px;">Your personalized focus areas will be tailored during your consultation.</p>';
+function showHookResult() {
+  var data = hookData[assessType] || hookData.personal;
+  document.getElementById('hookHeadline').textContent = data.headline;
+  document.getElementById('hookBody').textContent = data.body;
+  document.getElementById('hookInsightTitle').textContent = data.insightTitle;
+  document.getElementById('hookInsightBody').textContent = data.insight;
+  document.getElementById('hookTeaser').textContent = data.teaser;
+  document.getElementById('hookScreen').classList.add('active');
 }
 
-var invoiceData = {
-  couples: [
-    {name:'Couples Alignment Assessment', detail:'18 targeted questions, deep-dive format', tag:'Included'},
-    {name:'Immediate Results Summary', detail:'Your personal alignment score & profile', tag:'Included'},
-    {name:'Communication Blueprint', detail:'Individual + combined communication styles', tag:'Included'},
-    {name:'Conflict & Connection Pattern Report', detail:'Specific patterns affecting your partnership', tag:'Included'},
-    {name:'Private Consultation Review', detail:'1-on-1 walk-through with Dennis Nickens', tag:'Included'}
-  ],
-  professional: [
-    {name:'Professional Alignment Assessment', detail:'18 leadership-focused questions', tag:'Included'},
-    {name:'Leadership Communication Profile', detail:'Your authority and influence archetype', tag:'Included'},
-    {name:'Blind Spot Analysis', detail:'Hidden patterns affecting your professional impact', tag:'Included'},
-    {name:'Strategic Growth Plan', detail:'Customized professional development roadmap', tag:'Included'},
-    {name:'Private Consultation Review', detail:'1-on-1 strategy session with Dennis Nickens', tag:'Included'}
-  ],
-  family: [
-    {name:'Family Alignment Assessment', detail:'18 family-focused questions', tag:'Included'},
-    {name:'Family Communication Profile', detail:'Roles, patterns & dynamics mapped', tag:'Included'},
-    {name:'Parenting & Connection Insights', detail:'How your style impacts your family', tag:'Included'},
-    {name:'Family Harmony Roadmap', detail:'Targeted steps for healthier dynamics', tag:'Included'},
-    {name:'Private Consultation Review', detail:'1-on-1 session with Dennis Nickens', tag:'Included'}
-  ],
-  learning: [
-    {name:'Learning Style Alignment Assessment', detail:'18 education-focused questions', tag:'Included'},
-    {name:'VARK Learning Profile', detail:'How you best absorb and retain information', tag:'Included'},
-    {name:'Student / Teacher Communication Map', detail:'Behavioral patterns in educational settings', tag:'Included'},
-    {name:'Learning Optimization Strategy', detail:'Specific study & engagement recommendations', tag:'Included'},
-    {name:'Private Consultation Review', detail:'1-on-1 session with Dennis Nickens', tag:'Included'}
-  ],
-  individual: [
-    {name:'Individual Alignment Assessment', detail:'18 focused questions, personal-growth format', tag:'Included'},
-    {name:'Behavioral Profile Report', detail:'Your communication and behavioral archetype', tag:'Included'},
-    {name:'Personal Alignment Score', detail:'Where you are vs. where you can be', tag:'Included'},
-    {name:'Growth Pathway Plan', detail:'Targeted development steps for your journey', tag:'Included'},
-    {name:'Private Consultation Review', detail:'1-on-1 results debrief with Dennis Nickens', tag:'Included'}
-  ],
-  comprehensive: [
-    {name:'Multi-Area Alignment Blueprint', detail:'Comprehensive 18-question assessment spanning all your selected areas', tag:'Included'},
-    {name:'Area-by-Area Focus Report', detail:'Dedicated insights for each area you selected', tag:'Included'},
-    {name:'Full Behavioral & Communication Profile', detail:'How your style shows up across every context', tag:'Included'},
-    {name:'Cross-Area Pattern Analysis', detail:'How your different life areas interconnect and affect each other', tag:'Included'},
-    {name:'Personalized Alignment Roadmap', detail:'Priority action steps across all selected areas', tag:'Included'},
-    {name:'Private Consultation Review', detail:'Extended 1-on-1 session with Dennis Nickens', tag:'Included'}
-  ]
+// ===================== BLUEPRINT / RECOMMENDATION =====================
+var packages = {
+  // Q4=results_only + Q5=self_guided → base only
+  'results_only_self_guided': {
+    title: 'Personal Alignment Blueprint — Base',
+    includes: ['40-52 question comprehensive assessment','8-page PDF: Behavior, Communication, Processing profiles','Basic Misalignment Map','Generic 30-Day Action Plan'],
+    price: 97,
+    addons: ['base']
+  },
+  // Q4=results_plan + Q5=guided → base + debrief
+  'results_plan_guided': {
+    title: 'Alignment Blueprint + Strategic Debrief',
+    includes: ['Everything in the Base Blueprint','30-Minute Strategic Debrief with Dennis','Priority misalignment identification','Personalized strategic priority outline'],
+    price: 244,
+    addons: ['base','debrief']
+  },
+  // Q4=results_consult + Q5=partnered → base + 60min + review
+  'results_consult_partnered': {
+    title: 'Alignment Blueprint + Strategy Consultation',
+    includes: ['Everything in the Base Blueprint','60-Minute Strategy Consultation with Dennis','Custom strategic framework for your situation','30-Day Strategy Review session'],
+    price: 441,
+    addons: ['base','consult_60','review_30']
+  },
+  // Q4=full_team + Q5=full_partner (romantic) → base + partner + couples session
+  'full_team_full_partner_romantic': {
+    title: 'Relationship Alignment Package',
+    includes: ['Everything in the Base Blueprint','Full Partner Assessment + compatibility report','Joint Strategy Consultation (Couples)','Joint communication strategy built together'],
+    price: 541,
+    addons: ['base','partner_assess','couples_session']
+  },
+  // Q4=full_team + Q5=full_partner (leadership) → base + team dynamics + workshop + exec
+  'full_team_full_partner_leadership': {
+    title: 'Leadership & Organizational Alignment Package',
+    includes: ['Everything in the Base Blueprint','Team Dynamics Analysis','Half-Day Leadership Workshop (on-site or virtual)','Executive Leadership Consulting (3 sessions)'],
+    price: 2791,
+    addons: ['base','team_dynamics','workshop','exec_consult']
+  },
+  // Default
+  'default': {
+    title: 'Personal Alignment Blueprint — Base',
+    includes: ['40-52 question comprehensive assessment','8-page PDF: Behavior, Communication, Processing profiles','Basic Misalignment Map','Generic 30-Day Action Plan'],
+    price: 97,
+    addons: ['base']
+  }
 };
 
-function showInvoice(type) {
-  ['resultCouples','resultIndividual','resultProfessional','resultFamily','resultLearning','resultComprehensive'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) el.classList.remove('active');
-  });
-  var items = invoiceData[type] || invoiceData.individual;
-  var html = '';
-  items.forEach(function(item) {
-    html += '<div class="invoice-item">';
-    html += '<div><div class="item-name">' + item.name + '</div>';
-    html += '<div class="item-detail">' + item.detail + '</div></div>';
-    html += '<div class="item-included">' + item.tag + '</div>';
-    html += '</div>';
-  });
-  document.getElementById('invoiceItems').innerHTML = html;
-  document.getElementById('invoiceScreen').classList.add('active');
-  document.getElementById('modalBox').scrollTop = 0;
+var addonPrices = {
+  base:97, love_lang:47, team_comm:97, learning_style:47, decision_fw:67,
+  debrief:147, consult_60:247, review_30:97, consult_90:397,
+  partner_assess:147, family_member:97, couples_session:297,
+  team_member:47, team_dynamics:197, workshop:1497, exec_consult:497
+};
+
+var addonNames = {
+  base:'The Alignment Assessment + Basic Blueprint',
+  love_lang:'Love Languages Deep Dive',
+  team_comm:'Team Communication Audit',
+  learning_style:'Learning Style Integration Plan',
+  decision_fw:'Decision-Making Framework',
+  debrief:'30-Minute Strategic Debrief',
+  consult_60:'60-Minute Strategy Consultation',
+  review_30:'30-Day Strategy Review',
+  consult_90:'90-Day Consulting Engagement',
+  partner_assess:'Partner Assessment',
+  family_member:'Family Member Add-On',
+  couples_session:'Joint Strategy Consultation (Couples)',
+  team_member:'Additional Team Member',
+  team_dynamics:'Team Dynamics Analysis',
+  workshop:'Half-Day Leadership Workshop',
+  exec_consult:'Executive Leadership Consulting (3 sessions)'
+};
+
+function getPackageKey() {
+  var key = q4Answer + '_' + q5Answer;
+  if(key === 'full_team_full_partner') {
+    key += '_' + (assessType === 'leadership' ? 'leadership' : 'romantic');
+  }
+  return packages[key] ? key : 'default';
 }
 
-function bookConsultation() {
-  closeModal();
-  window.location.href = 'book.html';
+function showBlueprint() {
+  document.getElementById('hookScreen').classList.remove('active');
+  var pkg = packages[getPackageKey()];
+  var typeLabels = {personal:'Personal',romantic:'Relationship',professional:'Professional',leadership:'Leadership',family:'Family'};
+  document.getElementById('blueprintSub').textContent = 'Based on your ' + (typeLabels[assessType]||'Alignment') + ' Assessment, here is what we recommend:';
+  document.getElementById('recTitle').textContent = pkg.title;
+  var ul = document.getElementById('recIncludes');
+  ul.innerHTML = '';
+  pkg.includes.forEach(function(item){ var li=document.createElement('li'); li.textContent=item; ul.appendChild(li); });
+  document.getElementById('recPrice').textContent = '$' + pkg.price.toLocaleString();
+  document.getElementById('blueprintScreen').classList.add('active');
 }
 
-function resetQuestionnaire() {
-  answers = {};
-  selectedAreas = [];
-  currentQuestion = 1;
-  for (var i = 1; i <= 5; i++) {
-    var q = document.getElementById('q' + i);
-    if (q) {
-      q.classList.remove('active');
-      q.querySelectorAll('.option-card, .multi-option-card').forEach(function(c) { c.classList.remove('selected'); });
-      var nextBtn = document.getElementById('q' + i + 'Next');
-      if (nextBtn) nextBtn.disabled = true;
+function chooseRecommended() {
+  var pkg = packages[getPackageKey()];
+  selectedAddons = {};
+  pkg.addons.forEach(function(k){ selectedAddons[k] = true; });
+  document.getElementById('blueprintScreen').classList.remove('active');
+  goToCheckout();
+}
+
+function showBuildOwn() {
+  document.getElementById('blueprintScreen').classList.remove('active');
+  // Pre-check recommended addons
+  var pkg = packages[getPackageKey()];
+  selectedAddons = {base:true};
+  pkg.addons.forEach(function(k){ if(k!=='base') selectedAddons[k]=true; });
+  // Sync UI
+  document.querySelectorAll('.add-item:not(.required)').forEach(function(el){
+    var key = el.dataset.key;
+    if(selectedAddons[key]){ el.classList.add('checked'); } else { el.classList.remove('checked'); }
+  });
+  updateBuildTotal();
+  document.getElementById('buildScreen').classList.add('active');
+}
+
+function toggleAddon(el) {
+  var key = el.dataset.key;
+  if(el.classList.contains('checked')){ el.classList.remove('checked'); delete selectedAddons[key]; }
+  else { el.classList.add('checked'); selectedAddons[key]=true; }
+  updateBuildTotal();
+}
+
+function updateBuildTotal() {
+  var total = 0;
+  Object.keys(selectedAddons).forEach(function(k){ if(addonPrices[k]) total += addonPrices[k]; });
+  document.getElementById('buildTotal').textContent = '$' + total.toLocaleString();
+  document.getElementById('buildTotalBtn').textContent = '$' + total.toLocaleString();
+}
+
+function proceedToCheckout() {
+  document.getElementById('buildScreen').classList.remove('active');
+  goToCheckout();
+}
+
+function goToCheckout() {
+  var total = 0;
+  var lines = '';
+  Object.keys(selectedAddons).forEach(function(k){
+    if(addonPrices[k]){
+      total += addonPrices[k];
+      lines += '<div class="checkout-line"><span class="line-name">' + addonNames[k] + '</span><span class="line-price">$' + addonPrices[k].toLocaleString() + '</span></div>';
     }
-  }
-  ['resultCouples','resultIndividual','resultProfessional','resultFamily','resultLearning','resultComprehensive','invoiceScreen'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) el.classList.remove('active');
   });
-  document.getElementById('progressWrap').style.display = '';
-  document.getElementById('q1').classList.add('active');
-  updateProgress(1);
-  document.getElementById('modalBox').scrollTop = 0;
+  lines += '<div class="checkout-total-line"><span>Total</span><span>$' + total.toLocaleString() + '</span></div>';
+  document.getElementById('checkoutSummary').innerHTML = lines;
+  document.getElementById('checkoutTotalBtn').textContent = '$' + total.toLocaleString();
+  document.getElementById('payBtn').querySelector('span').textContent = '$' + total.toLocaleString();
+  document.getElementById('checkoutScreen').classList.add('active');
 }
 
-function retakeQuestionnaire() {
-  resetQuestionnaire();
+function confirmPayment() {
+  document.getElementById('checkoutScreen').classList.remove('active');
+  var list = '';
+  Object.keys(selectedAddons).forEach(function(k){
+    if(addonPrices[k]) list += '<li style="padding:4px 0;padding-left:18px;position:relative;">\u2713 ' + addonNames[k] + '</li>';
+  });
+  document.getElementById('confirmList').innerHTML = list;
+  document.getElementById('confirmScreen').style.display = 'block';
 }
 </script>
-
 </body>
 </html>

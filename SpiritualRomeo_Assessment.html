@@ -112,6 +112,17 @@ a{text-decoration:none;color:inherit}
 .modal-box{padding:32px 24px;border-radius:16px}
 .q-text{font-size:20px}
 }
+
+/* Multi-select option cards */
+.multi-option-card{display:flex;align-items:center;gap:14px;padding:13px 18px;border:2px solid #E8E8E8;border-radius:12px;cursor:pointer;transition:all 0.18s ease;background:#fff;user-select:none}
+.multi-option-card:hover{border-color:var(--navy);background:#F6F7FF}
+.multi-option-card.selected{border-color:var(--navy);background:#EEF0FF}
+.multi-option-card .check-box{width:22px;height:22px;border:2px solid #D0D0D0;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.18s;background:#fff}
+.multi-option-card.selected .check-box{background:var(--navy);border-color:var(--navy)}
+.multi-option-card.selected .check-box::after{content:"";display:block;width:6px;height:10px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(45deg) translateY(-1px)}
+.multi-option-card .option-label{font-size:15px;font-weight:500;color:#2C2C2C;line-height:1.3}
+.multi-select-hint{font-size:12px;color:#aaa;margin-top:10px;text-align:center;letter-spacing:0.3px}
+.options-grid.multi{gap:10px}
 </style>
 </head>
 <body>
@@ -153,27 +164,58 @@ Back to Home
     </div>
     <div class="question-block active" id="q1">
       <p class="q-number">Question 1 of 5</p>
-      <h2 class="q-text">What area of your life are you most ready to transform right now?</h2>
-      <div class="options-grid" data-question="1">
-        <div class="option-card" data-value="relationship" onclick="selectOption(this)">
-          <span class="option-icon">💞</span>
-          <div><div class="option-label">My romantic relationship</div><div class="option-desc">Partner communication, connection, or marriage challenges</div></div>
+      <h2 class="q-text">Which area(s) are you looking to improve or receive guidance in?</h2>
+      <p style="font-size:13px;color:#888;margin-bottom:20px;font-weight:500;letter-spacing:0.3px;">SELECT ALL THAT APPLY</p>
+      <div class="options-grid multi" id="q1MultiGrid">
+        <div class="multi-option-card" data-value="personal-growth" onclick="toggleMultiOption(this,1)">
+          <div class="check-box"></div>
+          <div class="option-label">🌱 Personal Growth</div>
         </div>
-        <div class="option-card" data-value="family" onclick="selectOption(this)">
-          <span class="option-icon">👨‍👩‍👧</span>
-          <div><div class="option-label">My family dynamics</div><div class="option-desc">Parent-child relationships, family communication, home harmony</div></div>
+        <div class="multi-option-card" data-value="dating-single" onclick="toggleMultiOption(this,1)">
+          <div class="check-box"></div>
+          <div class="option-label">💫 Dating / Single Life</div>
         </div>
-        <div class="option-card" data-value="professional" onclick="selectOption(this)">
-          <span class="option-icon">💼</span>
-          <div><div class="option-label">My professional life</div><div class="option-desc">Leadership, workplace communication, team or career growth</div></div>
+        <div class="multi-option-card" data-value="marriage-relationship" onclick="toggleMultiOption(this,1)">
+          <div class="check-box"></div>
+          <div class="option-label">💍 Marriage / Romantic Relationship</div>
         </div>
-        <div class="option-card" data-value="personal" onclick="selectOption(this)">
-          <span class="option-icon">🌱</span>
-          <div><div class="option-label">My personal growth</div><div class="option-desc">Self-awareness, confidence, mindset, and inner alignment</div></div>
+        <div class="multi-option-card" data-value="family-relationships" onclick="toggleMultiOption(this,1)">
+          <div class="check-box"></div>
+          <div class="option-label">👨‍👩‍👧 Family Relationships</div>
+        </div>
+        <div class="multi-option-card" data-value="parenting" onclick="toggleMultiOption(this,1)">
+          <div class="check-box"></div>
+          <div class="option-label">🧒 Parenting</div>
+        </div>
+        <div class="multi-option-card" data-value="teacher-student" onclick="toggleMultiOption(this,1)">
+          <div class="check-box"></div>
+          <div class="option-label">📚 Teacher / Student Communication</div>
+        </div>
+        <div class="multi-option-card" data-value="learning-education" onclick="toggleMultiOption(this,1)">
+          <div class="check-box"></div>
+          <div class="option-label">🎓 Learning / Education</div>
+        </div>
+        <div class="multi-option-card" data-value="business" onclick="toggleMultiOption(this,1)">
+          <div class="check-box"></div>
+          <div class="option-label">🏢 Business</div>
+        </div>
+        <div class="multi-option-card" data-value="employee-development" onclick="toggleMultiOption(this,1)">
+          <div class="check-box"></div>
+          <div class="option-label">💼 Employee Development</div>
+        </div>
+        <div class="multi-option-card" data-value="leadership" onclick="toggleMultiOption(this,1)">
+          <div class="check-box"></div>
+          <div class="option-label">🌟 Leadership</div>
+        </div>
+        <div class="multi-option-card" data-value="other" onclick="toggleMultiOption(this,1)">
+          <div class="check-box"></div>
+          <div class="option-label">✨ Other</div>
         </div>
       </div>
+      <p class="multi-select-hint">You can select more than one</p>
       <div class="nav-row"><button class="btn-next" id="q1Next" onclick="nextQuestion(1)" disabled>Continue &rarr;</button></div>
     </div>
+
     <div class="question-block" id="q2">
       <p class="q-number">Question 2 of 5</p>
       <h2 class="q-text">How would you describe the biggest challenge you're facing?</h2>
@@ -264,14 +306,9 @@ Back to Home
       <h2 class="result-title">The Couples Alignment Assessment</h2>
       <p class="result-desc">Based on your answers, you and your partner are ready for deep, guided work that creates lasting change. This assessment will reveal the exact communication and connection gaps holding you both back — and the roadmap to bridge them.</p>
       <div class="assessment-card">
-        <h4>What You'll Discover</h4>
-        <p>18 targeted questions designed to surface your communication style, emotional patterns, and alignment gaps.</p>
-        <ul class="assessment-includes">
-          <li>Your individual communication blueprint</li>
-          <li>Core alignment gaps in your partnership</li>
-          <li>Your love language & conflict pattern profile</li>
-          <li>A personalized next-step recommendation</li>
-        </ul>
+        <h4>Your Focus Areas</h4>
+        <p>Based on your selections, your assessment will cover:</p>
+        <div id="dynamicFocusAreasCouples" style="margin-top:14px;"></div>
       </div>
       <button class="btn-start-assessment" onclick="showInvoice('couples')">Begin The Assessment &rarr;</button>
       <button class="btn-retake" onclick="retakeQuestionnaire()">← Retake questionnaire</button>
@@ -281,14 +318,9 @@ Back to Home
       <h2 class="result-title">The Individual Alignment Assessment</h2>
       <p class="result-desc">You're ready to go deeper into yourself. This assessment is designed to cut through the noise and help you see clearly who you are, how you communicate, and what's truly available to you next.</p>
       <div class="assessment-card">
-        <h4>What You'll Discover</h4>
-        <p>18 focused questions that map your behavioral style, personal patterns, and core alignment needs.</p>
-        <ul class="assessment-includes">
-          <li>Your behavioral communication profile</li>
-          <li>Core limiting beliefs and patterns</li>
-          <li>Your personal alignment score</li>
-          <li>A tailored development pathway</li>
-        </ul>
+        <h4>Your Focus Areas</h4>
+        <p>Based on your selections, your assessment will cover:</p>
+        <div id="dynamicFocusAreasIndividual" style="margin-top:14px;"></div>
       </div>
       <button class="btn-start-assessment" onclick="showInvoice('individual')">Begin The Assessment &rarr;</button>
       <button class="btn-retake" onclick="retakeQuestionnaire()">← Retake questionnaire</button>
@@ -298,18 +330,58 @@ Back to Home
       <h2 class="result-title">The Professional Alignment Assessment</h2>
       <p class="result-desc">You're ready to elevate how you lead, communicate, and show up in your professional world. This assessment reveals your leadership communication style and the specific shifts that unlock your next level.</p>
       <div class="assessment-card">
-        <h4>What You'll Discover</h4>
-        <p>18 professionally-focused questions that uncover your leadership style, communication gaps, and growth opportunities.</p>
-        <ul class="assessment-includes">
-          <li>Your leadership communication archetype</li>
-          <li>Blind spots affecting your professional relationships</li>
-          <li>Your influence and authority profile</li>
-          <li>A customized growth strategy</li>
-        </ul>
+        <h4>Your Focus Areas</h4>
+        <p>Based on your selections, your assessment will cover:</p>
+        <div id="dynamicFocusAreasProfessional" style="margin-top:14px;"></div>
       </div>
       <button class="btn-start-assessment" onclick="showInvoice('professional')">Begin The Assessment &rarr;</button>
       <button class="btn-retake" onclick="retakeQuestionnaire()">← Retake questionnaire</button>
     </div>
+
+    <!-- Dynamic Focus Areas used across all result types -->
+
+    <!-- Result: Family Alignment Assessment -->
+    <div class="result-block" id="resultFamily">
+      <span class="result-badge">✦ Your Match</span>
+      <h2 class="result-title">The Family Alignment Assessment</h2>
+      <p class="result-desc">Your answers point to the heart of your home. This assessment is designed to map how your family communicates, connects, and where the gaps are — so you can build the harmony you know is possible.</p>
+      <div class="assessment-card">
+        <h4>Your Focus Areas</h4>
+        <p>Based on your selections, your assessment will cover:</p>
+        <div id="dynamicFocusAreas" style="margin-top:14px;"></div>
+      </div>
+      <button class="btn-start-assessment" onclick="showInvoice('family')">Begin The Assessment &rarr;</button>
+      <button class="btn-retake" onclick="retakeQuestionnaire()">← Retake questionnaire</button>
+    </div>
+
+    <!-- Result: Learning Alignment Assessment -->
+    <div class="result-block" id="resultLearning">
+      <span class="result-badge">✦ Your Match</span>
+      <h2 class="result-title">The Learning Alignment Assessment</h2>
+      <p class="result-desc">You're ready to understand how you — or those in your care — best absorb and process information. This assessment reveals your learning style, communication patterns in educational settings, and the strategies that unlock real retention and growth.</p>
+      <div class="assessment-card">
+        <h4>Your Focus Areas</h4>
+        <p>Based on your selections, your assessment will cover:</p>
+        <div id="dynamicFocusAreasLearning" style="margin-top:14px;"></div>
+      </div>
+      <button class="btn-start-assessment" onclick="showInvoice('learning')">Begin The Assessment &rarr;</button>
+      <button class="btn-retake" onclick="retakeQuestionnaire()">← Retake questionnaire</button>
+    </div>
+
+    <!-- Result: Comprehensive Multi-Area Alignment Blueprint -->
+    <div class="result-block" id="resultComprehensive">
+      <span class="result-badge">✦ Your Match</span>
+      <h2 class="result-title">The Alignment Blueprint</h2>
+      <p class="result-desc">You've identified multiple areas where you're ready to grow. Your Alignment Blueprint is a comprehensive, multi-area assessment that delivers targeted insights and recommendations for every area of your life you selected — nothing gets left behind.</p>
+      <div class="assessment-card">
+        <h4>Your Personalized Focus Areas</h4>
+        <p>Your blueprint will address each of the following in depth:</p>
+        <div id="dynamicFocusAreasComp" style="margin-top:14px;"></div>
+      </div>
+      <button class="btn-start-assessment" onclick="showInvoice('comprehensive')">Begin The Assessment &rarr;</button>
+      <button class="btn-retake" onclick="retakeQuestionnaire()">← Retake questionnaire</button>
+    </div>
+
     <!-- Invoice Screen -->
     <div class="invoice-block" id="invoiceScreen">
       <div class="invoice-header">
@@ -333,146 +405,278 @@ Back to Home
 </div><!-- /modal-overlay -->
 <script>
 var answers = {};
+var selectedAreas = []; // multi-select array for Q1
 var currentQuestion = 1;
 var totalQuestions = 5;
-function openQuestionnaire() {
-  document.getElementById("questionnaireModal").classList.add("active");
-  document.body.style.overflow = "hidden";
-  resetQuestionnaire();
+
+// ── Multi-select toggle for Q1 ──────────────────────────────────────────────
+function toggleMultiOption(card, qNum) {
+  card.classList.toggle('selected');
+  var value = card.getAttribute('data-value');
+  var idx = selectedAreas.indexOf(value);
+  if (idx === -1) {
+    selectedAreas.push(value);
+  } else {
+    selectedAreas.splice(idx, 1);
+  }
+  // Enable/disable Continue based on whether at least one is selected
+  var nextBtn = document.getElementById('q' + qNum + 'Next');
+  if (nextBtn) nextBtn.disabled = selectedAreas.length === 0;
 }
-function closeModal() {
-  document.getElementById("questionnaireModal").classList.remove("active");
-  document.body.style.overflow = "";
-}
-document.getElementById("questionnaireModal").addEventListener("click", function(e) {
-  if (e.target === this) closeModal();
-});
+
+// ── Single-select for Q2–Q5 (unchanged) ──────────────────────────────────────
 function selectOption(card) {
-  var grid = card.closest(".options-grid");
-  var qNum = grid.getAttribute("data-question");
-  grid.querySelectorAll(".option-card").forEach(function(c) { c.classList.remove("selected"); });
-  card.classList.add("selected");
-  answers["q" + qNum] = card.getAttribute("data-value");
-  var nextBtn = document.getElementById("q" + qNum + "Next");
+  var grid = card.closest('.options-grid');
+  var qNum = grid.getAttribute('data-question');
+  grid.querySelectorAll('.option-card').forEach(function(c) { c.classList.remove('selected'); });
+  card.classList.add('selected');
+  answers['q' + qNum] = card.getAttribute('data-value');
+  var nextBtn = document.getElementById('q' + qNum + 'Next');
   if (nextBtn) nextBtn.disabled = false;
 }
+
+function openQuestionnaire() {
+  document.getElementById('questionnaireModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  resetQuestionnaire();
+}
+
+function closeModal() {
+  document.getElementById('questionnaireModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('questionnaireModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
 function updateProgress(step) {
   var pct = (step / totalQuestions) * 100;
-  document.getElementById("progressFill").style.width = pct + "%";
-  document.getElementById("progressLabel").textContent = "Step " + step + " of " + totalQuestions;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = 'Step ' + step + ' of ' + totalQuestions;
 }
+
 function nextQuestion(from) {
-  var current = document.getElementById("q" + from);
-  var next = document.getElementById("q" + (from + 1));
+  var current = document.getElementById('q' + from);
+  var next = document.getElementById('q' + (from + 1));
   if (!next) return;
-  current.classList.remove("active");
-  next.classList.add("active");
+  // Save Q1 multi-select into answers
+  if (from === 1) {
+    answers.q1 = selectedAreas.slice(); // copy array
+  }
+  current.classList.remove('active');
+  next.classList.add('active');
   currentQuestion = from + 1;
   updateProgress(from + 1);
-  document.getElementById("modalBox").scrollTop = 0;
+  document.getElementById('modalBox').scrollTop = 0;
 }
+
 function prevQuestion(from) {
-  var current = document.getElementById("q" + from);
-  var prev = document.getElementById("q" + (from - 1));
+  var current = document.getElementById('q' + from);
+  var prev = document.getElementById('q' + (from - 1));
   if (!prev) return;
-  current.classList.remove("active");
-  prev.classList.add("active");
+  current.classList.remove('active');
+  prev.classList.add('active');
   currentQuestion = from - 1;
   updateProgress(from - 1);
-  document.getElementById("modalBox").scrollTop = 0;
+  document.getElementById('modalBox').scrollTop = 0;
 }
+
+// ── Recommendation logic: uses all selected areas ──────────────────────────
 function showRecommendation() {
-  // Hide all question blocks
   for (var i = 1; i <= 5; i++) {
-    var el = document.getElementById("q" + i);
-    if (el) el.classList.remove("active");
+    var el = document.getElementById('q' + i);
+    if (el) el.classList.remove('active');
   }
-  // Hide progress bar
-  document.getElementById("progressWrap").style.display = "none";
-  // Determine recommendation
-  var area = answers.q1;
-  var who = answers.q3;
-  var resultId = "resultIndividual";
-  if (who === "couple" || area === "relationship") {
-    resultId = "resultCouples";
-  } else if (area === "professional" || who === "group") {
-    resultId = "resultProfessional";
+  document.getElementById('progressWrap').style.display = 'none';
+
+  var areas = answers.q1 || selectedAreas;
+  var urgency = answers.q4 || '';
+  var who = answers.q3 || '';
+
+  // Determine primary category cluster
+  var hasCouples = areas.indexOf('marriage-relationship') !== -1 || areas.indexOf('dating-single') !== -1;
+  var hasProfessional = areas.indexOf('leadership') !== -1 || areas.indexOf('business') !== -1 || areas.indexOf('employee-development') !== -1;
+  var hasFamily = areas.indexOf('family-relationships') !== -1 || areas.indexOf('parenting') !== -1;
+  var hasLearning = areas.indexOf('learning-education') !== -1 || areas.indexOf('teacher-student') !== -1;
+  var hasPersonal = areas.indexOf('personal-growth') !== -1 || areas.indexOf('other') !== -1;
+
+  // Who override
+  if (who === 'couple') hasCouples = true;
+  if (who === 'group') hasProfessional = true;
+
+  // Choose result type — multi-area gets comprehensive blueprint
+  var resultId;
+  var totalCategories = (hasCouples ? 1 : 0) + (hasProfessional ? 1 : 0) + (hasFamily ? 1 : 0) + (hasLearning ? 1 : 0) + (hasPersonal ? 1 : 0);
+
+  if (totalCategories >= 3) {
+    resultId = 'resultComprehensive';
+  } else if (hasCouples && hasProfessional) {
+    resultId = 'resultComprehensive';
+  } else if (hasCouples) {
+    resultId = 'resultCouples';
+  } else if (hasProfessional) {
+    resultId = 'resultProfessional';
+  } else if (hasFamily) {
+    resultId = 'resultFamily';
+  } else if (hasLearning) {
+    resultId = 'resultLearning';
   } else {
-    resultId = "resultIndividual";
+    resultId = 'resultIndividual';
   }
-  document.getElementById(resultId).classList.add("active");
-  document.getElementById("modalBox").scrollTop = 0;
+
+  // Build dynamic focus areas list
+  buildFocusAreas(areas, resultId);
+
+  // Build the dynamic focus areas for the chosen result
+  buildFocusAreas(areas, resultId);
+
+  document.getElementById(resultId).classList.add('active');
+  document.getElementById('modalBox').scrollTop = 0;
 }
+
+// Maps each selected area to its key focus themes
+var areaFocusMap = {
+  'personal-growth':        ['Self-awareness & identity', 'Confidence & mindset shifts', 'Breaking limiting patterns', 'Personal alignment score'],
+  'dating-single':          ['Attraction & communication style', 'Readiness & relationship patterns', 'What you bring to a partnership', 'Dating behavior blueprint'],
+  'marriage-relationship':  ['Connection & intimacy patterns', 'Conflict resolution & communication', 'Expectations & unspoken needs', 'Partnership alignment score'],
+  'family-relationships':   ['Family communication dynamics', 'Boundary & role clarity', 'Generational patterns', 'Family alignment insights'],
+  'parenting':              ['Parenting communication style', 'Understanding your child's behavior', 'Connection vs. correction balance', 'Parent-child alignment profile'],
+  'teacher-student':        ['Classroom communication style', 'Student engagement strategies', 'Behavioral patterns in learning', 'Teacher effectiveness profile'],
+  'learning-education':     ['How you process information', 'Your optimal learning style (VARK)', 'Study & retention strategies', 'Learning alignment blueprint'],
+  'business':               ['Business communication style', 'Leadership & decision-making', 'Team dynamics & culture', 'Business behavior profile'],
+  'employee-development':   ['Workplace behavior & motivation', 'Team communication patterns', 'Management style alignment', 'Employee growth roadmap'],
+  'leadership':             ['Leadership communication archetype', 'Influence & authority patterns', 'Blind spots affecting your team', 'Leadership development plan'],
+  'other':                  ['Personalized discovery session', 'Custom behavior & communication mapping', 'Tailored growth insights', 'Custom alignment blueprint']
+};
+
+function buildFocusAreas(areas, resultId) {
+  // Pick the right container based on result type
+  var containerMap = {
+    'resultFamily': 'dynamicFocusAreas',
+    'resultLearning': 'dynamicFocusAreasLearning',
+    'resultComprehensive': 'dynamicFocusAreasComp',
+    'resultCouples': 'dynamicFocusAreasCouples',
+    'resultIndividual': 'dynamicFocusAreasIndividual',
+    'resultProfessional': 'dynamicFocusAreasProfessional'
+  };
+  var containerId = containerMap[resultId] || 'dynamicFocusAreas';
+  var container = document.getElementById(containerId);
+  if (!container) return;
+  var html = '';
+  areas.forEach(function(area) {
+    var themes = areaFocusMap[area];
+    if (!themes) return;
+    var label = document.querySelector('#q1MultiGrid [data-value="' + area + '"] .option-label');
+    var areaName = label ? label.textContent.trim() : area;
+    html += '<div style="margin-bottom:18px;">';
+    html += '<div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px;letter-spacing:0.3px;">' + areaName + '</div>';
+    html += '<div style="display:flex;flex-wrap:wrap;gap:6px;">';
+    themes.forEach(function(t) {
+      html += '<span style="font-size:12px;background:#EEF0FF;color:var(--navy);padding:4px 10px;border-radius:20px;font-weight:500;">' + t + '</span>';
+    });
+    html += '</div></div>';
+  });
+  container.innerHTML = html || '<p style="color:#888;font-size:13px;">Your personalized focus areas will be tailored during your consultation.</p>';
+}
+
 var invoiceData = {
   couples: [
-    {name:"Couples Alignment Assessment", detail:"18 targeted questions, deep-dive format", tag:"Included"},
-    {name:"Immediate Results Summary", detail:"Your personal alignment score & profile", tag:"Included"},
-    {name:"Communication Blueprint", detail:"Individual + combined communication styles", tag:"Included"},
-    {name:"Personalized Roadmap", detail:"Specific next steps tailored to your results", tag:"Included"},
-    {name:"Private Consultation Review", detail:"1-on-1 walk-through with Dennis Nickens", tag:"Included"}
-  ],
-  individual: [
-    {name:"Individual Alignment Assessment", detail:"18 focused questions, personal-growth format", tag:"Included"},
-    {name:"Behavioral Profile Report", detail:"Your communication and behavioral archetype", tag:"Included"},
-    {name:"Personal Alignment Score", detail:"Where you are vs. where you can be", tag:"Included"},
-    {name:"Growth Pathway Plan", detail:"Targeted development steps for your journey", tag:"Included"},
-    {name:"Private Consultation Review", detail:"1-on-1 results debrief with Dennis Nickens", tag:"Included"}
+    {name:'Couples Alignment Assessment', detail:'18 targeted questions, deep-dive format', tag:'Included'},
+    {name:'Immediate Results Summary', detail:'Your personal alignment score & profile', tag:'Included'},
+    {name:'Communication Blueprint', detail:'Individual + combined communication styles', tag:'Included'},
+    {name:'Conflict & Connection Pattern Report', detail:'Specific patterns affecting your partnership', tag:'Included'},
+    {name:'Private Consultation Review', detail:'1-on-1 walk-through with Dennis Nickens', tag:'Included'}
   ],
   professional: [
-    {name:"Professional Alignment Assessment", detail:"18 leadership-focused questions", tag:"Included"},
-    {name:"Leadership Communication Profile", detail:"Your authority and influence archetype", tag:"Included"},
-    {name:"Blind Spot Analysis", detail:"Hidden patterns affecting your professional impact", tag:"Included"},
-    {name:"Strategic Growth Plan", detail:"Customized professional development roadmap", tag:"Included"},
-    {name:"Private Consultation Review", detail:"1-on-1 strategy session with Dennis Nickens", tag:"Included"}
+    {name:'Professional Alignment Assessment', detail:'18 leadership-focused questions', tag:'Included'},
+    {name:'Leadership Communication Profile', detail:'Your authority and influence archetype', tag:'Included'},
+    {name:'Blind Spot Analysis', detail:'Hidden patterns affecting your professional impact', tag:'Included'},
+    {name:'Strategic Growth Plan', detail:'Customized professional development roadmap', tag:'Included'},
+    {name:'Private Consultation Review', detail:'1-on-1 strategy session with Dennis Nickens', tag:'Included'}
+  ],
+  family: [
+    {name:'Family Alignment Assessment', detail:'18 family-focused questions', tag:'Included'},
+    {name:'Family Communication Profile', detail:'Roles, patterns & dynamics mapped', tag:'Included'},
+    {name:'Parenting & Connection Insights', detail:'How your style impacts your family', tag:'Included'},
+    {name:'Family Harmony Roadmap', detail:'Targeted steps for healthier dynamics', tag:'Included'},
+    {name:'Private Consultation Review', detail:'1-on-1 session with Dennis Nickens', tag:'Included'}
+  ],
+  learning: [
+    {name:'Learning Style Alignment Assessment', detail:'18 education-focused questions', tag:'Included'},
+    {name:'VARK Learning Profile', detail:'How you best absorb and retain information', tag:'Included'},
+    {name:'Student / Teacher Communication Map', detail:'Behavioral patterns in educational settings', tag:'Included'},
+    {name:'Learning Optimization Strategy', detail:'Specific study & engagement recommendations', tag:'Included'},
+    {name:'Private Consultation Review', detail:'1-on-1 session with Dennis Nickens', tag:'Included'}
+  ],
+  individual: [
+    {name:'Individual Alignment Assessment', detail:'18 focused questions, personal-growth format', tag:'Included'},
+    {name:'Behavioral Profile Report', detail:'Your communication and behavioral archetype', tag:'Included'},
+    {name:'Personal Alignment Score', detail:'Where you are vs. where you can be', tag:'Included'},
+    {name:'Growth Pathway Plan', detail:'Targeted development steps for your journey', tag:'Included'},
+    {name:'Private Consultation Review', detail:'1-on-1 results debrief with Dennis Nickens', tag:'Included'}
+  ],
+  comprehensive: [
+    {name:'Multi-Area Alignment Blueprint', detail:'Comprehensive 18-question assessment spanning all your selected areas', tag:'Included'},
+    {name:'Area-by-Area Focus Report', detail:'Dedicated insights for each area you selected', tag:'Included'},
+    {name:'Full Behavioral & Communication Profile', detail:'How your style shows up across every context', tag:'Included'},
+    {name:'Cross-Area Pattern Analysis', detail:'How your different life areas interconnect and affect each other', tag:'Included'},
+    {name:'Personalized Alignment Roadmap', detail:'Priority action steps across all selected areas', tag:'Included'},
+    {name:'Private Consultation Review', detail:'Extended 1-on-1 session with Dennis Nickens', tag:'Included'}
   ]
 };
+
 function showInvoice(type) {
-  // Hide recommendation screens
-  ["resultCouples","resultIndividual","resultProfessional"].forEach(function(id) {
-    document.getElementById(id).classList.remove("active");
+  ['resultCouples','resultIndividual','resultProfessional','resultFamily','resultLearning','resultComprehensive'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('active');
   });
-  // Build invoice items
   var items = invoiceData[type] || invoiceData.individual;
-  var html = "";
+  var html = '';
   items.forEach(function(item) {
-    html += "<div class=\"invoice-item\">";
-    html += "<div><div class=\"item-name\">" + item.name + "</div>";
-    html += "<div class=\"item-detail\">" + item.detail + "</div></div>";
-    html += "<div class=\"item-included\">" + item.tag + "</div>";
-    html += "</div>";
+    html += '<div class="invoice-item">';
+    html += '<div><div class="item-name">' + item.name + '</div>';
+    html += '<div class="item-detail">' + item.detail + '</div></div>';
+    html += '<div class="item-included">' + item.tag + '</div>';
+    html += '</div>';
   });
-  document.getElementById("invoiceItems").innerHTML = html;
-  document.getElementById("invoiceScreen").classList.add("active");
-  document.getElementById("modalBox").scrollTop = 0;
+  document.getElementById('invoiceItems').innerHTML = html;
+  document.getElementById('invoiceScreen').classList.add('active');
+  document.getElementById('modalBox').scrollTop = 0;
 }
+
 function bookConsultation() {
   closeModal();
-  window.location.href = "book.html";
+  window.location.href = 'book.html';
 }
+
 function resetQuestionnaire() {
   answers = {};
+  selectedAreas = [];
   currentQuestion = 1;
-  // Reset all blocks
   for (var i = 1; i <= 5; i++) {
-    var q = document.getElementById("q" + i);
+    var q = document.getElementById('q' + i);
     if (q) {
-      q.classList.remove("active");
-      q.querySelectorAll(".option-card").forEach(function(c) { c.classList.remove("selected"); });
-      var nextBtn = document.getElementById("q" + i + "Next");
+      q.classList.remove('active');
+      q.querySelectorAll('.option-card, .multi-option-card').forEach(function(c) { c.classList.remove('selected'); });
+      var nextBtn = document.getElementById('q' + i + 'Next');
       if (nextBtn) nextBtn.disabled = true;
     }
   }
-  ["resultCouples","resultIndividual","resultProfessional","invoiceScreen"].forEach(function(id) {
-    document.getElementById(id).classList.remove("active");
+  ['resultCouples','resultIndividual','resultProfessional','resultFamily','resultLearning','resultComprehensive','invoiceScreen'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('active');
   });
-  document.getElementById("progressWrap").style.display = "";
-  document.getElementById("q1").classList.add("active");
+  document.getElementById('progressWrap').style.display = '';
+  document.getElementById('q1').classList.add('active');
   updateProgress(1);
-  document.getElementById("modalBox").scrollTop = 0;
+  document.getElementById('modalBox').scrollTop = 0;
 }
+
 function retakeQuestionnaire() {
   resetQuestionnaire();
 }
 </script>
+
 </body>
 </html>

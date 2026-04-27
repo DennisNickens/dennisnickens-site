@@ -7,106 +7,106 @@
 <meta name="description" content="The Alignment Assessment by Dennis Nickens. Behavior, Communication & Processing consulting assessment.">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Georgia',serif;background:#FAF9F6;color:#4A4A4A;min-height:100vh}
-a{color:#1A237E;text-decoration:none}
+body{font-family:'Georgia',serif;background:#0F172A;color:#fff;min-height:100vh}
+a{color:#C4B5FD;text-decoration:none}
 .screen{display:none}
 .screen.active{display:block}
-.top-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#FAF9F6;border-bottom:1px solid #e8e4dc;padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:'Arial',sans-serif;font-size:13px;font-weight:700;color:#1A237E;letter-spacing:1px;text-transform:uppercase}
-.nav-back{font-family:'Arial',sans-serif;font-size:13px;color:#888;display:flex;align-items:center;gap:6px}
-.nav-back:hover{color:#1A237E}
+.top-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,23,42,0.95);border-bottom:1px solid rgba(124,58,237,0.3);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Arial',sans-serif;font-size:13px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase}
+.nav-back{font-family:'Arial',sans-serif;font-size:13px;color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:6px}
+.nav-back:hover{color:#fff}
 .inner{max-width:960px;margin:0 auto;padding:24px 20px}
 .inner-sm{max-width:680px;margin:0 auto;padding:24px 20px}
 .pt-nav{padding-top:72px}
-.btn-gold{display:inline-block;background:#D4AF37;color:#1A237E;font-family:'Arial',sans-serif;font-size:18px;font-weight:700;padding:16px 40px;border-radius:14px;border:none;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;text-decoration:none;text-align:center}
+.btn-gold{display:inline-block;background:#D4AF37;color:#fff;font-family:'Arial',sans-serif;font-size:18px;font-weight:700;padding:16px 40px;border-radius:14px;border:none;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;text-decoration:none;text-align:center}
 .btn-gold:hover{transform:scale(1.05);box-shadow:0 8px 24px rgba(212,175,55,0.35)}
 .btn-gold:active{transform:scale(0.98)}
 .btn-navy{display:inline-block;background:#1A237E;color:#fff;font-family:'Arial',sans-serif;font-size:16px;font-weight:700;padding:14px 32px;border-radius:12px;border:none;cursor:pointer;transition:transform 0.15s;text-decoration:none;text-align:center}
 .btn-navy:hover{transform:scale(1.03)}
-.btn-outline{display:inline-block;background:transparent;color:#1A237E;font-family:'Arial',sans-serif;font-size:15px;font-weight:600;padding:12px 28px;border-radius:12px;border:2px solid #1A237E;cursor:pointer;transition:background 0.15s;text-decoration:none}
+.btn-outline{display:inline-block;background:transparent;color:#fff;font-family:'Arial',sans-serif;font-size:15px;font-weight:600;padding:12px 28px;border-radius:12px;border:2px solid #7C3AED;cursor:pointer;transition:background 0.15s;text-decoration:none}
 .btn-outline:hover{background:#1A237E;color:#fff}
 .hero{display:grid;grid-template-columns:55% 45%;min-height:calc(100vh - 56px);align-items:center}
 .hero-photo{height:100%;min-height:480px;background:#1A237E;overflow:hidden}
 .hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .hero-text{padding:48px 40px 48px 48px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:20px}
 .hero-mark{font-family:'Arial',sans-serif;font-size:12px;font-weight:700;color:#D4AF37;letter-spacing:2px;text-transform:uppercase}
-.hero-name{font-family:'Arial',sans-serif;font-size:13px;color:#888}
-.hero-hl{font-size:clamp(36px,4vw,58px);font-weight:700;color:#1A237E;line-height:1.15}
-.hero-sub{font-size:20px;color:#4A4A4A;line-height:1.5}
-.hero-quote{font-style:italic;font-size:15px;color:#888;border-left:3px solid #D4AF37;padding-left:14px;line-height:1.6}
-.q-wrap{background:#fff;border-radius:20px;box-shadow:0 4px 32px rgba(0,0,0,0.08);padding:40px 44px;margin-top:16px}
+.hero-name{font-family:'Arial',sans-serif;font-size:13px;color:rgba(255,255,255,0.65)}
+.hero-hl{font-size:clamp(36px,4vw,58px);font-weight:700;color:#fff;line-height:1.15}
+.hero-sub{font-size:20px;color:rgba(255,255,255,0.85);line-height:1.5}
+.hero-quote{font-style:italic;font-size:15px;color:rgba(255,255,255,0.65);border-left:3px solid #D4AF37;padding-left:14px;line-height:1.6}
+.q-wrap{background:rgba(124,58,237,0.12);border-radius:20px;box-shadow:0 4px 32px rgba(0,0,0,0.4);padding:40px 44px;margin-top:16px;border:1px solid rgba(124,58,237,0.3)}
 .q-progress{display:flex;align-items:center;gap:12px;margin-bottom:28px}
-.q-prog-bar{flex:1;height:6px;background:#e8e4dc;border-radius:3px;overflow:hidden}
+.q-prog-bar{flex:1;height:6px;background:rgba(124,58,237,0.25);border-radius:3px;overflow:hidden}
 .q-prog-fill{height:100%;background:#D4AF37;border-radius:3px;transition:width 0.4s ease}
-.q-prog-txt{font-family:'Arial',sans-serif;font-size:12px;color:#888;white-space:nowrap}
+.q-prog-txt{font-family:'Arial',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap}
 .q-num{font-family:'Arial',sans-serif;font-size:11px;font-weight:700;color:#D4AF37;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
-.q-text{font-size:22px;font-weight:700;color:#1A237E;margin-bottom:8px;line-height:1.3}
-.q-hint{font-size:13px;color:#888;font-style:italic;margin-bottom:24px}
+.q-text{font-size:22px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.3}
+.q-hint{font-size:13px;color:rgba(255,255,255,0.65);font-style:italic;margin-bottom:24px}
 .q-opts{display:flex;flex-direction:column;gap:10px}
-.q-opt{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border:2px solid #e8e4dc;border-radius:12px;cursor:pointer;transition:border-color 0.15s,background 0.15s;background:#FAF9F6}
-.q-opt:hover{border-color:#D4AF37;background:#fffdf5}
-.q-opt.selected{border-color:#1A237E;background:#f0f2ff}
-.q-opt input{margin-top:2px;accent-color:#1A237E;width:18px;height:18px;flex-shrink:0}
-.q-opt-label{font-size:16px;color:#4A4A4A;line-height:1.5;cursor:pointer}
+.q-opt{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border:2px solid rgba(124,58,237,0.25);border-radius:12px;cursor:pointer;transition:border-color 0.15s,background 0.15s;background:rgba(124,58,237,0.08)}
+.q-opt:hover{border-color:#D4AF37;background:rgba(124,58,237,0.25)}
+.q-opt.selected{border-color:#7C3AED;background:rgba(124,58,237,0.35)}
+.q-opt input{margin-top:2px;accent-color:#fff;width:18px;height:18px;flex-shrink:0}
+.q-opt-label{font-size:16px;color:rgba(255,255,255,0.85);line-height:1.5;cursor:pointer}
 .q-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:28px}
-.welcome-badge{display:inline-block;background:#D4AF37;color:#1A237E;font-family:'Arial',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px}
-.welcome-hl{font-size:28px;font-weight:700;color:#1A237E;margin-bottom:12px;line-height:1.3}
-.welcome-body{font-size:16px;color:#4A4A4A;line-height:1.7;margin-bottom:8px}
+.welcome-badge{display:inline-block;background:#D4AF37;color:#fff;font-family:'Arial',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px}
+.welcome-hl{font-size:28px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.3}
+.welcome-body{font-size:16px;color:rgba(255,255,255,0.85);line-height:1.7;margin-bottom:8px}
 .rec-hero{text-align:center;padding:40px 20px 32px}
-.rec-hl{font-size:clamp(26px,3vw,40px);font-weight:700;color:#1A237E;margin-bottom:10px}
-.rec-sub{font-size:16px;color:#888}
+.rec-hl{font-size:clamp(26px,3vw,40px);font-weight:700;color:#fff;margin-bottom:10px}
+.rec-sub{font-size:16px;color:rgba(255,255,255,0.65)}
 .rec-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:8px}
-.rec-card{background:#fff;border-radius:20px;box-shadow:0 4px 32px rgba(0,0,0,0.1);padding:36px;position:relative;border:2px solid transparent}
+.rec-card{background:rgba(124,58,237,0.12);border-radius:20px;box-shadow:0 4px 32px rgba(0,0,0,0.4);padding:36px;position:relative;border:2px solid rgba(124,58,237,0.3)}
 .rec-card.recommended{border-color:#D4AF37}
-.rec-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#D4AF37;color:#1A237E;font-family:'Arial',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 18px;border-radius:20px;white-space:nowrap}
-.rec-title{font-size:22px;font-weight:700;color:#1A237E;margin-bottom:6px;margin-top:10px}
+.rec-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#D4AF37;color:#fff;font-family:'Arial',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 18px;border-radius:20px;white-space:nowrap}
+.rec-title{font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;margin-top:10px}
 .rec-price{font-size:36px;font-weight:700;color:#D4AF37;margin-bottom:20px}
 .rec-list{list-style:none;margin-bottom:28px}
-.rec-list li{padding:8px 0;border-bottom:1px solid #f0ede8;font-size:14px;color:#4A4A4A;display:flex;align-items:flex-start;gap:8px}
+.rec-list li{padding:8px 0;border-bottom:1px solid #f0ede8;font-size:14px;color:rgba(255,255,255,0.85);display:flex;align-items:flex-start;gap:8px}
 .rec-list li:last-child{border-bottom:none}
 .rec-list li:before{content:"\2713";color:#D4AF37;font-weight:700;flex-shrink:0}
-.or-divider{text-align:center;padding:28px 0;font-family:'Arial',sans-serif;font-size:16px;font-weight:700;color:#888;letter-spacing:2px}
-.build-card{background:#fff;border-radius:20px;box-shadow:0 2px 16px rgba(0,0,0,0.06);padding:32px;text-align:center;border:2px solid #e8e4dc}
-.build-card h3{font-size:20px;font-weight:700;color:#1A237E;margin-bottom:8px}
-.build-card p{font-size:15px;color:#888;margin-bottom:24px}
-.build-wrap{background:#fff;border-radius:20px;box-shadow:0 4px 32px rgba(0,0,0,0.08);padding:36px;margin-top:16px}
+.or-divider{text-align:center;padding:28px 0;font-family:'Arial',sans-serif;font-size:16px;font-weight:700;color:rgba(255,255,255,0.65);letter-spacing:2px}
+.build-card{background:rgba(124,58,237,0.12);border-radius:20px;box-shadow:0 2px 16px rgba(0,0,0,0.4);padding:32px;text-align:center;border:2px solid rgba(124,58,237,0.3)}
+.build-card h3{font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+.build-card p{font-size:15px;color:rgba(255,255,255,0.65);margin-bottom:24px}
+.build-wrap{background:rgba(124,58,237,0.12);border-radius:20px;box-shadow:0 4px 32px rgba(0,0,0,0.4);padding:36px;margin-top:16px;border:1px solid rgba(124,58,237,0.3)}
 .add-section{margin-bottom:32px}
 .add-section-title{font-family:'Arial',sans-serif;font-size:12px;font-weight:700;color:#D4AF37;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #f0ede8}
 .add-item{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid #f8f5f0;cursor:pointer}
 .add-item:last-child{border-bottom:none}
 .add-item.req{cursor:default;opacity:0.85}
-.add-chk{width:22px;height:22px;border-radius:6px;border:2px solid #ccc;background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background 0.15s,border-color 0.15s;margin-top:2px}
-.add-item.chk .add-chk,.add-item.req .add-chk{background:#1A237E;border-color:#1A237E}
+.add-chk{width:22px;height:22px;border-radius:6px;border:2px solid rgba(124,58,237,0.5);background:rgba(124,58,237,0.15);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background 0.15s,border-color 0.15s;margin-top:2px}
+.add-item.chk .add-chk,.add-item.req .add-chk{background:#1A237E;border-color:#fff}
 .add-item.chk .add-chk:after,.add-item.req .add-chk:after{content:"\2713";color:#fff;font-size:13px;font-weight:700}
 .add-info{flex:1}
-.add-name{font-size:16px;font-weight:600;color:#1A237E;margin-bottom:3px}
-.add-desc{font-size:13px;color:#888;line-height:1.5}
-.add-price{font-family:'Arial',sans-serif;font-size:15px;font-weight:700;color:#4A4A4A;flex-shrink:0;padding-top:2px}
-.build-sticky{position:sticky;bottom:0;background:#FAF9F6;border-top:2px solid #e8e4dc;padding:16px 0;margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.build-total{font-family:'Arial',sans-serif;font-size:22px;font-weight:700;color:#1A237E}
+.add-name{font-size:16px;font-weight:600;color:#fff;margin-bottom:3px}
+.add-desc{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.5}
+.add-price{font-family:'Arial',sans-serif;font-size:15px;font-weight:700;color:rgba(255,255,255,0.85);flex-shrink:0;padding-top:2px}
+.build-sticky{position:sticky;bottom:0;background:rgba(15,23,42,0.95);border-top:2px solid rgba(124,58,237,0.3);padding:16px 0;margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.build-total{font-family:'Arial',sans-serif;font-size:22px;font-weight:700;color:#fff}
 .build-total span{color:#D4AF37}
-.unlock-wrap{background:#fff;border-radius:20px;box-shadow:0 4px 32px rgba(0,0,0,0.08);padding:44px;margin-top:16px;text-align:center}
-.unlock-hl{font-size:28px;font-weight:700;color:#1A237E;margin-bottom:10px}
-.unlock-sub{font-size:16px;color:#888;margin-bottom:32px;line-height:1.6}
-.unlock-summary{background:#f0f2ff;border-radius:14px;padding:24px;margin-bottom:28px;text-align:left}
-.unlock-summary h3{font-size:14px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:12px}
+.unlock-wrap{background:rgba(124,58,237,0.12);border-radius:20px;box-shadow:0 4px 32px rgba(0,0,0,0.4);padding:44px;margin-top:16px;text-align:center;border:1px solid rgba(124,58,237,0.3)}
+.unlock-hl{font-size:28px;font-weight:700;color:#fff;margin-bottom:10px}
+.unlock-sub{font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:32px;line-height:1.6}
+.unlock-summary{background:rgba(124,58,237,0.15);border-radius:14px;padding:24px;margin-bottom:28px;text-align:left;border:1px solid rgba(124,58,237,0.3)}
+.unlock-summary h3{font-size:14px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.65);margin-bottom:12px}
 .unlock-items{list-style:none}
-.unlock-items li{font-size:14px;color:#4A4A4A;padding:6px 0;display:flex;justify-content:space-between;border-bottom:1px solid #e0e4ff}
-.unlock-items li:last-child{border-bottom:none;font-weight:700;color:#1A237E;margin-top:4px}
+.unlock-items li{font-size:14px;color:rgba(255,255,255,0.85);padding:6px 0;display:flex;justify-content:space-between;border-bottom:1px solid #e0e4ff}
+.unlock-items li:last-child{border-bottom:none;font-weight:700;color:#fff;margin-top:4px}
 .payment-methods{display:flex;gap:12px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
 .pay-btn{flex:1;min-width:160px;max-width:220px;padding:14px 24px;border-radius:12px;border:none;cursor:pointer;font-family:'Arial',sans-serif;font-size:15px;font-weight:700;transition:transform 0.15s}
 .pay-stripe{background:#635BFF;color:#fff}
 .pay-paypal{background:#FFC439;color:#003087}
 .pay-btn:hover{transform:scale(1.03)}
-.unlock-feat{display:flex;align-items:center;gap:10px;font-size:13px;color:#888;margin-top:8px}
+.unlock-feat{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.65);margin-top:8px}
 .uf-ico{font-size:16px}
 .unlock-screen{display:none}
 .unlock-screen.active{display:block}
 .processing-wrap{text-align:center;padding:80px 20px}
 .processing-ico{font-size:64px;margin-bottom:24px;animation:spin 2s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.processing-hl{font-size:24px;font-weight:700;color:#1A237E;margin-bottom:12px}
-.processing-sub{font-size:16px;color:#888}
+.processing-hl{font-size:24px;font-weight:700;color:#fff;margin-bottom:12px}
+.processing-sub{font-size:16px;color:rgba(255,255,255,0.65)}
 .a-header{background:#1A237E;color:#fff;padding:16px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:56px;z-index:90}
 .a-sec-lbl{font-family:'Arial',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#D4AF37}
 .a-prog-txt{font-size:12px;color:rgba(255,255,255,0.7);margin-left:auto}
@@ -114,30 +114,30 @@ a{color:#1A237E;text-decoration:none}
 .a-pb{height:100%;background:#D4AF37;border-radius:3px;transition:width 0.4s}
 .a-body{max-width:700px;margin:0 auto;padding:40px 20px 100px}
 .a-qn{font-family:'Arial',sans-serif;font-size:11px;font-weight:700;color:#D4AF37;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
-.a-qt{font-size:20px;font-weight:700;color:#1A237E;margin-bottom:24px;line-height:1.4}
+.a-qt{font-size:20px;font-weight:700;color:#fff;margin-bottom:24px;line-height:1.4}
 .a-opts{display:flex;flex-direction:column;gap:10px}
-.a-opt{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border:2px solid #e8e4dc;border-radius:12px;cursor:pointer;transition:border-color 0.15s,background 0.15s;background:#FAF9F6}
-.a-opt:hover{border-color:#D4AF37;background:#fffdf5}
-.a-opt.selected{border-color:#1A237E;background:#f0f2ff}
+.a-opt{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border:2px solid rgba(124,58,237,0.25);border-radius:12px;cursor:pointer;transition:border-color 0.15s,background 0.15s;background:rgba(124,58,237,0.08)}
+.a-opt:hover{border-color:#D4AF37;background:rgba(124,58,237,0.25)}
+.a-opt.selected{border-color:#7C3AED;background:rgba(124,58,237,0.35)}
 .a-opt-ltr{font-family:'Arial',sans-serif;font-size:13px;font-weight:700;color:#D4AF37;width:20px;flex-shrink:0;padding-top:1px}
-.a-opt-txt{font-size:15px;color:#4A4A4A;line-height:1.5}
-.a-nav{position:fixed;bottom:0;left:0;right:0;background:#FAF9F6;border-top:2px solid #e8e4dc;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;z-index:90}
-.a-time{font-family:'Arial',sans-serif;font-size:12px;color:#888}
-.btn-a-next{background:#D4AF37;color:#1A237E;font-family:'Arial',sans-serif;font-size:15px;font-weight:700;padding:12px 32px;border-radius:10px;border:none;cursor:pointer;opacity:0.4;pointer-events:none;transition:opacity 0.15s}
+.a-opt-txt{font-size:15px;color:rgba(255,255,255,0.85);line-height:1.5}
+.a-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(15,23,42,0.95);border-top:2px solid rgba(124,58,237,0.3);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;z-index:90}
+.a-time{font-family:'Arial',sans-serif;font-size:12px;color:rgba(255,255,255,0.65)}
+.btn-a-next{background:#D4AF37;color:#fff;font-family:'Arial',sans-serif;font-size:15px;font-weight:700;padding:12px 32px;border-radius:10px;border:none;cursor:pointer;opacity:0.4;pointer-events:none;transition:opacity 0.15s}
 .btn-a-next.on{opacity:1;pointer-events:auto}
 .btn-a-next.on:hover{background:#c9a32a}
 .save-note{font-size:11px;color:#aaa;font-style:italic;margin-top:8px;text-align:center}
-.hook-badge{display:inline-block;background:#D4AF37;color:#1A237E;font-family:'Arial',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:18px}
-.hook-hl{font-size:clamp(24px,3.5vw,38px);font-weight:700;color:#1A237E;margin-bottom:14px;line-height:1.3}
-.hook-body{font-size:16px;color:#4A4A4A;line-height:1.7;margin-bottom:12px}
+.hook-badge{display:inline-block;background:#D4AF37;color:#fff;font-family:'Arial',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:18px}
+.hook-hl{font-size:clamp(24px,3.5vw,38px);font-weight:700;color:#fff;margin-bottom:14px;line-height:1.3}
+.hook-body{font-size:16px;color:rgba(255,255,255,0.85);line-height:1.7;margin-bottom:12px}
 .hook-insight{background:#1A237E;color:#fff;border-radius:16px;padding:26px 30px;margin:22px 0;font-size:15px;line-height:1.7}
 .hook-insight strong{color:#D4AF37;font-size:15px;display:block;margin-bottom:8px}
-.hook-div{text-align:center;font-family:'Arial',sans-serif;font-size:13px;color:#888;margin:22px 0;letter-spacing:1px}
+.hook-div{text-align:center;font-family:'Arial',sans-serif;font-size:13px;color:rgba(255,255,255,0.65);margin:22px 0;letter-spacing:1px}
 .services-section{margin-top:28px}
-.services-title{font-size:17px;font-weight:700;color:#1A237E;margin-bottom:14px;border-bottom:2px solid #D4AF37;padding-bottom:8px}
+.services-title{font-size:17px;font-weight:700;color:#fff;margin-bottom:14px;border-bottom:2px solid #D4AF37;padding-bottom:8px}
 .services-list{display:flex;flex-direction:column;gap:12px;margin-bottom:8px}
 .service-item{display:flex;align-items:center;justify-content:space-between;background:#f8f9ff;border-radius:12px;padding:14px 18px;border:1px solid #e0e4ff;flex-wrap:wrap;gap:10px}
-.service-label{font-size:14px;font-weight:600;color:#333;flex:1;min-width:200px}
+.service-label{font-size:14px;font-weight:600;color:#fff;flex:1;min-width:200px}
 .service-action{flex-shrink:0}
 @media(max-width:768px){
 .hero{grid-template-columns:1fr;min-height:auto}
@@ -245,7 +245,7 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.4) !important;
       <h1 class="hero-hl">The Alignment Assessment</h1>
       <p class="hero-sub">Let&rsquo;s get you the clarity you need.</p>
       <p class="hero-quote">&ldquo;I don&rsquo;t just tell you who you are &mdash; I help you understand what to do with it.&rdquo;</p>
-      <p style="font-size:13px;color:#888;line-height:1.6;font-style:italic">This is not a generic personality test. This is a consulting-based assessment designed to give you clarity and direction based on how you are uniquely wired.</p>
+      <p style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;font-style:italic">This is not a generic personality test. This is a consulting-based assessment designed to give you clarity and direction based on how you are uniquely wired.</p>
       <button class="btn-gold" onclick="showScreen('pgQuestionnaire');initQ()">Start My Assessment</button>
     </div>
   </div>
@@ -276,14 +276,14 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.4) !important;
           <h2 class="welcome-hl" style="margin-top:12px;">Take This Assessment With Someone</h2>
           <p class="welcome-body">Link your results with a partner, spouse, team member, student, or anyone else â to discover your similarities, differences, and how to align better together.</p>
           <div id="partnerAsk" style="margin-top:24px;">
-            <p style="font-weight:600;color:#1A237E;margin-bottom:16px;">Are you taking this assessment with someone?</p>
+            <p style="font-weight:600;color:#fff;margin-bottom:16px;">Are you taking this assessment with someone?</p>
             <div style="display:flex;gap:12px;flex-wrap:wrap;">
               <button class="btn-gold" onclick="showPartnerOptions()" style="flex:1;min-width:130px;">Yes, link assessments</button>
               <button class="btn-outline" onclick="skipPartner()" style="flex:1;min-width:130px;">No, just me</button>
             </div>
           </div>
           <div id="partnerOptions" style="display:none;margin-top:24px;">
-            <p style="font-weight:600;color:#1A237E;margin-bottom:16px;">Which role are you?</p>
+            <p style="font-weight:600;color:#fff;margin-bottom:16px;">Which role are you?</p>
             <div style="display:flex;gap:12px;flex-direction:column;">
               <button class="btn-navy" onclick="becomePrimary()" style="text-align:left;padding:16px 20px;border-radius:10px;">
                 <strong style="display:block;font-size:15px;">I am the PRIMARY</strong>
@@ -291,21 +291,21 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.4) !important;
               </button>
               <button class="btn-outline" onclick="showSecondaryInput()" style="text-align:left;padding:16px 20px;border-radius:10px;">
                 <strong style="display:block;font-size:15px;">I have a code (SECONDARY)</strong>
-                <span style="font-size:13px;color:#555;">Enter the code your partner shared with you</span>
+                <span style="font-size:13px;color:rgba(255,255,255,0.75);">Enter the code your partner shared with you</span>
               </button>
             </div>
             <div style="text-align:center;margin-top:12px;"><button onclick="hidePartnerOptions()" style="background:none;border:none;color:#999;cursor:pointer;font-size:13px;">&#8592; Back</button></div>
           </div>
           <div id="partnerPrimaryCode" style="display:none;margin-top:24px;">
-            <p style="font-weight:600;color:#1A237E;margin-bottom:8px;">Your Partner Code:</p>
-            <div id="partnerCodeDisplay" style="font-size:36px;font-weight:800;letter-spacing:10px;color:#1A237E;background:#f0f2ff;border-radius:10px;padding:20px;text-align:center;margin-bottom:12px;">------</div>
-            <p style="font-size:13px;color:#555;margin-bottom:16px;">Share this code with your partner. They enter it when they start their assessment to link your results together.</p>
+            <p style="font-weight:600;color:#fff;margin-bottom:8px;">Your Partner Code:</p>
+            <div id="partnerCodeDisplay" style="font-size:36px;font-weight:800;letter-spacing:10px;color:#fff;background:rgba(124,58,237,0.2);border-radius:10px;padding:20px;text-align:center;margin-bottom:12px;border:1px solid rgba(124,58,237,0.4)">------</div>
+            <p style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:16px;">Share this code with your partner. They enter it when they start their assessment to link your results together.</p>
             <button class="btn-gold" onclick="startWithCode()" style="width:100%;">Start My Assessment &#8594;</button>
           </div>
           <div id="partnerSecondaryInput" style="display:none;margin-top:24px;">
-            <p style="font-weight:600;color:#1A237E;margin-bottom:8px;">Enter your partner&#39;s code:</p>
+            <p style="font-weight:600;color:#fff;margin-bottom:8px;">Enter your partner&#39;s code:</p>
             <input id="partnerCodeInput" type="text" maxlength="6" placeholder="e.g. ABC123"
-              style="width:100%;padding:14px;font-size:22px;letter-spacing:8px;text-transform:uppercase;border:2px solid #1A237E;border-radius:8px;text-align:center;box-sizing:border-box;margin-bottom:12px;"
+              style="width:100%;padding:14px;font-size:22px;letter-spacing:8px;text-transform:uppercase;border:2px solid #7C3AED;border-radius:8px;text-align:center;box-sizing:border-box;margin-bottom:12px;"
               oninput="this.value=this.value.toUpperCase()">
             <div id="partnerCodeError" style="color:#c0392b;font-size:13px;margin-bottom:8px;display:none;">Code not found. Check the code and try again.</div>
             <button class="btn-gold" onclick="linkSecondary()" style="width:100%;margin-bottom:8px;">Link &amp; Start Assessment &#8594;</button>
@@ -342,11 +342,11 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.4) !important;
         <div class="rec-title" id="recTitle">Personal Alignment Package</div>
         <div class="rec-price" id="recPrice">$97</div>
         <ul class="rec-list" id="recList"></ul>
-        <div id="recAreas" style="display:none;background:#f0f2ff;border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:13px;color:#1A237E"><strong>Your Blueprint Covers All Selected Areas</strong><br><span id="recAreasTxt"></span></div>
+        <div id="recAreas" style="display:none;background:rgba(124,58,237,0.15);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:13px;color:#fff"><strong>Your Blueprint Covers All Selected Areas</strong><br><span id="recAreasTxt"></span></div>
         <button class="btn-gold" style="width:100%;font-size:16px" onclick="chooseRecommended()">Choose This Package &rarr;</button>
       </div>
       <div style="display:flex;flex-direction:column;gap:20px">
-        <div style="background:#fff8e6;border-radius:16px;padding:24px;border:1px solid #f0d98a"><h3 style="font-size:15px;font-weight:700;color:#1A237E;margin-bottom:8px">&#128161; How we chose this</h3><p style="font-size:13px;color:#666;line-height:1.6" id="recReason">Based on your goals and depth, this package gives you everything you need.</p></div>
+        <div style="background:rgba(212,175,55,0.12);border-radius:16px;padding:24px;border:1px solid rgba(212,175,55,0.4)"><h3 style="font-size:15px;font-weight:700;color:#fff;margin-bottom:8px">&#128161; How we chose this</h3><p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6" id="recReason">Based on your goals and depth, this package gives you everything you need.</p></div>
         <div class="build-card"><h3>Build Your Own Blueprint</h3><p>Start with the base assessment ($97) and add only what YOU need.</p><button class="btn-outline" onclick="showBuild()">Customize My Blueprint &rarr;</button></div>
       </div>
     </div>
@@ -358,7 +358,7 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.4) !important;
 <div class="inner-wrap"><div class="sidebar-photo"><img src="images/dennis-assessment-sidebar.jpg" alt="Dennis Nickens"></div><div class="main-content">
 
   <div class="inner pt-nav">
-    <div style="margin-bottom:24px"><h2 style="font-size:28px;font-weight:700;color:#1A237E;margin-bottom:8px">Build Your Blueprint</h2><p style="font-size:15px;color:#888">Start with the base (required) and add only what you need.</p></div>
+    <div style="margin-bottom:24px"><h2 style="font-size:28px;font-weight:700;color:#fff;margin-bottom:8px">Build Your Blueprint</h2><p style="font-size:15px;color:rgba(255,255,255,0.65)">Start with the base (required) and add only what you need.</p></div>
     <div class="build-wrap">
       <div class="add-section"><div class="add-section-title">The Foundation (Required)</div>
         <div class="add-item req chk" data-p="97" data-k="base"><div class="add-chk"></div><div class="add-info"><div class="add-name">The Alignment Assessment + Basic Blueprint</div><div class="add-desc">40-52 question comprehensive assessment &bull; 8-page PDF: Behavior, Communication, Processing profiles &bull; Misalignment Map &bull; 30-Day Action Plan</div></div><div class="add-price">$97</div></div>
@@ -391,7 +391,7 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.4) !important;
     </div>
 </div></div>
 
-    <div class="build-sticky"><div><div class="build-total">TOTAL: <span id="buildTotal">$97</span></div><div style="font-size:12px;color:#888;margin-top:4px">Base assessment included</div></div><button class="btn-gold" onclick="goToPayment()" style="font-size:16px;padding:14px 32px">Unlock My Assessment &mdash; <span id="buildTotalBtn">$97</span> &rarr;</button></div>
+    <div class="build-sticky"><div><div class="build-total">TOTAL: <span id="buildTotal">$97</span></div><div style="font-size:12px;color:rgba(255,255,255,0.65);margin-top:4px">Base assessment included</div></div><button class="btn-gold" onclick="goToPayment()" style="font-size:16px;padding:14px 32px">Unlock My Assessment &mdash; <span id="buildTotalBtn">$97</span> &rarr;</button></div>
   </div>
 </div>
 <div id="pgPayment" class="screen">
@@ -403,7 +403,7 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.4) !important;
         <div class="unlock-hl">Unlock Your Assessment</div>
         <p class="unlock-sub">Complete payment to immediately access your 40-52 question assessment and begin your alignment journey.</p>
         <div class="unlock-summary"><h3>Your Order</h3><ul class="unlock-items" id="orderItems"></ul></div>
-        <div style="background:#fff8e6;border-radius:12px;padding:16px 20px;margin-bottom:24px;text-align:left">
+        <div style="background:rgba(212,175,55,0.12);border-radius:12px;padding:16px 20px;margin-bottom:24px;text-align:left;border:1px solid rgba(212,175,55,0.3)">
           <div class="unlock-feat"><span class="uf-ico">&#128274;</span> Secure payment &mdash; SSL encrypted</div>
           <div class="unlock-feat"><span class="uf-ico">&#9989;</span> Instant assessment access upon payment</div>
           <div class="unlock-feat"><span class="uf-ico">&#128196;</span> Your full Alignment Blueprint PDF will be generated instantly upon completing your assessment</div>
@@ -460,7 +460,7 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.4) !important;
     <p class="hook-body" id="hookBody"></p>
     <div class="hook-insight"><strong id="hookInsTitle"></strong><span id="hookInsBody"></span></div>
     <div id="hookSecondary"></div>
-    <p class="hook-body" style="font-size:14px;color:#888" id="hookTeaser"></p>
+    <p class="hook-body" style="font-size:14px;color:rgba(255,255,255,0.65)" id="hookTeaser"></p>
     <div class="hook-div">&mdash; Your full Blueprint goes much deeper &mdash;</div>
     <div class="services-section">
       <h3 class="services-title">&#9989; Download Your Alignment Blueprint</h3>
@@ -469,8 +469,8 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.4) !important;
       </div>
       <h3 class="services-title" style="margin-top:32px">Your Purchased Services</h3>
       <div id="purchasedServicesList" class="services-list"></div>
-      <div id="allDoneMsg" style="display:none;margin-top:28px;text-align:center;color:#555;font-style:italic">Your Alignment journey is complete. Questions? Email Dennis.</div>
-      <div id="pendingMsg" style="margin-top:28px;text-align:center;color:#555;font-style:italic">Complete each action above to unlock your full Alignment journey.</div>
+      <div id="allDoneMsg" style="display:none;margin-top:28px;text-align:center;color:rgba(255,255,255,0.75);font-style:italic">Your Alignment journey is complete. Questions? Email Dennis.</div>
+      <div id="pendingMsg" style="margin-top:28px;text-align:center;color:rgba(255,255,255,0.75);font-style:italic">Complete each action above to unlock your full Alignment journey.</div>
     </div>
   </div>
 </div><script>
@@ -726,11 +726,11 @@ function buildHook(){
   var varkFull={V:'Visual',A:'Auditory',R:'Read/Write',K:'Kinesthetic'};
   var llFull={Words:'Words of Affirmation',Touch:'Physical Touch',Gifts:'Receiving Gifts',Acts:'Acts of Service',Time:'Quality Time'};
   var discFull={D:'Dominant (Driver)',I:'Influential (Inspiring)',S:'Steady (Supportive)',C:'Conscientious (Careful)'};
-  document.getElementById('hookSecondary').innerHTML='<div style="background:#fff;border-radius:14px;padding:20px 24px;margin:16px 0;border:1px solid #e8e4dc">'+
+  document.getElementById('hookSecondary').innerHTML='<div style="background:rgba(124,58,237,0.15);border-radius:14px;padding:20px 24px;margin:16px 0;border:1px solid rgba(124,58,237,0.4)">'+
     ['Ã¢ÂÂ Behavior Profile: '+(discFull[sc.dDom]||sc.dDom)+' Ã¢ÂÂ '+sc.dCode+' pattern',
      'Ã¢ÂÂ Primary Love Language: '+(llFull[sc.llDom]||sc.llDom),
      'Ã¢ÂÂ Processing Style: '+(varkFull[sc.vDom]||sc.vDom),
-     'Ã¢ÂÂ Core Misalignment Area: '+sc.misArea].map(function(s){return '<div style="font-size:13px;color:#4A4A4A;padding:5px 0">'+s+'</div>';}).join('')+
+     'Ã¢ÂÂ Core Misalignment Area: '+sc.misArea].map(function(s){return '<div style="font-size:13px;color:rgba(255,255,255,0.85);padding:5px 0">'+s+'</div>';}).join('')+
     '</div>';
   try{localStorage.setItem('align_scores',JSON.stringify(sc));}catch(e){}
   var svcs=[];
@@ -741,7 +741,7 @@ function buildHook(){
   if(selectedAddons.consult_90)svcs.push({label:'90-Day Consulting Engagement',status:'pending',action:'<a href="https://calendly.com/dennis-nickens/90day-session" target="_blank" style="background:#1565C0;color:#fff;padding:8px 18px;border-radius:8px;font-weight:700;text-decoration:none;font-size:13px;display:inline-block">&#128197; Session 1 of 3 &mdash; Book Now</a>'});
   if(selectedAddons.partner_a)svcs.push({label:'Partner Assessment',status:'pending',action:'<span style="color:#E65100;font-size:13px;font-weight:700">&#9203; Invitation Sent Ã¢ÂÂ Pending Completion</span>'});
   if(selectedAddons.fam_member)svcs.push({label:'Family Member Assessment',status:'pending',action:'<span style="color:#E65100;font-size:13px;font-weight:700">&#9203; Invitation Sent Ã¢ÂÂ Pending Completion</span>'});
-  if(selectedAddons.couples_s)svcs.push({label:'Joint Strategy Consultation (Couples)',status:'pending',action:'<span style="color:#888;font-size:13px;font-weight:700">&#128274; Available after Partner completes assessment</span>'});
+  if(selectedAddons.couples_s)svcs.push({label:'Joint Strategy Consultation (Couples)',status:'pending',action:'<span style="color:rgba(255,255,255,0.65);font-size:13px;font-weight:700">&#128274; Available after Partner completes assessment</span>'});
   if(selectedAddons.team_dyn||selectedAddons.team_mbr)svcs.push({label:'Team Dynamics Analysis',status:'pending',action:'<a href="#" style="background:#1565C0;color:#fff;padding:8px 18px;border-radius:8px;font-weight:700;text-decoration:none;font-size:13px;display:inline-block">&#128202; View Team Dashboard</a>'});
   if(selectedAddons.workshop)svcs.push({label:'Half-Day Leadership Workshop',status:'pending',action:'<a href="https://calendly.com/dennis-nickens/workshop" target="_blank" style="background:#1565C0;color:#fff;padding:8px 18px;border-radius:8px;font-weight:700;text-decoration:none;font-size:13px;display:inline-block">&#128197; Schedule Workshop</a>'});
   if(selectedAddons.exec_c)svcs.push({label:'Executive Leadership Consulting',status:'pending',action:'<a href="https://calendly.com/dennis-nickens/exec-session" target="_blank" style="background:#1565C0;color:#fff;padding:8px 18px;border-radius:8px;font-weight:700;text-decoration:none;font-size:13px;display:inline-block">&#128197; Session 1 of 3 &mdash; Book Now</a>'});
@@ -861,7 +861,7 @@ function showSecondaryInput(){document.getElementById('partnerOptions').style.di
 function linkSecondary(){var code=document.getElementById('partnerCodeInput').value.trim().toUpperCase();if(code.length!==6){document.getElementById('partnerCodeError').style.display='';return;}try{var stored=localStorage.getItem('align_primary_'+code);if(!stored){document.getElementById('partnerCodeError').style.display='';return;}var pd=JSON.parse(stored);partnerMode='secondary';myPartnerCode=code;linkedPartnerScore=pd.score||null;document.getElementById('partnerCodeError').style.display='none';document.getElementById('qPartner').style.display='none';showQStep(1);}catch(e){document.getElementById('partnerCodeError').style.display='';}}
 function skipPartner(){partnerMode=null;document.getElementById('qPartner').style.display='none';showQStep(1);}
 function savePartnerResults(sc){if(partnerMode==='primary'&&myPartnerCode){try{localStorage.setItem('align_primary_'+myPartnerCode,JSON.stringify({status:'complete',score:sc,timestamp:Date.now()}));}catch(e){}}if(partnerMode==='secondary'&&myPartnerCode){try{var stored=localStorage.getItem('align_primary_'+myPartnerCode);if(stored){var pd=JSON.parse(stored);if(pd.score)linkedPartnerScore=pd.score;}}catch(e){}}}
-function buildPartnerComparison(sc){if(partnerMode!=='secondary'||!linkedPartnerScore)return '';var ps=linkedPartnerScore;var dF={D:'Dominant/Driver',I:'Inspiring/Influencer',S:'Steady/Supporter',C:'Conscientious/Analyzer'};var lF={Words:'Words of Affirmation',Touch:'Physical Touch',Gifts:'Receiving Gifts',Acts:'Acts of Service',Time:'Quality Time'};var vF={V:'Visual',A:'Auditory',R:'Reading/Writing',K:'Kinesthetic'};var sims=[],diffs=[];if(sc.dDom===ps.dDom)sims.push('Same behavioral drive ('+(dF[sc.dDom]||sc.dDom)+')');if(sc.llDom===ps.llDom)sims.push('Same primary appreciation language ('+(lF[sc.llDom]||sc.llDom)+')');if(sc.vDom===ps.vDom)sims.push('Same processing style ('+(vF[sc.vDom]||sc.vDom)+')');if(sc.dDom!==ps.dDom)diffs.push('Behavioral style: You are '+(dF[sc.dDom]||sc.dDom)+'; they are '+(dF[ps.dDom]||ps.dDom));if(sc.llDom!==ps.llDom)diffs.push('Appreciation language: You value '+(lF[sc.llDom]||sc.llDom)+'; they value '+(lF[ps.llDom]||ps.llDom));if(sc.vDom!==ps.vDom)diffs.push('Processing style: You are '+(vF[sc.vDom]||sc.vDom)+'; they are '+(vF[ps.vDom]||ps.vDom));var h='<div style="background:#f0f2ff;border-radius:12px;padding:24px;margin:24px 0;border-left:4px solid #1A237E;"><h3 style="color:#1A237E;margin:0 0 8px;">&#128101; Linked Assessment Comparison</h3><p style="font-size:13px;color:#555;margin-bottom:16px;">Your results compared with your linked partner.</p>';if(sims.length){h+='<p style="font-weight:700;color:#2e7d32;margin-bottom:6px;">&#10003; Similarities</p><ul style="margin:0 0 12px;padding-left:20px;">';sims.forEach(function(s){h+='<li style="font-size:13px;margin-bottom:4px;">'+s+'</li>';});h+='</ul>';}if(diffs.length){h+='<p style="font-weight:700;color:#e65100;margin-bottom:6px;">&#8597; Key Differences</p><ul style="margin:0 0 12px;padding-left:20px;">';diffs.forEach(function(d){h+='<li style="font-size:13px;margin-bottom:4px;">'+d+'</li>';});h+='</ul><p style="font-size:13px;color:#555;font-style:italic;">Your full Blueprint includes strategies to bridge these gaps.</p>';}h+='</div>';return h;}
+function buildPartnerComparison(sc){if(partnerMode!=='secondary'||!linkedPartnerScore)return '';var ps=linkedPartnerScore;var dF={D:'Dominant/Driver',I:'Inspiring/Influencer',S:'Steady/Supporter',C:'Conscientious/Analyzer'};var lF={Words:'Words of Affirmation',Touch:'Physical Touch',Gifts:'Receiving Gifts',Acts:'Acts of Service',Time:'Quality Time'};var vF={V:'Visual',A:'Auditory',R:'Reading/Writing',K:'Kinesthetic'};var sims=[],diffs=[];if(sc.dDom===ps.dDom)sims.push('Same behavioral drive ('+(dF[sc.dDom]||sc.dDom)+')');if(sc.llDom===ps.llDom)sims.push('Same primary appreciation language ('+(lF[sc.llDom]||sc.llDom)+')');if(sc.vDom===ps.vDom)sims.push('Same processing style ('+(vF[sc.vDom]||sc.vDom)+')');if(sc.dDom!==ps.dDom)diffs.push('Behavioral style: You are '+(dF[sc.dDom]||sc.dDom)+'; they are '+(dF[ps.dDom]||ps.dDom));if(sc.llDom!==ps.llDom)diffs.push('Appreciation language: You value '+(lF[sc.llDom]||sc.llDom)+'; they value '+(lF[ps.llDom]||ps.llDom));if(sc.vDom!==ps.vDom)diffs.push('Processing style: You are '+(vF[sc.vDom]||sc.vDom)+'; they are '+(vF[ps.vDom]||ps.vDom));var h='<div style="background:rgba(124,58,237,0.15);border-radius:12px;padding:24px;margin:24px 0;border-left:4px solid #7C3AED;"><h3 style="color:#fff;margin:0 0 8px;">&#128101; Linked Assessment Comparison</h3><p style="font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:16px;">Your results compared with your linked partner.</p>';if(sims.length){h+='<p style="font-weight:700;color:#2e7d32;margin-bottom:6px;">&#10003; Similarities</p><ul style="margin:0 0 12px;padding-left:20px;">';sims.forEach(function(s){h+='<li style="font-size:13px;margin-bottom:4px;">'+s+'</li>';});h+='</ul>';}if(diffs.length){h+='<p style="font-weight:700;color:#e65100;margin-bottom:6px;">&#8597; Key Differences</p><ul style="margin:0 0 12px;padding-left:20px;">';diffs.forEach(function(d){h+='<li style="font-size:13px;margin-bottom:4px;">'+d+'</li>';});h+='</ul><p style="font-size:13px;color:rgba(255,255,255,0.75);font-style:italic;">Your full Blueprint includes strategies to bridge these gaps.</p>';}h+='</div>';return h;}
 // ===== END PARTNER LINKING SYSTEM =====
 
 </script>

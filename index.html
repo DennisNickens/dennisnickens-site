@@ -6,7 +6,7 @@
 <title>Dennis Nickens: Spiritual Romeo | Behavior & Communication Consultant</title>
 <meta name="description" content="Dennis Nickens AKA Spiritual Romeo, Behavior & Communication Consultant helping 500+ couples build the love they've always wanted. Book your free consultation today.">
 <script>
-// Splash gate — uses sessionStorage so it resets on each new browser session.
+// Splash gate â uses sessionStorage so it resets on each new browser session.
 // Typing dennisnickens.com in a new tab = fresh sessionStorage = splash shows.
 // Clicking Home nav link within same session = flag already set = skip splash.
 if(!sessionStorage.getItem('splashSeen')){window.location.replace('splash.html');}
@@ -21,7 +21,7 @@ if(!sessionStorage.getItem('splashSeen')){window.location.replace('splash.html')
 .nav-logo-sr{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:#FFD700;letter-spacing:1px;text-shadow:0 0 12px rgba(255,215,0,0.6);}
 .nav-brand-text .nav-name{font-family:'Dancing Script',cursive;font-size:20px;font-weight:700;color:#fff;line-height:1.1;}
 .nav-brand-text .nav-sub{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FFD700;opacity:0.85;}
-#globe-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.7;}
+#globe-container{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.85;}#globe-container canvas{display:block;}
 .hero{min-height:100vh;display:flex;align-items:center;padding:120px 48px 80px;position:relative;overflow:hidden;}
 .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:500px 1fr;gap:80px;align-items:center;position:relative;z-index:1;width:100%;}
 .hero-photo-wrap{position:relative;display:flex;justify-content:center;order:1;}
@@ -61,10 +61,10 @@ if(!sessionStorage.getItem('splashSeen')){window.location.replace('splash.html')
 .cta-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
 @media(max-width:960px){.hero{padding:100px 24px 60px;}.hero-inner{grid-template-columns:1fr;gap:48px;text-align:center;}.hero-photo{max-width:320px;height:400px;}.hero-actions{align-items:center;}.stats-strip{gap:40px;padding:28px 24px;}.services-grid{grid-template-columns:1fr;}.testi-highlight{padding:40px 28px;}.cta-buttons{flex-direction:column;align-items:center;}}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-<canvas id="globe-canvas"></canvas>
-<canvas id="particles-canvas"></canvas>
+<div id="globe-container"></div>
 <nav id="navbar">
  <a href="index.html" class="nav-brand">
  <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
@@ -113,35 +113,35 @@ if(!sessionStorage.getItem('splashSeen')){window.location.replace('splash.html')
     </div>
     <div class="who-i-help-grid animate-fadeup delay-3" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;max-width:960px;margin-left:auto;margin-right:auto;">
       <a href="who-i-help/single.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">💫</div>
+        <div style="font-size:3rem;margin-bottom:0.75rem;">ð«</div>
         <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">SINGLE</div>
       </a>
       <a href="who-i-help/married.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">💍</div>
+        <div style="font-size:3rem;margin-bottom:0.75rem;">ð</div>
         <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">MARRIED</div>
       </a>
       <a href="who-i-help/family.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">👨‍👩‍👧‍👦</div>
+        <div style="font-size:3rem;margin-bottom:0.75rem;">ð¨âð©âð§âð¦</div>
         <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">FAMILY</div>
       </a>
       <a href="who-i-help/business-owners.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">🏢</div>
+        <div style="font-size:3rem;margin-bottom:0.75rem;">ð¢</div>
         <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">BUSINESS OWNERS</div>
       </a>
       <a href="who-i-help/employees.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">💼</div>
+        <div style="font-size:3rem;margin-bottom:0.75rem;">ð¼</div>
         <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">EMPLOYEES</div>
       </a>
       <a href="who-i-help/students.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">🎓</div>
+        <div style="font-size:3rem;margin-bottom:0.75rem;">ð</div>
         <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">STUDENTS</div>
       </a>
       <a href="who-i-help/teachers.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">📚</div>
+        <div style="font-size:3rem;margin-bottom:0.75rem;">ð</div>
         <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">TEACHERS</div>
       </a>
       <a href="who-i-help/leaders.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">🌟</div>
+        <div style="font-size:3rem;margin-bottom:0.75rem;">ð</div>
         <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">LEADERS</div>
       </a>
     </div>
@@ -174,38 +174,70 @@ if(!sessionStorage.getItem('splashSeen')){window.location.replace('splash.html')
 </footer>
 <div class="footer-bottom"><span>&copy; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</span><a href="book.html">Book a Free Consultation &rarr;</a></div>
 <script>
-window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
-function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
 (function(){
-var gc=document.getElementById('globe-canvas');
-var gx=gc.getContext('2d');
-var gW,gH,gcx,gcy,gR,grot=0;
-function gResize(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;gcx=gW/2;gcy=gH/2;gR=Math.min(gW,gH)*0.42;}
-gResize();window.addEventListener('resize',gResize);
-function drawGlobe(){
-gx.clearRect(0,0,gW,gH);
-var grd=gx.createRadialGradient(gcx,gcy,gR*0.1,gcx,gcy,gR*1.3);
-grd.addColorStop(0,'rgba(124,58,237,0.06)');grd.addColorStop(0.6,'rgba(59,130,246,0.04)');grd.addColorStop(1,'transparent');
-gx.beginPath();gx.arc(gcx,gcy,gR*1.3,0,Math.PI*2);gx.fillStyle=grd;gx.fill();
-for(var i=0;i<14;i++){var ang=grot+(i/14)*Math.PI*2;var ca=Math.cos(ang);var rx=Math.abs(ca)*gR;var op=0.05+0.1*Math.abs(ca);gx.strokeStyle='rgba(124,58,237,'+op+')';gx.lineWidth=0.8;if(rx>2){gx.beginPath();gx.ellipse(gcx,gcy,rx,gR,0,0,Math.PI*2);gx.stroke();}}
-for(var j=1;j<9;j++){var phi=(j/9)*Math.PI;var ly=gcy+gR*Math.cos(phi);var lr=gR*Math.sin(phi);var lop=0.04+0.05*Math.sin(phi);gx.beginPath();gx.ellipse(gcx,ly,lr,lr*0.22,0,0,Math.PI*2);gx.strokeStyle='rgba(59,130,246,'+lop+')';gx.lineWidth=0.7;gx.stroke();}
-gx.beginPath();gx.ellipse(gcx,gcy,gR,gR*0.22,0,0,Math.PI*2);gx.strokeStyle='rgba(255,215,0,0.08)';gx.lineWidth=1.2;gx.stroke();
-gx.beginPath();gx.arc(gcx,gcy,gR,0,Math.PI*2);gx.strokeStyle='rgba(124,58,237,0.15)';gx.lineWidth=1.2;gx.stroke();
-grot+=0.0025;requestAnimationFrame(drawGlobe);
-}
-drawGlobe();
+  var c=document.getElementById('globe-container');
+  if(!c||typeof THREE==='undefined') return;
+  var W=window.innerWidth,H=window.innerHeight;
+  var renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setSize(W,H);
+  renderer.setClearColor(0x000000,0);
+  c.appendChild(renderer.domElement);
+  var scene=new THREE.Scene();
+  var camera=new THREE.PerspectiveCamera(42,W/H,0.1,500);
+  camera.position.set(0,0,2.8);
+  var R=1.0;
+  var gg=new THREE.Group();
+  scene.add(gg);
+  gg.add(new THREE.Mesh(
+    new THREE.SphereGeometry(R,64,64),
+    new THREE.MeshPhongMaterial({color:0x050d18,emissive:0x020810,shininess:12,transparent:true,opacity:0.99})
+  ));
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(R*1.09,64,64),
+    new THREE.MeshPhongMaterial({color:0x00c8ff,emissive:0x003850,side:THREE.BackSide,transparent:true,opacity:0.16})
+  ));
+  var gm=new THREE.LineBasicMaterial({color:0x1a4a6e,transparent:true,opacity:0.32});
+  for(var la=-75;la<=75;la+=15){
+    var pp=[];var phi=THREE.MathUtils.degToRad(90-la);
+    for(var lo=0;lo<=360;lo+=3){var th=THREE.MathUtils.degToRad(lo);pp.push(new THREE.Vector3(R*1.001*Math.sin(phi)*Math.cos(th),R*1.001*Math.cos(phi),R*1.001*Math.sin(phi)*Math.sin(th)));}
+    gg.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pp),gm.clone()));
+  }
+  for(var lo2=0;lo2<360;lo2+=15){
+    var pp2=[];var th2=THREE.MathUtils.degToRad(lo2);
+    for(var la2=-90;la2<=90;la2+=2){var phi2=THREE.MathUtils.degToRad(90-la2);pp2.push(new THREE.Vector3(R*1.001*Math.sin(phi2)*Math.cos(th2),R*1.001*Math.cos(phi2),R*1.001*Math.sin(phi2)*Math.sin(th2)));}
+    gg.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pp2),gm.clone()));
+  }
+  function ll(la,lo,r){var phi=THREE.MathUtils.degToRad(90-la),th=THREE.MathUtils.degToRad(lo+180);return new THREE.Vector3(-r*Math.sin(phi)*Math.cos(th),r*Math.cos(phi),r*Math.sin(phi)*Math.sin(th));}
+  var sd=42;function rnd(){sd=(sd*9301+49297)%233280;return sd/233280;}
+  var rgn=[{a:25,b:70,c:-140,d:-60,n:900},{a:-55,b:12,c:-80,d:-35,n:700},{a:36,b:71,c:-10,d:40,n:700},{a:-35,b:37,c:-18,d:52,n:800},{a:5,b:75,c:40,d:145,n:1200},{a:-44,b:-10,c:113,d:154,n:400},{a:60,b:83,c:-55,d:-17,n:250},{a:0,b:45,c:95,d:145,n:350}];
+  var lp=[];
+  rgn.forEach(function(r){for(var i=0;i<r.n;i++){var v=ll(r.a+rnd()*(r.b-r.a),r.c+rnd()*(r.d-r.c),R*1.004);lp.push(v.x,v.y,v.z);}});
+  var lg=new THREE.BufferGeometry();lg.setAttribute('position',new THREE.Float32BufferAttribute(lp,3));
+  gg.add(new THREE.Points(lg,new THREE.PointsMaterial({color:0x00e0ff,size:0.016,transparent:true,opacity:0.8,sizeAttenuation:true})));
+  var cities=[[40.7,-74],[51.5,-0.1],[48.8,2.3],[55.7,37.6],[39.9,116.4],[35.6,139.7],[37.7,-122.4],[34,-118.2],[-33.8,151.2],[-23.5,-46.6],[19.4,-99.1],[28.6,77.2],[1.3,103.8],[25.2,55.3],[30,31.2],[59.9,30.3],[-1.3,36.8],[6.5,3.4],[33.9,-6.8],[41,28.9]];
+  var cp=[];cities.forEach(function(ct){var v=ll(ct[0],ct[1],R*1.01);cp.push(v.x,v.y,v.z);});
+  var cgg=new THREE.BufferGeometry();cgg.setAttribute('position',new THREE.Float32BufferAttribute(cp,3));
+  gg.add(new THREE.Points(cgg,new THREE.PointsMaterial({color:0x00ffff,size:0.03,transparent:true,opacity:1,sizeAttenuation:true})));
+  function ring(rf,tx,tz,col,op){
+    var pts=[];for(var i=0;i<=360;i+=2){var a=THREE.MathUtils.degToRad(i);pts.push(new THREE.Vector3(Math.cos(a)*R*rf,0,Math.sin(a)*R*rf));}
+    var rg=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:col,transparent:true,opacity:op}));
+    rg.rotation.x=THREE.MathUtils.degToRad(tx);rg.rotation.z=THREE.MathUtils.degToRad(tz);scene.add(rg);
+  }
+  ring(1.35,30,0,0x00aaff,0.5);ring(1.52,-22,18,0x0055bb,0.28);ring(1.22,78,35,0x00ccff,0.18);
+  var od=new THREE.Mesh(new THREE.SphereGeometry(0.022,8,8),new THREE.MeshBasicMaterial({color:0x00ffff}));scene.add(od);
+  var rl=new THREE.DirectionalLight(0x00c8ff,4.0);rl.position.set(-3.5,1,0.5);scene.add(rl);
+  var fl=new THREE.DirectionalLight(0x0a0500,0.6);fl.position.set(3,-1,1);scene.add(fl);
+  scene.add(new THREE.AmbientLight(0x040c18,1.5));
+  var tl=new THREE.PointLight(0xffd700,0.35,8);tl.position.set(0.5,2.5,1);scene.add(tl);
+  var spos=[];for(var i=0;i<2000;i++){var t2=Math.random()*2*Math.PI,p2=Math.acos(2*Math.random()-1),rs=80+Math.random()*20;spos.push(rs*Math.sin(p2)*Math.cos(t2),rs*Math.sin(p2)*Math.sin(t2),rs*Math.cos(p2));}
+  var sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.Float32BufferAttribute(spos,3));
+  scene.add(new THREE.Points(sg,new THREE.PointsMaterial({color:0xffffff,size:0.12,transparent:true,opacity:0.55})));
+  window.addEventListener('resize',function(){var w=window.innerWidth,h=window.innerHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);});
+  var ry=0,oa=0;
+  function anim(){requestAnimationFrame(anim);ry+=0.0018;gg.rotation.y=ry;oa+=0.008;var or=R*1.35,tr=THREE.MathUtils.degToRad(30);od.position.set(or*Math.cos(oa),or*Math.sin(oa)*Math.sin(tr),or*Math.sin(oa)*Math.cos(tr));renderer.render(scene,camera);}
+  anim();
 })();
-var canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');var particles=[];
-function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);
-function Particle(){this.reset();}
-Particle.prototype.reset=function(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.radius=Math.random()*1.6+.3;this.alpha=Math.random()*.45+.08;var r=Math.random();this.color=r>.65?'#7C3AED':r>.35?'#3B82F6':'#FFD700';};
-Particle.prototype.update=function(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();};
-Particle.prototype.draw=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;ctx.fill();ctx.globalAlpha=1;};
-for(var i=0;i<80;i++)particles.push(new Particle());
-function drawLines(){for(var i=0;i<particles.length;i++){for(var j=i+1;j<particles.length;j++){var dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<110){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='#7C3AED';ctx.globalAlpha=(1-dist/110)*.10;ctx.lineWidth=.5;ctx.stroke();ctx.globalAlpha=1;}}}}
-function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(function(p){p.update();p.draw();});drawLines();requestAnimationFrame(animate);}animate();
-var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.style.animationPlayState='running';});},{threshold:.08});
-document.querySelectorAll('.animate-fadeup,.animate-fadeleft,.animate-faderight').forEach(function(el){el.style.animationPlayState='paused';observer.observe(el);});
 </script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <meta name="description" content="The Alignment Assessment by Dennis Nickens. Behavior, Communication & Processing consulting assessment.">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Georgia',serif;background:#0F172A;color:#fff;min-height:100vh}
+body{font-family:'Georgia',serif;background:#0F172A;clor:#fff;min-height:100vh}
 a{color:#C4B5FD;text-decoration:none}
 .screen{display:none}
 .screen.active{display:block}
@@ -229,13 +229,44 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.4) !important;
 .hook-insight strong{color:#FFD700 !important;}
 .or-divider{color:rgba(255,255,255,0.5) !important;}
 /* ===== END WHITE TEXT ===== */
+
+/* Full Nav Mobile */
+@media (max-width: 900px) {
+  nav#navbar.top-nav { display:flex !important; justify-content:space-between !important; height:60px !important; }
+  #navLinks { display:none !important; }
+  #navLinks.open { display:flex !important; flex-direction:column !important; position:fixed !important; top:60px !important; left:0 !important; right:0 !important; background:rgba(15,23,42,0.98) !important; padding:24px !important; gap:8px !important; border-bottom:1px solid rgba(124,58,237,0.3) !important; z-index:99 !important; }
+  #navLinks.open li a { display:block; padding:10px 16px !important; font-size:15px !important; }
+  #hamburger { display:flex !important; }
+}
 </style>
 </head>
 <body>
 <canvas id="globe-canvas"></canvas>
-<nav class="top-nav">
-  <div class="nav-logo">Dennis Nickens &nbsp;|&nbsp; Spiritual Romeo</div>
-  <a href="index.html" class="nav-back">&#8592; Back to Home</a>
+<nav id="navbar" class="top-nav">
+  <a href="index.html" style="display:flex;align-items:center;gap:13px;text-decoration:none;">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,#7C3AED,#3B82F6);flex-shrink:0;">
+      <span style="font-size:18px;color:#FFD700;line-height:1;">&#9819;</span>
+      <span style="font-size:11px;font-weight:900;color:#FFD700;letter-spacing:1px;">SR</span>
+    </div>
+    <div style="display:flex;flex-direction:column;">
+      <span style="font-size:15px;font-weight:700;color:#fff;letter-spacing:0.5px;">Dennis Nickens</span>
+      <span style="font-size:11px;color:rgba(255,255,255,0.65);letter-spacing:1px;text-transform:uppercase;">AKA Spiritual Romeo</span>
+    </div>
+  </a>
+  <ul id="navLinks" style="list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:4px;">
+    <li><a href="index.html" style="color:rgba(255,255,255,0.78);font-size:14px;font-weight:500;padding:7px 14px;border-radius:8px;text-decoration:none;">Home</a></li>
+    <li><a href="about.html" style="color:rgba(255,255,255,0.78);font-size:14px;font-weight:500;padding:7px 14px;border-radius:8px;text-decoration:none;">About</a></li>
+    <li><a href="SpiritualRomeo_Assessment.html" style="color:#fff;font-size:14px;font-weight:700;padding:7px 14px;border-radius:8px;text-decoration:none;background:rgba(124,58,237,0.25);">Assessment</a></li>
+    <li><a href="testimonials.html" style="color:rgba(255,255,255,0.78);font-size:14px;font-weight:500;padding:7px 14px;border-radius:8px;text-decoration:none;">Testimonials</a></li>
+    <li><a href="community.html" style="color:rgba(255,255,255,0.78);font-size:14px;font-weight:500;padding:7px 14px;border-radius:8px;text-decoration:none;">Community</a></li>
+    <li><a href="book.html" style="background:linear-gradient(135deg,#7C3AED,#3B82F6);color:#fff;font-size:14px;font-weight:700;padding:9px 22px;border-radius:30px;text-decoration:none;box-shadow:0 4px 18px rgba(124,58,237,0.4);">Book Now</a></li>
+    <li><a href="store.html" style="color:rgba(255,255,255,0.78);font-size:14px;font-weight:500;padding:7px 14px;border-radius:8px;text-decoration:none;">Store</a></li>
+  </ul>
+  <div id="hamburger" onclick="toggleMenu()" style="display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;">
+    <span style="width:24px;height:2px;background:#fff;border-radius:2px;display:block;"></span>
+    <span style="width:24px;height:2px;background:#fff;border-radius:2px;display:block;"></span>
+    <span style="width:24px;height:2px;background:#fff;border-radius:2px;display:block;"></span>
+  </div>
 </nav>
 <div id="pgLanding" class="screen active">
   <div class="hero pt-nav">
@@ -274,7 +305,7 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.4) !important;
         <div class="q-wrap">
           <div class="welcome-badge" style="background:#1A237E;color:#fff;">Link Assessment</div>
           <h2 class="welcome-hl" style="margin-top:12px;">Take This Assessment With Someone</h2>
-          <p class="welcome-body">Link your results with a partner, spouse, team member, student, or anyone else â to discover your similarities, differences, and how to align better together.</p>
+          <p class="welcome-body">Link your results with a partner, spouse, team member, student, or anyone else — to discover your similarities, differences, and how to align better together.</p>
           <div id="partnerAsk" style="margin-top:24px;">
             <p style="font-weight:600;color:#fff;margin-bottom:16px;">Are you taking this assessment with someone?</p>
             <div style="display:flex;gap:12px;flex-wrap:wrap;">
@@ -900,6 +931,10 @@ function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEa
 var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.style.animationPlayState='running';});},{threshold:.08});
 document.querySelectorAll('.animate-fadeup,.animate-fadeleft,.animate-faderight').forEach(function(el){el.style.animationPlayState='paused';observer.observe(el);});
 
+</script>
+<script>
+function toggleMenu(){var nl=document.getElementById('navLinks');if(nl)nl.classList.toggle('open');}
+window.addEventListener('scroll',function(){var n=document.getElementById('navbar');if(n){n.style.background=window.scrollY>20?'rgba(15,23,42,0.98)':'rgba(15,23,42,0.95)';}});
 </script>
 </body>
 </html>

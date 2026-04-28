@@ -48,9 +48,13 @@
   .service-row{grid-template-columns:1fr;padding:32px 24px;}
   .service-row.reverse{direction:ltr;}
 }
+#globe-container{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.85;}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
+<div id="globe-container"></div>
+
 <canvas id="particles-canvas"></canvas>
 <nav id="navbar">
   <a href="index.html" class="nav-brand">
@@ -169,6 +173,71 @@ function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeigh
 class Particle{constructor(){this.reset();}reset(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-.5)*.4;this.vy=(Math.random()-.5)*.4;this.radius=Math.random()*1.8+.4;this.alpha=Math.random()*.4+.1;this.color=Math.random()>.6?'#7C3AED':Math.random()>.5?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;ctx.fill();ctx.globalAlpha=1;}}
 for(let i=0;i<70;i++)particles.push(new Particle());
 function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animate);}animate();
+
+(function(){
+  var c=document.getElementById('globe-container');
+  if(!c||typeof THREE==='undefined') return;
+  var W=window.innerWidth,H=window.innerHeight;
+  var renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setSize(W,H);
+  renderer.setClearColor(0x000000,0);
+  c.appendChild(renderer.domElement);
+  var scene=new THREE.Scene();
+  var camera=new THREE.PerspectiveCamera(42,W/H,0.1,500);
+  camera.position.set(0,0,2.8);
+  var R=1.0;
+  var gg=new THREE.Group();
+  scene.add(gg);
+  gg.add(new THREE.Mesh(
+    new THREE.SphereGeometry(R,64,64),
+    new THREE.MeshPhongMaterial({color:0x050d18,emissive:0x020810,shininess:12,transparent:true,opacity:0.99})
+  ));
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(R*1.09,64,64),
+    new THREE.MeshPhongMaterial({color:0x00c8ff,emissive:0x003850,side:THREE.BackSide,transparent:true,opacity:0.16})
+  ));
+  var gm=new THREE.LineBasicMaterial({color:0x1a4a6e,transparent:true,opacity:0.32});
+  for(var la=-75;la<=75;la+=15){
+    var pp=[];var phi=THREE.MathUtils.degToRad(90-la);
+    for(var lo=0;lo<=360;lo+=3){var th=THREE.MathUtils.degToRad(lo);pp.push(new THREE.Vector3(R*1.001*Math.sin(phi)*Math.cos(th),R*1.001*Math.cos(phi),R*1.001*Math.sin(phi)*Math.sin(th)));}
+    gg.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pp),gm.clone()));
+  }
+  for(var lo2=0;lo2<360;lo2+=15){
+    var pp2=[];var th2=THREE.MathUtils.degToRad(lo2);
+    for(var la2=-90;la2<=90;la2+=2){var phi2=THREE.MathUtils.degToRad(90-la2);pp2.push(new THREE.Vector3(R*1.001*Math.sin(phi2)*Math.cos(th2),R*1.001*Math.cos(phi2),R*1.001*Math.sin(phi2)*Math.sin(th2)));}
+    gg.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pp2),gm.clone()));
+  }
+  function ll(la,lo,r){var phi=THREE.MathUtils.degToRad(90-la),th=THREE.MathUtils.degToRad(lo+180);return new THREE.Vector3(-r*Math.sin(phi)*Math.cos(th),r*Math.cos(phi),r*Math.sin(phi)*Math.sin(th));}
+  var sd=42;function rnd(){sd=(sd*9301+49297)%233280;return sd/233280;}
+  var rgn=[{a:25,b:70,c:-140,d:-60,n:900},{a:-55,b:12,c:-80,d:-35,n:700},{a:36,b:71,c:-10,d:40,n:700},{a:-35,b:37,c:-18,d:52,n:800},{a:5,b:75,c:40,d:145,n:1200},{a:-44,b:-10,c:113,d:154,n:400},{a:60,b:83,c:-55,d:-17,n:250},{a:0,b:45,c:95,d:145,n:350}];
+  var lp=[];
+  rgn.forEach(function(r){for(var i=0;i<r.n;i++){var v=ll(r.a+rnd()*(r.b-r.a),r.c+rnd()*(r.d-r.c),R*1.004);lp.push(v.x,v.y,v.z);}});
+  var lg=new THREE.BufferGeometry();lg.setAttribute('position',new THREE.Float32BufferAttribute(lp,3));
+  gg.add(new THREE.Points(lg,new THREE.PointsMaterial({color:0x00e0ff,size:0.016,transparent:true,opacity:0.8,sizeAttenuation:true})));
+  var cities=[[40.7,-74],[51.5,-0.1],[48.8,2.3],[55.7,37.6],[39.9,116.4],[35.6,139.7],[37.7,-122.4],[34,-118.2],[-33.8,151.2],[-23.5,-46.6],[19.4,-99.1],[28.6,77.2],[1.3,103.8],[25.2,55.3],[30,31.2],[59.9,30.3],[-1.3,36.8],[6.5,3.4],[33.9,-6.8],[41,28.9]];
+  var cp=[];cities.forEach(function(ct){var v=ll(ct[0],ct[1],R*1.01);cp.push(v.x,v.y,v.z);});
+  var cgg=new THREE.BufferGeometry();cgg.setAttribute('position',new THREE.Float32BufferAttribute(cp,3));
+  gg.add(new THREE.Points(cgg,new THREE.PointsMaterial({color:0x00ffff,size:0.03,transparent:true,opacity:1,sizeAttenuation:true})));
+  function ring(rf,tx,tz,col,op){
+    var pts=[];for(var i=0;i<=360;i+=2){var a=THREE.MathUtils.degToRad(i);pts.push(new THREE.Vector3(Math.cos(a)*R*rf,0,Math.sin(a)*R*rf));}
+    var rg=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:col,transparent:true,opacity:op}));
+    rg.rotation.x=THREE.MathUtils.degToRad(tx);rg.rotation.z=THREE.MathUtils.degToRad(tz);scene.add(rg);
+  }
+  ring(1.35,30,0,0x00aaff,0.5);ring(1.52,-22,18,0x0055bb,0.28);ring(1.22,78,35,0x00ccff,0.18);
+  var od=new THREE.Mesh(new THREE.SphereGeometry(0.022,8,8),new THREE.MeshBasicMaterial({color:0x00ffff}));scene.add(od);
+  var rl=new THREE.DirectionalLight(0x00c8ff,4.0);rl.position.set(-3.5,1,0.5);scene.add(rl);
+  var fl=new THREE.DirectionalLight(0x0a0500,0.6);fl.position.set(3,-1,1);scene.add(fl);
+  scene.add(new THREE.AmbientLight(0x040c18,1.5));
+  var tl=new THREE.PointLight(0xffd700,0.35,8);tl.position.set(0.5,2.5,1);scene.add(tl);
+  var spos=[];for(var i=0;i<2000;i++){var t2=Math.random()*2*Math.PI,p2=Math.acos(2*Math.random()-1),rs=80+Math.random()*20;spos.push(rs*Math.sin(p2)*Math.cos(t2),rs*Math.sin(p2)*Math.sin(t2),rs*Math.cos(p2));}
+  var sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.Float32BufferAttribute(spos,3));
+  scene.add(new THREE.Points(sg,new THREE.PointsMaterial({color:0xffffff,size:0.12,transparent:true,opacity:0.55})));
+  window.addEventListener('resize',function(){var w=window.innerWidth,h=window.innerHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);});
+  var ry=0,oa=0;
+  function anim(){requestAnimationFrame(anim);ry+=0.0018;gg.rotation.y=ry;oa+=0.008;var or=R*1.35,tr=THREE.MathUtils.degToRad(30);od.position.set(or*Math.cos(oa),or*Math.sin(oa)*Math.sin(tr),or*Math.sin(oa)*Math.cos(tr));renderer.render(scene,camera);}
+  anim();
+})();
 </script>
 </body>
 </html>

@@ -619,7 +619,7 @@ var PACKAGES={
   'BC':{title:'Alignment + Strategy Consultation',addons:['consult_60','review_30'],reason:'You need results plus consulting support — a 60-minute consultation and 30-day review builds your complete framework.'},
   'CC':{title:'Full Alignment Consulting Package',addons:['consult_60','review_30','consult_90'],reason:'Deep partnership to build your strategic framework with ongoing consulting support over 90 days.'},
   'CD':{title:'Executive Alignment Package',addons:['consult_60','exec_c'],reason:'One-on-one executive consulting with deep strategy sessions to build and implement your alignment framework.'},
-  'DD_romantic':{title:'Couples Alignment Package',addons:['partner_a','couples_s'],reason:'Both profiles analyzed together — understand each otherÃÂ¢ÃÂÃÂs wiring and build a unified communication strategy.'},
+  'DD_romantic':{title:'Couples Alignment Package',addons:['partner_a','couples_s'],reason:'Both profiles analyzed together — understand each other’s wiring and build a unified communication strategy.'},
   'DD_family':{title:'Family Alignment Package',addons:['fam_member','couples_s'],reason:'Family dynamics mapped and analyzed — a unified communication framework for your household.'},
   'DD_leadership':{title:'Leadership & Team Package',addons:['team_dyn','workshop'],reason:'Team alignment analysis plus a half-day workshop to drive real organizational change.'},
   'DD_professional':{title:'Professional Team Package',addons:['team_comm','team_dyn'],reason:'Communication audit plus team dynamics analysis to optimize your professional environment.'}
@@ -635,7 +635,7 @@ function buildRecommendation(){
   selectedAddons={base:true};
   pkg.addons.forEach(function(k){selectedAddons[k]=true;});
   var fLbls={personal:'Personal',romantic:'Relationship',professional:'Professional',leadership:'Leadership',family:'Family'};
-  document.getElementById('bpSub').textContent='Based on your '+(fLbls[focus]||'Personal')+' Assessment profile, hereÃÂ¢ÃÂÃÂs what we recommend:';
+  document.getElementById('bpSub').textContent='Based on your '+(fLbls[focus]||'Personal')+' Assessment profile, here’s what we recommend:';
   document.getElementById('recTitle').textContent=pkg.title;
   document.getElementById('recReason').textContent=pkg.reason;
   var list=document.getElementById('recList');list.innerHTML='';
@@ -716,16 +716,16 @@ var assessQs=[
   {s:3,t:'When your behavior under pressure conflicts with how you communicate, you typically:',o:['Force through it — act decisively even if your words are sharp','Overcommunicate and exhaust others with your processing','Go silent and disappear from both action and communication','Retreat to analysis and say nothing until you have the answer']},
   {s:3,t:'When you process information differently than the people around you, your most common frustration is:',o:['Others move too slowly and talk too much before acting','Others are not excited or energetic enough in their approach','Others push you to decide before you feel ready','Others skip details you need to feel confident']},
   {s:3,t:'When you need to feel emotionally connected but also need to make a decision, you:',o:['Default to the action — push the decision, deal with feelings later','Try to meet both needs but feel exhausted and split','Freeze entirely — emotional need blocks the action','Ask yourself endless questions and stall both']},
-  {s:3,t:'In a high-pressure professional scenario, your biggest communication breakdown is:',o:['You communicate too directly and damage relationships','You over-talk and lose peopleÃÂ¢ÃÂÃÂs attention','You go passive and leave things unsaid','You over-explain and slow down the decision']},
+  {s:3,t:'In a high-pressure professional scenario, your biggest communication breakdown is:',o:['You communicate too directly and damage relationships','You over-talk and lose people’s attention','You go passive and leave things unsaid','You over-explain and slow down the decision']},
   {s:3,t:'When your processing style conflicts with how a decision needs to be made quickly, you:',o:['Make the decision anyway — processing can happen after','Ask questions and delay the decision to gather more input','Defer to whoever is most confident in the room','Refuse to decide until you have all the information you need']},
   {s:3,t:'In relationships, the biggest gap between how you act and what you need emotionally is:',o:['You project strength but crave verbal affirmation you never ask for','You are outwardly warm but feel deeply lonely when no one initiates','You are reliable and steady but need more quality time than you show','You are private and precise but hunger for closeness you push away']},
-  {s:3,t:'Where do all three pillars create the most friction in your daily life?',o:['Work performance: How I act doesnÃÂ¢ÃÂÃÂt match how I communicate or think','Personal relationships: My wiring creates mismatches no one understands','Decision-making: I know what I want but canÃÂ¢ÃÂÃÂt align my process with my output','All three are misaligned and I feel it constantly']},
-  {s:3,t:'The gap between who you ARE and how you SHOW UP most often shows up as:',o:['Frustration — people donÃÂ¢ÃÂÃÂt see your real capabilities','Exhaustion — you are constantly adjusting to survive','Disconnection — people donÃÂ¢ÃÂÃÂt really know you','Stagnation — you know what needs to happen but canÃÂ¢ÃÂÃÂt move']},
+  {s:3,t:'Where do all three pillars create the most friction in your daily life?',o:['Work performance: How I act doesn’t match how I communicate or think','Personal relationships: My wiring creates mismatches no one understands','Decision-making: I know what I want but can’t align my process with my output','All three are misaligned and I feel it constantly']},
+  {s:3,t:'The gap between who you ARE and how you SHOW UP most often shows up as:',o:['Frustration — people don’t see your real capabilities','Exhaustion — you are constantly adjusting to survive','Disconnection — people don’t really know you','Stagnation — you know what needs to happen but can’t move']},
   {s:4,t:'What outcome would make this assessment feel worth it to you?',o:['Clear answers about why I do what I do','A concrete plan I can actually follow','Someone to walk me through applying the insights','A complete system for myself and the people around me']},
-  {s:4,t:'What have you already tried to get clarity on your alignment?',o:['Personality tests (MBTI, DISC, Enneagram) — but nothing stuck','Therapy or coaching — helped but didnÃÂ¢ÃÂÃÂt give strategic direction','Nothing — this is my first time approaching this systematically','Reading and self-study — lots of insight, not enough structure']},
+  {s:4,t:'What have you already tried to get clarity on your alignment?',o:['Personality tests (MBTI, DISC, Enneagram) — but nothing stuck','Therapy or coaching — helped but didn’t give strategic direction','Nothing — this is my first time approaching this systematically','Reading and self-study — lots of insight, not enough structure']},
   {s:4,t:'What would success look like 90 days after completing this assessment?',o:['I understand myself clearly and make decisions with confidence','My relationships are stronger because I communicate better','My team or organization is operating with more clarity and alignment','My family feels more harmonious and understood']},
-  {s:4,t:'What is the BIGGEST thing holding you back right now?',o:['I donÃÂ¢ÃÂÃÂt fully understand my own patterns yet','I understand myself but others donÃÂ¢ÃÂÃÂt understand me','I know the problem but donÃÂ¢ÃÂÃÂt know how to fix it','IÃÂ¢ÃÂÃÂve been trying to fix this alone and itÃÂ¢ÃÂÃÂs not working']},
-  {s:4,t:'How would you describe your readiness to change?',o:['IÃÂ¢ÃÂÃÂm ready — tell me what to do and IÃÂ¢ÃÂÃÂll do it','IÃÂ¢ÃÂÃÂm willing but need guidance and accountability','IÃÂ¢ÃÂÃÂm cautious — I want to understand before I commit','IÃÂ¢ÃÂÃÂm skeptical — I need to see evidence before I trust the process']}
+  {s:4,t:'What is the BIGGEST thing holding you back right now?',o:['I don’t fully understand my own patterns yet','I understand myself but others don’t understand me','I know the problem but don’t know how to fix it','I’ve been trying to fix this alone and it’s not working']},
+  {s:4,t:'How would you describe your readiness to change?',o:['I’m ready — tell me what to do and I’ll do it','I’m willing but need guidance and accountability','I’m cautious — I want to understand before I commit','I’m skeptical — I need to see evidence before I trust the process']}
 ];
 var curQ=0;
 function startAssessment(){curQ=0;assessAnswers={};showScreen('pgAssessment');renderAQ();}
@@ -739,7 +739,7 @@ function renderAQ(){
   var pct=Math.round((curQ/assessQs.length)*100);
   document.getElementById('aPb').style.width=pct+'%';
   var rem=Math.max(1,Math.ceil((assessQs.length-curQ)*10/60));
-  document.getElementById('aTime').textContent='ÃÂ¢ÃÂÃÂ° ~'+rem+' min remaining';
+  document.getElementById('aTime').textContent='⏰ ~'+rem+' min remaining';
   var saved=assessAnswers[curQ];
   var ltrs=['A','B','C','D','E'];
   document.getElementById('aQBlock').innerHTML='<div class="a-qn">'+sections[si].label+' — Question '+posInSec+' of '+secQs.length+'</div>'+
@@ -749,7 +749,7 @@ function renderAQ(){
     }).join('')+'</div>';
   var btn=document.getElementById('aBtnNext');
   btn.classList.toggle('on',saved!==undefined);
-  btn.textContent=curQ===assessQs.length-1?'Submit Assessment':'Next ÃÂ¢ÃÂÃÂ';
+  btn.textContent=curQ===assessQs.length-1?'Submit Assessment':'Next →';
 }
 function pickAns(el,idx){
   document.querySelectorAll('#aQBlock .a-opt').forEach(function(d){d.classList.remove('selected');});
@@ -797,10 +797,10 @@ function buildHook(){
   var llFull={Words:'Words of Affirmation',Touch:'Physical Touch',Gifts:'Receiving Gifts',Acts:'Acts of Service',Time:'Quality Time'};
   var discFull={D:'Dominant (Driver)',I:'Influential (Inspiring)',S:'Steady (Supportive)',C:'Conscientious (Careful)'};
   document.getElementById('hookSecondary').innerHTML='<div style="background:rgba(124,58,237,0.15);border-radius:14px;padding:20px 24px;margin:16px 0;border:1px solid rgba(124,58,237,0.4)">'+
-    ['ÃÂ¢ÃÂÃÂ Behavior Profile: '+(discFull[sc.dDom]||sc.dDom)+' — '+sc.dCode+' pattern',
-     'ÃÂ¢ÃÂÃÂ Primary Love Language: '+(llFull[sc.llDom]||sc.llDom),
-     'ÃÂ¢ÃÂÃÂ Processing Style: '+(varkFull[sc.vDom]||sc.vDom),
-     'ÃÂ¢ÃÂÃÂ Core Misalignment Area: '+sc.misArea].map(function(s){return '<div style="font-size:13px;color:rgba(255,255,255,0.85);padding:5px 0">'+s+'</div>';}).join('')+
+    ['◆ Behavior Profile: '+(discFull[sc.dDom]||sc.dDom)+' — '+sc.dCode+' pattern',
+     '◆ Primary Love Language: '+(llFull[sc.llDom]||sc.llDom),
+     '◆ Processing Style: '+(varkFull[sc.vDom]||sc.vDom),
+     '◆ Core Misalignment Area: '+sc.misArea].map(function(s){return '<div style="font-size:13px;color:rgba(255,255,255,0.85);padding:5px 0">'+s+'</div>';}).join('')+
     '</div>';
   try{localStorage.setItem('align_scores',JSON.stringify(sc));}catch(e){}
   try{var hd=score();showFullResults(hd);var ci={};try{ci=JSON.parse(localStorage.getItem('client_info')||'{}');}catch(e2){}sendConfirmations(ci,hd);}catch(e3){console.log('results err',e3);}

@@ -1,353 +1,1034 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dennis Nickens: Spiritual Romeo | Behavior & Communication Consultant</title>
-<meta name="description" content="Dennis Nickens AKA Spiritual Romeo, Behavior & Communication Consultant helping 500+ couples build the love they've always wanted. Book your free consultation today.">
-<script>
-// Splash gate â uses sessionStorage so it resets on each new browser session.
-// Typing dennisnickens.com in a new tab = fresh sessionStorage = splash shows.
-// Clicking Home nav link within same session = flag already set = skip splash.
-if(!sessionStorage.getItem('splashSeen')){window.location.replace('splash.html');}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<style>
-.nav-logo-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,#7C3AED,#3B82F6);box-shadow:0 4px 20px rgba(124,58,237,0.5);position:relative;flex-shrink:0;}
-.nav-logo-crown{font-size:11px;line-height:1;color:#FFD700;margin-bottom:-2px;filter:drop-shadow(0 0 4px rgba(255,215,0,0.8));}
-.nav-logo-sr{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:#FFD700;letter-spacing:1px;text-shadow:0 0 12px rgba(255,215,0,0.6);}
-.nav-brand-text .nav-name{font-family:'Dancing Script',cursive;font-size:20px;font-weight:700;color:#fff;line-height:1.1;}
-.nav-brand-text .nav-sub{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FFD700;opacity:0.85;}
-#stars-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:1.0;}
-.hero{min-height:100vh;display:flex;align-items:center;padding:120px 48px 80px;position:relative;overflow:hidden;}
-.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:500px 1fr;gap:80px;align-items:center;position:relative;z-index:1;width:100%;}
-.hero-photo-wrap{position:relative;display:flex;justify-content:center;order:1;}
-.hero-photo{width:100%;max-width:500px;height:620px;object-fit:cover;object-position:center center;border-radius:24px;position:relative;z-index:1;box-shadow:0 40px 100px rgba(0,0,0,0.6);display:block;}
-.hero-text{order:2;}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.4);color:#FFD700;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:28px;}
-.hero-welcome{font-family:'Dancing Script',cursive;font-size:clamp(36px,3.5vw,52px);font-weight:700;color:rgba(255,255,255,0.7);margin-bottom:8px;line-height:1;}
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(40px,5vw,68px);font-weight:900;line-height:1.08;margin-bottom:24px;}
-.hero-title .gold{background:linear-gradient(135deg,#FFD700,#FFA500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{font-size:17px;color:rgba(255,255,255,0.65);line-height:1.85;max-width:480px;margin-bottom:44px;font-weight:300;}
-.hero-actions{display:flex;flex-direction:column;gap:20px;align-items:flex-start;}
-.hero-trust{display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(255,255,255,0.5);}
-.hero-trust-stars{color:#FFD700;letter-spacing:2px;font-size:14px;}
-.hero-trust strong{color:rgba(255,255,255,0.8);}
-.stats-strip{position:relative;z-index:1;background:rgba(124,58,237,0.08);border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:36px 48px;display:flex;justify-content:center;gap:80px;flex-wrap:wrap;}
-.stat{text-align:center;}
-.stat-num{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;background:linear-gradient(135deg,#A78BFA,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;line-height:1.1;}
-.stat-lbl{font-size:11px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:2px;margin-top:6px;}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.service-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:36px 28px;position:relative;overflow:hidden;transition:all 0.35s ease;}
-.service-card:hover{border-color:rgba(255,215,0,0.3);background:rgba(124,58,237,0.12);transform:translateY(-6px);box-shadow:0 20px 60px rgba(124,58,237,0.2);}
-.service-icon{font-size:36px;margin-bottom:20px;display:block;}
-.service-card h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:12px;}
-.service-card p{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:24px;}
-.service-price{font-size:13px;font-weight:700;color:#FFD700;letter-spacing:1px;}
-.service-badge{position:absolute;top:20px;right:20px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:rgba(255,215,0,0.12);color:#FFD700;border:1px solid rgba(255,215,0,0.3);padding:4px 12px;border-radius:20px;}
-.testi-highlight{background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(59,130,246,0.06));border:1px solid rgba(255,255,255,0.07);border-radius:24px;padding:56px 64px;text-align:center;max-width:900px;margin:0 auto;position:relative;}
-.testi-highlight p{font-family:'Playfair Display',serif;font-size:clamp(18px,2.2vw,26px);font-style:italic;color:rgba(255,255,255,0.85);line-height:1.65;margin-bottom:32px;}
-.testi-highlight-author{display:flex;align-items:center;gap:14px;justify-content:center;}
-.testi-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#7C3AED,#3B82F6);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#FFD700;}
-.testi-info strong{font-size:15px;color:#fff;display:block;}
-.testi-info span{font-size:12px;color:rgba(255,255,255,0.45);}
-.testi-stars-row{color:#FFD700;font-size:16px;letter-spacing:3px;margin-bottom:24px;}
-.cta-section{background:linear-gradient(135deg,#1E1B4B 0%,#0F172A 50%,#1a1040 100%);border-top:1px solid rgba(255,255,255,0.07);text-align:center;position:relative;overflow:hidden;}
-.cta-section .section-title{font-size:clamp(32px,4vw,58px);}
-.cta-section .section-sub{margin:0 auto 48px;max-width:560px;font-size:17px;}
-.cta-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
-@media(max-width:960px){.hero{padding:100px 24px 60px;}.hero-inner{grid-template-columns:1fr;gap:48px;text-align:center;}.hero-photo{max-width:320px;height:400px;}.hero-actions{align-items:center;}.stats-strip{gap:40px;padding:28px 24px;}.services-grid{grid-template-columns:1fr;}.testi-highlight{padding:40px 28px;}.cta-buttons{flex-direction:column;align-items:center;}}
-</style>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dennis Nickens, AKA Spiritual Romeo. Behavior &amp; Communication Consultant. Build the relationships you've always wanted with clarity, confidence, and deeper connection." />
+  <title>Dennis Nickens: Spiritual Romeo | Behavior &amp; Communication Consultant</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ========================================
+       DESIGN TOKENS
+    ======================================== */
+    :root {
+      --color-bg-deep:    #07071a;
+      --color-bg-mid:     #0f0a2e;
+      --color-bg-soft:    #1a1340;
+      --color-ink:        #f5f1e8;
+      --color-ink-soft:   rgba(245, 241, 232, 0.78);
+      --color-ink-faint:  rgba(245, 241, 232, 0.5);
+      --color-gold:       #d4a957;
+      --color-gold-soft:  #b08838;
+      --color-purple:     #7c3aed;
+      --color-violet:     #a855f7;
+      --color-cyan:       #06b6d4;
+      --color-line:       rgba(212, 169, 87, 0.18);
+      --color-line-soft:  rgba(245, 241, 232, 0.08);
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-serif:   'Cormorant Garamond', Georgia, serif;
+      --font-sans:    'Inter', -apple-system, sans-serif;
+      --font-label:   'Montserrat', -apple-system, sans-serif;
+
+      --shadow-card:  0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 169, 87, 0.15) inset;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-ink);
+      background: var(--color-bg-deep);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    /* ========================================
+       BACKGROUND
+    ======================================== */
+    .bg-wash {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(124, 58, 237, 0.18), transparent 50%),
+        radial-gradient(ellipse at 80% 60%, rgba(6, 182, 212, 0.10), transparent 55%),
+        radial-gradient(ellipse at 50% 100%, rgba(212, 169, 87, 0.10), transparent 60%),
+        linear-gradient(180deg, #07071a 0%, #0f0a2e 50%, #07071a 100%);
+      pointer-events: none;
+    }
+
+    .stars { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.7; }
+
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 4s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.2); }
+    }
+
+    /* ========================================
+       NAV
+    ======================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(14px);
+      background: rgba(7, 7, 26, 0.7);
+      border-bottom: 1px solid var(--color-line);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--color-ink);
+    }
+
+    .nav-crown {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 14px rgba(212, 169, 87, 0.45));
+    }
+
+    .nav-crown img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .nav-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .nav-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; }
+    .nav-sub  { font-family: var(--font-label); font-size: 0.65rem; letter-spacing: 0.18em; color: var(--color-gold); text-transform: uppercase; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-family: var(--font-label);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--color-gold); }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--color-line);
+      color: var(--color-ink);
+      padding: 0.5rem 0.7rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(7, 7, 26, 0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--color-line);
+      padding: 1rem 2rem 1.5rem;
+      position: sticky;
+      top: 70px;
+      z-index: 49;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 0.85rem 0;
+      color: var(--color-ink-soft);
+      text-decoration: none;
+      font-family: var(--font-label);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--color-line-soft);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ========================================
+       LAYOUT
+    ======================================== */
+    main { position: relative; z-index: 5; }
+    .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+    .section-pad { padding: clamp(4rem, 9vw, 8rem) 0; }
+
+    /* ========================================
+       HERO
+    ======================================== */
+    .hero {
+      position: relative;
+      padding: clamp(3rem, 8vw, 6rem) 0 clamp(3rem, 6vw, 5rem);
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-label);
+      font-size: 0.78rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: "✦";
+      margin: 0 0.7rem;
+      color: var(--color-gold);
+    }
+
+    .hero-portrait-wrap {
+      width: clamp(180px, 22vw, 240px);
+      height: clamp(180px, 22vw, 240px);
+      margin: 0 auto 2rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--color-gold);
+      box-shadow: 0 0 60px rgba(212, 169, 87, 0.25), 0 30px 80px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .hero-portrait-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      border: 1px dashed rgba(212, 169, 87, 0.3);
+      border-radius: 50%;
+      animation: spin 60s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .hero-portrait {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-greet {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--color-gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      max-width: 920px;
+      margin: 0 auto 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--color-gold), #f0d490);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-lede {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-style: italic;
+      color: var(--color-ink-soft);
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.5;
+    }
+
+    .hero-cta { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    /* ========================================
+       BUTTONS
+    ======================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 1.1rem 2.2rem;
+      font-family: var(--font-label);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--color-bg-deep);
+    }
+
+    .btn--gold {
+      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-soft));
+      box-shadow: 0 8px 24px rgba(212, 169, 87, 0.3);
+    }
+
+    .btn--gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(212, 169, 87, 0.45);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--color-ink-soft);
+      border: 1px solid var(--color-line);
+    }
+
+    .btn--ghost:hover {
+      color: var(--color-gold);
+      border-color: var(--color-gold);
+    }
+
+    .btn-arrow { display: inline-block; transition: transform 0.3s; }
+    .btn:hover .btn-arrow { transform: translateX(4px); }
+
+    /* ========================================
+       TRUST BAR
+    ======================================== */
+    .trust {
+      padding: 2rem 0;
+      border-top: 1px solid var(--color-line-soft);
+      border-bottom: 1px solid var(--color-line-soft);
+      background: rgba(7, 7, 26, 0.5);
+    }
+
+    .trust-line {
+      text-align: center;
+      font-family: var(--font-label);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-ink-faint);
+      margin-bottom: 1.75rem;
+    }
+
+    .trust-line .stars-row { color: var(--color-gold); letter-spacing: 0.08em; margin-right: 0.6rem; }
+    .trust-line strong { color: var(--color-gold); font-weight: 600; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 720px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stat { text-align: center; }
+    .stat-num {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--color-gold);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label {
+      font-family: var(--font-label);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-ink-faint);
+    }
+
+    /* ========================================
+       SECTION HEADERS
+    ======================================== */
+    .section-eyebrow {
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.2;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 1rem;
+      letter-spacing: -0.005em;
+    }
+
+    .section-title em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--color-gold), #f0d490);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-sub {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: var(--color-ink-soft);
+      text-align: center;
+      max-width: 660px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.5;
+    }
+
+    /* ========================================
+       WHO I HELP, CATEGORY GRID
+    ======================================== */
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 900px) { .who-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 600px) { .who-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
+
+    .who-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      padding: 1.85rem 1rem;
+      background: linear-gradient(180deg, rgba(26, 19, 64, 0.5), rgba(15, 10, 46, 0.3));
+      border: 1px solid var(--color-line);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--color-ink);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .who-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+
+    .who-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-gold);
+      background: linear-gradient(180deg, rgba(212, 169, 87, 0.08), rgba(15, 10, 46, 0.5));
+    }
+
+    .who-card:hover::after { transform: scaleX(1); }
+
+    .who-icon {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold);
+    }
+
+    .who-icon svg { width: 100%; height: 100%; }
+
+    .who-label {
+      font-family: var(--font-label);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-ink);
+      text-align: center;
+    }
+
+    /* ========================================
+       TESTIMONIAL
+    ======================================== */
+    .quote-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 5vw, 4rem);
+      background: linear-gradient(180deg, rgba(26, 19, 64, 0.6), rgba(15, 10, 46, 0.4));
+      border: 1px solid var(--color-line);
+      border-radius: 12px;
+      box-shadow: var(--shadow-card);
+      backdrop-filter: blur(12px);
+      text-align: center;
+      position: relative;
+    }
+
+    .quote-mark {
+      position: absolute;
+      top: 0.5rem;
+      left: 1.5rem;
+      font-family: var(--font-display);
+      font-size: 6rem;
+      line-height: 1;
+      color: var(--color-gold);
+      opacity: 0.25;
+    }
+
+    .quote-stars {
+      color: var(--color-gold);
+      font-size: 1.1rem;
+      letter-spacing: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .quote-text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+      line-height: 1.5;
+      color: var(--color-ink);
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .quote-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .quote-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-soft));
+      color: var(--color-bg-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .quote-meta { text-align: left; }
+    .quote-name { font-family: var(--font-display); font-weight: 700; color: var(--color-ink); }
+    .quote-role { font-family: var(--font-label); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-ink-faint); }
+
+    .quote-cta { margin-top: 2rem; }
+
+    /* ========================================
+       FINAL CTA
+    ======================================== */
+    .final-cta { text-align: center; }
+    .final-cta-actions { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .footer {
+      position: relative;
+      z-index: 5;
+      padding: 4rem 1.5rem 2rem;
+      border-top: 1px solid var(--color-line);
+      background: rgba(7, 7, 26, 0.5);
+    }
+
+    .footer-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    @media (max-width: 720px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .footer-brand-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--color-ink-soft);
+      margin-top: 1rem;
+      max-width: 360px;
+      line-height: 1.5;
+    }
+
+    .footer-heading {
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer ul a {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--color-ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer ul a:hover { color: var(--color-gold); }
+
+    .footer-contact-line {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--color-ink-soft);
+      margin-bottom: 0.6rem;
+    }
+    .footer-contact-line a { color: var(--color-ink-soft); text-decoration: none; }
+    .footer-contact-line a:hover { color: var(--color-gold); }
+
+    .footer-bottom {
+      max-width: 1180px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid var(--color-line-soft);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--color-ink-faint);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom a {
+      color: var(--color-gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
+
 <body>
-<canvas id="stars-canvas"></canvas>
-<nav id="navbar">
- <a href="index.html" class="nav-brand">
- <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
- <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
- </a>
- <ul class="nav-links" id="navLinks">
- <li><a href="index.html" class="active">Home</a></li>
- <li><a href="about.html">About</a></li>
- <li><a href="SpiritualRomeo_Assessment.html">Assessment</a></li>
- <li><a href="testimonials.html">Testimonials</a></li>
- <li><a href="community.html">Community</a></li>
- <li><a href="book.html" class="nav-cta">Book Now</a></li>
- <li><a href="store.html">Store</a></li>
- </ul>
- <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
-</nav>
-<section class="hero">
- <div class="hero-inner">
- <div class="hero-photo-wrap animate-faderight">
- <img src="Dennis20191110_0044_2.jpg" onerror="this.src='Dennis20191110_0044_2.jpg'" alt="Dennis Nickens" class="hero-photo">
- </div>
- <div class="hero-text">
- <div class="hero-eyebrow animate-fadeup">&#10022; BEHAVIOR & COMMUNICATION CONSULTANT</div>
- <div class="hero-welcome animate-fadeup delay-1" style="display:none">Welcome</div>
- <h1 class="hero-title animate-fadeup delay-2">Welcome to the Place Where Your Transformation <span class="gold">Begins</span></h1>
- <p class="hero-sub animate-fadeup delay-3">I'm Dennis Nickens, AKA Spiritual Romeo. Here to help you build the relationships you've always wanted, with clarity, confidence, and the deeper connection you deserve.</p>
- <div class="hero-actions animate-fadeup delay-4">
- <a href="book.html" class="btn btn-gold">Book Your Free Consultation</a>
- <div class="hero-trust"><span class="hero-trust-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>Trusted by <strong>500+ couples</strong> worldwide</span></div>
- </div>
- </div>
- </div>
-</section>
-<div class="stats-strip">
- <div class="stat animate-fadeup"><span class="stat-num">500+</span><span class="stat-lbl">Couples Transformed</span></div>
- <div class="stat animate-fadeup delay-1"><span class="stat-num">10+</span><span class="stat-lbl">Years Experience</span></div>
- <div class="stat animate-fadeup delay-2"><span class="stat-num">98%</span><span class="stat-lbl">Client Satisfaction</span></div>
- <div class="stat animate-fadeup delay-3"><span class="stat-num">Free</span><span class="stat-lbl">First Consultation</span></div>
-</div>
-<section class="section">
-  <div class="section-inner">
-    <div style="max-width:800px;margin:0 auto;text-align:center;">
-      <span class="section-tag animate-fadeup">WHO I HELP</span>
-      <h2 class="section-title animate-fadeup delay-1">Find Your <span style="color:#A78BFA">Path Forward</span></h2>
-      <p class="section-sub animate-fadeup delay-2">Whatever season of life you're in ,  there's a consulting path built for you. Click your category to get started.</p>
-    </div>
-    <div class="who-i-help-grid animate-fadeup delay-3" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;max-width:960px;margin-left:auto;margin-right:auto;">
-      <a href="who-i-help/single.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">ð«</div>
-        <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">SINGLE</div>
-      </a>
-      <a href="who-i-help/married.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">ð</div>
-        <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">MARRIED</div>
-      </a>
-      <a href="who-i-help/family.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">ð¨âð©âð§âð¦</div>
-        <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">FAMILY</div>
-      </a>
-      <a href="who-i-help/business-owners.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">ð¢</div>
-        <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">BUSINESS OWNERS</div>
-      </a>
-      <a href="who-i-help/employees.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">ð¼</div>
-        <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">EMPLOYEES</div>
-      </a>
-      <a href="who-i-help/students.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">ð</div>
-        <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">STUDENTS</div>
-      </a>
-      <a href="who-i-help/teachers.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">ð</div>
-        <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">TEACHERS</div>
-      </a>
-      <a href="who-i-help/leaders.html" class="who-i-help-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);border-radius:16px;padding:2.5rem 1rem;text-decoration:none;color:#fff;transition:all 0.3s;">
-        <div style="font-size:3rem;margin-bottom:0.75rem;">ð</div>
-        <div style="font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-align:center;">LEADERS</div>
-      </a>
-    </div>
+
+  <!-- Background -->
+  <div class="bg-wash" aria-hidden="true"></div>
+  <div class="stars" id="stars" aria-hidden="true"></div>
+
+  <!-- ========================================
+       NAV
+  ======================================== -->
+  <nav class="nav" aria-label="Main">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-crown"><img src="sr-logo-transparent.png" alt="SR Spiritual Romeo crest" /></div>
+      <div class="nav-text">
+        <span class="nav-name">Dennis Nickens</span>
+        <span class="nav-sub">AKA Spiritual Romeo</span>
+      </div>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="SpiritualRomeo_Assessment.html">Assessment</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="book.html">Book Now</a></li>
+      <li><a href="store.html">Store</a></li>
+    </ul>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle menu">☰</button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="SpiritualRomeo_Assessment.html">Assessment</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="community.html">Community</a>
+    <a href="book.html">Book Now</a>
+    <a href="store.html">Store</a>
   </div>
-</section>
-<div class="divider"></div>
-<section class="section">
- <div class="section-inner">
- <div style="text-align:center;margin-bottom:48px"><span class="section-tag animate-fadeup">Success Stories</span></div>
- <div class="testi-highlight animate-fadeup delay-1">
- <div class="testi-stars-row">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
- <p>"Dennis completely changed how my husband and I communicate. We went from the edge of divorce to the best year of our marriage. Spiritual Romeo isn't just a consultant ,  he's a life-changer."</p>
- <div class="testi-highlight-author"><div class="testi-avatar">M</div><div class="testi-info"><strong>Michelle T.</strong><span>Charlotte, NC</span></div></div>
- </div>
- <div style="text-align:center;margin-top:40px" class="animate-fadeup delay-2"><a href="testimonials.html" class="btn btn-outline">Read More Stories</a></div>
- </div>
-</section>
-<section class="section cta-section">
- <div class="section-inner">
- <span class="section-tag animate-fadeup">Ready to Start?</span>
- <h2 class="section-title animate-fadeup delay-1">Your Best Relationship<br>Starts <span style="color:#FFD700">Today</span></h2>
- <p class="section-sub animate-fadeup delay-2">Book your free 30-minute consultation. No pressure, no commitment. Just a real conversation about where you are and where you want to be.</p>
- <div class="cta-buttons animate-fadeup delay-3"><a href="book.html" class="btn btn-gold">Book Free Consultation</a><a href="services.html" class="btn btn-outline">Explore Services</a></div>
- </div>
-</section>
-<footer>
- <div class="footer-brand"><div class="nav-logo-wrap" style="margin:0 auto 16px"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div><p>Dennis Nickens AKA Spiritual Romeo, helping individuals and couples build the love they've always wanted.</p></div>
- <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="SpiritualRomeo_Assessment.html">Assessment</a><a href="testimonials.html">Testimonials</a><a href="book.html">Book Now</a><a href="store.html">Store</a></div>
- <div class="footer-col"><h4>Contact</h4><p>&#128231; dennis@dennisnickens.com</p><p>&#128205; Indian Trail, NC</p></div>
-</footer>
-<div class="footer-bottom"><span>&copy; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</span><a href="book.html">Book a Free Consultation &rarr;</a></div>
-<script>
-(function(){
-/* ── Deep Space Starfield — replicates Shutterstock clip 1069631707 ── */
-var cv = document.getElementById('stars-canvas');
-if(!cv) return;
-var cx = cv.getContext('2d');
-var W, H;
 
-function resize(){
-  W = cv.width = window.innerWidth;
-  H = cv.height = window.innerHeight;
-}
-resize();
-window.addEventListener('resize', resize);
+  <main>
 
-/* ── Star factory ── */
-var STAR_COUNT = 900;
-var stars = [];
+    <!-- ========================================
+         HERO
+    ======================================== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-eyebrow">Behavior &amp; Communication Consultant</div>
 
-function randColor(){
-  var r = Math.random();
-  // 60% blue-white, 20% cyan, 12% white-yellow, 8% warm gold/red
-  if(r < 0.60) return {r:160+Math.round(Math.random()*95), g:180+Math.round(Math.random()*75), b:255};
-  if(r < 0.80) return {r:80+Math.round(Math.random()*60),  g:220+Math.round(Math.random()*35), b:240+Math.round(Math.random()*15)};
-  if(r < 0.92) return {r:230+Math.round(Math.random()*25), g:230+Math.round(Math.random()*25), b:200+Math.round(Math.random()*55)};
-  return       {r:255, g:180+Math.round(Math.random()*55), b:80+Math.round(Math.random()*60)};
-}
+        <div class="hero-portrait-wrap reveal">
+          <img src="Dennis20191110_0044_2.jpg" alt="Dennis Nickens, Spiritual Romeo" class="hero-portrait" onerror="this.style.display='none'" />
+        </div>
 
-function makeStar(i){
-  var col = randColor();
-  var size = Math.random();
-  // tiered sizing: 60% tiny, 25% small, 12% medium, 3% bright large
-  var radius;
-  if(size < 0.60)      radius = 0.3 + Math.random()*0.5;
-  else if(size < 0.85) radius = 0.8 + Math.random()*0.7;
-  else if(size < 0.97) radius = 1.5 + Math.random()*1.0;
-  else                 radius = 2.5 + Math.random()*1.5;
-  
-  return {
-    x: Math.random() * W,
-    y: Math.random() * H,
-    r: radius,
-    baseR: radius,
-    col: col,
-    // twinkle: each star has its own phase and speed
-    phase: Math.random() * Math.PI * 2,
-    speed: 0.004 + Math.random() * 0.018,
-    // drift: very slow parallax, larger stars drift faster
-    vx: (Math.random()-0.5) * radius * 0.012,
-    vy: (Math.random()-0.5) * radius * 0.008 + 0.003,
-    // brightness
-    baseAlpha: 0.25 + Math.random() * 0.75,
-    alpha: 1.0,
-    // spike: big stars get cross-hair diffraction
-    spike: radius > 2.0
-  };
-}
+        <p class="hero-greet reveal">Welcome</p>
 
-for(var i=0;i<STAR_COUNT;i++) stars.push(makeStar(i));
+        <h1 class="hero-title reveal">
+          Welcome to the place where your <em>transformation</em> begins.
+        </h1>
 
-/* ── Nebula wisps (static, subtle colored clouds) ── */
-var nebulae = [];
-for(var n=0;n<6;n++){
-  nebulae.push({
-    x: Math.random()*W,
-    y: Math.random()*H,
-    rx: 80+Math.random()*200,
-    ry: 40+Math.random()*120,
-    rot: Math.random()*Math.PI,
-    // muted dark reds, greens, blue-purples
-    col: [[80,15,15],[15,45,15],[15,15,60],[50,15,50],[15,40,50],[40,20,10]][n%6],
-    alpha: 0.04+Math.random()*0.06
-  });
-}
+        <p class="hero-lede reveal">
+          I'm Dennis Nickens, AKA Spiritual Romeo. I'm here to help you build the relationships you've always wanted, with clarity, confidence, and the deeper connection you deserve.
+        </p>
 
-/* ── Draw glow cross-spike for bright stars ── */
-function drawSpike(x, y, r, col, alpha){
-  var len = r * 5;
-  var dirs = [[1,0],[0,1],[0.7,0.7],[-0.7,0.7]];
-  for(var d=0;d<dirs.length;d++){
-    var grd = cx.createLinearGradient(
-      x - dirs[d][0]*len, y - dirs[d][1]*len,
-      x + dirs[d][0]*len, y + dirs[d][1]*len
-    );
-    grd.addColorStop(0,'rgba('+col.r+','+col.g+','+col.b+',0)');
-    grd.addColorStop(0.45,'rgba('+col.r+','+col.g+','+col.b+','+(alpha*0.25).toFixed(3)+')');
-    grd.addColorStop(0.5,'rgba('+col.r+','+col.g+','+col.b+','+(alpha*0.7).toFixed(3)+')');
-    grd.addColorStop(0.55,'rgba('+col.r+','+col.g+','+col.b+','+(alpha*0.25).toFixed(3)+')');
-    grd.addColorStop(1,'rgba('+col.r+','+col.g+','+col.b+',0)');
-    cx.beginPath();
-    cx.moveTo(x-dirs[d][0]*len, y-dirs[d][1]*len);
-    cx.lineTo(x+dirs[d][0]*len, y+dirs[d][1]*len);
-    cx.strokeStyle = grd;
-    cx.lineWidth = 0.6;
-    cx.stroke();
-  }
-}
+        <div class="hero-cta reveal">
+          <a href="book.html" class="btn btn--gold">
+            Book Your Free Consultation <span class="btn-arrow">→</span>
+          </a>
+          <a href="SpiritualRomeo_Assessment.html" class="btn btn--ghost">
+            Take the Alignment Assessment
+          </a>
+        </div>
+      </div>
+    </section>
 
-var frame = 0;
+    <!-- ========================================
+         TRUST + STATS
+    ======================================== -->
+    <section class="trust">
+      <div class="container">
+        <p class="trust-line">
+          <span class="stars-row">★★★★★</span>
+          Trusted by <strong>500+ couples</strong> worldwide
+        </p>
 
-function drawStars(){
-  cx.clearRect(0, 0, W, H);
+        <div class="stats-grid">
+          <div class="stat reveal">
+            <span class="stat-num">500+</span>
+            <span class="stat-label">Couples Transformed</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat-num">10+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat-num">98%</span>
+            <span class="stat-label">Client Satisfaction</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat-num">Free</span>
+            <span class="stat-label">First Consultation</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  /* 1. Pure black background */
-  cx.fillStyle = '#000005';
-  cx.fillRect(0, 0, W, H);
+    <!-- ========================================
+         WHO I HELP
+    ======================================== -->
+    <section class="section-pad">
+      <div class="container">
+        <div class="section-eyebrow reveal">Who I Help</div>
+        <h2 class="section-title reveal">Find Your <em>Path Forward</em></h2>
+        <p class="section-sub reveal">
+          Whatever season of life you're in, there's a consulting path built for you. Choose your category to get started.
+        </p>
 
-  /* 2. Nebula wisps */
-  for(var n=0;n<nebulae.length;n++){
-    var nb = nebulae[n];
-    cx.save();
-    cx.translate(nb.x, nb.y);
-    cx.rotate(nb.rot);
-    var grd = cx.createRadialGradient(0, 0, 0, 0, 0, Math.max(nb.rx, nb.ry));
-    grd.addColorStop(0,   'rgba('+nb.col[0]+','+nb.col[1]+','+nb.col[2]+','+nb.alpha.toFixed(3)+')');
-    grd.addColorStop(0.5, 'rgba('+nb.col[0]+','+nb.col[1]+','+nb.col[2]+','+(nb.alpha*0.4).toFixed(3)+')');
-    grd.addColorStop(1,   'rgba('+nb.col[0]+','+nb.col[1]+','+nb.col[2]+',0)');
-    cx.scale(nb.rx/Math.max(nb.rx,nb.ry), nb.ry/Math.max(nb.rx,nb.ry));
-    cx.beginPath();
-    cx.arc(0, 0, Math.max(nb.rx, nb.ry), 0, Math.PI*2);
-    cx.fillStyle = grd;
-    cx.fill();
-    cx.restore();
-  }
+        <div class="who-grid">
 
-  /* 3. Stars */
-  for(var i=0;i<stars.length;i++){
-    var s = stars[i];
-    
-    // Twinkle: sinusoidal alpha and radius pulse
-    var twinkle = Math.sin(frame * s.speed + s.phase);
-    s.alpha = s.baseAlpha * (0.55 + 0.45 * ((twinkle + 1) / 2));
-    s.r = s.baseR * (0.75 + 0.25 * ((twinkle + 1) / 2));
-    
-    // Drift
-    s.x += s.vx;
-    s.y += s.vy;
-    
-    // Wrap around edges
-    if(s.x < -5)  s.x = W + 5;
-    if(s.x > W+5) s.x = -5;
-    if(s.y > H+5) s.y = -5;
-    if(s.y < -5)  s.y = H + 5;
-    
-    var col = s.col;
-    
-    // Draw glow for medium/large stars
-    if(s.baseR > 0.8){
-      var glowR = s.r * (s.baseR > 2 ? 6 : 4);
-      var glow = cx.createRadialGradient(s.x, s.y, 0, s.x, s.y, glowR);
-      glow.addColorStop(0,   'rgba('+col.r+','+col.g+','+col.b+','+(s.alpha*0.6).toFixed(3)+')');
-      glow.addColorStop(0.3, 'rgba('+col.r+','+col.g+','+col.b+','+(s.alpha*0.15).toFixed(3)+')');
-      glow.addColorStop(1,   'rgba('+col.r+','+col.g+','+col.b+',0)');
-      cx.beginPath();
-      cx.arc(s.x, s.y, glowR, 0, Math.PI*2);
-      cx.fillStyle = glow;
-      cx.fill();
+          <a href="who-i-help/single.html" class="who-card reveal">
+            <div class="who-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M5 21v-2a7 7 0 0 1 14 0v2"/>
+              </svg>
+            </div>
+            <span class="who-label">Single</span>
+          </a>
+
+          <a href="who-i-help/married.html" class="who-card reveal">
+            <div class="who-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <span class="who-label">Married</span>
+          </a>
+
+          <a href="who-i-help/family.html" class="who-card reveal">
+            <div class="who-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="7" r="2.5"/>
+                <circle cx="18" cy="7" r="2.5"/>
+                <circle cx="12" cy="6" r="2"/>
+                <path d="M2 20v-1a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v1"/>
+                <path d="M14 20v-1a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v1"/>
+                <path d="M9 21v-2a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v2"/>
+              </svg>
+            </div>
+            <span class="who-label">Family</span>
+          </a>
+
+          <a href="who-i-help/business-owners.html" class="who-card reveal">
+            <div class="who-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="7" width="18" height="13" rx="2"/>
+                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                <path d="M3 13h18"/>
+              </svg>
+            </div>
+            <span class="who-label">Business Owners</span>
+          </a>
+
+          <a href="who-i-help/employees.html" class="who-card reveal">
+            <div class="who-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <span class="who-label">Employees</span>
+          </a>
+
+          <a href="who-i-help/students.html" class="who-card reveal">
+            <div class="who-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10L12 5 2 10l10 5 10-5z"/>
+                <path d="M6 12v5c3 2 9 2 12 0v-5"/>
+              </svg>
+            </div>
+            <span class="who-label">Students</span>
+          </a>
+
+          <a href="who-i-help/teachers.html" class="who-card reveal">
+            <div class="who-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+              </svg>
+            </div>
+            <span class="who-label">Teachers</span>
+          </a>
+
+          <a href="who-i-help/leaders.html" class="who-card reveal">
+            <div class="who-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 20l3-12 5 4 2-7 2 7 5-4 3 12z"/>
+                <path d="M5 20h14"/>
+              </svg>
+            </div>
+            <span class="who-label">Leaders</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         TESTIMONIAL
+    ======================================== -->
+    <section class="section-pad" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-eyebrow reveal">Success Stories</div>
+        <h2 class="section-title reveal">Real People. <em>Real Transformation.</em></h2>
+
+        <div class="quote-wrap reveal" style="margin-top: 3rem;">
+          <span class="quote-mark" aria-hidden="true">"</span>
+          <div class="quote-stars" aria-label="5 stars">★★★★★</div>
+          <p class="quote-text">
+            Dennis completely changed how my husband and I communicate. We went from the edge of divorce to the best year of our marriage. Spiritual Romeo isn't just a consultant. He's a life-changer.
+          </p>
+          <div class="quote-author">
+            <div class="quote-avatar">M</div>
+            <div class="quote-meta">
+              <div class="quote-name">Michelle T.</div>
+              <div class="quote-role">Charlotte, NC</div>
+            </div>
+          </div>
+          <div class="quote-cta">
+            <a href="testimonials.html" class="btn btn--ghost">
+              Read More Stories <span class="btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         FINAL CTA
+    ======================================== -->
+    <section class="section-pad">
+      <div class="container final-cta">
+        <div class="section-eyebrow reveal">Ready to Start?</div>
+        <h2 class="section-title reveal">
+          Your Best Relationship<br/>
+          <em>Starts Today</em>
+        </h2>
+        <p class="section-sub reveal">
+          Book your free 30-minute consultation. No pressure, no commitment. Just a real conversation about where you are and where you want to be.
+        </p>
+
+        <div class="final-cta-actions reveal">
+          <a href="book.html" class="btn btn--gold">
+            Book Free Consultation <span class="btn-arrow">→</span>
+          </a>
+          <a href="services.html" class="btn btn--ghost">Explore Services</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================
+       FOOTER
+  ======================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-crown"><img src="sr-logo-transparent.png" alt="SR Spiritual Romeo crest" /></div>
+          <div class="nav-text">
+            <span class="nav-name">Dennis Nickens</span>
+            <span class="nav-sub">AKA Spiritual Romeo</span>
+          </div>
+        </a>
+        <p class="footer-brand-tagline">
+          Dennis Nickens AKA Spiritual Romeo, helping individuals and couples build the love they've always wanted.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="SpiritualRomeo_Assessment.html">Assessment</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="book.html">Book Now</a></li>
+          <li><a href="store.html">Store</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4 class="footer-heading">Contact</h4>
+        <p class="footer-contact-line">
+          <span style="color:var(--color-gold);margin-right:0.4rem;">✉</span>
+          <a href="mailto:dennis@dennisnickens.com">dennis@dennisnickens.com</a>
+        </p>
+        <p class="footer-contact-line">
+          <span style="color:var(--color-gold);margin-right:0.4rem;">◆</span>
+          Indian Trail, NC
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+      <a href="book.html">Book a Free Consultation →</a>
+    </div>
+  </footer>
+
+  <!-- ========================================
+       SCRIPTS
+  ======================================== -->
+  <script>
+    /* Starfield */
+    (function makeStars(){
+      const c = document.getElementById('stars');
+      const N = 70;
+      for (let i = 0; i < N; i++){
+        const s = document.createElement('div');
+        s.className = 'star';
+        const size = Math.random() * 2 + 0.5;
+        s.style.width  = size + 'px';
+        s.style.height = size + 'px';
+        s.style.left = (Math.random() * 100) + '%';
+        s.style.top  = (Math.random() * 100) + '%';
+        s.style.animationDelay = (Math.random() * 4) + 's';
+        s.style.animationDuration = (3 + Math.random() * 4) + 's';
+        c.appendChild(s);
+      }
+    })();
+
+    /* Mobile menu */
+    const toggle = document.getElementById('navToggle');
+    const menu   = document.getElementById('mobileMenu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+        toggle.textContent = open ? '✕' : '☰';
+      });
+      menu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          menu.classList.remove('open');
+          toggle.setAttribute('aria-expanded', false);
+          toggle.textContent = '☰';
+        });
+      });
     }
-    
-    // Draw star core
-    cx.beginPath();
-    cx.arc(s.x, s.y, Math.max(0.2, s.r), 0, Math.PI*2);
-    cx.fillStyle = 'rgba('+col.r+','+col.g+','+col.b+','+s.alpha.toFixed(3)+')';
-    cx.fill();
-    
-    // Cross-hair diffraction spikes for bright stars
-    if(s.spike && s.alpha > 0.5){
-      drawSpike(s.x, s.y, s.r, col, s.alpha);
-    }
-  }
 
-  frame++;
-  requestAnimationFrame(drawStars);
-}
-drawStars();
-})()
-</script>
+    /* Reveal on scroll */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
 </body>
 </html>

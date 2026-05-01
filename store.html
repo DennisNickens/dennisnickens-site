@@ -1,490 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Store — Dennis Nickens | Spiritual Romeo</title>
-<meta name="description" content="Shop books, card games, apparel and more from Dennis Nickens AKA Spiritual Romeo.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/store.css>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shop books, card games, apparel and more from Dennis Nickens AKA Spiritual Romeo." />
+  <title>Store &mdash; Dennis Nickens, Spiritual Romeo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-bg-deep: #07071a;
+      --color-bg-mid: #0f0a2e;
+      --color-bg-soft: #1a1340;
+      --color-ink: #f5f1e8;
+      --color-ink-soft: rgba(245, 241, 232, 0.78);
+      --color-ink-faint: rgba(245, 241, 232, 0.5);
+      --color-gold: #d4a957;
+      --color-gold-soft: #b08838;
+      --color-line: rgba(212, 169, 87, 0.18);
+      --color-line-soft: rgba(245, 241, 232, 0.08);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, sans-serif;
+      --font-label: 'Montserrat', -apple-system, sans-serif;
+      --shadow-card: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 169, 87, 0.15) inset;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--color-ink); background: var(--color-bg-deep); line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+
+    .bg-wash { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse at 20% 10%, rgba(124, 58, 237, 0.18), transparent 50%), radial-gradient(ellipse at 80% 60%, rgba(6, 182, 212, 0.10), transparent 55%), radial-gradient(ellipse at 50% 100%, rgba(212, 169, 87, 0.10), transparent 60%), linear-gradient(180deg, #07071a 0%, #0f0a2e 50%, #07071a 100%); pointer-events: none; }
+    .stars { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.7; }
+    .star { position: absolute; background: #fff; border-radius: 50%; animation: twinkle 4s ease-in-out infinite; }
+    @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+
+    .nav { position: sticky; top: 0; z-index: 50; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(14px); background: rgba(7, 7, 26, 0.7); border-bottom: 1px solid var(--color-line); }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--color-ink); }
+    .nav-crown { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; filter: drop-shadow(0 0 14px rgba(212, 169, 87, 0.45)); }
+    .nav-crown img { width: 100%; height: 100%; object-fit: contain; }
+    .nav-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .nav-name { font-family: 'Allura', cursive; font-size: 1.85rem; font-weight: 400; color: var(--color-gold); line-height: 1; }
+    .nav-sub { font-family: var(--font-label); font-size: 0.65rem; letter-spacing: 0.18em; color: var(--color-gold); text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { font-family: var(--font-label); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-ink-soft); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--color-gold); }
+    .nav-toggle { display: none; background: transparent; border: 1px solid var(--color-line); color: var(--color-ink); padding: 0.5rem 0.7rem; border-radius: 4px; cursor: pointer; font-size: 1.1rem; }
+    @media (max-width: 900px) { .nav-links { display: none; } .nav-toggle { display: block; } }
+    .mobile-menu { display: none; flex-direction: column; background: rgba(7, 7, 26, 0.95); backdrop-filter: blur(14px); border-bottom: 1px solid var(--color-line); padding: 1rem 2rem 1.5rem; position: sticky; top: 70px; z-index: 49; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { padding: 0.85rem 0; color: var(--color-ink-soft); text-decoration: none; font-family: var(--font-label); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid var(--color-line-soft); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    main { position: relative; z-index: 5; }
+    .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .hero { position: relative; padding: clamp(3rem, 7vw, 5rem) 0 clamp(2rem, 4vw, 3rem); text-align: center; }
+    .hero-eyebrow { font-family: var(--font-label); font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 1.5rem; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 400; line-height: 1.1; max-width: 920px; margin: 0 auto 1.5rem; letter-spacing: -0.01em; }
+    .hero-title em { font-style: italic; background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-lede { font-family: var(--font-serif); font-size: clamp(1.1rem, 2vw, 1.35rem); font-style: italic; color: var(--color-ink-soft); max-width: 720px; margin: 0 auto; line-height: 1.5; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; padding: 1.1rem 2.2rem; font-family: var(--font-label); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border: none; border-radius: 4px; cursor: pointer; transition: all 0.3s ease; color: var(--color-bg-deep); }
+    .btn--gold { background: linear-gradient(135deg, var(--color-gold), var(--color-gold-soft)); box-shadow: 0 8px 24px rgba(212, 169, 87, 0.3); }
+    .btn--gold:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(212, 169, 87, 0.45); }
+    .btn--ghost { background: transparent; color: var(--color-ink-soft); border: 1px solid var(--color-line); }
+    .btn--ghost:hover { color: var(--color-gold); border-color: var(--color-gold); }
+    .btn-arrow { display: inline-block; transition: transform 0.3s; }
+    .btn:hover .btn-arrow { transform: translateX(4px); }
+
+    /* Section header */
+    .section { padding: 2.5rem 0; }
+    .section-header { text-align: center; margin-bottom: 2.5rem; }
+    .section-eyebrow { font-family: var(--font-label); font-size: 0.75rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 1rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 400; line-height: 1.2; max-width: 720px; margin: 0 auto 0.5rem; letter-spacing: -0.005em; }
+    .section-title em { font-style: italic; background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .section-sub { font-family: var(--font-serif); font-style: italic; font-size: 1.1rem; color: var(--color-ink-soft); max-width: 660px; margin: 0 auto; line-height: 1.5; }
+
+    /* Product grid */
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } }
+    .product-card { background: linear-gradient(180deg, rgba(26, 19, 64, 0.5), rgba(15, 10, 46, 0.3)); border: 1px solid var(--color-line); border-radius: 12px; overflow: hidden; backdrop-filter: blur(8px); display: flex; flex-direction: column; transition: all 0.3s; text-decoration: none; color: var(--color-ink); }
+    .product-card:hover { transform: translateY(-4px); border-color: var(--color-gold); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+    .product-img-wrap { aspect-ratio: 3 / 4; background: rgba(7, 7, 26, 0.4); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .product-card:hover .product-img { transform: scale(1.05); }
+    .product-img-placeholder { font-family: var(--font-display); color: var(--color-gold); opacity: 0.6; font-size: 1.1rem; padding: 2rem; text-align: center; }
+    .product-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+    .product-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--color-ink); line-height: 1.25; }
+    .product-desc { font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-ink-soft); line-height: 1.5; flex: 1; }
+    .product-cta { font-family: var(--font-label); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-gold); margin-top: 0.75rem; display: inline-flex; align-items: center; gap: 0.4rem; }
+
+    /* Final CTA */
+    .final-cta-section { padding: 3rem 0 5rem; text-align: center; }
+    .final-cta-actions { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem; }
+
+    .footer { position: relative; z-index: 5; padding: 4rem 1.5rem 2rem; border-top: 1px solid var(--color-line); background: rgba(7, 7, 26, 0.5); }
+    .footer-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
+    @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .footer-brand-tagline { font-family: var(--font-serif); font-style: italic; color: var(--color-ink-soft); margin-top: 1rem; max-width: 360px; line-height: 1.5; }
+    .footer-heading { font-family: var(--font-label); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 1.25rem; }
+    .footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer ul a { font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-ink-soft); text-decoration: none; transition: color 0.2s; }
+    .footer ul a:hover { color: var(--color-gold); }
+    .footer-contact-line { font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-ink-soft); margin-bottom: 0.6rem; }
+    .footer-contact-line a { color: var(--color-ink-soft); text-decoration: none; }
+    .footer-contact-line a:hover { color: var(--color-gold); }
+    .footer-bottom { max-width: 1180px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid var(--color-line-soft); display: flex; justify-content: space-between; align-items: center; font-family: var(--font-label); font-size: 0.75rem; letter-spacing: 0.1em; color: var(--color-ink-faint); flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom a { color: var(--color-gold); text-decoration: none; font-weight: 600; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+  </style>
 </head>
 <body>
-<canvas id="stars-canvas"></canvas>
+  <div class="bg-wash" aria-hidden="true"></div>
+  <div class="stars" id="stars" aria-hidden="true"></div>
 
-<canvas id="particles-canvas"></canvas>
-
-<!-- CART OVERLAY -->
-<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-
-<!-- SLIDE-OUT CART -->
-<div class="cart-drawer" id="cartDrawer">
-  <div class="cart-header">
-    <h3>Your Cart</h3>
-    <button class="cart-close" onclick="toggleCart()">&times;</button>
+  <nav class="nav" aria-label="Main">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-crown"><img src="https://dennisnickens.com/sr-logo-transparent.png" alt="SR Spiritual Romeo crest" /></div>
+      <div class="nav-text">
+        <span class="nav-name">Dennis Nickens</span>
+        <span class="nav-sub">AKA Spiritual Romeo</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="SpiritualRomeo_Assessment.html">Assessment</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="book.html">Book Now</a></li>
+      <li><a href="store.html" class="active">Store</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle menu">&#9776;</button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="SpiritualRomeo_Assessment.html">Assessment</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="community.html">Community</a>
+    <a href="book.html">Book Now</a>
+    <a href="store.html">Store</a>
   </div>
-  <div class="cart-items" id="cartItems">
-    <div class="cart-empty" id="cartEmpty">
-      <div style="font-size:48px;margin-bottom:16px">&#128722;</div>
-      <p>Your cart is empty</p>
-    </div>
-  </div>
-  <div class="cart-footer" id="cartFooter" style="display:none">
-    <div class="cart-subtotal">
-      <span>Subtotal</span>
-      <span id="cartSubtotal">$0.00</span>
-    </div>
-    <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px">Shipping &amp; taxes calculated at checkout</p>
-    <a href="checkout.html" class="btn btn-gold" style="width:100%;text-align:center;display:block">Proceed to Checkout</a>
-    <button onclick="toggleCart()" class="btn btn-outline" style="width:100%;text-align:center;margin-top:10px;padding:12px">Continue Shopping</button>
-  </div>
-</div>
 
-<!-- NAV -->
-<nav id="navbar">
-  <a href="index.html" class="nav-brand">
-    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
-    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="SpiritualRomeo_Assessment.html">Assessment</a></li>
-    <li><a href="testimonials.html">Testimonials</a></li>
-    <li><a href="community.html">Community</a></li>
-    <li><a href="book.html" class="nav-cta">Book Now</a></li>
-    <li><a href="store.html" class="active">Store</a></li>
-  </ul>
-  <div style="display:flex;align-items:center;gap:12px">
-    <button class="cart-btn" id="cartBtn" onclick="toggleCart()" aria-label="Shopping Cart">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
-      <span class="cart-count" id="cartCount" style="display:none">0</span>
-    </button>
-    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
-  </div>
-</nav>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-eyebrow">The Store</div>
+        <h1 class="hero-title reveal">Transform Your <em>Relationships</em></h1>
+        <p class="hero-lede reveal">
+          Books, card games, and apparel built on the same principles I teach in consulting. Pick what speaks to your season.
+        </p>
+      </div>
+    </section>
 
-<!-- STORE HERO -->
-<section class="store-hero">
-  <div class="section-inner" style="text-align:center">
-    <span class="section-tag animate-fadeup">&#9733; The Spiritual Romeo Store</span>
-    <h1 class="section-title animate-fadeup delay-1" style="font-size:clamp(36px,5vw,64px);margin-bottom:16px">Transform Your <span style="color:#FFD700">Relationships</span></h1>
-    <p class="section-sub animate-fadeup delay-2" style="max-width:560px;margin:0 auto 48px">Books, card games, and apparel designed to help you build deeper, more meaningful connections.</p>
-    <!-- Store Nav Tabs -->
-    <div class="store-tabs animate-fadeup delay-3">
-      <button class="store-tab active" onclick="showSection('books')">&#128218; Books</button>
-      <button class="store-tab" onclick="showSection('games')">&#127183; Card Games</button>
-      <button class="store-tab" onclick="showSection('apparel')">&#128085; Apparel</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== BOOKS SECTION ===== -->
-<section class="section store-section" id="section-books" style="padding-top:40px">
-  <div class="section-inner">
-    <div style="margin-bottom:48px">
-      <span class="section-tag">Books</span>
-      <h2 class="section-title">Dennis Nickens <span style="color:#FFD700">Book Collection</span></h2>
-      <p class="section-sub">Relationship wisdom for every season of life. Each book comes with e-book, workbook, and matching apparel options.</p>
-    </div>
-    <div class="product-grid books-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;">
-
-      <!-- Book 1 -->
-      <a href="store/doing-it-gods-way.html" class="product-card book-card animate-fadeup">
-                    <div class="book-cover-placeholder digw-store-thumb">
-              <img
-                src="images/doing-it-gods-way-cover.jpg"
-                alt="Doing It God's Way (It Works) by Dennis Nickens"
-                style="width:100%;height:auto;max-height:280px;object-fit:contain;object-position:center;border-radius:4px;display:block;background:#1e293b;"
-              />
-            </div>
- <div class="product-info">
-          <h3 class="product-title">Doing It God's Way (It Works)</h3>
-          <p class="product-tagline">Faith-centered guidance for relationships that last</p>
-          <div class="product-formats">
-            <span class="format-tag">Book</span>
-            <span class="format-tag">E-Book</span>
-            <span class="format-tag">T-Shirt</span>
-          </div>
-          <div class="product-card-footer">
-            <span class="product-price">From <strong>$TBD</strong></span>
-            <span class="btn-view">View Details &rarr;</span>
-          </div>
+    <!-- BOOKS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow reveal">Books</div>
+          <h2 class="section-title reveal">Dennis Nickens <em>Book Collection</em></h2>
+          <p class="section-sub reveal">Relationship wisdom for every season of life. Each book comes with eBook, workbook, and matching apparel options.</p>
         </div>
-      </a>
+        <div class="product-grid">
 
-      <!-- Book 2 -->
-      <a href="store/singlehood.html" class="product-card book-card animate-fadeup delay-1">
-        <div class="book-cover-placeholder digw-store-thumb"><img src="images/singlehood-cover.jpg" alt="Singlehood cover" style="width:100%;height:auto;max-height:280px;object-fit:contain;object-position:center;border-radius:4px;display:block;background:#1e293b;" /></div>
-        <div class="product-info">
-          <h3 class="product-title">Singlehood</h3>
-          <p class="product-tagline">It's Ok To Be Selfish</p>
-          <div class="product-formats">
-            <span class="format-tag">Book</span>
-            <span class="format-tag">E-Book</span>
-            <span class="format-tag">Workbook</span>
-            <span class="format-tag">T-Shirt</span>
-          </div>
-          <div class="product-card-footer">
-            <span class="product-price">From <strong>$TBD</strong></span>
-            <span class="btn-view">View Details &rarr;</span>
-          </div>
+          <a href="https://dennisnickens.com/store/silence-the-noise.html" class="product-card reveal">
+            <div class="product-img-wrap"><img class="product-img" src="https://dennisnickens.com/images/silence-the-noise-cover.jpg" alt="Silence The Noise by Dennis Nickens" /></div>
+            <div class="product-body">
+              <h3 class="product-title">Silence The Noise</h3>
+              <p class="product-desc">A Guide To Hearing God and Finding Your Purpose.</p>
+              <span class="product-cta">View Details &rarr;</span>
+            </div>
+          </a>
+
+          <a href="https://dennisnickens.com/store/raising-kings.html" class="product-card reveal">
+            <div class="product-img-wrap"><img class="product-img" src="https://dennisnickens.com/images/raising-kings-cover.jpg" alt="Raising Kings by Dennis Nickens" /></div>
+            <div class="product-body">
+              <h3 class="product-title">Raising Kings</h3>
+              <p class="product-desc">A father&rsquo;s guide to nurturing sons.</p>
+              <span class="product-cta">View Details &rarr;</span>
+            </div>
+          </a>
+
+          <a href="https://dennisnickens.com/store/unbroken-vows.html" class="product-card reveal">
+            <div class="product-img-wrap"><img class="product-img" src="https://dennisnickens.com/images/unbroken-vows-cover.jpg" alt="Unbroken Vows by Dennis Nickens" /></div>
+            <div class="product-body">
+              <h3 class="product-title">Unbroken Vows</h3>
+              <p class="product-desc">Keeping it together. The marriage book for every couple committed to staying the course.</p>
+              <span class="product-cta">View Details &rarr;</span>
+            </div>
+          </a>
+
+          <a href="https://dennisnickens.com/store/singlehood.html" class="product-card reveal">
+            <div class="product-img-wrap"><img class="product-img" src="https://dennisnickens.com/images/singlehood-cover.jpg" alt="Singlehood by Dennis Nickens" /></div>
+            <div class="product-body">
+              <h3 class="product-title">Singlehood</h3>
+              <p class="product-desc">It&rsquo;s OK to be selfish. Self-discovery, identity, and clarity for the single season.</p>
+              <span class="product-cta">View Details &rarr;</span>
+            </div>
+          </a>
+
+          <a href="https://dennisnickens.com/store/stepping-up.html" class="product-card reveal">
+            <div class="product-img-wrap"><img class="product-img" src="https://dennisnickens.com/images/stepping-up-cover.jpg" alt="Stepping Up by Dennis Nickens" /></div>
+            <div class="product-body">
+              <h3 class="product-title">Stepping Up</h3>
+              <p class="product-desc">Leadership principles for today&rsquo;s challenges.</p>
+              <span class="product-cta">View Details &rarr;</span>
+            </div>
+          </a>
+
+          <a href="https://dennisnickens.com/store/doing-it-gods-way.html" class="product-card reveal">
+            <div class="product-img-wrap"><img class="product-img" src="https://dennisnickens.com/images/doing-it-gods-way-cover.jpg" alt="Doing It God&rsquo;s Way by Dennis Nickens" /></div>
+            <div class="product-body">
+              <h3 class="product-title">Doing It God&rsquo;s Way</h3>
+              <p class="product-desc">Faith-centered guidance for relationships that last.</p>
+              <span class="product-cta">View Details &rarr;</span>
+            </div>
+          </a>
+
         </div>
-      </a>
+      </div>
+    </section>
 
-      <!-- Book 3 -->
-      <a href="store/unbroken-vows.html" class="product-card book-card animate-fadeup delay-2">
-        <div class="book-cover-placeholder digw-store-thumb"><img src="images/unbroken-vows-cover.jpg" alt="Unbroken Vows cover" style="width:100%;height:auto;max-height:280px;object-fit:contain;object-position:center;border-radius:4px;display:block;background:#1e293b;" /></div>
-        <div class="product-info">
-          <h3 class="product-title">Unbroken Vows</h3>
-          <p class="product-tagline">Keeping It Together</p>
-          <div class="product-formats">
-            <span class="format-tag">Book</span>
-            <span class="format-tag">E-Book</span>
-            <span class="format-tag">Workbook</span>
-            <span class="format-tag">T-Shirt</span>
-          </div>
-          <div class="product-card-footer">
-            <span class="product-price">From <strong>$TBD</strong></span>
-            <span class="btn-view">View Details &rarr;</span>
-          </div>
+    <!-- CARD GAMES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow reveal">Card Games</div>
+          <h2 class="section-title reveal">Connection <em>Card Games</em></h2>
+          <p class="section-sub reveal">Real conversations, real connection. Made for friends, couples, and families ready to go deeper.</p>
         </div>
-      </a>
+        <div class="product-grid">
 
-      <!-- Book 4 -->
-      <a href="store/raising-kings.html" class="product-card book-card animate-fadeup delay-3">
-        <div class="book-cover-placeholder digw-store-thumb"><img src="images/raising-kings-cover.jpg" alt="Raising Kings cover" style="width:100%;height:auto;max-height:280px;object-fit:contain;object-position:center;border-radius:4px;display:block;background:#1e293b;" /></div>
-        <div class="product-info">
-          <h3 class="product-title">Raising Kings</h3>
-          <p class="product-tagline">A Father Guide to Raising Son's</p>
-          <div class="product-formats">
-            <span class="format-tag">Book</span>
-            <span class="format-tag">E-Book</span>
-            <span class="format-tag">Workbook</span>
-            <span class="format-tag">T-Shirt</span>
-          </div>
-          <div class="product-card-footer">
-            <span class="product-price">From <strong>$TBD</strong></span>
-            <span class="btn-view">View Details &rarr;</span>
-          </div>
+          <a href="https://dennisnickens.com/store/you-call-yourself-a-friend.html" class="product-card reveal">
+            <div class="product-img-wrap"><img class="product-img" src="https://dennisnickens.com/images/you-call-yourself-a-friend-cover.jpg" alt="You Call Yourself a Friend card game" /></div>
+            <div class="product-body">
+              <h3 class="product-title">You Call Yourself a Friend</h3>
+              <p class="product-desc">The card game that reveals what real friendship looks like and challenges you to live it out.</p>
+              <span class="product-cta">View Details &rarr;</span>
+            </div>
+          </a>
+
+          <a href="https://dennisnickens.com/store/lovers-quest.html" class="product-card reveal">
+            <div class="product-img-wrap"><img class="product-img" src="https://dennisnickens.com/images/lovers-quest-cover.jpg" alt="Lovers Quest card game" /></div>
+            <div class="product-body">
+              <h3 class="product-title">Lovers Quest</h3>
+              <p class="product-desc">A marriage card game for couples ready to go deeper with questions, challenges, and connection moments.</p>
+              <span class="product-cta">View Details &rarr;</span>
+            </div>
+          </a>
+
         </div>
-      </a>
+      </div>
+    </section>
 
-      <!-- Book 5 -->
-      <a href="store/stepping-up.html" class="product-card book-card animate-fadeup delay-1">
-        <div class="book-cover-placeholder digw-store-thumb"><img src="images/stepping-up-cover.jpg" alt="Stepping Up cover" style="width:100%;height:auto;max-height:280px;object-fit:contain;object-position:center;border-radius:4px;display:block;background:#1e293b;" /></div>
-        <div class="product-info">
-          <h3 class="product-title">Stepping Up</h3>
-          <p class="product-tagline">Leadership Principles For Today Challenges</p>
-          <div class="product-formats">
-            <span class="format-tag">Book</span>
-            <span class="format-tag">E-Book</span>
-            <span class="format-tag">Workbook</span>
-            <span class="format-tag">T-Shirt</span>
-          </div>
-          <div class="product-card-footer">
-            <span class="product-price">From <strong>$TBD</strong></span>
-            <span class="btn-view">View Details &rarr;</span>
-          </div>
+    <!-- APPAREL -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow reveal">Apparel</div>
+          <h2 class="section-title reveal">Spiritual Romeo <em>Apparel</em></h2>
+          <p class="section-sub reveal">Wear the message. Tees and hoodies designed to start the conversation.</p>
         </div>
-      </a>
+        <div class="product-grid">
 
-      <!-- Book 6 -->
-      <a href="store/silence-the-noise.html" class="product-card book-card animate-fadeup delay-2">
-        <div class="book-cover-placeholder digw-store-thumb"><img src="images/silence-the-noise-cover.jpg" alt="Silence The Noise cover" style="width:100%;height:auto;max-height:280px;object-fit:contain;object-position:center;border-radius:4px;display:block;background:#1e293b;" /></div>
-        <div class="product-info">
-          <h3 class="product-title">Silence The Noise</h3>
-          <p class="product-tagline">A Guide To Hearing God and Finding Your Purpose</p>
-          <div class="product-formats">
-            <span class="format-tag">Book</span>
-            <span class="format-tag">E-Book</span>
-            <span class="format-tag">Workbook</span>
-            <span class="format-tag">T-Shirt</span>
-          </div>
-          <div class="product-card-footer">
-            <span class="product-price">From <strong>$TBD</strong></span>
-            <span class="btn-view">View Details &rarr;</span>
-          </div>
+          <a href="#" class="product-card reveal">
+            <div class="product-img-wrap"><span class="product-img-placeholder">SR Classic Tee &mdash; image coming soon</span></div>
+            <div class="product-body">
+              <h3 class="product-title">Spiritual Romeo Classic</h3>
+              <p class="product-desc">Classic SR Logo Tee.</p>
+              <span class="product-cta">View Details &rarr;</span>
+            </div>
+          </a>
+
+          <a href="#" class="product-card reveal">
+            <div class="product-img-wrap"><span class="product-img-placeholder">Doing It God&rsquo;s Way Tee &mdash; image coming soon</span></div>
+            <div class="product-body">
+              <h3 class="product-title">Doing It God&rsquo;s Way Tee</h3>
+              <p class="product-desc">Wear the message. Faith on the front, purpose on your back.</p>
+              <span class="product-cta">View Details &rarr;</span>
+            </div>
+          </a>
+
+          <a href="#" class="product-card reveal">
+            <div class="product-img-wrap"><span class="product-img-placeholder">Unbroken Vows Tee &mdash; image coming soon</span></div>
+            <div class="product-body">
+              <h3 class="product-title">Unbroken Vows Tee</h3>
+              <p class="product-desc">Built for couples committed to keeping it together.</p>
+              <span class="product-cta">View Details &rarr;</span>
+            </div>
+          </a>
+
+          <a href="#" class="product-card reveal">
+            <div class="product-img-wrap"><span class="product-img-placeholder">SR Classic Hoodie &mdash; image coming soon</span></div>
+            <div class="product-body">
+              <h3 class="product-title">Spiritual Romeo Classic Hoodie</h3>
+              <p class="product-desc">SR Classic Hoodie.</p>
+              <span class="product-cta">View Details &rarr;</span>
+            </div>
+          </a>
+
+          <a href="#" class="product-card reveal">
+            <div class="product-img-wrap"><span class="product-img-placeholder">Silence The Noise Hoodie &mdash; image coming soon</span></div>
+            <div class="product-body">
+              <h3 class="product-title">Silence The Noise Hoodie</h3>
+              <p class="product-desc">Quiet exterior, loud message. For those tuning into the voice that matters.</p>
+              <span class="product-cta">View Details &rarr;</span>
+            </div>
+          </a>
+
         </div>
-      </a>
+      </div>
+    </section>
 
-    </div><!-- /books-grid -->
-  </div>
-</section>
-
-<!-- ===== CARD GAMES SECTION ===== -->
-<section class="section store-section" id="section-games" style="padding-top:40px;display:none">
-  <div class="section-inner">
-    <div style="margin-bottom:48px">
-      <span class="section-tag">Card Games</span>
-      <h2 class="section-title">Connection <span style="color:#FFD700">Card Games</span></h2>
-      <p class="section-sub">Fun, meaningful card games designed to spark deeper conversations and bring people closer together.</p>
-    </div>
-    <div class="product-grid games-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:800px;">
-
-      <!-- Game 1 -->
-      <a href="store/you-call-yourself-a-friend.html" class="product-card game-card animate-fadeup">
-        <div class="game-box-placeholder" style="height:240px;padding:0;background:#0F172A;border:none;overflow:hidden;display:flex;align-items:center;justify-content:center;">
-          <img src="images/you-call-yourself-a-friend-cover.jpg" alt="You Call Yourself a Friend card game cover" style="width:100%;height:100%;object-fit:contain;display:block;">
+    <!-- FINAL CTA -->
+    <section class="final-cta-section">
+      <div class="container">
+        <div class="section-eyebrow reveal">Need Help Choosing?</div>
+        <h2 class="section-title reveal">Not sure where to <em>start?</em></h2>
+        <p class="section-sub reveal">Take the assessment or book a free consultation and we&rsquo;ll point you to the right resource for your season.</p>
+        <div class="final-cta-actions reveal">
+          <a href="SpiritualRomeo_Assessment.html" class="btn btn--gold">Take the Assessment <span class="btn-arrow">&rarr;</span></a>
+          <a href="book.html" class="btn btn--ghost">Book Free Consultation</a>
         </div>
-        <div class="product-info">
-          <h3 class="product-title">You Call Yourself a Friend</h3>
-          <p class="product-tagline">The card game that reveals what real friendship looks like and challenges you to live it out.</p>
-          <div class="product-card-footer" style="margin-top:20px">
-            <span class="product-price"><strong>$TBD</strong></span>
-            <span class="btn-view">View Details &rarr;</span>
-          </div>
-        </div>
-      </a>
+      </div>
+    </section>
+  </main>
 
-      <!-- Game 2 -->
-      <a href="store/lovers-quest.html" class="product-card game-card animate-fadeup delay-1">
-        <div class="game-box-placeholder" style="height:240px;padding:0;background:none;border:none;overflow:hidden;">
-          <img src="images/lovers-quest-cover.jpg" alt="Lovers Quest card game cover" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-        <div class="product-info">
-          <h3 class="product-title">Lovers Quest (Marriage)</h3>
-          <p class="product-tagline">A marriage card game for couples ready to go deeper with questions, challenges, and connection moments.</p>
-          <div class="product-card-footer" style="margin-top:20px">
-            <span class="product-price"><strong>$TBD</strong></span>
-            <span class="btn-view">View Details &rarr;</span>
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-crown"><img src="https://dennisnickens.com/sr-logo-transparent.png" alt="SR Spiritual Romeo crest" /></div>
+          <div class="nav-text">
+            <span class="nav-name">Dennis Nickens</span>
+            <span class="nav-sub">AKA Spiritual Romeo</span>
           </div>
-        </div>
-      </a>
-
-    </div><!-- /games-grid -->
-  </div>
-</section>
-
-<!-- ===== APPAREL SECTION ===== -->
-<section class="section store-section" id="section-apparel" style="padding-top:40px;display:none">
-  <div class="section-inner">
-
-    <!-- T-Shirts -->
-    <div style="margin-bottom:64px">
-      <span class="section-tag">Apparel</span>
-      <h2 class="section-title">Spiritual Romeo <span style="color:#FFD700">T-Shirts</span></h2>
-      <p class="section-sub">Wear your transformation. Each design connects to a book title and message.</p>
-      <div class="product-grid apparel-grid">
-        <div class="product-card apparel-card animate-fadeup" data-product="Spiritual Romeo Classic T-Shirt" data-price="TBD">
-          <div class="apparel-placeholder tshirt-placeholder">
-            <span style="font-size:48px">&#128085;</span>
-            <p>Classic SR Logo Tee</p>
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">Spiritual Romeo Classic</h3>
-            <p class="product-tagline">The original SR logo tee</p>
-            <div class="size-selector">
-              <label>Size:</label>
-              <div class="size-options">
-                <button class="size-btn" onclick="selectSize(this)">S</button>
-                <button class="size-btn" onclick="selectSize(this)">M</button>
-                <button class="size-btn" onclick="selectSize(this)">L</button>
-                <button class="size-btn" onclick="selectSize(this)">XL</button>
-                <button class="size-btn" onclick="selectSize(this)">2XL</button>
-                <button class="size-btn" onclick="selectSize(this)">3XL</button>
-              </div>
-            </div>
-            <div class="color-selector">
-              <label>Color:</label>
-              <div class="color-options">
-                <button class="color-swatch" style="background:#0F172A" title="Navy" onclick="selectColor(this)"></button>
-                <button class="color-swatch" style="background:#1a1a1a" title="Black" onclick="selectColor(this)"></button>
-                <button class="color-swatch" style="background:#fff;border:1px solid rgba(255,255,255,0.2)" title="White" onclick="selectColor(this)"></button>
-                <button class="color-swatch" style="background:#7C3AED" title="Purple" onclick="selectColor(this)"></button>
-              </div>
-            </div>
-            <div class="product-card-footer">
-              <span class="product-price"><strong>$TBD</strong></span>
-              <button class="btn btn-gold btn-sm" onclick="addToCartFromCard(this,'Spiritual Romeo Classic T-Shirt','TBD')">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Book-specific tees -->
-        <div class="product-card apparel-card animate-fadeup delay-1">
-          <div class="apparel-placeholder tshirt-placeholder" style="background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(59,130,246,0.1))">
-            <span style="font-size:48px">&#9997;</span>
-            <p>Doing It God's Way Tee</p>
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">Doing It God's Way Tee</h3>
-            <p class="product-tagline">Book-inspired design</p>
-            <div class="size-selector">
-              <label>Size:</label>
-              <div class="size-options">
-                <button class="size-btn" onclick="selectSize(this)">S</button>
-                <button class="size-btn" onclick="selectSize(this)">M</button>
-                <button class="size-btn" onclick="selectSize(this)">L</button>
-                <button class="size-btn" onclick="selectSize(this)">XL</button>
-                <button class="size-btn" onclick="selectSize(this)">2XL</button>
-                <button class="size-btn" onclick="selectSize(this)">3XL</button>
-              </div>
-            </div>
-            <div class="color-selector">
-              <label>Color:</label>
-              <div class="color-options">
-                <button class="color-swatch" style="background:#0F172A" title="Navy" onclick="selectColor(this)"></button>
-                <button class="color-swatch" style="background:#1a1a1a" title="Black" onclick="selectColor(this)"></button>
-                <button class="color-swatch" style="background:#fff;border:1px solid rgba(255,255,255,0.2)" title="White" onclick="selectColor(this)"></button>
-              </div>
-            </div>
-            <div class="product-card-footer">
-              <span class="product-price"><strong>$TBD</strong></span>
-              <button class="btn btn-gold btn-sm" onclick="addToCartFromCard(this,&quot;Doing It God's Way Tee&quot;,&quot;TBD&quot;)">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card apparel-card animate-fadeup delay-2">
-          <div class="apparel-placeholder tshirt-placeholder" style="background:linear-gradient(135deg,rgba(220,38,38,0.15),rgba(124,58,237,0.1))">
-            <span style="font-size:48px">&#128149;</span>
-            <p>Unbroken Vows Tee</p>
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">Unbroken Vows Tee</h3>
-            <p class="product-tagline">Book-inspired design</p>
-            <div class="size-selector">
-              <label>Size:</label>
-              <div class="size-options">
-                <button class="size-btn" onclick="selectSize(this)">S</button>
-                <button class="size-btn" onclick="selectSize(this)">M</button>
-                <button class="size-btn" onclick="selectSize(this)">L</button>
-                <button class="size-btn" onclick="selectSize(this)">XL</button>
-                <button class="size-btn" onclick="selectSize(this)">2XL</button>
-                <button class="size-btn" onclick="selectSize(this)">3XL</button>
-              </div>
-            </div>
-            <div class="color-selector">
-              <label>Color:</label>
-              <div class="color-options">
-                <button class="color-swatch" style="background:#0F172A" title="Navy" onclick="selectColor(this)"></button>
-                <button class="color-swatch" style="background:#1a1a1a" title="Black" onclick="selectColor(this)"></button>
-                <button class="color-swatch" style="background:#7C3AED" title="Purple" onclick="selectColor(this)"></button>
-              </div>
-            </div>
-            <div class="product-card-footer">
-              <span class="product-price"><strong>$TBD</strong></span>
-              <button class="btn btn-gold btn-sm" onclick="addToCartFromCard(this,'Unbroken Vows Tee','TBD')">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /apparel-grid tshirts -->
-    </div>
-
-    <!-- Hoodies -->
-    <div>
-      <h2 class="section-title" style="margin-bottom:16px">Spiritual Romeo <span style="color:#FFD700">Hoodies</span></h2>
-      <p class="section-sub">Premium hoodies to carry the message wherever you go.</p>
-      <div class="product-grid apparel-grid">
-
-        <div class="product-card apparel-card animate-fadeup">
-          <div class="apparel-placeholder hoodie-placeholder">
-            <span style="font-size:48px">&#129523;</span>
-            <p>SR Classic Hoodie</p>
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">Spiritual Romeo Classic Hoodie</h3>
-            <p class="product-tagline">Premium heavyweight hoodie</p>
-            <div class="size-selector">
-              <label>Size:</label>
-              <div class="size-options">
-                <button class="size-btn" onclick="selectSize(this)">S</button>
-                <button class="size-btn" onclick="selectSize(this)">M</button>
-                <button class="size-btn" onclick="selectSize(this)">L</button>
-                <button class="size-btn" onclick="selectSize(this)">XL</button>
-                <button class="size-btn" onclick="selectSize(this)">2XL</button>
-                <button class="size-btn" onclick="selectSize(this)">3XL</button>
-              </div>
-            </div>
-            <div class="color-selector">
-              <label>Color:</label>
-              <div class="color-options">
-                <button class="color-swatch" style="background:#0F172A" title="Navy" onclick="selectColor(this)"></button>
-                <button class="color-swatch" style="background:#1a1a1a" title="Black" onclick="selectColor(this)"></button>
-                <button class="color-swatch" style="background:#7C3AED" title="Purple" onclick="selectColor(this)"></button>
-                <button class="color-swatch" style="background:#374151" title="Charcoal" onclick="selectColor(this)"></button>
-              </div>
-            </div>
-            <div class="product-card-footer">
-              <span class="product-price"><strong>$TBD</strong></span>
-              <button class="btn btn-gold btn-sm" onclick="addToCartFromCard(this,'Spiritual Romeo Classic Hoodie','TBD')">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card apparel-card animate-fadeup delay-1">
-          <div class="apparel-placeholder hoodie-placeholder" style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(124,58,237,0.15))">
-            <span style="font-size:48px">&#129523;</span>
-            <p>Silence The Noise Hoodie</p>
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">Silence The Noise Hoodie</h3>
-            <p class="product-tagline">Book-inspired premium hoodie</p>
-            <div class="size-selector">
-              <label>Size:</label>
-              <div class="size-options">
-                <button class="size-btn" onclick="selectSize(this)">S</button>
-                <button class="size-btn" onclick="selectSize(this)">M</button>
-                <button class="size-btn" onclick="selectSize(this)">L</button>
-                <button class="size-btn" onclick="selectSize(this)">XL</button>
-                <button class="size-btn" onclick="selectSize(this)">2XL</button>
-                <button class="size-btn" onclick="selectSize(this)">3XL</button>
-              </div>
-            </div>
-            <div class="color-selector">
-              <label>Color:</label>
-              <div class="color-options">
-                <button class="color-swatch" style="background:#0F172A" title="Navy" onclick="selectColor(this)"></button>
-                <button class="color-swatch" style="background:#1a1a1a" title="Black" onclick="selectColor(this)"></button>
-              </div>
-            </div>
-            <div class="product-card-footer">
-              <span class="product-price"><strong>$TBD</strong></span>
-              <button class="btn btn-gold btn-sm" onclick="addToCartFromCard(this,'Silence The Noise Hoodie','TBD')">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
+        </a>
+        <p class="footer-brand-tagline">Dennis Nickens AKA Spiritual Romeo, helping individuals and couples build the love they&rsquo;ve always wanted.</p>
+      </div>
+      <div class="footer-links">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="SpiritualRomeo_Assessment.html">Assessment</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="book.html">Book Now</a></li>
+          <li><a href="store.html">Store</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4 class="footer-heading">Contact</h4>
+        <p class="footer-contact-line"><span style="color:var(--color-gold);margin-right:0.4rem;">&#9993;</span><a href="mailto:dennis@dennisnickens.com">dennis@dennisnickens.com</a></p>
+        <p class="footer-contact-line"><span style="color:var(--color-gold);margin-right:0.4rem;">&#9670;</span>Indian Trail, NC</p>
       </div>
     </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+      <a href="book.html">Book a Free Consultation &rarr;</a>
+    </div>
+  </footer>
 
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand"><div class="nav-logo-wrap" style="margin:0 auto 16px"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div><p>Dennis Nickens AKA Spiritual Romeo — helping individuals and couples build the love they've always wanted.</p></div>
-  <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="SpiritualRomeo_Assessment.html">Assessment</a><a href="testimonials.html">Testimonials</a><a href="book.html">Book Now</a><a href="store.html">Store</a></div>
-  <div class="footer-col"><h4>Contact</h4><p>&#128231; dennis@dennisnickens.com</p><p>&#128205; Indian Trail, NC</p></div>
-</footer>
-<div class="footer-bottom"><span>&copy; 2026 Dennis Nickens — Spiritual Romeo. All rights reserved.</span><a href="book.html">Book a Free Consultation &rarr;</a></div>
-
-<script src="js/cart.js"></script>
-<script>
-window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
-function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
-function showSection(id){
-  document.querySelectorAll('.store-section').forEach(s=>s.style.display='none');
-  document.querySelectorAll('.store-tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('section-'+id).style.display='block';
-  event.target.classList.add('active');
-  window.scrollTo({top:document.getElementById('section-'+id).offsetTop-100,behavior:'smooth'});
-}
-const canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');let particles=[];
-function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);
-class Particle{constructor(){this.reset();}reset(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.radius=Math.random()*1.6+.3;this.alpha=Math.random()*.45+.08;const r=Math.random();this.color=r>.65?'#7C3AED':r>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;ctx.fill();ctx.globalAlpha=1;}}
-for(let i=0;i<80;i++)particles.push(new Particle());
-function drawLines(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<110){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle='#7C3AED';ctx.globalAlpha=(1-dist/110)*.10;ctx.lineWidth=.5;ctx.stroke();ctx.globalAlpha=1;}}}}
-function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw();});drawLines();requestAnimationFrame(animate);}animate();
-const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.style.animationPlayState='running';});},{threshold:.08});
-document.querySelectorAll('.animate-fadeup,.animate-fadeleft,.animate-faderight').forEach(el=>{el.style.animationPlayState='paused';observer.observe(el);});
-
-(function(){var cv=document.getElementById('stars-canvas');if(!cv)return;var cx=cv.getContext('2d');var W,H;function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}resize();window.addEventListener('resize',resize);var STAR_COUNT=900,stars=[];function randColor(){var r=Math.random();if(r<0.60)return{r:160+Math.round(Math.random()*95),g:180+Math.round(Math.random()*75),b:255};if(r<0.80)return{r:80+Math.round(Math.random()*60),g:220+Math.round(Math.random()*35),b:240+Math.round(Math.random()*15)};if(r<0.92)return{r:230+Math.round(Math.random()*25),g:230+Math.round(Math.random()*25),b:200+Math.round(Math.random()*55)};return{r:255,g:180+Math.round(Math.random()*55),b:80+Math.round(Math.random()*60)};}function makeStar(){var col=randColor();var sz=Math.random();var radius;if(sz<0.60)radius=0.3+Math.random()*0.5;else if(sz<0.85)radius=0.8+Math.random()*0.7;else if(sz<0.97)radius=1.5+Math.random()*1.0;else radius=2.5+Math.random()*1.5;return{x:Math.random()*W,y:Math.random()*H,r:radius,baseR:radius,col:col,phase:Math.random()*Math.PI*2,speed:0.004+Math.random()*0.018,vx:(Math.random()-0.5)*radius*0.012,vy:(Math.random()-0.5)*radius*0.008+0.003,baseAlpha:0.25+Math.random()*0.75,alpha:1.0,spike:radius>2.0};}for(var i=0;i<STAR_COUNT;i++)stars.push(makeStar());var nebulae=[];var ncols=[[80,15,15],[15,45,15],[15,15,60],[50,15,50],[15,40,50],[40,20,10]];for(var n=0;n<6;n++)nebulae.push({x:Math.random()*W,y:Math.random()*H,rx:80+Math.random()*200,ry:40+Math.random()*120,rot:Math.random()*Math.PI,col:ncols[n],alpha:0.04+Math.random()*0.06});function drawSpike(x,y,r,col,alpha){var len=r*5;var dirs=[[1,0],[0,1],[0.7,0.7],[-0.7,0.7]];for(var d=0;d<dirs.length;d++){var grd=cx.createLinearGradient(x-dirs[d][0]*len,y-dirs[d][1]*len,x+dirs[d][0]*len,y+dirs[d][1]*len);grd.addColorStop(0,'rgba('+col.r+','+col.g+','+col.b+',0)');grd.addColorStop(0.45,'rgba('+col.r+','+col.g+','+col.b+','+(alpha*0.25).toFixed(3)+')');grd.addColorStop(0.5,'rgba('+col.r+','+col.g+','+col.b+','+(alpha*0.7).toFixed(3)+')');grd.addColorStop(0.55,'rgba('+col.r+','+col.g+','+col.b+','+(alpha*0.25).toFixed(3)+')');grd.addColorStop(1,'rgba('+col.r+','+col.g+','+col.b+',0)');cx.beginPath();cx.moveTo(x-dirs[d][0]*len,y-dirs[d][1]*len);cx.lineTo(x+dirs[d][0]*len,y+dirs[d][1]*len);cx.strokeStyle=grd;cx.lineWidth=0.6;cx.stroke();}}var frame=0;function drawStars(){cx.clearRect(0,0,W,H);cx.fillStyle='#000005';cx.fillRect(0,0,W,H);for(var n=0;n<nebulae.length;n++){var nb=nebulae[n];cx.save();cx.translate(nb.x,nb.y);cx.rotate(nb.rot);var grd=cx.createRadialGradient(0,0,0,0,0,Math.max(nb.rx,nb.ry));grd.addColorStop(0,'rgba('+nb.col[0]+','+nb.col[1]+','+nb.col[2]+','+nb.alpha.toFixed(3)+')');grd.addColorStop(0.5,'rgba('+nb.col[0]+','+nb.col[1]+','+nb.col[2]+','+(nb.alpha*0.4).toFixed(3)+')');grd.addColorStop(1,'rgba('+nb.col[0]+','+nb.col[1]+','+nb.col[2]+',0)');cx.scale(nb.rx/Math.max(nb.rx,nb.ry),nb.ry/Math.max(nb.rx,nb.ry));cx.beginPath();cx.arc(0,0,Math.max(nb.rx,nb.ry),0,Math.PI*2);cx.fillStyle=grd;cx.fill();cx.restore();}for(var i=0;i<stars.length;i++){var s=stars[i];var tw=Math.sin(frame*s.speed+s.phase);s.alpha=s.baseAlpha*(0.55+0.45*((tw+1)/2));s.r=s.baseR*(0.75+0.25*((tw+1)/2));s.x+=s.vx;s.y+=s.vy;if(s.x<-5)s.x=W+5;if(s.x>W+5)s.x=-5;if(s.y>H+5)s.y=-5;if(s.y<-5)s.y=H+5;var col=s.col;if(s.baseR>0.8){var glowR=s.r*(s.baseR>2?6:4);var glow=cx.createRadialGradient(s.x,s.y,0,s.x,s.y,glowR);glow.addColorStop(0,'rgba('+col.r+','+col.g+','+col.b+','+(s.alpha*0.6).toFixed(3)+')');glow.addColorStop(0.3,'rgba('+col.r+','+col.g+','+col.b+','+(s.alpha*0.15).toFixed(3)+')');glow.addColorStop(1,'rgba('+col.r+','+col.g+','+col.b+',0)');cx.beginPath();cx.arc(s.x,s.y,glowR,0,Math.PI*2);cx.fillStyle=glow;cx.fill();}cx.beginPath();cx.arc(s.x,s.y,Math.max(0.2,s.r),0,Math.PI*2);cx.fillStyle='rgba('+col.r+','+col.g+','+col.b+','+s.alpha.toFixed(3)+')';cx.fill();if(s.spike&&s.alpha>0.5)drawSpike(s.x,s.y,s.r,col,s.alpha);}frame++;requestAnimationFrame(drawStars);}drawStars();})()
-</script>
+  <script>
+    (function makeStars(){
+      const c = document.getElementById('stars');
+      const N = 70;
+      for (let i = 0; i < N; i++){
+        const s = document.createElement('div');
+        s.className = 'star';
+        const size = Math.random() * 2 + 0.5;
+        s.style.width = size + 'px'; s.style.height = size + 'px';
+        s.style.left = (Math.random() * 100) + '%'; s.style.top = (Math.random() * 100) + '%';
+        s.style.animationDelay = (Math.random() * 4) + 's';
+        s.style.animationDuration = (3 + Math.random() * 4) + 's';
+        c.appendChild(s);
+      }
+    })();
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+        toggle.textContent = open ? '✕' : '☰';
+      });
+      menu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => { menu.classList.remove('open'); toggle.setAttribute('aria-expanded', false); toggle.textContent = '☰'; });
+      });
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
 </body>
-</html>#stars-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:1.0;}
-
+</html>

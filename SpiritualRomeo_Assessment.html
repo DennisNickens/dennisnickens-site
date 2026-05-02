@@ -4,262 +4,152 @@
   <meta charset="UTF-8" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="The Alignment Assessment. Discover where you stand in your relationships. A 9-minute assessment by Dennis Nickens, Spiritual Romeo." />
+  <meta name="description" content="The Alignment Assessment by Dennis Nickens, Spiritual Romeo. Discover who you are, how you're wired, and the careers and relationships you're built for, with biblical wisdom that meets you where you are." />
   <title>The Alignment Assessment | Dennis Nickens, Spiritual Romeo</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --color-bg-deep:    #07071a;
-      --color-bg-mid:     #0f0a2e;
-      --color-bg-soft:    #1a1340;
-      --color-ink:        #f5f1e8;
-      --color-ink-soft:   rgba(245, 241, 232, 0.78);
-      --color-ink-faint:  rgba(245, 241, 232, 0.5);
-      --color-gold:       #d4a957;
-      --color-gold-soft:  #b08838;
-      --color-purple:     #7c3aed;
-      --color-violet:     #a855f7;
-      --color-cyan:       #06b6d4;
-      --color-line:       rgba(212, 169, 87, 0.18);
-      --color-line-soft:  rgba(245, 241, 232, 0.08);
+      --color-bg-deep: #07071a;
+      --color-bg-mid: #0f0a2e;
+      --color-bg-soft: #1a1340;
+      --color-ink: #f5f1e8;
+      --color-ink-soft: rgba(245, 241, 232, 0.78);
+      --color-ink-faint: rgba(245, 241, 232, 0.5);
+      --color-gold: #d4a957;
+      --color-gold-soft: #b08838;
+      --color-line: rgba(212, 169, 87, 0.18);
+      --color-line-soft: rgba(245, 241, 232, 0.08);
       --font-display: 'Playfair Display', Georgia, serif;
-      --font-serif:   'Cormorant Garamond', Georgia, serif;
-      --font-sans:    'Inter', -apple-system, sans-serif;
-      --font-label:   'Montserrat', -apple-system, sans-serif;
-      --shadow-card:  0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 169, 87, 0.15) inset;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, sans-serif;
+      --font-label: 'Montserrat', -apple-system, sans-serif;
+      --shadow-card: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 169, 87, 0.15) inset;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-sans);
-      color: var(--color-ink);
-      background: var(--color-bg-deep);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-    .starfield {
-      position: fixed; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse at 20% 10%, rgba(124, 58, 237, 0.18), transparent 50%),
-        radial-gradient(ellipse at 80% 60%, rgba(6, 182, 212, 0.12), transparent 55%),
-        radial-gradient(ellipse at 50% 100%, rgba(212, 169, 87, 0.08), transparent 60%),
-        linear-gradient(180deg, #07071a 0%, #0f0a2e 50%, #07071a 100%);
-      pointer-events: none;
-    }
-    .stars { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.9; }
+    body { font-family: var(--font-sans); color: var(--color-ink); background: var(--color-bg-deep); line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+
+    .bg-wash { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse at 20% 10%, rgba(124, 58, 237, 0.18), transparent 50%), radial-gradient(ellipse at 80% 60%, rgba(6, 182, 212, 0.10), transparent 55%), radial-gradient(ellipse at 50% 100%, rgba(212, 169, 87, 0.10), transparent 60%), linear-gradient(180deg, #07071a 0%, #0f0a2e 50%, #07071a 100%); pointer-events: none; }
+    .stars { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.7; }
     .star { position: absolute; background: #fff; border-radius: 50%; animation: twinkle 4s ease-in-out infinite; }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50%      { opacity: 1;   transform: scale(1.2); }
-    }
-    .nav {
-      position: relative; z-index: 10;
-      padding: 1.5rem 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      backdrop-filter: blur(10px);
-      background: rgba(7, 7, 26, 0.6);
-      border-bottom: 1px solid var(--color-line);
-    }
+    @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+
+    .nav { position: sticky; top: 0; z-index: 50; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(14px); background: rgba(7, 7, 26, 0.7); border-bottom: 1px solid var(--color-line); }
     .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--color-ink); }
-    .nav-crown {
-      width: 52px; height: 52px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      filter: drop-shadow(0 0 14px rgba(212, 169, 87, 0.45));
-    }
+    .nav-crown { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; filter: drop-shadow(0 0 14px rgba(212, 169, 87, 0.45)); }
     .nav-crown img { width: 100%; height: 100%; object-fit: contain; }
     .nav-text { display: flex; flex-direction: column; line-height: 1.2; }
-    .nav-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; }
-    .nav-sub  { font-family: var(--font-label); font-size: 0.65rem; letter-spacing: 0.18em; color: var(--color-gold); text-transform: uppercase; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-family: var(--font-label); font-size: 0.8rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--color-ink-soft); text-decoration: none; transition: color 0.2s;
-    }
+    .nav-name { font-family: 'Allura', cursive; font-size: 1.85rem; font-weight: 400; color: var(--color-gold); line-height: 1; }
+    .nav-sub { font-family: var(--font-label); font-size: 0.65rem; letter-spacing: 0.18em; color: var(--color-gold); text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { font-family: var(--font-label); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-ink-soft); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--color-gold); }
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav { padding: 1rem; }
-    }
-    .page {
-      position: relative; z-index: 5;
-      min-height: calc(100vh - 100px);
-      display: flex; flex-direction: column; align-items: center;
-      padding: 3rem 1.5rem 5rem;
-    }
-    .container { width: 100%; max-width: 760px; }
-    .intro { padding: 2rem 0; }
-    .intro-body {
-      display: flex;
-      align-items: flex-start;
-      gap: 2.5rem;
-    }
-    .intro-photo {
-      width: 220px;
-      flex-shrink: 0;
-      border-radius: 10px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.45);
-    }
-    .intro-text {
-      flex: 1;
-      text-align: center;
-    }
-    @media (max-width: 640px) {
-      .intro-body { flex-direction: column; align-items: center; }
-      .intro-photo { width: 160px; }
-    }
-    .intro-eyebrow {
-      font-family: var(--font-label); font-size: 0.75rem;
-      letter-spacing: 0.32em; text-transform: uppercase;
-      color: var(--color-gold); margin-bottom: 1.5rem;
-    }
-    .intro-eyebrow::before, .intro-eyebrow::after { content: "✦"; margin: 0 0.7rem; color: var(--color-gold); }
-    .intro-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 400; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.01em;
-    }
-    .intro-title em {
-      font-style: italic;
-      background: linear-gradient(135deg, var(--color-gold), #f0d490);
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .intro-lede {
-      font-family: var(--font-serif);
-      font-size: clamp(1.15rem, 2vw, 1.4rem);
-      font-style: italic; color: var(--color-ink-soft);
-      max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.5;
-    }
-    .intro-stats { display: flex; justify-content: center; gap: 3rem; margin: 3rem 0; flex-wrap: wrap; }
-    .intro-stat { text-align: center; }
-    .intro-stat-num { display: block; font-family: var(--font-display); font-size: 2.2rem; color: var(--color-gold); font-weight: 700; }
-    .intro-stat-label { font-family: var(--font-label); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink-faint); }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      gap: 0.6rem; padding: 1.1rem 2.2rem;
-      font-family: var(--font-label); font-size: 0.85rem; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
-      border: none; border-radius: 4px; cursor: pointer;
-      transition: all 0.3s ease; position: relative; overflow: hidden;
-    }
-    .btn--gold {
-      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-soft));
-      color: var(--color-bg-deep);
-      box-shadow: 0 8px 24px rgba(212, 169, 87, 0.3);
-    }
+    .nav-toggle { display: none; background: transparent; border: 1px solid var(--color-line); color: var(--color-ink); padding: 0.5rem 0.7rem; border-radius: 4px; cursor: pointer; font-size: 1.1rem; }
+    @media (max-width: 900px) { .nav-links { display: none; } .nav-toggle { display: block; } }
+    .mobile-menu { display: none; flex-direction: column; background: rgba(7, 7, 26, 0.95); backdrop-filter: blur(14px); border-bottom: 1px solid var(--color-line); padding: 1rem 2rem 1.5rem; position: sticky; top: 70px; z-index: 49; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { padding: 0.85rem 0; color: var(--color-ink-soft); text-decoration: none; font-family: var(--font-label); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid var(--color-line-soft); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    main { position: relative; z-index: 5; }
+    .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .hero { position: relative; padding: clamp(3rem, 7vw, 5rem) 0 clamp(2rem, 4vw, 3rem); text-align: center; }
+    .hero-eyebrow { font-family: var(--font-label); font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 1.5rem; }
+    .hero-eyebrow::before, .hero-eyebrow::after { content: "✦"; margin: 0 0.7rem; color: var(--color-gold); }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.6rem, 7vw, 5rem); font-weight: 400; line-height: 1.05; max-width: 980px; margin: 0 auto 1rem; letter-spacing: -0.02em; }
+    .hero-title em { font-style: italic; background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-sub { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 400; font-style: italic; color: var(--color-gold); margin-bottom: 2rem; }
+    .hero-lede { font-family: var(--font-serif); font-size: clamp(1.15rem, 2vw, 1.4rem); font-style: italic; color: var(--color-ink-soft); max-width: 720px; margin: 0 auto 2.5rem; line-height: 1.5; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; padding: 1.1rem 2.2rem; font-family: var(--font-label); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border: none; border-radius: 4px; cursor: pointer; transition: all 0.3s ease; color: var(--color-bg-deep); }
+    .btn--gold { background: linear-gradient(135deg, var(--color-gold), var(--color-gold-soft)); box-shadow: 0 8px 24px rgba(212, 169, 87, 0.3); }
     .btn--gold:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(212, 169, 87, 0.45); }
-    .btn--gold:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
     .btn--ghost { background: transparent; color: var(--color-ink-soft); border: 1px solid var(--color-line); }
     .btn--ghost:hover { color: var(--color-gold); border-color: var(--color-gold); }
     .btn-arrow { display: inline-block; transition: transform 0.3s; }
     .btn:hover .btn-arrow { transform: translateX(4px); }
-    .progress-wrap { margin-bottom: 3rem; display: flex; flex-direction: column; gap: 0.9rem; }
-    .progress-meta {
-      display: flex; justify-content: space-between;
-      font-family: var(--font-label); font-size: 0.72rem;
-      letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-ink-faint);
-    }
-    .progress-meta strong { color: var(--color-gold); font-weight: 600; }
-    .progress-bar { height: 3px; width: 100%; background: var(--color-line-soft); border-radius: 2px; overflow: hidden; }
-    .progress-fill {
-      height: 100%; background: linear-gradient(90deg, var(--color-gold), #f0d490);
-      width: 0%; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 0 12px rgba(212, 169, 87, 0.5);
-    }
-    .q-card {
-      background: linear-gradient(180deg, rgba(26, 19, 64, 0.6), rgba(15, 10, 46, 0.4));
-      border: 1px solid var(--color-line); border-radius: 12px;
-      padding: clamp(2rem, 5vw, 3.5rem);
-      box-shadow: var(--shadow-card); backdrop-filter: blur(12px);
-      animation: cardIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    @keyframes cardIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    .q-tag {
-      display: inline-block; font-family: var(--font-label);
-      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--color-gold); padding: 0.35rem 0.85rem;
-      border: 1px solid var(--color-line); border-radius: 100px; margin-bottom: 1.5rem;
-    }
-    .q-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
-      line-height: 1.3; font-weight: 400; color: var(--color-ink);
-      margin-bottom: 0.75rem; letter-spacing: -0.005em;
-    }
-    .q-desc {
-      font-family: var(--font-serif); font-size: 1.1rem;
-      font-style: italic; color: var(--color-ink-soft);
-      margin-bottom: 2.25rem; line-height: 1.5;
-    }
-    .options { display: flex; flex-direction: column; gap: 0.75rem; }
-    .opt {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 1.15rem 1.4rem;
-      background: rgba(7, 7, 26, 0.4);
-      border: 1px solid var(--color-line-soft); border-radius: 8px;
-      cursor: pointer; transition: all 0.25s ease;
-      font-family: var(--font-sans); font-size: 1rem;
-      color: var(--color-ink); text-align: left; width: 100%;
-    }
-    .opt:hover { border-color: var(--color-gold); background: rgba(212, 169, 87, 0.06); transform: translateX(4px); }
-    .opt.selected { border-color: var(--color-gold); background: rgba(212, 169, 87, 0.1); box-shadow: 0 0 0 1px var(--color-gold) inset; }
-    .opt-marker { width: 22px; height: 22px; border: 2px solid var(--color-line); border-radius: 50%; flex-shrink: 0; position: relative; transition: all 0.25s; }
-    .opt.selected .opt-marker { border-color: var(--color-gold); }
-    .opt.selected .opt-marker::after { content: ""; position: absolute; inset: 3px; background: var(--color-gold); border-radius: 50%; }
-    .opt-text { flex: 1; }
-    .nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; gap: 1rem; }
-    @media (max-width: 540px) { .nav-row { flex-direction: column-reverse; } .nav-row .btn { width: 100%; } }
-    .result-card {
-      background: linear-gradient(180deg, rgba(26, 19, 64, 0.7), rgba(15, 10, 46, 0.5));
-      border: 1px solid var(--color-gold); border-radius: 12px;
-      padding: clamp(2rem, 5vw, 3.5rem);
-      box-shadow: var(--shadow-card), 0 0 60px rgba(212, 169, 87, 0.15);
-      text-align: center;
-    }
-    .result-eyebrow { font-family: var(--font-label); font-size: 0.72rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 1.25rem; }
-    .result-archetype { font-family: var(--font-display); font-style: italic; font-size: clamp(2rem, 5vw, 3rem); color: var(--color-ink); margin-bottom: 1rem; letter-spacing: -0.01em; }
-    .result-archetype em { font-style: italic; background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-    .result-score-ring {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 140px; height: 140px; border-radius: 50%;
-      background: conic-gradient(var(--color-gold) calc(var(--score) * 1%), rgba(245,241,232,0.1) 0%);
-      margin: 1.5rem auto 2rem; position: relative;
-    }
-    .result-score-ring::before { content: ""; position: absolute; inset: 8px; background: var(--color-bg-deep); border-radius: 50%; }
-    .result-score-num { position: relative; font-family: var(--font-display); font-size: 2.5rem; color: var(--color-gold); font-weight: 700; }
-    .result-summary { font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; color: var(--color-ink-soft); line-height: 1.6; max-width: 580px; margin: 0 auto 2rem; }
-    .result-insights { text-align: left; margin: 2rem 0; padding: 1.5rem; background: rgba(7, 7, 26, 0.5); border-left: 3px solid var(--color-gold); border-radius: 4px; }
-    .result-insights h3 { font-family: var(--font-label); font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 1rem; }
-    .result-insights ul { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
-    .result-insights li { font-family: var(--font-serif); font-size: 1.05rem; color: var(--color-ink-soft); padding-left: 1.5rem; position: relative; line-height: 1.5; }
-    .result-insights li::before { content: "✦"; position: absolute; left: 0; color: var(--color-gold); }
-    .result-cta { margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .capture { margin-top: 2rem; padding: 2rem; background: rgba(212, 169, 87, 0.06); border: 1px dashed var(--color-line); border-radius: 10px; }
-    .capture h3 { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--color-ink); }
-    .capture p { font-family: var(--font-serif); font-style: italic; color: var(--color-ink-soft); margin-bottom: 1.25rem; }
-    .capture-form { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .capture-input { flex: 1; min-width: 240px; padding: 0.95rem 1.2rem; background: rgba(7, 7, 26, 0.6); border: 1px solid var(--color-line); border-radius: 4px; color: var(--color-ink); font-family: var(--font-sans); font-size: 1rem; }
-    .capture-input:focus { outline: none; border-color: var(--color-gold); }
-    .footer { position: relative; z-index: 5; padding: 2rem 1.5rem; text-align: center; border-top: 1px solid var(--color-line-soft); font-family: var(--font-label); font-size: 0.75rem; letter-spacing: 0.1em; color: var(--color-ink-faint); }
-    .footer a { color: var(--color-gold); text-decoration: none; }
-    .hidden { display: none !important; }
+
+    .section-eyebrow { font-family: var(--font-label); font-size: 0.75rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 1.25rem; text-align: center; }
+    .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 400; line-height: 1.2; text-align: center; max-width: 820px; margin: 0 auto 1rem; letter-spacing: -0.005em; }
+    .section-title em { font-style: italic; background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .section-sub { font-family: var(--font-serif); font-style: italic; font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--color-ink-soft); text-align: center; max-width: 720px; margin: 0 auto 3rem; line-height: 1.5; }
+
+    /* Stories grid */
+    .stories-section { padding: 2rem 0 3rem; }
+    .stories-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 1080px; margin: 0 auto; }
+    @media (max-width: 760px) { .stories-grid { grid-template-columns: 1fr; } }
+    .story-card { padding: clamp(1.75rem, 3vw, 2.5rem); background: linear-gradient(180deg, rgba(26, 19, 64, 0.55), rgba(15, 10, 46, 0.35)); border: 1px solid var(--color-line); border-radius: 12px; backdrop-filter: blur(8px); transition: all 0.3s; }
+    .story-card:hover { transform: translateY(-3px); border-color: var(--color-gold); }
+    .story-label { font-family: var(--font-label); font-size: 0.72rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 0.85rem; }
+    .story-headline { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 1.75rem); font-weight: 700; line-height: 1.2; color: var(--color-ink); margin-bottom: 1rem; }
+    .story-headline em { font-style: italic; background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .story-body { font-family: var(--font-sans); font-size: 1.05rem; color: var(--color-ink-soft); line-height: 1.6; }
+
+    /* Scripture callout */
+    .scripture-section { padding: 3rem 0; }
+    .scripture-card { max-width: 820px; margin: 0 auto; padding: clamp(2.5rem, 5vw, 4rem); background: linear-gradient(180deg, rgba(212, 169, 87, 0.08), rgba(15, 10, 46, 0.4)); border: 1px solid var(--color-gold); border-radius: 12px; box-shadow: var(--shadow-card); backdrop-filter: blur(12px); text-align: center; position: relative; }
+    .scripture-mark { font-family: var(--font-display); font-size: 5rem; line-height: 0.5; color: var(--color-gold); opacity: 0.4; margin-bottom: 0.5rem; }
+    .scripture-text { font-family: var(--font-serif); font-style: italic; font-size: clamp(1.4rem, 3vw, 1.95rem); line-height: 1.4; color: var(--color-ink); margin-bottom: 1.25rem; }
+    .scripture-ref { font-family: var(--font-label); font-size: 0.8rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 2rem; }
+    .scripture-divider { width: 60px; height: 1px; background: var(--color-gold); margin: 0 auto 2rem; opacity: 0.5; }
+    .scripture-take { font-family: var(--font-sans); font-size: 1.1rem; color: var(--color-ink-soft); line-height: 1.6; max-width: 620px; margin: 0 auto; }
+
+    /* Promise */
+    .promise-section { padding: 3rem 0; text-align: center; }
+    .promise-quote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.6rem, 4vw, 2.6rem); line-height: 1.3; color: var(--color-ink); max-width: 900px; margin: 0 auto 2rem; letter-spacing: -0.01em; }
+    .promise-quote em { background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .promise-sub { font-family: var(--font-serif); font-style: italic; font-size: 1.2rem; color: var(--color-gold); }
+
+    /* Career bonus */
+    .career-section { padding: 3rem 0; }
+    .career-card { max-width: 920px; margin: 0 auto; padding: clamp(2rem, 4vw, 3rem); background: linear-gradient(135deg, rgba(124, 58, 237, 0.12), rgba(212, 169, 87, 0.08)); border: 1px solid var(--color-gold); border-radius: 12px; backdrop-filter: blur(8px); display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; }
+    @media (max-width: 700px) { .career-card { grid-template-columns: 1fr; text-align: center; } }
+    .career-icon { width: 72px; height: 72px; color: var(--color-gold); flex-shrink: 0; }
+    .career-icon svg { width: 100%; height: 100%; }
+    .career-headline { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 700; color: var(--color-ink); margin-bottom: 0.5rem; }
+    .career-headline em { font-style: italic; background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .career-body { font-family: var(--font-sans); font-size: 1.05rem; color: var(--color-ink-soft); line-height: 1.55; }
+
+    /* Final CTA */
+    .final-cta-section { padding: 3rem 0 5rem; text-align: center; }
+    .final-cta-actions { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem; }
+    .stats-row { display: inline-flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem; }
+    .stat-item { text-align: center; }
+    .stat-num { display: block; font-family: var(--font-display); font-size: 1.8rem; color: var(--color-gold); font-weight: 700; line-height: 1; }
+    .stat-label { font-family: var(--font-label); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink-faint); margin-top: 0.4rem; }
+
+    /* Footer */
+    .footer { position: relative; z-index: 5; padding: 4rem 1.5rem 2rem; border-top: 1px solid var(--color-line); background: rgba(7, 7, 26, 0.5); }
+    .footer-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
+    @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .footer-brand-tagline { font-family: var(--font-serif); font-style: italic; color: var(--color-ink-soft); margin-top: 1rem; max-width: 360px; line-height: 1.5; }
+    .footer-heading { font-family: var(--font-label); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 1.25rem; }
+    .footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer ul a { font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-ink-soft); text-decoration: none; transition: color 0.2s; }
+    .footer ul a:hover { color: var(--color-gold); }
+    .footer-contact-line { font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-ink-soft); margin-bottom: 0.6rem; }
+    .footer-contact-line a { color: var(--color-ink-soft); text-decoration: none; }
+    .footer-contact-line a:hover { color: var(--color-gold); }
+    .footer-bottom { max-width: 1180px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid var(--color-line-soft); display: flex; justify-content: space-between; align-items: center; font-family: var(--font-label); font-size: 0.75rem; letter-spacing: 0.1em; color: var(--color-ink-faint); flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom a { color: var(--color-gold); text-decoration: none; font-weight: 600; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
-
-  <div class="starfield" aria-hidden="true"></div>
+  <div class="bg-wash" aria-hidden="true"></div>
   <div class="stars" id="stars" aria-hidden="true"></div>
 
   <nav class="nav" aria-label="Main">
     <a href="index.html" class="nav-logo">
-      <div class="nav-crown"><img src="sr-logo-transparent.png" alt="SR Spiritual Romeo crest" /></div>
+      <div class="nav-crown"><img src="https://dennisnickens.com/sr-logo-transparent.png" alt="SR Spiritual Romeo crest" /></div>
       <div class="nav-text">
         <span class="nav-name">Dennis Nickens</span>
         <span class="nav-sub">AKA Spiritual Romeo</span>
@@ -274,445 +164,212 @@
       <li><a href="book.html">Book Now</a></li>
       <li><a href="store.html">Store</a></li>
     </ul>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle menu">&#9776;</button>
   </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="SpiritualRomeo_Assessment.html">Assessment</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="community.html">Community</a>
+    <a href="book.html">Book Now</a>
+    <a href="store.html">Store</a>
+  </div>
 
-  <main class="page">
-    <div class="container">
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-eyebrow">The Alignment Assessment</div>
+        <h1 class="hero-title reveal">The Person in <em>the Mirror</em></h1>
+        <p class="hero-sub reveal">Is the only person you can change.</p>
+        <p class="hero-lede reveal">
+          Understand who you are. Show up every day with what you learn. With patience and consistency, you will reach your goals.
+        </p>
+        <a href="#begin" class="btn btn--gold">Begin Your Assessment <span class="btn-arrow">&rarr;</span></a>
+      </div>
+    </section>
 
-      <section id="intro" class="intro">
-        <div class="intro-body">
-          <img src="images/dennis-assessment-sidebar.jpg"
-               alt="Dennis Nickens, Spiritual Romeo"
-               class="intro-photo" />
-          <div class="intro-text">
-        <div class="intro-eyebrow">The Alignment Assessment</div>
-        <h1 class="intro-title">
-          Where do <em>you</em> stand<br/>
-          in your relationships?
-        </h1>
-        <p class="intro-lede">
-          Twenty honest questions. Nine quiet minutes. One clear-eyed look at the patterns running your love life, and what to do about them.
+    <!-- 4 STORIES -->
+    <section class="stories-section">
+      <div class="container">
+        <div class="section-eyebrow reveal">Why This Matters</div>
+        <h2 class="section-title reveal">Most relationships don&rsquo;t fail. <em>They&rsquo;re misunderstood.</em></h2>
+        <p class="section-sub reveal">
+          Same fight, same frustration, same wall. The problem isn&rsquo;t the person across from you. It&rsquo;s that nobody taught you how to read them.
         </p>
 
-        <div class="intro-stats">
-          <div class="intro-stat">
-            <span class="intro-stat-num">20</span>
-            <span class="intro-stat-label">Questions</span>
-          </div>
-          <div class="intro-stat">
-            <span class="intro-stat-num">~9</span>
-            <span class="intro-stat-label">Minutes</span>
-          </div>
-          <div class="intro-stat">
-            <span class="intro-stat-num">100%</span>
-            <span class="intro-stat-label">Confidential</span>
-          </div>
+        <div class="stories-grid">
+
+          <article class="story-card reveal">
+            <div class="story-label">Marriage</div>
+            <h3 class="story-headline">You keep arguing about <em>the same thing.</em></h3>
+            <p class="story-body">It&rsquo;s not about them. You don&rsquo;t know how to talk to them in a way that actually lands. Until you learn how they hear you, you&rsquo;ll keep losing the same argument every Tuesday night.</p>
+          </article>
+
+          <article class="story-card reveal">
+            <div class="story-label">Teaching</div>
+            <h3 class="story-headline">Your students keep <em>failing.</em></h3>
+            <p class="story-body">Not because they can&rsquo;t learn. They learn by doing. You keep handing them books. Match how you teach to how THEY learn, and watch what happens.</p>
+          </article>
+
+          <article class="story-card reveal">
+            <div class="story-label">Leadership</div>
+            <h3 class="story-headline">You and your team <em>keep bumping heads.</em></h3>
+            <p class="story-body">You think they&rsquo;re not pulling their weight. They think you don&rsquo;t listen. The truth is you&rsquo;re wired to push and they&rsquo;re wired to consider. Until you understand how they actually receive direction, you&rsquo;ll keep losing the room and wondering why nobody followed you out.</p>
+          </article>
+
+          <article class="story-card reveal">
+            <div class="story-label">Faith</div>
+            <h3 class="story-headline">You&rsquo;re doing what <em>seems right.</em></h3>
+            <p class="story-body">Scripture says there&rsquo;s a way that seems right to a man, but in the end leads somewhere else. Understand the people you&rsquo;re engaging with, and you stop walking the wrong way with confidence.</p>
+          </article>
+
         </div>
+      </div>
+    </section>
 
-        <button class="btn btn--gold" id="startBtn">
-          Begin the Assessment <span class="btn-arrow">→</span>
-        </button>
+    <!-- SCRIPTURE -->
+    <section class="scripture-section">
+      <div class="container">
+        <div class="scripture-card reveal">
+          <div class="scripture-mark" aria-hidden="true">&ldquo;</div>
+          <p class="scripture-text">There is a way that seems right to a man, but in the end it leads to death.</p>
+          <div class="scripture-ref">Proverbs 14:12</div>
+          <div class="scripture-divider"></div>
+          <p class="scripture-take">
+            Understanding more about who you are, and who you&rsquo;re engaging with, is how you walk the way that&rsquo;s actually right. Not just the way that seems right.
+          </p>
+        </div>
+      </div>
+    </section>
 
-        <p style="margin-top:1.5rem;font-family:var(--font-serif);font-style:italic;color:var(--color-ink-faint);font-size:0.95rem;">
-          Your answers stay private. You'll receive a personal alignment report at the end.
+    <!-- PROMISE -->
+    <section class="promise-section">
+      <div class="container">
+        <p class="promise-quote reveal">
+          &ldquo;Through patience and consistency, <em>you will reach your goals.</em>&rdquo;
         </p>
-          </div><!-- /.intro-text -->
-        </div><!-- /.intro-body -->
-      </section>
+        <p class="promise-sub reveal">Not because you fixed them. Because you finally understood yourself.</p>
+      </div>
+    </section>
 
-      <section id="quiz" class="hidden">
-        <div class="progress-wrap">
-          <div class="progress-meta">
-            <span>Question <strong id="qNum">1</strong> of <strong id="qTotal">20</strong></span>
-            <span><strong id="qTime">~9</strong> min remaining</span>
+    <!-- CAREER BONUS -->
+    <section class="career-section">
+      <div class="container">
+        <div class="career-card reveal">
+          <div class="career-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="7" width="18" height="13" rx="2"/>
+              <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              <path d="M3 13h18"/>
+              <path d="M12 11v4"/>
+            </svg>
           </div>
-          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-        </div>
-
-        <article class="q-card" id="qCard">
-          <div class="q-tag" id="qTag">Section 01: Self-Awareness</div>
-          <h2 class="q-title" id="qTitle">Loading question...</h2>
-          <p class="q-desc" id="qDesc"></p>
-          <div class="options" id="qOptions" role="radiogroup"></div>
-
-          <div class="nav-row">
-            <button class="btn btn--ghost" id="prevBtn">← Back</button>
-            <button class="btn btn--gold" id="nextBtn" disabled>
-              Next <span class="btn-arrow">→</span>
-            </button>
-          </div>
-        </article>
-      </section>
-
-      <section id="results" class="hidden">
-        <div class="result-card">
-          <div class="result-eyebrow">Your Alignment Report</div>
-          <h2 class="result-archetype" id="resultArchetype">Your archetype...</h2>
-
-          <div class="result-score-ring" id="scoreRing" style="--score: 0;">
-            <span class="result-score-num" id="scoreNum">0</span>
-          </div>
-
-          <p class="result-summary" id="resultSummary"></p>
-
-          <div class="result-insights">
-            <h3>What this means for you</h3>
-            <ul id="resultInsights"></ul>
-          </div>
-
-          <div class="capture">
-            <h3>Want the full breakdown?</h3>
-            <p>Get your detailed alignment report &amp; a 7-day clarity guide, free, sent straight to your inbox.</p>
-            <form class="capture-form" id="captureForm" novalidate>
-              <input type="email" class="capture-input" id="captureEmail" placeholder="your@email.com" required aria-label="Email" />
-              <button type="submit" class="btn btn--gold">Send My Report →</button>
-            </form>
-          </div>
-
-          <div class="result-cta">
-            <a href="book.html" class="btn btn--gold">Book a Free Consultation →</a>
-            <button class="btn btn--ghost" id="restartBtn">Retake Assessment</button>
+          <div>
+            <h3 class="career-headline">Plus: Discover the work <em>you&rsquo;re built for.</em></h3>
+            <p class="career-body">Your assessment doesn&rsquo;t just reveal who you are in your relationships. Based on how you&rsquo;re wired, you&rsquo;ll get career field recommendations that match your design. Stop surviving in roles that drain you. Start thriving in work you were made for.</p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-    </div>
+    <!-- FINAL CTA -->
+    <section class="final-cta-section" id="begin">
+      <div class="container">
+        <div class="section-eyebrow reveal">Ready When You Are</div>
+        <h2 class="section-title reveal">Begin Your <em>Alignment Assessment</em></h2>
+        <p class="section-sub reveal">
+          Five proven ways to understand yourself, one personalized report, and biblical wisdom that meets you where you are. Get the clarity you&rsquo;ve been looking for.
+        </p>
+        <div class="final-cta-actions reveal">
+          <a href="#" class="btn btn--gold">Start the Assessment <span class="btn-arrow">&rarr;</span></a>
+          <a href="book.html" class="btn btn--ghost">Book a Free Consultation</a>
+        </div>
+        <div class="stats-row reveal">
+          <div class="stat-item">
+            <span class="stat-num">5</span>
+            <span class="stat-label">Tools In One</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">1</span>
+            <span class="stat-label">Personalized Report</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Confidential</span>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer">
-    © 2026 Dennis Nickens • Spiritual Romeo &nbsp;·&nbsp;
-    <a href="mailto:dennis@dennisnickens.com">dennis@dennisnickens.com</a> &nbsp;·&nbsp;
-    <a href="index.html">Return Home</a>
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-crown"><img src="https://dennisnickens.com/sr-logo-transparent.png" alt="SR Spiritual Romeo crest" /></div>
+          <div class="nav-text">
+            <span class="nav-name">Dennis Nickens</span>
+            <span class="nav-sub">AKA Spiritual Romeo</span>
+          </div>
+        </a>
+        <p class="footer-brand-tagline">Dennis Nickens AKA Spiritual Romeo, helping individuals and couples build the love they&rsquo;ve always wanted.</p>
+      </div>
+      <div class="footer-links">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="SpiritualRomeo_Assessment.html">Assessment</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="book.html">Book Now</a></li>
+          <li><a href="store.html">Store</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4 class="footer-heading">Contact</h4>
+        <p class="footer-contact-line"><span style="color:var(--color-gold);margin-right:0.4rem;">&#9993;</span><a href="mailto:dennis@dennisnickens.com">dennis@dennisnickens.com</a></p>
+        <p class="footer-contact-line"><span style="color:var(--color-gold);margin-right:0.4rem;">&#9670;</span>Indian Trail, NC</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+      <a href="book.html">Book a Free Consultation &rarr;</a>
+    </div>
   </footer>
 
   <script>
     (function makeStars(){
       const c = document.getElementById('stars');
-      const N = 80;
+      const N = 70;
       for (let i = 0; i < N; i++){
         const s = document.createElement('div');
         s.className = 'star';
         const size = Math.random() * 2 + 0.5;
-        s.style.width  = size + 'px';
-        s.style.height = size + 'px';
-        s.style.left = (Math.random() * 100) + '%';
-        s.style.top  = (Math.random() * 100) + '%';
+        s.style.width = size + 'px'; s.style.height = size + 'px';
+        s.style.left = (Math.random() * 100) + '%'; s.style.top = (Math.random() * 100) + '%';
         s.style.animationDelay = (Math.random() * 4) + 's';
         s.style.animationDuration = (3 + Math.random() * 4) + 's';
         c.appendChild(s);
       }
     })();
-
-    const QUESTIONS = [
-      { section: "Section 01: Self-Awareness", title: "When a relationship ends, what's your first instinct?", desc: "Be honest. There are no wrong answers, only useful ones.",
-        options: [
-          { text: "Replay every conversation looking for what I did wrong.", score: 1 },
-          { text: "Blame the other person and move on quickly.", score: 1 },
-          { text: "Sit with the pain, then look for the pattern.", score: 4 },
-          { text: "Get into the next thing fast. Staying busy helps.", score: 2 }
-        ]
-      },
-      { section: "Section 01: Self-Awareness", title: "How clearly can you name what you actually need from a partner?", desc: "Not what sounds good. What you actually require to feel met.",
-        options: [
-          { text: "Crystal clear. I could write it on an index card.", score: 4 },
-          { text: "I have a general sense, but it's fuzzy.", score: 2 },
-          { text: "I know what I don't want, but not what I do.", score: 1 },
-          { text: "Honestly? I've never really thought about it.", score: 0 }
-        ]
-      },
-      { section: "Section 01: Self-Awareness", title: "When you're hurt by someone you love, what do you do?", desc: "Notice your default. The move you make before you think.",
-        options: [
-          { text: "Withdraw and go quiet until they figure it out.", score: 1 },
-          { text: "Lash out, then regret it later.", score: 1 },
-          { text: "Name it directly, even if my voice shakes.", score: 4 },
-          { text: "Pretend it's fine and bury it.", score: 0 }
-        ]
-      },
-      { section: "Section 01: Self-Awareness", title: "How well do you know your own attachment style?", desc: "Anxious, avoidant, secure, disorganized. Recognize any of these in yourself?",
-        options: [
-          { text: "I know my style and how it shows up under stress.", score: 4 },
-          { text: "I've heard the terms but don't really apply them.", score: 2 },
-          { text: "I think I'm secure, but I'm not sure.", score: 2 },
-          { text: "First time hearing about this.", score: 1 }
-        ]
-      },
-      { section: "Section 02: Communication", title: "When conflict starts, what happens to you physically?", desc: "The body tells the truth before the mind catches up.",
-        options: [
-          { text: "I shut down. Words stop coming.", score: 1 },
-          { text: "Heart races, voice gets loud, I escalate.", score: 1 },
-          { text: "I notice the activation and slow myself down.", score: 4 },
-          { text: "I leave the room, physically or emotionally.", score: 1 }
-        ]
-      },
-      { section: "Section 02: Communication", title: "Can you ask for what you want without hinting?", desc: "Direct. Specific. Without spinning it as a complaint.",
-        options: [
-          { text: "Yes. I've practiced this and it works.", score: 4 },
-          { text: "Sometimes, but I water it down.", score: 2 },
-          { text: "I drop hints and hope they catch them.", score: 1 },
-          { text: "I expect them to just know.", score: 0 }
-        ]
-      },
-      { section: "Section 02: Communication", title: "When your partner is upset, your first move is to...", desc: "",
-        options: [
-          { text: "Fix the problem so they feel better.", score: 2 },
-          { text: "Get defensive. It must be about me.", score: 1 },
-          { text: "Listen all the way through before responding.", score: 4 },
-          { text: "Match their energy and amplify it.", score: 1 }
-        ]
-      },
-      { section: "Section 02: Communication", title: "How do you handle being told no?", desc: "By a partner, friend, or someone you care about.",
-        options: [
-          { text: "I respect it, even when it stings.", score: 4 },
-          { text: "I feel rejected and pull away.", score: 1 },
-          { text: "I keep pushing until I get a yes.", score: 0 },
-          { text: "I act like I'm fine but resent it later.", score: 1 }
-        ]
-      },
-      { section: "Section 03: Intimacy", title: "How comfortable are you being truly seen?", desc: "Not the highlight reel. The messy, tender, unpolished parts.",
-        options: [
-          { text: "Very. I let safe people see all of me.", score: 4 },
-          { text: "With one or two people, on good days.", score: 3 },
-          { text: "I keep most of me hidden, even from partners.", score: 1 },
-          { text: "I don't really know that version of myself.", score: 0 }
-        ]
-      },
-      { section: "Section 03: Intimacy", title: "Physical intimacy in your life is...", desc: "",
-        options: [
-          { text: "Connected, generous, and a place I show up fully.", score: 4 },
-          { text: "Mostly fine, but missing something I can't name.", score: 2 },
-          { text: "Performative. I focus on them or on technique.", score: 1 },
-          { text: "Avoided, complicated, or absent.", score: 1 }
-        ]
-      },
-      { section: "Section 03: Intimacy", title: "Can you receive love without flinching?", desc: "A compliment, a kind word, an act of devotion. Does it land or bounce off?",
-        options: [
-          { text: "It lands. I let it in.", score: 4 },
-          { text: "I deflect or downplay it.", score: 1 },
-          { text: "I get suspicious. What do they want?", score: 1 },
-          { text: "I haven't been offered much to receive.", score: 2 }
-        ]
-      },
-      { section: "Section 03: Intimacy", title: "When was the last time you said 'I'm sorry' and meant it?", desc: "Not as a tactic. As a real repair.",
-        options: [
-          { text: "Recently. Repair is part of how I love.", score: 4 },
-          { text: "I struggle with apologies. They feel like losing.", score: 1 },
-          { text: "I over-apologize, even when I shouldn't.", score: 1 },
-          { text: "I can't remember.", score: 1 }
-        ]
-      },
-      { section: "Section 04: Patterns", title: "Do you notice the same dynamic repeating across partners?", desc: "Different faces, same plot.",
-        options: [
-          { text: "Yes, and I can name the exact pattern.", score: 3 },
-          { text: "I sense it but can't quite see it.", score: 2 },
-          { text: "Each one was different. Bad luck.", score: 1 },
-          { text: "I'm working on it actively right now.", score: 4 }
-        ]
-      },
-      { section: "Section 04: Patterns", title: "What did you learn about love growing up?", desc: "The model you absorbed, even if no one taught it explicitly.",
-        options: [
-          { text: "It was modeled well. I had something to imitate.", score: 4 },
-          { text: "Mixed signals. Some good, some painful.", score: 2 },
-          { text: "Mostly absence, conflict, or chaos.", score: 1 },
-          { text: "I'm still untangling what I learned.", score: 2 }
-        ]
-      },
-      { section: "Section 04: Patterns", title: "How do you handle alone time?", desc: "The kind that isn't filled with screens and noise.",
-        options: [
-          { text: "I welcome it. Solitude restores me.", score: 4 },
-          { text: "I tolerate it but reach for distractions fast.", score: 2 },
-          { text: "It triggers me. I avoid it at all costs.", score: 1 },
-          { text: "I haven't had real solitude in years.", score: 1 }
-        ]
-      },
-      { section: "Section 04: Patterns", title: "When something is going well, what do you do?", desc: "Pay attention to this one.",
-        options: [
-          { text: "I lean in and enjoy it.", score: 4 },
-          { text: "I wait for the other shoe to drop.", score: 1 },
-          { text: "I find something to worry about.", score: 1 },
-          { text: "I sabotage it, sometimes without meaning to.", score: 0 }
-        ]
-      },
-      { section: "Section 05: Vision", title: "Do you have a clear picture of the love you actually want?", desc: "Specific. Lived-in. Not just 'someone good.'",
-        options: [
-          { text: "Yes. I can see it, feel it, describe it.", score: 4 },
-          { text: "I have ideas, but they're vague.", score: 2 },
-          { text: "I know what I'm done with, that's a start.", score: 2 },
-          { text: "Not really. I'm just open to whatever shows up.", score: 1 }
-        ]
-      },
-      { section: "Section 05: Vision", title: "What role does your spiritual or inner life play in love?", desc: "Whatever 'spiritual' means to you: purpose, faith, grounding, soul.",
-        options: [
-          { text: "Central. It's the foundation everything sits on.", score: 4 },
-          { text: "Important, but separate from my relationships.", score: 2 },
-          { text: "I'm rebuilding it after a long disconnection.", score: 3 },
-          { text: "It hasn't really been part of my love life.", score: 1 }
-        ]
-      },
-      { section: "Section 05: Vision", title: "How willing are you to do hard inner work to get the love you want?", desc: "Honest answer. Not the inspirational one.",
-        options: [
-          { text: "All in. I'll go wherever the work leads.", score: 4 },
-          { text: "Willing, but I keep starting and stopping.", score: 2 },
-          { text: "I want results without going that deep.", score: 1 },
-          { text: "I'm exhausted. I need help, not more homework.", score: 2 }
-        ]
-      },
-      { section: "Section 05: Vision", title: "If nothing changed in your love life over the next five years, how would you feel?", desc: "The truth-telling question.",
-        options: [
-          { text: "Devastated. I can't let that be the story.", score: 4 },
-          { text: "Disappointed but resigned.", score: 2 },
-          { text: "Honestly? Relieved. Less risk.", score: 1 },
-          { text: "I'd survive, but I wouldn't be living.", score: 3 }
-        ]
-      }
-    ];
-
-    const state = { idx: 0, answers: new Array(QUESTIONS.length).fill(null) };
-    const $ = (id) => document.getElementById(id);
-    const intro = $('intro'), quiz = $('quiz'), results = $('results');
-
-    $('startBtn').addEventListener('click', () => {
-      intro.classList.add('hidden');
-      quiz.classList.remove('hidden');
-      $('qTotal').textContent = QUESTIONS.length;
-      renderQuestion();
-    });
-
-    function renderQuestion() {
-      const q = QUESTIONS[state.idx];
-      const total = QUESTIONS.length;
-      const progress = ((state.idx) / total) * 100;
-      const minsLeft = Math.max(1, Math.round((total - state.idx) * 0.45));
-      $('qNum').textContent = state.idx + 1;
-      $('qTime').textContent = '~' + minsLeft;
-      $('progressFill').style.width = progress + '%';
-      $('qTag').textContent = q.section;
-      $('qTitle').textContent = q.title;
-      $('qDesc').textContent = q.desc || '';
-      $('qDesc').style.display = q.desc ? 'block' : 'none';
-      const card = $('qCard');
-      card.style.animation = 'none';
-      void card.offsetWidth;
-      card.style.animation = '';
-      const optsEl = $('qOptions');
-      optsEl.innerHTML = '';
-      q.options.forEach((opt, i) => {
-        const btn = document.createElement('button');
-        btn.className = 'opt';
-        btn.setAttribute('role', 'radio');
-        btn.setAttribute('aria-checked', state.answers[state.idx] === i);
-        if (state.answers[state.idx] === i) btn.classList.add('selected');
-        btn.innerHTML = '<span class="opt-marker"></span><span class="opt-text">' + opt.text + '</span>';
-        btn.addEventListener('click', () => selectOption(i));
-        optsEl.appendChild(btn);
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+        toggle.textContent = open ? '✕' : '☰';
       });
-      $('prevBtn').disabled = state.idx === 0;
-      $('nextBtn').disabled = state.answers[state.idx] === null;
-      $('nextBtn').innerHTML = (state.idx === total - 1)
-        ? 'See My Results <span class="btn-arrow">→</span>'
-        : 'Next <span class="btn-arrow">→</span>';
-    }
-
-    function selectOption(i) { state.answers[state.idx] = i; renderQuestion(); }
-    $('prevBtn').addEventListener('click', () => { if (state.idx > 0) { state.idx--; renderQuestion(); } });
-    $('nextBtn').addEventListener('click', () => {
-      if (state.answers[state.idx] === null) return;
-      if (state.idx < QUESTIONS.length - 1) { state.idx++; renderQuestion(); }
-      else { showResults(); }
-    });
-
-    function computeArchetype(scorePct) {
-      if (scorePct >= 80) return {
-        name: '<em>The Aligned Lover</em>',
-        summary: "You've done the work, and it shows. You move through love with self-awareness, clear communication, and the courage to repair when it matters. The next chapter isn't about fixing. It's about expanding.",
-        insights: [
-          "Your patterns are largely conscious. You can name what you do and why.",
-          "You've built the inner foundation. Now: who gets to meet you there?",
-          "Your edge is depth. Going further into intimacy without losing yourself.",
-          "Consider mentoring others, writing your story, or stepping into a teaching role."
-        ]
-      };
-      if (scorePct >= 60) return {
-        name: '<em>The Awakening Romantic</em>',
-        summary: "You're closer than you think. The patterns are visible, the self-knowledge is forming, and the willingness is there. What's missing is precision: the right work, the right mirror, the right next move.",
-        insights: [
-          "You see the pattern but haven't fully broken it yet.",
-          "Your communication is improving but still wobbles under pressure.",
-          "A focused 90 days of intentional work could shift everything.",
-          "Stop reading more books. Start practicing one principle at a time."
-        ]
-      };
-      if (scorePct >= 40) return {
-        name: '<em>The Caught-Between</em>',
-        summary: "Part of you is reaching for something deeper. Part of you is protecting old wounds. Both are valid, but the protection has started to cost you the connection. It's time to choose, gently and on purpose.",
-        insights: [
-          "You're stuck in a cycle that feels familiar, and that familiarity is the trap.",
-          "Avoidance has been keeping you safe AND keeping love out.",
-          "You don't need more willpower. You need a framework.",
-          "Real change starts when you stop trying to do this alone."
-        ]
-      };
-      return {
-        name: '<em>The Brave Beginner</em>',
-        summary: "Taking this assessment took courage. Most people never look this directly at their love life. The patterns are real, the wounds are real, and so is the possibility. Everything you want is on the other side of work you haven't done yet. That's actually good news.",
-        insights: [
-          "You're at the start of a real transformation, not the end.",
-          "The discomfort you feel reading this is the doorway, not the obstacle.",
-          "You don't need to figure this out alone, and you weren't meant to.",
-          "One honest conversation can shift more than ten years of trying harder."
-        ]
-      };
-    }
-
-    function showResults() {
-      quiz.classList.add('hidden');
-      results.classList.remove('hidden');
-      const total = QUESTIONS.reduce((sum, q, i) => {
-        const a = state.answers[i];
-        return sum + (a !== null ? q.options[a].score : 0);
-      }, 0);
-      const max = QUESTIONS.length * 4;
-      const pct = Math.round((total / max) * 100);
-      const archetype = computeArchetype(pct);
-      $('resultArchetype').innerHTML = archetype.name;
-      $('resultSummary').textContent = archetype.summary;
-      const ring = $('scoreRing');
-      ring.style.setProperty('--score', pct);
-      $('scoreNum').textContent = pct + '%';
-      const insightsEl = $('resultInsights');
-      insightsEl.innerHTML = '';
-      archetype.insights.forEach(text => {
-        const li = document.createElement('li');
-        li.textContent = text;
-        insightsEl.appendChild(li);
+      menu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => { menu.classList.remove('open'); toggle.setAttribute('aria-expanded', false); toggle.textContent = '☰'; });
       });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    $('captureForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = $('captureEmail').value.trim();
-      if (!email) return;
-      const subject = encodeURIComponent('New Alignment Assessment Lead');
-      const body = encodeURIComponent(
-        'Email: ' + email + '\n' +
-        'Score: ' + $('scoreNum').textContent + '\n' +
-        'Archetype: ' + $('resultArchetype').textContent + '\n\n' +
-        'Answers:\n' + state.answers.map((a, i) =>
-          (i+1) + '. ' + (a !== null ? QUESTIONS[i].options[a].text : '(skipped)')
-        ).join('\n')
-      );
-      window.location.href = 'mailto:dennis@dennisnickens.com?subject=' + subject + '&body=' + body;
-      $('captureForm').innerHTML = '<p style="color:var(--color-gold);font-family:var(--font-serif);font-style:italic;font-size:1.1rem;">Thank you. Your report is on the way. ✦</p>';
-    });
-
-    $('restartBtn').addEventListener('click', () => {
-      state.idx = 0;
-      state.answers = new Array(QUESTIONS.length).fill(null);
-      results.classList.add('hidden');
-      intro.classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
-
 </body>
 </html>

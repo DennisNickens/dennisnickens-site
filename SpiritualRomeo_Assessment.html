@@ -1,375 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="The Alignment Assessment by Dennis Nickens, Spiritual Romeo. Discover who you are, how you're wired, and the careers and relationships you're built for, with biblical wisdom that meets you where you are." />
-  <title>The Alignment Assessment | Dennis Nickens, Spiritual Romeo</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
 
-  <style>
-    :root {
-      --color-bg-deep: #07071a;
-      --color-bg-mid: #0f0a2e;
-      --color-bg-soft: #1a1340;
-      --color-ink: #f5f1e8;
-      --color-ink-soft: rgba(245, 241, 232, 0.78);
-      --color-ink-faint: rgba(245, 241, 232, 0.5);
-      --color-gold: #d4a957;
-      --color-gold-soft: #b08838;
-      --color-line: rgba(212, 169, 87, 0.18);
-      --color-line-soft: rgba(245, 241, 232, 0.08);
-      --font-display: 'Playfair Display', Georgia, serif;
-      --font-serif: 'Cormorant Garamond', Georgia, serif;
-      --font-sans: 'Inter', -apple-system, sans-serif;
-      --font-label: 'Montserrat', -apple-system, sans-serif;
-      --shadow-card: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 169, 87, 0.15) inset;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-sans); color: var(--color-ink); background: var(--color-bg-deep); line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; overflow-x: hidden; }
-    img { max-width: 100%; display: block; }
+￼
+Dennis Nickens
+AKA SPIRITUAL ROMEO
+☰
+THE ALIGNMENT ASSESSMENT
+The Person in the Mirror
+Is the only person you can change.
+Understand who you are. Show up every day with what you learn. With patience and consistency, you will reach your goals.
+BEGIN YOUR ASSESSMENT
+→
+WHY THIS MATTERS
+Most things don’t fall apart. They’re misunderstood.
+Same fight at home. Same friction at work. Same wall in the room you’re trying to lead. The problem isn’t the people across from you. It’s that nobody taught you how to read them. Or yourself.
+LEADERSHIP
+You and your team keep bumping heads.
+You think they’re not pulling their weight. They think you don’t listen. The truth is you’re wired to push and they’re wired to consider. Until you understand how they actually receive direction, you’ll keep losing the room and wondering why nobody followed you out.
+TEACHING
+Your students keep failing.
+Not because they can’t learn. They learn by doing. You keep handing them books. Match how you teach to how THEY learn, and watch what happens.
+FAITH
+You’re doing what seems right.
+Scripture says there’s a way that seems right to a man, but in the end leads somewhere else. Understand the people you’re engaging with, and you stop walking the wrong way with confidence.
+MARRIAGE
+You keep arguing about the same thing.
+It’s not about them. You don’t know how to talk to them in a way that actually lands. Until you learn how they hear you, you’ll keep losing the same argument every Tuesday night.
+“
+There is a way that seems right to a man, but in the end it leads to death.
+PROVERBS 14:12
 
-    .bg-wash { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse at 20% 10%, rgba(124, 58, 237, 0.18), transparent 50%), radial-gradient(ellipse at 80% 60%, rgba(6, 182, 212, 0.10), transparent 55%), radial-gradient(ellipse at 50% 100%, rgba(212, 169, 87, 0.10), transparent 60%), linear-gradient(180deg, #07071a 0%, #0f0a2e 50%, #07071a 100%); pointer-events: none; }
-    .stars { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.7; }
-    .star { position: absolute; background: #fff; border-radius: 50%; animation: twinkle 4s ease-in-out infinite; }
-    @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+Understanding more about who you are, and who you’re engaging with, is how you walk the way that’s actually right. Not just the way that seems right.
+“Through patience and consistency, you will reach your goals.”
+Not because you fixed them. Because you finally understood yourself.
 
-    .nav { position: sticky; top: 0; z-index: 50; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(14px); background: rgba(7, 7, 26, 0.7); border-bottom: 1px solid var(--color-line); }
-    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--color-ink); }
-    .nav-crown { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; filter: drop-shadow(0 0 14px rgba(212, 169, 87, 0.45)); }
-    .nav-crown img { width: 100%; height: 100%; object-fit: contain; }
-    .nav-text { display: flex; flex-direction: column; line-height: 1.2; }
-    .nav-name { font-family: 'Allura', cursive; font-size: 1.85rem; font-weight: 400; color: var(--color-gold); line-height: 1; }
-    .nav-sub { font-family: var(--font-label); font-size: 0.65rem; letter-spacing: 0.18em; color: var(--color-gold); text-transform: uppercase; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-    .nav-links a { font-family: var(--font-label); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-ink-soft); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--color-gold); }
-    .nav-toggle { display: none; background: transparent; border: 1px solid var(--color-line); color: var(--color-ink); padding: 0.5rem 0.7rem; border-radius: 4px; cursor: pointer; font-size: 1.1rem; }
-    @media (max-width: 900px) { .nav-links { display: none; } .nav-toggle { display: block; } }
-    .mobile-menu { display: none; flex-direction: column; background: rgba(7, 7, 26, 0.95); backdrop-filter: blur(14px); border-bottom: 1px solid var(--color-line); padding: 1rem 2rem 1.5rem; position: sticky; top: 70px; z-index: 49; }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { padding: 0.85rem 0; color: var(--color-ink-soft); text-decoration: none; font-family: var(--font-label); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid var(--color-line-soft); }
-    .mobile-menu a:last-child { border-bottom: none; }
-
-    main { position: relative; z-index: 5; }
-    .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
-
-    .hero { position: relative; padding: clamp(3rem, 7vw, 5rem) 0 clamp(2rem, 4vw, 3rem); text-align: center; }
-    .hero-eyebrow { font-family: var(--font-label); font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 1.5rem; }
-    .hero-eyebrow::before, .hero-eyebrow::after { content: "✦"; margin: 0 0.7rem; color: var(--color-gold); }
-    .hero-title { font-family: var(--font-display); font-size: clamp(2.6rem, 7vw, 5rem); font-weight: 400; line-height: 1.05; max-width: 980px; margin: 0 auto 1rem; letter-spacing: -0.02em; }
-    .hero-title em { font-style: italic; background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-sub { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 400; font-style: italic; color: var(--color-gold); margin-bottom: 2rem; }
-    .hero-lede { font-family: var(--font-serif); font-size: clamp(1.15rem, 2vw, 1.4rem); font-style: italic; color: var(--color-ink-soft); max-width: 720px; margin: 0 auto 2.5rem; line-height: 1.5; }
-
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; padding: 1.1rem 2.2rem; font-family: var(--font-label); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border: none; border-radius: 4px; cursor: pointer; transition: all 0.3s ease; color: var(--color-bg-deep); }
-    .btn--gold { background: linear-gradient(135deg, var(--color-gold), var(--color-gold-soft)); box-shadow: 0 8px 24px rgba(212, 169, 87, 0.3); }
-    .btn--gold:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(212, 169, 87, 0.45); }
-    .btn--ghost { background: transparent; color: var(--color-ink-soft); border: 1px solid var(--color-line); }
-    .btn--ghost:hover { color: var(--color-gold); border-color: var(--color-gold); }
-    .btn-arrow { display: inline-block; transition: transform 0.3s; }
-    .btn:hover .btn-arrow { transform: translateX(4px); }
-
-    .section-eyebrow { font-family: var(--font-label); font-size: 0.75rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 1.25rem; text-align: center; }
-    .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 400; line-height: 1.2; text-align: center; max-width: 820px; margin: 0 auto 1rem; letter-spacing: -0.005em; }
-    .section-title em { font-style: italic; background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-    .section-sub { font-family: var(--font-serif); font-style: italic; font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--color-ink-soft); text-align: center; max-width: 720px; margin: 0 auto 3rem; line-height: 1.5; }
-
-    /* Stories grid */
-    .stories-section { padding: 2rem 0 3rem; }
-    .stories-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 1080px; margin: 0 auto; }
-    @media (max-width: 760px) { .stories-grid { grid-template-columns: 1fr; } }
-    .story-card { padding: clamp(1.75rem, 3vw, 2.5rem); background: linear-gradient(180deg, rgba(26, 19, 64, 0.55), rgba(15, 10, 46, 0.35)); border: 1px solid var(--color-line); border-radius: 12px; backdrop-filter: blur(8px); transition: all 0.3s; }
-    .story-card:hover { transform: translateY(-3px); border-color: var(--color-gold); }
-    .story-label { font-family: var(--font-label); font-size: 0.72rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 0.85rem; }
-    .story-headline { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 1.75rem); font-weight: 700; line-height: 1.2; color: var(--color-ink); margin-bottom: 1rem; }
-    .story-headline em { font-style: italic; background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-    .story-body { font-family: var(--font-sans); font-size: 1.05rem; color: var(--color-ink-soft); line-height: 1.6; }
-
-    /* Scripture callout */
-    .scripture-section { padding: 3rem 0; }
-    .scripture-card { max-width: 820px; margin: 0 auto; padding: clamp(2.5rem, 5vw, 4rem); background: linear-gradient(180deg, rgba(212, 169, 87, 0.08), rgba(15, 10, 46, 0.4)); border: 1px solid var(--color-gold); border-radius: 12px; box-shadow: var(--shadow-card); backdrop-filter: blur(12px); text-align: center; position: relative; }
-    .scripture-mark { font-family: var(--font-display); font-size: 5rem; line-height: 0.5; color: var(--color-gold); opacity: 0.4; margin-bottom: 0.5rem; }
-    .scripture-text { font-family: var(--font-serif); font-style: italic; font-size: clamp(1.4rem, 3vw, 1.95rem); line-height: 1.4; color: var(--color-ink); margin-bottom: 1.25rem; }
-    .scripture-ref { font-family: var(--font-label); font-size: 0.8rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 2rem; }
-    .scripture-divider { width: 60px; height: 1px; background: var(--color-gold); margin: 0 auto 2rem; opacity: 0.5; }
-    .scripture-take { font-family: var(--font-sans); font-size: 1.1rem; color: var(--color-ink-soft); line-height: 1.6; max-width: 620px; margin: 0 auto; }
-
-    /* Promise */
-    .promise-section { padding: 3rem 0; text-align: center; }
-    .promise-quote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.6rem, 4vw, 2.6rem); line-height: 1.3; color: var(--color-ink); max-width: 900px; margin: 0 auto 2rem; letter-spacing: -0.01em; }
-    .promise-quote em { background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-    .promise-sub { font-family: var(--font-serif); font-style: italic; font-size: 1.2rem; color: var(--color-gold); }
-
-    /* Career bonus */
-    .career-section { padding: 3rem 0; }
-    .career-card { max-width: 920px; margin: 0 auto; padding: clamp(2rem, 4vw, 3rem); background: linear-gradient(135deg, rgba(124, 58, 237, 0.12), rgba(212, 169, 87, 0.08)); border: 1px solid var(--color-gold); border-radius: 12px; backdrop-filter: blur(8px); display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; }
-    @media (max-width: 700px) { .career-card { grid-template-columns: 1fr; text-align: center; } }
-    .career-icon { width: 72px; height: 72px; color: var(--color-gold); flex-shrink: 0; }
-    .career-icon svg { width: 100%; height: 100%; }
-    .career-headline { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 700; color: var(--color-ink); margin-bottom: 0.5rem; }
-    .career-headline em { font-style: italic; background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-    .career-body { font-family: var(--font-sans); font-size: 1.05rem; color: var(--color-ink-soft); line-height: 1.55; }
-
-    /* Final CTA */
-    .final-cta-section { padding: 3rem 0 5rem; text-align: center; }
-    .final-cta-actions { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem; }
-    .stats-row { display: inline-flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem; }
-    .stat-item { text-align: center; }
-    .stat-num { display: block; font-family: var(--font-display); font-size: 1.8rem; color: var(--color-gold); font-weight: 700; line-height: 1; }
-    .stat-label { font-family: var(--font-label); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink-faint); margin-top: 0.4rem; }
-
-    /* Footer */
-    .footer { position: relative; z-index: 5; padding: 4rem 1.5rem 2rem; border-top: 1px solid var(--color-line); background: rgba(7, 7, 26, 0.5); }
-    .footer-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
-    @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
-    .footer-brand-tagline { font-family: var(--font-serif); font-style: italic; color: var(--color-ink-soft); margin-top: 1rem; max-width: 360px; line-height: 1.5; }
-    .footer-heading { font-family: var(--font-label); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 1.25rem; }
-    .footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-    .footer ul a { font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-ink-soft); text-decoration: none; transition: color 0.2s; }
-    .footer ul a:hover { color: var(--color-gold); }
-    .footer-contact-line { font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-ink-soft); margin-bottom: 0.6rem; }
-    .footer-contact-line a { color: var(--color-ink-soft); text-decoration: none; }
-    .footer-contact-line a:hover { color: var(--color-gold); }
-    .footer-bottom { max-width: 1180px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid var(--color-line-soft); display: flex; justify-content: space-between; align-items: center; font-family: var(--font-label); font-size: 0.75rem; letter-spacing: 0.1em; color: var(--color-ink-faint); flex-wrap: wrap; gap: 1rem; }
-    .footer-bottom a { color: var(--color-gold); text-decoration: none; font-weight: 600; }
-
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
-    .reveal.in { opacity: 1; transform: translateY(0); }
-  </style>
-</head>
-<body>
-  <div class="bg-wash" aria-hidden="true"></div>
-  <div class="stars" id="stars" aria-hidden="true"></div>
-
-  <nav class="nav" aria-label="Main">
-    <a href="index.html" class="nav-logo">
-      <div class="nav-crown"><img src="https://dennisnickens.com/sr-logo-transparent.png" alt="SR Spiritual Romeo crest" /></div>
-      <div class="nav-text">
-        <span class="nav-name">Dennis Nickens</span>
-        <span class="nav-sub">AKA Spiritual Romeo</span>
-      </div>
-    </a>
-    <ul class="nav-links" role="list">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="SpiritualRomeo_Assessment.html" class="active">Assessment</a></li>
-      <li><a href="testimonials.html">Testimonials</a></li>
-      <li><a href="community.html">Community</a></li>
-      <li><a href="book.html">Book Now</a></li>
-      <li><a href="store.html">Store</a></li>
-    </ul>
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle menu">&#9776;</button>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="SpiritualRomeo_Assessment.html">Assessment</a>
-    <a href="testimonials.html">Testimonials</a>
-    <a href="community.html">Community</a>
-    <a href="book.html">Book Now</a>
-    <a href="store.html">Store</a>
-  </div>
-
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-eyebrow">The Alignment Assessment</div>
-        <h1 class="hero-title reveal">The Person in <em>the Mirror</em></h1>
-        <p class="hero-sub reveal">Is the only person you can change.</p>
-        <p class="hero-lede reveal">
-          Understand who you are. Show up every day with what you learn. With patience and consistency, you will reach your goals.
-        </p>
-        <a href="#begin" class="btn btn--gold">Begin Your Assessment <span class="btn-arrow">&rarr;</span></a>
-      </div>
-    </section>
-
-    <!-- 4 STORIES -->
-    <section class="stories-section">
-      <div class="container">
-        <div class="section-eyebrow reveal">Why This Matters</div>
-        <h2 class="section-title reveal">Most relationships don&rsquo;t fail. <em>They&rsquo;re misunderstood.</em></h2>
-        <p class="section-sub reveal">
-          Same fight, same frustration, same wall. The problem isn&rsquo;t the person across from you. It&rsquo;s that nobody taught you how to read them.
-        </p>
-
-        <div class="stories-grid">
-
-          <article class="story-card reveal">
-            <div class="story-label">Marriage</div>
-            <h3 class="story-headline">You keep arguing about <em>the same thing.</em></h3>
-            <p class="story-body">It&rsquo;s not about them. You don&rsquo;t know how to talk to them in a way that actually lands. Until you learn how they hear you, you&rsquo;ll keep losing the same argument every Tuesday night.</p>
-          </article>
-
-          <article class="story-card reveal">
-            <div class="story-label">Teaching</div>
-            <h3 class="story-headline">Your students keep <em>failing.</em></h3>
-            <p class="story-body">Not because they can&rsquo;t learn. They learn by doing. You keep handing them books. Match how you teach to how THEY learn, and watch what happens.</p>
-          </article>
-
-          <article class="story-card reveal">
-            <div class="story-label">Leadership</div>
-            <h3 class="story-headline">You and your team <em>keep bumping heads.</em></h3>
-            <p class="story-body">You think they&rsquo;re not pulling their weight. They think you don&rsquo;t listen. The truth is you&rsquo;re wired to push and they&rsquo;re wired to consider. Until you understand how they actually receive direction, you&rsquo;ll keep losing the room and wondering why nobody followed you out.</p>
-          </article>
-
-          <article class="story-card reveal">
-            <div class="story-label">Faith</div>
-            <h3 class="story-headline">You&rsquo;re doing what <em>seems right.</em></h3>
-            <p class="story-body">Scripture says there&rsquo;s a way that seems right to a man, but in the end leads somewhere else. Understand the people you&rsquo;re engaging with, and you stop walking the wrong way with confidence.</p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- SCRIPTURE -->
-    <section class="scripture-section">
-      <div class="container">
-        <div class="scripture-card reveal">
-          <div class="scripture-mark" aria-hidden="true">&ldquo;</div>
-          <p class="scripture-text">There is a way that seems right to a man, but in the end it leads to death.</p>
-          <div class="scripture-ref">Proverbs 14:12</div>
-          <div class="scripture-divider"></div>
-          <p class="scripture-take">
-            Understanding more about who you are, and who you&rsquo;re engaging with, is how you walk the way that&rsquo;s actually right. Not just the way that seems right.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROMISE -->
-    <section class="promise-section">
-      <div class="container">
-        <p class="promise-quote reveal">
-          &ldquo;Through patience and consistency, <em>you will reach your goals.</em>&rdquo;
-        </p>
-        <p class="promise-sub reveal">Not because you fixed them. Because you finally understood yourself.</p>
-      </div>
-    </section>
-
-    <!-- CAREER BONUS -->
-    <section class="career-section">
-      <div class="container">
-        <div class="career-card reveal">
-          <div class="career-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="7" width="18" height="13" rx="2"/>
-              <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-              <path d="M3 13h18"/>
-              <path d="M12 11v4"/>
-            </svg>
-          </div>
-          <div>
-            <h3 class="career-headline">Plus: Discover the work <em>you&rsquo;re built for.</em></h3>
-            <p class="career-body">Your assessment doesn&rsquo;t just reveal who you are in your relationships. Based on how you&rsquo;re wired, you&rsquo;ll get career field recommendations that match your design. Stop surviving in roles that drain you. Start thriving in work you were made for.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <section class="final-cta-section" id="begin">
-      <div class="container">
-        <div class="section-eyebrow reveal">Ready When You Are</div>
-        <h2 class="section-title reveal">Begin Your <em>Alignment Assessment</em></h2>
-        <p class="section-sub reveal">
-          Five proven ways to understand yourself, one personalized report, and biblical wisdom that meets you where you are. Get the clarity you&rsquo;ve been looking for.
-        </p>
-        <div class="final-cta-actions reveal">
-          <a href="#" class="btn btn--gold">Start the Assessment <span class="btn-arrow">&rarr;</span></a>
-          <a href="book.html" class="btn btn--ghost">Book a Free Consultation</a>
-        </div>
-        <div class="stats-row reveal">
-          <div class="stat-item">
-            <span class="stat-num">5</span>
-            <span class="stat-label">Tools In One</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num">1</span>
-            <span class="stat-label">Personalized Report</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num">100%</span>
-            <span class="stat-label">Confidential</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer" role="contentinfo">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="nav-logo">
-          <div class="nav-crown"><img src="https://dennisnickens.com/sr-logo-transparent.png" alt="SR Spiritual Romeo crest" /></div>
-          <div class="nav-text">
-            <span class="nav-name">Dennis Nickens</span>
-            <span class="nav-sub">AKA Spiritual Romeo</span>
-          </div>
-        </a>
-        <p class="footer-brand-tagline">Dennis Nickens AKA Spiritual Romeo, helping individuals and couples build the love they&rsquo;ve always wanted.</p>
-      </div>
-      <div class="footer-links">
-        <h4 class="footer-heading">Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="SpiritualRomeo_Assessment.html">Assessment</a></li>
-          <li><a href="testimonials.html">Testimonials</a></li>
-          <li><a href="book.html">Book Now</a></li>
-          <li><a href="store.html">Store</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4 class="footer-heading">Contact</h4>
-        <p class="footer-contact-line"><span style="color:var(--color-gold);margin-right:0.4rem;">&#9993;</span><a href="mailto:dennis@dennisnickens.com">dennis@dennisnickens.com</a></p>
-        <p class="footer-contact-line"><span style="color:var(--color-gold);margin-right:0.4rem;">&#9670;</span>Indian Trail, NC</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
-      <a href="book.html">Book a Free Consultation &rarr;</a>
-    </div>
-  </footer>
-
-  <script>
-    (function makeStars(){
-      const c = document.getElementById('stars');
-      const N = 70;
-      for (let i = 0; i < N; i++){
-        const s = document.createElement('div');
-        s.className = 'star';
-        const size = Math.random() * 2 + 0.5;
-        s.style.width = size + 'px'; s.style.height = size + 'px';
-        s.style.left = (Math.random() * 100) + '%'; s.style.top = (Math.random() * 100) + '%';
-        s.style.animationDelay = (Math.random() * 4) + 's';
-        s.style.animationDuration = (3 + Math.random() * 4) + 's';
-        c.appendChild(s);
-      }
-    })();
-    const toggle = document.getElementById('navToggle');
-    const menu = document.getElementById('mobileMenu');
-    if (toggle && menu) {
-      toggle.addEventListener('click', () => {
-        const open = menu.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', open);
-        toggle.textContent = open ? '✕' : '☰';
-      });
-      menu.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => { menu.classList.remove('open'); toggle.setAttribute('aria-expanded', false); toggle.textContent = '☰'; });
-      });
-    }
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  </script>
-</body>
-</html>
+Plus: Discover the work you’re built for.
+Your Blueprint doesn’t just reveal how you operate in any one area. Based on how you’re wired across all six dimensions, you’ll get career field recommendations that match your design. Stop surviving in roles that drain you. Start thriving in work you were made for.
+READY WHEN YOU ARE
+Begin Your Alignment Blueprint
+Six dimensions of how you are wired. One personalized Blueprint. Scripture that meets you where you are. The clarity you have been looking for, in whatever area you are operating in.
+START THE ASSESSMENT
+→
+BOOK A FREE CONSULTATION
+6
+DIMENSIONS
+1
+PERSONALIZED BLUEPRINT
+100%
+CONFIDENTIAL
+￼
+Dennis Nickens
+AKA SPIRITUAL ROMEO
+Dennis Nickens AKA Spiritual Romeo. Foundational tools for self-understanding, built on behavior, personality, and scripture. For every relationship that matters.
+QUICK LINKS
+	•	Home
+	•	About
+	•	Assessment
+	•	Testimonials
+	•	Book Now
+	•	Store
+CONTACT
+✉dennis@dennisnickens.com
+◆Indian Trail, NC
+© 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.
+Book a Free Consultation →

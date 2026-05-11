@@ -17,6 +17,7 @@
 //   GHL_LOCATION_ID - your GHL location ID (currently 9LA3gKzADpdRC78OmDCD)
 
 const { scoreAssessment } = require('../lib/scoring');
+const { waitUntil } = require('@vercel/functions');
 
 // =======================================================================
 // MAIN HANDLER
@@ -35,26 +36,33 @@ export default async function handler(req, res) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
+  // Snapshot the body before we respond, since req may be torn down after
+  const payload = req.body;
+
+  // Tell Vercel to keep the function alive until generation completes.
+  // waitUntil gives us up to 30s on Hobby tier and 5min on Pro tier.
+  // Without this, Vercel kills the function as soon as the response is flushed.
+  waitUntil(
+    generateAndDeliverBlueprint(payload).catch(async (err) => {
+      console.error('[Blueprint] Generation failed:', err);
+      if (payload && payload.contact_id) {
+        try {
+          await updateGhlContact(payload.contact_id, {
+            sr_blueprint_status: 'Failed',
+            sr_blueprint_error: err.message || String(err),
+          });
+        } catch (updateErr) {
+          console.error('[Blueprint] Failed to write error status to GHL:', updateErr);
+        }
+      }
+    })
+  );
+
   // Acknowledge receipt immediately so GHL doesn't time out
-  // Heavy work happens asynchronously after this return
-  res.status(202).json({
+  return res.status(202).json({
     status: 'processing',
     message: 'Blueprint generation started, will be delivered via email shortly',
   });
-
-  // Asynchronous Blueprint generation
-  try {
-    await generateAndDeliverBlueprint(req.body);
-  } catch (err) {
-    console.error('Blueprint generation failed:', err);
-    // Update GHL contact with error status so a human can review
-    if (req.body && req.body.contact_id) {
-      await updateGhlContact(req.body.contact_id, {
-        sr_blueprint_status: 'Failed',
-        sr_blueprint_error: err.message || String(err),
-      });
-    }
-  }
 }
 
 // =======================================================================

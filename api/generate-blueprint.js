@@ -227,8 +227,11 @@ async function callClaude(systemPrompt, userMessage) {
       'anthropic-version': '2023-06-01',
     },
     body: JSON.stringify({
-      model: 'claude-opus-4-6',
-      max_tokens: 16000,
+      // Using Sonnet (faster) instead of Opus (slower) to fit within Vercel Hobby tier's
+      // 300-second waitUntil limit. For premium output, upgrade to Vercel Pro tier
+      // (15-minute waitUntil) and switch back to claude-opus-4-6.
+      model: 'claude-sonnet-4-6',
+      max_tokens: 12000,
       system: systemPrompt,
       messages: [
         { role: 'user', content: userMessage },

@@ -114,7 +114,79 @@ async function generateAndDeliverBlueprint(payload) {
     sr_pillar6_themes: `${scores.pillar6.primaryTheme} / ${scores.pillar6.secondaryTheme}`,
   });
 
-  console.log(`[Blueprint] Complete. WF-04 will now fire delivery email.`);
+  console.log(`[Blueprint] GHL contact updated. Sending delivery email directly.`);
+
+  // Step 8: Send delivery email DIRECTLY via GHL's conversations API
+  // This bypasses WF-04 entirely so we don't depend on workflow enrollment edge cases.
+  await sendBlueprintEmail(payload, blueprintUrl);
+
+  console.log(`[Blueprint] Complete. Delivery email sent to ${payload.email}.`);
+}
+
+// =======================================================================
+// HELPER: SEND BLUEPRINT EMAIL DIRECTLY (no GHL workflow dependency)
+// =======================================================================
+
+async function sendBlueprintEmail(payload, blueprintUrl) {
+  const firstName = payload.first_name || 'Friend';
+  const email = payload.email;
+  const contactId = payload.contact_id;
+
+  const subject = `${firstName}, your Alignment Blueprint is ready`;
+
+  const htmlBody = `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="font-family: Inter, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 2rem; color: #07071a;">
+  <h1 style="font-family: 'Playfair Display', Georgia, serif; color: #07071a; font-size: 28px;">${firstName}, your Blueprint is ready.</h1>
+
+  <p>You just finished the SR Alignment Assessment. Your personalized Blueprint, all six pillars analyzed and synthesized into a complete map of how you are wired, is now ready to read.</p>
+
+  <p style="text-align: center; margin: 2rem 0;">
+    <a href="${blueprintUrl}" style="display: inline-block; background: #07071a; color: #d4a957; padding: 14px 32px; text-decoration: none; font-weight: 600; border-radius: 4px;">View Your Alignment Blueprint</a>
+  </p>
+
+  <p>Bookmark the link. Your Blueprint stays available, you can come back to it any time you need a reminder of who you are and how you work best.</p>
+
+  <p>What to do next:</p>
+
+  <ul>
+    <li>Read your Blueprint end to end at least once. The pillars connect in ways that only land when you see the whole picture.</li>
+    <li>Pay attention to Section 7 (Misalignment Map) and Section 8 (Strategic Recommendations). That is where the practical leverage lives.</li>
+    <li>Start the 30-Day Plan in Section 9 when you are ready. Small, doable steps.</li>
+  </ul>
+
+  <p>Reply to this email if you have questions. I read everything.</p>
+
+  <p style="margin-top: 2rem;">Dennis Nickens<br>Behavioral and Alignment Consultant<br>dennisnickens.com</p>
+</body>
+</html>`;
+
+  const response = await fetch('https://services.leadconnectorhq.com/conversations/messages', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.GHL_API_KEY}`,
+      'Content-Type': 'application/json',
+      'Version': '2021-04-15',
+    },
+    body: JSON.stringify({
+      type: 'Email',
+      contactId: contactId,
+      subject: subject,
+      html: htmlBody,
+      emailTo: email,
+    }),
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`GHL email send failed: ${response.status} ${errText}`);
+  }
+
+  const result = await response.json();
+  console.log(`[Blueprint] Email queued in GHL conversations, message ID: ${result.messageId || 'n/a'}`);
+  return result;
 }
 
 // =======================================================================

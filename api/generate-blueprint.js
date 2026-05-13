@@ -14,8 +14,8 @@
 //   ANTHROPIC_API_KEY - your Claude API key from console.anthropic.com
 //   SR_WEBHOOK_SECRET - shared secret between GHL and this function (you generate this)
 //   GHL_API_KEY - your GHL API key from Settings > API > Generate Key
-// GHL_PRIVATE_INTEGRATION_TOKEN - Private Integration token with conversations/messages.write scope (for sending emails)
 //   GHL_LOCATION_ID - your GHL location ID (currently 9LA3gKzADpdRC78OmDCD)
+
 const { scoreAssessment } = require('../lib/scoring');
 const { waitUntil } = require('@vercel/functions');
 
@@ -130,7 +130,6 @@ async function generateAndDeliverBlueprint(payload) {
 async function sendBlueprintEmail(payload, blueprintUrl) {
   const firstName = payload.first_name || 'Friend';
   const email = payload.email;
-  const contactId = payload.contact_id;
 
   const subject = `${firstName}, your Alignment Blueprint is ready`;
 
@@ -163,29 +162,31 @@ async function sendBlueprintEmail(payload, blueprintUrl) {
 </body>
 </html>`;
 
-  const response = await fetch('https://services.leadconnectorhq.com/conversations/messages', {
+  // Using Resend for transactional email delivery.
+  // Beta config: sends from "onboarding@resend.dev" (Resend's default verified domain).
+  // After beta, verify dennisnickens.com domain in Resend to send from a branded address.
+  const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${process.env.GHL_PRIVATE_INTEGRATION_TOKEN}`,
+      'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
       'Content-Type': 'application/json',
-      'Version': '2021-04-15',
     },
     body: JSON.stringify({
-      type: 'Email',
-      contactId: contactId,
+      from: 'Dennis Nickens <onboarding@resend.dev>',
+      to: [email],
       subject: subject,
       html: htmlBody,
-      emailTo: email,
+      reply_to: 'dennis@tp-llc.com',
     }),
   });
 
   if (!response.ok) {
     const errText = await response.text();
-    throw new Error(`GHL email send failed: ${response.status} ${errText}`);
+    throw new Error(`Resend email send failed: ${response.status} ${errText}`);
   }
 
   const result = await response.json();
-  console.log(`[Blueprint] Email queued in GHL conversations, message ID: ${result.messageId || 'n/a'}`);
+  console.log(`[Blueprint] Email sent via Resend, message ID: ${result.id || 'n/a'}`);
   return result;
 }
 
@@ -345,12 +346,103 @@ function markdownToBrandedHtml(markdown, payload) {
       font-family: 'Inter', sans-serif;
       max-width: 820px;
       margin: 0 auto;
-      padding: 3rem 2rem;
+      padding: 0;
       background: linear-gradient(180deg, #07071a 0%, #0f0a2e 50%, #07071a 100%);
       color: #f5f1e8;
       line-height: 1.7;
       min-height: 100vh;
     }
+    .content-wrap {
+      padding: 3rem 2rem;
+    }
+    /* COVER PAGE */
+    .cover-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 2rem 3rem 2rem;
+      page-break-after: always;
+      box-sizing: border-box;
+    }
+    .cover-top {
+      flex: 0;
+    }
+    .cover-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .cover-logo-img {
+      max-width: 320px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 24px rgba(212, 169, 87, 0.25));
+    }
+    .cover-logo-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      color: rgba(245, 241, 232, 0.75);
+      font-size: 1rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-top: -0.5rem;
+    }
+    .cover-divider {
+      width: 80px;
+      border-top: 2px solid #d4a957;
+      margin: 2rem auto;
+      opacity: 0.7;
+    }
+    .cover-name {
+      font-family: 'Playfair Display', serif;
+      color: #f5f1e8;
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .cover-aka {
+      font-family: 'Cormorant Garamond', serif;
+      color: #d4a957;
+      font-style: italic;
+      font-size: 1.5rem;
+      margin: 0.25rem 0;
+    }
+    .cover-brand {
+      font-family: 'Allura', cursive;
+      color: #d4a957;
+      font-size: 5.5rem;
+      line-height: 1;
+      margin: 0;
+    }
+    .cover-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      color: rgba(245, 241, 232, 0.8);
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-top: 2rem;
+      max-width: 500px;
+    }
+    .cover-footer {
+      text-align: center;
+      color: #f5f1e8;
+      font-size: 0.95rem;
+      line-height: 2;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(212, 169, 87, 0.3);
+      width: 100%;
+      max-width: 500px;
+    }
+    .cover-footer a {
+      color: #d4a957;
+      text-decoration: none;
+    }
+    /* MAIN CONTENT */
     h1, h2, h3, h4 {
       font-family: 'Playfair Display', serif;
       color: #d4a957;
@@ -414,11 +506,30 @@ function markdownToBrandedHtml(markdown, payload) {
   </style>
 </head>
 <body>
-  ${innerHtml}
-  <div class="footer">
-    Generated for ${payload.first_name} ${payload.last_name} on ${new Date().toLocaleDateString()}<br/>
-    Spiritual Romeo · Foundational Tools for Self-Understanding<br/>
-    dennisnickens.com
+  <div class="cover-page">
+    <div class="cover-top"></div>
+    <div class="cover-content">
+      <img src="https://dennisnickens-site-psi.vercel.app/images/sr-logo.png" alt="Spiritual Romeo" class="cover-logo-img" />
+      <div class="cover-logo-subtitle">The Alignment Blueprint</div>
+      <div class="cover-divider"></div>
+      <h1 class="cover-name">Dennis Nickens</h1>
+      <p class="cover-aka">aka</p>
+      <h2 class="cover-brand">Spiritual Romeo</h2>
+      <p class="cover-tagline">An assessment system that helps people understand how they're wired so they can position themselves to give their best to the world.</p>
+    </div>
+    <div class="cover-footer">
+      <a href="https://dennisnickens.com">dennisnickens.com</a><br/>
+      <a href="mailto:Admin@dennisnickens.com">Admin@dennisnickens.com</a><br/>
+      1-866-944-7225
+    </div>
+  </div>
+  <div class="content-wrap">
+    ${innerHtml}
+    <div class="footer">
+      Generated for ${payload.first_name} ${payload.last_name} on ${new Date().toLocaleDateString()}<br/>
+      Spiritual Romeo · Behavioral and Alignment Consulting<br/>
+      dennisnickens.com
+    </div>
   </div>
 </body>
 </html>`;

@@ -14,8 +14,8 @@
 //   ANTHROPIC_API_KEY - your Claude API key from console.anthropic.com
 //   SR_WEBHOOK_SECRET - shared secret between GHL and this function (you generate this)
 //   GHL_API_KEY - your GHL API key from Settings > API > Generate Key
+// GHL_PRIVATE_INTEGRATION_TOKEN - Private Integration token with conversations/messages.write scope (for sending emails)
 //   GHL_LOCATION_ID - your GHL location ID (currently 9LA3gKzADpdRC78OmDCD)
-
 const { scoreAssessment } = require('../lib/scoring');
 const { waitUntil } = require('@vercel/functions');
 
@@ -166,7 +166,7 @@ async function sendBlueprintEmail(payload, blueprintUrl) {
   const response = await fetch('https://services.leadconnectorhq.com/conversations/messages', {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${process.env.GHL_API_KEY}`,
+      'Authorization': `Bearer ${process.env.GHL_PRIVATE_INTEGRATION_TOKEN}`,
       'Content-Type': 'application/json',
       'Version': '2021-04-15',
     },

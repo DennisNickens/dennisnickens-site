@@ -163,8 +163,6 @@ async function sendBlueprintEmail(payload, blueprintUrl) {
 </html>`;
 
   // Using Resend for transactional email delivery.
-  // Beta config: sends from "onboarding@resend.dev" (Resend's default verified domain).
-  // After beta, verify dennisnickens.com domain in Resend to send from a branded address.
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
@@ -172,7 +170,7 @@ async function sendBlueprintEmail(payload, blueprintUrl) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: 'Dennis Nickens <onboarding@resend.dev>',
+      from: 'Dennis Nickens <dennis@dennisnickens.com>',
       to: [email],
       subject: subject,
       html: htmlBody,

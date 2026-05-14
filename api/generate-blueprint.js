@@ -300,11 +300,12 @@ async function callClaude(systemPrompt, userMessage) {
       'anthropic-version': '2023-06-01',
     },
     body: JSON.stringify({
-      // Using Sonnet (faster) instead of Opus (slower) to fit within Vercel Hobby tier's
-      // 300-second waitUntil limit. For premium output, upgrade to Vercel Pro tier
-      // (15-minute waitUntil) and switch back to claude-opus-4-6.
-      model: 'claude-sonnet-4-6',
-      max_tokens: 12000,
+      // Running on Vercel Pro tier with 15-minute waitUntil window, so we use Opus
+      // (slowest but most nuanced) with high max_tokens for the richest possible Blueprint.
+      // Output target: 35-45 pages of personalized synthesis across all pillars and
+      // the expanded section structure (career, relationships, parenting/leadership, stress).
+      model: 'claude-opus-4-6',
+      max_tokens: 24000,
       system: systemPrompt,
       messages: [
         { role: 'user', content: userMessage },

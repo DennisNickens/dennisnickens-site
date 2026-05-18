@@ -36,6 +36,21 @@ export default async function handler(req, res) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
+  // Fail fast if any required env var is missing. A missing var here would
+  // otherwise surface as a confusing 401/403 from a downstream API call.
+  const requiredEnv = [
+    'ANTHROPIC_API_KEY',
+    'RESEND_API_KEY',
+    'GHL_PRIVATE_INTEGRATION_TOKEN',
+    'BLOB_READ_WRITE_TOKEN',
+    'SR_WEBHOOK_SECRET',
+  ];
+  const missing = requiredEnv.filter(k => !process.env[k]);
+  if (missing.length) {
+    console.error('[Blueprint] FATAL: missing env vars:', missing.join(', '));
+    return res.status(500).json({ error: 'Server misconfigured', missing });
+  }
+
   // Snapshot the body before we respond, since req may be torn down after
   const payload = req.body;
 
@@ -302,7 +317,7 @@ async function callClaude(systemPrompt, userMessage) {
       // (slowest but most nuanced) with high max_tokens for the richest possible Blueprint.
       // Output target: 35-45 pages of personalized synthesis across all pillars and
       // the expanded section structure (career, relationships, parenting/leadership, stress).
-      model: 'claude-opus-4-6',
+      model: 'claude-sonnet-4-6',
       max_tokens: 24000,
       system: systemPrompt,
       messages: [

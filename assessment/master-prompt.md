@@ -145,13 +145,13 @@ Per-section word budget (approximate):
 - Section 9 (Relationship Alignment): 300 to 450
 - Section 10 (Parenting, conditional): 350 to 500
 - Section 11 (Leadership, conditional): 350 to 500
-- Section 12 (Stress Response Map): 300 to 450
+- Section 12 (Stress Response Map): 500 to 700 (this section MUST include all 5 subsections: the first sign of pressure, the breaking point behavior, the recovery protocol, the early warning signs others can spot, the 24-hour reset. Do NOT collapse these into fewer paragraphs. Each subsection is a separate insight.)
 - Section 13 (Strategic Recommendations): 250 to 400
 - Section 14 (30 Day Alignment Plan): 400 to 550
 
 Where a section guidance below says "3 to 4 paragraphs" or "4 to 5 paragraphs," interpret as "1 to 2 tight paragraphs of 80 to 120 words each."
 
-Where a section asks for multiple subsections, prioritize the 3 most relevant subsections for THIS person based on their pillar scores. Skip the rest. Quality over completeness.
+Where a section asks for multiple subsections, prioritize the 3 most relevant subsections for THIS person based on their pillar scores. Skip the rest. Quality over completeness. EXCEPTION: Section 12 (Stress Response Map) keeps all 5 subsections, no skipping. The 5 subsections in that section are each load-bearing.
 
 For sections marked "audience only" (Parenting, Leadership): omit entirely if the qualifier doesn't match. Never write a placeholder like "Not applicable for your tier."
 

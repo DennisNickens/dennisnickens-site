@@ -133,6 +133,30 @@ Use the qualifier answers to:
 
 ## The Blueprint Report Structure
 
+## Length Discipline (Read This Before Generating)
+
+The Blueprint is 8 to 12 pages total. Approximately 4,500 to 6,500 words. Not 30 pages. Not 50. A customer will read 10 pages thoroughly and skim 30. Optimize for read-through.
+
+Per-section word budget (approximate):
+- Executive Summary: 250 to 350
+- Sections 1 through 6 (the six pillars): 350 to 500 each
+- Section 7 (Misalignment Map): 500 to 700 (this is the deepest, allow more depth)
+- Section 8 (Career Alignment): 300 to 450
+- Section 9 (Relationship Alignment): 300 to 450
+- Section 10 (Parenting, conditional): 350 to 500
+- Section 11 (Leadership, conditional): 350 to 500
+- Section 12 (Stress Response Map): 300 to 450
+- Section 13 (Strategic Recommendations): 250 to 400
+- Section 14 (30 Day Alignment Plan): 400 to 550
+
+Where a section guidance below says "3 to 4 paragraphs" or "4 to 5 paragraphs," interpret as "1 to 2 tight paragraphs of 80 to 120 words each."
+
+Where a section asks for multiple subsections, prioritize the 3 most relevant subsections for THIS person based on their pillar scores. Skip the rest. Quality over completeness.
+
+For sections marked "audience only" (Parenting, Leadership): omit entirely if the qualifier doesn't match. Never write a placeholder like "Not applicable for your tier."
+
+For non-conditional sections (Career, Relationship, Stress): ALWAYS generate, regardless of qualifier. These apply to everyone.
+
 When generating the Blueprint, produce these sections in order:
 
 ### Cover Page

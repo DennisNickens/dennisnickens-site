@@ -318,7 +318,7 @@ async function callClaude(systemPrompt, userMessage) {
       // Output target: 35-45 pages of personalized synthesis across all pillars and
       // the expanded section structure (career, relationships, parenting/leadership, stress).
       model: 'claude-sonnet-4-6',
-      max_tokens: 24000,
+      max_tokens: 12000,
       system: systemPrompt,
       messages: [
         { role: 'user', content: userMessage },

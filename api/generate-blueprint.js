@@ -523,7 +523,7 @@ function markdownToBrandedHtml(markdown, payload) {
   <div class="cover-page">
     <div class="cover-top"></div>
     <div class="cover-content">
-      <img src="https://dennisnickens-site-psi.vercel.app/images/sr-logo.png" alt="Spiritual Romeo" class="cover-logo-img" />
+      <img src="https://dennisnickens-site-psi.vercel.app/sr-logo-transparent.png" alt="Spiritual Romeo" class="cover-logo-img" />
       <div class="cover-logo-subtitle">The Alignment Blueprint</div>
       <div class="cover-divider"></div>
       <h1 class="cover-name">Dennis Nickens</h1>

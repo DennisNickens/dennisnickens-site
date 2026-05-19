@@ -189,7 +189,7 @@ async function sendBlueprintEmail(payload, blueprintUrl) {
       to: [email],
       subject: subject,
       html: htmlBody,
-      reply_to: 'dennis@tp-llc.com',
+      reply_to: 'dennis@dennisnickens.com',
     }),
   });
 

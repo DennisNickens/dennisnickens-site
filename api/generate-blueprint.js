@@ -16,7 +16,7 @@
 //   GHL_API_KEY - your GHL API key from Settings > API > Generate Key
 //   GHL_LOCATION_ID - your GHL location ID (currently 9LA3gKzADpdRC78OmDCD)
 
-const { scoreAssessment } = require('../lib/scoring');
+const { scoreAssessment, buildRawAnswersFromCustomFields } = require('../lib/scoring');
 const { waitUntil } = require('@vercel/functions');
 
 // =======================================================================
@@ -87,8 +87,40 @@ export default async function handler(req, res) {
 async function generateAndDeliverBlueprint(payload) {
   console.log(`[Blueprint] Starting generation for contact ${payload.contact_id}`);
 
-  // Step 1: Score the assessment
-  const scores = scoreAssessment(payload.rawAnswers || {});
+  // Step 1: Resolve raw answers, then score.
+  //
+  // Two input modes:
+  //   (a) Test-script path: payload.rawAnswers is pre-built (behaviorProfile[],
+  //       personalityCode{ei,sn,tf,jp}, etc.).
+  //   (b) Production GHL webhook path: the webhook does NOT assemble rawAnswers.
+  //       We fetch the contact's full customFields from GHL and translate
+  //       (field_id, answer_text) -> tag via QUESTION_MAP.
+  const hasPrebuiltRawAnswers =
+    payload.rawAnswers &&
+    typeof payload.rawAnswers === 'object' &&
+    Array.isArray(payload.rawAnswers.behaviorProfile) &&
+    payload.rawAnswers.behaviorProfile.length > 0;
+
+  let rawAnswers;
+  if (hasPrebuiltRawAnswers) {
+    rawAnswers = payload.rawAnswers;
+    console.log(`[Blueprint] Using prebuilt rawAnswers (test mode) for ${payload.contact_id}`);
+  } else {
+    const customFields = await fetchGhlContactCustomFields(payload.contact_id);
+    rawAnswers = buildRawAnswersFromCustomFields(customFields);
+    console.log(
+      `[Blueprint] Reconstructed rawAnswers from ${customFields.length} customFields for ${payload.contact_id} ` +
+      `(behavior=${rawAnswers.behaviorProfile.length}, personality e/i+s/n+t/f+j/p=` +
+      `${rawAnswers.personalityCode.ei.length}+${rawAnswers.personalityCode.sn.length}+` +
+      `${rawAnswers.personalityCode.tf.length}+${rawAnswers.personalityCode.jp.length}, ` +
+      `action=${rawAnswers.actionStyle.length}, connection=${rawAnswers.connectionLanguage.length}, ` +
+      `learning=${rawAnswers.learningChannel.length}, ` +
+      `faith=${JSON.stringify(rawAnswers.spiritualCompass.faithOrientation)}, ` +
+      `themes=${rawAnswers.spiritualCompass.themeAnswers.length})`
+    );
+  }
+
+  const scores = scoreAssessment(rawAnswers);
   console.log(`[Blueprint] Scoring complete for ${payload.contact_id}`);
 
   // Step 2: Build the user message for Claude
@@ -593,4 +625,30 @@ async function updateGhlContact(contactId, fields) {
   }
 
   return await response.json();
+}
+
+// =======================================================================
+// HELPER: FETCH GHL CONTACT CUSTOM FIELDS
+// =======================================================================
+// Returns the raw customFields array on the contact, each entry shaped like
+// { id: '<field id>', value: '<answer text>' }. Used by the scoring layer
+// to reconstruct the per-pillar rawAnswers payload since GHL webhooks do
+// not assemble that structure for us.
+
+async function fetchGhlContactCustomFields(contactId) {
+  const url = `https://services.leadconnectorhq.com/contacts/${contactId}`;
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${process.env.GHL_PRIVATE_INTEGRATION_TOKEN}`,
+      'Version': '2021-07-28',
+    },
+  });
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`GHL fetchContact failed: ${response.status} ${errText}`);
+  }
+  const body = await response.json();
+  const contact = body.contact || body;
+  return Array.isArray(contact.customFields) ? contact.customFields : [];
 }

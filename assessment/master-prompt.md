@@ -31,7 +31,34 @@ Four behavior styles. Raw scoring is 1-10 per letter (passed in from the scoring
 - **S, Steadiness:** Stability, patience, loyalty, harmony
 - **C, Conscientiousness:** Accuracy, analysis, structure, precision
 
-Identify the dominant pattern (e.g., DI = Influencing Driver, SC = Stable Analyst, etc.). Reference Dennis's existing naming convention: dominant pair becomes the archetype.
+THE 16 SR BEHAVIOR ARCHETYPES (use the customer's pillar 1 pattern to select the right one):
+
+Rule for determining which archetype to use:
+1. Rank D, I, S, C from highest to lowest percentage.
+2. If the highest is more than 1.5x the second highest, use the Pure Type archetype.
+3. Otherwise, combine the top two letters in order (highest first, second highest second) and use the two-letter archetype.
+
+Pure Types (use when one letter dominates):
+- D = The Commander: Pure decisive action. Direct, results-driven, takes the wheel.
+- I = The Catalyst: Pure energy and persuasion. Magnetic, optimistic, draws people in.
+- S = The Guardian: Pure stability and loyalty. Patient, reliable, protective.
+- C = The Architect: Pure precision and depth. Analytical, thorough, builds things that last.
+
+Two-Letter Combinations:
+- DI = The Visionary: Bold leader who inspires followers. Decisive with charisma.
+- DS = The Anchor: Decisive but rooted. Acts firmly without bulldozing.
+- DC = The Strategist: Decisive AND analytical. Acts only after the math checks out.
+- ID = The Champion: Charismatic warrior. Inspires people, then leads them into the fight.
+- IS = The Connector: Warm relationship builder. Steady presence with magnetic energy.
+- IC = The Storyteller: Persuasive AND thoughtful. Makes complex ideas land emotionally.
+- SD = The Sentinel: Steady but ready to act. Calm watchman who moves decisively when needed.
+- SI = The Diplomat: Steady AND warm. Bridges divides, smooths conflicts.
+- SC = The Caretaker: Steady AND precise. Nurtures with discipline.
+- CD = The Master Builder: Precise AND decisive. Methodical executor.
+- CI = The Curator: Precise AND warm. Thoughtful teacher.
+- CS = The Sage: Precise AND patient. Deep wisdom that compounds over time.
+
+Name the customer's archetype in Section 1 prominently. Use the archetype name throughout the Blueprint to reinforce their identity (e.g., "As a Strategist, you..." or "Your Visionary wiring shows up when...").
 
 ### Pillar 2: Personality Code (based on 16-type theory derived from Carl Jung's typology)
 Four dichotomies. Identify which side of each the client leans:
@@ -181,8 +208,9 @@ Bullet list:
 
 ### Section 1: Your Behavior Profile
 - Percentage breakdown table for D, I, S, C (must total 100%). Show each percentage to one decimal place.
-- "Your dominant pattern is [archetype]"
-- Natural Wiring: 3-4 paragraphs in second person describing how they operate
+- "You are: The [Archetype Name]" displayed prominently (use the 16 SR Behavior Archetype table above to determine the right one based on top two letters or pure type)
+- One short paragraph (50-80 words) explaining what this archetype means in plain language, using the customer's actual percentage spread
+- Natural Wiring: 1-2 paragraphs in second person describing how they operate, reinforcing the archetype identity
 - Under Pressure: How their behavior shifts under stress
 - Conflict Style: How they handle disagreement
 - How Others Experience You: Subsections "With other Ds", "With Is", "With Ss", "With Cs"

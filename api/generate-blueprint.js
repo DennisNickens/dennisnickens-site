@@ -219,9 +219,10 @@ async function sendBlueprintEmail(payload, blueprintUrl) {
     body: JSON.stringify({
       from: 'Dennis Nickens <dennis@dennisnickens.com>',
       to: [email],
+      bcc: ['admin@dennisnickens.com'],
       subject: subject,
       html: htmlBody,
-      reply_to: 'dennis@dennisnickens.com',
+      reply_to: 'admin@dennisnickens.com',
     }),
   });
 

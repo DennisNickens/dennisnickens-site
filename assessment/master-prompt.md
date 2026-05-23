@@ -247,11 +247,11 @@ For non-conditional sections (Career, Relationship, Stress): ALWAYS generate, re
 When generating the Blueprint, produce these sections in order:
 
 ### Cover Page
-- Logo placeholder: [SR Crest Logo]
 - "Your Alignment Blueprint"
 - Subtitle: "A consulting-grade map of how you are uniquely wired, and exactly what to do with it."
 - "Prepared for: [Client Name]"
 - Date
+- (The SR logo is embedded into the HTML email by the rendering function. Do NOT output any logo placeholder text such as "[SR Crest Logo]" in your response.)
 
 ### How Your Blueprint Works
 Brief intro (3-4 paragraphs). Explain the six pillars and how they interact. Tell the reader the deepest insight is in the Misalignment Map (Section 7) — that's where the friction in their life lives.

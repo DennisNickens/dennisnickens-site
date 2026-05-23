@@ -91,7 +91,7 @@ async function generateAndDeliverBlueprint(payload) {
   //
   // Two input modes:
   //   (a) Test-script path: payload.rawAnswers is pre-built (behaviorProfile[],
-  //       personalityCode{ei,sn,tf,jp}, etc.).
+  //       personalityCode{ei,sn,tf,jp}, connectionCurrency[], etc.).
   //   (b) Production GHL webhook path: the webhook does NOT assemble rawAnswers.
   //       We fetch the contact's full customFields from GHL and translate
   //       (field_id, answer_text) -> tag via QUESTION_MAP.
@@ -110,10 +110,10 @@ async function generateAndDeliverBlueprint(payload) {
     rawAnswers = buildRawAnswersFromCustomFields(customFields);
     console.log(
       `[Blueprint] Reconstructed rawAnswers from ${customFields.length} customFields for ${payload.contact_id} ` +
-      `(behavior=${rawAnswers.behaviorProfile.length}, personality e/i+s/n+t/f+j/p=` +
+      `(behavior=${rawAnswers.behaviorProfile.length}, personality charge+trust+decide+live=` +
       `${rawAnswers.personalityCode.ei.length}+${rawAnswers.personalityCode.sn.length}+` +
       `${rawAnswers.personalityCode.tf.length}+${rawAnswers.personalityCode.jp.length}, ` +
-      `action=${rawAnswers.actionStyle.length}, connection=${rawAnswers.connectionLanguage.length}, ` +
+      `action=${rawAnswers.actionStyle.length}, currency=${rawAnswers.connectionCurrency.length}, ` +
       `learning=${rawAnswers.learningChannel.length}, ` +
       `faith=${JSON.stringify(rawAnswers.spiritualCompass.faithOrientation)}, ` +
       `themes=${rawAnswers.spiritualCompass.themeAnswers.length})`
@@ -267,43 +267,43 @@ CUSTOMER:
 
 ASSESSMENT SCORES:
 
-PILLAR 1: BEHAVIOR PROFILE (DISC)
+PILLAR 1: BEHAVIOR PROFILE
 - D (Dominance): ${scores.pillar1.scores10.d}/10 (${scores.pillar1.d} answers)
 - I (Influence): ${scores.pillar1.scores10.i}/10 (${scores.pillar1.i} answers)
 - S (Steadiness): ${scores.pillar1.scores10.s}/10 (${scores.pillar1.s} answers)
 - C (Conscientiousness): ${scores.pillar1.scores10.c}/10 (${scores.pillar1.c} answers)
 - Dominant Type: ${scores.pillar1.twoLetterType}
 
-PILLAR 2: PERSONALITY CODE (MBTI-style)
-- Type: ${scores.pillar2.type}
-- E/I leaning: ${scores.pillar2.letters.e_i}
-- S/N leaning: ${scores.pillar2.letters.s_n}
-- T/F leaning: ${scores.pillar2.letters.t_f}
-- J/P leaning: ${scores.pillar2.letters.j_p}
+PILLAR 2: PERSONALITY CODE (SR Charge / Trust / Decide / Live)
+- 4-letter SR code: ${scores.pillar2.type}
+- Charge leaning: ${scores.pillar2.letters.charge} (O=Outward, W=Inward)
+- Trust leaning:  ${scores.pillar2.letters.trust} (T=Tangible, V=Vision)
+- Decide leaning: ${scores.pillar2.letters.decide} (M=Mind, H=Heart)
+- Live leaning:   ${scores.pillar2.letters.live} (P=Plan, F=Flow)
 - Tied dichotomies (if any): ${scores.pillar2.balanced.join(', ') || 'None'}
 
-PILLAR 3: ACTION STYLE
-- Fact Finder: ${scores.pillar3.factFinder}
-- Follow Thru: ${scores.pillar3.followThru}
-- Quick Start: ${scores.pillar3.quickStart}
-- Implementor: ${scores.pillar3.implementor}
+PILLAR 3: ACTION STYLE (SR Scholar / Steward / Sparker / Crafter)
+- Scholar: ${scores.pillar3.scholar}
+- Steward: ${scores.pillar3.steward}
+- Sparker: ${scores.pillar3.sparker}
+- Crafter: ${scores.pillar3.crafter}
 - Dominant Mode: ${scores.pillar3.dominantMode}
 - Secondary Mode: ${scores.pillar3.secondaryMode}
 
-PILLAR 4: CONNECTION LANGUAGE
-- Words: ${scores.pillar4.words}
-- Time: ${scores.pillar4.time}
-- Touch: ${scores.pillar4.touch}
-- Service: ${scores.pillar4.service}
-- Gifts: ${scores.pillar4.gifts}
-- Primary: ${scores.pillar4.primary}
-- Secondary: ${scores.pillar4.secondary}
+PILLAR 4: CONNECTION CURRENCY (SR Spoken / Presence / Contact / Action / Tokens)
+- Spoken:   ${scores.pillar4.spoken}
+- Presence: ${scores.pillar4.presence}
+- Contact:  ${scores.pillar4.contact}
+- Action:   ${scores.pillar4.action}
+- Tokens:   ${scores.pillar4.tokens}
+- Primary Currency: ${scores.pillar4.primary}
+- Secondary Currency: ${scores.pillar4.secondary}
 
-PILLAR 5: LEARNING CHANNEL
-- Visual: ${scores.pillar5.visualPct}%
-- Auditory: ${scores.pillar5.auditoryPct}%
-- Reading: ${scores.pillar5.readingPct}%
-- Doing: ${scores.pillar5.doingPct}%
+PILLAR 5: LEARNING CHANNEL (SR Sight / Sound / Word / Touch)
+- Sight: ${scores.pillar5.sightPct}%
+- Sound: ${scores.pillar5.soundPct}%
+- Word:  ${scores.pillar5.wordPct}%
+- Touch: ${scores.pillar5.touchPct}%
 - Dominant Channel: ${scores.pillar5.dominantChannel}
 
 PILLAR 6: SPIRITUAL COMPASS
@@ -314,17 +314,16 @@ PILLAR 6: SPIRITUAL COMPASS
 
 INSTRUCTIONS FOR THIS BLUEPRINT:
 
-Generate the complete 9-section Blueprint as defined in the master prompt:
+Generate the complete Blueprint as defined in the master prompt:
 1. Executive Summary
 2. Section 1: Your Behavior Profile (with strengths, blind spots, leverage points)
-3. Section 2: Your Personality Code
-4. Section 3: Your Action Style
-5. Section 4: Your Connection Language (with 5-language ranking and bridge strategies)
-6. Section 5: Your Learning Channel (with environment recommendations)
+3. Section 2: Your Personality Code (name their SR Personality Code archetype prominently using the 16-archetype table in the master prompt)
+4. Section 3: Your Action Style (name them as The Scholar / Steward / Sparker / Crafter based on dominant mode)
+5. Section 4: Your Connection Currency (with 5-currency ranking and bridge scripts; use the currency framing naturally)
+6. Section 5: Your Learning Channel (with environment recommendations calibrated to Sight/Sound/Word/Touch)
 7. Section 6: Your Spiritual Compass (with 3 personalized scripture verses calibrated to this person's combined archetype)
 8. Section 7: Your Misalignment Map (where the pillars conflict and what it costs)
-9. Section 8: Your Strategic Recommendations (Quick Win, Medium Shift, 90-Day Track)
-10. Section 9: Your 30-Day Alignment Plan (week-by-week protocol)
+9. Section 8 onward as defined in the master prompt
 
 Use Dennis Nickens's voice. Plain English. Direct, warm, consultative. NO em dashes or en dashes (replace with commas, periods, or rephrase). NO AI-sounding phrases ("delve into," "navigate the landscape," "in today's fast-paced world," "tapestry," etc.). Sign off with "Dennis Nickens" not "Dennis,".
 

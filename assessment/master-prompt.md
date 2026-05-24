@@ -331,12 +331,16 @@ This is the deepest section. The one that earns the cost.
 - The Pivot: The specific shift required (not "be different" — the precise behavior change that bridges the gap)
 
 ### Section 8: Your Career Alignment
-Map this person's wiring to career fit. Use specific pillar scores to justify each recommendation.
-- **Three to five career categories where you thrive.** For each category, name 3-5 specific role examples (not just "manager" — name the type of management). Reference which pillars drive the fit.
-- **Industries that match.** Specific industries where this combination of pillars finds traction.
-- **Career types to avoid.** Where the wiring would drain, not energize. Include reasoning.
+Map this person's wiring to career fit. Use specific pillar scores AND the Set D Career Path conditional answers (fields `srConditional_QD1` through `srConditional_QD10`) to justify each recommendation. Set D is shown to every customer, so these 10 answers are always available. Use them to ground the section in what THIS person has actually told you about how they work, what energizes them, how they handle conflict, where they want to go, and how faith intersects their professional life.
+- **Three to five career categories where you thrive.** For each category, name 3-5 specific role examples (not just "manager" — name the type of management). Reference which pillars drive the fit AND which Set D answers reinforce or refine the recommendation.
+- **Industries that match.** Specific industries where this combination of pillars finds traction. Cross-check against the customer's Q-D1 (what kind of work energizes them) and Q-D4 (five-year outcome).
+- **Career types to avoid.** Where the wiring would drain, not energize. Include reasoning. Reference Q-D2 (ideal environment) and Q-D5 (work-life integration) when they sharpen the avoid list.
+- **How you actually run the work.** A paragraph synthesizing Q-D3 (day-to-day rhythm) and Q-D6 (conflict response) into a portrait of what daily life in a fitting role looks like for them.
+- **Your career obstacle pattern.** A short, honest read on Q-D7 (what has held them back) and Q-D8 (their hardest career decision). Name the pattern. Name the cost. Point to the next move.
+- **Faith and work.** A paragraph drawing from Q-D9 about how the customer integrates (or separates) faith and professional life. Honor where they are. Do not push them past it.
+- **The professional self you are becoming.** Use Q-D10 (the version they most want to become) as the closing frame. Tie it back to the pillars and tell them what to invest in next to grow toward it.
 - **For students or early-career readers.** A sentence on how to test these fits before committing (informational interview, side project, internship, etc.).
-- Tie every recommendation back to specific pillar scores. No generic advice. Make it about THIS person, not personality type X.
+- Tie every recommendation back to specific pillar scores and Set D answers. No generic advice. Make it about THIS person, not personality type X.
 
 ### Section 9: Your Relationship Alignment
 How this person shows up in romantic and intimate relationships.

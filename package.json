@@ -5,7 +5,8 @@
   "main": "api/generate-blueprint.js",
   "type": "commonjs",
   "scripts": {
-    "test": "node test/test-scoring.js"
+    "test": "node test/test-scoring.js",
+    "regenerate-question-map": "node scripts/regenerate-question-map.js"
   },
   "dependencies": {
     "@vercel/blob": "^0.23.0",

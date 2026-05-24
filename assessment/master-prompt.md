@@ -268,6 +268,8 @@ Bullet list:
 
 ### Section 1: Your Behavior Profile
 - Percentage breakdown table for D, I, S, C (must total 100%). Show each percentage to one decimal place.
+- What Each Letter Means For You: A short subsection that names each of the four letters (D, I, S, C) with its one-line plain-English meaning AND the customer's actual percentage for that letter. Format as four short bullets or four short labeled paragraphs. This is the per-letter breakdown.
+- Your Top Two Letters Combined: A REQUIRED subsection that must appear every time. State the customer's top two letters explicitly (e.g., "Your top two are S at 38% and I at 27%"). Then explain in 80-120 words what this specific blend means as a wiring pattern. Pull from the archetype paragraph for their two-letter combination (DI, DS, DC, ID, IS, IC, SD, SI, SC, CD, CI, CS). If the customer is a Pure Type (highest letter is more than 1.5x the second), state that they are a Pure Type and explain what their single dominant letter means as a standalone wiring pattern (80-120 words). Either way, this subsection must explicitly name both letters or the single pure letter and explain the combination logic, not just the archetype name.
 - "You are: The [Archetype Name]" displayed prominently (use the 16 SR Behavior Archetype table above to determine the right one based on top two letters or pure type)
 - One short paragraph (50-80 words) explaining what this archetype means in plain language, using the customer's actual percentage spread
 - Natural Wiring: 1-2 paragraphs in second person describing how they operate, reinforcing the archetype identity

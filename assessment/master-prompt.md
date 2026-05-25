@@ -233,15 +233,16 @@ Per-section word budget (approximate):
 - Section 10 (Parenting, conditional): 350 to 500
 - Section 11 (Leadership, conditional): 350 to 500
 - Section 12 (Ministry Profile, conditional): 600 to 900 (skip entirely when Set F answers are absent)
-- Section 13 (Stress Response Map): 500 to 700 (this section MUST include all 5 subsections: the first sign of pressure, the breaking point behavior, the recovery protocol, the early warning signs others can spot, the 24-hour reset. Do NOT collapse these into fewer paragraphs. Each subsection is a separate insight.)
-- Section 14 (Strategic Recommendations): 250 to 400
-- Section 15 (30 Day Alignment Plan): 400 to 550
+- Section 13 (Spiritual Gifts, conditional): 600 to 900 (skip entirely when Pillar 7 data is absent)
+- Section 14 (Stress Response Map): 500 to 700 (this section MUST include all 5 subsections: the first sign of pressure, the breaking point behavior, the recovery protocol, the early warning signs others can spot, the 24-hour reset. Do NOT collapse these into fewer paragraphs. Each subsection is a separate insight.)
+- Section 15 (Strategic Recommendations): 250 to 400
+- Section 16 (30 Day Alignment Plan): 400 to 550
 
 Where a section guidance below says "3 to 4 paragraphs" or "4 to 5 paragraphs," interpret as "1 to 2 tight paragraphs of 80 to 120 words each."
 
-Where a section asks for multiple subsections, prioritize the 3 most relevant subsections for THIS person based on their pillar scores. Skip the rest. Quality over completeness. EXCEPTION: Section 12 (Stress Response Map) keeps all 5 subsections, no skipping. The 5 subsections in that section are each load-bearing.
+Where a section asks for multiple subsections, prioritize the 3 most relevant subsections for THIS person based on their pillar scores. Skip the rest. Quality over completeness. EXCEPTION: Section 14 (Stress Response Map) keeps all 5 subsections, no skipping. The 5 subsections in that section are each load-bearing.
 
-For sections marked "audience only" (Parenting, Leadership, Ministry Profile) and conditional subsections (Marriage Dynamics within Section 9): omit entirely if the qualifier or the required conditional answers do not match. Never write a placeholder like "Not applicable for your tier" or "Add a marriage section once Set E is wired in." If the data is not there, the reader does not see the section.
+For sections marked "audience only" (Parenting, Leadership, Ministry Profile, Spiritual Gifts) and conditional subsections (Marriage Dynamics within Section 9): omit entirely if the qualifier or the required conditional answers do not match. Never write a placeholder like "Not applicable for your tier" or "Add a marriage section once Set E is wired in." If the data is not there, the reader does not see the section.
 
 For non-conditional sections (Career, Relationship, Stress): ALWAYS generate, regardless of qualifier. These apply to everyone.
 
@@ -430,7 +431,7 @@ Use the Set E reference table below to interpret each answer. Each Q-E number ma
 
 - **Your conflict rhythm in this marriage.** Synthesize Q-E1 (the pattern of arguments) and Q-E2 (your default move in a disagreement). Name the rhythm specifically. If Q-E1 is A (same fight over and over) and Q-E2 is B (pull back to think), name that pattern: "You hit the same wound repeatedly because one of you presses and the other retreats, and neither of you stays in the room long enough to finish the conversation." Tie back to the customer's Pillar 1 behavior and Pillar 2 Decide letter (M vs H) so the rhythm is anchored in their wiring, not just the marriage-level pattern. About 80 to 120 words.
 
-- **Where the intimacy is right now.** Use Q-E3 (current intimacy state) as the diagnostic. If A (strong), affirm the strength and warn against drift. If B (steady but drifted), name the drift and point to the most likely cause given their Pillar 4 Connection Currency. If C (imbalanced), name which area is alive and which is quiet, and connect to their primary currency. If D (distant), be honest about it without preaching, and route them to Section 9's "For couples" guidance plus the Strategic Recommendations in Section 14. About 80 to 120 words.
+- **Where the intimacy is right now.** Use Q-E3 (current intimacy state) as the diagnostic. If A (strong), affirm the strength and warn against drift. If B (steady but drifted), name the drift and point to the most likely cause given their Pillar 4 Connection Currency. If C (imbalanced), name which area is alive and which is quiet, and connect to their primary currency. If D (distant), be honest about it without preaching, and route them to Section 9's "For couples" guidance plus the Strategic Recommendations in Section 15. About 80 to 120 words.
 
 - **How the two of you make big decisions.** Use Q-E4. Cross-reference with the customer's Pillar 2 Decide leaning (M for Mind or H for Heart) and Pillar 3 Action Style. If they answer C (stall decisions) but their Action Style is The Sparker, name the gap: their wiring wants to move; the marriage's pattern blocks it. Give one concrete move they can take this month to shift the pattern. About 60 to 100 words.
 
@@ -444,7 +445,7 @@ Use the Set E reference table below to interpret each answer. Each Q-E number ma
 
 - **The vulnerability differential.** Use Q-E9 to name how vulnerable the customer feels with their spouse compared to others in their life. If A (safest person), this is a strength the marriage can lean on. If B or D (harder with spouse), name the gap honestly and give one repair move. If C (about even), this often means the marriage is one of several safe spaces, which can be either healthy diversification or a quiet sign the spouse is not the primary attachment. Read the customer's Pillar 2 Charge letter (Outward vs Inward) to interpret which it is. About 80 to 120 words.
 
-- **The marriage you are building.** Use Q-E10 as the closing frame. Name the kind of marriage the customer is reaching for, then connect it to one or two specific Strategic Recommendations in Section 14 that will move them toward it. About 60 to 100 words.
+- **The marriage you are building.** Use Q-E10 as the closing frame. Name the kind of marriage the customer is reaching for, then connect it to one or two specific Strategic Recommendations in Section 15 that will move them toward it. About 60 to 100 words.
 
 - **Faith and the marriage.** If the customer's Spiritual Compass (Pillar 6) faith orientation is Christian or spiritual-but-not-religious, close the subsection with one paragraph on what scripture or principle speaks to the specific dynamic surfaced above. Lean on covenant (Genesis 2:24), mutual submission (Ephesians 5:21-33), or communication (James 1:19) where it fits. Do NOT preach. The verse is the mirror; hand it to them. If the customer's faith orientation is secular or "still figuring out," skip the faith paragraph. About 60 to 100 words when included.
 
@@ -551,7 +552,7 @@ Use the Set F reference table below to interpret each answer.
 
 - **How you do pastoral care.** Use Q-F2 to identify the customer's crisis-care instinct. Cross-reference with Pillar 4 Connection Currency: a customer who sits with people in pain (Q-F2-A) and ranks Presence highest is wired for this move naturally; if they lead with practical resources (Q-F2-C) but their primary currency is Spoken, they may be serving people in a currency that does not match their own strengths. If the customer's Pillar 1 behavior is high-D, name the friction between urgency-to-fix and the patience required for deep pastoral presence. Name the care style and where their wiring amplifies or limits it. About 80 to 120 words.
 
-- **The weight that is wearing on you.** Use Q-F3 to name the hardest part of ministry leadership for this customer. Be direct. If they answered D (the loneliness), tie it back to Pillar 2 Charge (Inward vs Outward) and note that an Inward-charged pastor carries this weight differently than an Outward-charged one. If they answered A (always-on weight), cross-reference Pillar 5 Learning Channel for how this person refuels, and point them to Section 13 (Stress Response Map) for the recovery protocol. Give one concrete practice they can establish this month to manage this specific weight. About 80 to 120 words.
+- **The weight that is wearing on you.** Use Q-F3 to name the hardest part of ministry leadership for this customer. Be direct. If they answered D (the loneliness), tie it back to Pillar 2 Charge (Inward vs Outward) and note that an Inward-charged pastor carries this weight differently than an Outward-charged one. If they answered A (always-on weight), cross-reference Pillar 5 Learning Channel for how this person refuels, and point them to Section 14 (Stress Response Map) for the recovery protocol. Give one concrete practice they can establish this month to manage this specific weight. About 80 to 120 words.
 
 - **How you handle disagreement inside the church.** Use Q-F4. Cross-reference with Set B Q-B3 (critical feedback approach) and Pillar 1 conflict style. If Q-F4-A (direct and fast) but Pillar 1 is high-S, name the tension: the wiring wants harmony but the practice forces direct engagement, and that gap costs energy every time. If Q-F4-D (defer when possible), name what accumulates unaddressed and what that typically costs a ministry over two to three years. About 80 to 100 words.
 
@@ -565,11 +566,116 @@ Use the Set F reference table below to interpret each answer.
 
 - **How you make the hard calls.** Use Q-F9. Cross-reference with Pillar 1: a high-D pastor who prays and then acts (Q-F9-A) moves quickly from discernment to decision; a high-S pastor who moves quickly (Q-F9-D) is pushing against their own need for stability and consensus. Cross-reference Pillar 2 Decide (Mind vs Heart): a Mind-leaning pastor who talks it through with the person involved (Q-F9-C) may be seeking agreement more than clarity. Name the decision pattern and its most common cost in a pastoral context. About 80 to 100 words.
 
-- **The ministry leader you are becoming.** Use Q-F10 as the closing frame. Connect it to Pillar 3 (Action Style), Pillar 2 (Personality Code), and one specific recommendation in Section 14 (Strategic Recommendations) that will move them toward this version of themselves. If the customer's faith orientation (Pillar 6) is Christian, close with one scripture that speaks to the specific kind of ministry legacy they are building. The verse is the mirror. About 80 to 120 words.
+- **The ministry leader you are becoming.** Use Q-F10 as the closing frame. Connect it to Pillar 3 (Action Style), Pillar 2 (Personality Code), and one specific recommendation in Section 15 (Strategic Recommendations) that will move them toward this version of themselves. If the customer's faith orientation (Pillar 6) is Christian, close with one scripture that speaks to the specific kind of ministry legacy they are building. The verse is the mirror. About 80 to 120 words.
 
 The whole Ministry Profile section should run 600 to 900 words. Tie every interpretation back to specific Set F answers AND specific pillar scores AND Set B leadership answers where relevant. No generic pastoral advice. Make it about THIS person and THIS ministry.
 
-### Section 13: Your Stress Response Map
+**Pillar 7 integration into Ministry Profile (when Spiritual Gifts data is present):**
+
+When `spiritualGifts` data is present in the payload (Primary, Secondary, Tertiary gift), weave the primary gift into the relevant Ministry Profile bullets using the guidance below. Do not add a separate Pillar 7 subheading inside Section 12. The gifts inform the bullets, they are not a standalone sub-block here. Section 13 (Spiritual Gifts) carries the full Pillar 7 analysis. Section 12's job is to show how the primary gift shapes THIS pastor's specific ministry expression.
+
+Per-gift Ministry Profile guidance (use whichever matches the Primary gift):
+
+- **Administration:** Weave into "The ministry you are building" and "How you make the hard calls." This person's gift is systems, not just skills. They see how the pieces should fit before others see the problem. Name it as a kingdom gift: the ministry runs because someone holds the architecture. Flag the spiritual risk: Admin-gifted leaders can starve on vision if the calendar is always full of execution.
+
+- **Discernment:** Weave into "How you do pastoral care" and "How you handle disagreement inside the church." This person reads what is real versus what is performed. In pastoral care, that is a rare gift. In conflict, it can read as skepticism. Tell them the gift does not announce itself gracefully; it mostly shows up as a quiet sense that something is off before anyone else says so. That is the gift. Train people to bring it to you before they bring it to everyone else.
+
+- **Encouragement:** Weave into "How you teach and preach" and "Where ministry gives you energy." This person's natural teaching move is the word spoken into the person, not just the word spoken over the room. Their preaching lifts people; the risk is it softens what needed to land harder. Name both.
+
+- **Evangelism:** Weave into "How you teach and preach" and "The ministry you are building." This person cannot stop pointing people toward faith. The pulpit is not just a teaching platform; it is an invitation point. Breadth is in their DNA. The risk is depth suffers if they are always opening the door to the next person and never sitting long with the ones already inside.
+
+- **Faith:** Weave into "How you make the hard calls" and "The ministry you are building." This person is wired to trust God for things that have not materialized yet. In hard pastoral decisions, they move from prayer to action faster than most. Name the gift and its shadow: faith that moves fast can outpace the congregation. The leader has seen where this is going; the people have not caught up yet. Pace the communication.
+
+- **Giving:** Weave into "Ministry and the people at home" and "The ministry you are building." This person releases generously. In ministry, that maps to financial generosity, yes, but also to releasing people and opportunities rather than hoarding them. The risk is they give more than the home can sustain. Name the threshold.
+
+- **Helps / Service:** Weave into "How you do pastoral care" and "Your own spiritual tank." This person serves hands-on. They are behind-the-scenes by instinct. The risk in ministry leadership is that they can drain themselves serving everyone else's need while their own is invisible. Tell them their tank fills when they serve, not when they are served. That is not always a strength.
+
+- **Hospitality:** Weave into "How you teach and preach" and "Where ministry gives you energy." This person creates belonging. Their teaching makes people feel genuinely welcomed before it makes them feel convicted. That is rare and powerful. The risk is the table stays warm and the hard word never lands. Name both.
+
+- **Leadership:** Weave into "The ministry you are building" and "How you make the hard calls." This person sets direction. They move people. In pastoral context, that is the gift that fills a room and plants a vision. The risk is they lead at the pace of their own clarity and do not wait for the congregation to catch up. Discernment about pace is the discipline.
+
+- **Mercy:** Weave into "How you do pastoral care" and "The weight that is wearing on you." This person stays with suffering. They do not rush to fix. That is a kingdom gift in a world that wants resolution in 48 hours. The weight is real: absorbing pain is not the same as processing it. Their recovery protocol (Section 14) is load-bearing; name that directly.
+
+- **Pastoring / Shepherding:** Weave into "The ministry leader you are becoming" and "How you do pastoral care." This person knows people deeply and walks with them over time. That is the definition of the gift. Their ministry grows slowly because it grows deeply. The risk is the church does not scale past what one shepherd can personally hold. Talk about multiplication: raising other shepherds who extend their care beyond what they can personally carry.
+
+- **Teaching:** Weave into "How you teach and preach" and "The ministry you are building." This person explains truth accurately. Their preaching is not primarily inspirational; it is formational. People leave understanding something they could not say before they walked in. The risk is that precision replaces warmth if they are not careful. Name the balance: truth that lands also has to be felt, not just understood.
+
+### Section 13: Your Spiritual Gifts
+
+**IMPORTANT: Generate this section ONLY if Pillar 7 data is present in the payload (fields `srConditional_QG1` through `srConditional_QG25`). Pillar 7 fires for customers who selected Option 6 (Spiritual Growth), Option 7 (Ministry Leader), or Option 8 (Full Blueprint) on the focus qualifier. If those fields are absent, skip this section entirely. Do NOT print a placeholder, a "not applicable" note, or any apology. The reader simply does not see the section.**
+
+When Pillar 7 data IS present, produce a Spiritual Gifts section that interprets the customer's top three gifts in the context of their full pillar profile. This is a standalone Blueprint section, not nested inside another section. Match the depth and tone of Section 10 (Parenting) and Section 11 (Leadership).
+
+**Scoring note:** The customer's top three gifts are passed in as `scores.spiritualGifts.primary`, `scores.spiritualGifts.secondary`, and `scores.spiritualGifts.tertiary`. These are computed by the scoring engine from the 25 Q-G answers. Do NOT recompute the gift ranking. Use the three gift names verbatim as passed in. Do NOT expose the tally to the reader. Do NOT tell the customer their score was "7 out of 25" or "ranked third." Present the gifts as discovered, not counted.
+
+**The 12 SR Spiritual Gifts (use these names exactly in all output):**
+
+| Gift | Biblical Basis | One-Line Definition |
+|---|---|---|
+| Administration | 1 Cor. 12:28 | Organizes people and resources so the mission moves forward |
+| Discernment | 1 Cor. 12:10; 1 John 4:1 | Reads what is spiritually real versus what is performed or false |
+| Encouragement | Romans 12:8 | Speaks into people in ways that fortify them to keep going |
+| Evangelism | Eph. 4:11; Acts 21:8 | Shares faith naturally and compellingly, draws people toward it |
+| Faith | 1 Cor. 12:9; Heb. 11 | Trusts God for what cannot yet be seen, and makes that trust contagious |
+| Giving | Romans 12:8 | Releases financial and material resources with freedom and joy |
+| Helps / Service | 1 Cor. 12:28; Romans 12:7 | Serves behind the scenes; hands-on, practical, presence without recognition |
+| Hospitality | Romans 12:13; 1 Peter 4:9-10 | Creates belonging; makes people feel genuinely welcomed and seen |
+| Leadership | Romans 12:8 | Sets direction, moves people toward a shared goal |
+| Mercy | Romans 12:8 | Feels what others feel; stays with suffering without rushing it |
+| Pastoring / Shepherding | Eph. 4:11; 1 Peter 5:1-4 | Knows each person deeply and walks with them over time |
+| Teaching | Romans 12:7; Eph. 4:11 | Explains truth accurately so others understand and can live by it |
+
+**Q-G Reference Table (use this to interpret each answer; gift listed per option A/B/C/D):**
+
+| Question | A | B | C | D |
+|---|---|---|---|---|
+| Q-G1 | Mercy | Helps / Service | Encouragement | Faith |
+| Q-G2 | Hospitality | Pastoring / Shepherding | Evangelism | Leadership |
+| Q-G3 | Discernment | Pastoring / Shepherding | Encouragement | Leadership |
+| Q-G4 | Pastoring / Shepherding | Evangelism | Teaching | Faith |
+| Q-G5 | Giving | Hospitality | Teaching | Administration |
+| Q-G6 | Administration | Leadership | Faith | Pastoring / Shepherding |
+| Q-G7 | Teaching | Encouragement | Helps / Service | Mercy |
+| Q-G8 | Discernment | Hospitality | Leadership | Administration |
+| Q-G9 | Teaching | Evangelism | Pastoring / Shepherding | Mercy |
+| Q-G10 | Faith | Encouragement | Discernment | Mercy |
+| Q-G11 | Teaching | Evangelism | Giving | Helps / Service |
+| Q-G12 | Administration | Helps / Service | Discernment | Mercy |
+| Q-G13 | Administration | Giving | Mercy | Leadership |
+| Q-G14 | Encouragement | Discernment | Faith | Helps / Service |
+| Q-G15 | Teaching | Discernment | Encouragement | Pastoring / Shepherding |
+| Q-G16 | Discernment | Mercy | Faith | Leadership |
+| Q-G17 | Evangelism | Discernment | Hospitality | Faith |
+| Q-G18 | Administration | Giving | Evangelism | Leadership |
+| Q-G19 | Pastoring / Shepherding | Leadership | Administration | Teaching |
+| Q-G20 | Leadership | Encouragement | Teaching | Mercy |
+| Q-G21 | Giving | Helps / Service | Hospitality | Encouragement |
+| Q-G22 | Discernment | Evangelism | Faith | Mercy |
+| Q-G23 | Giving | Helps / Service | Hospitality | Evangelism |
+| Q-G24 | Teaching | Hospitality | Pastoring / Shepherding | Evangelism |
+| Q-G25 | Administration | Encouragement | Pastoring / Shepherding | Giving |
+
+**Spiritual Gifts section structure (produce these bullets in order):**
+
+- **Your gift combination.** Open with one paragraph naming all three gifts (Primary, Secondary, Tertiary) and what the combination reveals about how this person is built to serve. Do not define each gift here; that comes in the per-gift bullets below. The opening paragraph answers the question: "What does it mean that these three gifts showed up together in this person?" Cross-reference with the customer's Pillar 1 Behavior Archetype and Pillar 2 Personality Code to show how their wiring shapes HOW these gifts express. A Commander (high-D) with primary Leadership and secondary Teaching deploys those gifts differently than a Sage (C+S) with the same pair. Name that difference. About 80 to 120 words.
+
+- **Primary gift: [Gift Name].** Lead with the one-line SR definition of the gift. Then make it personal: show the customer what this gift looks like when it is operating well, using their specific Q-G answers as evidence (e.g., "You answered Q-G2 by choosing hospitality and Q-G8 by choosing discernment; together those answers reveal a person who creates space for others and then reads what is really happening inside it"). Name the shadow: the blind spot or cost this gift creates when overused or undirected. About 100 to 150 words.
+
+- **Secondary gift: [Gift Name].** Same depth as Primary. Show how this gift interacts with the Primary rather than repeating the opening-paragraph framing. Does it amplify the Primary (Teaching + Encouragement = truth that fortifies), create productive tension (Discernment + Hospitality = you see what is real while creating space for it), or extend the Primary into different contexts? About 80 to 120 words.
+
+- **Tertiary gift: [Gift Name].** The third gift is often less visible to the customer but fires in specific circumstances when Primary and Secondary alone are not enough. Name those circumstances. About 60 to 100 words.
+
+- **The shadow of this combination.** Every gift cluster creates a collective blind spot beyond any single gift's shadow. A Teaching + Encouragement + Administration person may build systems for people's growth while missing the ones right in front of them who need a hand, not a plan. Name the collective shadow specific to THIS customer's three-gift combination. One concrete practice to guard against it. About 60 to 80 words.
+
+- **Pastoring / Shepherding note.** Include this paragraph ONLY if Pastoring / Shepherding appears in the customer's top three gifts. If it does not appear, skip this bullet entirely.
+
+  "Pastoring / Shepherding as a spiritual gift is not the same as holding the title of pastor. Many people with this gift never stand behind a pulpit. They are the small group leader who knows every name, the deacon who calls on Thursday, the neighbor who shows up when things fall apart. The gift is about knowing people deeply and walking with them over time. Holding an office is a vocation. Carrying this gift is a calling that operates whether or not the church ever puts a title on you. If you see this gift in yourself, ask not 'Am I a pastor?' but 'Who am I actually shepherding right now?'"
+
+- **Scripture anchor.** Close the section by grounding the top gift cluster in the customer's faith framework. If the customer's Spiritual Compass (Pillar 6) is Christian, cite the relevant biblical passage for their primary gift (Romans 12:4-8 for Mercy, Encouragement, Giving, Leadership; 1 Corinthians 12:8-10 for Discernment, Faith; Ephesians 4:11-12 for Teaching, Evangelism, Pastoring; 1 Corinthians 12:28 for Administration, Helps; Romans 12:13 and 1 Peter 4:9-10 for Hospitality). One sentence of scripture, then one sentence of direct application to this person's specific combination. If the customer's Spiritual Compass is spiritual-but-not-religious or secular, skip the scripture and affirm the gifts in terms of how they serve the people around the customer. About 60 to 80 words.
+
+The whole Spiritual Gifts section should run 600 to 900 words. Tie every bullet back to specific Q-G answers AND the pillar profile. No generic theology of spiritual gifts. Make it about THIS person's specific combination and what it means for how they contribute.
+
+### Section 14: Your Stress Response Map
 How this person breaks under pressure, and what to do when they see it happening.
 - **The first sign of pressure.** What this person does FIRST when stress hits, before they consciously realize they are stressed. This is pillar-specific (a high-D person becomes commanding, a high-S person withdraws, etc.).
 - **The breaking point behavior.** What happens when pressure exceeds their capacity. Specific, observable.
@@ -577,13 +683,13 @@ How this person breaks under pressure, and what to do when they see it happening
 - **The early warning signs others can spot.** What partners, friends, or team members see before this person sees it themselves.
 - **The reset.** A specific 24-hour protocol for resetting after a stress spike.
 
-### Section 14: Your Strategic Recommendations
+### Section 15: Your Strategic Recommendations
 Three time horizons:
 - **Quick Win. This Week.** One specific action they can take in the next 7 days.
 - **Medium Shift. This Month.** Build the architecture (3 specific structural changes).
 - **Long Term Transformation. 90 Days.** The deeper work (developing their weak pillar deliberately).
 
-### Section 15: Your 30 Day Alignment Plan
+### Section 16: Your 30 Day Alignment Plan
 Week-by-week:
 - **Week 1: Awareness.** Days 1-7. Track and observe only.
 - **Week 2: Behavior Alignment.** Days 8-14. Interrupt the pattern.
@@ -591,7 +697,7 @@ Week-by-week:
 - **Week 4: Processing Alignment.** Days 22-30. Optimize the environment.
 - Red Flags to Watch For: 3 specific traps to avoid
 
-**Practice specificity rule for Section 15:** Every practice recommended in this section must include three things: (a) a specific time of day or trigger circumstance (e.g., "morning, within 30 minutes of waking" or "right after work, before checking your phone"), (b) a specific duration (e.g., "10 minutes"), and (c) a measurable outcome the customer can track (e.g., "log it in a simple notebook for 7 days, then ask yourself whether the pattern shifted"). No generic "be more mindful" or "try to listen better." Every practice must be specific enough that the customer can start it this week without further interpretation. If they need to interpret what to do, the practice is not finished.
+**Practice specificity rule for Section 16:** Every practice recommended in this section must include three things: (a) a specific time of day or trigger circumstance (e.g., "morning, within 30 minutes of waking" or "right after work, before checking your phone"), (b) a specific duration (e.g., "10 minutes"), and (c) a measurable outcome the customer can track (e.g., "log it in a simple notebook for 7 days, then ask yourself whether the pattern shifted"). No generic "be more mindful" or "try to listen better." Every practice must be specific enough that the customer can start it this week without further interpretation. If they need to interpret what to do, the practice is not finished.
 
 ### What Is Next
 Closing 3 paragraphs. Tell them they have their Blueprint. Tell them implementation is the work. Mention the consultation upsell if they haven't bought it. Sign off:

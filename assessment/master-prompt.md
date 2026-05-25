@@ -232,15 +232,16 @@ Per-section word budget (approximate):
 - Section 9 (Relationship Alignment): 300 to 450 base, plus an additional 600 to 900 for the Marriage Dynamics subsection when Set E answers are present (skip the subsection entirely when absent)
 - Section 10 (Parenting, conditional): 350 to 500
 - Section 11 (Leadership, conditional): 350 to 500
-- Section 12 (Stress Response Map): 500 to 700 (this section MUST include all 5 subsections: the first sign of pressure, the breaking point behavior, the recovery protocol, the early warning signs others can spot, the 24-hour reset. Do NOT collapse these into fewer paragraphs. Each subsection is a separate insight.)
-- Section 13 (Strategic Recommendations): 250 to 400
-- Section 14 (30 Day Alignment Plan): 400 to 550
+- Section 12 (Ministry Profile, conditional): 600 to 900 (skip entirely when Set F answers are absent)
+- Section 13 (Stress Response Map): 500 to 700 (this section MUST include all 5 subsections: the first sign of pressure, the breaking point behavior, the recovery protocol, the early warning signs others can spot, the 24-hour reset. Do NOT collapse these into fewer paragraphs. Each subsection is a separate insight.)
+- Section 14 (Strategic Recommendations): 250 to 400
+- Section 15 (30 Day Alignment Plan): 400 to 550
 
 Where a section guidance below says "3 to 4 paragraphs" or "4 to 5 paragraphs," interpret as "1 to 2 tight paragraphs of 80 to 120 words each."
 
 Where a section asks for multiple subsections, prioritize the 3 most relevant subsections for THIS person based on their pillar scores. Skip the rest. Quality over completeness. EXCEPTION: Section 12 (Stress Response Map) keeps all 5 subsections, no skipping. The 5 subsections in that section are each load-bearing.
 
-For sections marked "audience only" (Parenting, Leadership) and conditional subsections (Marriage Dynamics within Section 9): omit entirely if the qualifier or the required conditional answers do not match. Never write a placeholder like "Not applicable for your tier" or "Add a marriage section once Set E is wired in." If the data is not there, the reader does not see the section.
+For sections marked "audience only" (Parenting, Leadership, Ministry Profile) and conditional subsections (Marriage Dynamics within Section 9): omit entirely if the qualifier or the required conditional answers do not match. Never write a placeholder like "Not applicable for your tier" or "Add a marriage section once Set E is wired in." If the data is not there, the reader does not see the section.
 
 For non-conditional sections (Career, Relationship, Stress): ALWAYS generate, regardless of qualifier. These apply to everyone.
 
@@ -426,7 +427,7 @@ Use the Set E reference table below to interpret each answer. Each Q-E number ma
 
 - **Your conflict rhythm in this marriage.** Synthesize Q-E1 (the pattern of arguments) and Q-E2 (your default move in a disagreement). Name the rhythm specifically. If Q-E1 is A (same fight over and over) and Q-E2 is B (pull back to think), name that pattern: "You hit the same wound repeatedly because one of you presses and the other retreats, and neither of you stays in the room long enough to finish the conversation." Tie back to the customer's Pillar 1 behavior and Pillar 2 Decide letter (M vs H) so the rhythm is anchored in their wiring, not just the marriage-level pattern. About 80 to 120 words.
 
-- **Where the intimacy is right now.** Use Q-E3 (current intimacy state) as the diagnostic. If A (strong), affirm the strength and warn against drift. If B (steady but drifted), name the drift and point to the most likely cause given their Pillar 4 Connection Currency. If C (imbalanced), name which area is alive and which is quiet, and connect to their primary currency. If D (distant), be honest about it without preaching, and route them to Section 9's "For couples" guidance plus the Strategic Recommendations in Section 13. About 80 to 120 words.
+- **Where the intimacy is right now.** Use Q-E3 (current intimacy state) as the diagnostic. If A (strong), affirm the strength and warn against drift. If B (steady but drifted), name the drift and point to the most likely cause given their Pillar 4 Connection Currency. If C (imbalanced), name which area is alive and which is quiet, and connect to their primary currency. If D (distant), be honest about it without preaching, and route them to Section 9's "For couples" guidance plus the Strategic Recommendations in Section 14. About 80 to 120 words.
 
 - **How the two of you make big decisions.** Use Q-E4. Cross-reference with the customer's Pillar 2 Decide leaning (M for Mind or H for Heart) and Pillar 3 Action Style. If they answer C (stall decisions) but their Action Style is The Sparker, name the gap: their wiring wants to move; the marriage's pattern blocks it. Give one concrete move they can take this month to shift the pattern. About 60 to 100 words.
 
@@ -440,7 +441,7 @@ Use the Set E reference table below to interpret each answer. Each Q-E number ma
 
 - **The vulnerability differential.** Use Q-E9 to name how vulnerable the customer feels with their spouse compared to others in their life. If A (safest person), this is a strength the marriage can lean on. If B or D (harder with spouse), name the gap honestly and give one repair move. If C (about even), this often means the marriage is one of several safe spaces, which can be either healthy diversification or a quiet sign the spouse is not the primary attachment. Read the customer's Pillar 2 Charge letter (Outward vs Inward) to interpret which it is. About 80 to 120 words.
 
-- **The marriage you are building.** Use Q-E10 as the closing frame. Name the kind of marriage the customer is reaching for, then connect it to one or two specific Strategic Recommendations in Section 13 that will move them toward it. About 60 to 100 words.
+- **The marriage you are building.** Use Q-E10 as the closing frame. Name the kind of marriage the customer is reaching for, then connect it to one or two specific Strategic Recommendations in Section 14 that will move them toward it. About 60 to 100 words.
 
 - **Faith and the marriage.** If the customer's Spiritual Compass (Pillar 6) faith orientation is Christian or spiritual-but-not-religious, close the subsection with one paragraph on what scripture or principle speaks to the specific dynamic surfaced above. Lean on covenant (Genesis 2:24), mutual submission (Ephesians 5:21-33), or communication (James 1:19) where it fits. Do NOT preach. The verse is the mirror; hand it to them. If the customer's faith orientation is secular or "still figuring out," skip the faith paragraph. About 60 to 100 words when included.
 
@@ -469,7 +470,103 @@ How this person leads, what they need from their team, what their team needs fro
 - **Hiring filter.** Three specific traits to look for in your next hire to complement your wiring.
 - **Delegation map.** What you should NEVER delegate (your high-leverage zone) and what you MUST delegate (your drain zone).
 
-### Section 12: Your Stress Response Map
+### Section 12: Your Ministry Profile (Ministry audience only)
+
+**IMPORTANT: Generate this section ONLY if Set F answers are present in the payload (fields `srConditional_QF1` through `srConditional_QF10`). If any of those answers are absent (because the customer is not currently in a pastoral or ministry leadership role, OR because the GHL survey has not yet been updated to ask Set F), skip this section entirely. Do NOT print a placeholder, a "not applicable" note, or any apology. The reader simply does not see the section.**
+
+When Set F answers ARE present, produce a Ministry Profile that synthesizes the 10 ministry-specific answers into a pastoral-level read. This is its own dedicated Blueprint section, not nested inside another section. Match the depth and tone of Section 10 (Parenting) and Section 11 (Leadership) so the Ministry audience gets the same caliber of audience-specific deep dive.
+
+Cross-reference throughout with: Pillar 1 (behavior under pressure, as a moral example in a public role), Pillar 2 (Personality Code, how wiring shapes preaching approach and ministry decision-making), Pillar 3 (Action Style as it shows up in pastoral and preaching work), Pillar 4 (Connection Currency framed for pastoral care, not romantic partnership), Pillar 6 (Spiritual Compass, the core of all ministry engagement), and Set B answers (Leadership questions read through a ministry lens, since Set B fires for pastors). Where Pillar 7 (Spiritual Gifts) data is available, weave it into the teaching, care, and team-building bullets.
+
+Use the Set F reference table below to interpret each answer.
+
+**Set F Reference Table (Q-F1 through Q-F10):**
+
+- **Q-F1: When you preach, teach, or lead a gathering, your default approach is:**
+  - A) Start with the text. Let scripture or the lesson lead the room.
+  - B) Start with the people. Read the room, then frame the message to where they are.
+  - C) Start with the story. Lead with the testimony, then bring it home.
+  - D) Start with the structure. Move through it cleanly, point by point.
+
+- **Q-F2: When someone in your care is in crisis (loss, marriage falling apart, faith shaken), your first instinct is to:**
+  - A) Sit with them in it. Don't rush to fix.
+  - B) Pray with them and surface what God might be doing.
+  - C) Connect them with practical resources and follow up.
+  - D) Speak truth directly, even when it's hard to hear.
+
+- **Q-F3: The hardest part of leading in ministry for you is:**
+  - A) The weight of always being on. Pastor-in-public mode never stops.
+  - B) The politics. Navigating people who use church for their own agenda.
+  - C) The funding. Always being aware of giving while trying to lead.
+  - D) The loneliness. Hard to be honest with people you also lead.
+
+- **Q-F4: When you disagree with someone in your congregation or staff on theology or practice, you tend to:**
+  - A) Address it directly and quickly. Better to clear the air.
+  - B) Sit with it, pray about it, then come back with a measured response.
+  - C) Build the relationship first, then bring up the disagreement.
+  - D) Defer when possible. Save the energy for things that really matter.
+
+- **Q-F5: The part of ministry that energizes you most is:**
+  - A) Preaching and teaching. Standing in front of people with truth.
+  - B) One-on-one discipleship. Walking with people in the slow work.
+  - C) Casting vision. Painting where this ministry could go.
+  - D) Building the team. Raising up leaders who outgrow me.
+
+- **Q-F6: When ministry pulls hard on your family or personal life, you:**
+  - A) Hold the family line. Ministry comes second to home.
+  - B) Negotiate it case by case. Some seasons bend, others don't.
+  - C) Struggle with it. I want the boundary but rarely hold it.
+  - D) Lean into ministry. My family understands the calling.
+
+- **Q-F7: Your spiritual practices for yourself (not what you teach others, what you actually do) are:**
+  - A) Strong and consistent. Daily, structured, sustaining.
+  - B) Strong but irregular. Deep when I do it, but not daily.
+  - C) Honestly thin. I pour out more than I take in.
+  - D) Mostly happening through the work itself. The preparation IS the practice.
+
+- **Q-F8: The kind of impact you most want this ministry to have over the next ten years is:**
+  - A) Depth. Smaller, deeply formed disciples who reproduce.
+  - B) Breadth. A larger reach, more people in the door.
+  - C) Influence. Become a voice the broader church or city listens to.
+  - D) Faithfulness. Tend the people we have, year after year, well.
+
+- **Q-F9: When you face a hard pastoral decision (discipline, staff release, hard counsel, member conflict), your first move is to:**
+  - A) Pray about it, then act with clarity once I sense direction.
+  - B) Consult with a few trusted advisors before deciding.
+  - C) Talk it through with the person or people involved before deciding.
+  - D) Move quickly. Delay creates more pain than the decision itself.
+
+- **Q-F10: The ministry leader you most want to be like in ten years is the kind who:**
+  - A) Preaches with depth and clarity. Sustains a body around solid teaching.
+  - B) Disciples one or two generations into leaders. Reproduces themselves.
+  - C) Builds something institutionally lasting. A ministry that outlives them.
+  - D) Stays small and faithful. Known by name in the community, present and consistent.
+
+**Ministry Profile structure (produce these bullets in order):**
+
+- **How you teach and preach.** Use Q-F1 to identify the customer's default teaching approach. Cross-reference with Pillar 2 Trust (Tangible vs Vision): a text-first preacher (Q-F1-A) who trusts Tangible data moves verse-by-verse and grounds every point in what the text says; a people-first preacher (Q-F1-B) who leans Vision reads the room and finds the angle that meets people where they are today. Cross-reference with Pillar 3 Action Style: The Scholar preaches with research and depth; The Sparker preaches with energy and illustration; The Steward preaches with structure and a clean progression; The Crafter preaches with story and embodied examples. Name the approach, what it does well, and where it leaves a gap in the room. About 80 to 120 words.
+
+- **How you do pastoral care.** Use Q-F2 to identify the customer's crisis-care instinct. Cross-reference with Pillar 4 Connection Currency: a customer who sits with people in pain (Q-F2-A) and ranks Presence highest is wired for this move naturally; if they lead with practical resources (Q-F2-C) but their primary currency is Spoken, they may be serving people in a currency that does not match their own strengths. If the customer's Pillar 1 behavior is high-D, name the friction between urgency-to-fix and the patience required for deep pastoral presence. Name the care style and where their wiring amplifies or limits it. About 80 to 120 words.
+
+- **The weight that is wearing on you.** Use Q-F3 to name the hardest part of ministry leadership for this customer. Be direct. If they answered D (the loneliness), tie it back to Pillar 2 Charge (Inward vs Outward) and note that an Inward-charged pastor carries this weight differently than an Outward-charged one. If they answered A (always-on weight), cross-reference Pillar 5 Learning Channel for how this person refuels, and point them to Section 13 (Stress Response Map) for the recovery protocol. Give one concrete practice they can establish this month to manage this specific weight. About 80 to 120 words.
+
+- **How you handle disagreement inside the church.** Use Q-F4. Cross-reference with Set B Q-B3 (critical feedback approach) and Pillar 1 conflict style. If Q-F4-A (direct and fast) but Pillar 1 is high-S, name the tension: the wiring wants harmony but the practice forces direct engagement, and that gap costs energy every time. If Q-F4-D (defer when possible), name what accumulates unaddressed and what that typically costs a ministry over two to three years. About 80 to 100 words.
+
+- **Where ministry gives you energy.** Use Q-F5. Cross-reference with Pillar 3 Action Style: a Sparker energized by vision-casting (Q-F5-C) is well-matched; a Scholar energized by one-on-one discipleship (Q-F5-B) is well-matched. Where Action Style and Q-F5 diverge, name the misalignment. A Steward who is most energized by preaching (Q-F5-A) may be using the pulpit as a refuge from the operational work they find draining. Cross-reference with Set B Q-B5 (what energizes most as a leader) to confirm or complicate the pattern. About 60 to 100 words.
+
+- **Ministry and the people at home.** Use Q-F6. Cross-reference with Pillar 2 Live (Plan vs Flow): a Plan-type pastor who negotiates case by case (Q-F6-B) is operating against their own wiring, and the sustained ambiguity will erode both the home and the ministry over time. A Flow-type who holds the family line hard (Q-F6-A) is doing something that costs more than it shows on the surface. If the customer also answered Set E, cross-reference Q-E7 (how the marriage carries stress), because ministry seasons are stress seasons. Give one specific boundary practice to establish this month. About 80 to 120 words.
+
+- **Your own spiritual tank.** Use Q-F7 to assess where the customer's personal practice actually is, not where they want it to be. If C (honestly thin), be direct: a pastor who pours out more than they take in will eventually have nothing left to give that is genuinely theirs. Cross-reference Pillar 5 Learning Channel to identify the refueling format that fits their wiring (a Word learner refuels differently than a Sound learner). Cross-reference Pillar 6 Spiritual Compass faith themes. Recommend one specific practice, calibrated to their Learning Channel, naming the format and the approximate time commitment they can build into the next 30 days. About 80 to 120 words.
+
+- **The ministry you are building.** Use Q-F8 as the directional frame. Cross-reference with Set B Q-B10 (the leader they most want to become) and Pillar 3 Action Style. Q-F8-A (depth, forming disciples) pairs naturally with The Scholar and The Steward. Q-F8-C (influence, broader voice) pairs naturally with The Sparker and a Visionary Behavior Profile. Where the impact vision and the wiring diverge, name it: a high-C (Conscientious) Behavior Profile aiming for breadth (Q-F8-B) will struggle with the relational volume that breadth requires. Name the alignment or the gap, and give one structural move that brings the vision and the wiring into better contact. About 80 to 100 words.
+
+- **How you make the hard calls.** Use Q-F9. Cross-reference with Pillar 1: a high-D pastor who prays and then acts (Q-F9-A) moves quickly from discernment to decision; a high-S pastor who moves quickly (Q-F9-D) is pushing against their own need for stability and consensus. Cross-reference Pillar 2 Decide (Mind vs Heart): a Mind-leaning pastor who talks it through with the person involved (Q-F9-C) may be seeking agreement more than clarity. Name the decision pattern and its most common cost in a pastoral context. About 80 to 100 words.
+
+- **The ministry leader you are becoming.** Use Q-F10 as the closing frame. Connect it to Pillar 3 (Action Style), Pillar 2 (Personality Code), and one specific recommendation in Section 14 (Strategic Recommendations) that will move them toward this version of themselves. If the customer's faith orientation (Pillar 6) is Christian, close with one scripture that speaks to the specific kind of ministry legacy they are building. The verse is the mirror. About 80 to 120 words.
+
+The whole Ministry Profile section should run 600 to 900 words. Tie every interpretation back to specific Set F answers AND specific pillar scores AND Set B leadership answers where relevant. No generic pastoral advice. Make it about THIS person and THIS ministry.
+
+### Section 13: Your Stress Response Map
 How this person breaks under pressure, and what to do when they see it happening.
 - **The first sign of pressure.** What this person does FIRST when stress hits, before they consciously realize they are stressed. This is pillar-specific (a high-D person becomes commanding, a high-S person withdraws, etc.).
 - **The breaking point behavior.** What happens when pressure exceeds their capacity. Specific, observable.
@@ -477,13 +574,13 @@ How this person breaks under pressure, and what to do when they see it happening
 - **The early warning signs others can spot.** What partners, friends, or team members see before this person sees it themselves.
 - **The reset.** A specific 24-hour protocol for resetting after a stress spike.
 
-### Section 13: Your Strategic Recommendations
+### Section 14: Your Strategic Recommendations
 Three time horizons:
 - **Quick Win. This Week.** One specific action they can take in the next 7 days.
 - **Medium Shift. This Month.** Build the architecture (3 specific structural changes).
 - **Long Term Transformation. 90 Days.** The deeper work (developing their weak pillar deliberately).
 
-### Section 14: Your 30 Day Alignment Plan
+### Section 15: Your 30 Day Alignment Plan
 Week-by-week:
 - **Week 1: Awareness.** Days 1-7. Track and observe only.
 - **Week 2: Behavior Alignment.** Days 8-14. Interrupt the pattern.

@@ -256,6 +256,33 @@ async function getMasterPrompt() {
 // =======================================================================
 
 function buildUserMessage(payload, scores) {
+  // Build the conditional answers block. Groups by set letter (A-E), sorted
+  // numerically within each set. Omitted entirely when the bucket is empty
+  // so Claude never sees a stray empty section header.
+  const conditionalAnswerBlock = (() => {
+    const ca = scores.conditionalAnswers || {};
+    const entries = Object.entries(ca);
+    if (entries.length === 0) return '';
+    const sets = {};
+    for (const [key, text] of entries) {
+      const setLetter = key[1]; // 'A' from 'QA1', 'E' from 'QE7', etc.
+      if (!sets[setLetter]) sets[setLetter] = [];
+      sets[setLetter].push([key, text]);
+    }
+    const sortedSetLetters = Object.keys(sets).sort();
+    let block = '\nCONDITIONAL ANSWERS:\n';
+    for (const letter of sortedSetLetters) {
+      block += `\nSet ${letter}:\n`;
+      const sortedPairs = sets[letter].sort((a, b) => {
+        return parseInt(a[0].slice(2), 10) - parseInt(b[0].slice(2), 10);
+      });
+      for (const [key, text] of sortedPairs) {
+        block += `Q-${key.slice(1)}: ${text}\n`;
+      }
+    }
+    return block;
+  })();
+
   return `Generate a complete Alignment Blueprint for this customer following the master prompt's structure and voice exactly.
 
 CUSTOMER:
@@ -310,8 +337,7 @@ PILLAR 6: SPIRITUAL COMPASS
 - Faith Orientation: ${scores.pillar6.faithOrientation}
 - Primary Theme: ${scores.pillar6.primaryTheme}
 - Secondary Theme: ${scores.pillar6.secondaryTheme}
-- Theme Distribution: ${JSON.stringify(scores.pillar6.themeCounts)}
-
+- Theme Distribution: ${JSON.stringify(scores.pillar6.themeCounts)}${conditionalAnswerBlock}
 INSTRUCTIONS FOR THIS BLUEPRINT:
 
 Generate the complete Blueprint as defined in the master prompt:

@@ -201,7 +201,7 @@ function extractQuestions(pool) {
       if (!fieldId || !sr) continue;
       if (!Array.isArray(opts) || opts.length === 0) continue;
       const isSrQ = /^sr_q\d+$/.test(sr);
-      const isConditional = /^srConditional_Q[A-F]\d+$/.test(sr);
+      const isConditional = /^srConditional_Q[A-G]\d+$/.test(sr);
       if (!isSrQ && !isConditional) continue;
       questions.push({
         fieldId,
@@ -301,7 +301,7 @@ function renderQuestionMap(questions, sourceUrl) {
   }
   if (conditionals.length) {
     lines.push('');
-    lines.push('    // --- Conditional questions (Sets A, B, C, D) ---');
+    lines.push('    // --- Conditional questions (Sets A, B, C, D, E, F, G) ---');
     for (const q of conditionals) {
       const opts = q.options.map((o) => `"${escapeJsString(o)}"`).join(', ');
       lines.push(`    // ${q.conditionalKey}: ${q.text.replace(/\n/g, ' ').slice(0, 200)}`);

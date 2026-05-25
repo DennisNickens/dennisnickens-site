@@ -227,9 +227,9 @@ The Blueprint is 8 to 12 pages total. Approximately 4,500 to 6,500 words. Not 30
 Per-section word budget (approximate):
 - Executive Summary: 250 to 350
 - Sections 1 through 6 (the six pillars): 350 to 500 each
-- Section 7 (Misalignment Map): 500 to 700 (this is the deepest, allow more depth)
+- Section 7 (Misalignment Map): 600 to 800 (this is the deepest; the action-item requirement adds content to each bullet, allow more depth)
 - Section 8 (Career Alignment): 300 to 450
-- Section 9 (Relationship Alignment): 300 to 450 base, plus an additional 600 to 900 for the Marriage Dynamics subsection when Set E answers are present (skip the subsection entirely when absent)
+- Section 9 (Relationship Alignment): 350 to 500 base, plus an additional 600 to 900 for the Marriage Dynamics subsection when Set E answers are present (skip the subsection entirely when absent)
 - Section 10 (Parenting, conditional): 350 to 500
 - Section 11 (Leadership, conditional): 350 to 500
 - Section 12 (Ministry Profile, conditional): 600 to 900 (skip entirely when Set F answers are absent)
@@ -325,11 +325,14 @@ Bullet list:
 
 ### Section 7: Your Misalignment Map
 This is the deepest section. The one that earns the cost.
-- The Primary Misalignment: Where the six pillars conflict (usually Behavior vs Connection Currency, or Action Style vs Personality Code)
-- The Trigger: Specific moments where the misalignment fires hardest
-- The Cost in three places: Closest relationships, Career, Yourself
+
+**Action-item rule for Section 7:** Every misalignment you name must be paired with a concrete "What to do this week" step. Naming the pattern is not enough. Each identified misalignment needs a specific action the customer can take in the next 7 days to start closing the gap. No generic "be more present" or "work on communication." The action must be specific enough to schedule. If you cannot name a concrete 7-day move, the misalignment observation is not finished.
+
+- The Primary Misalignment: Where the six pillars conflict (usually Behavior vs Connection Currency, or Action Style vs Personality Code). Pair it with a "What to do this week" action: name one specific situation this week where this misalignment is likely to fire, and give one behavior change to try in that moment.
+- The Trigger: Specific moments where the misalignment fires hardest. Describe the trigger as a scene, not a generality. "Tuesday evening, after 9 PM, when you are tired and they want to talk." Not "when you are stressed."
+- The Cost in three places: Closest relationships, Career, Yourself. For each cost, name one observable symptom (how you will know it is happening this week) and one immediate intervention the customer can start right now.
 - The Pattern: A week-by-week breakdown showing how the misalignment plays out (Monday locked in, Tuesday goes sideways, Wednesday overcompensate, etc.)
-- The Pivot: The specific shift required (not "be different" — the precise behavior change that bridges the gap)
+- The Pivot: The specific shift required (not "be different," the precise behavior change that bridges the gap). State it as a rule: "When [trigger fires], do [specific action] instead of [current pattern]." The rule must be concrete enough to remember at 9 PM on a Tuesday.
 
 ### Section 8: Your Career Alignment
 Map this person's wiring to career fit. Use specific pillar scores AND the Set D Career Path conditional answers (fields `srConditional_QD1` through `srConditional_QD10`) to justify each recommendation. Set D is shown to every customer, so these 10 answers are always available. Use them to ground the section in what THIS person has actually told you about how they work, what energizes them, how they handle conflict, where they want to go, and how faith intersects their professional life.
@@ -350,8 +353,8 @@ How this person shows up in romantic and intimate relationships.
 - **What you read as "love" that often is not.** A blind spot insight: how this person sometimes mistakes one currency for another, or misses a partner's love because it is being paid in a different currency.
 - **Compatible wiring patterns.** What kind of partner thrives alongside this wiring. Not "find your soulmate" stuff — actual pattern-matching based on the pillars.
 - **Friction points to watch.** Where THIS person's wiring naturally creates conflict in partnership, and how to manage it.
-- **For singles.** Practical guidance on what to look for and what to test in dating.
-- **For couples.** Practical guidance on what to address with current partner.
+- **For singles.** Practical guidance on what to look for and what to test in dating. Name two or three specific situations to observe in early dating that will reveal whether a potential partner can meet this customer's primary Connection Currency need. Give one specific question or conversation to initiate by the third date. No generic "work on yourself first" advice. Every recommendation must be specific enough to act on this week or this month.
+- **For couples.** Practical guidance on what to address with current partner. Give at least one specific action to take this week. Format it as a direct instruction: "This week, [specific action] with your partner. Spend [approximate duration]. Do it [at a specific time or in a specific circumstance, e.g., Saturday morning before the kids are up, or on the drive home Friday]." No generic "try to listen better" or "be more intentional." If the customer cannot start it this week without further interpretation, the recommendation is not specific enough.
 
 #### Marriage Dynamics (Married/Partnered audience only, within Section 9)
 
@@ -587,6 +590,8 @@ Week-by-week:
 - **Week 3: Communication Alignment.** Days 15-21. Audit and adjust.
 - **Week 4: Processing Alignment.** Days 22-30. Optimize the environment.
 - Red Flags to Watch For: 3 specific traps to avoid
+
+**Practice specificity rule for Section 15:** Every practice recommended in this section must include three things: (a) a specific time of day or trigger circumstance (e.g., "morning, within 30 minutes of waking" or "right after work, before checking your phone"), (b) a specific duration (e.g., "10 minutes"), and (c) a measurable outcome the customer can track (e.g., "log it in a simple notebook for 7 days, then ask yourself whether the pattern shifted"). No generic "be more mindful" or "try to listen better." Every practice must be specific enough that the customer can start it this week without further interpretation. If they need to interpret what to do, the practice is not finished.
 
 ### What Is Next
 Closing 3 paragraphs. Tell them they have their Blueprint. Tell them implementation is the work. Mention the consultation upsell if they haven't bought it. Sign off:

@@ -201,7 +201,7 @@ function extractQuestions(pool) {
       if (!fieldId || !sr) continue;
       if (!Array.isArray(opts) || opts.length === 0) continue;
       const isSrQ = /^sr_q\d+$/.test(sr);
-      const isConditional = /^srConditional_Q[A-E]\d+$/.test(sr);
+      const isConditional = /^srConditional_Q[A-F]\d+$/.test(sr);
       if (!isSrQ && !isConditional) continue;
       questions.push({
         fieldId,

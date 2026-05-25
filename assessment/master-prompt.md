@@ -229,7 +229,7 @@ Per-section word budget (approximate):
 - Sections 1 through 6 (the six pillars): 350 to 500 each
 - Section 7 (Misalignment Map): 500 to 700 (this is the deepest, allow more depth)
 - Section 8 (Career Alignment): 300 to 450
-- Section 9 (Relationship Alignment): 300 to 450
+- Section 9 (Relationship Alignment): 300 to 450 base, plus an additional 600 to 900 for the Marriage Dynamics subsection when Set E answers are present (skip the subsection entirely when absent)
 - Section 10 (Parenting, conditional): 350 to 500
 - Section 11 (Leadership, conditional): 350 to 500
 - Section 12 (Stress Response Map): 500 to 700 (this section MUST include all 5 subsections: the first sign of pressure, the breaking point behavior, the recovery protocol, the early warning signs others can spot, the 24-hour reset. Do NOT collapse these into fewer paragraphs. Each subsection is a separate insight.)
@@ -240,7 +240,7 @@ Where a section guidance below says "3 to 4 paragraphs" or "4 to 5 paragraphs," 
 
 Where a section asks for multiple subsections, prioritize the 3 most relevant subsections for THIS person based on their pillar scores. Skip the rest. Quality over completeness. EXCEPTION: Section 12 (Stress Response Map) keeps all 5 subsections, no skipping. The 5 subsections in that section are each load-bearing.
 
-For sections marked "audience only" (Parenting, Leadership): omit entirely if the qualifier doesn't match. Never write a placeholder like "Not applicable for your tier."
+For sections marked "audience only" (Parenting, Leadership) and conditional subsections (Marriage Dynamics within Section 9): omit entirely if the qualifier or the required conditional answers do not match. Never write a placeholder like "Not applicable for your tier" or "Add a marriage section once Set E is wired in." If the data is not there, the reader does not see the section.
 
 For non-conditional sections (Career, Relationship, Stress): ALWAYS generate, regardless of qualifier. These apply to everyone.
 
@@ -351,6 +351,100 @@ How this person shows up in romantic and intimate relationships.
 - **Friction points to watch.** Where THIS person's wiring naturally creates conflict in partnership, and how to manage it.
 - **For singles.** Practical guidance on what to look for and what to test in dating.
 - **For couples.** Practical guidance on what to address with current partner.
+
+#### Marriage Dynamics (Married/Partnered audience only, within Section 9)
+
+**IMPORTANT: Generate this subsection ONLY if Set E answers are present in the payload (fields `srConditional_QE1` through `srConditional_QE10`). If any of those answers are absent (because the customer is not currently in a marriage or long-term committed partnership, OR because the GHL survey has not yet been updated to ask Set E), skip this subsection entirely. Do NOT print a placeholder, a "not applicable" note, or any apology. The reader simply does not see the subsection.**
+
+When Set E answers ARE present, produce a Marriage Dynamics block at the end of Section 9 that synthesizes the 10 marriage-specific answers into a partnership-level read. Match the depth and tone of Section 10 (Parenting) and Section 11 (Leadership) so the Marriage audience gets the same caliber of audience-specific deep dive that Parents and Leaders get.
+
+Use the Set E reference table below to interpret each answer. Each Q-E number maps to a specific marriage dynamic and a fixed answer set (A/B/C/D). The customer's answer is one of those four options.
+
+**Set E Reference Table (Q-E1 through Q-E10):**
+
+- **Q-E1: When you and your spouse hit a recurring disagreement, what tends to be true:**
+  - A) We have the same fight, over and over. The topics change; the dance is the same.
+  - B) We rarely fight outright. Things go unsaid and build up.
+  - C) We blow up, then make up fast. The intensity passes within hours.
+  - D) Conflict is rare and short. We mostly avoid it on purpose.
+
+- **Q-E2: When you and your spouse hit a real disagreement, your default move is to:**
+  - A) Press in. Talk it through until we land somewhere.
+  - B) Pull back. Take time alone to think, come back later.
+  - C) Lead with the fix. Offer what would make it better and move forward.
+  - D) Bring in the facts. Lay out what happened and where the breakdown was.
+
+- **Q-E3: The intimacy in your marriage right now is:**
+  - A) Strong. We are close emotionally and physically.
+  - B) Steady but not what it used to be. We have drifted some.
+  - C) Imbalanced. One area is alive, the other has gone quiet.
+  - D) Distant. There is more space between us than either of us wants.
+
+- **Q-E4: When a big decision shows up (move, money, kids, career, faith), the two of you tend to:**
+  - A) Talk it through together until we are aligned, then act.
+  - B) One of us takes the lead and the other supports the call.
+  - C) Stall it. Decisions sit on the shelf longer than they should.
+  - D) Each have our own view and either compromise or hold ground.
+
+- **Q-E5: The thing your spouse does that lands as love for you, but you do not always recognize as love in the moment:**
+  - A) The way they handle things without me asking. (Action)
+  - B) The way they say things they did not have to say. (Spoken)
+  - C) The way they show up physically when I am worn down. (Contact)
+  - D) The way they remember the small stuff I mention in passing. (Tokens or Presence)
+
+- **Q-E6: The gap between how you try to love your spouse and how they actually need to be loved is:**
+  - A) Wide. I now realize we have spent years speaking different currencies.
+  - B) Real but bridgeable. We see it and are working on it.
+  - C) Mostly closed. We have learned each other, and we mostly hit the right notes.
+  - D) I am not sure. We have never really mapped what each of us needs.
+
+- **Q-E7: When the marriage hits a stretch of stress (kids, work, money, health, loss), the two of you tend to:**
+  - A) Pull closer. The hard thing becomes ours, not mine and theirs.
+  - B) Pull apart, and have to rebuild after. We retreat to cope.
+  - C) One of us carries it, and the other waits to be told what is needed.
+  - D) Argue about how to handle the stress before we handle the stress.
+
+- **Q-E8: The first thing you notice when your marriage is starting to drift:**
+  - A) The conversations get shorter. Less talk about the real stuff.
+  - B) The physical closeness fades. Less touch, less sex, less proximity.
+  - C) The fights get sharper or the silences get longer.
+  - D) The plans for the future stop coming up. We stop talking about what is next.
+
+- **Q-E9: Vulnerability with your spouse versus other people in your life feels:**
+  - A) Easier with them than with anyone else. They are my safest person.
+  - B) Harder with them than I would like. Old wounds make me cautious.
+  - C) About even. They are one of several safe people in my life.
+  - D) Harder with them than with others. We have work to do here.
+
+- **Q-E10: The marriage you want to build over the next ten years looks like:**
+  - A) Deeper than what we have now. Same direction, more intimacy.
+  - B) A partnership with shared mission. We are building something together.
+  - C) A sanctuary. Home is where we exhale together.
+  - D) Steady and faithful. A long, slow, well-tended thing.
+
+**Marriage Dynamics subsection structure (produce these bullets in order):**
+
+- **Your conflict rhythm in this marriage.** Synthesize Q-E1 (the pattern of arguments) and Q-E2 (your default move in a disagreement). Name the rhythm specifically. If Q-E1 is A (same fight over and over) and Q-E2 is B (pull back to think), name that pattern: "You hit the same wound repeatedly because one of you presses and the other retreats, and neither of you stays in the room long enough to finish the conversation." Tie back to the customer's Pillar 1 behavior and Pillar 2 Decide letter (M vs H) so the rhythm is anchored in their wiring, not just the marriage-level pattern. About 80 to 120 words.
+
+- **Where the intimacy is right now.** Use Q-E3 (current intimacy state) as the diagnostic. If A (strong), affirm the strength and warn against drift. If B (steady but drifted), name the drift and point to the most likely cause given their Pillar 4 Connection Currency. If C (imbalanced), name which area is alive and which is quiet, and connect to their primary currency. If D (distant), be honest about it without preaching, and route them to Section 9's "For couples" guidance plus the Strategic Recommendations in Section 13. About 80 to 120 words.
+
+- **How the two of you make big decisions.** Use Q-E4. Cross-reference with the customer's Pillar 2 Decide leaning (M for Mind or H for Heart) and Pillar 3 Action Style. If they answer C (stall decisions) but their Action Style is The Sparker, name the gap: their wiring wants to move; the marriage's pattern blocks it. Give one concrete move they can take this month to shift the pattern. About 60 to 100 words.
+
+- **The currency you under-read from your spouse.** Use Q-E5 to identify which form of love the customer routinely misses when their spouse offers it. Cross-reference with the customer's own Connection Currency ranking from Pillar 4. If they ranked Spoken #1 and Q-E5 answer is A (the way they handle things without me asking, which maps to Action), name the mismatch: their spouse is paying Action, the customer is listening for Spoken, and the love is being paid into the wrong account. Give them a specific reframe. About 80 to 120 words.
+
+- **The currency mismatch you are carrying.** Use Q-E6 (self-assessed gap between how you love and how they need). If A (wide gap, realizing it), validate the awareness and give the next move. If B (working on it), affirm the work and sharpen the focus. If C (mostly closed), honor the closeness and protect against complacency. If D (not sure), this is where you instruct them to take one specific action this week: ask the spouse directly what they most need from the customer. About 80 to 120 words.
+
+- **How the marriage carries stress.** Use Q-E7. Cross-reference with the customer's Pillar 1 stress response and Pillar 4 primary currency. Name the marriage's stress pattern, not just the customer's. About 60 to 100 words.
+
+- **Your early-drift warning signal.** Use Q-E8 to surface the FIRST thing the customer notices when the marriage starts to drift. Tell them this is their personal warning bell and how to act on it the next time it fires. Tie back to Pillar 4 primary currency where relevant (e.g., if Q-E8 is B (physical closeness fades) and the customer's primary currency is Contact, the warning bell is unusually loud for this person and needs to be treated as urgent, not waited out). About 60 to 100 words.
+
+- **The vulnerability differential.** Use Q-E9 to name how vulnerable the customer feels with their spouse compared to others in their life. If A (safest person), this is a strength the marriage can lean on. If B or D (harder with spouse), name the gap honestly and give one repair move. If C (about even), this often means the marriage is one of several safe spaces, which can be either healthy diversification or a quiet sign the spouse is not the primary attachment. Read the customer's Pillar 2 Charge letter (Outward vs Inward) to interpret which it is. About 80 to 120 words.
+
+- **The marriage you are building.** Use Q-E10 as the closing frame. Name the kind of marriage the customer is reaching for, then connect it to one or two specific Strategic Recommendations in Section 13 that will move them toward it. About 60 to 100 words.
+
+- **Faith and the marriage.** If the customer's Spiritual Compass (Pillar 6) faith orientation is Christian or spiritual-but-not-religious, close the subsection with one paragraph on what scripture or principle speaks to the specific dynamic surfaced above. Lean on covenant (Genesis 2:24), mutual submission (Ephesians 5:21-33), or communication (James 1:19) where it fits. Do NOT preach. The verse is the mirror; hand it to them. If the customer's faith orientation is secular or "still figuring out," skip the faith paragraph. About 60 to 100 words when included.
+
+The whole Marriage Dynamics subsection should run 600 to 900 words. Tie every interpretation back to specific Set E answers AND specific pillar scores. No generic marriage advice. Make it about THIS person and THIS marriage.
 
 ### Section 10: Your Parenting Style (Family audience only)
 **IMPORTANT: Generate this section ONLY if the customer's qualifier indicates "Parent or Caregiver" status OR they are part of a Family package. Otherwise skip this section entirely.**

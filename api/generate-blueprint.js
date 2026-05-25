@@ -159,6 +159,11 @@ async function generateAndDeliverBlueprint(payload) {
     sr_pillar5_dominant: scores.pillar5.dominantChannel,
     sr_pillar6_faith_orientation: scores.pillar6.faithOrientation,
     sr_pillar6_themes: `${scores.pillar6.primaryTheme} / ${scores.pillar6.secondaryTheme}`,
+    ...(scores.spiritualGifts ? {
+      sr_pillar7_primary_gift:   scores.spiritualGifts.primary,
+      sr_pillar7_secondary_gift: scores.spiritualGifts.secondary,
+      sr_pillar7_tertiary_gift:  scores.spiritualGifts.tertiary,
+    } : {}),
   });
 
   console.log(`[Blueprint] GHL contact updated. Sending delivery email directly.`);
@@ -337,7 +342,12 @@ PILLAR 6: SPIRITUAL COMPASS
 - Faith Orientation: ${scores.pillar6.faithOrientation}
 - Primary Theme: ${scores.pillar6.primaryTheme}
 - Secondary Theme: ${scores.pillar6.secondaryTheme}
-- Theme Distribution: ${JSON.stringify(scores.pillar6.themeCounts)}${conditionalAnswerBlock}
+- Theme Distribution: ${JSON.stringify(scores.pillar6.themeCounts)}
+${(() => {
+  const sg = scores.spiritualGifts;
+  if (!sg) return '';
+  return `\nSPIRITUAL GIFTS (PILLAR 7):\n- Primary Gift: ${sg.primary}\n- Secondary Gift: ${sg.secondary}\n- Tertiary Gift: ${sg.tertiary}\n`;
+})()}${conditionalAnswerBlock}
 INSTRUCTIONS FOR THIS BLUEPRINT:
 
 Generate the complete Blueprint as defined in the master prompt:
@@ -350,6 +360,7 @@ Generate the complete Blueprint as defined in the master prompt:
 7. Section 6: Your Spiritual Compass (with 3 personalized scripture verses calibrated to this person's combined archetype)
 8. Section 7: Your Misalignment Map (where the pillars conflict and what it costs)
 9. Section 8 onward as defined in the master prompt
+10. Section 13: Your Spiritual Gifts (conditional, only if SPIRITUAL GIFTS data is present above)
 
 Use Dennis Nickens's voice. Plain English. Direct, warm, consultative. NO em dashes or en dashes (replace with commas, periods, or rephrase). NO AI-sounding phrases ("delve into," "navigate the landscape," "in today's fast-paced world," "tapestry," etc.). Sign off with "Dennis Nickens" not "Dennis,".
 

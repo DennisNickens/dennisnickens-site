@@ -51,6 +51,39 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server misconfigured', missing });
   }
 
+  // TEMPORARY TEST MODE — remove after May 27 validation run
+  // ?mode=test returns Blueprint inline, skips email + GHL update + Blob storage.
+  if (req.query && req.query.mode === 'test') {
+    const payload = req.body;
+    try {
+      if (!payload.rawAnswers || !Array.isArray(payload.rawAnswers.behaviorProfile)) {
+        return res.status(400).json({ error: 'Test mode requires rawAnswers.behaviorProfile array' });
+      }
+      const scores = scoreAssessment(payload.rawAnswers);
+      const userMessage = buildUserMessage(payload, scores);
+      const systemPrompt = await getMasterPrompt();
+      const blueprintMarkdown = await callClaude(systemPrompt, userMessage);
+      return res.status(200).json({
+        scores: {
+          pillar1: scores.pillar1.twoLetterType,
+          pillar2: scores.pillar2.type,
+          pillar3: scores.pillar3.dominantMode,
+          pillar4: scores.pillar4.primary,
+          pillar5: scores.pillar5.dominantChannel,
+          pillar6: scores.pillar6.faithOrientation,
+          spiritualGifts: scores.spiritualGifts,
+        },
+        conditionalSets: Object.keys(scores.conditionalAnswers || {}).reduce((acc, k) => {
+          const letter = k[1]; acc[letter] = (acc[letter] || 0) + 1; return acc;
+        }, {}),
+        blueprint: blueprintMarkdown,
+      });
+    } catch (err) {
+      return res.status(500).json({ error: err.message, stack: err.stack });
+    }
+  }
+  // END TEMPORARY TEST MODE
+
   // Snapshot the body before we respond, since req may be torn down after
   const payload = req.body;
 

@@ -382,12 +382,12 @@ async function callClaude(systemPrompt, userMessage) {
       'anthropic-version': '2023-06-01',
     },
     body: JSON.stringify({
-      // Running on Vercel Pro tier with 15-minute waitUntil window, so we use Opus
-      // (slowest but most nuanced) with high max_tokens for the richest possible Blueprint.
-      // Output target: 35-45 pages of personalized synthesis across all pillars and
-      // the expanded section structure (career, relationships, parenting/leadership, stress).
+      // Running on Vercel Pro tier with 5-minute waitUntil window. max_tokens set to 64000
+      // (Sonnet 4.6 ceiling) to cover the Full Blueprint worst case (all 7 conditional sets
+      // active). Previous value of 12000 truncated every Blueprint before Sections 14-16,
+      // the disclaimer, and the sign-off.
       model: 'claude-sonnet-4-6',
-      max_tokens: 12000,
+      max_tokens: 64000,
       system: systemPrompt,
       messages: [
         { role: 'user', content: userMessage },

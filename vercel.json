@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/generate-blueprint.js": {
+      "maxDuration": 300
+    }
+  }
+}

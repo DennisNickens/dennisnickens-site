@@ -54,6 +54,34 @@ export default async function handler(req, res) {
   // Snapshot the body before we respond, since req may be torn down after
   const payload = req.body;
 
+  // TEMPORARY TEST MODE - remove after validation (added for end-to-end pipeline check)
+  if (req.query && req.query.mode === 'test') {
+    try {
+      const hasPrebuilt = payload.rawAnswers && Array.isArray(payload.rawAnswers.behaviorProfile) && payload.rawAnswers.behaviorProfile.length > 0;
+      let rawAnswers = hasPrebuilt ? payload.rawAnswers : (() => { throw new Error('Test mode requires rawAnswers'); })();
+      const scores = scoreAssessment(rawAnswers);
+      const userMessage = buildUserMessage(payload, scores);
+      const systemPrompt = await getMasterPrompt();
+      const blueprintMarkdown = await callClaude(systemPrompt, userMessage);
+      return res.status(200).json({
+        scores: {
+          pillar1: scores.pillar1.twoLetterType,
+          pillar2: scores.pillar2.type,
+          pillar3: scores.pillar3.dominantMode,
+          pillar4: scores.pillar4.primary,
+          pillar5: scores.pillar5.dominantChannel,
+          pillar6: scores.pillar6.faithOrientation,
+          spiritualGifts: scores.spiritualGifts,
+        },
+        conditionalSets: Object.keys(scores.conditionalAnswers || {}).reduce((acc, k) => { acc[k[1]] = (acc[k[1]] || 0) + 1; return acc; }, {}),
+        blueprint: blueprintMarkdown,
+      });
+    } catch (err) {
+      return res.status(500).json({ error: err.message, stack: err.stack });
+    }
+  }
+  // END TEMPORARY TEST MODE
+
   // Tell Vercel to keep the function alive until generation completes.
   // waitUntil gives us up to 30s on Hobby tier and 5min on Pro tier.
   // Without this, Vercel kills the function as soon as the response is flushed.

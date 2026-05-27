@@ -54,60 +54,6 @@ export default async function handler(req, res) {
   // Snapshot the body before we respond, since req may be torn down after
   const payload = req.body;
 
-  // TEMPORARY TEST MODE - remove after validation (added for end-to-end pipeline check)
-  // Uses waitUntil to avoid the 300s response-stream timeout. Writes result to Blob,
-  // returns the Blob URL immediately so the caller can fetch it after ~2-3 minutes.
-  if (req.query && req.query.mode === 'test') {
-    const hasPrebuilt = payload.rawAnswers && Array.isArray(payload.rawAnswers.behaviorProfile) && payload.rawAnswers.behaviorProfile.length > 0;
-    if (!hasPrebuilt) {
-      return res.status(400).json({ error: 'Test mode requires rawAnswers.behaviorProfile array' });
-    }
-    const testId = `test-${payload.contact_id || 'unknown'}-${Date.now()}`;
-    const resultBlobKey = `test-results/${testId}.json`;
-
-    waitUntil((async () => {
-      try {
-        const rawAnswers = payload.rawAnswers;
-        const scores = scoreAssessment(rawAnswers);
-        const userMessage = buildUserMessage(payload, scores);
-        const systemPrompt = await getMasterPrompt();
-        const blueprintMarkdown = await callClaude(systemPrompt, userMessage);
-        const result = {
-          status: 'done',
-          scores: {
-            pillar1: scores.pillar1.twoLetterType,
-            pillar2: scores.pillar2.type,
-            pillar3: scores.pillar3.dominantMode,
-            pillar4: scores.pillar4.primary,
-            pillar5: scores.pillar5.dominantChannel,
-            pillar6: scores.pillar6.faithOrientation,
-            spiritualGifts: scores.spiritualGifts,
-          },
-          conditionalSets: Object.keys(scores.conditionalAnswers || {}).reduce((acc, k) => { acc[k[1]] = (acc[k[1]] || 0) + 1; return acc; }, {}),
-          blueprint: blueprintMarkdown,
-        };
-        const { put } = await import('@vercel/blob');
-        await put(resultBlobKey, JSON.stringify(result), { access: 'public', contentType: 'application/json' });
-        console.log(`[TestMode] Result written to blob: ${resultBlobKey}`);
-      } catch (err) {
-        console.error('[TestMode] Generation failed:', err);
-        try {
-          const { put } = await import('@vercel/blob');
-          await put(resultBlobKey, JSON.stringify({ status: 'error', error: err.message }), { access: 'public', contentType: 'application/json' });
-        } catch (_) {}
-      }
-    })());
-
-    return res.status(202).json({
-      status: 'generating',
-      testId,
-      resultBlobKey,
-      message: 'Test generation started. Poll the resultUrl in 3-5 minutes.',
-      resultUrl: `https://ud4asmlxpwf2mrkm.public.blob.vercel-storage.com/${resultBlobKey}`,
-    });
-  }
-  // END TEMPORARY TEST MODE
-
   // Tell Vercel to keep the function alive until generation completes.
   // waitUntil gives us up to 30s on Hobby tier and 5min on Pro tier.
   // Without this, Vercel kills the function as soon as the response is flushed.

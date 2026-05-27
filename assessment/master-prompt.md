@@ -225,6 +225,7 @@ Use the qualifier answers to:
 The Blueprint is 8 to 12 pages total. Approximately 4,500 to 6,500 words. Not 30 pages. Not 50. A customer will read 10 pages thoroughly and skim 30. Optimize for read-through.
 
 Per-section word budget (approximate):
+- "What This Blueprint Is, And What It Isn't" framing: 150 (fixed, verbatim, same for every customer)
 - Executive Summary: 250 to 350
 - Sections 1 through 6 (the six pillars): 350 to 500 each
 - Section 7 (Misalignment Map): 600 to 800 (this is the deepest; the action-item requirement adds content to each bullet, allow more depth)
@@ -264,6 +265,22 @@ Bullet list:
 2. Read it again with a pen. Underline what lands. Push back on what doesn't.
 3. Show it to one person who knows you well. Their reaction is data.
 4. Pick one practice from Section 9 and start it this week. Awareness without action turns to shelf décor.
+
+### What This Blueprint Is, And What It Isn't
+
+**OUTPUT RULE: Output this section verbatim every time. Do not paraphrase, shorten, or personalize. Fixed content. Same for every customer. Position: after "How To Read It," before "Executive Summary."**
+
+---
+
+This Blueprint is not here to tell you who to be friends with, who to marry, who to hire, or who to follow. That's not the work I do, and it's not what these pages are for.
+
+The work is pulling back the curtain on how YOU are wired and WHY you do what you do. Based on what you told me through the assessment, here's what's true about how you operate under pressure, how you think and decide, how you give and receive love, how you learn, and where you get in your own way.
+
+When you read words like "friend," "partner," "team," "family," or "ministry" in the pages that follow, bring your own definition. The Blueprint speaks to the patterns in YOU that show up in any relational context, whether you're navigating a marriage, a friendship, a work team, a parent-child dynamic, or a faith community.
+
+You bring the situation. I'm bringing the mirror. What you do with what you see is yours to figure out.
+
+---
 
 ### Executive Summary
 4-5 paragraphs. Synthesize who this person is across all six pillars. Lead with their dominant Behavior + dominant Connection Currency combination. Name the misalignment at the intersection of behavior and connection. End with the promise: "This Blueprint maps that gap precisely. It tells you where the trigger lives, what it costs you, how the pattern repeats, and exactly what to shift."

@@ -366,7 +366,7 @@ Use Dennis Nickens's voice. Plain English. Direct, warm, consultative. NO em das
 
 The Blueprint should be specific to ${payload.first_name}, not generic. Reference their scores explicitly. Address them by first name.
 
-Output the complete Blueprint as markdown. About 20 to 30 pages of substantive content.`;
+Output the complete Blueprint as markdown. Target 12 to 16 pages of substantive content. Be thorough and specific, but do not pad sections. Every sentence should earn its place.`;
 }
 
 // =======================================================================
@@ -382,12 +382,13 @@ async function callClaude(systemPrompt, userMessage) {
       'anthropic-version': '2023-06-01',
     },
     body: JSON.stringify({
-      // Running on Vercel Pro tier with 5-minute waitUntil window. max_tokens set to 64000
-      // (Sonnet 4.6 ceiling) to cover the Full Blueprint worst case (all 7 conditional sets
-      // active). Previous value of 12000 truncated every Blueprint before Sections 14-16,
-      // the disclaimer, and the sign-off.
+      // Running on Vercel Pro tier with a 300-second waitUntil window. max_tokens is set
+      // to 20000 (well above the typical 10000-14000 token Blueprint output) as a safety
+      // ceiling that still keeps generation within the Vercel time budget. The previous
+      // value of 12000 truncated Blueprints before Sections 14-16. The previous value of
+      // 64000 caused consistent 300-second timeouts because Claude over-generated.
       model: 'claude-sonnet-4-6',
-      max_tokens: 64000,
+      max_tokens: 20000,
       system: systemPrompt,
       messages: [
         { role: 'user', content: userMessage },

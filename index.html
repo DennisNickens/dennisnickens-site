@@ -427,14 +427,25 @@
     ======================================== */
     .who-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(12, 1fr);
       gap: 1.25rem;
       max-width: 1100px;
       margin: 0 auto;
     }
 
-    @media (max-width: 900px) { .who-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 600px) { .who-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
+    .who-grid .who-card:nth-child(-n+3) { grid-column: span 4; }
+    .who-grid .who-card:nth-child(n+4) { grid-column: span 3; }
+
+    @media (max-width: 900px) {
+      .who-grid { grid-template-columns: repeat(3, 1fr); }
+      .who-grid .who-card:nth-child(-n+3),
+      .who-grid .who-card:nth-child(n+4) { grid-column: auto; }
+    }
+    @media (max-width: 600px) {
+      .who-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .who-grid .who-card:nth-child(-n+3),
+      .who-grid .who-card:nth-child(n+4) { grid-column: auto; }
+    }
 
     .who-card {
       display: flex;
@@ -835,7 +846,17 @@
                 <path d="M3 13h18"/>
               </svg>
             </div>
-            <span class="who-label">Workplace</span>
+            <span class="who-label">Business</span>
+          </a>
+
+          <a href="who-i-help/leaders.html" class="who-card reveal">
+            <div class="who-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 20l3-12 5 4 2-7 2 7 5-4 3 12z"/>
+                <path d="M5 20h14"/>
+              </svg>
+            </div>
+            <span class="who-label">Leadership</span>
           </a>
 
           <a href="who-i-help/ministry.html" class="who-card reveal">

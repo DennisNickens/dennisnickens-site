@@ -102,7 +102,7 @@ continueBtn.addEventListener('click',function(){
   fetch('/api/sr-update-contact',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({contact_id:cid,beta_scenario_audience:sel.value})
+    body:JSON.stringify({contact_id:cid,sr_qual_who_for:sel.value})
   })
   .then(function(r){return r.json();})
   .then(function(data){

@@ -68,10 +68,10 @@ fetch('/api/sr-get-contact?cid='+encodeURIComponent(cid))
   .then(function(data){
     if(data&&data.success&&data.contact&&data.contact.fields){
       var f=data.contact.fields;
-      var focus=f.beta_scenario_focus;
+      var focus=f.sr_qual_focus_areas;
       selections.focus=Array.isArray(focus)?focus.join(', '):(focus||'');
-      selections.audience=f.beta_scenario_audience||'';
-      selections.tier=f.sr_tier||'';
+      selections.audience=f.sr_qual_who_for||'';
+      selections.tier=f.sr_sku_tier||'';
     }
   })
   .catch(function(){});
@@ -79,9 +79,9 @@ fetch('/api/sr-get-contact?cid='+encodeURIComponent(cid))
 document.getElementById('beginBtn').addEventListener('click',function(){
   this.disabled=true;this.textContent='Loading...';
   var url=SURVEY_BASE+'?contact_id='+encodeURIComponent(cid)
-    +'&beta_scenario_focus='+encodeURIComponent(selections.focus)
-    +'&beta_scenario_audience='+encodeURIComponent(selections.audience)
-    +'&sr_tier='+encodeURIComponent(selections.tier);
+    +'&sr_qual_focus_areas='+encodeURIComponent(selections.focus)
+    +'&sr_qual_who_for='+encodeURIComponent(selections.audience)
+    +'&sr_sku_tier='+encodeURIComponent(selections.tier);
   window.location.href=url;
 });
 

@@ -93,9 +93,9 @@ function render(contact){
   var f=contact.fields||{};
   var name=((contact.firstName||'')+' '+(contact.lastName||'')).trim()||'Not provided';
   var contactInfo=[contact.email,contact.phone].filter(Boolean).join(' &middot; ')||'Not provided';
-  var focus=asList(f.beta_scenario_focus);
-  var audience=f.beta_scenario_audience||'Not selected';
-  var tierRaw=f.sr_tier||'';
+  var focus=asList(f.sr_qual_focus_areas);
+  var audience=f.sr_qual_who_for||'Not selected';
+  var tierRaw=f.sr_sku_tier||'';
   var tier=TIER_LABELS[tierRaw]||tierRaw||'Not selected';
 
   var focusHtml=focus.length

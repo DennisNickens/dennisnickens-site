@@ -154,7 +154,7 @@ const PILLAR_LABELS={singles:"Singles",married:"Married",families:"Families",edu
     fetch('/api/sr-update-contact',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({contact_id:cid,sr_tier:tier})
+      body:JSON.stringify({contact_id:cid,sr_sku_tier:tier})
     })
     .then(function(r){return r.json();})
     .then(function(data){

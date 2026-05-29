@@ -4,7 +4,7 @@
 // GET /api/sr-get-contact?cid=<contactId>
 //
 // GHL returns custom fields as [{ id, value }]. To make them usable on the
-// front end we resolve each id to its short field key (e.g. beta_scenario_focus)
+// front end we resolve each id to its short field key (e.g. sr_qual_focus_areas)
 // using the location's custom field definitions.
 //
 // Environment variables required:
@@ -105,7 +105,7 @@ async function getFieldKeyMap(token, locationId) {
   const defs = data.customFields || [];
   const map = {};
   for (const def of defs) {
-    // fieldKey looks like "contact.beta_scenario_focus" — strip the object prefix.
+    // fieldKey looks like "contact.sr_qual_focus_areas". Strip the object prefix.
     const short = (def.fieldKey || '').replace(/^contact\./, '');
     if (def.id && short) map[def.id] = short;
   }

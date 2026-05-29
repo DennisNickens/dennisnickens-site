@@ -2,8 +2,8 @@
 // Updates custom fields on an existing GHL contact during the SR Assessment funnel.
 //
 // Receives: { contact_id, ...fields }
-// where fields may include: beta_scenario_focus (array), beta_scenario_audience,
-// sr_tier, or any other GHL custom field key.
+// where fields may include: sr_qual_focus_areas (array), sr_qual_who_for,
+// sr_sku_tier, or any other GHL custom field key.
 //
 // Environment variables required:
 //   GHL_PRIVATE_INTEGRATION_TOKEN - GHL Private Integration token

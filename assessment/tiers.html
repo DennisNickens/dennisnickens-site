@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Choose Your Assessment Depth | Spiritual Romeo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#07071a;--bg-mid:#0f0a2e;--ink:#f5f1e8;--ink-s:rgba(245,241,232,0.78);--ink-f:rgba(245,241,232,0.5);--gold:#d4a957;--gold-s:#b08838;--line:rgba(212,169,87,0.18);--ff:'Playfair Display',Georgia,serif;--fs:'Cormorant Garamond',Georgia,serif;--fn:'Inter',-apple-system,sans-serif;--fl:'Montserrat',-apple-system,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--fn);color:var(--ink);background:var(--bg);line-height:1.6;min-height:100vh;}
+.bg{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 20% 10%,rgba(124,58,237,.18),transparent 50%),radial-gradient(ellipse at 80% 60%,rgba(6,182,212,.10),transparent 55%),linear-gradient(180deg,#07071a,#0f0a2e 50%,#07071a);pointer-events:none;}
+.nav{position:sticky;top:0;z-index:50;padding:1.25rem 2rem;display:flex;align-items:center;backdrop-filter:blur(14px);background:rgba(7,7,26,.7);border-bottom:1px solid var(--line);}
+.nav a{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--ink);}
+.nav img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(212,169,87,.4));}
+.nav-name{font-family:'Allura',cursive;font-size:1.75rem;color:var(--gold);line-height:1;}
+.nav-sub{font-family:var(--fl);font-size:.62rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;}
+main{position:relative;z-index:5;padding:4rem 1.5rem 5rem;}
+.container{max-width:1100px;margin:0 auto;}
+.eyebrow{font-family:var(--fl);font-size:.75rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:1rem;}
+.eyebrow::before,.eyebrow::after{content:"✦";margin:0 .6rem;}
+.page-title{font-family:var(--ff);font-size:clamp(2rem,4.5vw,3rem);font-weight:400;text-align:center;margin-bottom:.75rem;line-height:1.15;}
+.page-title em{font-style:italic;background:linear-gradient(135deg,var(--gold),#f0d490);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.page-sub{font-family:var(--fs);font-style:italic;font-size:clamp(1.05rem,2vw,1.25rem);color:var(--ink-s);text-align:center;max-width:640px;margin:0 auto 1rem;}
+.pillar-label{text-align:center;margin-bottom:3rem;}
+.pillar-label span{font-family:var(--fl);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;background:linear-gradient(135deg,var(--gold),var(--gold-s));color:#07071a;padding:.4rem 1.2rem;border-radius:100px;font-weight:700;}
+.tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:780px){.tiers-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto;}}
+.tier-card{background:linear-gradient(180deg,rgba(26,19,64,.6),rgba(15,10,46,.4));border:1px solid var(--line);border-radius:14px;padding:2.25rem 1.75rem 2rem;display:flex;flex-direction:column;gap:1.25rem;transition:all .3s;position:relative;overflow:hidden;}
+.tier-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.4);}
+.tier-card.recommended{border-color:var(--gold);box-shadow:0 0 0 1px rgba(212,169,87,.3);}
+.rec-badge{position:absolute;top:0;right:0;font-family:var(--fl);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;background:linear-gradient(135deg,var(--gold),var(--gold-s));color:#07071a;padding:.3rem .85rem;border-radius:0 14px 0 8px;font-weight:700;}
+.tier-name{font-family:var(--ff);font-size:2rem;font-weight:400;color:var(--ink);line-height:1;}
+.tier-count{font-family:var(--fl);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);}
+.tier-tagline{font-family:var(--fs);font-style:italic;font-size:1.05rem;color:var(--ink-s);line-height:1.4;}
+.tier-divider{height:1px;background:var(--line);}
+.tier-covers-lbl{font-family:var(--fl);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-f);}
+.tier-items{list-style:none;display:flex;flex-direction:column;gap:.6rem;flex:1;}
+.tier-items li{font-size:.9rem;color:var(--ink-s);padding-left:1.25rem;position:relative;line-height:1.4;}
+.tier-items li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:.55rem;top:.25rem;}
+.tier-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:1rem 1.5rem;font-family:var(--fl);font-size:.82rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-radius:4px;transition:all .3s;cursor:pointer;border:none;width:100%;}
+.tier-btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold-s));color:#07071a;box-shadow:0 6px 20px rgba(212,169,87,.25);}
+.tier-btn.gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(212,169,87,.4);}
+.tier-btn.ghost{background:transparent;color:var(--ink-s);border:1px solid var(--line);}
+.tier-btn.ghost:hover{color:var(--gold);border-color:var(--gold);}
+.arr{transition:transform .3s;}
+.tier-btn:hover .arr{transform:translateX(4px);}
+.note{text-align:center;margin-top:2.5rem;font-family:var(--fs);font-style:italic;font-size:1rem;color:var(--ink-f);}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<nav class="nav">
+  <a href="../index.html">
+    <img src="https://dennisnickens.com/sr-logo-transparent.png" alt="Spiritual Romeo" />
+    <div><div class="nav-name">Dennis Nickens</div><div class="nav-sub">AKA Spiritual Romeo</div></div>
+  </a>
+</nav>
+<main>
+  <div class="container">
+    <div class="eyebrow">Choose Your Depth</div>
+    <h1 class="page-title">How far do you want <em>to go?</em></h1>
+    <p class="page-sub">Every tier gives you something real. The deeper you go, the fuller the picture.</p>
+    <div class="pillar-label"><span id="pillarLabel">Loading&hellip;</span></div>
+    <div class="tiers-grid" id="tiersGrid"></div>
+    <p class="note">Pricing is revealed after you complete your assessment — when you can see exactly what your results are worth to you.</p>
+  </div>
+</main>
+<script>
+const TIERS={
+  light:{name:"Light",count:"25 Questions",tagline:"A fast, clear snapshot that gives you something real to work with today.",btn:"ghost"},
+  medium:{name:"Medium",count:"50 Questions",tagline:"A fuller picture. You will start to see patterns you did not know were there.",btn:"ghost"},
+  deep:{name:"Deep",count:"75 Questions",tagline:"The complete picture. Everything revealed, nothing held back.",recommended:true,btn:"gold"}
+};
+const PILLAR_COVERS={
+  singles:{
+    light:["How you communicate","How you handle disagreement","Your natural style — where it helps or trips you up"],
+    medium:["Everything in Light","How you give and receive love","Your instinctive relationship approach","Patterns you tend to repeat"],
+    deep:["Everything in Medium","How you process and learn","Your deeper purpose and gifting","Your blind spots","A full readiness picture for the relationship you actually want"]
+  },
+  married:{
+    light:["How you and your partner communicate","How you handle conflict as a couple","A quick read on your dynamic"],
+    medium:["Everything in Light","How each of you gives and receives love","How each of you naturally takes action","The real sources of friction between you"],
+    deep:["Everything in Medium","How you each process and learn differently","Your shared purpose and direction","A full compatibility and growth map"]
+  },
+  families:{
+    light:["How your household communicates","How conflict gets resolved across the family"],
+    medium:["Everything in Light","How each family member gives and receives love","The natural strengths each person brings"],
+    deep:["Everything in Medium","How each member learns and processes — big for parents and kids","The gifting inside the family","A full map of how your family works together"]
+  },
+  education:{
+    light:["How you learn and take in information","How you communicate in learning settings"],
+    medium:["Everything in Light","Your natural strengths","How you take action","What actually motivates you"],
+    deep:["Everything in Medium","Your complete learning profile","Your gifting","A plan for how to get the most out of your growth"]
+  },
+  businesses:{
+    light:["How you communicate at work","How you handle conflict on the job"],
+    medium:["Everything in Light","Your natural work style","Your strengths","How you collaborate with others"],
+    deep:["Everything in Medium","How you process and learn","How your calling lines up with your career","A full professional profile"]
+  },
+  leadership:{
+    light:["How you communicate as a leader","How you handle conflict and decisions"],
+    medium:["Everything in Light","Your natural leadership style","How you take action","How you motivate the people around you"],
+    deep:["Everything in Medium","How your team learns and works","Your spiritual gifts and calling","A full leadership profile for your ministry or organization"]
+  }
+};
+const PILLAR_LABELS={singles:"Singles",married:"Married",families:"Families",education:"Education",businesses:"Businesses",leadership:"Leadership"};
+// The GHL SR Full Assessment survey intake form URL (with pillar+tier passed as URL fragment for GHL field pre-fill)
+const GHL_SURVEY='https://link.msgsndr.com/widget/survey/E8iUexhy9T4qKYMylUPb';
+(function(){
+  const params=new URLSearchParams(location.search);
+  const pillar=params.get('pillar')||'singles';
+  const contact=params.get('contact')||'';
+  const covers=PILLAR_COVERS[pillar]||PILLAR_COVERS.singles;
+  document.getElementById('pillarLabel').textContent=PILLAR_LABELS[pillar]||'Singles';
+  const grid=document.getElementById('tiersGrid');
+  ['light','medium','deep'].forEach(function(key){
+    const t=TIERS[key];
+    const items=covers[key]||[];
+    const card=document.createElement('div');
+    card.className='tier-card'+(t.recommended?' recommended':'');
+    let html='';
+    if(t.recommended) html+='<div class="rec-badge">Most Complete</div>';
+    html+='<div><div class="tier-name">'+t.name+'</div><div class="tier-count">'+t.count+'</div></div>';
+    html+='<div class="tier-tagline">'+t.tagline+'</div>';
+    html+='<div class="tier-divider"></div>';
+    html+='<div class="tier-covers-lbl">What you walk away with</div>';
+    html+='<ul class="tier-items">'+items.map(function(i){return'<li>'+i+'</li>';}).join('')+'</ul>';
+    // Build the survey URL — pass pillar and tier via URL params so GHL can store them
+    const surveyUrl=GHL_SURVEY+'?pillar='+encodeURIComponent(pillar)+'&tier='+encodeURIComponent(key)+(contact?'&contact='+encodeURIComponent(contact):'');
+    html+='<a href="'+surveyUrl+'" class="tier-btn '+t.btn+'">Begin '+t.name+' Assessment <span class="arr">&rarr;</span></a>';
+    card.innerHTML=html;
+    grid.appendChild(card);
+  });
+})();
+</script>
+</body>
+</html>

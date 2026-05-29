@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>You Selected a Pillar | Spiritual Romeo Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#07071a;--bg-mid:#0f0a2e;--ink:#f5f1e8;--ink-s:rgba(245,241,232,0.78);--gold:#d4a957;--gold-s:#b08838;--line:rgba(212,169,87,0.18);--ff:'Playfair Display',Georgia,serif;--fs:'Cormorant Garamond',Georgia,serif;--fn:'Inter',-apple-system,sans-serif;--fl:'Montserrat',-apple-system,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--fn);color:var(--ink);background:var(--bg);line-height:1.6;min-height:100vh;}
+.bg{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 20% 10%,rgba(124,58,237,.18),transparent 50%),radial-gradient(ellipse at 80% 60%,rgba(6,182,212,.10),transparent 55%),linear-gradient(180deg,#07071a,#0f0a2e 50%,#07071a);pointer-events:none;}
+.nav{position:sticky;top:0;z-index:50;padding:1.25rem 2rem;display:flex;align-items:center;backdrop-filter:blur(14px);background:rgba(7,7,26,.7);border-bottom:1px solid var(--line);}
+.nav a{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--ink);}
+.nav img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(212,169,87,.4));}
+.nav-name{font-family:'Allura',cursive;font-size:1.75rem;color:var(--gold);line-height:1;}
+.nav-sub{font-family:var(--fl);font-size:.62rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;}
+main{position:relative;z-index:5;min-height:calc(100vh - 90px);display:flex;align-items:center;justify-content:center;padding:3rem 1.5rem;}
+.card{max-width:760px;width:100%;background:linear-gradient(180deg,rgba(26,19,64,.75),rgba(15,10,46,.55));border:1px solid var(--gold);border-radius:16px;padding:clamp(2.5rem,5vw,4rem);backdrop-filter:blur(16px);text-align:center;}
+.eyebrow{font-family:var(--fl);font-size:.75rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.eyebrow::before,.eyebrow::after{content:"✦";margin:0 .6rem;}
+.badge{display:inline-block;font-family:var(--fl);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;background:linear-gradient(135deg,var(--gold),var(--gold-s));color:#07071a;padding:.45rem 1.4rem;border-radius:100px;font-weight:700;margin-bottom:1.5rem;}
+h1{font-family:var(--ff);font-size:clamp(2rem,4.5vw,3rem);font-weight:400;line-height:1.15;margin-bottom:1rem;}
+h1 em{font-style:italic;background:linear-gradient(135deg,var(--gold),#f0d490);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.sub{font-family:var(--fs);font-style:italic;font-size:clamp(1.05rem,2vw,1.25rem);color:var(--ink-s);margin-bottom:2.5rem;line-height:1.5;}
+.areas-lbl{font-family:var(--fl);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;}
+.areas{display:grid;gap:.85rem;margin-bottom:2.5rem;text-align:left;}
+.area{display:flex;align-items:flex-start;gap:.85rem;padding:1rem 1.25rem;background:rgba(212,169,87,.06);border:1px solid rgba(212,169,87,.15);border-radius:10px;}
+.area-icon{flex-shrink:0;width:34px;height:34px;background:linear-gradient(135deg,var(--gold),var(--gold-s));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;}
+.area-text{font-size:.95rem;color:var(--ink-s);line-height:1.5;}
+.area-text strong{color:var(--ink);font-weight:600;}
+.divider{width:60px;height:1px;background:var(--gold);margin:0 auto 2.5rem;opacity:.4;}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 2.4rem;font-family:var(--fl);font-size:.85rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:none;border-radius:4px;background:linear-gradient(135deg,var(--gold),var(--gold-s));color:#07071a;box-shadow:0 8px 24px rgba(212,169,87,.3);transition:all .3s;}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(212,169,87,.45);}
+.arr{transition:transform .3s;}
+.btn:hover .arr{transform:translateX(4px);}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<nav class="nav">
+  <a href="../index.html">
+    <img src="https://dennisnickens.com/sr-logo-transparent.png" alt="Spiritual Romeo" />
+    <div><div class="nav-name">Dennis Nickens</div><div class="nav-sub">AKA Spiritual Romeo</div></div>
+  </a>
+</nav>
+<main>
+  <div class="card">
+    <div class="eyebrow">Your Assessment</div>
+    <div class="badge" id="pillarBadge">Loading&hellip;</div>
+    <h1>You selected <em id="pillarTitle">&hellip;</em></h1>
+    <p class="sub" id="confirmSub">Here is what we help you uncover.</p>
+    <div class="areas-lbl">What this assessment reveals</div>
+    <div class="areas" id="areasGrid"></div>
+    <div class="divider"></div>
+    <a href="#" class="btn" id="continueBtn">Choose Your Depth <span class="arr">&rarr;</span></a>
+  </div>
+</main>
+<script>
+const PILLARS={singles:{label:"Singles",title:"Singles",sub:"Whether you are ready for your next relationship or figuring out why the last one kept breaking the same way, this is where clarity begins.",areas:[{i:"💬",s:"How you communicate",t:" and how you handle disagreement — a clear snapshot of your natural style and where it helps or trips you up."},{i:"❤️",s:"How you give and receive love",t:", your instinctive approach to relationships, and the patterns you tend to repeat."},{i:"🧭",s:"Your deeper purpose and gifting",t:", your blind spots, and a full readiness picture for the relationship you actually want."}]},married:{label:"Married",title:"Married",sub:"You know your partner. This assessment helps you understand them — and yourself — in a completely different way.",areas:[{i:"💬",s:"How you and your partner communicate",t:" and how the two of you handle conflict. A quick read on your dynamic."},{i:"❤️",s:"How each of you gives and receives love",t:", how each of you naturally takes action, and the real sources of friction between you."},{i:"🧭",s:"Your shared purpose and direction",t:" as a couple, and a full compatibility and growth map."}]},families:{label:"Families",title:"Families",sub:"Every person in your household is wired differently. This is the map that shows you how each of you actually works together.",areas:[{i:"🏠",s:"How your household communicates",t:" and how conflict gets resolved across the family."},{i:"❤️",s:"How each family member gives and receives love",t:" and the natural strengths each person brings."},{i:"🧭",s:"How each member learns and processes",t:" — big for parents and kids — plus a full map of how your family works together."}]},education:{label:"Education",title:"Education",sub:"Understanding how you learn changes everything — what sticks, what does not, and how to finally get the most out of your growth.",areas:[{i:"📚",s:"How you learn and take in information",t:", plus how you communicate in learning settings."},{i:"⚡",s:"Your natural strengths",t:", how you take action, and what actually motivates you."},{i:"🧭",s:"Your complete learning profile",t:", your gifting, and a plan for how to get the most out of your growth."}]},businesses:{label:"Businesses",title:"Businesses",sub:"How you work, how you lead, how you collaborate — this assessment gives you the professional clarity most people spend years searching for.",areas:[{i:"💼",s:"How you communicate at work",t:" and how you handle conflict on the job."},{i:"⚡",s:"Your natural work style",t:", your strengths, and how you collaborate with others."},{i:"🧭",s:"How you process and learn",t:", how your calling lines up with your career, and a full professional profile."}]},leadership:{label:"Leadership",title:"Leadership",sub:"The people you lead are watching how you show up. This assessment shows you what they are actually responding to — and why.",areas:[{i:"🌟",s:"How you communicate as a leader",t:" and how you handle conflict and decisions."},{i:"⚡",s:"Your natural leadership style",t:", how you take action, and how you motivate the people around you."},{i:"🧭",s:"Your spiritual gifts and calling",t:", and a full leadership profile for your ministry or organization."}]}};
+(function(){
+  const p=(new URLSearchParams(location.search)).get('pillar')||'singles';
+  const c=(new URLSearchParams(location.search)).get('contact')||'';
+  const d=PILLARS[p]||PILLARS.singles;
+  document.getElementById('pillarBadge').textContent=d.label;
+  document.getElementById('pillarTitle').textContent=d.title;
+  document.getElementById('confirmSub').textContent=d.sub;
+  const g=document.getElementById('areasGrid');
+  d.areas.forEach(a=>{const el=document.createElement('div');el.className='area';el.innerHTML='<div class="area-icon">'+a.i+'</div><div class="area-text"><strong>'+a.s+'</strong>'+a.t+'</div>';g.appendChild(el);});
+  document.getElementById('continueBtn').href='../assessment/tiers.html?pillar='+encodeURIComponent(p)+(c?'&contact='+encodeURIComponent(c):'');
+})();
+</script>
+</body>
+</html>

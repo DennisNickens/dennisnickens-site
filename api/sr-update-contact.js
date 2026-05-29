@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ success: false, error: 'Method not allowed' });
   }
 
-  const token = process.env.GHL_PRIVATE_INTEGRATION_TOKEN;
+  const token = (process.env.GHL_PRIVATE_INTEGRATION_TOKEN || '').trim();
   if (!token) {
     console.error('[sr-update-contact] Missing GHL_PRIVATE_INTEGRATION_TOKEN');
     return res.status(500).json({ success: false, error: 'Server misconfigured: GHL_PRIVATE_INTEGRATION_TOKEN not set' });

@@ -23,9 +23,9 @@ export default async function handler(req, res) {
 
   const token = process.env.GHL_PRIVATE_INTEGRATION_TOKEN;
   const locationId = process.env.GHL_LOCATION_ID || FALLBACK_LOCATION_ID;
-  if (!token || !locationId) {
-    console.error('[sr-create-contact] Missing GHL env vars');
-    return res.status(500).json({ success: false, error: 'Server misconfigured' });
+  if (!token) {
+    console.error('[sr-create-contact] Missing GHL_PRIVATE_INTEGRATION_TOKEN');
+    return res.status(500).json({ success: false, error: 'Server misconfigured: GHL_PRIVATE_INTEGRATION_TOKEN not set' });
   }
 
   let body = req.body;

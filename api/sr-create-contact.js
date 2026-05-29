@@ -10,6 +10,10 @@
 
 const GHL_BASE = 'https://services.leadconnectorhq.com';
 
+// The SR GHL location id is not a secret (it travels in API URLs). Fall back to
+// the known value if the env var is not configured in the deployment.
+const FALLBACK_LOCATION_ID = '9LA3gKzADpdRC78OmDCD';
+
 export default async function handler(req, res) {
   setCors(res);
   if (req.method === 'OPTIONS') return res.status(204).end();
@@ -18,7 +22,7 @@ export default async function handler(req, res) {
   }
 
   const token = process.env.GHL_PRIVATE_INTEGRATION_TOKEN;
-  const locationId = process.env.GHL_LOCATION_ID;
+  const locationId = process.env.GHL_LOCATION_ID || FALLBACK_LOCATION_ID;
   if (!token || !locationId) {
     console.error('[sr-create-contact] Missing GHL env vars');
     return res.status(500).json({ success: false, error: 'Server misconfigured' });

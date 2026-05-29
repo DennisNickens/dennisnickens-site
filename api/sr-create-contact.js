@@ -23,9 +23,6 @@ export default async function handler(req, res) {
 
   const token = (process.env.GHL_PRIVATE_INTEGRATION_TOKEN || '').trim();
   const locationId = (process.env.GHL_LOCATION_ID || FALLBACK_LOCATION_ID).trim();
-  // TEMP DIAG: confirm what the runtime sees for the token (no full value logged)
-  const _raw = process.env.GHL_PRIVATE_INTEGRATION_TOKEN;
-  console.log('[sr-create-contact] token-diag', JSON.stringify({ type: typeof _raw, rawLen: (_raw || '').length, trimLen: token.length, head: token.slice(0, 4), tail: token.slice(-4) }));
   if (!token) {
     console.error('[sr-create-contact] Missing GHL_PRIVATE_INTEGRATION_TOKEN');
     return res.status(500).json({ success: false, error: 'Server misconfigured: GHL_PRIVATE_INTEGRATION_TOKEN not set' });

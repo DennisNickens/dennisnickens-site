@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Let's Get Started | SR Assessment</title>
+<meta name="description" content="Begin your Spiritual Romeo Alignment Assessment." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+.fn-wrap{position:relative;z-index:5;max-width:680px;margin:0 auto;padding:120px 1.5rem 4rem;}
+.progress-wrap{margin-bottom:2.5rem;}
+.progress-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;margin-bottom:.6rem;text-align:center;}
+.progress-track{height:6px;background:rgba(255,255,255,0.1);border-radius:50px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:50px;transition:width .4s ease;}
+.fn-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;text-align:center;display:block;margin-bottom:.75rem;}
+.fn-head{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(30px,5vw,48px);color:#fff;text-align:center;line-height:1.15;margin-bottom:1rem;}
+.fn-sub{font-size:17px;color:rgba(255,255,255,0.75);text-align:center;line-height:1.7;max-width:540px;margin:0 auto 2.5rem;}
+.fn-card{background:linear-gradient(135deg,rgba(124,58,237,0.18),rgba(59,130,246,0.12));border:1px solid rgba(124,58,237,0.5);border-radius:20px;padding:clamp(1.75rem,4vw,2.75rem);}
+.fld{margin-bottom:1.35rem;}
+.fld label{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;color:rgba(255,255,255,0.85);margin-bottom:.5rem;}
+.fld label .req{color:#FFD700;}
+.fld input[type=text],.fld input[type=email],.fld input[type=tel]{width:100%;padding:14px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.18);background:rgba(13,11,30,0.6);color:#fff;font-family:'Inter',sans-serif;font-size:16px;transition:border-color .25s;}
+.fld input:focus{outline:none;border-color:#FFD700;}
+.row{display:flex;gap:1rem;}
+.row .fld{flex:1;}
+@media(max-width:540px){.row{flex-direction:column;gap:0;}}
+.radio-row{display:flex;gap:.75rem;flex-wrap:wrap;}
+.radio-opt{flex:1;min-width:120px;display:flex;align-items:center;gap:.6rem;padding:13px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.18);background:rgba(13,11,30,0.6);cursor:pointer;transition:all .25s;color:rgba(255,255,255,0.85);font-size:15px;}
+.radio-opt:hover{border-color:rgba(255,215,0,0.5);}
+.radio-opt.sel{border-color:#FFD700;background:rgba(255,215,0,0.08);}
+.radio-opt input{accent-color:#FFD700;}
+.consent{display:flex;align-items:flex-start;gap:.65rem;padding:14px 16px;border-radius:12px;background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.2);font-size:14px;color:rgba(255,255,255,0.8);line-height:1.5;}
+.consent.hidden{display:none;}
+.consent input{margin-top:3px;accent-color:#FFD700;flex-shrink:0;}
+.fn-btn{display:inline-block;width:100%;text-align:center;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0D0B1E;padding:16px 40px;border-radius:50px;font-weight:700;font-size:17px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:transform .2s,box-shadow .2s;margin-top:.5rem;}
+.fn-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(255,215,0,0.35);}
+.fn-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+.fn-err{display:none;color:#ff8585;font-size:14px;margin-top:1rem;text-align:center;}
+.fn-err.show{display:block;}
+</style>
+</head>
+<body>
+<canvas id="pc" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../SpiritualRomeo_Assessment.html">Assessment</a></li>
+    <li><a href="../testimonials.html">Testimonials</a></li>
+    <li><a href="../book.html" class="nav-cta">Book Now</a></li>
+    <li><a href="../store.html">Store</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="fn-wrap">
+  <div class="progress-wrap">
+    <div class="progress-label">Step 1 of 6</div>
+    <div class="progress-track"><div class="progress-fill" style="width:16.67%"></div></div>
+  </div>
+  <span class="fn-eyebrow">Spiritual Romeo Assessment</span>
+  <h1 class="fn-head">Let's Get Started</h1>
+  <p class="fn-sub">First, tell me how to reach you. This is the only step that involves your contact information.</p>
+  <div class="fn-card">
+    <form id="intakeForm" novalidate>
+      <div class="row">
+        <div class="fld">
+          <label for="firstName">First Name <span class="req">*</span></label>
+          <input type="text" id="firstName" name="firstName" required autocomplete="given-name" />
+        </div>
+        <div class="fld">
+          <label for="lastName">Last Name <span class="req">*</span></label>
+          <input type="text" id="lastName" name="lastName" required autocomplete="family-name" />
+        </div>
+      </div>
+      <div class="fld">
+        <label for="email">Email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" required autocomplete="email" />
+      </div>
+      <div class="fld">
+        <label for="phone">Phone <span class="req">*</span></label>
+        <input type="tel" id="phone" name="phone" required autocomplete="tel" />
+      </div>
+      <div class="fld">
+        <label>How would you like your results delivered? <span class="req">*</span></label>
+        <div class="radio-row">
+          <label class="radio-opt sel" id="optEmail"><input type="radio" name="delivery" value="Email" checked /> Email</label>
+          <label class="radio-opt" id="optSms"><input type="radio" name="delivery" value="SMS" /> SMS</label>
+        </div>
+      </div>
+      <div class="fld">
+        <label class="consent hidden" id="consentBox">
+          <input type="checkbox" id="tcpa" />
+          <span>I agree to receive SMS messages about my assessment and results at the phone number provided. Message and data rates may apply. Reply STOP to opt out.</span>
+        </label>
+      </div>
+      <button type="submit" class="fn-btn" id="submitBtn">Continue &rarr;</button>
+      <div class="fn-err" id="errBox"></div>
+    </form>
+  </div>
+</div>
+<footer style="position:relative;z-index:5;background:#080615;padding:3rem 2rem;text-align:center;border-top:1px solid rgba(124,58,237,0.2);font-size:13px;color:rgba(255,255,255,0.4);">
+  <p>&#128231; dennis@dennisnickens.com | &#128205; Indian Trail, NC</p>
+  <p>&#169; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+</footer>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+
+var optEmail=document.getElementById('optEmail'),optSms=document.getElementById('optSms');
+var consentBox=document.getElementById('consentBox'),tcpa=document.getElementById('tcpa');
+function syncDelivery(){
+  var sms=document.querySelector('input[name="delivery"]:checked').value==='SMS';
+  optSms.classList.toggle('sel',sms);
+  optEmail.classList.toggle('sel',!sms);
+  consentBox.classList.toggle('hidden',!sms);
+}
+optEmail.querySelector('input').addEventListener('change',syncDelivery);
+optSms.querySelector('input').addEventListener('change',syncDelivery);
+
+function showErr(msg){var e=document.getElementById('errBox');e.textContent=msg;e.classList.add('show');}
+function clearErr(){document.getElementById('errBox').classList.remove('show');}
+
+document.getElementById('intakeForm').addEventListener('submit',function(ev){
+  ev.preventDefault();
+  clearErr();
+  var firstName=document.getElementById('firstName').value.trim();
+  var lastName=document.getElementById('lastName').value.trim();
+  var email=document.getElementById('email').value.trim();
+  var phone=document.getElementById('phone').value.trim();
+  var delivery=document.querySelector('input[name="delivery"]:checked').value;
+  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if(!firstName||!lastName||!email||!phone){showErr('Please fill in all required fields.');return;}
+  if(!emailRe.test(email)){showErr('Please enter a valid email address.');return;}
+  if(delivery==='SMS'&&!tcpa.checked){showErr('Please agree to SMS consent to receive results by text, or choose Email.');return;}
+
+  var btn=document.getElementById('submitBtn');
+  btn.disabled=true;btn.textContent='Saving...';
+
+  fetch('/api/sr-create-contact',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({firstName:firstName,lastName:lastName,email:email,phone:phone,delivery_preference:delivery,tcpa_consent:delivery==='SMS'&&tcpa.checked})
+  })
+  .then(function(r){return r.json();})
+  .then(function(data){
+    if(data&&data.success&&data.contact_id){
+      window.location.href='qualifier-focus.html?cid='+encodeURIComponent(data.contact_id);
+    }else{
+      showErr((data&&data.error)||'Something went wrong. Please try again.');
+      btn.disabled=false;btn.textContent='Continue →';
+    }
+  })
+  .catch(function(){
+    showErr('Network error. Please check your connection and try again.');
+    btn.disabled=false;btn.textContent='Continue →';
+  });
+});
+
+var cv=document.getElementById('pc'),cx=cv.getContext('2d');let ps=[];function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();window.addEventListener('resize',rsz);class P{constructor(){this.reset();}reset(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;const t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;}}for(let i=0;i<70;i++)ps.push(new P());function ani(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(ani);}ani();
+</script>
+</body>
+</html>

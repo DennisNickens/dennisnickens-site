@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Just You, or With Others? | SR Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+.fn-wrap{position:relative;z-index:5;max-width:720px;margin:0 auto;padding:120px 1.5rem 4rem;}
+.progress-wrap{margin-bottom:2.5rem;}
+.progress-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;margin-bottom:.6rem;text-align:center;}
+.progress-track{height:6px;background:rgba(255,255,255,0.1);border-radius:50px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:50px;transition:width .4s ease;}
+.fn-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;text-align:center;display:block;margin-bottom:.75rem;}
+.fn-head{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(26px,4.2vw,40px);color:#fff;text-align:center;line-height:1.2;margin-bottom:2.5rem;}
+.opt-list{display:flex;flex-direction:column;gap:.85rem;margin-bottom:2rem;}
+.opt{display:flex;align-items:center;gap:.85rem;padding:18px 18px;border-radius:14px;border:1px solid rgba(124,58,237,0.4);background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(59,130,246,0.08));cursor:pointer;transition:all .25s;color:rgba(255,255,255,0.88);font-size:16px;}
+.opt:hover{border-color:rgba(255,215,0,0.5);}
+.opt.sel{border-color:#FFD700;background:rgba(255,215,0,0.08);}
+.opt input{width:20px;height:20px;accent-color:#FFD700;flex-shrink:0;}
+.btn-row{display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+.fn-btn{display:inline-block;text-align:center;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0D0B1E;padding:15px 38px;border-radius:50px;font-weight:700;font-size:16px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:transform .2s,box-shadow .2s;}
+.fn-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(255,215,0,0.35);}
+.fn-btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;}
+.back-btn{background:transparent;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.8);padding:15px 28px;border-radius:50px;font-weight:600;font-size:15px;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:all .2s;}
+.back-btn:hover{border-color:#FFD700;color:#FFD700;}
+.fn-err{display:none;color:#ff8585;font-size:14px;margin-top:1rem;text-align:center;}
+.fn-err.show{display:block;}
+</style>
+</head>
+<body>
+<canvas id="pc" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../SpiritualRomeo_Assessment.html">Assessment</a></li>
+    <li><a href="../testimonials.html">Testimonials</a></li>
+    <li><a href="../book.html" class="nav-cta">Book Now</a></li>
+    <li><a href="../store.html">Store</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="fn-wrap">
+  <div class="progress-wrap">
+    <div class="progress-label">Step 3 of 6</div>
+    <div class="progress-track"><div class="progress-fill" style="width:50%"></div></div>
+  </div>
+  <span class="fn-eyebrow">Who It's For</span>
+  <h1 class="fn-head">Are you taking this just for yourself, or do you want to include others?</h1>
+  <div class="opt-list" id="optList"></div>
+  <div class="btn-row">
+    <a href="#" class="back-btn" id="backBtn">&larr; Back</a>
+    <button type="button" class="fn-btn" id="continueBtn" disabled>Continue &rarr;</button>
+  </div>
+  <div class="fn-err" id="errBox"></div>
+</div>
+<footer style="position:relative;z-index:5;background:#080615;padding:3rem 2rem;text-align:center;border-top:1px solid rgba(124,58,237,0.2);font-size:13px;color:rgba(255,255,255,0.4);">
+  <p>&#128231; dennis@dennisnickens.com | &#128205; Indian Trail, NC</p>
+  <p>&#169; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+</footer>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+
+var cid=(new URLSearchParams(location.search)).get('cid')||'';
+if(!cid){window.location.href='intake.html';}
+document.getElementById('backBtn').href='qualifier-focus.html?cid='+encodeURIComponent(cid);
+
+var OPTIONS=["Just for me","For me and my partner","For me and my family","For me and my team"];
+var list=document.getElementById('optList');
+OPTIONS.forEach(function(text){
+  var lbl=document.createElement('label');
+  lbl.className='opt';
+  lbl.innerHTML='<input type="radio" name="audience" value="'+text.replace(/"/g,'&quot;')+'" /> <span>'+text+'</span>';
+  list.appendChild(lbl);
+});
+
+var radios=list.querySelectorAll('input[type="radio"]');
+var continueBtn=document.getElementById('continueBtn');
+radios.forEach(function(r){
+  r.addEventListener('change',function(){
+    list.querySelectorAll('.opt').forEach(function(o){o.classList.remove('sel');});
+    r.closest('.opt').classList.add('sel');
+    continueBtn.disabled=false;
+  });
+});
+
+function showErr(msg){var e=document.getElementById('errBox');e.textContent=msg;e.classList.add('show');}
+
+continueBtn.addEventListener('click',function(){
+  var sel=document.querySelector('input[name="audience"]:checked');
+  if(!sel)return;
+  continueBtn.disabled=true;continueBtn.textContent='Saving...';
+  fetch('/api/sr-update-contact',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({contact_id:cid,beta_scenario_audience:sel.value})
+  })
+  .then(function(r){return r.json();})
+  .then(function(data){
+    if(data&&data.success){
+      window.location.href='tiers.html?cid='+encodeURIComponent(cid);
+    }else{
+      showErr((data&&data.error)||'Something went wrong. Please try again.');
+      continueBtn.disabled=false;continueBtn.textContent='Continue →';
+    }
+  })
+  .catch(function(){
+    showErr('Network error. Please try again.');
+    continueBtn.disabled=false;continueBtn.textContent='Continue →';
+  });
+});
+
+var cv=document.getElementById('pc'),cx=cv.getContext('2d');let ps=[];function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();window.addEventListener('resize',rsz);class P{constructor(){this.reset();}reset(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;const t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;}}for(let i=0;i<70;i++)ps.push(new P());function ani(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(ani);}ani();
+</script>
+</body>
+</html>

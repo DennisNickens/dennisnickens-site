@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Welcome | SR Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+.fn-wrap{position:relative;z-index:5;max-width:720px;margin:0 auto;padding:120px 1.5rem 4rem;text-align:center;}
+.progress-wrap{margin-bottom:2.5rem;}
+.progress-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;margin-bottom:.6rem;}
+.progress-track{height:6px;background:rgba(255,255,255,0.1);border-radius:50px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:50px;}
+.fn-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;display:block;margin-bottom:.75rem;}
+.fn-head{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(40px,7vw,68px);color:#fff;line-height:1.1;margin-bottom:1.75rem;}
+.fn-body{font-size:18px;color:rgba(255,255,255,0.82);line-height:1.9;max-width:600px;margin:0 auto 2.75rem;}
+.fn-btn{display:inline-block;text-align:center;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0D0B1E;padding:18px 48px;border-radius:50px;font-weight:700;font-size:18px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:transform .2s,box-shadow .2s;}
+.fn-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,215,0,0.4);}
+.fn-btn:disabled{opacity:.6;cursor:wait;}
+</style>
+</head>
+<body>
+<canvas id="pc" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../SpiritualRomeo_Assessment.html">Assessment</a></li>
+    <li><a href="../testimonials.html">Testimonials</a></li>
+    <li><a href="../book.html" class="nav-cta">Book Now</a></li>
+    <li><a href="../store.html">Store</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="fn-wrap">
+  <div class="progress-wrap">
+    <div class="progress-label">Step 6 of 6</div>
+    <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
+  </div>
+  <span class="fn-eyebrow">You're All Set</span>
+  <h1 class="fn-head">Welcome</h1>
+  <p class="fn-body">Thanks for taking the time to be honest about what you're working on. The next several minutes you spend answering these questions will give you back insights worth far more time than they cost. There are no wrong answers. Just honest ones. The Blueprint is only as accurate as the focus you give it. Find a quiet spot. Settle in. When you're ready, hit Begin and we'll start.</p>
+  <button type="button" class="fn-btn" id="beginBtn">I'm Ready, Begin &rarr;</button>
+</div>
+<footer style="position:relative;z-index:5;background:#080615;padding:3rem 2rem;text-align:center;border-top:1px solid rgba(124,58,237,0.2);font-size:13px;color:rgba(255,255,255,0.4);">
+  <p>&#128231; dennis@dennisnickens.com | &#128205; Indian Trail, NC</p>
+  <p>&#169; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+</footer>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+
+var SURVEY_BASE='https://api.leadconnectorhq.com/widget/survey/E8iUexhy9T4qKYMylUPb';
+var cid=(new URLSearchParams(location.search)).get('cid')||'';
+if(!cid){window.location.href='intake.html';}
+
+// Prefetch the contact's selections so we can pass them to GHL for prefill.
+var selections={focus:'',audience:'',tier:''};
+fetch('/api/sr-get-contact?cid='+encodeURIComponent(cid))
+  .then(function(r){return r.json();})
+  .then(function(data){
+    if(data&&data.success&&data.contact&&data.contact.fields){
+      var f=data.contact.fields;
+      var focus=f.beta_scenario_focus;
+      selections.focus=Array.isArray(focus)?focus.join(', '):(focus||'');
+      selections.audience=f.beta_scenario_audience||'';
+      selections.tier=f.sr_tier||'';
+    }
+  })
+  .catch(function(){});
+
+document.getElementById('beginBtn').addEventListener('click',function(){
+  this.disabled=true;this.textContent='Loading...';
+  var url=SURVEY_BASE+'?contact_id='+encodeURIComponent(cid)
+    +'&beta_scenario_focus='+encodeURIComponent(selections.focus)
+    +'&beta_scenario_audience='+encodeURIComponent(selections.audience)
+    +'&sr_tier='+encodeURIComponent(selections.tier);
+  window.location.href=url;
+});
+
+var cv=document.getElementById('pc'),cx=cv.getContext('2d');let ps=[];function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();window.addEventListener('resize',rsz);class P{constructor(){this.reset();}reset(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;const t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;}}for(let i=0;i<70;i++)ps.push(new P());function ani(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(ani);}ani();
+</script>
+</body>
+</html>

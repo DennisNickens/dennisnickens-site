@@ -48,6 +48,13 @@ main{position:relative;z-index:5;padding:4rem 1.5rem 5rem;}
 .arr{transition:transform .3s;}
 .tier-btn:hover .arr{transform:translateX(4px);}
 .note{text-align:center;margin-top:2.5rem;font-family:var(--fs);font-style:italic;font-size:1rem;color:var(--ink-f);}
+.progress-wrap{max-width:680px;margin:0 auto 2.5rem;}
+.progress-label{font-family:var(--fl);font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;text-align:center;}
+.progress-track{height:6px;background:rgba(212,169,87,0.15);border-radius:50px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(135deg,var(--gold),var(--gold-s));border-radius:50px;transition:width .4s ease;}
+.tiers-back{display:flex;justify-content:center;margin-top:2.5rem;}
+.tiers-back a{font-family:var(--fl);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-s);text-decoration:none;border:1px solid var(--line);border-radius:4px;padding:.85rem 1.75rem;transition:all .3s;}
+.tiers-back a:hover{color:var(--gold);border-color:var(--gold);}
 </style>
 </head>
 <body>
@@ -60,12 +67,17 @@ main{position:relative;z-index:5;padding:4rem 1.5rem 5rem;}
 </nav>
 <main>
   <div class="container">
+    <div class="progress-wrap">
+      <div class="progress-label">Step 4 of 6</div>
+      <div class="progress-track"><div class="progress-fill" style="width:66.67%"></div></div>
+    </div>
     <div class="eyebrow">Choose Your Depth</div>
     <h1 class="page-title">How far do you want <em>to go?</em></h1>
     <p class="page-sub">Every tier gives you something real. The deeper you go, the fuller the picture.</p>
     <div class="pillar-label"><span id="pillarLabel">Loading&hellip;</span></div>
     <div class="tiers-grid" id="tiersGrid"></div>
-    <p class="note">Pricing is revealed after you complete your assessment — when you can see exactly what your results are worth to you.</p>
+    <p class="note">Pricing is revealed after you complete your assessment, when you can see exactly what your results are worth to you.</p>
+    <div class="tiers-back"><a href="#" id="backBtn">&larr; Back</a></div>
   </div>
 </main>
 <script>
@@ -107,14 +119,15 @@ const PILLAR_COVERS={
   }
 };
 const PILLAR_LABELS={singles:"Singles",married:"Married",families:"Families",education:"Education",businesses:"Businesses",leadership:"Leadership"};
-// The GHL SR Full Assessment survey intake form URL (with pillar+tier passed as URL fragment for GHL field pre-fill)
-const GHL_SURVEY='https://link.msgsndr.com/widget/survey/E8iUexhy9T4qKYMylUPb';
 (function(){
   const params=new URLSearchParams(location.search);
   const pillar=params.get('pillar')||'singles';
-  const contact=params.get('contact')||'';
+  // contact id from the funnel; accept legacy ?contact= as a fallback
+  const cid=params.get('cid')||params.get('contact')||'';
+  if(!cid){window.location.href='intake.html';return;}
   const covers=PILLAR_COVERS[pillar]||PILLAR_COVERS.singles;
   document.getElementById('pillarLabel').textContent=PILLAR_LABELS[pillar]||'Singles';
+  document.getElementById('backBtn').href='qualifier-audience.html?cid='+encodeURIComponent(cid);
   const grid=document.getElementById('tiersGrid');
   ['light','medium','deep'].forEach(function(key){
     const t=TIERS[key];
@@ -128,11 +141,28 @@ const GHL_SURVEY='https://link.msgsndr.com/widget/survey/E8iUexhy9T4qKYMylUPb';
     html+='<div class="tier-divider"></div>';
     html+='<div class="tier-covers-lbl">What you walk away with</div>';
     html+='<ul class="tier-items">'+items.map(function(i){return'<li>'+i+'</li>';}).join('')+'</ul>';
-    // Build the survey URL — pass pillar and tier via URL params so GHL can store them
-    const surveyUrl=GHL_SURVEY+'?pillar='+encodeURIComponent(pillar)+'&tier='+encodeURIComponent(key)+(contact?'&contact='+encodeURIComponent(contact):'');
-    html+='<a href="'+surveyUrl+'" class="tier-btn '+t.btn+'">Begin '+t.name+' Assessment <span class="arr">&rarr;</span></a>';
+    html+='<button type="button" class="tier-btn '+t.btn+'" data-tier="'+key+'">Begin '+t.name+' Assessment <span class="arr">&rarr;</span></button>';
     card.innerHTML=html;
     grid.appendChild(card);
+  });
+  grid.addEventListener('click',function(ev){
+    const btn=ev.target.closest('.tier-btn');
+    if(!btn)return;
+    const tier=btn.getAttribute('data-tier');
+    grid.querySelectorAll('.tier-btn').forEach(function(b){b.disabled=true;});
+    btn.textContent='Saving...';
+    fetch('/api/sr-update-contact',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({contact_id:cid,sr_tier:tier})
+    })
+    .then(function(r){return r.json();})
+    .then(function(data){
+      window.location.href='confirm.html?cid='+encodeURIComponent(cid);
+    })
+    .catch(function(){
+      window.location.href='confirm.html?cid='+encodeURIComponent(cid);
+    });
   });
 })();
 </script>

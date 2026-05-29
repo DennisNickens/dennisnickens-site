@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>You Selected a Pillar | Spiritual Romeo Assessment</title>
+<title>Confirm Your Choices | Spiritual Romeo Assessment</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -18,24 +18,34 @@ body{font-family:var(--fn);color:var(--ink);background:var(--bg);line-height:1.6
 .nav-name{font-family:'Allura',cursive;font-size:1.75rem;color:var(--gold);line-height:1;}
 .nav-sub{font-family:var(--fl);font-size:.62rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;}
 main{position:relative;z-index:5;min-height:calc(100vh - 90px);display:flex;align-items:center;justify-content:center;padding:3rem 1.5rem;}
-.card{max-width:760px;width:100%;background:linear-gradient(180deg,rgba(26,19,64,.75),rgba(15,10,46,.55));border:1px solid var(--gold);border-radius:16px;padding:clamp(2.5rem,5vw,4rem);backdrop-filter:blur(16px);text-align:center;}
-.eyebrow{font-family:var(--fl);font-size:.75rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
-.eyebrow::before,.eyebrow::after{content:"✦";margin:0 .6rem;}
-.badge{display:inline-block;font-family:var(--fl);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;background:linear-gradient(135deg,var(--gold),var(--gold-s));color:#07071a;padding:.45rem 1.4rem;border-radius:100px;font-weight:700;margin-bottom:1.5rem;}
-h1{font-family:var(--ff);font-size:clamp(2rem,4.5vw,3rem);font-weight:400;line-height:1.15;margin-bottom:1rem;}
+.card{max-width:760px;width:100%;background:linear-gradient(180deg,rgba(26,19,64,.75),rgba(15,10,46,.55));border:1px solid var(--gold);border-radius:16px;padding:clamp(2.25rem,5vw,3.5rem);backdrop-filter:blur(16px);}
+.progress-wrap{margin-bottom:2.25rem;}
+.progress-label{font-family:var(--fl);font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;text-align:center;}
+.progress-track{height:6px;background:rgba(212,169,87,0.15);border-radius:50px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(135deg,var(--gold),var(--gold-s));border-radius:50px;}
+.eyebrow{font-family:var(--fl);font-size:.75rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;text-align:center;}
+.eyebrow::before,.eyebrow::after{content:"\2726";margin:0 .6rem;}
+h1{font-family:var(--ff);font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:400;line-height:1.15;margin-bottom:.75rem;text-align:center;}
 h1 em{font-style:italic;background:linear-gradient(135deg,var(--gold),#f0d490);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.sub{font-family:var(--fs);font-style:italic;font-size:clamp(1.05rem,2vw,1.25rem);color:var(--ink-s);margin-bottom:2.5rem;line-height:1.5;}
-.areas-lbl{font-family:var(--fl);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;}
-.areas{display:grid;gap:.85rem;margin-bottom:2.5rem;text-align:left;}
-.area{display:flex;align-items:flex-start;gap:.85rem;padding:1rem 1.25rem;background:rgba(212,169,87,.06);border:1px solid rgba(212,169,87,.15);border-radius:10px;}
-.area-icon{flex-shrink:0;width:34px;height:34px;background:linear-gradient(135deg,var(--gold),var(--gold-s));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;}
-.area-text{font-size:.95rem;color:var(--ink-s);line-height:1.5;}
-.area-text strong{color:var(--ink);font-weight:600;}
-.divider{width:60px;height:1px;background:var(--gold);margin:0 auto 2.5rem;opacity:.4;}
-.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 2.4rem;font-family:var(--fl);font-size:.85rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:none;border-radius:4px;background:linear-gradient(135deg,var(--gold),var(--gold-s));color:#07071a;box-shadow:0 8px 24px rgba(212,169,87,.3);transition:all .3s;}
+.sub{font-family:var(--fs);font-style:italic;font-size:clamp(1.05rem,2vw,1.2rem);color:var(--ink-s);margin-bottom:2.25rem;line-height:1.5;text-align:center;}
+.review{display:grid;gap:1rem;margin-bottom:2.25rem;}
+.rrow{padding:1.1rem 1.35rem;background:rgba(212,169,87,.06);border:1px solid rgba(212,169,87,.15);border-radius:10px;}
+.rhead{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.5rem;}
+.rlabel{font-family:var(--fl);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);}
+.redit{font-family:var(--fl);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-s);text-decoration:none;border-bottom:1px solid var(--line);transition:all .25s;}
+.redit:hover{color:var(--gold);border-color:var(--gold);}
+.rvalue{font-size:1rem;color:var(--ink);line-height:1.55;}
+.rvalue ul{list-style:none;display:flex;flex-direction:column;gap:.3rem;}
+.rvalue li{padding-left:1.15rem;position:relative;}
+.rvalue li::before{content:"\2726";position:absolute;left:0;color:var(--gold);font-size:.55rem;top:.3rem;}
+.divider{width:60px;height:1px;background:var(--gold);margin:0 auto 2rem;opacity:.4;}
+.btn-center{text-align:center;}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 2.4rem;font-family:var(--fl);font-size:.85rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:none;border-radius:4px;background:linear-gradient(135deg,var(--gold),var(--gold-s));color:#07071a;box-shadow:0 8px 24px rgba(212,169,87,.3);transition:all .3s;cursor:pointer;font-family:var(--fl);}
 .btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(212,169,87,.45);}
 .arr{transition:transform .3s;}
 .btn:hover .arr{transform:translateX(4px);}
+.loading{text-align:center;color:var(--ink-s);font-family:var(--fs);font-style:italic;font-size:1.1rem;padding:1rem 0;}
+.err{text-align:center;color:#ff8585;font-size:.95rem;margin-top:1rem;}
 </style>
 </head>
 <body>
@@ -48,29 +58,83 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--gold),#f0d490);-
 </nav>
 <main>
   <div class="card">
-    <div class="eyebrow">Your Assessment</div>
-    <div class="badge" id="pillarBadge">Loading&hellip;</div>
-    <h1>You selected <em id="pillarTitle">&hellip;</em></h1>
-    <p class="sub" id="confirmSub">Here is what we help you uncover.</p>
-    <div class="areas-lbl">What this assessment reveals</div>
-    <div class="areas" id="areasGrid"></div>
+    <div class="progress-wrap">
+      <div class="progress-label">Step 5 of 6</div>
+      <div class="progress-track"><div class="progress-fill" style="width:83.33%"></div></div>
+    </div>
+    <div class="eyebrow">Review</div>
+    <h1>Does this <em>look right?</em></h1>
+    <p class="sub">Take a quick look before we begin. You can edit anything that needs a change.</p>
+    <div class="review" id="review"><div class="loading">Loading your selections&hellip;</div></div>
     <div class="divider"></div>
-    <a href="#" class="btn" id="continueBtn">Choose Your Depth <span class="arr">&rarr;</span></a>
+    <div class="btn-center">
+      <button type="button" class="btn" id="confirmBtn">Looks Good, Continue <span class="arr">&rarr;</span></button>
+      <div class="err" id="errBox" style="display:none;"></div>
+    </div>
   </div>
 </main>
 <script>
-const PILLARS={singles:{label:"Singles",title:"Singles",sub:"Whether you are ready for your next relationship or figuring out why the last one kept breaking the same way, this is where clarity begins.",areas:[{i:"💬",s:"How you communicate",t:" and how you handle disagreement — a clear snapshot of your natural style and where it helps or trips you up."},{i:"❤️",s:"How you give and receive love",t:", your instinctive approach to relationships, and the patterns you tend to repeat."},{i:"🧭",s:"Your deeper purpose and gifting",t:", your blind spots, and a full readiness picture for the relationship you actually want."}]},married:{label:"Married",title:"Married",sub:"You know your partner. This assessment helps you understand them — and yourself — in a completely different way.",areas:[{i:"💬",s:"How you and your partner communicate",t:" and how the two of you handle conflict. A quick read on your dynamic."},{i:"❤️",s:"How each of you gives and receives love",t:", how each of you naturally takes action, and the real sources of friction between you."},{i:"🧭",s:"Your shared purpose and direction",t:" as a couple, and a full compatibility and growth map."}]},families:{label:"Families",title:"Families",sub:"Every person in your household is wired differently. This is the map that shows you how each of you actually works together.",areas:[{i:"🏠",s:"How your household communicates",t:" and how conflict gets resolved across the family."},{i:"❤️",s:"How each family member gives and receives love",t:" and the natural strengths each person brings."},{i:"🧭",s:"How each member learns and processes",t:" — big for parents and kids — plus a full map of how your family works together."}]},education:{label:"Education",title:"Education",sub:"Understanding how you learn changes everything — what sticks, what does not, and how to finally get the most out of your growth.",areas:[{i:"📚",s:"How you learn and take in information",t:", plus how you communicate in learning settings."},{i:"⚡",s:"Your natural strengths",t:", how you take action, and what actually motivates you."},{i:"🧭",s:"Your complete learning profile",t:", your gifting, and a plan for how to get the most out of your growth."}]},businesses:{label:"Businesses",title:"Businesses",sub:"How you work, how you lead, how you collaborate — this assessment gives you the professional clarity most people spend years searching for.",areas:[{i:"💼",s:"How you communicate at work",t:" and how you handle conflict on the job."},{i:"⚡",s:"Your natural work style",t:", your strengths, and how you collaborate with others."},{i:"🧭",s:"How you process and learn",t:", how your calling lines up with your career, and a full professional profile."}]},leadership:{label:"Leadership",title:"Leadership",sub:"The people you lead are watching how you show up. This assessment shows you what they are actually responding to — and why.",areas:[{i:"🌟",s:"How you communicate as a leader",t:" and how you handle conflict and decisions."},{i:"⚡",s:"Your natural leadership style",t:", how you take action, and how you motivate the people around you."},{i:"🧭",s:"Your spiritual gifts and calling",t:", and a full leadership profile for your ministry or organization."}]}};
-(function(){
-  const p=(new URLSearchParams(location.search)).get('pillar')||'singles';
-  const c=(new URLSearchParams(location.search)).get('contact')||'';
-  const d=PILLARS[p]||PILLARS.singles;
-  document.getElementById('pillarBadge').textContent=d.label;
-  document.getElementById('pillarTitle').textContent=d.title;
-  document.getElementById('confirmSub').textContent=d.sub;
-  const g=document.getElementById('areasGrid');
-  d.areas.forEach(a=>{const el=document.createElement('div');el.className='area';el.innerHTML='<div class="area-icon">'+a.i+'</div><div class="area-text"><strong>'+a.s+'</strong>'+a.t+'</div>';g.appendChild(el);});
-  document.getElementById('continueBtn').href='../assessment/tiers.html?pillar='+encodeURIComponent(p)+(c?'&contact='+encodeURIComponent(c):'');
-})();
+var TIER_LABELS={light:"Light (25 Questions)",medium:"Medium (50 Questions)",deep:"Deep (75 Questions)"};
+var cid=(new URLSearchParams(location.search)).get('cid')||'';
+if(!cid){window.location.href='intake.html';}
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function asList(v){
+  if(Array.isArray(v))return v;
+  if(typeof v==='string'&&v.trim()){
+    // GHL may return a multi-select as a comma-separated or array-like string
+    try{var p=JSON.parse(v);if(Array.isArray(p))return p;}catch(e){}
+    return v.split(/\s*,\s*/).filter(Boolean);
+  }
+  return [];
+}
+
+function render(contact){
+  var f=contact.fields||{};
+  var name=((contact.firstName||'')+' '+(contact.lastName||'')).trim()||'Not provided';
+  var contactInfo=[contact.email,contact.phone].filter(Boolean).join(' &middot; ')||'Not provided';
+  var focus=asList(f.beta_scenario_focus);
+  var audience=f.beta_scenario_audience||'Not selected';
+  var tierRaw=f.sr_tier||'';
+  var tier=TIER_LABELS[tierRaw]||tierRaw||'Not selected';
+
+  var focusHtml=focus.length
+    ? '<ul>'+focus.map(function(i){return '<li>'+esc(i)+'</li>';}).join('')+'</ul>'
+    : 'None selected';
+
+  var rows=[
+    {label:'Your Name',value:esc(name),edit:'intake.html'},
+    {label:'Contact',value:contactInfo,edit:'intake.html'},
+    {label:'What You Want to Work On',value:focusHtml,edit:'qualifier-focus.html?cid='+encodeURIComponent(cid)},
+    {label:'Who It’s For',value:esc(audience),edit:'qualifier-audience.html?cid='+encodeURIComponent(cid)},
+    {label:'Assessment Depth',value:esc(tier),edit:'tiers.html?cid='+encodeURIComponent(cid)}
+  ];
+
+  var html='';
+  rows.forEach(function(r){
+    html+='<div class="rrow"><div class="rhead"><span class="rlabel">'+r.label+'</span>'
+      +'<a class="redit" href="'+r.edit+'">Edit</a></div>'
+      +'<div class="rvalue">'+r.value+'</div></div>';
+  });
+  document.getElementById('review').innerHTML=html;
+}
+
+fetch('/api/sr-get-contact?cid='+encodeURIComponent(cid))
+  .then(function(r){return r.json();})
+  .then(function(data){
+    if(data&&data.success&&data.contact){
+      render(data.contact);
+    }else{
+      document.getElementById('review').innerHTML='<div class="loading">We could not load your details, but you can still continue.</div>';
+    }
+  })
+  .catch(function(){
+    document.getElementById('review').innerHTML='<div class="loading">We could not load your details, but you can still continue.</div>';
+  });
+
+document.getElementById('confirmBtn').addEventListener('click',function(){
+  window.location.href='welcome.html?cid='+encodeURIComponent(cid);
+});
 </script>
 </body>
 </html>

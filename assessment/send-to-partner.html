@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Send to Your Partner | SR Linked Pair</title>
+<meta name="description" content="You finished your assessment. Now share your Pair Code with your partner so they can take theirs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !important;min-height:100vh;color:#fff;}
+.stp-wrap{position:relative;z-index:5;max-width:720px;margin:0 auto;padding:100px 1.5rem 4rem;}
+.stp-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;text-align:center;display:block;margin-bottom:.75rem;}
+.stp-title{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(30px,5vw,46px);color:#fff;text-align:center;line-height:1.15;margin-bottom:1rem;}
+.stp-sub{font-size:17px;color:rgba(255,255,255,0.78);text-align:center;line-height:1.7;max-width:560px;margin:0 auto 2.5rem;}
+.code-display{background:linear-gradient(135deg,rgba(255,215,0,0.18),rgba(255,165,0,0.08));border:2px solid rgba(255,215,0,0.5);border-radius:24px;padding:2.5rem 1.5rem;text-align:center;margin-bottom:2rem;position:relative;}
+.code-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;margin-bottom:1rem;}
+.code-value{font-family:'Inter',monospace;font-size:clamp(36px,7vw,56px);font-weight:900;letter-spacing:.1em;color:#FFD700;line-height:1;margin-bottom:1.5rem;text-shadow:0 0 30px rgba(255,215,0,.3);}
+.code-copy{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,0,0,.35);border:1px solid rgba(255,215,0,.45);color:#fff;padding:10px 20px;border-radius:50px;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .25s;}
+.code-copy:hover{background:rgba(255,215,0,.15);border-color:#FFD700;}
+.code-copy.copied{background:rgba(34,197,94,.18);border-color:#22c55e;color:#22c55e;}
+.link-block{background:rgba(255,255,255,0.04);border:1px solid rgba(124,58,237,0.35);border-radius:18px;padding:1.5rem;margin-bottom:1.5rem;}
+.link-block-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;margin-bottom:.75rem;}
+.link-row{display:flex;gap:.5rem;align-items:stretch;flex-wrap:wrap;}
+.link-text{flex:1;min-width:0;background:rgba(13,11,30,0.7);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:12px 14px;color:rgba(255,255,255,.92);font-size:14px;font-family:'Inter',monospace;overflow-x:auto;white-space:nowrap;}
+.link-copy{flex-shrink:0;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0D0B1E;padding:0 18px;border-radius:10px;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:transform .2s;}
+.link-copy:hover{transform:translateY(-1px);}
+.link-copy.copied{background:#22c55e;color:#0D0B1E;}
+.share-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2rem;}
+.share-btn{flex:1;min-width:180px;display:flex;align-items:center;justify-content:center;gap:.5rem;background:linear-gradient(135deg,rgba(124,58,237,0.25),rgba(59,130,246,0.18));border:1px solid rgba(124,58,237,0.5);color:#fff;padding:16px;border-radius:14px;font-size:16px;font-weight:600;text-decoration:none;font-family:'Inter',sans-serif;transition:all .25s;}
+.share-btn:hover{transform:translateY(-2px);border-color:#FFD700;background:linear-gradient(135deg,rgba(124,58,237,0.4),rgba(59,130,246,0.3));}
+.waiting-box{background:rgba(255,215,0,0.05);border:1px dashed rgba(255,215,0,0.3);border-radius:14px;padding:1.25rem 1.5rem;text-align:center;color:rgba(255,255,255,0.85);font-style:italic;line-height:1.6;}
+.waiting-box strong{color:#FFD700;font-style:normal;}
+.error-state{background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.4);border-radius:14px;padding:1.5rem;color:#ff8585;text-align:center;margin-bottom:2rem;}
+.muted-mini{font-size:13px;color:rgba(255,255,255,0.55);margin-top:.5rem;text-align:center;}
+.hidden{display:none;}
+</style>
+</head>
+<body>
+<canvas id="pc" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../SpiritualRomeo_Assessment.html">Assessment</a></li>
+    <li><a href="../testimonials.html">Testimonials</a></li>
+    <li><a href="../book.html" class="nav-cta">Book Now</a></li>
+    <li><a href="../store.html">Store</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="stp-wrap">
+
+  <span class="stp-eyebrow">You're Done</span>
+  <h1 class="stp-title">Now Send Your Code to Your Partner.</h1>
+  <p class="stp-sub">When your partner finishes their assessment, you both get your individual Blueprints plus a third Comparison Blueprint that shows how you fit together.</p>
+
+  <div id="loadingState" class="waiting-box">Loading your Pair Code...</div>
+
+  <div id="errorState" class="error-state hidden"></div>
+
+  <div id="readyState" class="hidden">
+
+    <div class="code-display">
+      <div class="code-label">Your Pair Code</div>
+      <div class="code-value" id="codeValue">SR-XXXX-XX</div>
+      <button type="button" class="code-copy" id="codeCopy">
+        <span id="codeCopyLabel">Copy Code</span>
+      </button>
+    </div>
+
+    <div class="link-block">
+      <div class="link-block-label">Shareable Link</div>
+      <div class="link-row">
+        <div class="link-text" id="linkText">https://dennisnickens.com/assessment/partner?code=SR-XXXX-XX</div>
+        <button type="button" class="link-copy" id="linkCopy">Copy</button>
+      </div>
+    </div>
+
+    <div class="share-actions">
+      <a href="#" class="share-btn" id="shareSms">&#128241; Text the Link</a>
+      <a href="#" class="share-btn" id="shareEmail">&#128231; Email the Link</a>
+    </div>
+
+    <div class="waiting-box">
+      We will notify you the moment your partner finishes their assessment. Your individual Blueprint is already on its way to your inbox <strong>(check spam if you do not see it within 5 minutes)</strong>. The Comparison Blueprint generates as soon as both of you have completed.
+    </div>
+
+    <p class="muted-mini">No rush. Your partner can take their assessment whenever they are ready. The code does not expire.</p>
+
+  </div>
+
+</div>
+
+<footer style="position:relative;z-index:5;background:#080615;padding:3rem 2rem;text-align:center;border-top:1px solid rgba(124,58,237,0.2);font-size:13px;color:rgba(255,255,255,0.4);">
+  <p>&#128231; dennis@dennisnickens.com | &#128205; Indian Trail, NC</p>
+  <p>&#169; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+
+var loadingEl = document.getElementById('loadingState');
+var errorEl = document.getElementById('errorState');
+var readyEl = document.getElementById('readyState');
+
+function showError(msg) {
+  loadingEl.classList.add('hidden');
+  readyEl.classList.add('hidden');
+  errorEl.classList.remove('hidden');
+  errorEl.textContent = msg;
+}
+
+function showReady(code, primaryFirstName) {
+  loadingEl.classList.add('hidden');
+  errorEl.classList.add('hidden');
+  readyEl.classList.remove('hidden');
+
+  var partnerUrl = window.location.origin + '/assessment/partner?code=' + encodeURIComponent(code);
+
+  document.getElementById('codeValue').textContent = code;
+  document.getElementById('linkText').textContent = partnerUrl;
+
+  // SMS share
+  var smsBody = "Hey, I just took the Spiritual Romeo Assessment. Take yours using this link so we can see how we fit together: " + partnerUrl;
+  document.getElementById('shareSms').href = 'sms:?body=' + encodeURIComponent(smsBody);
+
+  // Email share
+  var emailSubject = "Take the Spiritual Romeo Assessment with me";
+  var emailBody = "Hey,\n\nI just took the Spiritual Romeo Assessment and got my Blueprint. Take yours using this link, and we both get a Comparison Blueprint that shows how we line up:\n\n" + partnerUrl + "\n\nYour pair code: " + code + "\n\nNo rush, take it whenever you are ready.\n";
+  document.getElementById('shareEmail').href = 'mailto:?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody);
+
+  // Copy buttons
+  document.getElementById('codeCopy').addEventListener('click', function() {
+    navigator.clipboard.writeText(code).then(function() {
+      var btn = document.getElementById('codeCopy');
+      var label = document.getElementById('codeCopyLabel');
+      btn.classList.add('copied');
+      label.textContent = 'Copied!';
+      setTimeout(function() {
+        btn.classList.remove('copied');
+        label.textContent = 'Copy Code';
+      }, 2000);
+    });
+  });
+
+  document.getElementById('linkCopy').addEventListener('click', function() {
+    navigator.clipboard.writeText(partnerUrl).then(function() {
+      var btn = document.getElementById('linkCopy');
+      btn.classList.add('copied');
+      btn.textContent = 'Copied!';
+      setTimeout(function() {
+        btn.classList.remove('copied');
+        btn.textContent = 'Copy';
+      }, 2000);
+    });
+  });
+}
+
+(function init() {
+  var params = new URLSearchParams(window.location.search);
+  var cid = params.get('cid');
+  var codeFromUrl = (params.get('code') || '').toUpperCase().trim();
+
+  // If the code is already in the URL (the survey-completion handler can pass it),
+  // skip the fetch and render immediately.
+  if (codeFromUrl) {
+    showReady(codeFromUrl, '');
+    return;
+  }
+
+  if (!cid) {
+    showError('We could not find your account information. Please go back and try again, or contact dennis@dennisnickens.com.');
+    return;
+  }
+
+  // Fetch the contact to read the sr_pair_code field. If missing, try to generate it.
+  fetch('/api/sr-get-contact?cid=' + encodeURIComponent(cid))
+    .then(function(r){return r.json();})
+    .then(function(data){
+      if (!data || !data.success) {
+        throw new Error('Could not load your contact');
+      }
+      var fields = (data.contact && data.contact.fields) || {};
+      var code = fields.sr_pair_code || '';
+      if (code) {
+        showReady(code, data.contact.firstName || '');
+        return;
+      }
+      // No code yet, try to generate one.
+      return fetch('/api/sr-generate-pair-code', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({contact_id: cid}),
+      }).then(function(r){return r.json();}).then(function(d){
+        if (d && d.success && d.pair_code) {
+          showReady(d.pair_code, data.contact.firstName || '');
+        } else {
+          throw new Error((d && d.error) || 'Could not generate your pair code');
+        }
+      });
+    })
+    .catch(function(err) {
+      showError(err.message || 'Something went wrong loading your pair code. Refresh the page or contact dennis@dennisnickens.com.');
+    });
+})();
+
+const cv=document.getElementById('pc'),cx=cv.getContext('2d');let ps=[];
+function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();
+window.addEventListener('resize',rsz);
+class P{constructor(){this.reset();}reset(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;const t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;}}
+for(let i=0;i<110;i++)ps.push(new P());
+function ani(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(ani);}ani();
+</script>
+</body>
+</html>

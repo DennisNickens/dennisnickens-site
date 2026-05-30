@@ -96,26 +96,65 @@ radios.forEach(function(r){
 
 function showErr(msg){var e=document.getElementById('errBox');e.textContent=msg;e.classList.add('show');}
 
+// Linked Pair eligible audience options. Picking any of these triggers
+// pair code generation AND routes to pair-explainer.html instead of tiers.html.
+var LINKED_PAIR_AUDIENCES = [
+  'For me and my partner',
+  'For me and a co-parent',
+  'For me and a business partner',
+  'For me and a close friend or mentor',
+];
+
+function isLinkedPairAudience(val){
+  if(!val) return false;
+  return LINKED_PAIR_AUDIENCES.indexOf(val) !== -1;
+}
+
 continueBtn.addEventListener('click',function(){
   var sel=document.querySelector('input[name="audience"]:checked');
   if(!sel)return;
+  var audienceValue = sel.value;
+  var isPair = isLinkedPairAudience(audienceValue);
+
   continueBtn.disabled=true;continueBtn.textContent='Saving...';
+
+  // Step 1: save the audience selection.
   fetch('/api/sr-update-contact',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({contact_id:cid,sr_qual_who_for:sel.value})
+    body:JSON.stringify({contact_id:cid,sr_qual_who_for:audienceValue})
   })
   .then(function(r){return r.json();})
   .then(function(data){
-    if(data&&data.success){
+    if(!data||!data.success){
+      throw new Error((data&&data.error)||'Save failed');
+    }
+    // Step 2 (Linked Pair branch): generate the pair code for the Primary.
+    if (isPair) {
+      return fetch('/api/sr-generate-pair-code',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({contact_id:cid})
+      }).then(function(r){return r.json();}).then(function(d){
+        if(!d||!d.success){
+          // Non-fatal: keep going to pair-explainer even if code gen fails.
+          // The send-to-partner page can retry generation later.
+          console.warn('[qualifier-audience] pair code generation failed', d);
+        }
+        return { isPair: true };
+      });
+    }
+    return { isPair: false };
+  })
+  .then(function(result){
+    if (result.isPair) {
+      window.location.href='pair-explainer.html?cid='+encodeURIComponent(cid);
+    } else {
       window.location.href='tiers.html?cid='+encodeURIComponent(cid);
-    }else{
-      showErr((data&&data.error)||'Something went wrong. Please try again.');
-      continueBtn.disabled=false;continueBtn.textContent='Continue →';
     }
   })
-  .catch(function(){
-    showErr('Network error. Please try again.');
+  .catch(function(err){
+    showErr(err.message||'Something went wrong. Please try again.');
     continueBtn.disabled=false;continueBtn.textContent='Continue →';
   });
 });

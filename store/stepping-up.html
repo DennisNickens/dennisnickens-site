@@ -72,8 +72,8 @@
 </div>
 <nav id="navbar">
   <a href="../index.html" class="nav-brand">
-    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
-    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+    <div class="nav-logo-wrap" style="background:transparent;box-shadow:none;width:52px;height:52px;filter:drop-shadow(0 0 14px rgba(212,169,87,0.45));"><img src="../sr-logo-transparent.png" alt="SR Spiritual Romeo crest" style="width:100%;height:100%;object-fit:contain;" /></div>
+    <div class="nav-brand-text"><span class="nav-name" style="font-family:&#39;Playfair Display&#39;,serif;font-size:1.05rem;font-weight:700;color:#f5f1e8;letter-spacing:0.5px;">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="../index.html">Home</a></li>
@@ -213,7 +213,7 @@ function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEa
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.style.animationPlayState='running';});},{threshold:.08});
 document.querySelectorAll('.animate-fadeup,.animate-fadeleft,.animate-faderight').forEach(el=>{el.style.animationPlayState='paused';observer.observe(el);});
 function suUpdateTotal(){let total=0;document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){if(cb.checked)total+=parseFloat(cb.dataset.price);});const el=document.getElementById('suTotalAmt');if(el)el.textContent=total>0?'$'+total.toFixed(2):'$0.00';}
-function suAddToCart(){document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){if(cb.checked){window.SRCart.add('Stepping Up',cb.dataset.price,{format:cb.dataset.label,icon:'&#128214;'});}});}
+function suAddToCart(){document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){if(cb.checked){window.SRCart.add('Stepping Up',cb.dataset.price,{format:cb.dataset.label,icon:'../images/stepping-up-cover.jpg'});}});}
 document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){cb.addEventListener('change',suUpdateTotal);});suUpdateTotal();});
 </script>
 <script src="../js/cart.js"></script>

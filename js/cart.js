@@ -64,8 +64,9 @@
       el.className = 'cart-item';
       var priceNum = parseFloat(item.price) || 0;
       var priceDisplay = priceNum > 0 ? ('$' + (priceNum * item.qty).toFixed(2)) : 'TBD';
+      var iconHtml = renderIcon(item.icon);
       el.innerHTML =
-        '<div class="cart-item-img"><span>' + (item.icon || '&#128218;') + '</span></div>' +
+        '<div class="cart-item-img">' + iconHtml + '</div>' +
         '<div class="cart-item-info">' +
           '<div class="cart-item-name">' + escHtml(item.name) + '</div>' +
           (item.variant ? '<div class="cart-item-variant">' + escHtml(item.variant) + '</div>' : '') +
@@ -91,6 +92,19 @@
     d.appendChild(document.createTextNode(str));
     return d.innerHTML;
   }
+
+  // -- Render item icon: image if URL-like, otherwise emoji/HTML entity --
+  function renderIcon(icon) {
+    var fallback = '&#128218;';
+    if (!icon) return '<span>' + fallback + '</span>';
+    var isUrl = /^(https?:\/\/|\/|\.\.\/|\.\/)/.test(icon);
+    if (isUrl) {
+      return '<img src="' + escHtml(icon) + '" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:6px;" onerror="this.outerHTML=\'<span>' + fallback + '</span>\'" />';
+    }
+    return '<span>' + icon + '</span>';
+  }
+  // Expose for checkout page reuse
+  window.SRCartRenderIcon = renderIcon;
 
   // ── Public API ──
   window.SRCart = {

@@ -95,9 +95,9 @@
         </div>
       </div>
       <div class="fld">
-        <label class="consent hidden" id="consentBox">
+        <label class="consent" id="consentBox">
           <input type="checkbox" id="tcpa" />
-          <span>I agree to receive SMS messages about my assessment and results at the phone number provided. Message and data rates may apply. Reply STOP to opt out.</span>
+          <span>I consent to receive SMS notifications, alerts, and occasional marketing communication from Dennis Nickens / Spiritual Romeo. Message frequency varies. Message and data rates may apply. Text HELP to 866-944-7225 for assistance. You can reply STOP to unsubscribe at any time.</span>
         </label>
       </div>
       <button type="submit" class="fn-btn" id="submitBtn">Continue &rarr;</button>
@@ -119,7 +119,6 @@ function syncDelivery(){
   var sms=document.querySelector('input[name="delivery"]:checked').value==='SMS';
   optSms.classList.toggle('sel',sms);
   optEmail.classList.toggle('sel',!sms);
-  consentBox.classList.toggle('hidden',!sms);
 }
 optEmail.querySelector('input').addEventListener('change',syncDelivery);
 optSms.querySelector('input').addEventListener('change',syncDelivery);

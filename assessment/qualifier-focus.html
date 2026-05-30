@@ -111,10 +111,12 @@ continueBtn.addEventListener('click',function(){
   boxes.forEach(function(b){if(b.checked)selected.push(b.value);});
   if(selected.length===0)return;
   continueBtn.disabled=true;continueBtn.textContent='Saving...';
+  // GHL multi-select custom fields expect a comma-joined string, not a JSON array.
+  var focusValue=selected.join(', ');
   fetch('/api/sr-update-contact',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({contact_id:cid,sr_qual_focus_areas:selected})
+    body:JSON.stringify({contact_id:cid,sr_qual_focus_areas:focusValue})
   })
   .then(function(r){return r.json();})
   .then(function(data){

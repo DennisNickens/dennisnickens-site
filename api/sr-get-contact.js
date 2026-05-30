@@ -88,7 +88,28 @@ export default async function handler(req, res) {
 async function getFieldKeyMap(token, locationId) {
   if (fieldKeyMapCache) return fieldKeyMapCache;
 
-  const response = await fetch(`${GHL_BASE}/locations/${locationId}/customFields`, {
+  // GHL's customFields list endpoint sometimes returns an empty array unless
+  // ?model=contact is passed. Try the default first, then fall back.
+  let defs = await fetchFieldDefs(token, locationId, '');
+  if (!defs.length) {
+    defs = await fetchFieldDefs(token, locationId, '?model=contact');
+  }
+
+  const map = {};
+  for (const def of defs) {
+    // fieldKey looks like "contact.sr_qual_focus_areas". Strip the object prefix.
+    const short = (def.fieldKey || '').replace(/^contact\./, '');
+    if (def.id && short) map[def.id] = short;
+  }
+  // Only cache once we actually have a populated map, so a cold-start failure
+  // does not poison subsequent invocations.
+  if (Object.keys(map).length > 0) fieldKeyMapCache = map;
+  return map;
+}
+
+async function fetchFieldDefs(token, locationId, query) {
+  const url = `${GHL_BASE}/locations/${locationId}/customFields${query}`;
+  const response = await fetch(url, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`,
@@ -97,20 +118,12 @@ async function getFieldKeyMap(token, locationId) {
   });
 
   if (!response.ok) {
-    console.error('[sr-get-contact] Failed to load custom field definitions:', response.status);
-    return {};
+    console.error('[sr-get-contact] Failed to load custom field definitions:', response.status, url);
+    return [];
   }
 
   const data = await response.json().catch(() => ({}));
-  const defs = data.customFields || [];
-  const map = {};
-  for (const def of defs) {
-    // fieldKey looks like "contact.sr_qual_focus_areas". Strip the object prefix.
-    const short = (def.fieldKey || '').replace(/^contact\./, '');
-    if (def.id && short) map[def.id] = short;
-  }
-  fieldKeyMapCache = map;
-  return map;
+  return data.customFields || data.custom_fields || [];
 }
 
 function setCors(res) {

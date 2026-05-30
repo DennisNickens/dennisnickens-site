@@ -173,6 +173,129 @@ async function generateAndDeliverBlueprint(payload) {
   await sendBlueprintEmail(payload, blueprintUrl);
 
   console.log(`[Blueprint] Complete. Delivery email sent to ${payload.email}.`);
+
+  // Step 8: Linked Pair check - if this customer is part of a pair AND the
+  // other person has already completed their individual Blueprint, fire the
+  // Comparison Blueprint generation. Done after the individual Blueprint is
+  // complete and emailed so the customer never waits on a partner.
+  try {
+    await maybeTriggerComparisonBlueprint(payload.contact_id);
+  } catch (e) {
+    // Non-fatal: log and move on. Comparison can be re-triggered manually if
+    // it ever fails silently.
+    console.error('[Blueprint] Comparison trigger error (non-fatal):', e.message);
+  }
+}
+
+// =======================================================================
+// LINKED PAIR: COMPARISON BLUEPRINT TRIGGER
+// =======================================================================
+// After this customer's individual Blueprint completes, check if they are
+// part of a Linked Pair. If both pair members are "Generated" AND the
+// comparison has not already been generated or is processing, fire the
+// Comparison Blueprint endpoint asynchronously.
+
+async function maybeTriggerComparisonBlueprint(contactId) {
+  const me = await fetchGhlContact(contactId);
+  if (!me) return;
+
+  const pairCode = readContactField(me, 'sr_pair_code');
+  if (!pairCode) return; // Solo customer, no pair.
+
+  const myRole = (readContactField(me, 'sr_pair_role') || '').toLowerCase();
+  const partnerId = readContactField(me, 'sr_pair_partner_contact_id');
+  if (!partnerId) {
+    console.log(`[Blueprint] Pair detected (code=${pairCode}) but partner contact id not yet linked. Comparison will fire when partner record is updated.`);
+    return;
+  }
+
+  // Idempotency: if my record already shows the comparison is processing or
+  // generated, exit. The other party's run will (or did) handle it.
+  const myComparisonStatus = (readContactField(me, 'sr_pair_comparison_status') || '').toLowerCase();
+  if (myComparisonStatus === 'processing' || myComparisonStatus === 'generated') {
+    console.log(`[Blueprint] Comparison already ${myComparisonStatus} for pair ${pairCode}. Skipping.`);
+    return;
+  }
+
+  const partner = await fetchGhlContact(partnerId);
+  if (!partner) {
+    console.log(`[Blueprint] Pair partner ${partnerId} could not be fetched. Comparison will fire later.`);
+    return;
+  }
+
+  const partnerStatus = (readContactField(partner, 'sr_blueprint_status') || '').toLowerCase();
+  if (partnerStatus !== 'generated') {
+    console.log(`[Blueprint] Partner ${partnerId} is at status "${partnerStatus}" (not yet Generated). Comparison waits.`);
+    return;
+  }
+
+  // Both individual Blueprints are ready. Fire the comparison endpoint.
+  // Order the two ids by role: primary then secondary, for consistent input shape.
+  const primaryId = myRole === 'primary' ? contactId : partnerId;
+  const secondaryId = myRole === 'primary' ? partnerId : contactId;
+
+  // Mark both records as processing BEFORE calling the endpoint so a parallel
+  // run from the partner does not double-fire.
+  await updateGhlContact(primaryId, { sr_pair_comparison_status: 'processing' });
+  await updateGhlContact(secondaryId, { sr_pair_comparison_status: 'processing' });
+
+  const triggerUrl = (process.env.SR_SITE_URL || 'https://dennisnickens.com') + '/api/generate-comparison-blueprint';
+  const webhookSecret = process.env.SR_WEBHOOK_SECRET || '';
+
+  // Fire-and-forget. The comparison endpoint runs in its own Vercel invocation
+  // with its own time budget, so we do not await it here.
+  fetch(triggerUrl, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${webhookSecret}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ primary_contact_id: primaryId, secondary_contact_id: secondaryId }),
+  }).catch((err) => {
+    console.error('[Blueprint] Comparison fetch error:', err.message);
+  });
+
+  console.log(`[Blueprint] Comparison Blueprint generation triggered for pair ${pairCode} (primary=${primaryId}, secondary=${secondaryId})`);
+}
+
+// Read a single custom field from a contact object. Works with either name-keyed
+// or id-keyed customFields[] entries.
+function readContactField(contact, keyName) {
+  const fields = (contact && contact.customFields) || [];
+  let idMap = {};
+  try { idMap = JSON.parse(process.env.GHL_FIELD_ID_MAP || '{}'); } catch (e) {}
+  let matchId = null;
+  for (const id in idMap) {
+    if (idMap[id] === keyName) { matchId = id; break; }
+  }
+  for (const f of fields) {
+    if (!f) continue;
+    const nameKey = (f.key || f.fieldKey || '').toString();
+    if (nameKey === keyName) {
+      return f.value || f.field_value || f.fieldValueString || f.fieldValue || '';
+    }
+    if (matchId && f.id === matchId) {
+      return f.value || f.field_value || f.fieldValueString || f.fieldValue || '';
+    }
+  }
+  return '';
+}
+
+async function fetchGhlContact(contactId) {
+  try {
+    const token = (process.env.GHL_PRIVATE_INTEGRATION_TOKEN || '').trim();
+    const resp = await fetch(`https://services.leadconnectorhq.com/contacts/${encodeURIComponent(contactId)}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Version': '2021-07-28',
+      },
+    });
+    if (!resp.ok) return null;
+    const data = await resp.json().catch(() => ({}));
+    return data.contact || null;
+  } catch (e) {
+    return null;
+  }
 }
 
 // =======================================================================

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>How Linked Pair Works | SR Assessment</title>
+<meta name="description" content="A quick walkthrough of how the Linked Pair assessment works, so you know what to expect before you start.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root {
+  --navy-deep: #0D0B1E;
+  --navy-mid: #1a1235;
+  --gold: #FFD700;
+  --gold-warm: #FFA500;
+  --cream: #f5e6a8;
+}
+body { background: linear-gradient(135deg, var(--navy-deep), var(--navy-mid), var(--navy-deep)); min-height: 100vh; color: #fff; font-family: 'Inter', sans-serif; margin: 0; }
+.pe-wrap { max-width: 880px; margin: 0 auto; padding: 100px 1.5rem 80px; position: relative; z-index: 5; }
+.pe-eyebrow { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; text-align: center; }
+.pe-back { display: inline-block; margin-bottom: 1.5rem; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; }
+.pe-back:hover { color: var(--gold); }
+.pe-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 900; color: #fff; text-align: center; line-height: 1.2; margin-bottom: 1rem; }
+.pe-title .g { background: linear-gradient(135deg, var(--gold), var(--gold-warm)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.pe-sub { font-size: 17px; color: rgba(255,255,255,0.75); text-align: center; max-width: 640px; margin: 0 auto 3rem; line-height: 1.7; }
+.pe-steps { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
+.pe-step { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,215,0,0.18); border-radius: 16px; padding: 1.5rem 1.75rem; display: grid; grid-template-columns: 60px 1fr; gap: 1.25rem; align-items: start; transition: transform 0.2s, border-color 0.2s; }
+.pe-step:hover { transform: translateY(-2px); border-color: rgba(255,215,0,0.4); }
+.pe-num { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 900; background: linear-gradient(135deg, var(--gold), var(--gold-warm)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+.pe-step-content h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--gold); margin: 0 0 0.5rem; }
+.pe-step-content p { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.7; margin: 0; }
+.pe-reassure { background: rgba(255,215,0,0.06); border: 1px solid rgba(255,215,0,0.25); border-radius: 12px; padding: 1.25rem 1.75rem; margin-bottom: 2.5rem; text-align: center; }
+.pe-reassure p { margin: 0; color: var(--cream); font-style: italic; font-size: 15px; line-height: 1.6; }
+.pe-actions { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+.pe-btn { display: inline-block; background: linear-gradient(135deg, var(--gold), var(--gold-warm)); color: var(--navy-deep); padding: 16px 48px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 16px; letter-spacing: 0.5px; transition: transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer; }
+.pe-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,215,0,0.35); }
+.pe-back-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; }
+.pe-back-link:hover { color: rgba(255,255,255,0.85); }
+@media (max-width: 640px) {
+  .pe-step { grid-template-columns: 44px 1fr; gap: 1rem; padding: 1.25rem; }
+  .pe-num { font-size: 30px; }
+  .pe-step-content h3 { font-size: 17px; }
+  .pe-step-content p { font-size: 14px; }
+}
+</style>
+</head>
+<body>
+<canvas id="pc" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../SpiritualRomeo_Assessment.html">Assessment</a></li>
+    <li><a href="../testimonials.html">Testimonials</a></li>
+    <li><a href="../book.html" class="nav-cta">Book Now</a></li>
+    <li><a href="../store.html">Store</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="pe-wrap">
+
+  <a id="backLink" href="qualifier-audience.html" class="pe-back">&larr; Change your selection</a>
+
+  <div class="pe-eyebrow">Linked Pair Setup</div>
+  <h1 class="pe-title">Here's How <span class="g">Linked Pair</span> Works</h1>
+  <p class="pe-sub">Six steps. The most important thing to know: you go first. Your partner does not need to be ready right now.</p>
+
+  <div class="pe-steps">
+
+    <div class="pe-step">
+      <div class="pe-num">1</div>
+      <div class="pe-step-content">
+        <h3>You go first.</h3>
+        <p>You will complete your assessment now. Takes 15 to 30 minutes depending on the tier you pick next.</p>
+      </div>
+    </div>
+
+    <div class="pe-step">
+      <div class="pe-num">2</div>
+      <div class="pe-step-content">
+        <h3>You get a Pair Code.</h3>
+        <p>When you finish, you get a unique code (like SR-7K3M-92) and a shareable link to give your partner.</p>
+      </div>
+    </div>
+
+    <div class="pe-step">
+      <div class="pe-num">3</div>
+      <div class="pe-step-content">
+        <h3>Share it with your partner.</h3>
+        <p>Text it, email it, send it however you usually share things. Your partner uses the link or types the code to start their own assessment.</p>
+      </div>
+    </div>
+
+    <div class="pe-step">
+      <div class="pe-num">4</div>
+      <div class="pe-step-content">
+        <h3>They take their assessment.</h3>
+        <p>Same process you just went through. Their answers stay private until both of you are done.</p>
+      </div>
+    </div>
+
+    <div class="pe-step">
+      <div class="pe-num">5</div>
+      <div class="pe-step-content">
+        <h3>Both Blueprints generate.</h3>
+        <p>When your partner finishes, both of you get your individual Blueprint emailed within 5 minutes.</p>
+      </div>
+    </div>
+
+    <div class="pe-step">
+      <div class="pe-num">6</div>
+      <div class="pe-step-content">
+        <h3>The Comparison Blueprint arrives.</h3>
+        <p>A third Blueprint, built from both of yours, lands in both your inboxes. This is the one that shows how you fit together. Where you match. Where you will trip each other up. How to communicate so it lands.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pe-reassure">
+    <p>Your partner does not need to be ready right now. Take your assessment first. Share the code when you are ready.</p>
+  </div>
+
+  <div class="pe-actions">
+    <a id="continueBtn" href="tiers.html" class="pe-btn">Got it, Continue &rarr;</a>
+    <a id="backLink2" href="qualifier-audience.html" class="pe-back-link">Actually, this is just for me</a>
+  </div>
+
+</div>
+
+<footer style="position:relative;z-index:5;background:#080615;padding:3rem 2rem;text-align:center;border-top:1px solid rgba(124,58,237,0.2);font-size:13px;color:rgba(255,255,255,0.4);">
+  <p>&#128231; dennis@dennisnickens.com | &#128205; Indian Trail, NC</p>
+  <p>&#169; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+</footer>
+
+<script>
+// Preserve the contact_id (cid) URL param across navigation so we don't lose the funnel state.
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var cid = params.get('cid');
+  if (cid) {
+    document.getElementById('continueBtn').href = 'tiers.html?cid=' + encodeURIComponent(cid);
+    document.getElementById('backLink').href = 'qualifier-audience.html?cid=' + encodeURIComponent(cid);
+    document.getElementById('backLink2').href = 'qualifier-audience.html?cid=' + encodeURIComponent(cid);
+  }
+})();
+
+// Standard nav scroll + menu toggle
+window.addEventListener('scroll', function () { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40); });
+function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
+
+// Particle animation (same as other funnel pages)
+const cv = document.getElementById('pc'), cx = cv.getContext('2d');
+let ps = [];
+function rsz() { cv.width = window.innerWidth; cv.height = window.innerHeight; } rsz();
+window.addEventListener('resize', rsz);
+class P {
+  constructor() { this.reset(); }
+  reset() { this.x = Math.random() * cv.width; this.y = Math.random() * cv.height; this.vx = (Math.random() - .5) * .35; this.vy = (Math.random() - .5) * .35; this.r = Math.random() * 1.6 + .3; this.a = Math.random() * .45 + .08; const t = Math.random(); this.c = t > .65 ? '#7C3AED' : t > .35 ? '#3B82F6' : '#FFD700'; }
+  update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > cv.width || this.y < 0 || this.y > cv.height) this.reset(); }
+  draw() { cx.beginPath(); cx.arc(this.x, this.y, this.r, 0, Math.PI * 2); cx.fillStyle = this.c; cx.globalAlpha = this.a; cx.fill(); cx.globalAlpha = 1; }
+}
+for (let i = 0; i < 70; i++) ps.push(new P());
+function ani() { cx.clearRect(0, 0, cv.width, cv.height); ps.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(ani); } ani();
+</script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Take Your Assessment | SR Linked Pair</title>
+<meta name="description" content="Your partner invited you. Take your assessment now, and together you'll get a Comparison Blueprint that shows how you fit together.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !important;min-height:100vh;color:#fff;}
+.fn-wrap{position:relative;z-index:5;max-width:680px;margin:0 auto;padding:120px 1.5rem 4rem;}
+.fn-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;text-align:center;display:block;margin-bottom:.75rem;}
+.fn-head{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(30px,5vw,46px);color:#fff;text-align:center;line-height:1.15;margin-bottom:1rem;}
+.fn-sub{font-size:17px;color:rgba(255,255,255,0.75);text-align:center;line-height:1.7;max-width:560px;margin:0 auto 2.5rem;}
+.fn-card{background:linear-gradient(135deg,rgba(124,58,237,0.18),rgba(59,130,246,0.12));border:1px solid rgba(124,58,237,0.5);border-radius:20px;padding:clamp(1.75rem,4vw,2.75rem);}
+.fld{margin-bottom:1.35rem;}
+.fld label{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;color:rgba(255,255,255,0.85);margin-bottom:.5rem;}
+.fld label .req{color:#FFD700;}
+.fld input[type=text],.fld input[type=email],.fld input[type=tel]{width:100%;padding:14px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.18);background:rgba(13,11,30,0.6);color:#fff;font-family:'Inter',sans-serif;font-size:16px;transition:border-color .25s;}
+.fld input:focus{outline:none;border-color:#FFD700;}
+.radio-row{display:flex;gap:0.75rem;flex-wrap:wrap;}
+.radio-opt{flex:1;min-width:140px;display:flex;align-items:center;gap:0.55rem;padding:13px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.18);background:rgba(13,11,30,0.4);cursor:pointer;color:rgba(255,255,255,0.85);font-size:15px;transition:all .25s;}
+.radio-opt.sel{border-color:#FFD700;background:rgba(255,215,0,0.08);color:#fff;}
+.radio-opt input{accent-color:#FFD700;}
+.consent{display:flex;align-items:flex-start;gap:.65rem;padding:14px 16px;border-radius:12px;background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.2);font-size:14px;color:rgba(255,255,255,0.8);line-height:1.5;}
+.consent input{margin-top:3px;accent-color:#FFD700;flex-shrink:0;}
+.fn-btn{display:inline-block;width:100%;text-align:center;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0D0B1E;padding:16px 40px;border-radius:50px;font-weight:700;font-size:17px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:transform .2s,box-shadow .2s;margin-top:.5rem;}
+.fn-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(255,215,0,0.35);}
+.fn-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+.fn-err{display:none;color:#ff8585;font-size:14px;margin-top:1rem;text-align:center;}
+.fn-err.show{display:block;}
+.code-input{font-family:'Inter',monospace;font-size:22px !important;letter-spacing:.15em;text-align:center;text-transform:uppercase;}
+.invite-banner{background:rgba(255,215,0,0.06);border:1px solid rgba(255,215,0,0.25);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.75rem;text-align:center;color:rgba(255,255,255,0.95);}
+.invite-banner strong{color:#FFD700;}
+.invite-identity{background:linear-gradient(135deg,rgba(255,215,0,0.12),rgba(255,165,0,0.06));border:1.5px solid rgba(255,215,0,0.4);border-radius:18px;padding:1.75rem 1.5rem;margin-bottom:2rem;text-align:center;}
+.invite-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;margin-bottom:.65rem;}
+.invite-name{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(28px,4.5vw,40px);color:#fff;line-height:1.1;margin-bottom:.75rem;letter-spacing:-0.01em;}
+.invite-sub{font-size:14px;color:rgba(255,255,255,0.72);font-style:italic;line-height:1.5;}
+.muted-mini{font-size:13px;color:rgba(255,255,255,0.55);margin-top:.5rem;text-align:center;}
+.loading{text-align:center;color:rgba(255,255,255,0.65);padding:2rem;font-style:italic;}
+.hidden{display:none;}
+</style>
+</head>
+<body>
+<canvas id="pc" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../SpiritualRomeo_Assessment.html">Assessment</a></li>
+    <li><a href="../testimonials.html">Testimonials</a></li>
+    <li><a href="../book.html" class="nav-cta">Book Now</a></li>
+    <li><a href="../store.html">Store</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="fn-wrap">
+
+  <span class="fn-eyebrow">Linked Pair Invitation</span>
+  <h1 class="fn-head" id="pageHead">You've Been Invited.</h1>
+  <p class="fn-sub" id="pageSub">Take your assessment now. When you finish, you and your partner each get your individual Blueprint plus a third Comparison Blueprint that shows how you fit together.</p>
+
+  <!-- State 1: Loading while we validate the code -->
+  <div id="loadingState" class="loading hidden">Verifying your pair code...</div>
+
+  <!-- State 2: Code entry (shown if no code in URL or code is invalid) -->
+  <div id="codeEntryState" class="fn-card hidden">
+    <div class="fld">
+      <label for="pairCode">Enter Your Pair Code <span class="req">*</span></label>
+      <input type="text" id="pairCode" class="code-input" placeholder="SR-XXXX-XX" maxlength="11" autocomplete="off" />
+    </div>
+    <button type="button" class="fn-btn" id="codeSubmitBtn">Continue &rarr;</button>
+    <div class="fn-err" id="codeErrBox"></div>
+    <p class="muted-mini">Your partner sent you this code. It looks like SR-7K3M-92.</p>
+  </div>
+
+  <!-- State 3: Intake form (shown once code is validated) -->
+  <div id="formState" class="hidden">
+    <div class="invite-identity">
+      <div class="invite-label">You are being linked with</div>
+      <div class="invite-name" id="primaryFullName">Someone</div>
+      <div class="invite-sub" id="primarySub">They already took their assessment. Now it is your turn.</div>
+    </div>
+    <form id="partnerForm" autocomplete="on" novalidate>
+      <div class="fn-card">
+        <div class="fld">
+          <label for="firstName">First Name <span class="req">*</span></label>
+          <input type="text" id="firstName" name="firstName" required autocomplete="given-name" />
+        </div>
+        <div class="fld">
+          <label for="lastName">Last Name <span class="req">*</span></label>
+          <input type="text" id="lastName" name="lastName" required autocomplete="family-name" />
+        </div>
+        <div class="fld">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email" />
+        </div>
+        <div class="fld">
+          <label for="phone">Phone <span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" required autocomplete="tel" />
+        </div>
+        <div class="fld">
+          <label>How would you like your results delivered? <span class="req">*</span></label>
+          <div class="radio-row">
+            <label class="radio-opt sel" id="optEmail"><input type="radio" name="delivery" value="Email" checked /> Email</label>
+            <label class="radio-opt" id="optSms"><input type="radio" name="delivery" value="SMS" /> SMS</label>
+          </div>
+        </div>
+        <div class="fld">
+          <label class="consent" id="consentBox">
+            <input type="checkbox" id="tcpa" />
+            <span>I consent to receive SMS notifications, alerts, and occasional marketing communication from Dennis Nickens / Spiritual Romeo. Message frequency varies. Message and data rates may apply. Text HELP to 866-944-7225 for assistance. You can reply STOP to unsubscribe at any time.</span>
+          </label>
+        </div>
+        <button type="submit" class="fn-btn" id="submitBtn">Start My Assessment &rarr;</button>
+        <div class="fn-err" id="errBox"></div>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<footer style="position:relative;z-index:5;background:#080615;padding:3rem 2rem;text-align:center;border-top:1px solid rgba(124,58,237,0.2);font-size:13px;color:rgba(255,255,255,0.4);">
+  <p>&#128231; dennis@dennisnickens.com | &#128205; Indian Trail, NC</p>
+  <p>&#169; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+
+// State element refs
+var loadingEl = document.getElementById('loadingState');
+var codeEntryEl = document.getElementById('codeEntryState');
+var formEl = document.getElementById('formState');
+var primaryFullNameEl = document.getElementById('primaryFullName');
+
+// State context (kept in memory after code is validated)
+var pairContext = {
+  code: null,
+  primaryContactId: null,
+  primaryFirstName: null,
+  primaryLastName: null,
+  focusAreas: null,
+  whoFor: null,
+  skuTier: null
+};
+
+function showLoading(){ loadingEl.classList.remove('hidden'); codeEntryEl.classList.add('hidden'); formEl.classList.add('hidden'); }
+function showCodeEntry(errMsg){
+  loadingEl.classList.add('hidden');
+  codeEntryEl.classList.remove('hidden');
+  formEl.classList.add('hidden');
+  if (errMsg) {
+    var errBox = document.getElementById('codeErrBox');
+    errBox.textContent = errMsg;
+    errBox.classList.add('show');
+  }
+}
+function showForm(){ loadingEl.classList.add('hidden'); codeEntryEl.classList.add('hidden'); formEl.classList.remove('hidden'); }
+
+// Validate a pair code by calling the API endpoint. Returns a Promise.
+function verifyCode(code) {
+  return fetch('/api/sr-verify-pair-code?code=' + encodeURIComponent(code))
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (data && data.success && data.valid) {
+        pairContext.code = code;
+        pairContext.primaryContactId = data.primary_contact_id;
+        pairContext.primaryFirstName = data.primary_first_name || '';
+        pairContext.primaryLastName = data.primary_last_name || '';
+        pairContext.focusAreas = data.sr_qual_focus_areas || '';
+        pairContext.whoFor = data.sr_qual_who_for || '';
+        pairContext.skuTier = data.sr_sku_tier || '';
+        return true;
+      } else {
+        return false;
+      }
+    })
+    .catch(function(e){ console.error('verifyCode error', e); return false; });
+}
+
+// On page load, check for ?code= in URL.
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var codeFromUrl = (params.get('code') || '').toUpperCase().trim();
+  if (codeFromUrl) {
+    showLoading();
+    verifyCode(codeFromUrl).then(function(ok){
+      if (ok) {
+        var fullName = (pairContext.primaryFirstName + ' ' + pairContext.primaryLastName).trim() || 'your partner';
+        primaryFullNameEl.textContent = fullName;
+        showForm();
+      } else {
+        showCodeEntry('That code is invalid or expired. Double-check with your partner and try again.');
+      }
+    });
+  } else {
+    showCodeEntry();
+  }
+})();
+
+// Manual code entry submit
+document.getElementById('codeSubmitBtn').addEventListener('click', function(){
+  var code = document.getElementById('pairCode').value.toUpperCase().trim();
+  if (!code) { showCodeEntry('Enter the code your partner sent you.'); return; }
+  showLoading();
+  verifyCode(code).then(function(ok){
+    if (ok) {
+      primaryNameEl.textContent = pairContext.primaryFirstName;
+      showForm();
+    } else {
+      showCodeEntry('That code is invalid or expired. Double-check with your partner and try again.');
+    }
+  });
+});
+
+// Delivery preference radios visual sync
+var optEmail = document.getElementById('optEmail'), optSms = document.getElementById('optSms');
+function syncDelivery(){
+  var sms = document.querySelector('input[name="delivery"]:checked').value === 'SMS';
+  optSms.classList.toggle('sel', sms);
+  optEmail.classList.toggle('sel', !sms);
+}
+optEmail.querySelector('input').addEventListener('change', syncDelivery);
+optSms.querySelector('input').addEventListener('change', syncDelivery);
+
+// Form submit
+function showErr(msg){ var e = document.getElementById('errBox'); e.textContent = msg; e.classList.add('show'); }
+function clearErr(){ document.getElementById('errBox').classList.remove('show'); }
+
+document.getElementById('partnerForm').addEventListener('submit', function(ev){
+  ev.preventDefault();
+  clearErr();
+  var firstName = document.getElementById('firstName').value.trim();
+  var lastName = document.getElementById('lastName').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var phone = document.getElementById('phone').value.trim();
+  var delivery = document.querySelector('input[name="delivery"]:checked').value;
+  var tcpa = document.getElementById('tcpa').checked;
+  var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!firstName || !lastName || !email || !phone) { showErr('Please fill in all required fields.'); return; }
+  if (!emailRe.test(email)) { showErr('Please enter a valid email address.'); return; }
+  if (delivery === 'SMS' && !tcpa) { showErr('Please agree to SMS consent to receive results by text, or choose Email.'); return; }
+
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Setting Up...';
+
+  fetch('/api/sr-create-partner-contact', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phone,
+      delivery_preference: delivery,
+      tcpa_consent: delivery === 'SMS' && tcpa,
+      sr_pair_code: pairContext.code,
+      primary_contact_id: pairContext.primaryContactId,
+      sr_qual_focus_areas: pairContext.focusAreas,
+      sr_qual_who_for: pairContext.whoFor,
+      sr_sku_tier: pairContext.skuTier
+    })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    if (data && data.success && data.contact_id) {
+      // Secondary skips qualifier, audience, tier, confirm pages.
+      // Drops straight into welcome which transitions to the GHL survey.
+      window.location.href = 'welcome.html?cid=' + encodeURIComponent(data.contact_id) + '&pair=secondary';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Start My Assessment →';
+      showErr(data && data.error ? data.error : 'Something went wrong. Try again.');
+    }
+  })
+  .catch(function(e){
+    btn.disabled = false;
+    btn.textContent = 'Start My Assessment →';
+    showErr('Network error. Please try again.');
+    console.error('partner submit error', e);
+  });
+});
+
+// Particle animation
+const cv=document.getElementById('pc'),cx=cv.getContext('2d');let ps=[];
+function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();
+window.addEventListener('resize',rsz);
+class P{constructor(){this.reset();}reset(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;const t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;}}
+for(let i=0;i<110;i++)ps.push(new P());
+function ani(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(ani);}ani();
+</script>
+</body>
+</html>

@@ -167,7 +167,7 @@ class P {
   update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > cv.width || this.y < 0 || this.y > cv.height) this.reset(); }
   draw() { cx.beginPath(); cx.arc(this.x, this.y, this.r, 0, Math.PI * 2); cx.fillStyle = this.c; cx.globalAlpha = this.a; cx.fill(); cx.globalAlpha = 1; }
 }
-for (let i = 0; i < 70; i++) ps.push(new P());
+for (let i = 0; i < 110; i++) ps.push(new P());
 function ani() { cx.clearRect(0, 0, cv.width, cv.height); ps.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(ani); } ani();
 </script>
 </body>

@@ -59,6 +59,7 @@ main{position:relative;z-index:5;padding:4rem 1.5rem 5rem;}
 </head>
 <body>
 <div class="bg" aria-hidden="true"></div>
+<canvas id="pc" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
 <nav class="nav">
   <a href="../index.html">
     <img src="https://dennisnickens.com/sr-logo-transparent.png" alt="Spiritual Romeo" />
@@ -164,6 +165,17 @@ const PILLAR_LABELS={singles:"Singles",married:"Married",families:"Families",edu
       window.location.href='confirm.html?cid='+encodeURIComponent(cid);
     });
   });
+})();
+</script>
+<script>
+// Particle animation (matches the rest of the funnel)
+(function(){
+  const cv=document.getElementById('pc'),cx=cv.getContext('2d');let ps=[];
+  function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();
+  window.addEventListener('resize',rsz);
+  class P{constructor(){this.reset();}reset(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;const t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;}}
+  for(let i=0;i<110;i++)ps.push(new P());
+  function ani(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(ani);}ani();
 })();
 </script>
 </body>

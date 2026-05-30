@@ -130,7 +130,7 @@ async function generateAndDeliverBlueprint(payload) {
   const systemPrompt = await getMasterPrompt();
 
   // Step 4: Call Claude API
-  const blueprintMarkdown = await callClaude(systemPrompt, userMessage);
+  const blueprintMarkdown = await callClaude(systemPrompt, userMessage, payload.contact_id);
   console.log(`[Blueprint] Claude returned ${blueprintMarkdown.length} characters`);
 
   // Step 5: Convert markdown to branded HTML
@@ -245,15 +245,20 @@ async function sendBlueprintEmail(payload, blueprintUrl) {
 // HELPER: GET MASTER PROMPT
 // =======================================================================
 // The master prompt is stored as a markdown file at /assessment/master-prompt.md
-// in the same Vercel deployment. Fetched on each invocation (cached after cold start).
+// in the same Vercel deployment. Cached in module scope so it loads once per
+// cold start instead of once per invocation.
+
+let MASTER_PROMPT_CACHE = null;
 
 async function getMasterPrompt() {
-  // Option A: Fetch from a public URL on the deployment
-  const response = await fetch('https://dennisnickens.com/assessment/master-prompt.md');
-  if (!response.ok) {
-    throw new Error(`Failed to fetch master prompt: ${response.status}`);
+  if (!MASTER_PROMPT_CACHE) {
+    const response = await fetch('https://dennisnickens.com/assessment/master-prompt.md');
+    if (!response.ok) {
+      throw new Error(`Failed to fetch master prompt: ${response.status}`);
+    }
+    MASTER_PROMPT_CACHE = await response.text();
   }
-  return await response.text();
+  return MASTER_PROMPT_CACHE;
 }
 
 // =======================================================================
@@ -366,35 +371,64 @@ Use Dennis Nickens's voice. Plain English. Direct, warm, consultative. NO em das
 
 The Blueprint should be specific to ${payload.first_name}, not generic. Reference their scores explicitly. Address them by first name.
 
-Output the complete Blueprint as markdown. Target 12 to 16 pages of substantive content. Be thorough and specific, but do not pad sections. Every sentence should earn its place.`;
+Output the complete Blueprint as markdown. Target 10 to 12 pages, lean and high-density. Cut filler. Be thorough and specific, but do not pad sections. Every sentence should earn its place.`;
 }
 
 // =======================================================================
 // HELPER: CALL CLAUDE API
 // =======================================================================
 
-async function callClaude(systemPrompt, userMessage) {
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': process.env.ANTHROPIC_API_KEY,
-      'anthropic-version': '2023-06-01',
-    },
-    body: JSON.stringify({
-      // Running on Vercel Pro tier with a 300-second waitUntil window. max_tokens is set
-      // to 20000 (well above the typical 10000-14000 token Blueprint output) as a safety
-      // ceiling that still keeps generation within the Vercel time budget. The previous
-      // value of 12000 truncated Blueprints before Sections 14-16. The previous value of
-      // 64000 caused consistent 300-second timeouts because Claude over-generated.
-      model: 'claude-sonnet-4-6',
-      max_tokens: 20000,
-      system: systemPrompt,
-      messages: [
-        { role: 'user', content: userMessage },
-      ],
-    }),
-  });
+async function callClaude(systemPrompt, userMessage, contactId) {
+  // 270-second client-side timeout. Vercel Pro tier kills the function at 300s,
+  // so we abort at 270s to leave headroom for writing the failure status to GHL.
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 270000);
+
+  let response;
+  try {
+    response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        // Running on Vercel Pro tier with a 300-second waitUntil window. max_tokens is
+        // 14000 (above the typical 10000-12000 token Blueprint output) as a ceiling that
+        // keeps generation comfortably within the Vercel time budget. The previous value
+        // of 20000 paired with a "12 to 16 pages" instruction let Claude generate for
+        // 4-5 minutes straight and consistently tripped the Vercel 300s timeout. The
+        // value of 12000 before that truncated Sections 14-16. The value of 64000 before
+        // that caused even worse timeouts.
+        model: 'claude-sonnet-4-6',
+        max_tokens: 14000,
+        system: systemPrompt,
+        messages: [
+          { role: 'user', content: userMessage },
+        ],
+      }),
+      signal: controller.signal,
+    });
+  } catch (err) {
+    clearTimeout(timeoutId);
+    if (err.name === 'AbortError') {
+      console.error('[Blueprint] Claude API client timeout (270s) hit');
+      if (contactId) {
+        try {
+          await updateGhlContact(contactId, {
+            sr_blueprint_status: 'Failed',
+            sr_blueprint_error: 'Claude API client timeout (270s)',
+          });
+        } catch (updateErr) {
+          console.error('[Blueprint] Failed to write timeout status to GHL:', updateErr);
+        }
+      }
+      throw new Error('Claude API client timeout (270s)');
+    }
+    throw err;
+  }
+  clearTimeout(timeoutId);
 
   if (!response.ok) {
     const errText = await response.text();

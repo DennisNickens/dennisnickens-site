@@ -212,15 +212,11 @@ function drawLines(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particl
 function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw();});drawLines();requestAnimationFrame(animate);}animate();
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.style.animationPlayState='running';});},{threshold:.08});
 document.querySelectorAll('.animate-fadeup,.animate-fadeleft,.animate-faderight').forEach(el=>{el.style.animationPlayState='paused';observer.observe(el);});
-let cartData=JSON.parse(localStorage.getItem('sr_cart')||'{}');
-function saveCart(){localStorage.setItem('sr_cart',JSON.stringify(cartData));}
-function renderCart(){const itemsEl=document.getElementById('cartItems');const countEl=document.querySelector('.cart-count');if(!itemsEl)return;const keys=Object.keys(cartData);let total=0;let html='';if(keys.length===0){html='<p style="color:#94a3b8;text-align:center;padding:20px">Your cart is empty</p>';}else{keys.forEach(function(k){const item=cartData[k];total+=item.price*item.qty;html+='<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08)">';html+='<div><p style="margin:0;color:#e2e8f0;font-size:0.9rem">'+item.label+'</p>';html+='<p style="margin:2px 0 0;color:#94a3b8;font-size:0.8rem">Qty: '+item.qty+'</p></div>';html+='<button data-remove="'+k+'" class="cart-remove-btn" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:1.2rem">&times;</button>';html+='</div>';});html+='<div style="display:flex;justify-content:space-between;padding:14px 0 0;font-weight:700"><span style="color:#e2e8f0">Total</span><span style="color:#FFD700">$'+total.toFixed(2)+'</span></div>';}itemsEl.innerHTML=html;const qty=keys.reduce(function(s,k){return s+cartData[k].qty;},0);if(countEl)countEl.textContent=qty||'';}
-function toggleCart(){const overlay=document.querySelector('.cart-overlay');if(overlay)overlay.classList.toggle('open');}
-document.addEventListener('click',function(e){const btn=e.target.closest('[data-remove]');if(btn){delete cartData[btn.getAttribute('data-remove')];saveCart();renderCart();}});
 function uvUpdateTotal(){let total=0;document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){if(cb.checked)total+=parseFloat(cb.dataset.price);});const el=document.getElementById('uvTotalAmt');if(el)el.textContent=total>0?'$'+total.toFixed(2):'$0.00';}
-function uvAddToCart(){let added=0;document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){if(cb.checked){const id='uv-'+cb.value;const label='Unbroken Vows: '+cb.dataset.label;const price=parseFloat(cb.dataset.price);if(cartData[id]){cartData[id].qty++;}else{cartData[id]={label:label,price:price,qty:1};}added++;}});if(added>0){saveCart();renderCart();toggleCart();}}
-document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){cb.addEventListener('change',uvUpdateTotal);});uvUpdateTotal();renderCart();});
+function uvAddToCart(){document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){if(cb.checked){window.SRCart.add('Unbroken Vows',cb.dataset.price,{format:cb.dataset.label,icon:'&#128214;'});}});}
+document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.digw-variant-option input[type="checkbox"]').forEach(function(cb){cb.addEventListener('change',uvUpdateTotal);});uvUpdateTotal();});
 </script>
+<script src="../js/cart.js"></script>
 <!-- price fix v2 -->
 </body>
 </html>

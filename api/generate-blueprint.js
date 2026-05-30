@@ -371,7 +371,7 @@ Use Dennis Nickens's voice. Plain English. Direct, warm, consultative. NO em das
 
 The Blueprint should be specific to ${payload.first_name}, not generic. Reference their scores explicitly. Address them by first name.
 
-Output the complete Blueprint as markdown. Target 10 to 12 pages, lean and high-density. Cut filler. Be thorough and specific, but do not pad sections. Every sentence should earn its place.`;
+Output the complete Blueprint as markdown. Target 8 to 10 pages, focused. Every sentence earns its place. Be thorough and specific, but do not pad sections.`;
 }
 
 // =======================================================================
@@ -402,7 +402,7 @@ async function callClaude(systemPrompt, userMessage, contactId) {
         // value of 12000 before that truncated Sections 14-16. The value of 64000 before
         // that caused even worse timeouts.
         model: 'claude-sonnet-4-6',
-        max_tokens: 14000,
+        max_tokens: 10000,
         system: systemPrompt,
         messages: [
           { role: 'user', content: userMessage },

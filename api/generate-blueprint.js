@@ -429,8 +429,8 @@ function buildUserMessage(payload, scores, partnerData) {
     ? `\n11. Section 17: Your Connection Map (REQUIRED). partner_data IS present below, so you MUST generate the full Connection Map exactly as defined in the master prompt: subsections 17.1 through 17.7 plus the closing line. Write it comparing ${payload.first_name} (the reader, "self") with ${partnerData.first_name} (the partner). This is the final section of the Blueprint.`
     : `\n(Section 17 Your Connection Map: SKIP entirely. No partner_data is present. This is a Solo Blueprint.)`;
   const pageTarget = partnerData
-    ? `Target 15 to 18 pages total: the full Seven Lenses reading (12 to 15 pages) plus a 3 to 5 page Connection Map as the final section.`
-    : `Target 12 to 15 pages, substantive and specific. Every section gets multiple paragraphs that reference the customer's actual data. Do not pad, but do not skimp either.`;
+    ? `Target 25 to 30 pages total: the full Seven Lenses reading (20 to 25 pages) plus a 5 to 7 page Connection Map as the final section.`
+    : `Target 20 to 25 pages, dense and substantive. Every section gets multiple paragraphs. Do not pad, but do not skimp either. The reader is paying for depth.`;
 
   return `Generate a complete Alignment Blueprint for this customer following the master prompt's structure and voice exactly.
 
@@ -573,14 +573,15 @@ async function callClaude(systemPrompt, userMessage, contactId) {
       },
       body: JSON.stringify({
         // Running on Vercel Pro tier with a 300-second waitUntil window (maxDuration 300
-        // in vercel.json). max_tokens is 18000, the known-safe ceiling for single-call
-        // generation at Sonnet 4.6 streaming speeds while leaving margin under the 270s
-        // AbortController below. The earlier value of 32000 ran past 270s and both test
-        // contacts wrote Failed status, so it was scaled back. When we want longer
-        // Blueprints, the next lever is multi-call generation (split into 2 to 3 Claude
-        // calls and stitch the sections), NOT raising tokens further on a single call.
+        // in vercel.json). max_tokens is 32000 so Claude has room to write the full
+        // 20 to 25 page Solo Blueprint (25 to 30 paired) without truncating mid-document,
+        // which is the depth the paid product needs. This is a deliberate cost-for-depth
+        // tradeoff. The 270s client abort below leaves headroom under the Vercel cap to
+        // record a failure status if a long generation runs over. Watch generation time:
+        // if 32000-token runs start tripping the 300s cap, the next lever is a higher
+        // Vercel maxDuration, not a lower token ceiling.
         model: 'claude-sonnet-4-6',
-        max_tokens: 18000,
+        max_tokens: 32000,
         system: systemPrompt,
         messages: [
           { role: 'user', content: userMessage },

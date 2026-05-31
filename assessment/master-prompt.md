@@ -33,7 +33,7 @@ The presence of partner_data is the only toggle. Present means generate Section 
 
 Every section in this Blueprint must read as substantive consulting analysis, not summary. The customer is paying for depth and they will judge the product by whether each section gives them something to actually use. Use these standards for every section:
 
-- **Minimum 3 to 5 substantial paragraphs per section.** Not one paragraph, not two. Three to five paragraphs minimum. A "substantial paragraph" is 75 to 150 words of dense, specific content. Generic platitudes do not count as paragraphs.
+- **Minimum 4 substantial paragraphs per section.** Not one paragraph, not two. Four to six paragraphs minimum. A "substantial paragraph" is 75 to 150 words of dense, specific content. Generic platitudes do not count as paragraphs.
 
 - **Open with what their actual data shows.** The first paragraph of every section names the specific pattern, score, percentage, archetype, code, or letter combination that came back for THIS person. Do not start with general framework explanations. Start with their result and what it means.
 
@@ -48,23 +48,23 @@ Every section in this Blueprint must read as substantive consulting analysis, no
 - **Connect to other pillars when relevant.** When their Pillar 2 result reinforces or complicates their Pillar 1 result, name it explicitly. The Blueprint should feel like one integrated reading, not 17 separate documents.
 
 Word count targets per section (use these as floors, not ceilings):
-- Section 1 Behavior Profile: 400 to 600 words
-- Section 2 Personality Code: 350 to 500 words
-- Section 3 Action Style: 300 to 400 words
-- Section 4 Connection Currency: 400 to 600 words (this is a key differentiator, give it weight)
-- Section 5 Learning Channel: 300 to 400 words
-- Section 6 Spiritual Compass: 350 to 500 words
-- Section 7 Misalignment Map: 400 to 600 words (the pattern detection section, must be substantial)
-- Section 8 Career Alignment: 300 to 400 words
-- Section 9 Relationship Alignment: 400 to 600 words (most readers come for this, give it weight)
-- Section 10 Parenting Style (conditional, Family audience): 350 to 500 words
-- Section 11 Leadership Profile (conditional, Team or Leadership audience): 400 to 600 words
-- Section 12 Ministry Profile (conditional, Ministry audience): 400 to 600 words
-- Section 13 Spiritual Gifts: 350 to 500 words
-- Section 14 Stress Response Map: 350 to 500 words
-- Section 15 Strategic Recommendations: 500 to 700 words (this is where you tell them what to do)
-- Section 16 Your 30 Day Alignment Plan: 500 to 700 words (week by week, specific)
-- Section 17 Your Connection Map with [Partner Name] (paired only): 1800 to 2500 words across 6 to 7 subsections
+- Section 1 Behavior Profile: 600 to 900 words
+- Section 2 Personality Code: 500 to 800 words
+- Section 3 Action Style: 400 to 600 words
+- Section 4 Connection Currency: 600 to 900 words (this is a key differentiator, give it weight)
+- Section 5 Learning Channel: 400 to 600 words
+- Section 6 Spiritual Compass: 500 to 800 words
+- Section 7 Misalignment Map: 600 to 900 words (the pattern detection section, must be substantial)
+- Section 8 Career Alignment: 400 to 600 words
+- Section 9 Relationship Alignment: 600 to 900 words (most readers come for this, give it weight)
+- Section 10 Parenting Style (conditional, Family audience): 500 to 700 words
+- Section 11 Leadership Profile (conditional, Team or Leadership audience): 600 to 900 words
+- Section 12 Ministry Profile (conditional, Ministry audience): 600 to 900 words
+- Section 13 Spiritual Gifts: 500 to 700 words
+- Section 14 Stress Response Map: 500 to 800 words
+- Section 15 Strategic Recommendations: 700 to 1000 words (this is where you tell them what to do)
+- Section 16 Your 30 Day Alignment Plan: 700 to 1000 words (week by week, specific)
+- Section 17 Your Connection Map with [Partner Name] (paired only): 2500 to 4000 words across 6 to 7 subsections
 
 ## The Six Pillars
 
@@ -280,17 +280,17 @@ Use the qualifier answers to:
 
 ## Length Discipline (Read This Before Generating)
 
-A Solo Blueprint is 12 to 15 pages, substantive and specific. The reader is paying for depth, so every section carries multiple paragraphs (see the Depth Standards section above for the per-section word floors). Do not pad with filler, and do not skimp. Optimize for usefulness, not for brevity.
+A Solo Blueprint is 20 to 25 pages, dense and substantive. The reader is paying for depth, so every section carries multiple paragraphs (see the Depth Standards section above for the per-section word floors). Do not pad with filler, and do not skimp. Optimize for usefulness, not for brevity.
 
-A Linked Pair Blueprint (when partner_data is present) runs 15 to 18 pages total: the full Solo reading above (12 to 15 pages) plus Section 17 (Your Connection Map) at 3 to 5 pages. Hold the same depth discipline throughout. The Connection Map adds depth, it does not license padding anywhere else.
+A Linked Pair Blueprint (when partner_data is present) runs 25 to 30 pages total: the full Solo reading above (20 to 25 pages) plus Section 17 (Your Connection Map) at 5 to 7 pages. Hold the same depth discipline throughout. The Connection Map adds depth, it does not license padding anywhere else.
 
 Per-section word counts are governed by the Depth Standards section above, and those numbers are floors. A few structural notes still apply:
 - "What This Blueprint Is, And What It Isn't" framing: 150 words, fixed and verbatim, same for every customer.
 - Executive Summary: 250 to 400 words.
-- Section 9 (Relationship Alignment): when Set E answers are present, add a Marriage Dynamics subsection of 400 to 600 words on top of the base section. Skip the subsection entirely when Set E is absent.
+- Section 9 (Relationship Alignment): when Set E answers are present, add a Marriage Dynamics subsection of 600 to 900 words on top of the base section. Skip the subsection entirely when Set E is absent.
 - Section 14 (Stress Response Map): MUST include all 5 subsections (the first sign of pressure, the breaking point behavior, the recovery protocol, the early warning signs others can spot, the 24-hour reset). Do NOT collapse these into fewer paragraphs. Each subsection is a separate insight.
 
-Where a section guidance below says "3 to 4 paragraphs" or "4 to 5 paragraphs," treat that as a floor and follow the Depth Standards minimum of 3 to 5 substantial paragraphs.
+Where a section guidance below says "3 to 4 paragraphs" or "4 to 5 paragraphs," treat that as a floor and follow the Depth Standards minimum of 4 to 6 substantial paragraphs.
 
 Where a section asks for multiple subsections, generate every subsection that THIS person's data supports and develop each one fully. Do not skip subsections to save space. Depth and completeness both matter. Section 14 (Stress Response Map) always keeps all 5 subsections, no skipping. The 5 subsections in that section are each load-bearing.
 
@@ -527,7 +527,7 @@ Use the Set E reference table below to interpret each answer. Each Q-E number ma
 
 - **Faith and the marriage.** If the customer's Spiritual Compass (Pillar 6) faith orientation is Christian or spiritual-but-not-religious, close the subsection with one paragraph on what scripture or principle speaks to the specific dynamic surfaced above. Lean on covenant (Genesis 2:24), mutual submission (Ephesians 5:21-33), or communication (James 1:19) where it fits. Do NOT preach. The verse is the mirror; hand it to them. If the customer's faith orientation is secular or "still figuring out," skip the faith paragraph. About 60 to 100 words when included.
 
-The whole Marriage Dynamics subsection should run 400 to 600 words. Keep each bullet tight to stay inside that budget. Tie every interpretation back to specific Set E answers AND specific pillar scores. No generic marriage advice. Make it about THIS person and THIS marriage.
+The whole Marriage Dynamics subsection should run 600 to 900 words. Tie every interpretation back to specific Set E answers AND specific pillar scores. No generic marriage advice. Make it about THIS person and THIS marriage.
 
 ### Section 10: Your Parenting Style (Family audience only)
 **IMPORTANT: Generate this section ONLY if the customer's qualifier indicates "Parent or Caregiver" status OR they are part of a Family package. Otherwise skip this section entirely.**
@@ -651,7 +651,7 @@ Use the Set F reference table below to interpret each answer.
 
 - **The ministry leader you are becoming.** Use Q-F10 as the closing frame. Connect it to Pillar 3 (Action Style), Pillar 2 (Personality Code), and one specific recommendation in Section 15 (Strategic Recommendations) that will move them toward this version of themselves. If the customer's faith orientation (Pillar 6) is Christian, close with one scripture that speaks to the specific kind of ministry legacy they are building. The verse is the mirror. About 80 to 120 words.
 
-The whole Ministry Profile section should run 400 to 600 words. Keep each bullet tight to stay inside that budget. Tie every interpretation back to specific Set F answers AND specific pillar scores AND Set B leadership answers where relevant. No generic pastoral advice. Make it about THIS person and THIS ministry.
+The whole Ministry Profile section should run 600 to 900 words. Tie every interpretation back to specific Set F answers AND specific pillar scores AND Set B leadership answers where relevant. No generic pastoral advice. Make it about THIS person and THIS ministry.
 
 **Pillar 7 integration into Ministry Profile (when Spiritual Gifts data is present):**
 
@@ -756,7 +756,7 @@ When Pillar 7 data IS present, produce a Spiritual Gifts section that interprets
 
 - **Scripture anchor.** Close the section by grounding the top gift cluster in the customer's faith framework. If the customer's Spiritual Compass (Pillar 6) is Christian, cite the relevant biblical passage for their primary gift (Romans 12:4-8 for Mercy, Encouragement, Giving, Leadership; 1 Corinthians 12:8-10 for Discernment, Faith; Ephesians 4:11-12 for Teaching, Evangelism, Pastoring; 1 Corinthians 12:28 for Administration, Helps; Romans 12:13 and 1 Peter 4:9-10 for Hospitality). One sentence of scripture, then one sentence of direct application to this person's specific combination. If the customer's Spiritual Compass is spiritual-but-not-religious or secular, skip the scripture and affirm the gifts in terms of how they serve the people around the customer. About 60 to 80 words.
 
-The whole Spiritual Gifts section should run 350 to 500 words. Keep each bullet tight to stay inside that budget. Tie every bullet back to specific Q-G answers AND the pillar profile. No generic theology of spiritual gifts. Make it about THIS person's specific combination and what it means for how they contribute.
+The whole Spiritual Gifts section should run 600 to 900 words. Tie every bullet back to specific Q-G answers AND the pillar profile. No generic theology of spiritual gifts. Make it about THIS person's specific combination and what it means for how they contribute.
 
 ### Section 14: Your Stress Response Map
 How this person breaks under pressure, and what to do when they see it happening.
@@ -798,7 +798,7 @@ Every practice must be specific enough that the customer can start it this week 
 
 Generate this section ONLY when partner_data is present. It is the final section of the Blueprint and the whole reason a Linked Pair exists. It takes the reader's Seven Lenses and reads them next to their partner's, so both people walk away with language for how they actually fit. Write it from the reader's point of view. The reader is "self." Name both people throughout, the reader by first name and the partner by the name in partner_data. Use "the two of you" for the pair. Treat both people as equals. Neither one is the main character.
 
-Use the relationship lens that matches their context (the lens list is in the Linked Pair section below) to choose scripture and framing. Keep the CORE Pure Type names (Commander, Organizer, Relator, Energizer) and all SR-native pillar names. Target 1,800 to 2,500 words, 3 to 5 pages, across the seven subsections below.
+Use the relationship lens that matches their context (the lens list is in the Linked Pair section below) to choose scripture and framing. Keep the CORE Pure Type names (Commander, Organizer, Relator, Energizer) and all SR-native pillar names. Target 2,500 to 4,000 words, 5 to 7 pages, across the seven subsections below.
 
 #### 17.1 Your Pair at a Glance
 Open with a quick snapshot of the two of you. Name both people, give each their Pure Type name from Pillar 1 (Commander, Organizer, Relator, Energizer, or their blend), and write one tight line on each that captures how they show up. Then one or two sentences naming the single most striking place you line up and the single most striking place you run differently. This is the reader's first look at the pair, so make it land fast.

@@ -2,9 +2,6 @@
   "functions": {
     "api/generate-blueprint.js": {
       "maxDuration": 300
-    },
-    "api/generate-comparison-blueprint.js": {
-      "maxDuration": 300
     }
   }
 }

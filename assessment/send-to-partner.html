@@ -61,7 +61,7 @@ html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !impo
   <div id="pairHeader">
     <span class="stp-eyebrow">You're Done</span>
     <h1 class="stp-title">Now Send Your Code to Your Partner.</h1>
-    <p class="stp-sub">When your partner finishes their assessment, you both get your individual Blueprints plus a third Comparison Blueprint that shows how you fit together.</p>
+    <p class="stp-sub">When your partner finishes their assessment, you each get your Blueprint, complete with a Connection Map that shows how the two of you fit together.</p>
   </div>
 
   <div id="loadingState" class="waiting-box">Loading your Pair Code...</div>
@@ -98,7 +98,7 @@ html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !impo
     </div>
 
     <div class="waiting-box">
-      We will notify you the moment your partner finishes their assessment. Your individual Blueprint is already on its way to your inbox <strong>(check spam if you do not see it within 5 minutes)</strong>. The Comparison Blueprint generates as soon as both of you have completed.
+      Your Blueprint is being prepared. It will arrive in your inbox the moment your partner finishes their assessment. The Blueprint includes your full Seven Lenses reading plus a Connection Map showing how the two of you fit together.
     </div>
 
     <p class="muted-mini">No rush. Your partner can take their assessment whenever they are ready. The code does not expire.</p>
@@ -155,7 +155,7 @@ function showReady(code, primaryFirstName) {
 
   // Email share
   var emailSubject = "Take the Spiritual Romeo Assessment with me";
-  var emailBody = "Hey,\n\nI just took the Spiritual Romeo Assessment and got my Blueprint. Take yours using this link, and we both get a Comparison Blueprint that shows how we line up:\n\n" + partnerUrl + "\n\nYour pair code: " + code + "\n\nNo rush, take it whenever you are ready.\n";
+  var emailBody = "Hey,\n\nI just took the Spiritual Romeo Assessment. Take yours using this link. Once we both finish, we each get our Blueprint with a Connection Map that shows how we fit together:\n\n" + partnerUrl + "\n\nYour pair code: " + code + "\n\nNo rush, take it whenever you are ready.\n";
   document.getElementById('shareEmail').href = 'mailto:?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody);
 
   // Copy buttons

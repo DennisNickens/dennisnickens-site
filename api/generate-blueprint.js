@@ -87,60 +87,151 @@ export default async function handler(req, res) {
 async function generateAndDeliverBlueprint(payload) {
   console.log(`[Blueprint] Starting generation for contact ${payload.contact_id}`);
 
-  // Step 1: Resolve raw answers, then score.
-  //
-  // Two input modes:
-  //   (a) Test-script path: payload.rawAnswers is pre-built (behaviorProfile[],
-  //       personalityCode{ei,sn,tf,jp}, connectionCurrency[], etc.).
-  //   (b) Production GHL webhook path: the webhook does NOT assemble rawAnswers.
-  //       We fetch the contact's full customFields from GHL and translate
-  //       (field_id, answer_text) -> tag via QUESTION_MAP.
-  const hasPrebuiltRawAnswers =
+  // Test-script path: payload.rawAnswers is pre-built. Always a Solo Blueprint.
+  // No GHL fetch, no Linked Pair logic.
+  if (hasPrebuiltRawAnswers(payload)) {
+    console.log(`[Blueprint] Using prebuilt rawAnswers (test mode) for ${payload.contact_id}`);
+    const scores = scoreAssessment(payload.rawAnswers);
+    console.log(`[Blueprint] Scoring complete for ${payload.contact_id}`);
+    return produceAndDeliverBlueprint(payload, scores, null);
+  }
+
+  // Production GHL webhook path. Fetch the full contact once. We need it both to
+  // reconstruct the scoring answers AND to read the Linked Pair fields.
+  const me = await fetchGhlContact(payload.contact_id);
+  if (!me) {
+    throw new Error(`Could not fetch contact ${payload.contact_id} from GHL`);
+  }
+  const meCustomFields = Array.isArray(me.customFields) ? me.customFields : [];
+  const meScores = scoreAssessment(buildRawAnswersFromCustomFields(meCustomFields));
+  console.log(`[Blueprint] Scoring complete for ${payload.contact_id} (reconstructed from ${meCustomFields.length} customFields)`);
+
+  const myRole = (readContactField(me, 'sr_pair_role') || '').toLowerCase().trim();
+
+  // SOLO customer (sr_pair_role empty or null): unchanged behavior. Generate the
+  // Blueprint and email it immediately. No wait-for-partner, no Connection Map.
+  if (myRole !== 'primary' && myRole !== 'secondary') {
+    return produceAndDeliverBlueprint(payload, meScores, null);
+  }
+
+  // LINKED PAIR (Change 1: wait-for-both delivery). Neither person receives
+  // anything until BOTH have completed. Mark this person as waiting, then check
+  // the partner. If the partner is not done, exit cleanly. The partner's own
+  // completion call will trigger paired generation later.
+  console.log(`[Blueprint] Linked Pair "${myRole}" for ${payload.contact_id}. Applying wait-for-both delivery.`);
+  await updateGhlContact(payload.contact_id, { sr_blueprint_status: 'waiting for partner' });
+
+  const partnerId = readContactField(me, 'sr_pair_partner_contact_id');
+  if (!partnerId) {
+    // Edge case: pair role is set but no partner is linked yet. Ship a Solo
+    // Blueprint rather than leave this person stranded with nothing.
+    console.warn(`[Blueprint] ${myRole} ${payload.contact_id} has no sr_pair_partner_contact_id. Falling back to Solo Blueprint.`);
+    return produceAndDeliverBlueprint(payload, meScores, null);
+  }
+
+  const partner = await fetchGhlContact(partnerId);
+  if (!partner) {
+    // Edge case: partner lookup failed (network error, missing contact). Log it
+    // and ship this person's Solo Blueprint instead of hanging or erroring.
+    console.error(`[Blueprint] Partner ${partnerId} lookup failed. Falling back to Solo Blueprint for ${payload.contact_id}.`);
+    return produceAndDeliverBlueprint(payload, meScores, null);
+  }
+
+  const partnerStatus = (readContactField(partner, 'sr_blueprint_status') || '').toLowerCase().trim();
+  // The partner is ready to pair when they are also waiting, OR when they already
+  // received an old-architecture Blueprint ("Generated"). In the Generated case we
+  // regenerate them with the Connection Map and send a fresh email that supersedes
+  // the first. (Edge case 1: the May 30 test Primary, Pair Code SR-468K-QN.)
+  const partnerReady = partnerStatus === 'waiting for partner' || partnerStatus === 'generated';
+  if (!partnerReady) {
+    console.log(`[Blueprint] Partner ${partnerId} status is "${partnerStatus}", not ready. Exiting cleanly. Their completion will trigger paired generation.`);
+    return;
+  }
+
+  // Both partners are complete (Change 2: paired generation with Connection Map).
+  const partnerCustomFields = Array.isArray(partner.customFields) ? partner.customFields : [];
+  const partnerScores = scoreAssessment(buildRawAnswersFromCustomFields(partnerCustomFields));
+  const partnerPayload = payloadFromContact(partner);
+
+  // Order by role so the prompt always sees a consistent primary/secondary shape.
+  let primaryPayload, primaryScores, secondaryPayload, secondaryScores;
+  if (myRole === 'primary') {
+    primaryPayload = payload;          primaryScores = meScores;
+    secondaryPayload = partnerPayload; secondaryScores = partnerScores;
+  } else {
+    primaryPayload = partnerPayload;   primaryScores = partnerScores;
+    secondaryPayload = payload;        secondaryScores = meScores;
+  }
+
+  console.log(`[Blueprint] Both partners complete. Generating paired Blueprints with Connection Map (primary=${primaryPayload.contact_id}, secondary=${secondaryPayload.contact_id}).`);
+
+  // Two Claude calls run in parallel. Each person is "self" in their own call and
+  // the other is "partner," so the Connection Map is written from each person's
+  // perspective. Promise.all keeps both pipelines in step so both emails land
+  // at roughly the same time.
+  await Promise.all([
+    produceAndDeliverBlueprint(primaryPayload, primaryScores, buildPartnerData(secondaryPayload, secondaryScores)),
+    produceAndDeliverBlueprint(secondaryPayload, secondaryScores, buildPartnerData(primaryPayload, primaryScores)),
+  ]);
+
+  console.log(`[Blueprint] Paired generation complete. Both Blueprints delivered.`);
+}
+
+// Returns true when the payload carries pre-built rawAnswers (the test-script path).
+function hasPrebuiltRawAnswers(payload) {
+  return !!(
+    payload &&
     payload.rawAnswers &&
     typeof payload.rawAnswers === 'object' &&
     Array.isArray(payload.rawAnswers.behaviorProfile) &&
-    payload.rawAnswers.behaviorProfile.length > 0;
+    payload.rawAnswers.behaviorProfile.length > 0
+  );
+}
 
-  let rawAnswers;
-  if (hasPrebuiltRawAnswers) {
-    rawAnswers = payload.rawAnswers;
-    console.log(`[Blueprint] Using prebuilt rawAnswers (test mode) for ${payload.contact_id}`);
-  } else {
-    const customFields = await fetchGhlContactCustomFields(payload.contact_id);
-    rawAnswers = buildRawAnswersFromCustomFields(customFields);
-    console.log(
-      `[Blueprint] Reconstructed rawAnswers from ${customFields.length} customFields for ${payload.contact_id} ` +
-      `(behavior=${rawAnswers.behaviorProfile.length}, personality charge+trust+decide+live=` +
-      `${rawAnswers.personalityCode.ei.length}+${rawAnswers.personalityCode.sn.length}+` +
-      `${rawAnswers.personalityCode.tf.length}+${rawAnswers.personalityCode.jp.length}, ` +
-      `action=${rawAnswers.actionStyle.length}, currency=${rawAnswers.connectionCurrency.length}, ` +
-      `learning=${rawAnswers.learningChannel.length}, ` +
-      `faith=${JSON.stringify(rawAnswers.spiritualCompass.faithOrientation)}, ` +
-      `themes=${rawAnswers.spiritualCompass.themeAnswers.length})`
-    );
-  }
+// Builds a minimal payload for the partner (the person who did not trigger this
+// webhook), pulling name and email off their GHL contact record.
+function payloadFromContact(contact) {
+  return {
+    contact_id: contact.id,
+    first_name: contact.firstName || '',
+    last_name: contact.lastName || '',
+    email: contact.email || '',
+    sku_tier: readContactField(contact, 'sr_sku_tier') || 'Linked Pair',
+    lens: readContactField(contact, 'sr_qual_who_for') || 'General',
+    lens_detail: readContactField(contact, 'sr_qual_focus_areas') || 'Not specified',
+  };
+}
 
-  const scores = scoreAssessment(rawAnswers);
-  console.log(`[Blueprint] Scoring complete for ${payload.contact_id}`);
+// Packages a partner's data for the Connection Map. `incomplete` flags thin
+// scoring so the prompt can add a soft note (edge case 4).
+function buildPartnerData(partnerPayload, partnerScores) {
+  const p1 = partnerScores && partnerScores.pillar1;
+  const incomplete =
+    !p1 ||
+    p1.twoLetterType === 'Unknown' ||
+    ((p1.d + p1.i + p1.s + p1.c) === 0);
+  return {
+    first_name: partnerPayload.first_name || 'your partner',
+    last_name: partnerPayload.last_name || '',
+    scores: partnerScores,
+    incomplete,
+  };
+}
 
-  // Step 2: Build the user message for Claude
-  const userMessage = buildUserMessage(payload, scores);
-
-  // Step 3: Get the master prompt
+// Produces one person's Blueprint end to end: build message, call Claude, render
+// HTML, save to Blob, update GHL, email. When partnerData is present the prompt
+// also writes the Connection Map. Shared by the solo and paired flows.
+async function produceAndDeliverBlueprint(payload, scores, partnerData) {
+  const userMessage = buildUserMessage(payload, scores, partnerData);
   const systemPrompt = await getMasterPrompt();
 
-  // Step 4: Call Claude API
   const blueprintMarkdown = await callClaude(systemPrompt, userMessage, payload.contact_id);
-  console.log(`[Blueprint] Claude returned ${blueprintMarkdown.length} characters`);
+  console.log(`[Blueprint] Claude returned ${blueprintMarkdown.length} characters for ${payload.contact_id}`);
 
-  // Step 5: Convert markdown to branded HTML
   const blueprintHtml = markdownToBrandedHtml(blueprintMarkdown, payload);
-
-  // Step 6: Save to Vercel Blob
   const blueprintUrl = await saveToBlob(payload.contact_id, blueprintHtml);
-  console.log(`[Blueprint] Saved to ${blueprintUrl}`);
+  console.log(`[Blueprint] Saved to ${blueprintUrl} for ${payload.contact_id}`);
 
-  // Step 7: Update GHL contact
   await updateGhlContact(payload.contact_id, {
     sr_blueprint_status: 'Generated',
     sr_blueprint_url: blueprintUrl,
@@ -165,97 +256,11 @@ async function generateAndDeliverBlueprint(payload) {
       sr_pillar7_tertiary_gift:  scores.spiritualGifts.tertiary,
     } : {}),
   });
+  console.log(`[Blueprint] GHL contact ${payload.contact_id} updated. Sending delivery email.`);
 
-  console.log(`[Blueprint] GHL contact updated. Sending delivery email directly.`);
-
-  // Step 8: Send delivery email DIRECTLY via GHL's conversations API
-  // This bypasses WF-04 entirely so we don't depend on workflow enrollment edge cases.
+  // Send delivery email DIRECTLY via Resend. Bypasses GHL workflow enrollment.
   await sendBlueprintEmail(payload, blueprintUrl);
-
-  console.log(`[Blueprint] Complete. Delivery email sent to ${payload.email}.`);
-
-  // Step 8: Linked Pair check - if this customer is part of a pair AND the
-  // other person has already completed their individual Blueprint, fire the
-  // Comparison Blueprint generation. Done after the individual Blueprint is
-  // complete and emailed so the customer never waits on a partner.
-  try {
-    await maybeTriggerComparisonBlueprint(payload.contact_id);
-  } catch (e) {
-    // Non-fatal: log and move on. Comparison can be re-triggered manually if
-    // it ever fails silently.
-    console.error('[Blueprint] Comparison trigger error (non-fatal):', e.message);
-  }
-}
-
-// =======================================================================
-// LINKED PAIR: COMPARISON BLUEPRINT TRIGGER
-// =======================================================================
-// After this customer's individual Blueprint completes, check if they are
-// part of a Linked Pair. If both pair members are "Generated" AND the
-// comparison has not already been generated or is processing, fire the
-// Comparison Blueprint endpoint asynchronously.
-
-async function maybeTriggerComparisonBlueprint(contactId) {
-  const me = await fetchGhlContact(contactId);
-  if (!me) return;
-
-  const pairCode = readContactField(me, 'sr_pair_code');
-  if (!pairCode) return; // Solo customer, no pair.
-
-  const myRole = (readContactField(me, 'sr_pair_role') || '').toLowerCase();
-  const partnerId = readContactField(me, 'sr_pair_partner_contact_id');
-  if (!partnerId) {
-    console.log(`[Blueprint] Pair detected (code=${pairCode}) but partner contact id not yet linked. Comparison will fire when partner record is updated.`);
-    return;
-  }
-
-  // Idempotency: if my record already shows the comparison is processing or
-  // generated, exit. The other party's run will (or did) handle it.
-  const myComparisonStatus = (readContactField(me, 'sr_pair_comparison_status') || '').toLowerCase();
-  if (myComparisonStatus === 'processing' || myComparisonStatus === 'generated') {
-    console.log(`[Blueprint] Comparison already ${myComparisonStatus} for pair ${pairCode}. Skipping.`);
-    return;
-  }
-
-  const partner = await fetchGhlContact(partnerId);
-  if (!partner) {
-    console.log(`[Blueprint] Pair partner ${partnerId} could not be fetched. Comparison will fire later.`);
-    return;
-  }
-
-  const partnerStatus = (readContactField(partner, 'sr_blueprint_status') || '').toLowerCase();
-  if (partnerStatus !== 'generated') {
-    console.log(`[Blueprint] Partner ${partnerId} is at status "${partnerStatus}" (not yet Generated). Comparison waits.`);
-    return;
-  }
-
-  // Both individual Blueprints are ready. Fire the comparison endpoint.
-  // Order the two ids by role: primary then secondary, for consistent input shape.
-  const primaryId = myRole === 'primary' ? contactId : partnerId;
-  const secondaryId = myRole === 'primary' ? partnerId : contactId;
-
-  // Mark both records as processing BEFORE calling the endpoint so a parallel
-  // run from the partner does not double-fire.
-  await updateGhlContact(primaryId, { sr_pair_comparison_status: 'processing' });
-  await updateGhlContact(secondaryId, { sr_pair_comparison_status: 'processing' });
-
-  const triggerUrl = (process.env.SR_SITE_URL || 'https://dennisnickens.com') + '/api/generate-comparison-blueprint';
-  const webhookSecret = process.env.SR_WEBHOOK_SECRET || '';
-
-  // Fire-and-forget. The comparison endpoint runs in its own Vercel invocation
-  // with its own time budget, so we do not await it here.
-  fetch(triggerUrl, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${webhookSecret}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ primary_contact_id: primaryId, secondary_contact_id: secondaryId }),
-  }).catch((err) => {
-    console.error('[Blueprint] Comparison fetch error:', err.message);
-  });
-
-  console.log(`[Blueprint] Comparison Blueprint generation triggered for pair ${pairCode} (primary=${primaryId}, secondary=${secondaryId})`);
+  console.log(`[Blueprint] Delivery email sent to ${payload.email} for ${payload.contact_id}.`);
 }
 
 // Read a single custom field from a contact object. Works with either name-keyed
@@ -388,7 +393,7 @@ async function getMasterPrompt() {
 // HELPER: BUILD USER MESSAGE FOR CLAUDE
 // =======================================================================
 
-function buildUserMessage(payload, scores) {
+function buildUserMessage(payload, scores, partnerData) {
   // Build the conditional answers block. Groups by set letter (A-E), sorted
   // numerically within each set. Omitted entirely when the bucket is empty
   // so Claude never sees a stray empty section header.
@@ -415,6 +420,17 @@ function buildUserMessage(payload, scores) {
     }
     return block;
   })();
+
+  // Linked Pair: when partnerData is present, append the partner's results and
+  // require the Connection Map section. When absent, this is a Solo Blueprint and
+  // the Connection Map is skipped entirely (preserving solo behavior).
+  const partnerBlock = partnerData ? buildPartnerBlock(partnerData) : '';
+  const connectionMapInstruction = partnerData
+    ? `\n11. Section 17: Your Connection Map (REQUIRED). partner_data IS present below, so you MUST generate the full Connection Map exactly as defined in the master prompt: subsections 17.1 through 17.7 plus the closing line. Write it comparing ${payload.first_name} (the reader, "self") with ${partnerData.first_name} (the partner). This is the final section of the Blueprint.`
+    : `\n(Section 17 Your Connection Map: SKIP entirely. No partner_data is present. This is a Solo Blueprint.)`;
+  const pageTarget = partnerData
+    ? `Target 12 to 16 pages: the full Seven Lenses reading plus a 4 to 6 page Connection Map as the final section.`
+    : `Target 8 to 10 pages, focused.`;
 
   return `Generate a complete Alignment Blueprint for this customer following the master prompt's structure and voice exactly.
 
@@ -475,7 +491,7 @@ ${(() => {
   const sg = scores.spiritualGifts;
   if (!sg) return '';
   return `\nSPIRITUAL GIFTS (PILLAR 7):\n- Primary Gift: ${sg.primary}\n- Secondary Gift: ${sg.secondary}\n- Tertiary Gift: ${sg.tertiary}\n`;
-})()}${conditionalAnswerBlock}
+})()}${conditionalAnswerBlock}${partnerBlock}
 INSTRUCTIONS FOR THIS BLUEPRINT:
 
 Generate the complete Blueprint as defined in the master prompt:
@@ -488,13 +504,52 @@ Generate the complete Blueprint as defined in the master prompt:
 7. Section 6: Your Spiritual Compass (with 3 personalized scripture verses calibrated to this person's combined archetype)
 8. Section 7: Your Misalignment Map (where the pillars conflict and what it costs)
 9. Section 8 onward as defined in the master prompt
-10. Section 13: Your Spiritual Gifts (conditional, only if SPIRITUAL GIFTS data is present above)
+10. Section 13: Your Spiritual Gifts (conditional, only if SPIRITUAL GIFTS data is present above)${connectionMapInstruction}
 
 Use Dennis Nickens's voice. Plain English. Direct, warm, consultative. NO em dashes or en dashes (replace with commas, periods, or rephrase). NO AI-sounding phrases ("delve into," "navigate the landscape," "in today's fast-paced world," "tapestry," etc.). Sign off with "Dennis Nickens" not "Dennis,".
 
 The Blueprint should be specific to ${payload.first_name}, not generic. Reference their scores explicitly. Address them by first name.
 
-Output the complete Blueprint as markdown. Target 8 to 10 pages, focused. Every sentence earns its place. Be thorough and specific, but do not pad sections.`;
+Output the complete Blueprint as markdown. ${pageTarget} Every sentence earns its place. Be thorough and specific, but do not pad sections.`;
+}
+
+// =======================================================================
+// HELPER: BUILD PARTNER DATA BLOCK (Linked Pair Connection Map)
+// =======================================================================
+// Renders the partner's scores for the Connection Map. The reader is "self";
+// this block is the "partner." The master prompt uses it ONLY for Section 17.
+
+function buildPartnerBlock(partnerData) {
+  const s = partnerData.scores || {};
+  const p1 = s.pillar1 || {};
+  const s10 = p1.scores10 || {};
+  const p2 = s.pillar2 || {};
+  const p3 = s.pillar3 || {};
+  const p4 = s.pillar4 || {};
+  const p5 = s.pillar5 || {};
+  const p6 = s.pillar6 || {};
+  const sg = s.spiritualGifts;
+  const name = partnerData.first_name;
+
+  let block = `
+PARTNER DATA (Linked Pair). This Blueprint is for a Linked Pair. The reader is the "self." The person below is the reader's partner. Use this partner data ONLY for the final Connection Map (Section 17), where you compare the reader and the partner. Do NOT blend it into the reader's own pillar sections.
+
+- Partner Name: ${name} ${partnerData.last_name}
+- Partner Behavior Profile (CORE): dominant ${p1.twoLetterType} (D ${s10.d}/10, I ${s10.i}/10, S ${s10.s}/10, C ${s10.c}/10)
+- Partner Personality Code: ${p2.type}
+- Partner Action Style: dominant ${p3.dominantMode}, secondary ${p3.secondaryMode}
+- Partner Connection Currency: primary ${p4.primary}, secondary ${p4.secondary} (Spoken ${p4.spoken}, Presence ${p4.presence}, Contact ${p4.contact}, Action ${p4.action}, Tokens ${p4.tokens})
+- Partner Learning Channel: dominant ${p5.dominantChannel} (Sight ${p5.sightPct}%, Sound ${p5.soundPct}%, Word ${p5.wordPct}%, Touch ${p5.touchPct}%)
+- Partner Spiritual Compass: ${p6.faithOrientation}, themes ${p6.primaryTheme} / ${p6.secondaryTheme}`;
+
+  if (sg) {
+    block += `\n- Partner Spiritual Gifts: ${sg.primary}, ${sg.secondary}, ${sg.tertiary}`;
+  }
+  if (partnerData.incomplete) {
+    block += `\n- NOTE: Some of ${name}'s scores came in incomplete. Build the Connection Map with the data that is available, and add a brief, warm note in the section letting the reader know some of ${name}'s results were incomplete, so the map will sharpen once both assessments are fully scored.`;
+  }
+  block += `\n`;
+  return block;
 }
 
 // =======================================================================

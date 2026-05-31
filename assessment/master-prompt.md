@@ -39,7 +39,7 @@ Rule for determining which archetype to use:
 3. Otherwise, combine the top two letters in order (highest first, second highest second) and use the two-letter archetype.
 
 Pure Types (use when one letter dominates):
-- D = The Commander: Pure decisive action. Direct, results-driven, takes the wheel.
+- C = The Commander: Pure decisive action. Direct, results-driven, takes the wheel.
 - O = The Organizer: Pure precision and depth. Analytical, thorough, builds things that last.
 - R = The Relator: Pure stability and loyalty. Patient, reliable, protective.
 - E = The Energizer: Pure energy and persuasion. Magnetic, optimistic, draws people in.

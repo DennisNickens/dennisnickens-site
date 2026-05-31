@@ -58,13 +58,21 @@ html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !impo
 
 <div class="stp-wrap">
 
-  <span class="stp-eyebrow">You're Done</span>
-  <h1 class="stp-title">Now Send Your Code to Your Partner.</h1>
-  <p class="stp-sub">When your partner finishes their assessment, you both get your individual Blueprints plus a third Comparison Blueprint that shows how you fit together.</p>
+  <div id="pairHeader">
+    <span class="stp-eyebrow">You're Done</span>
+    <h1 class="stp-title">Now Send Your Code to Your Partner.</h1>
+    <p class="stp-sub">When your partner finishes their assessment, you both get your individual Blueprints plus a third Comparison Blueprint that shows how you fit together.</p>
+  </div>
 
   <div id="loadingState" class="waiting-box">Loading your Pair Code...</div>
 
   <div id="errorState" class="error-state hidden"></div>
+
+  <div id="soloState" class="hidden">
+    <span class="stp-eyebrow">You're Done</span>
+    <h1 class="stp-title">Your Blueprint Is On The Way.</h1>
+    <p class="stp-sub">Watch your inbox over the next few minutes. Your full Blueprint is generating now. If it has not arrived in 10 minutes, check your spam folder. Reply to that email anytime if anything in your Blueprint lands wrong or you want to talk through it.</p>
+  </div>
 
   <div id="readyState" class="hidden">
 
@@ -111,17 +119,29 @@ function toggleMenu(){document.getElementById('navLinks').classList.toggle('open
 var loadingEl = document.getElementById('loadingState');
 var errorEl = document.getElementById('errorState');
 var readyEl = document.getElementById('readyState');
+var soloEl = document.getElementById('soloState');
+var pairHeaderEl = document.getElementById('pairHeader');
 
 function showError(msg) {
   loadingEl.classList.add('hidden');
   readyEl.classList.add('hidden');
+  soloEl.classList.add('hidden');
   errorEl.classList.remove('hidden');
   errorEl.textContent = msg;
+}
+
+function showSolo() {
+  loadingEl.classList.add('hidden');
+  errorEl.classList.add('hidden');
+  readyEl.classList.add('hidden');
+  pairHeaderEl.classList.add('hidden');
+  soloEl.classList.remove('hidden');
 }
 
 function showReady(code, primaryFirstName) {
   loadingEl.classList.add('hidden');
   errorEl.classList.add('hidden');
+  soloEl.classList.add('hidden');
   readyEl.classList.remove('hidden');
 
   var partnerUrl = window.location.origin + '/assessment/partner?code=' + encodeURIComponent(code);
@@ -168,34 +188,53 @@ function showReady(code, primaryFirstName) {
 (function init() {
   var params = new URLSearchParams(window.location.search);
   var cid = params.get('cid');
+  var solo = params.get('solo');
   var codeFromUrl = (params.get('code') || '').toUpperCase().trim();
 
+  // Check 1: ?solo=1 forces the solo path. Never generate a Pair Code in this case.
+  if (solo === '1') {
+    showSolo();
+    return;
+  }
+
   // If the code is already in the URL (the survey-completion handler can pass it),
-  // skip the fetch and render immediately.
+  // this is a Linked Pair Primary. Skip the fetch and render Path A immediately.
   if (codeFromUrl) {
     showReady(codeFromUrl, '');
     return;
   }
 
+  // No cid and no code: existing error behavior (cannot identify the visitor at all).
   if (!cid) {
     showError('We could not find your account information. Please go back and try again, or contact dennis@dennisnickens.com.');
     return;
   }
 
-  // Fetch the contact to read the sr_pair_code field. If missing, try to generate it.
+  // Check 2 to 4: fetch the contact and decide Path A vs Path B from its custom fields.
   fetch('/api/sr-get-contact?cid=' + encodeURIComponent(cid))
     .then(function(r){return r.json();})
     .then(function(data){
-      if (!data || !data.success) {
+      if (!data || !data.success || !data.contact) {
+        // Edge case: API failed or contact unreadable. Default to solo.
         throw new Error('Could not load your contact');
       }
-      var fields = (data.contact && data.contact.fields) || {};
+      var fields = data.contact.fields || {};
+      var pairRole = (fields.sr_pair_role || '').toLowerCase().trim();
+      var whoFor = (fields.sr_qual_who_for || '').trim();
+      var isLinkedPair = pairRole === 'primary' || /^for me and/i.test(whoFor);
+
+      // Check 4: solo customer. Show Path B, never touch the pair-code endpoint.
+      if (!isLinkedPair) {
+        showSolo();
+        return;
+      }
+
+      // Check 3: Linked Pair Primary. Path A. Use the existing code or generate one.
       var code = fields.sr_pair_code || '';
       if (code) {
         showReady(code, data.contact.firstName || '');
         return;
       }
-      // No code yet, try to generate one.
       return fetch('/api/sr-generate-pair-code', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -209,7 +248,8 @@ function showReady(code, primaryFirstName) {
       });
     })
     .catch(function(err) {
-      showError(err.message || 'Something went wrong loading your pair code. Refresh the page or contact dennis@dennisnickens.com.');
+      // Edge case: anything went wrong above. A stranded solo screen beats a useless Pair Code.
+      showSolo();
     });
 })();
 

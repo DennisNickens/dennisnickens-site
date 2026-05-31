@@ -74,6 +74,12 @@ html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !impo
     <p class="stp-sub">Watch your inbox over the next few minutes. Your full Blueprint is generating now. If it has not arrived in 10 minutes, check your spam folder. Reply to that email anytime if anything in your Blueprint lands wrong or you want to talk through it.</p>
   </div>
 
+  <div id="secondaryState" class="hidden">
+    <span class="stp-eyebrow">You're Done</span>
+    <h1 class="stp-title">Both Blueprints Are On The Way.</h1>
+    <p class="stp-sub">You just completed your half of the assessment. Your Blueprint and your partner's Blueprint are being prepared right now, each one including a Connection Map at the end that shows how the two of you fit together. Watch your inbox over the next few minutes. If nothing arrives in 10 minutes, check your spam folder. Reply to that email anytime if anything lands wrong or you want to talk through it.</p>
+  </div>
+
   <div id="readyState" class="hidden">
 
     <div class="code-display">
@@ -120,12 +126,14 @@ var loadingEl = document.getElementById('loadingState');
 var errorEl = document.getElementById('errorState');
 var readyEl = document.getElementById('readyState');
 var soloEl = document.getElementById('soloState');
+var secondaryEl = document.getElementById('secondaryState');
 var pairHeaderEl = document.getElementById('pairHeader');
 
 function showError(msg) {
   loadingEl.classList.add('hidden');
   readyEl.classList.add('hidden');
   soloEl.classList.add('hidden');
+  secondaryEl.classList.add('hidden');
   errorEl.classList.remove('hidden');
   errorEl.textContent = msg;
 }
@@ -134,17 +142,28 @@ function showSolo() {
   loadingEl.classList.add('hidden');
   errorEl.classList.add('hidden');
   readyEl.classList.add('hidden');
+  secondaryEl.classList.add('hidden');
   pairHeaderEl.classList.add('hidden');
   soloEl.classList.remove('hidden');
+}
+
+function showSecondary() {
+  loadingEl.classList.add('hidden');
+  errorEl.classList.add('hidden');
+  readyEl.classList.add('hidden');
+  soloEl.classList.add('hidden');
+  pairHeaderEl.classList.add('hidden');
+  secondaryEl.classList.remove('hidden');
 }
 
 function showReady(code, primaryFirstName) {
   loadingEl.classList.add('hidden');
   errorEl.classList.add('hidden');
   soloEl.classList.add('hidden');
+  secondaryEl.classList.add('hidden');
   readyEl.classList.remove('hidden');
 
-  var partnerUrl = window.location.origin + '/assessment/partner?code=' + encodeURIComponent(code);
+  var partnerUrl = window.location.origin + '/assessment/partner.html?code=' + encodeURIComponent(code);
 
   document.getElementById('codeValue').textContent = code;
   document.getElementById('linkText').textContent = partnerUrl;
@@ -210,7 +229,7 @@ function showReady(code, primaryFirstName) {
     return;
   }
 
-  // Check 2 to 4: fetch the contact and decide Path A vs Path B from its custom fields.
+  // Fetch the contact and decide which path to show.
   fetch('/api/sr-get-contact?cid=' + encodeURIComponent(cid))
     .then(function(r){return r.json();})
     .then(function(data){
@@ -221,15 +240,25 @@ function showReady(code, primaryFirstName) {
       var fields = data.contact.fields || {};
       var pairRole = (fields.sr_pair_role || '').toLowerCase().trim();
       var whoFor = (fields.sr_qual_who_for || '').trim();
-      var isLinkedPair = pairRole === 'primary' || /^for me and/i.test(whoFor);
 
-      // Check 4: solo customer. Show Path B, never touch the pair-code endpoint.
-      if (!isLinkedPair) {
+      // Path C check first: Secondary in a Linked Pair. Show the "both Blueprints on the way" screen.
+      // Never generate a Pair Code for a Secondary, and never overwrite their inherited Primary code.
+      if (pairRole === 'secondary') {
+        showSecondary();
+        return;
+      }
+
+      // Path A check: Primary in a Linked Pair. Determined by explicit role OR the funnel-side
+      // signal sr_qual_who_for starting with "For me and" (covers cases where pair role was not yet written).
+      var isPrimaryPair = pairRole === 'primary' || /^for me and/i.test(whoFor);
+
+      if (!isPrimaryPair) {
+        // Path B: solo customer. Never touch the pair-code endpoint.
         showSolo();
         return;
       }
 
-      // Check 3: Linked Pair Primary. Path A. Use the existing code or generate one.
+      // Path A: Linked Pair Primary. Use the existing code or generate one.
       var code = fields.sr_pair_code || '';
       if (code) {
         showReady(code, data.contact.firstName || '');

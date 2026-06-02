@@ -218,42 +218,15 @@ function buildPartnerData(partnerPayload, partnerScores) {
   };
 }
 
-// Generates the full Blueprint markdown using THREE parallel Claude calls, each
-// responsible for a range of sections, then stitches the outputs together in order.
-//   Call 1: front matter (Cover Page through Executive Summary) plus Sections 1 to 5.
-//   Call 2: Sections 6 to 9.
-//   Call 3: Sections 10 to 17 (conditional audience sections, Stress, Strategic,
-//           30 Day Plan, and the paired Connection Map). There is no Section 13:
-//           Spiritual Gifts moved into Subsection 6.2, so numbering jumps 12 to 14.
-// All three share the same system prompt and the same customer data block. Only the
-// per-call instruction differs. Running them in parallel keeps wall-clock near the
-// slowest single call. If ANY call throws (timeout or API error), Promise.all rejects
-// and the existing Failed-status path in the caller chain records it. We never ship a
-// partial Blueprint.
-async function generateMultiCallBlueprintMarkdown(payload, scores, partnerData) {
-  const systemPrompt = await getMasterPrompt();
-  const cid = payload.contact_id;
-
-  const calls = [
-    { label: 'Call 1', message: buildCall1Message(payload, scores, partnerData) },
-    { label: 'Call 2', message: buildCall2Message(payload, scores, partnerData) },
-    { label: 'Call 3', message: buildCall3Message(payload, scores, partnerData) },
-  ];
-
-  const parts = await Promise.all(
-    calls.map((c) => callClaude(systemPrompt, c.message, cid, c.label))
-  );
-
-  // Stitch in order: Call 1 + Call 2 + Call 3, a single blank line between each.
-  return parts.map((p) => p.trim()).join('\n\n');
-}
-
-// Produces one person's Blueprint end to end: generate (3 parallel calls), render
-// HTML, save to Blob, update GHL, email. When partnerData is present, Call 3 writes
-// the Connection Map. Shared by the solo and paired flows.
+// Produces one person's Blueprint end to end: build message, call Claude, render
+// HTML, save to Blob, update GHL, email. When partnerData is present the prompt
+// also writes the Connection Map. Shared by the solo and paired flows.
 async function produceAndDeliverBlueprint(payload, scores, partnerData) {
-  const blueprintMarkdown = await generateMultiCallBlueprintMarkdown(payload, scores, partnerData);
-  console.log(`[Blueprint] Multi-call generation produced ${blueprintMarkdown.length} characters for ${payload.contact_id}`);
+  const userMessage = buildUserMessage(payload, scores, partnerData);
+  const systemPrompt = await getMasterPrompt();
+
+  const blueprintMarkdown = await callClaude(systemPrompt, userMessage, payload.contact_id);
+  console.log(`[Blueprint] Claude returned ${blueprintMarkdown.length} characters for ${payload.contact_id}`);
 
   const blueprintHtml = markdownToBrandedHtml(blueprintMarkdown, payload);
   const blueprintUrl = await saveToBlob(payload.contact_id, blueprintHtml);
@@ -420,12 +393,10 @@ async function getMasterPrompt() {
 // HELPER: BUILD USER MESSAGE FOR CLAUDE
 // =======================================================================
 
-// Builds the shared customer data context. This block is IDENTICAL across all three
-// generation calls so each Claude call has full context of who the customer is. Only
-// the per-call instruction (appended by the call builders) differs.
-function buildCustomerDataBlock(payload, scores, partnerData) {
-  // Conditional answers, grouped by set letter (A-E), sorted numerically within each
-  // set. Omitted entirely when empty so Claude never sees a stray empty header.
+function buildUserMessage(payload, scores, partnerData) {
+  // Build the conditional answers block. Groups by set letter (A-E), sorted
+  // numerically within each set. Omitted entirely when the bucket is empty
+  // so Claude never sees a stray empty section header.
   const conditionalAnswerBlock = (() => {
     const ca = scores.conditionalAnswers || {};
     const entries = Object.entries(ca);
@@ -450,17 +421,20 @@ function buildCustomerDataBlock(payload, scores, partnerData) {
     return block;
   })();
 
-  const giftsBlock = (() => {
-    const sg = scores.spiritualGifts;
-    if (!sg) return '';
-    return `\nSPIRITUAL GIFTS (PILLAR 7):\n- Primary Gift: ${sg.primary}\n- Secondary Gift: ${sg.secondary}\n- Tertiary Gift: ${sg.tertiary}\n`;
-  })();
-
-  // Partner data (Linked Pair). Included identically in all three calls. Only Call 3
-  // uses it, for the Section 17 Connection Map. Empty string for Solo customers.
+  // Linked Pair: when partnerData is present, append the partner's results and
+  // require the Connection Map section. When absent, this is a Solo Blueprint and
+  // the Connection Map is skipped entirely (preserving solo behavior).
   const partnerBlock = partnerData ? buildPartnerBlock(partnerData) : '';
+  const connectionMapInstruction = partnerData
+    ? `\n11. Section 17: Your Connection Map (REQUIRED). partner_data IS present below, so you MUST generate the full Connection Map exactly as defined in the master prompt: subsections 17.1 through 17.7 plus the closing line. Write it comparing ${payload.first_name} (the reader, "self") with ${partnerData.first_name} (the partner). This is the final section of the Blueprint.`
+    : `\n(Section 17 Your Connection Map: SKIP entirely. No partner_data is present. This is a Solo Blueprint.)`;
+  const pageTarget = partnerData
+    ? `Target 12 to 16 pages: the full Seven Lenses reading plus a 4 to 6 page Connection Map as the final section.`
+    : `Target 8 to 10 pages, focused.`;
 
-  return `CUSTOMER:
+  return `Generate a complete Alignment Blueprint for this customer following the master prompt's structure and voice exactly.
+
+CUSTOMER:
 - Name: ${payload.first_name} ${payload.last_name}
 - Email: ${payload.email}
 - SKU Tier: ${payload.sku_tier || 'Solo'}
@@ -513,89 +487,30 @@ PILLAR 6: SPIRITUAL COMPASS
 - Primary Theme: ${scores.pillar6.primaryTheme}
 - Secondary Theme: ${scores.pillar6.secondaryTheme}
 - Theme Distribution: ${JSON.stringify(scores.pillar6.themeCounts)}
-${giftsBlock}${conditionalAnswerBlock}${partnerBlock}`;
-}
+${(() => {
+  const sg = scores.spiritualGifts;
+  if (!sg) return '';
+  return `\nSPIRITUAL GIFTS (PILLAR 7):\n- Primary Gift: ${sg.primary}\n- Secondary Gift: ${sg.secondary}\n- Tertiary Gift: ${sg.tertiary}\n`;
+})()}${conditionalAnswerBlock}${partnerBlock}
+INSTRUCTIONS FOR THIS BLUEPRINT:
 
-// Shared header and voice reminder appended to every call. The full voice and section
-// specs live in the system prompt (master-prompt.md); this is a per-call reminder.
-const MULTI_CALL_HEADER = `Generate part of a complete Alignment Blueprint for this customer, following the master prompt structure and voice exactly. The full Blueprint is produced in three parallel passes and stitched together in order. This pass covers a specific range of sections, described in the instruction below the data. Do not repeat sections from other passes.`;
+Generate the complete Blueprint as defined in the master prompt:
+1. Executive Summary
+2. Section 1: Your Behavior Profile (with strengths, blind spots, leverage points)
+3. Section 2: Your Personality Code (name their SR Personality Code archetype prominently using the 16-archetype table in the master prompt)
+4. Section 3: Your Action Style (name them as The Scholar / Steward / Sparker / Crafter based on dominant mode)
+5. Section 4: Your Connection Currency (with 5-currency ranking and bridge scripts; use the currency framing naturally)
+6. Section 5: Your Learning Channel (with environment recommendations calibrated to Sight/Sound/Word/Touch)
+7. Section 6: Your Spiritual Compass (with 3 personalized scripture verses calibrated to this person's combined archetype)
+8. Section 7: Your Misalignment Map (where the pillars conflict and what it costs)
+9. Section 8 onward as defined in the master prompt
+10. Section 13: Your Spiritual Gifts (conditional, only if SPIRITUAL GIFTS data is present above)${connectionMapInstruction}
 
-function multiCallVoiceReminder(payload) {
-  return `Use Dennis Nickens's voice. Plain English. Direct, warm, consultative. No em dashes or en dashes (use commas, periods, parentheses, or rephrase). No AI-sounding phrases ("delve into," "navigate the landscape," "tapestry," "embark on a journey"). Use the SR-native CORE vocabulary throughout. Be specific to ${payload.first_name}, reference their actual scores, and address them by first name.`;
-}
+Use Dennis Nickens's voice. Plain English. Direct, warm, consultative. NO em dashes or en dashes (replace with commas, periods, or rephrase). NO AI-sounding phrases ("delve into," "navigate the landscape," "in today's fast-paced world," "tapestry," etc.). Sign off with "Dennis Nickens" not "Dennis,".
 
-// Call 1: front matter (Cover Page through Executive Summary) plus Sections 1 to 5.
-function buildCall1Message(payload, scores, partnerData) {
-  return `${MULTI_CALL_HEADER}
+The Blueprint should be specific to ${payload.first_name}, not generic. Reference their scores explicitly. Address them by first name.
 
-${buildCustomerDataBlock(payload, scores, partnerData)}
-
-${multiCallVoiceReminder(payload)}
-
-GENERATE ONLY THE FOLLOWING (in this exact order) and STOP after Section 5:
-1. The Cover Page (using the format defined in master-prompt.md, with the customer's actual first and last name substituted, never the literal text [Client Name])
-2. How Your Blueprint Works
-3. How To Read It
-4. What This Blueprint Is, And What It Isn't (verbatim, as defined)
-5. Executive Summary (4 to 5 paragraphs synthesizing across the Seven Lenses)
-6. Section 1: Your Behavior Profile (with the intro paragraph, the CORE Letter/Style/Percentage breakdown table, archetype, analysis, all subsections per the master prompt spec)
-7. Section 2: Your Personality Code
-8. Section 3: Your Action Style
-9. Section 4: Your Connection Currency
-10. Section 5: Your Learning Channel
-
-After Section 5, STOP. Do NOT write Section 6 or any later sections. Those will be generated separately and stitched in. End your output cleanly at the end of Section 5.
-
-Target 8 to 10 pages for this portion (front matter plus Sections 1 through 5).`;
-}
-
-// Call 2: Sections 6 to 9.
-function buildCall2Message(payload, scores, partnerData) {
-  return `${MULTI_CALL_HEADER}
-
-${buildCustomerDataBlock(payload, scores, partnerData)}
-
-${multiCallVoiceReminder(payload)}
-
-GENERATE ONLY the following sections (in this exact order) and STOP after Section 9. Do NOT regenerate the Cover Page or any front matter or any earlier sections.
-
-Start directly with Section 6. Then Section 7. Then Section 8. Then Section 9.
-
-- Section 6: Your Spiritual Wiring (open with the section intro, then Subsection 6.1 Your Spiritual Compass with all three verses and closing, then Subsection 6.2 Your Spiritual Gifts ONLY IF Pillar 7 data is present in the payload; if not, end Section 6 after Subsection 6.1)
-- Section 7: Your Misalignment Map
-- Section 8: Your Career Alignment
-- Section 9: Your Relationship Alignment
-
-After Section 9, STOP. Do NOT write Section 10 or any later sections. Do NOT add any closing or transition statements like 'Continue to Section 10...'. End your output cleanly at the end of Section 9.
-
-Target 6 to 8 pages for this portion (Sections 6 through 9).`;
-}
-
-// Call 3: Sections 10 to 17 (conditional audience sections, Stress, Strategic, 30 Day
-// Plan, and the paired Connection Map). No Section 13: Gifts live in Subsection 6.2.
-function buildCall3Message(payload, scores, partnerData) {
-  return `${MULTI_CALL_HEADER}
-
-${buildCustomerDataBlock(payload, scores, partnerData)}
-
-${multiCallVoiceReminder(payload)}
-
-GENERATE ONLY the following sections (in this exact order) and STOP after the Section 17 closing line (or after Section 16 if no partner_data is present). Do NOT regenerate the Cover Page or any earlier sections.
-
-Start directly with Section 10 (only if Family audience; skip if not). Then Section 11 (only if Team or Leadership audience). Then Section 12 (only if Ministry audience). Then Section 14. Then Section 15. Then Section 16. Then Section 17 (only if partner_data is present).
-
-Conditional section rules:
-- Section 10 Your Parenting Style: Generate ONLY if the customer's audience is Family. Otherwise skip entirely. Do not write a placeholder.
-- Section 11 Your Leadership Profile: Generate ONLY if the customer's audience is Team or Leadership. Otherwise skip entirely.
-- Section 12 Your Ministry Profile: Generate ONLY if the customer's focus or audience indicates ministry. Otherwise skip entirely.
-- Section 14 Your Stress Response Map: ALWAYS generate.
-- Section 15 Your Strategic Recommendations: ALWAYS generate.
-- Section 16 Your 30 Day Alignment Plan: ALWAYS generate.
-- Section 17 Your Connection Map with [Partner First Name]: Generate ONLY if partner_data is present. Otherwise skip entirely. Substitute the partner's actual first name into the section heading.
-
-After your last generated section, STOP. End cleanly.
-
-Target 4 to 8 pages for this portion (Sections 10 through 17, with conditional sections only firing per the rules above).`;
+Output the complete Blueprint as markdown. ${pageTarget} Every sentence earns its place. Be thorough and specific, but do not pad sections.`;
 }
 
 // =======================================================================
@@ -641,12 +556,9 @@ PARTNER DATA (Linked Pair). This Blueprint is for a Linked Pair. The reader is t
 // HELPER: CALL CLAUDE API
 // =======================================================================
 
-async function callClaude(systemPrompt, userMessage, contactId, label) {
-  if (label) console.log(`[Blueprint] ${label} start for contact ${contactId}`);
-
+async function callClaude(systemPrompt, userMessage, contactId) {
   // 270-second client-side timeout. Vercel Pro tier kills the function at 300s,
   // so we abort at 270s to leave headroom for writing the failure status to GHL.
-  // Each of the three parallel generation calls runs its own AbortController.
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 270000);
 
@@ -660,13 +572,15 @@ async function callClaude(systemPrompt, userMessage, contactId, label) {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        // Multi-call generation: this function runs 3 times in parallel, each producing
-        // a different range of Blueprint sections. max_tokens 14000 per call gives each
-        // range room to reach full depth (up to 42000 tokens of Blueprint across the
-        // three). Because the calls run in parallel, total wall-clock time is roughly the
-        // slowest single call (about 90 to 150 seconds), well under the 300s Vercel ceiling.
+        // Running on Vercel Pro tier with a 300-second waitUntil window. max_tokens is
+        // 14000 (above the typical 10000-12000 token Blueprint output) as a ceiling that
+        // keeps generation comfortably within the Vercel time budget. The previous value
+        // of 20000 paired with a "12 to 16 pages" instruction let Claude generate for
+        // 4-5 minutes straight and consistently tripped the Vercel 300s timeout. The
+        // value of 12000 before that truncated Sections 14-16. The value of 64000 before
+        // that caused even worse timeouts.
         model: 'claude-sonnet-4-6',
-        max_tokens: 14000,
+        max_tokens: 10000,
         system: systemPrompt,
         messages: [
           { role: 'user', content: userMessage },
@@ -700,10 +614,6 @@ async function callClaude(systemPrompt, userMessage, contactId, label) {
   }
 
   const result = await response.json();
-  if (label) {
-    const out = (result.usage && result.usage.output_tokens != null) ? result.usage.output_tokens : 'unknown';
-    console.log(`[Blueprint] ${label} complete for contact ${contactId}, tokens used: ${out}`);
-  }
   return result.content[0].text;
 }
 

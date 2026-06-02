@@ -54,6 +54,16 @@ export default async function handler(req, res) {
   // Snapshot the body before we respond, since req may be torn down after
   const payload = req.body;
 
+  // Normalize naming conventions. Webhook callers may send camelCase
+  // (firstName/lastName) while our code expects snake_case (first_name/last_name).
+  // Always set the snake_case fields from camelCase if not already set. This
+  // prevents 'undefined' from leaking into the Blueprint cover, HTML title,
+  // and footer when the caller used camelCase.
+  if (payload) {
+    if (!payload.first_name && payload.firstName) payload.first_name = payload.firstName;
+    if (!payload.last_name && payload.lastName) payload.last_name = payload.lastName;
+  }
+
   // Tell Vercel to keep the function alive until generation completes.
   // waitUntil gives us up to 30s on Hobby tier and 5min on Pro tier.
   // Without this, Vercel kills the function as soon as the response is flushed.
@@ -633,7 +643,7 @@ function markdownToBrandedHtml(markdown, payload) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${payload.first_name}'s Alignment Blueprint | Spiritual Romeo</title>
+  <title>${payload.first_name || 'Your'} Alignment Blueprint | Spiritual Romeo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -822,7 +832,7 @@ function markdownToBrandedHtml(markdown, payload) {
   <div class="content-wrap">
     ${innerHtml}
     <div class="footer">
-      Generated for ${payload.first_name} ${payload.last_name} on ${new Date().toLocaleDateString()}<br/>
+      Generated for ${payload.first_name || 'this customer'} ${payload.last_name || ''} on ${new Date().toLocaleDateString()}<br/>
       Spiritual Romeo · Behavioral and Alignment Consulting<br/>
       dennisnickens.com
     </div>

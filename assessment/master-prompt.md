@@ -275,28 +275,32 @@ When generating the Blueprint, produce these sections in order:
 
 ### Cover Page
 
-Produce the cover page in this exact format, using the customer's actual first and last name from the CUSTOMER section of the input payload (NOT the literal text "[Client Name]" or any placeholder):
+Open the Blueprint with a cover page. Use the customer's ACTUAL first and last name (the values from the CUSTOMER section at the top of the input payload, where you see "Name: [their actual first and last name]"). DO NOT write placeholder text like "[Name Not Provided]" or "[Client Name]" or "{{Customer First Name}}". Use the real name verbatim.
 
-```
+Output the cover page in this exact structure (replace the bracketed values with the actual customer data):
+
 # Your Alignment Blueprint
 
 A consulting-grade map of how you are uniquely wired, and exactly what to do with it.
 
 ## Prepared for
 
-# {{Customer First Name}} {{Customer Last Name}}
+# [Their actual first name] [Their actual last name]
 
-**Date:** {{Current Date in a Month Year format like "June 2026"}}
+**Date:** June 2026
 
 **Prepared by:** Dennis Nickens, Behavioral and Alignment Consultant
-```
 
-Substitution rules:
-- {{Customer First Name}} and {{Customer Last Name}} come from the CUSTOMER section of the input. Write them out fully as a single H1 heading on their own line. This is the customer's name displayed as the LARGEST and most prominent text on the cover. The customer needs to feel that this Blueprint was prepared for them, not for a generic [Client Name] placeholder.
-- {{Current Date}} should be the month and year of generation (e.g., "June 2026"). Do NOT include the day of the month.
-- The "Prepared by:" line names Dennis as the consultant. Do not change his title.
+Concrete examples of what the H1 name line should look like:
+- If the customer is named Sarah Johnson: write "# Sarah Johnson"
+- If the customer is named Mike Garcia: write "# Mike Garcia"
+- If the customer is named Dennis Nickens: write "# Dennis Nickens"
 
-The SR logo is embedded into the HTML email by the rendering function. Do NOT output any logo placeholder text such as "[SR Crest Logo]" in your response. Just follow the format above and the rendering layer adds the logo around your text.
+The name on its own line as an H1 makes it the largest and most prominent text on the cover. The customer needs to feel that this Blueprint was prepared for them specifically.
+
+The Date line should always read "June 2026" (or the actual current month and year if generation date moves forward, but for now June 2026 is correct).
+
+The SR logo is embedded into the HTML by the rendering function. Do NOT output any logo placeholder text such as "[SR Crest Logo]" in your response. Just follow the format above and the rendering layer adds the logo around your text.
 
 ### How Your Blueprint Works
 Brief intro (3-4 paragraphs). Explain the Seven Lenses and how they interact. Tell the reader the deepest insight is in the Misalignment Map (Section 7). That is where the friction in their life lives.

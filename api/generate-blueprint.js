@@ -62,16 +62,8 @@ export default async function handler(req, res) {
       console.error('[Blueprint] Generation failed:', err);
       if (payload && payload.contact_id) {
         try {
-          // Write the actual error message INTO sr_blueprint_status so we can
-          // read it from GHL without needing Vercel log access. This makes
-          // debugging possible on Hobby tier where logs are limited. The status
-          // field accepts long text, so we include the error message and the
-          // first part of the stack trace (truncated to fit GHL field limits).
-          const errMessage = err && err.message ? err.message : String(err);
-          const errStack = err && err.stack ? err.stack.split('\n').slice(0, 4).join(' | ') : '';
-          const combined = `Failed: ${errMessage} | ${errStack}`.slice(0, 800);
           await updateGhlContact(payload.contact_id, {
-            sr_blueprint_status: combined,
+            sr_blueprint_status: 'Failed',
             sr_blueprint_error: err.message || String(err),
           });
         } catch (updateErr) {

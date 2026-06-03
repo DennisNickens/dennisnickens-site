@@ -582,16 +582,23 @@ async function callClaude(systemPrompt, userMessage, contactId) {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        // Running on Vercel Pro tier with a 300-second waitUntil window. max_tokens is
-        // 14000 (above the typical 10000-12000 token Blueprint output) as a ceiling that
-        // keeps generation comfortably within the Vercel time budget. The previous value
-        // of 20000 paired with a "12 to 16 pages" instruction let Claude generate for
-        // 4-5 minutes straight and consistently tripped the Vercel 300s timeout. The
-        // value of 12000 before that truncated Sections 14-16. The value of 64000 before
-        // that caused even worse timeouts.
+        // Single-call generation with Anthropic prompt caching. The master prompt
+        // (about 15K input tokens) is sent as a cache_control: ephemeral content block,
+        // so each call reads it from cache instead of reprocessing it. max_tokens is
+        // 32000 (was 10000) so the full Blueprint (Sections 1 through 17) finishes
+        // instead of truncating around Section 11 the way the old 10000 ceiling forced.
+        // Caching speeds the input side only; output generation time is unchanged, so
+        // the 270s AbortController below is still the guardrail. If a full-length run
+        // trips that abort, the next lever is multi-call generation, not more tokens.
         model: 'claude-sonnet-4-6',
-        max_tokens: 10000,
-        system: systemPrompt,
+        max_tokens: 32000,
+        system: [
+          {
+            type: 'text',
+            text: systemPrompt,
+            cache_control: { type: 'ephemeral' },
+          },
+        ],
         messages: [
           { role: 'user', content: userMessage },
         ],
@@ -624,6 +631,16 @@ async function callClaude(systemPrompt, userMessage, contactId) {
   }
 
   const result = await response.json();
+
+  // Usage logging so cache hits are verifiable in Vercel logs. On a cold call
+  // cache_creation_input_tokens is populated; on a warm call cache_read_input_tokens is.
+  console.log("Blueprint generation usage:", {
+    cache_creation_input_tokens: result.usage?.cache_creation_input_tokens,
+    cache_read_input_tokens: result.usage?.cache_read_input_tokens,
+    input_tokens: result.usage?.input_tokens,
+    output_tokens: result.usage?.output_tokens
+  });
+
   return result.content[0].text;
 }
 

@@ -260,7 +260,7 @@ async function generateMultiCallBlueprintMarkdown(payload, scores, partnerData) 
   // input cost, blowing the Tier 1 30K/min rate limit on paired runs (429 on
   // chunk B). Once A returns, the cached master prompt block is warm, so B and C
   // read it from cache (~500 user payload tokens counted instead of ~15K each).
-  const chunkA = await callClaude(systemPrompt, userMessageA, cid, 'A');
+  const chunkA = await callClaude(systemPrompt, userMessageA, cid, 'A', 180000);
   const [chunkB, chunkC] = await Promise.all([
     callClaude(systemPrompt, userMessageB, cid, 'B'),
     callClaude(systemPrompt, userMessageC, cid, 'C'),
@@ -667,17 +667,18 @@ PARTNER DATA (Linked Pair). This Blueprint is for a Linked Pair. The reader is t
 // HELPER: CALL CLAUDE API
 // =======================================================================
 
-async function callClaude(systemPrompt, userMessage, contactId, label) {
+async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs = 90000) {
   const tag = label ? `chunk ${label}` : 'call';
   if (label) console.log(`[Blueprint] ${tag} start for contact ${contactId}`);
 
-  // 90-second client-side timeout PER CALL. Multi-call generation fires three of these
-  // in parallel, each producing roughly one third of the Blueprint, so a single chunk
-  // comfortably finishes inside 90s. The three run concurrently, so wall-clock stays near
-  // the slowest single chunk, well under the Vercel function ceiling. We abort at 90s to
-  // leave headroom for writing the failure status to GHL.
+  // Client-side timeout PER CALL, default 90s, overridable via timeoutMs. Multi-call
+  // generation runs three chunks; B and C are light and keep the 90s default, but A is
+  // the heaviest (front matter plus Sections 1 to 6) and gets 180s from its call site so
+  // it does not abort mid-generation. The Vercel function ceiling is 300s (vercel.json
+  // maxDuration), and A runs before B and C fire, so 180 + max(B, C) stays under it. We
+  // abort at timeoutMs to leave headroom for writing the failure status to GHL.
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 90000);
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
   let response;
   try {
@@ -715,19 +716,20 @@ async function callClaude(systemPrompt, userMessage, contactId, label) {
   } catch (err) {
     clearTimeout(timeoutId);
     if (err.name === 'AbortError') {
-      console.error(`[Blueprint] Claude API client timeout (90s) hit on ${tag}`);
+      const timeoutSecs = Math.round(timeoutMs / 1000);
+      console.error(`[Blueprint] Claude API client timeout (${timeoutSecs}s) hit on ${tag}`);
       if (contactId) {
         try {
           console.error("Blueprint generation failed:", err);
           await updateGhlContact(contactId, {
             sr_blueprint_status: "Failed: " + (err?.message || String(err)).slice(0, 800),
-            sr_blueprint_error: `Claude API client timeout (90s) on ${tag}`,
+            sr_blueprint_error: `Claude API client timeout (${timeoutSecs}s) on ${tag}`,
           });
         } catch (updateErr) {
           console.error('[Blueprint] Failed to write timeout status to GHL:', updateErr);
         }
       }
-      throw new Error(`Claude API client timeout (90s) on ${tag}`);
+      throw new Error(`Claude API client timeout (${timeoutSecs}s) on ${tag}`);
     }
     throw err;
   }

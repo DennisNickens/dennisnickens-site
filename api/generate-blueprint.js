@@ -251,18 +251,23 @@ async function generateMultiCallBlueprintMarkdown(payload, scores, partnerData) 
   const systemPrompt = await getMasterPrompt();
   const cid = payload.contact_id;
 
-  const calls = [
-    { label: 'A', message: buildCallAMessage(payload, scores, partnerData) },
-    { label: 'B', message: buildCallBMessage(payload, scores, partnerData) },
-    { label: 'C', message: buildCallCMessage(payload, scores, partnerData) },
-  ];
+  const userMessageA = buildCallAMessage(payload, scores, partnerData);
+  const userMessageB = buildCallBMessage(payload, scores, partnerData);
+  const userMessageC = buildCallCMessage(payload, scores, partnerData);
 
-  const parts = await Promise.all(
-    calls.map((c) => callClaude(systemPrompt, c.message, cid, c.label))
-  );
+  // Stage A first to warm the prompt cache before B and C fire in parallel.
+  // Without this, all three calls race and each pays the full master prompt
+  // input cost, blowing the Tier 1 30K/min rate limit on paired runs (429 on
+  // chunk B). Once A returns, the cached master prompt block is warm, so B and C
+  // read it from cache (~500 user payload tokens counted instead of ~15K each).
+  const chunkA = await callClaude(systemPrompt, userMessageA, cid, 'A');
+  const [chunkB, chunkC] = await Promise.all([
+    callClaude(systemPrompt, userMessageB, cid, 'B'),
+    callClaude(systemPrompt, userMessageC, cid, 'C'),
+  ]);
 
   // Stitch in order: Call A + Call B + Call C, one blank line between each chunk.
-  return parts.map((p) => p.trim()).join('\n\n');
+  return [chunkA, chunkB, chunkC].map((p) => p.trim()).join('\n\n');
 }
 
 // Produces one person's Blueprint end to end: generate (3 parallel calls), render

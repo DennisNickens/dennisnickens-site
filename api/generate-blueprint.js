@@ -251,23 +251,28 @@ async function generateMultiCallBlueprintMarkdown(payload, scores, partnerData) 
   const systemPrompt = await getMasterPrompt();
   const cid = payload.contact_id;
 
-  const userMessageA = buildCallAMessage(payload, scores, partnerData);
+  const userMessageA1 = buildCallA1Message(payload, scores, partnerData);
+  const userMessageA2 = buildCallA2Message(payload, scores, partnerData);
   const userMessageB = buildCallBMessage(payload, scores, partnerData);
   const userMessageC = buildCallCMessage(payload, scores, partnerData);
 
-  // Stage A first to warm the prompt cache before B and C fire in parallel.
-  // Without this, all three calls race and each pays the full master prompt
-  // input cost, blowing the Tier 1 30K/min rate limit on paired runs (429 on
-  // chunk B). Once A returns, the cached master prompt block is warm, so B and C
-  // read it from cache (~500 user payload tokens counted instead of ~15K each).
-  const chunkA = await callClaude(systemPrompt, userMessageA, cid, 'A', 180000);
-  const [chunkB, chunkC] = await Promise.all([
-    callClaude(systemPrompt, userMessageB, cid, 'B'),
-    callClaude(systemPrompt, userMessageC, cid, 'C'),
+  // Four-call architecture. Stage A1 first to warm the prompt cache before A2, B, and C
+  // fire in parallel. Without this, all calls race and each pays the full master prompt
+  // input cost, blowing the Tier 1 30K/min rate limit on paired runs. Once A1 returns,
+  // the cached master prompt block is warm, so A2, B, and C read it from cache (~500 user
+  // payload tokens counted instead of ~15K each). Splitting the old heavy Call A (front
+  // matter plus Sections 1 to 6) into A1 (front matter plus 1 to 3) and A2 (4 to 6) keeps
+  // each chunk's output small enough to finish inside its AbortController window.
+  // Worst-case wall-clock: A1 (150s) + max(A2, B, C) (120s) = 270s, under the 300s ceiling.
+  const chunkA1 = await callClaude(systemPrompt, userMessageA1, cid, 'A1', 150000);
+  const [chunkA2, chunkB, chunkC] = await Promise.all([
+    callClaude(systemPrompt, userMessageA2, cid, 'A2', 120000),
+    callClaude(systemPrompt, userMessageB, cid, 'B', 120000),
+    callClaude(systemPrompt, userMessageC, cid, 'C', 120000),
   ]);
 
-  // Stitch in order: Call A + Call B + Call C, one blank line between each chunk.
-  return [chunkA, chunkB, chunkC].map((p) => p.trim()).join('\n\n');
+  // Stitch in order: A1 + A2 + B + C, one blank line between each chunk.
+  return [chunkA1, chunkA2, chunkB, chunkC].map((p) => p.trim()).join('\n\n');
 }
 
 // Produces one person's Blueprint end to end: generate (3 parallel calls), render
@@ -540,7 +545,7 @@ ${(() => {
 // Shared header prepended to every call. The full voice and section specs live in the
 // cached system prompt (master-prompt.md); this is a per-call reminder that each pass is
 // one chunk of a Blueprint stitched together from three parallel passes.
-const MULTI_CALL_HEADER = `Generate part of a complete Alignment Blueprint for this customer, following the master prompt structure and voice exactly. The full Blueprint is produced in three parallel passes and stitched together in order. This pass covers ONLY the section range named below. Do not repeat or reference sections from the other passes.`;
+const MULTI_CALL_HEADER = `Generate part of a complete Alignment Blueprint for this customer, following the master prompt structure and voice exactly. The full Blueprint is produced in several parallel passes and stitched together in order. This pass covers ONLY the section range named below. Do not repeat or reference sections from the other passes.`;
 
 // Per-call voice reminder. The detailed rules are in the system prompt; this keeps the
 // voice tight on every chunk.
@@ -548,11 +553,14 @@ function multiCallVoiceReminder(payload) {
   return `Use Dennis Nickens's voice. Plain English. Direct, warm, consultative. No em dashes or en dashes (use commas, periods, parentheses, or rephrase). No AI-sounding phrases ("delve into," "navigate the landscape," "in today's fast-paced world," "tapestry," "embark on a journey"). Use the SR-native CORE vocabulary throughout. Be specific to ${payload.first_name}, reference their actual scores, and address them by first name. Sign off with "Dennis Nickens" not "Dennis,".`;
 }
 
-// Call A: front matter (Cover Page through Executive Summary) plus Sections 1 to 6.
-function buildCallAMessage(payload, scores, partnerData) {
+// Call A1: front matter (Cover Page through Executive Summary) plus Sections 1 to 3.
+// This is the first half of the old Call A. It is awaited solo to warm the prompt cache
+// before A2, B, and C fire in parallel. Front matter weight (about 1,100 words) plus
+// Sections 1 to 3 balances against A2, which carries the heavier Section 6.
+function buildCallA1Message(payload, scores, partnerData) {
   return `${MULTI_CALL_HEADER}
 
-GENERATE ONLY Sections 1 through 6 of the Blueprint as defined in the system prompt, preceded by the full front matter. This is the FIRST of three parallel passes. Do not generate any section after Section 6; those are produced separately and stitched in after yours.
+GENERATE ONLY Sections 1 through 3 of the Blueprint as defined in the system prompt, preceded by the full front matter. This is the FIRST parallel pass. Do not generate any section after Section 3; those are produced separately and stitched in after yours.
 
 Because this is the first chunk, include, in this exact order, BEFORE Section 1:
 1. The Cover Page (use the format in the system prompt; substitute the customer's actual first and last name, never the literal text [Client Name], [Their actual first name], or similar placeholders)
@@ -565,11 +573,29 @@ Then generate, in order:
 - Section 1: Your Behavior Profile
 - Section 2: Your Personality Code
 - Section 3: Your Action Style
+
+End your output cleanly after Section 3. Do NOT write Section 4 or anything later. Do NOT add a closing benediction, disclaimer, or any "continue to Section 4" transition.
+
+${multiCallVoiceReminder(payload)}
+
+Customer payload:
+${buildCustomerDataBlock(payload, scores, partnerData)}`;
+}
+
+// Call A2: Sections 4 to 6 (the second half of the old Call A). No front matter, no
+// cover page. Section 6 (Spiritual Wiring, with 6.1 Compass and 6.2 Gifts) is the
+// heaviest piece here, which is why front matter went to A1 to keep the two even.
+function buildCallA2Message(payload, scores, partnerData) {
+  return `${MULTI_CALL_HEADER}
+
+GENERATE ONLY Sections 4 through 6 of the Blueprint as defined in the system prompt. Do NOT regenerate the Cover Page, any front matter, the Executive Summary, or Sections 1 through 3. Do NOT write Section 7 or anything later. Do NOT include a closing benediction or disclaimer.
+
+Begin your output directly at the Section 4 heading. Generate, in order:
 - Section 4: Your Connection Currency
 - Section 5: Your Learning Channel
 - Section 6: Your Spiritual Wiring (open with the unified intro, then Subsection 6.1 Your Spiritual Compass with its scripture verses, then Subsection 6.2 Your Spiritual Gifts ONLY IF Pillar 7 / SPIRITUAL GIFTS data is present in the payload below; if it is absent, end Section 6 after Subsection 6.1, with no placeholder)
 
-End your output cleanly after Section 6. Do NOT write Section 7 or anything later. Do NOT add a closing benediction, disclaimer, or any "continue to Section 7" transition.
+End your output cleanly after Section 6. Do NOT write Section 7 or anything later. Do NOT add any "continue to Section 7" transition.
 
 ${multiCallVoiceReminder(payload)}
 

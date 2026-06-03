@@ -72,8 +72,9 @@ export default async function handler(req, res) {
       console.error('[Blueprint] Generation failed:', err);
       if (payload && payload.contact_id) {
         try {
+          console.error("Blueprint generation failed:", err);
           await updateGhlContact(payload.contact_id, {
-            sr_blueprint_status: 'Failed',
+            sr_blueprint_status: "Failed: " + (err?.message || String(err)).slice(0, 800),
             sr_blueprint_error: err.message || String(err),
           });
         } catch (updateErr) {
@@ -611,8 +612,9 @@ async function callClaude(systemPrompt, userMessage, contactId) {
       console.error('[Blueprint] Claude API client timeout (270s) hit');
       if (contactId) {
         try {
+          console.error("Blueprint generation failed:", err);
           await updateGhlContact(contactId, {
-            sr_blueprint_status: 'Failed',
+            sr_blueprint_status: "Failed: " + (err?.message || String(err)).slice(0, 800),
             sr_blueprint_error: 'Claude API client timeout (270s)',
           });
         } catch (updateErr) {

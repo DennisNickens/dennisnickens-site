@@ -67,14 +67,26 @@ export default async function handler(req, res) {
   // Tell Vercel to keep the function alive until generation completes.
   // waitUntil gives us up to 30s on Hobby tier and 5min on Pro tier.
   // Without this, Vercel kills the function as soon as the response is flushed.
+  const startedAt = Date.now();
   waitUntil(
     generateAndDeliverBlueprint(payload).catch(async (err) => {
       console.error('[Blueprint] Generation failed:', err);
       if (payload && payload.contact_id) {
         try {
           console.error("Blueprint generation failed:", err);
+          // Distinguish a function/platform abort (waitUntil budget, instance teardown)
+          // from our per-chunk AbortController timeouts (which throw the specific
+          // "Claude API client timeout (Xs) on chunk Y" message). A raw AbortError or an
+          // "aborted" message reaching here did NOT come from a chunk controller, so tag
+          // it as a platform abort with the elapsed time instead of leaking the generic
+          // "This operation was aborted" string.
+          const elapsedSecs = Math.round((Date.now() - startedAt) / 1000);
+          const isPlatformAbort = err?.name === 'AbortError' || /aborted/i.test(err?.message || '');
+          const statusValue = isPlatformAbort
+            ? `Failed: function/platform abort (not a chunk timeout) after ${elapsedSecs}s`
+            : "Failed: " + (err?.message || String(err)).slice(0, 800);
           await updateGhlContact(payload.contact_id, {
-            sr_blueprint_status: "Failed: " + (err?.message || String(err)).slice(0, 800),
+            sr_blueprint_status: statusValue,
             sr_blueprint_error: err.message || String(err),
           });
         } catch (updateErr) {
@@ -709,6 +721,7 @@ async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
   let response;
+  let result;
   try {
     response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -741,6 +754,18 @@ async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs
       }),
       signal: controller.signal,
     });
+
+    // Body read is INSIDE the try and BEFORE clearTimeout, so the per-chunk
+    // AbortController still governs it. If the body read is aborted, the catch below
+    // translates it to the specific "Claude API client timeout (Xs) on chunk Y" message
+    // instead of leaking a generic "This operation was aborted".
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(`Claude API error on ${tag}: ${response.status} ${errText}`);
+    }
+
+    result = await response.json();
+    clearTimeout(timeoutId);
   } catch (err) {
     clearTimeout(timeoutId);
     if (err.name === 'AbortError') {
@@ -761,14 +786,6 @@ async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs
     }
     throw err;
   }
-  clearTimeout(timeoutId);
-
-  if (!response.ok) {
-    const errText = await response.text();
-    throw new Error(`Claude API error on ${tag}: ${response.status} ${errText}`);
-  }
-
-  const result = await response.json();
 
   // Per-chunk usage logging so cache hits are verifiable in Vercel logs. On the call that
   // warms the cache, cache_creation_input_tokens is populated; on a warm call,

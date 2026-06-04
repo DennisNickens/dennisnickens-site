@@ -262,24 +262,11 @@ async function generateMultiCallBlueprintMarkdown(payload, scores, partnerData) 
   // the cached master prompt block is warm, so A2, B, and C read it from cache (~500 user
   // payload tokens counted instead of ~15K each). Splitting the old heavy Call A (front
   // matter plus Sections 1 to 6) into A1 (front matter plus 1 to 3) and A2 (4 to 6) keeps
-  // each chunk's output small enough to finish inside its AbortController window.
+  // each chunk's output small enough to finish inside its AbortController window. The
+  // trimmed master prompt (about 16K tokens) keeps the rate limit math satisfied without
+  // an inter-chunk wait, so A2, B, and C fire immediately after A1 warms the cache.
   // Worst-case wall-clock: A1 (150s) + max(A2, B, C) (120s) = 270s, under the 300s ceiling.
-  const a1StartedAt = Date.now();
   const chunkA1 = await callClaude(systemPrompt, userMessageA1, cid, 'A1', 150000);
-
-  // Wait until A1's input tokens have aged out of Anthropic's 60-second rolling rate
-  // limit window before firing the parallel chunks. Without this, paired runs hit 429
-  // because two contacts' A1 input cost (~30K combined) plus parallel chunk reads
-  // would exceed the 30K Tier 1 ceiling in the same rolling window. The 65s value
-  // (60s window + 5s safety buffer) makes the wait deterministic and predictable.
-  const ROLLING_WINDOW_MS = 65000;
-  const elapsedSinceA1Start = Date.now() - a1StartedAt;
-  const waitMs = Math.max(0, ROLLING_WINDOW_MS - elapsedSinceA1Start);
-  if (waitMs > 0) {
-    console.log(`[${cid}] Waiting ${waitMs}ms for A1 input tokens to age out of rolling window before parallel chunks fire`);
-    await new Promise((resolve) => setTimeout(resolve, waitMs));
-  }
-
   const [chunkA2, chunkB, chunkC] = await Promise.all([
     callClaude(systemPrompt, userMessageA2, cid, 'A2', 120000),
     callClaude(systemPrompt, userMessageB, cid, 'B', 120000),

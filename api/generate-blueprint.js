@@ -511,7 +511,7 @@ async function sendCouplesMapEmail(primaryPayload, secondaryPayload, mapUrl) {
 <body style="font-family: Inter, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 2rem; color: #07071a;">
   <h1 style="font-family: 'Playfair Display', Georgia, serif; color: #07071a; font-size: 28px;">${primaryName} and ${secondaryName}, your Couples Connection Map is ready.</h1>
 
-  <p>You both finished your individual SR Alignment Blueprints. This is the next piece: a Connection Map built from both of your results, showing where the two of you align, where you speak different languages, and how to bridge the gaps.</p>
+  <p>You both finished your individual Blueprints. This is the next piece: a Connection Map built from both of your results, showing where the two of you align, where you speak different languages, and how to bridge the gaps.</p>
 
   <p style="text-align: center; margin: 2rem 0;">
     <a href="${mapUrl}" style="display: inline-block; background: #07071a; color: #d4a957; padding: 14px 32px; text-decoration: none; font-weight: 600; border-radius: 4px;">View Your Couples Connection Map</a>
@@ -608,7 +608,7 @@ async function sendBlueprintEmail(payload, blueprintUrl) {
 <body style="font-family: Inter, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 2rem; color: #07071a;">
   <h1 style="font-family: 'Playfair Display', Georgia, serif; color: #07071a; font-size: 28px;">${firstName}, your Blueprint is ready.</h1>
 
-  <p>You just finished the SR Alignment Assessment. Your personalized Blueprint, all six pillars analyzed and synthesized into a complete map of how you are wired, is now ready to read.</p>
+  <p>You just finished The Blueprint Assessment. Your personalized Blueprint, all six pillars analyzed and synthesized into a complete map of how you are wired, is now ready to read.</p>
 
   <p style="text-align: center; margin: 2rem 0;">
     <a href="${blueprintUrl}" style="display: inline-block; background: #07071a; color: #d4a957; padding: 14px 32px; text-decoration: none; font-weight: 600; border-radius: 4px;">View Your Alignment Blueprint</a>

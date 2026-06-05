@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Send to Your Partner | SR Linked Pair</title>
+<title>Send to Your Partner | The Blueprint</title>
 <meta name="description" content="You finished your assessment. Now share your Pair Code with your partner so they can take theirs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -169,12 +169,12 @@ function showReady(code, primaryFirstName) {
   document.getElementById('linkText').textContent = partnerUrl;
 
   // SMS share
-  var smsBody = "Hey, I just took the Spiritual Romeo Assessment. Take yours using this link so we can see how we fit together: " + partnerUrl;
+  var smsBody = "Hey, I just took The Blueprint. Take yours using this link so we can see how we fit together: " + partnerUrl;
   document.getElementById('shareSms').href = 'sms:?body=' + encodeURIComponent(smsBody);
 
   // Email share
-  var emailSubject = "Take the Spiritual Romeo Assessment with me";
-  var emailBody = "Hey,\n\nI just took the Spiritual Romeo Assessment. Take yours using this link. Once we both finish, we each get our Blueprint with a Connection Map that shows how we fit together:\n\n" + partnerUrl + "\n\nYour pair code: " + code + "\n\nNo rush, take it whenever you are ready.\n";
+  var emailSubject = "Take The Blueprint Assessment with me";
+  var emailBody = "Hey,\n\nI just took The Blueprint. Take yours using this link. Once we both finish, we each get our Blueprint with a Connection Map that shows how we fit together:\n\n" + partnerUrl + "\n\nYour pair code: " + code + "\n\nNo rush, take it whenever you are ready.\n";
   document.getElementById('shareEmail').href = 'mailto:?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody);
 
   // Copy buttons

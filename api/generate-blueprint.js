@@ -374,52 +374,73 @@ async function generateAndDeliverCouplesMap(payload) {
   const secondaryId = payload.secondary_contact_id;
   console.log(`[CouplesMap] Starting for primary=${primaryId}, secondary=${secondaryId}`);
 
-  // Fetch both contacts in parallel. Each carries the customFields we score from.
-  const [primary, secondary] = await Promise.all([
-    fetchGhlContact(primaryId),
-    fetchGhlContact(secondaryId),
-  ]);
-  if (!primary) throw new Error(`Could not fetch primary contact ${primaryId} from GHL`);
-  if (!secondary) throw new Error(`Could not fetch secondary contact ${secondaryId} from GHL`);
+  try {
+    // Fetch both contacts in parallel. Each carries the customFields we score from.
+    const [primary, secondary] = await Promise.all([
+      fetchGhlContact(primaryId),
+      fetchGhlContact(secondaryId),
+    ]);
+    if (!primary) throw new Error(`Could not fetch primary contact ${primaryId} from GHL`);
+    if (!secondary) throw new Error(`Could not fetch secondary contact ${secondaryId} from GHL`);
 
-  const primaryPayload = payloadFromContact(primary);
-  const secondaryPayload = payloadFromContact(secondary);
-  const primaryScores = scoreAssessment(
-    buildRawAnswersFromCustomFields(Array.isArray(primary.customFields) ? primary.customFields : [])
-  );
-  const secondaryScores = scoreAssessment(
-    buildRawAnswersFromCustomFields(Array.isArray(secondary.customFields) ? secondary.customFields : [])
-  );
-  console.log(`[CouplesMap] Scored both contacts (${primaryPayload.first_name} + ${secondaryPayload.first_name}).`);
+    const primaryPayload = payloadFromContact(primary);
+    const secondaryPayload = payloadFromContact(secondary);
+    const primaryScores = scoreAssessment(
+      buildRawAnswersFromCustomFields(Array.isArray(primary.customFields) ? primary.customFields : [])
+    );
+    const secondaryScores = scoreAssessment(
+      buildRawAnswersFromCustomFields(Array.isArray(secondary.customFields) ? secondary.customFields : [])
+    );
+    console.log(`[CouplesMap] Scored both contacts (${primaryPayload.first_name} + ${secondaryPayload.first_name}).`);
 
-  // Single Claude call against the SAME cached master prompt (cache_control set in
-  // callClaude). Output is ~2,000-3,000 words, so max_tokens 6000 and a 120s timeout
-  // are plenty. This does NOT touch the solo per-chunk timeouts (A1 200s, A2/B/C 240s).
-  const systemPrompt = await getMasterPrompt();
-  const userMessage = buildCouplesMapMessage(primaryPayload, primaryScores, secondaryPayload, secondaryScores);
-  const mapMarkdown = await callClaude(systemPrompt, userMessage, primaryId, 'COUPLES', 120000, 6000);
-  console.log(`[CouplesMap] Generation produced ${mapMarkdown.length} characters.`);
+    // Single Claude call against the SAME cached master prompt (cache_control set in
+    // callClaude). Output is ~2,000-3,000 words, which Sonnet 4.6 takes roughly
+    // 150-200s to produce, so the Couples chunk gets a 240s timeout. The Couples flow
+    // has the full 800s Vercel ceiling to itself, so 240s leaves comfortable headroom.
+    // This does NOT touch the solo per-chunk timeouts (A1 200s, A2/B/C 240s).
+    //
+    // contactId is passed as null so callClaude's own abort/error handler NEVER writes
+    // a failure to sr_blueprint_status. That field holds the solo Blueprint result and
+    // must not be corrupted when a Couples Map fails. Couples failures are recorded on
+    // sr_couples_map_status in the catch below instead.
+    const systemPrompt = await getMasterPrompt();
+    const userMessage = buildCouplesMapMessage(primaryPayload, primaryScores, secondaryPayload, secondaryScores);
+    const mapMarkdown = await callClaude(systemPrompt, userMessage, null, 'COUPLES', 240000, 6000);
+    console.log(`[CouplesMap] Generation produced ${mapMarkdown.length} characters.`);
 
-  // Render with the existing branded renderer (same CSS, same signoff styling). The
-  // title/footer use a combined "Primary & Secondary" name.
-  const renderPayload = {
-    first_name: `${primaryPayload.first_name || 'Partner 1'} & ${secondaryPayload.first_name || 'Partner 2'}`,
-    last_name: '',
-  };
-  const mapHtml = markdownToBrandedHtml(mapMarkdown, renderPayload);
-  const mapUrl = await saveToBlob(`couples-${primaryId}-${secondaryId}`, mapHtml);
-  console.log(`[CouplesMap] Saved to ${mapUrl}`);
+    // Render with the existing branded renderer (same CSS, same signoff styling). The
+    // title/footer use a combined "Primary & Secondary" name.
+    const renderPayload = {
+      first_name: `${primaryPayload.first_name || 'Partner 1'} & ${secondaryPayload.first_name || 'Partner 2'}`,
+      last_name: '',
+    };
+    const mapHtml = markdownToBrandedHtml(mapMarkdown, renderPayload);
+    const mapUrl = await saveToBlob(`couples-${primaryId}-${secondaryId}`, mapHtml);
+    console.log(`[CouplesMap] Saved to ${mapUrl}`);
 
-  // Write the URL to BOTH contacts (new field sr_couples_map_url). If the field does
-  // not exist yet, writeCouplesMapUrl logs the URL instead of failing the run.
-  await Promise.all([
-    writeCouplesMapUrl(primaryId, mapUrl),
-    writeCouplesMapUrl(secondaryId, mapUrl),
-  ]);
+    // Write the URL to BOTH contacts (new field sr_couples_map_url). If the field does
+    // not exist yet, writeCouplesMapUrl logs the URL instead of failing the run.
+    await Promise.all([
+      writeCouplesMapUrl(primaryId, mapUrl),
+      writeCouplesMapUrl(secondaryId, mapUrl),
+    ]);
 
-  // Email BOTH contacts the same delivery email.
-  await sendCouplesMapEmail(primaryPayload, secondaryPayload, mapUrl);
-  console.log(`[CouplesMap] Delivery email sent for ${primaryId} and ${secondaryId}.`);
+    // Email BOTH contacts the same delivery email.
+    await sendCouplesMapEmail(primaryPayload, secondaryPayload, mapUrl);
+    console.log(`[CouplesMap] Delivery email sent for ${primaryId} and ${secondaryId}.`);
+  } catch (err) {
+    // Couples Map failed. Record the failure on sr_couples_map_status for BOTH
+    // contacts, never on sr_blueprint_status (which holds each person's solo Blueprint
+    // result). If sr_couples_map_status does not exist in GHL yet, writeCouplesMapStatus
+    // logs to console and moves on. Either way, both solo Blueprints stay untouched.
+    console.error(`[CouplesMap] Generation failed for primary=${primaryId}, secondary=${secondaryId}:`, err);
+    const statusValue = `Failed: ${(err && err.message) || String(err)}`.slice(0, 800);
+    await Promise.all([
+      writeCouplesMapStatus(primaryId, statusValue),
+      writeCouplesMapStatus(secondaryId, statusValue),
+    ]);
+    throw err;
+  }
 }
 
 // Builds the single user message for the Couples Map. Provides both contacts' full
@@ -451,6 +472,23 @@ async function writeCouplesMapUrl(contactId, url) {
     console.log(
       `[CouplesMap] Could not write sr_couples_map_url to contact ${contactId} ` +
       `(field may not exist yet). Couples Map URL: ${url}. Error: ${err.message || err}`
+    );
+  }
+}
+
+// Writes a Couples Map status (e.g. a failure reason) to a contact's
+// sr_couples_map_status custom field. This is deliberately SEPARATE from
+// sr_blueprint_status so a Couples Map failure can never overwrite a successfully
+// delivered solo Blueprint's status. If sr_couples_map_status does not exist in GHL
+// yet, the update fails and we log to console only (no other field is touched).
+async function writeCouplesMapStatus(contactId, statusValue) {
+  try {
+    await updateGhlContact(contactId, { sr_couples_map_status: statusValue });
+    console.log(`[CouplesMap] Wrote sr_couples_map_status to contact ${contactId}: ${statusValue}`);
+  } catch (err) {
+    console.log(
+      `[CouplesMap] Could not write sr_couples_map_status to contact ${contactId} ` +
+      `(field may not exist yet). Status was: ${statusValue}. Error: ${err.message || err}`
     );
   }
 }

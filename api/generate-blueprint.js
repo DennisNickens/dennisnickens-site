@@ -164,7 +164,69 @@ async function generateAndDeliverBlueprint(payload) {
   // partnerData is passed as null so a solo Blueprint NEVER builds a partner data
   // block and NEVER generates the Section 17 Connection Map. The master prompt already
   // skips Section 17 when partner_data is absent.
-  return produceAndDeliverBlueprint(payload, meScores, null);
+  await produceAndDeliverBlueprint(payload, meScores, null);
+
+  // AUTO-TRIGGER: Couples Connection Map. The solo Blueprint above has now delivered
+  // (generated, saved, GHL updated, email sent). If this contact is part of a Linked
+  // Pair AND their partner's solo Blueprint is already "Generated", then this contact
+  // is the second of the two to finish, so fire the Couples Map automatically. This
+  // removes the old manual text-Dennis trigger step.
+  //
+  // This entire block is best-effort and fire-and-forget: the solo Blueprint already
+  // shipped, so any failure here (network, GHL down, malformed partner data, a missing
+  // custom field) is logged and swallowed. It must NEVER roll back or fail the solo
+  // delivery that already succeeded.
+  try {
+    const partnerContactId = readContactField(me, 'sr_pair_partner_contact_id');
+    if (!partnerContactId) {
+      console.log('[AutoTrigger] Skipped: no sr_pair_partner_contact_id (solo contact, not paired).');
+      return;
+    }
+    console.log(`[AutoTrigger] Partner ID: ${partnerContactId}`);
+
+    const partner = await fetchGhlContact(partnerContactId);
+    if (!partner) {
+      console.log(`[AutoTrigger] Skipped: could not fetch partner contact ${partnerContactId} from GHL.`);
+      return;
+    }
+
+    // Idempotency (light layer): if the partner already has a Couples Map URL, an
+    // earlier run already fired it, so skip to avoid duplicate Maps when both contacts
+    // finish at nearly the same time. readContactField returns '' when
+    // sr_couples_map_url does not exist in GHL yet, so a missing field is treated as
+    // empty and we proceed (never crash on a not-yet-created field).
+    const existingMapUrl = readContactField(partner, 'sr_couples_map_url') || '';
+    if (existingMapUrl.startsWith('http')) {
+      console.log(`[AutoTrigger] Skipped: partner already has sr_couples_map_url (${existingMapUrl}).`);
+      return;
+    }
+
+    const partnerStatus = (readContactField(partner, 'sr_blueprint_status') || '').trim();
+    console.log(`[AutoTrigger] Partner status: ${partnerStatus}`);
+
+    if (partnerStatus !== 'Generated') {
+      console.log(`[AutoTrigger] Skipped: partner status is "${partnerStatus}", not "Generated". Their completion will fire the Couples Map.`);
+      return;
+    }
+
+    console.log('[AutoTrigger] Firing Couples Map');
+    const resp = await fetch('https://dennisnickens.com/api/generate-blueprint', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.SR_WEBHOOK_SECRET}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        mode: 'couples',
+        primary_contact_id: payload.contact_id,  // the contact that just finished
+        secondary_contact_id: partnerContactId,
+      }),
+    });
+    console.log(`[AutoTrigger] Couples Map request returned HTTP ${resp.status}.`);
+  } catch (err) {
+    // Solo Blueprint already delivered. Auto-trigger is bonus, so never let this throw.
+    console.error('[AutoTrigger] Error (solo Blueprint already delivered, ignoring):', err);
+  }
 }
 
 // Returns true when the payload carries pre-built rawAnswers (the test-script path).

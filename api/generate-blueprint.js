@@ -64,6 +64,27 @@ export default async function handler(req, res) {
     if (!payload.last_name && payload.lastName) payload.last_name = payload.lastName;
   }
 
+  // COUPLES CONNECTION MAP path (mode=couples). Standalone relational deliverable
+  // built from two already-scored paired contacts. Fully independent of the solo
+  // Blueprint flow below: it never gates, waits on, or alters per-contact solo
+  // generation. Requires both contact IDs in the body.
+  if (payload && payload.mode === 'couples') {
+    if (!payload.primary_contact_id || !payload.secondary_contact_id) {
+      return res.status(400).json({
+        error: 'mode=couples requires both primary_contact_id and secondary_contact_id',
+      });
+    }
+    waitUntil(
+      generateAndDeliverCouplesMap(payload).catch((err) => {
+        console.error('[CouplesMap] Generation failed:', err);
+      })
+    );
+    return res.status(202).json({
+      status: 'processing',
+      message: 'Couples Connection Map generation started, will be delivered via email shortly',
+    });
+  }
+
   // Tell Vercel to keep the function alive until generation completes.
   // waitUntil gives us up to 30s on Hobby tier and 5min on Pro tier.
   // Without this, Vercel kills the function as soon as the response is flushed.
@@ -275,6 +296,159 @@ async function produceAndDeliverBlueprint(payload, scores, partnerData) {
   // Send delivery email DIRECTLY via Resend. Bypasses GHL workflow enrollment.
   await sendBlueprintEmail(payload, blueprintUrl);
   console.log(`[Blueprint] Delivery email sent to ${payload.email} for ${payload.contact_id}.`);
+}
+
+// =======================================================================
+// COUPLES CONNECTION MAP (standalone deliverable, mode=couples)
+// =======================================================================
+// Separate from the solo Blueprint flow. Reads two already-scored paired contacts
+// and produces a focused Connection Map document (Section 17 structure only, no
+// Sections 1-16, no individual Blueprint). A single Claude call (much smaller than a
+// full Blueprint) renders through the same branded HTML + signoff styling, saves to
+// Blob, writes the URL to both contacts, and emails both partners the same email.
+
+async function generateAndDeliverCouplesMap(payload) {
+  const primaryId = payload.primary_contact_id;
+  const secondaryId = payload.secondary_contact_id;
+  console.log(`[CouplesMap] Starting for primary=${primaryId}, secondary=${secondaryId}`);
+
+  // Fetch both contacts in parallel. Each carries the customFields we score from.
+  const [primary, secondary] = await Promise.all([
+    fetchGhlContact(primaryId),
+    fetchGhlContact(secondaryId),
+  ]);
+  if (!primary) throw new Error(`Could not fetch primary contact ${primaryId} from GHL`);
+  if (!secondary) throw new Error(`Could not fetch secondary contact ${secondaryId} from GHL`);
+
+  const primaryPayload = payloadFromContact(primary);
+  const secondaryPayload = payloadFromContact(secondary);
+  const primaryScores = scoreAssessment(
+    buildRawAnswersFromCustomFields(Array.isArray(primary.customFields) ? primary.customFields : [])
+  );
+  const secondaryScores = scoreAssessment(
+    buildRawAnswersFromCustomFields(Array.isArray(secondary.customFields) ? secondary.customFields : [])
+  );
+  console.log(`[CouplesMap] Scored both contacts (${primaryPayload.first_name} + ${secondaryPayload.first_name}).`);
+
+  // Single Claude call against the SAME cached master prompt (cache_control set in
+  // callClaude). Output is ~2,000-3,000 words, so max_tokens 6000 and a 120s timeout
+  // are plenty. This does NOT touch the solo per-chunk timeouts (A1 200s, A2/B/C 240s).
+  const systemPrompt = await getMasterPrompt();
+  const userMessage = buildCouplesMapMessage(primaryPayload, primaryScores, secondaryPayload, secondaryScores);
+  const mapMarkdown = await callClaude(systemPrompt, userMessage, primaryId, 'COUPLES', 120000, 6000);
+  console.log(`[CouplesMap] Generation produced ${mapMarkdown.length} characters.`);
+
+  // Render with the existing branded renderer (same CSS, same signoff styling). The
+  // title/footer use a combined "Primary & Secondary" name.
+  const renderPayload = {
+    first_name: `${primaryPayload.first_name || 'Partner 1'} & ${secondaryPayload.first_name || 'Partner 2'}`,
+    last_name: '',
+  };
+  const mapHtml = markdownToBrandedHtml(mapMarkdown, renderPayload);
+  const mapUrl = await saveToBlob(`couples-${primaryId}-${secondaryId}`, mapHtml);
+  console.log(`[CouplesMap] Saved to ${mapUrl}`);
+
+  // Write the URL to BOTH contacts (new field sr_couples_map_url). If the field does
+  // not exist yet, writeCouplesMapUrl logs the URL instead of failing the run.
+  await Promise.all([
+    writeCouplesMapUrl(primaryId, mapUrl),
+    writeCouplesMapUrl(secondaryId, mapUrl),
+  ]);
+
+  // Email BOTH contacts the same delivery email.
+  await sendCouplesMapEmail(primaryPayload, secondaryPayload, mapUrl);
+  console.log(`[CouplesMap] Delivery email sent for ${primaryId} and ${secondaryId}.`);
+}
+
+// Builds the single user message for the Couples Map. Provides both contacts' full
+// pillar scores and qualifier answers (via buildCustomerDataBlock with null
+// partnerData), then instructs Claude to produce ONLY the standalone Connection Map.
+function buildCouplesMapMessage(primaryPayload, primaryScores, secondaryPayload, secondaryScores) {
+  const primaryName = primaryPayload.first_name || 'Partner 1';
+  const secondaryName = secondaryPayload.first_name || 'Partner 2';
+
+  return `Generate ONLY a standalone Couples Connection Map document for ${primaryName} and ${secondaryName}. Use the Connection Map subsection structure from Section 17 (Your Pair at a Glance, What Each of You Brings, Where You Align, Where You Speak Different Languages, Your Connection Currency Map, How to Bridge the Gaps, Your 30-60-90 Day Plan). Begin with a cover page that reads "Your Couples Connection Map for ${primaryName} and ${secondaryName}". Do not generate Sections 1-16. Do not include any preamble that references having read the individual Blueprints. The document stands on its own.
+
+Use Dennis Nickens's voice: plain English, direct, warm, consultative. No em dashes or en dashes (use commas, periods, parentheses, or rephrase). No AI-sounding phrases. Use the SR-native CORE vocabulary. Address ${primaryName} and ${secondaryName} by name, and write the Map comparing the two of them. Sign off as "Dennis Nickens".
+
+=== PRIMARY PARTNER: ${primaryName} ===
+${buildCustomerDataBlock(primaryPayload, primaryScores, null)}
+
+=== SECONDARY PARTNER: ${secondaryName} ===
+${buildCustomerDataBlock(secondaryPayload, secondaryScores, null)}`;
+}
+
+// Writes the Couples Map URL to a contact's sr_couples_map_url custom field. If the
+// field does not exist yet (or any GHL error occurs), logs the URL to console so the
+// run still succeeds and Dennis can wire the field / grab the URL manually.
+async function writeCouplesMapUrl(contactId, url) {
+  try {
+    await updateGhlContact(contactId, { sr_couples_map_url: url });
+    console.log(`[CouplesMap] Wrote sr_couples_map_url to contact ${contactId}.`);
+  } catch (err) {
+    console.log(
+      `[CouplesMap] Could not write sr_couples_map_url to contact ${contactId} ` +
+      `(field may not exist yet). Couples Map URL: ${url}. Error: ${err.message || err}`
+    );
+  }
+}
+
+// Emails the Couples Map to BOTH contacts in a single send (same email to both).
+async function sendCouplesMapEmail(primaryPayload, secondaryPayload, mapUrl) {
+  const recipients = [primaryPayload.email, secondaryPayload.email].filter(Boolean);
+  if (recipients.length === 0) {
+    console.log('[CouplesMap] No recipient emails on either contact; skipping email send.');
+    return null;
+  }
+  const primaryName = primaryPayload.first_name || 'there';
+  const secondaryName = secondaryPayload.first_name || 'there';
+  const subject = 'Your Couples Connection Map is ready';
+
+  const htmlBody = `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="font-family: Inter, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 2rem; color: #07071a;">
+  <h1 style="font-family: 'Playfair Display', Georgia, serif; color: #07071a; font-size: 28px;">${primaryName} and ${secondaryName}, your Couples Connection Map is ready.</h1>
+
+  <p>You both finished your individual SR Alignment Blueprints. This is the next piece: a Connection Map built from both of your results, showing where the two of you align, where you speak different languages, and how to bridge the gaps.</p>
+
+  <p style="text-align: center; margin: 2rem 0;">
+    <a href="${mapUrl}" style="display: inline-block; background: #07071a; color: #d4a957; padding: 14px 32px; text-decoration: none; font-weight: 600; border-radius: 4px;">View Your Couples Connection Map</a>
+  </p>
+
+  <p>Read it together. The most useful conversations come from the "Where You Speak Different Languages" and "How to Bridge the Gaps" sections, and the 30-60-90 Day Plan gives you concrete steps to start on.</p>
+
+  <p>Reply to this email if you have questions. I read everything.</p>
+
+  <p style="margin-top: 2rem;">Dennis Nickens<br>Behavioral and Alignment Consultant<br>dennisnickens.com</p>
+</body>
+</html>`;
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: 'Dennis Nickens <dennis@dennisnickens.com>',
+      to: recipients,
+      bcc: ['admin@dennisnickens.com'],
+      subject: subject,
+      html: htmlBody,
+      reply_to: 'admin@dennisnickens.com',
+    }),
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`Resend couples email send failed: ${response.status} ${errText}`);
+  }
+
+  const result = await response.json();
+  console.log(`[CouplesMap] Email sent via Resend to ${recipients.join(', ')}, message ID: ${result.id || 'n/a'}`);
+  return result;
 }
 
 // Read a single custom field from a contact object. Works with either name-keyed
@@ -653,7 +827,7 @@ PARTNER DATA (Linked Pair). This Blueprint is for a Linked Pair. The reader is t
 // HELPER: CALL CLAUDE API
 // =======================================================================
 
-async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs = 90000) {
+async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs = 90000, maxTokens = 14000) {
   const tag = label ? `chunk ${label}` : 'call';
   if (label) console.log(`[Blueprint] ${tag} start for contact ${contactId}`);
 
@@ -687,7 +861,7 @@ async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs
         // max_tokens 14000 per call gives one chunk room to reach full depth without the
         // single-call output length that tripped the old 270s timeout.
         model: 'claude-sonnet-4-6',
-        max_tokens: 14000,
+        max_tokens: maxTokens,
         system: [
           {
             type: 'text',

@@ -277,12 +277,12 @@ async function generateMultiCallBlueprintMarkdown(payload, scores, partnerData) 
   // each chunk's output small enough to finish inside its AbortController window. The
   // trimmed master prompt (about 16K tokens) keeps the rate limit math satisfied without
   // an inter-chunk wait, so A2, B, and C fire immediately after A1 warms the cache.
-  // Worst-case wall-clock: A1 (150s) + max(A2, B, C) (120s) = 270s, under the 300s ceiling.
-  const chunkA1 = await callClaude(systemPrompt, userMessageA1, cid, 'A1', 150000);
+  // Worst-case wall-clock: A1 (200s) + max(A2, B, C) (240s) = 440s, under the 800s Pro ceiling.
+  const chunkA1 = await callClaude(systemPrompt, userMessageA1, cid, 'A1', 200000);
   const [chunkA2, chunkB, chunkC] = await Promise.all([
-    callClaude(systemPrompt, userMessageA2, cid, 'A2', 120000),
-    callClaude(systemPrompt, userMessageB, cid, 'B', 120000),
-    callClaude(systemPrompt, userMessageC, cid, 'C', 120000),
+    callClaude(systemPrompt, userMessageA2, cid, 'A2', 240000),
+    callClaude(systemPrompt, userMessageB, cid, 'B', 240000),
+    callClaude(systemPrompt, userMessageC, cid, 'C', 240000),
   ]);
 
   // Stitch in order: A1 + A2 + B + C, one blank line between each chunk.

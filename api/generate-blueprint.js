@@ -129,75 +129,21 @@ async function generateAndDeliverBlueprint(payload) {
   const meScores = scoreAssessment(buildRawAnswersFromCustomFields(meCustomFields));
   console.log(`[Blueprint] Scoring complete for ${payload.contact_id} (reconstructed from ${meCustomFields.length} customFields)`);
 
-  const myRole = (readContactField(me, 'sr_pair_role') || '').toLowerCase().trim();
-
-  // SOLO customer (sr_pair_role empty or null): unchanged behavior. Generate the
-  // Blueprint and email it immediately. No wait-for-partner, no Connection Map.
-  if (myRole !== 'primary' && myRole !== 'secondary') {
-    return produceAndDeliverBlueprint(payload, meScores, null);
-  }
-
-  // LINKED PAIR (Change 1: wait-for-both delivery). Neither person receives
-  // anything until BOTH have completed. Mark this person as waiting, then check
-  // the partner. If the partner is not done, exit cleanly. The partner's own
-  // completion call will trigger paired generation later.
-  console.log(`[Blueprint] Linked Pair "${myRole}" for ${payload.contact_id}. Applying wait-for-both delivery.`);
-  await updateGhlContact(payload.contact_id, { sr_blueprint_status: 'waiting for partner' });
-
-  const partnerId = readContactField(me, 'sr_pair_partner_contact_id');
-  if (!partnerId) {
-    // Edge case: pair role is set but no partner is linked yet. Ship a Solo
-    // Blueprint rather than leave this person stranded with nothing.
-    console.warn(`[Blueprint] ${myRole} ${payload.contact_id} has no sr_pair_partner_contact_id. Falling back to Solo Blueprint.`);
-    return produceAndDeliverBlueprint(payload, meScores, null);
-  }
-
-  const partner = await fetchGhlContact(partnerId);
-  if (!partner) {
-    // Edge case: partner lookup failed (network error, missing contact). Log it
-    // and ship this person's Solo Blueprint instead of hanging or erroring.
-    console.error(`[Blueprint] Partner ${partnerId} lookup failed. Falling back to Solo Blueprint for ${payload.contact_id}.`);
-    return produceAndDeliverBlueprint(payload, meScores, null);
-  }
-
-  const partnerStatus = (readContactField(partner, 'sr_blueprint_status') || '').toLowerCase().trim();
-  // The partner is ready to pair when they are also waiting, OR when they already
-  // received an old-architecture Blueprint ("Generated"). In the Generated case we
-  // regenerate them with the Connection Map and send a fresh email that supersedes
-  // the first. (Edge case 1: the May 30 test Primary, Pair Code SR-468K-QN.)
-  const partnerReady = partnerStatus === 'waiting for partner' || partnerStatus === 'generated';
-  if (!partnerReady) {
-    console.log(`[Blueprint] Partner ${partnerId} status is "${partnerStatus}", not ready. Exiting cleanly. Their completion will trigger paired generation.`);
-    return;
-  }
-
-  // Both partners are complete (Change 2: paired generation with Connection Map).
-  const partnerCustomFields = Array.isArray(partner.customFields) ? partner.customFields : [];
-  const partnerScores = scoreAssessment(buildRawAnswersFromCustomFields(partnerCustomFields));
-  const partnerPayload = payloadFromContact(partner);
-
-  // Order by role so the prompt always sees a consistent primary/secondary shape.
-  let primaryPayload, primaryScores, secondaryPayload, secondaryScores;
-  if (myRole === 'primary') {
-    primaryPayload = payload;          primaryScores = meScores;
-    secondaryPayload = partnerPayload; secondaryScores = partnerScores;
-  } else {
-    primaryPayload = partnerPayload;   primaryScores = partnerScores;
-    secondaryPayload = payload;        secondaryScores = meScores;
-  }
-
-  console.log(`[Blueprint] Both partners complete. Generating paired Blueprints with Connection Map (primary=${primaryPayload.contact_id}, secondary=${secondaryPayload.contact_id}).`);
-
-  // Two Claude calls run in parallel. Each person is "self" in their own call and
-  // the other is "partner," so the Connection Map is written from each person's
-  // perspective. Promise.all keeps both pipelines in step so both emails land
-  // at roughly the same time.
-  await Promise.all([
-    produceAndDeliverBlueprint(primaryPayload, primaryScores, buildPartnerData(secondaryPayload, secondaryScores)),
-    produceAndDeliverBlueprint(secondaryPayload, secondaryScores, buildPartnerData(primaryPayload, primaryScores)),
-  ]);
-
-  console.log(`[Blueprint] Paired generation complete. Both Blueprints delivered.`);
+  // Pair status no longer gates generation timing. Every contact's solo Blueprint
+  // fires immediately on assessment completion, whether or not they belong to a
+  // Linked Pair. There is no longer a hold-until-both-complete branch and no
+  // simultaneous paired generation here.
+  //
+  // The pairing fields on the contact record (sr_pair_role,
+  // sr_pair_partner_contact_id) are intentionally NOT read here anymore. They stay on
+  // the record so the separate Couples Connection Map generator (a follow-up
+  // deliverable) can read them later to find the partner contact and build the Map as
+  // its own artifact.
+  //
+  // partnerData is passed as null so a solo Blueprint NEVER builds a partner data
+  // block and NEVER generates the Section 17 Connection Map. The master prompt already
+  // skips Section 17 when partner_data is absent.
+  return produceAndDeliverBlueprint(payload, meScores, null);
 }
 
 // Returns true when the payload carries pre-built rawAnswers (the test-script path).

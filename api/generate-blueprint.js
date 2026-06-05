@@ -717,6 +717,7 @@ async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs
   // it does not abort mid-generation. The Vercel function ceiling is 300s (vercel.json
   // maxDuration), and A runs before B and C fire, so 180 + max(B, C) stays under it. We
   // abort at timeoutMs to leave headroom for writing the failure status to GHL.
+  const callStartedAt = Date.now();
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
@@ -768,21 +769,31 @@ async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs
     clearTimeout(timeoutId);
   } catch (err) {
     clearTimeout(timeoutId);
-    if (err.name === 'AbortError') {
+    if (err.name === 'AbortError' || /aborted/i.test(err?.message || '')) {
       const timeoutSecs = Math.round(timeoutMs / 1000);
-      console.error(`[Blueprint] Claude API client timeout (${timeoutSecs}s) hit on ${tag}`);
+      const elapsedSecs = Math.round((Date.now() - callStartedAt) / 1000);
+      // An aborted fetch here is EITHER our per-chunk timer firing (elapsed reaches
+      // timeoutMs) OR the platform aborting the request before our timer (elapsed is
+      // shorter, e.g. the function/waitUntil budget killed the instance). Discriminate by
+      // elapsed so the status field names the real cause instead of leaking the generic
+      // "This operation was aborted" (raw AbortError message). 2s tolerance for timer slop.
+      const chunkTimedOut = (Date.now() - callStartedAt) >= (timeoutMs - 2000);
+      const reason = chunkTimedOut
+        ? `Claude API client timeout (${timeoutSecs}s) on ${tag}`
+        : `function/platform abort (not a chunk timeout) after ${elapsedSecs}s`;
+      console.error(`[Blueprint] ${reason}`);
       if (contactId) {
         try {
           console.error("Blueprint generation failed:", err);
           await updateGhlContact(contactId, {
-            sr_blueprint_status: "Failed: " + (err?.message || String(err)).slice(0, 800),
-            sr_blueprint_error: `Claude API client timeout (${timeoutSecs}s) on ${tag}`,
+            sr_blueprint_status: `Failed: ${reason}`,
+            sr_blueprint_error: reason,
           });
         } catch (updateErr) {
           console.error('[Blueprint] Failed to write timeout status to GHL:', updateErr);
         }
       }
-      throw new Error(`Claude API client timeout (${timeoutSecs}s) on ${tag}`);
+      throw new Error(reason);
     }
     throw err;
   }

@@ -817,10 +817,37 @@ async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs
 // Uses the `marked` npm library to convert markdown.
 // Wraps it in an HTML page with SR brand styling (navy/gold cosmic).
 
+// The master prompt closes with a blockquote: the "I help people understand the
+// person in the mirror..." line, then the signoff name and title on the next two
+// lines. marked renders those two name/title lines as a single paragraph (a single
+// newline collapses to a space, so "Dennis Nickens ... Behavioral and Alignment
+// Consultant" runs together on one line). This rebuilds that closing blockquote as a
+// centered signoff block: the name in Dancing Script (gold), the title below it in
+// Inter (smaller, muted), each on its own line.
+function styleClosingSignoff(html) {
+  // Anchor on the blockquote that contains the title line. The quote text above it is
+  // model-generated and varies, so we capture whatever the first paragraph holds and
+  // keep it above the signoff rather than trying to match its exact wording.
+  return html.replace(
+    /<blockquote>[\s\S]*?Behavioral and Alignment Consultant[\s\S]*?<\/blockquote>/i,
+    (block) => {
+      const quoteMatch = block.match(/<p>([\s\S]*?)<\/p>/i);
+      const quote = quoteMatch
+        ? quoteMatch[1].replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim()
+        : '';
+      const quoteHtml = quote ? `<p class="blueprint-signoff-quote">${quote}</p>\n  ` : '';
+      return `<div class="blueprint-signoff">
+  ${quoteHtml}<span class="blueprint-signoff-name">Dennis Nickens <em>(aka Spiritual Romeo)</em></span>
+  <span class="blueprint-signoff-title">Behavioral and Alignment Consultant</span>
+</div>`;
+    }
+  );
+}
+
 function markdownToBrandedHtml(markdown, payload) {
   // Lazy require to avoid import in handler boot
   const { marked } = require('marked');
-  const innerHtml = marked.parse(markdown);
+  const innerHtml = styleClosingSignoff(marked.parse(markdown));
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -830,7 +857,7 @@ function markdownToBrandedHtml(markdown, payload) {
   <title>${payload.first_name || 'Your'} Alignment Blueprint | Spiritual Romeo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -954,6 +981,43 @@ function markdownToBrandedHtml(markdown, payload) {
       font-style: italic;
       color: #e5c170;
       margin: 1.5rem 0;
+    }
+    /* CLOSING SIGNOFF */
+    .blueprint-signoff {
+      text-align: center;
+      margin: 3rem 0 1.5rem 0;
+      padding: 2rem 1rem;
+    }
+    .blueprint-signoff-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: #e5c170;
+      max-width: 560px;
+      margin: 0 auto 1.75rem auto;
+      line-height: 1.6;
+    }
+    .blueprint-signoff-name {
+      font-family: 'Dancing Script', cursive;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #c9a84c;
+      line-height: 1.2;
+      margin: 0 0 0.5rem 0;
+      display: block;
+    }
+    .blueprint-signoff-name em {
+      font-style: normal;
+      color: #c9a84c;
+    }
+    .blueprint-signoff-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 1px;
+      text-transform: none;
+      display: block;
     }
     table {
       border-collapse: collapse;

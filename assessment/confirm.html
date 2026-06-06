@@ -23,6 +23,9 @@ main{position:relative;z-index:5;min-height:calc(100vh - 90px);display:flex;alig
 .progress-label{font-family:var(--fl);font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;text-align:center;}
 .progress-track{height:6px;background:rgba(212,169,87,0.15);border-radius:50px;overflow:hidden;}
 .progress-fill{height:100%;background:linear-gradient(135deg,var(--gold),var(--gold-s));border-radius:50px;}
+.bp-brand{text-align:center;margin:0 0 2.25rem;}
+.bp-brand-name{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(22px,3.4vw,30px);letter-spacing:.24em;padding-left:.24em;text-transform:uppercase;color:#FFD700;line-height:1.15;}
+.bp-brand-by{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:.55rem;}
 .eyebrow{font-family:var(--fl);font-size:.75rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;text-align:center;}
 .eyebrow::before,.eyebrow::after{content:"\2726";margin:0 .6rem;}
 h1{font-family:var(--ff);font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:400;line-height:1.15;margin-bottom:.75rem;text-align:center;}
@@ -62,6 +65,10 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--gold),#f0d490);-
     <div class="progress-wrap">
       <div class="progress-label">Step 5 of 6</div>
       <div class="progress-track"><div class="progress-fill" style="width:83.33%"></div></div>
+    </div>
+    <div class="bp-brand">
+      <div class="bp-brand-name">The Blueprint</div>
+      <div class="bp-brand-by">By Dennis Nickens, AKA Spiritual Romeo</div>
     </div>
     <div class="eyebrow">Review</div>
     <h1>Does this <em>look right?</em></h1>

@@ -1240,8 +1240,8 @@ function markdownToBrandedHtml(markdown, payload) {
     }
     .pillar-icon-wrap img {
       display: inline-block;
-      width: 80px;
-      height: 80px;
+      width: 120px;
+      height: 120px;
       object-fit: contain;
       opacity: 0.95;
     }

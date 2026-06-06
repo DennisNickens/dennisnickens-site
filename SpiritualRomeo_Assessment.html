@@ -8,7 +8,7 @@
   <title>The Blueprint | Dennis Nickens, Spiritual Romeo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --color-bg-deep: #07071a;
@@ -56,6 +56,11 @@
     .hero { position: relative; padding: clamp(3rem, 7vw, 5rem) 0 clamp(2rem, 4vw, 3rem); text-align: center; }
     .hero-eyebrow { font-family: var(--font-label); font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 1.5rem; }
     .hero-eyebrow::before, .hero-eyebrow::after { content: "✦"; margin: 0 0.7rem; color: var(--color-gold); }
+    .bp-brand{text-align:center;margin:0 0 2.25rem;}
+    .bp-brand-logo{display:block;max-width:180px;width:30vw;min-width:120px;height:auto;margin:0 auto 1.5rem;}
+    .bp-brand-name{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(22px,3.4vw,30px);letter-spacing:.24em;padding-left:.24em;text-transform:uppercase;color:#FFD700;line-height:1.15;}
+    .bp-brand-by{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:.55rem;}
+    .bp-brand-byline-name{font-family:'Dancing Script',cursive;font-weight:700;font-size:1.4em;color:#FFD700;letter-spacing:normal;text-transform:none;margin:0 0.1em;}
     .hero-title { font-family: var(--font-display); font-size: clamp(2.6rem, 7vw, 5rem); font-weight: 400; line-height: 1.05; max-width: 980px; margin: 0 auto 1rem; letter-spacing: -0.02em; }
     .hero-title em { font-style: italic; background: linear-gradient(135deg, var(--color-gold), #f0d490); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
     .hero-sub { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 400; font-style: italic; color: var(--color-gold); margin-bottom: 2rem; }
@@ -156,7 +161,11 @@
   <main>
     <section class="hero">
       <div class="container">
-        <div class="hero-eyebrow">The Blueprint</div>
+        <div class="bp-brand">
+          <img src="sr-logo-transparent.png" alt="Spiritual Romeo" class="bp-brand-logo" />
+          <div class="bp-brand-name">The Blueprint</div>
+          <div class="bp-brand-by">By <span class="bp-brand-byline-name">Dennis Nickens</span>, AKA Spiritual Romeo</div>
+        </div>
         <h1 class="hero-title reveal">The Person in <em>the Mirror</em></h1>
         <p class="hero-sub reveal">Is the only person you can change.</p>
         <p class="hero-lede reveal">Understand who you are. Show up every day with what you learn. With patience and consistency, you will reach your goals.</p>

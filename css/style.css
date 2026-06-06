@@ -360,6 +360,14 @@ footer {
 /* Assessment-flow brand header: "THE BLUEPRINT" + consultant byline. Sits below the
    progress bar (where present) and above each page's own heading. */
 .bp-brand { text-align: center; margin: 0 0 2.25rem; }
+.bp-brand-logo {
+  display: block;
+  max-width: 180px;
+  width: 30vw;
+  min-width: 120px;
+  height: auto;
+  margin: 0 auto 1.5rem;
+}
 .bp-brand-name {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
@@ -378,4 +386,13 @@ footer {
   text-transform: uppercase;
   color: rgba(255,255,255,0.55);
   margin-top: .55rem;
+}
+.bp-brand-byline-name {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  font-size: 1.4em;
+  color: #FFD700;
+  letter-spacing: normal;
+  text-transform: none;
+  margin: 0 0.1em;
 }

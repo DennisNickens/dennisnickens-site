@@ -1064,10 +1064,40 @@ function styleClosingSignoff(html) {
   );
 }
 
+// Prepends each pillar section heading with its brand icon. Runs on the rendered HTML
+// (after marked.parse), NOT on the markdown, so the master prompt and the generated
+// markdown are untouched. Icon URLs are absolute (dennisnickens.com) because the
+// Blueprint HTML is served from a Vercel Blob subdomain where relative paths would break.
+// Lenient matching: any h1-h6 tag, optional attributes (marked may add id anchors), and
+// trailing text after the section title. Headings that do not match (e.g. in the Couples
+// Map, which has no pillar sections) are passed through unchanged.
+function styleSectionIcons(html) {
+  // Absolute URLs: the Blueprint HTML is served from a Vercel Blob subdomain, so a
+  // relative path would 404. Icons live at dennisnickens.com/assessment/icons/pillars/.
+  const MAP = [
+    { needle: 'Section 1: Your Behavior Profile',    url: 'https://dennisnickens.com/assessment/icons/pillars/01-core.png',     pillar: 'CORE' },
+    { needle: 'Section 2: Your Personality Code',    url: 'https://dennisnickens.com/assessment/icons/pillars/02-lens.png',     pillar: 'LENS' },
+    { needle: 'Section 3: Your Action Style',        url: 'https://dennisnickens.com/assessment/icons/pillars/03-drive.png',    pillar: 'DRIVE' },
+    { needle: 'Section 4: Your Connection Currency', url: 'https://dennisnickens.com/assessment/icons/pillars/04-currency.png', pillar: 'CURRENCY' },
+    { needle: 'Section 5: Your Learning Channel',    url: 'https://dennisnickens.com/assessment/icons/pillars/05-channel.png',  pillar: 'CHANNEL' },
+    { needle: 'Section 6: Your Spiritual Wiring',    url: 'https://dennisnickens.com/assessment/icons/pillars/06-compass.png',  pillar: 'COMPASS' },
+    { needle: '6.2 Your Spiritual Gifts',            url: 'https://dennisnickens.com/assessment/icons/pillars/07-gifts.png',    pillar: 'GIFTS' },
+  ];
+  let out = html;
+  for (const { needle, url, pillar } of MAP) {
+    const escaped = needle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // Group 1: the whole heading (re-emitted unchanged). Group 2: the heading level digit.
+    const re = new RegExp(`(<h([1-6])\\b[^>]*>[^<]*?${escaped}[^<]*</h\\2>)`, 'i');
+    const iconDiv = `<div class="pillar-icon-wrap"><img src="${url}" alt="${pillar} pillar icon"></div>`;
+    out = out.replace(re, `${iconDiv}\n$1`);
+  }
+  return out;
+}
+
 function markdownToBrandedHtml(markdown, payload) {
   // Lazy require to avoid import in handler boot
   const { marked } = require('marked');
-  const innerHtml = styleClosingSignoff(marked.parse(markdown));
+  const innerHtml = styleSectionIcons(styleClosingSignoff(marked.parse(markdown)));
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -1201,6 +1231,19 @@ function markdownToBrandedHtml(markdown, payload) {
       font-style: italic;
       color: #e5c170;
       margin: 1.5rem 0;
+    }
+    /* PILLAR SECTION ICONS */
+    .pillar-icon-wrap {
+      text-align: center;
+      margin: 3rem 0 0.5rem 0;
+      page-break-inside: avoid;
+    }
+    .pillar-icon-wrap img {
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      opacity: 0.95;
     }
     /* CLOSING SIGNOFF */
     .blueprint-signoff {

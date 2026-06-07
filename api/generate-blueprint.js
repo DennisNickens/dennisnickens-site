@@ -1207,7 +1207,7 @@ function styleSubArchetypeIcons(html) {
   const ciWord = (word) =>
     word.replace(/[A-Za-z]/g, (ch) => `[${ch.toLowerCase()}${ch.toUpperCase()}]`);
 
-  // Inject one inline icon before the FIRST matching block whose inner text contains the name as a
+  // Inject one inline icon at the FIRST matching block whose inner text contains the name as a
   // whole word, for each entry. A match is any `<strong>`, `<h3>`, or `<h4>` element: <strong>
   // catches the bolded identity line, and h3/h4 catch the heading form the model uses for the
   // prominent "### You Are: The X" archetype declarations in Sections 1-3 (and any heading-based
@@ -1216,6 +1216,11 @@ function styleSubArchetypeIcons(html) {
   // its closing tag), so the name must appear within one block. A single alternation across the
   // three tags means the first occurrence of ANY of them wins. replace() without /g touches only
   // the first match, so each archetype gets at most one icon per section.
+  //
+  // Placement differs by tag. <strong> is inline, so the icon is prepended as a sibling right
+  // before it and renders on the same line. h3/h4 are block-level, so a sibling before them would
+  // float on its own line above the heading; instead the icon is inserted as the FIRST CHILD inside
+  // the opening tag (right after its `>`), which keeps it inline with the heading text.
   const injectIcons = (segment, entries) => {
     let out = segment;
     for (const { name, url } of entries) {
@@ -1223,7 +1228,11 @@ function styleSubArchetypeIcons(html) {
         `<(strong|h3|h4)\\b[^>]*>(?:(?!</\\1>)[\\s\\S])*?\\b${ciWord(name)}\\b(?:(?!</\\1>)[\\s\\S])*?</\\1>`
       );
       const img = `<img class="subarchetype-icon-inline" src="${url}" alt="${name} icon">`;
-      out = out.replace(re, (match) => `${img}${match}`);
+      out = out.replace(re, (match, tag) =>
+        tag === 'strong'
+          ? `${img}${match}`            // inline tag: sibling before it
+          : match.replace('>', `>${img}`) // heading: first child, just inside the opening tag
+      );
     }
     return out;
   };

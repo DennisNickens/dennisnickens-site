@@ -1094,10 +1094,162 @@ function styleSectionIcons(html) {
   return out;
 }
 
+// Prepends a small inline icon next to the customer's SPECIFIC sub-archetype name within
+// each pillar section's body. Runs AFTER styleSectionIcons (which handles the big per-section
+// pillar icons) on the already-rendered HTML, so the master prompt and generated markdown stay
+// untouched. Icon URLs are absolute (dennisnickens.com) because the Blueprint HTML is served
+// from a Vercel Blob subdomain where relative paths would 404.
+//
+// Matching contract (per spec): for each archetype name, find the FIRST `<strong>The Name</strong>`
+// OR `<strong>Name</strong>` and inject one <img> immediately before it. Only that first mention
+// per archetype gets an icon; later mentions stay plain text. The "The" wrapper is matched
+// case-sensitively; the name itself is case-insensitive.
+//
+// CURRENCY note: the Connection Currency pillar names its physical-closeness currency "Contact"
+// (the master prompt bans the legacy "Touch" love-language naming), and its icon file is named
+// to match: currency-subtypes/contact.png. The Learning Channel pillar is the only place the
+// word "Touch" appears, mapping to channel-subtypes/touch.png. The currency and channel icons
+// therefore never collide on the same word. Each pillar's dictionary is still
+// scoped to its own Section N body, which also keeps common gift words (e.g. "Leadership") from
+// grabbing an icon inside an unrelated section.
+function styleSubArchetypeIcons(html) {
+  const BASE = 'https://dennisnickens.com/assessment/icons';
+  // Per-pillar dictionaries. `section` is the Blueprint Section number whose body owns the
+  // archetype names (GIFTS live in Subsection 6.2, inside Section 6). Each entry pairs the
+  // name as it appears in the copy with its absolute icon URL.
+  const PILLARS = [
+    {
+      section: 1, label: 'CORE',
+      entries: [
+        { name: 'Commander', url: `${BASE}/core-subtypes/commander.png` },
+        { name: 'Organizer', url: `${BASE}/core-subtypes/organizer.png` },
+        { name: 'Relator',   url: `${BASE}/core-subtypes/relator.png` },
+        { name: 'Energizer', url: `${BASE}/core-subtypes/energizer.png` },
+      ],
+    },
+    {
+      section: 2, label: 'LENS',
+      entries: [
+        { name: 'Operator',       url: `${BASE}/lens-subtypes/operator.png` },
+        { name: 'Tactician',      url: `${BASE}/lens-subtypes/tactician.png` },
+        { name: 'Host',           url: `${BASE}/lens-subtypes/host.png` },
+        { name: 'Performer',      url: `${BASE}/lens-subtypes/performer.png` },
+        { name: 'Pioneer',        url: `${BASE}/lens-subtypes/pioneer.png` },
+        { name: 'Innovator',      url: `${BASE}/lens-subtypes/innovator.png` },
+        { name: 'Mentor',         url: `${BASE}/lens-subtypes/mentor.png` },
+        { name: 'Dreamer',        url: `${BASE}/lens-subtypes/dreamer.png` },
+        { name: 'Keeper',         url: `${BASE}/lens-subtypes/keeper.png` },
+        { name: 'Troubleshooter', url: `${BASE}/lens-subtypes/troubleshooter.png` },
+        { name: 'Protector',      url: `${BASE}/lens-subtypes/protector.png` },
+        { name: 'Artisan',        url: `${BASE}/lens-subtypes/artisan.png` },
+        { name: 'Mastermind',     url: `${BASE}/lens-subtypes/mastermind.png` },
+        { name: 'Theorist',       url: `${BASE}/lens-subtypes/theorist.png` },
+        { name: 'Seer',           url: `${BASE}/lens-subtypes/seer.png` },
+        { name: 'Poet',           url: `${BASE}/lens-subtypes/poet.png` },
+      ],
+    },
+    {
+      section: 3, label: 'DRIVE',
+      entries: [
+        { name: 'Scholar', url: `${BASE}/drive-subtypes/scholar.png` },
+        { name: 'Steward', url: `${BASE}/drive-subtypes/steward.png` },
+        { name: 'Sparker', url: `${BASE}/drive-subtypes/sparker.png` },
+        { name: 'Crafter', url: `${BASE}/drive-subtypes/crafter.png` },
+      ],
+    },
+    {
+      section: 4, label: 'CURRENCY',
+      entries: [
+        { name: 'Spoken',   url: `${BASE}/currency-subtypes/spoken.png` },
+        { name: 'Presence', url: `${BASE}/currency-subtypes/presence.png` },
+        // "Contact" is the currency name in the copy; contact.png is its icon file.
+        { name: 'Contact',  url: `${BASE}/currency-subtypes/contact.png` },
+        { name: 'Action',   url: `${BASE}/currency-subtypes/action.png` },
+        { name: 'Tokens',   url: `${BASE}/currency-subtypes/tokens.png` },
+      ],
+    },
+    {
+      section: 5, label: 'CHANNEL',
+      entries: [
+        { name: 'Sight', url: `${BASE}/channel-subtypes/sight.png` },
+        { name: 'Sound', url: `${BASE}/channel-subtypes/sound.png` },
+        { name: 'Word',  url: `${BASE}/channel-subtypes/word.png` },
+        { name: 'Touch', url: `${BASE}/channel-subtypes/touch.png` },
+      ],
+    },
+    {
+      section: 6, label: 'GIFTS',
+      entries: [
+        { name: 'Administration', url: `${BASE}/gifts-subtypes/administration.png` },
+        { name: 'Discernment',    url: `${BASE}/gifts-subtypes/discernment.png` },
+        { name: 'Encouragement',  url: `${BASE}/gifts-subtypes/encouragement.png` },
+        { name: 'Evangelism',     url: `${BASE}/gifts-subtypes/evangelism.png` },
+        { name: 'Faith',          url: `${BASE}/gifts-subtypes/faith.png` },
+        { name: 'Giving',         url: `${BASE}/gifts-subtypes/giving.png` },
+        { name: 'Helps',          url: `${BASE}/gifts-subtypes/helps.png` },
+        { name: 'Hospitality',    url: `${BASE}/gifts-subtypes/hospitality.png` },
+        { name: 'Leadership',     url: `${BASE}/gifts-subtypes/leadership.png` },
+        { name: 'Mercy',          url: `${BASE}/gifts-subtypes/mercy.png` },
+        { name: 'Shepherding',    url: `${BASE}/gifts-subtypes/shepherding.png` },
+        { name: 'Teaching',       url: `${BASE}/gifts-subtypes/teaching.png` },
+      ],
+    },
+  ];
+
+  // Build a case-insensitive regex body for a single word by expanding each letter into a
+  // [lower UPPER] class. Run WITHOUT the /i flag so the surrounding "The" stays case-sensitive
+  // while the name itself matches in any case.
+  const ciWord = (word) =>
+    word.replace(/[A-Za-z]/g, (ch) => `[${ch.toLowerCase()}${ch.toUpperCase()}]`);
+
+  // Inject one inline icon before the FIRST `<strong>(The )?Name</strong>` for each entry.
+  // replace() without /g touches only the first match, so each archetype gets at most one icon.
+  const injectIcons = (segment, entries) => {
+    let out = segment;
+    for (const { name, url } of entries) {
+      const re = new RegExp(`<strong>\\s*(?:The\\s+)?${ciWord(name)}\\s*</strong>`);
+      const img = `<img class="subarchetype-icon-inline" src="${url}" alt="${name} icon">`;
+      out = out.replace(re, (match) => `${img}${match}`);
+    }
+    return out;
+  };
+
+  // Locate each "Section N:" heading so we can scope each pillar's dictionary to its own body.
+  // The solo Blueprint has these headings; the Couples Map does not.
+  const sectionRe = /<h([1-6])\b[^>]*>[^<]*?Section\s+(\d+)\s*:[^<]*<\/h\1>/gi;
+  const marks = [];
+  let m;
+  while ((m = sectionRe.exec(html)) !== null) {
+    marks.push({ num: parseInt(m[2], 10), start: m.index });
+  }
+
+  // Couples Map (or any document without numbered sections): single global pass. "Contact"
+  // and "Touch" are different words, so the two touch.png entries never collide here either.
+  if (marks.length === 0) {
+    let out = html;
+    for (const p of PILLARS) out = injectIcons(out, p.entries);
+    return out;
+  }
+
+  // Solo Blueprint: slice the document at the section headings (contiguous, lossless) and run
+  // each pillar's dictionary only inside its own Section body. Everything before Section 1 and
+  // any non-pillar section (7-17) passes through untouched.
+  const pieces = [html.slice(0, marks[0].start)];
+  for (let i = 0; i < marks.length; i++) {
+    const start = marks[i].start;
+    const end = i + 1 < marks.length ? marks[i + 1].start : html.length;
+    let seg = html.slice(start, end);
+    const pillar = PILLARS.find((p) => p.section === marks[i].num);
+    if (pillar) seg = injectIcons(seg, pillar.entries);
+    pieces.push(seg);
+  }
+  return pieces.join('');
+}
+
 function markdownToBrandedHtml(markdown, payload) {
   // Lazy require to avoid import in handler boot
   const { marked } = require('marked');
-  const innerHtml = styleSectionIcons(styleClosingSignoff(marked.parse(markdown)));
+  const innerHtml = styleSubArchetypeIcons(styleSectionIcons(styleClosingSignoff(marked.parse(markdown))));
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -1242,6 +1394,16 @@ function markdownToBrandedHtml(markdown, payload) {
       display: inline-block;
       width: 120px;
       height: 120px;
+      object-fit: contain;
+      opacity: 0.95;
+    }
+    /* INLINE SUB-ARCHETYPE ICONS (next to the customer's specific archetype name) */
+    .subarchetype-icon-inline {
+      display: inline-block;
+      vertical-align: middle;
+      height: 48px;
+      width: 48px;
+      margin-right: 0.5rem;
       object-fit: contain;
       opacity: 0.95;
     }

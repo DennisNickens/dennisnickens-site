@@ -196,14 +196,16 @@ A Linked Pair Blueprint (when partner_data is present) runs 12 to 16 pages total
 Per-section word budget (approximate):
 - "What This Blueprint Is, And What It Isn't" framing: 150 (fixed, verbatim, same for every customer)
 - Executive Summary: 250 to 350
-- Sections 1 through 6 (covering the Seven Lenses, with Pillar 7 Gifts folded into Section 6 as Subsection 6.2 when present): 350 to 500 each base, Section 6 grows by 600 to 900 when Subsection 6.2 fires
+- Sections 1 through 6 (covering the Seven Lenses, with Pillar 7 folded into Section 6 as three subsections 6.2A/B/C when present): 350 to 500 each base. Section 6's total length grows substantially when subsections 6.2A/B/C fire: 6.2A Motivational adds 600 to 900 words, 6.2B Manifestation adds 400 to 700 words, 6.2C Fruits adds 400 to 700 words. Total Section 6 length with all three subsections firing: approximately 2,200 to 3,200 words.
 - Section 7 (Misalignment Map): 600 to 800 (this is the deepest; the action-item requirement adds content to each bullet, allow more depth)
 - Section 8 (Career Alignment): 300 to 450
 - Section 9 (Relationship Alignment): 350 to 500 base, plus an additional 600 to 900 for the Marriage Dynamics subsection when Set E answers are present (skip the subsection entirely when absent)
 - Section 10 (Parenting, conditional): 350 to 500
 - Section 11 (Leadership, conditional): 350 to 500
 - Section 12 (Ministry Profile, conditional): 600 to 900 (skip entirely when Set F answers are absent)
-- Section 6 Subsection 6.2 (Spiritual Gifts, conditional): 600 to 900 (skip the subsection entirely when Pillar 7 data is absent; Section 6's overall length grows accordingly when the subsection IS present)
+- Section 6 Subsection 6.2A (Motivational Gifts, conditional on Set G): 600 to 900 words. Skip entirely when Set G data is absent.
+- Section 6 Subsection 6.2B (Manifestation Gifts, conditional on Set H): 400 to 700 words. Skip entirely when Set H data is absent.
+- Section 6 Subsection 6.2C (Fruits of the Spirit, conditional on Set I): 400 to 700 words. Skip entirely when Set I data is absent.
 - Section 14 (Stress Response Map): 500 to 700 (this section MUST include all 5 subsections: the first sign of pressure, the breaking point behavior, the recovery protocol, the early warning signs others can spot, the 24-hour reset. Do NOT collapse these into fewer paragraphs. Each subsection is a separate insight.)
 - Section 15 (Strategic Recommendations): 250 to 400
 - Section 16 (30 Day Alignment Plan): 400 to 550
@@ -287,7 +289,7 @@ Intro paragraph rules:
 - Position: First content in the section, right after the section heading.
 - Then: After the intro paragraph, proceed with all existing section structure (tables, bullets, subsections, analysis, action items).
 
-The customer reads each section start as "What is this and why am I reading it?" Answer that BEFORE giving them their data. This applies to all sections, including conditional ones (Section 10 Parenting, Section 11 Leadership, Section 12 Ministry, Subsection 6.2 Spiritual Gifts, Section 17 Connection Map).
+The customer reads each section start as "What is this and why am I reading it?" Answer that BEFORE giving them their data. This applies to all sections, including conditional ones (Section 10 Parenting, Section 11 Leadership, Section 12 Ministry, Subsections 6.2A/B/C Spiritual Gifts, Section 17 Connection Map).
 
 ---
 
@@ -353,7 +355,7 @@ Then continue with the existing Executive Summary content:
 
 ### Section 6: Your Spiritual Wiring
 
-This section presents the reader's spiritual portrait as ONE integrated reading. Two subsections work together: Your Spiritual Compass (where the reader stands spiritually, their orientation and faith framework) and Your Spiritual Gifts (what the reader carries to serve others, their operational gifts). Compass establishes the foundation. Gifts builds on it. Together they answer the question "How am I spiritually wired" rather than treating spirituality as a checklist of separate measurements. Open with a one-paragraph intro that names this unified frame for the reader, briefly setting up that they are about to read both subsections as one portrait.
+This section presents the reader's spiritual portrait as ONE integrated reading. Two subsections work together: Your Spiritual Compass (where the reader stands spiritually, their orientation and faith framework) and Your Spiritual Gifts (the fuller picture of how the reader is built to serve and who they are becoming). Compass establishes the foundation. Gifts builds on it. When the gift data is present, Your Spiritual Gifts itself opens into three parts: 6.2A Motivational Gifts (how the reader is wired to serve, their default operating lane), 6.2B Manifestation Gifts (the supernatural operations the Spirit moves through them in specific moments), and 6.2C Fruits of the Spirit (the growth diagnostic, what the Spirit is cultivating in them over time). Together Compass and these three answer the question "How am I spiritually wired" rather than treating spirituality as a checklist of separate measurements. Open with a one-paragraph intro that names this unified frame for the reader, briefly setting up that they are about to read these subsections as one portrait.
 
 #### 6.1 Your Spiritual Compass
 
@@ -363,11 +365,23 @@ This section presents the reader's spiritual portrait as ONE integrated reading.
 - Verse 3: [Chapter:Verse] [Quote]. 2-3 sentences on why this speaks to their calling
 - Closing: One paragraph encouraging them to make this personal
 
-#### 6.2 Your Spiritual Gifts
+#### 6.2A Your Motivational Gifts
 
-**IMPORTANT: Generate this subsection ONLY if Pillar 7 data is present in the payload (fields `srConditional_QG1` through `srConditional_QG25`). Pillar 7 fires for customers who selected Option 6 (Spiritual Growth), Option 7 (Ministry Leader), or Option 8 (Full Blueprint) on the focus qualifier. If those fields are absent, skip this subsection entirely. Do NOT print a placeholder, a "not applicable" note, or any apology. The reader simply sees Section 6 end after the Compass subsection.**
+**IMPORTANT: Generate this subsection ONLY if Set G data is present in the payload (fields `srConditional_QG1` through `srConditional_QG25`). Set G fires for customers who selected Option 6 (Spiritual Growth), Option 7 (Ministry Leader), or Option 8 (Full Blueprint) on the focus qualifier. If those fields are absent, skip 6.2A entirely. Do NOT print a placeholder.**
 
-When Pillar 7 data IS present, follow the full Spiritual Gifts structure defined below. This is now subsection 6.2 of the Spiritual Wiring section, NOT a standalone Section 13. The full gifts content (tables, structure, scripture anchor) is the same as previously specified. See the detailed structure further below in this prompt under the "Spiritual Gifts Detail (for Subsection 6.2)" heading.
+When Set G data IS present, follow the full Motivational Gifts structure defined below. Motivational Gifts are how the customer is WIRED to serve (their default operating lane, drawn from Romans 12 + Ephesians 4 + 1 Corinthians 12:28). The customer's top three gifts are named and read in depth. See the detailed structure under "Motivational Gifts Detail (for Subsection 6.2A)" later in this prompt.
+
+#### 6.2B Your Manifestation Gifts
+
+**IMPORTANT: Generate this subsection ONLY if Set H data is present in the payload (fields `srConditional_QH1` through `srConditional_QH20`). Set H fires under the same gating rule as Set G. If those fields are absent, skip 6.2B entirely.**
+
+When Set H data IS present, name the customer's top three Manifestation Gifts as Spirit-given operations through them (1 Corinthians 12:7-11). These are different from Motivational Gifts: Motivational is the wiring; Manifestation is the supernatural operation of the Holy Spirit through the believer in specific moments. The customer reads which of the 9 manifestations they tend to carry. See the detailed structure under "Manifestation Gifts Detail (for Subsection 6.2B)" later in this prompt.
+
+#### 6.2C Your Fruits of the Spirit
+
+**IMPORTANT: Generate this subsection ONLY if Set I data is present in the payload (fields `srConditional_QI1` through `srConditional_QI18`). Set I fires under the same gating rule as Set G. If those fields are absent, skip 6.2C entirely.**
+
+When Set I data IS present, present a growth diagnostic on all 9 Fruits of the Spirit (Galatians 5:22-23). Unlike gifts, fruits are not "what you have"; they are "what is growing in you." Every believer is called to grow in all 9. The reading shows which fruits are most visible in the customer's life today and which are still developing. See the detailed structure under "Fruits of the Spirit Detail (for Subsection 6.2C)" later in this prompt.
 
 ### Section 7: Your Misalignment Map
 This is the deepest section. The one that earns the cost.
@@ -613,7 +627,7 @@ Run 600 to 900 words. Tie every interpretation to specific Set F answers, pillar
 
 **Pillar 7 integration into Ministry Profile (when Spiritual Gifts data is present):**
 
-When `spiritualGifts` data is present, weave the primary gift into the relevant Ministry Profile bullets (guidance below). Do not add a separate Pillar 7 subheading here; Subsection 6.2 carries the full analysis. Section 12 shows how the primary gift shapes THIS pastor's ministry.
+When `spiritualGifts` data is present, weave the primary gift into the relevant Ministry Profile bullets (guidance below). Do not add a separate Pillar 7 subheading here; Subsections 6.2A/B/C carry the full analysis. Section 12 shows how the primary gift shapes THIS pastor's ministry. The primary gift referenced here is the motivational gift from 6.2A.
 
 Per-gift Ministry Profile guidance (use whichever matches the Primary gift):
 
@@ -641,9 +655,9 @@ Per-gift Ministry Profile guidance (use whichever matches the Primary gift):
 
 - **Teaching:** Into "How you teach and preach" and "The ministry you are building." Preaching is formational, not just inspirational. Risk: precision replaces warmth. Truth must be felt, not just understood.
 
-### Spiritual Gifts Detail (for Subsection 6.2)
+### Motivational Gifts Detail (for Subsection 6.2A)
 
-Reference detail for Subsection 6.2 (gating rule stated above; generate only when Pillar 7 data is present). This is NOT a standalone section, do NOT print a "Section 13" heading; the content flows under Subsection 6.2 of Section 6. When present, interpret the customer's top three gifts against their full pillar profile, matching the depth of Sections 10 and 11.
+Reference detail for Subsection 6.2A ONLY (gating rule stated above; generate only when Set G data is present). This section covers ONLY the 12 Motivational Gifts, how the customer is wired to serve. The Manifestation Gifts (6.2B) and the Fruits of the Spirit (6.2C) have their own detail sections further below in this prompt; do NOT pull their names or operations into this Motivational read. This is NOT a standalone section, do NOT print a "Section 13" heading; the content flows under Subsection 6.2A of Section 6. When present, interpret the customer's top three Motivational Gifts against their full pillar profile, matching the depth of Sections 10 and 11.
 
 **Scoring note:** Top three gifts are passed in as `scores.spiritualGifts.primary`, `.secondary`, and `.tertiary`. Do NOT recompute or expose the tally (no "7 out of 25", no "ranked third"). Use the gift names verbatim. Present them as discovered, not counted.
 
@@ -713,6 +727,125 @@ Reference detail for Subsection 6.2 (gating rule stated above; generate only whe
 - **Scripture anchor.** Close by grounding the top gift in the customer's faith framework. If Christian (Pillar 6), cite the relevant passage for the primary gift (Romans 12:4-8 for Mercy, Encouragement, Giving, Leadership; 1 Corinthians 12:8-10 for Discernment, Faith; Ephesians 4:11-12 for Teaching, Evangelism, Pastoring; 1 Corinthians 12:28 for Administration, Helps; Romans 12:13 and 1 Peter 4:9-10 for Hospitality), then one sentence of application. If secular or spiritual-but-not-religious, skip scripture and affirm how the gifts serve the people around them. About 40 to 60 words.
 
 Run 600 to 900 words. Tie every bullet to specific Q-G answers and the pillar profile. No generic theology.
+
+### Manifestation Gifts Detail (for Subsection 6.2B)
+
+Reference detail for Subsection 6.2B (gating rule stated in Section 6.2B above; generate only when Set H data is present). When present, interpret the customer's top three Manifestation Gifts against their full pillar profile, matching the depth of Sections 10 and 11.
+
+**The 9 SR Manifestation Gifts (use these names exactly in all output, from 1 Corinthians 12:7-11):**
+
+| Gift | Biblical Anchor | One-Line Definition |
+|---|---|---|
+| Word of Wisdom | 1 Cor 12:8 | Spirit-given articulation of clarity that brings light into a confusing situation |
+| Word of Knowledge | 1 Cor 12:8 | Spirit-given information about a person or situation that could not be naturally known |
+| Gift of Faith | 1 Cor 12:9 | Supernatural surge of faith for a specific moment, distinct from motivational Faith |
+| Gifts of Healing | 1 Cor 12:9 | Spirit-given ability to be the channel for physical, emotional, or spiritual healing |
+| Working of Miracles | 1 Cor 12:10 | Spirit-given ability to operate in moments where natural laws bend; signs and wonders happen through your hands |
+| Prophecy | 1 Cor 12:10 | Spirit-given word spoken into a person or moment that calls forth what God is saying right now |
+| Discerning of Spirits | 1 Cor 12:10 | Spirit-given ability to identify which spiritual source is operating in a person or situation, distinct from motivational Discernment |
+| Different Kinds of Tongues | 1 Cor 12:10 | Spirit-given prayer language or message in an unlearned tongue, public or private |
+| Interpretation of Tongues | 1 Cor 12:10 | Spirit-given understanding of what a tongues message means so the body can be edified |
+
+**Q-H Reference Table (use this to interpret each answer; manifestation gift listed per option A/B/C/D):**
+
+| Question | A | B | C | D |
+|---|---|---|---|---|
+| Q-H1 | Word of Wisdom | Word of Knowledge | Gift of Faith | Gifts of Healing |
+| Q-H2 | Word of Wisdom | Word of Knowledge | Gift of Faith | Gifts of Healing |
+| Q-H3 | Different Kinds of Tongues | Interpretation of Tongues | Prophecy | Discerning of Spirits |
+| Q-H4 | Gift of Faith | Gifts of Healing | Different Kinds of Tongues | Prophecy |
+| Q-H5 | Word of Wisdom | Word of Knowledge | Gift of Faith | Working of Miracles |
+| Q-H6 | Prophecy | Discerning of Spirits | Different Kinds of Tongues | Interpretation of Tongues |
+| Q-H7 | Word of Wisdom | Word of Knowledge | Gift of Faith | Gifts of Healing |
+| Q-H8 | Word of Wisdom | Gift of Faith | Discerning of Spirits | Prophecy |
+| Q-H9 | Gifts of Healing | Working of Miracles | Prophecy | Gift of Faith |
+| Q-H10 | Word of Knowledge | Discerning of Spirits | Word of Wisdom | Gifts of Healing |
+| Q-H11 | Different Kinds of Tongues | Interpretation of Tongues | Prophecy | Word of Wisdom |
+| Q-H12 | Gift of Faith | Working of Miracles | Word of Knowledge | Word of Wisdom |
+| Q-H13 | Working of Miracles | Prophecy | Discerning of Spirits | Different Kinds of Tongues |
+| Q-H14 | Word of Wisdom | Word of Knowledge | Gift of Faith | Discerning of Spirits |
+| Q-H15 | Gifts of Healing | Working of Miracles | Word of Wisdom | Prophecy |
+| Q-H16 | Different Kinds of Tongues | Interpretation of Tongues | Prophecy | Discerning of Spirits |
+| Q-H17 | Word of Wisdom | Word of Knowledge | Gift of Faith | Gifts of Healing |
+| Q-H18 | Discerning of Spirits | Prophecy | Word of Wisdom | Different Kinds of Tongues |
+| Q-H19 | Prophecy | Word of Wisdom | Word of Knowledge | Discerning of Spirits |
+| Q-H20 | Gifts of Healing | Working of Miracles | Gift of Faith | Prophecy |
+
+**Manifestation Gifts section structure (produce these bullets in order):**
+
+- **Your top three Manifestation Gifts.** One paragraph naming the three Manifestation Gifts with the highest option-counts from Q-H1 through Q-H20, in order of strength. Cross-reference how these supernatural operations show up given the customer's pillar profile. About 80 to 120 words.
+
+- **Primary Manifestation Gift.** Name it. One paragraph (about 100 to 150 words) interpreting how this specific manifestation operates through the customer. Reference 1 Corinthians 12:7-11 once. Use SR-native language alongside the biblical anchor: not "the gift of tongues" alone but "Different Kinds of Tongues, the Spirit-given prayer language or message in an unlearned tongue that flows through you in specific moments." Connect to Section 12 (Ministry Profile) if Set F is present.
+
+- **Secondary Manifestation Gift.** Same structure as Primary, but 80 to 120 words. Note how the Secondary operates differently and when it tends to surface.
+
+- **Tertiary Manifestation Gift.** Same structure as Primary, but 60 to 80 words.
+
+- **How the three operate together.** One paragraph (about 60 to 100 words) on the dynamic between these three Manifestation Gifts. Where they reinforce each other. Where one waits on another.
+
+- **Distinguishing motivational from manifestation.** A bridge paragraph (about 60 to 80 words). If the customer's motivational Faith (Subsection 6.2A) overlaps with Gift of Faith (Subsection 6.2B), name the distinction explicitly: "You are wired with everyday Faith as a motivational gift, the contagious daily trust. You also operate in the Gift of Faith as a manifestation, the supernatural mountain-moving surge in specific moments. Both are real, both are scriptural, both are in you." Do the same for Discernment / Discerning of Spirits if both fire.
+
+- **Closing.** One sentence calling the reader to steward these manifestations with humility, "for the common good" (1 Cor 12:7).
+
+### Fruits of the Spirit Detail (for Subsection 6.2C)
+
+Reference detail for Subsection 6.2C (gating rule stated in Section 6.2C above; generate only when Set I data is present). Fruits are a GROWTH DIAGNOSTIC, not a typing exercise. All 9 Fruits are read on every Blueprint. The customer sees which are strongest right now and which are still developing.
+
+**The 9 Fruits of the Spirit (use these names exactly in all output, from Galatians 5:22-23):**
+
+| Fruit | Greek | One-Line Definition |
+|---|---|---|
+| Love | agape | Sacrificial care for others' good, not feelings-dependent |
+| Joy | chara | Settled gladness that does not depend on circumstance |
+| Peace | eirene | Wholeness, the absence of internal war, calm at the core |
+| Patience | makrothumia | Long-suffering under pressure without resentment |
+| Kindness | chrestotes | Practical goodness, useful warmth toward others |
+| Goodness | agathosune | Moral excellence that shows up in real action |
+| Faithfulness | pistis | Reliability, trustworthiness, follow-through |
+| Gentleness | prautes | Strength under control, power restrained for the sake of others |
+| Self-Control | egkrateia | Mastery over impulse, the no that protects the yes |
+
+**Q-I Reference Table (use this to score each fruit; each question maps to ONE fruit and uses a 4-point frequency scale: A=Almost Never, B=Sometimes, C=Often, D=Almost Always):**
+
+| Question | Fruit Scored |
+|---|---|
+| Q-I1 | Love |
+| Q-I2 | Love |
+| Q-I3 | Joy |
+| Q-I4 | Joy |
+| Q-I5 | Peace |
+| Q-I6 | Peace |
+| Q-I7 | Patience |
+| Q-I8 | Patience |
+| Q-I9 | Kindness |
+| Q-I10 | Kindness |
+| Q-I11 | Goodness |
+| Q-I12 | Goodness |
+| Q-I13 | Faithfulness |
+| Q-I14 | Faithfulness |
+| Q-I15 | Gentleness |
+| Q-I16 | Gentleness |
+| Q-I17 | Self-Control |
+| Q-I18 | Self-Control |
+
+**Scoring rule for Fruits:** Each fruit has 2 questions. Score each on a 1-to-4 scale (A=1, B=2, C=3, D=4). Sum the two scores per fruit for a 2-to-8 range per fruit. Classify each fruit into one of three tiers:
+- **Strong (6-8):** The fruit is visibly growing in this person's life right now.
+- **Developing (4-5):** The fruit is present and active but still maturing.
+- **Growth Edge (2-3):** The fruit is the area where the Spirit is most likely cultivating the customer next.
+
+**Fruits of the Spirit section structure (produce these bullets in order):**
+
+- **Your fruit profile.** One paragraph (about 80 to 120 words) framing the Fruits as growth diagnostic, not gifts. Acknowledge that every believer is called to grow in all 9. Set up the reading as "here is what is visible now, here is what is developing, here is where the Spirit may be working next."
+
+- **The Fruits growing strongest in you.** Name the 2 to 4 fruits that scored Strong (6-8 on the scale). For each, a 50 to 70 word read on how this fruit shows up in the customer's life today, cross-referenced against their pillar profile (e.g., "Your strong Patience pairs with your Steward Action Style: you can hold the long timeline that others lose to impatience").
+
+- **The Fruits developing in you.** Name the fruits that scored Developing (4-5). For each, a 40 to 60 word read acknowledging the work in progress.
+
+- **Your growth edge.** Name the 1 to 3 fruits that scored Growth Edge (2-3). For each, a 60 to 80 word read framing this as the Spirit's next cultivation, not a failure. Suggest one practice this week that creates space for that fruit to grow. Connect to the customer's pillar profile (e.g., "Your Performer code lights up rooms, but Self-Control may be your growth edge: the discipline that protects the energy from over-extending into commitments your Heart said yes to before your wisdom could weigh them").
+
+- **The integration paragraph.** One paragraph (about 80 to 120 words) on how the customer's specific fruits, gifts (Motivational and Manifestation from 6.2A and 6.2B if both fired), and pillar profile work together as a single spiritual operating picture. Where the strong fruits make the gifts effective. Where the growth edges may currently limit the impact of the gifts. The customer reads this as "here is the whole picture of how God built me and where He is forming me next."
+
+- **Closing.** One sentence pointing the reader back to Galatians 5:25: "If we live by the Spirit, let us also keep in step with the Spirit." Keep this light, not preachy.
 
 ### Section 14: Your Stress Response Map
 How this person breaks under pressure, and what to do when they see it happening.

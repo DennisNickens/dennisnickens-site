@@ -1100,10 +1100,15 @@ function styleSectionIcons(html) {
 // untouched. Icon URLs are absolute (dennisnickens.com) because the Blueprint HTML is served
 // from a Vercel Blob subdomain where relative paths would 404.
 //
-// Matching contract (per spec): for each archetype name, find the FIRST `<strong>The Name</strong>`
-// OR `<strong>Name</strong>` and inject one <img> immediately before it. Only that first mention
-// per archetype gets an icon; later mentions stay plain text. The "The" wrapper is matched
-// case-sensitively; the name itself is case-insensitive.
+// Matching contract: for each archetype name, find the FIRST `<strong>...</strong>` block whose
+// inner text CONTAINS the name as a whole word (case-insensitive), and inject one <img>
+// immediately before that opening <strong>. This catches the prominent identity line however the
+// model bolds it: `<strong>The Mastermind</strong>`, `<strong>You are: The Mastermind</strong>`,
+// `<strong>As the Mastermind, you...</strong>`, or a full bolded sentence. Only that first mention
+// per archetype gets an icon; later mentions stay plain text. Matching is scoped per pillar
+// section (CORE names only inside Section 1, LENS only inside Section 2, and so on), which keeps a
+// bolded common word (e.g. "Leadership" in the Section 11 Leadership Profile) from pulling an
+// unrelated pillar's icon.
 //
 // CURRENCY note: the Connection Currency pillar names its physical-closeness currency "Contact"
 // (the master prompt bans the legacy "Touch" love-language naming), and its icon file is named
@@ -1197,17 +1202,22 @@ function styleSubArchetypeIcons(html) {
   ];
 
   // Build a case-insensitive regex body for a single word by expanding each letter into a
-  // [lower UPPER] class. Run WITHOUT the /i flag so the surrounding "The" stays case-sensitive
-  // while the name itself matches in any case.
+  // [lower UPPER] class, so the name matches in any case without an /i flag clouding the rest of
+  // the pattern.
   const ciWord = (word) =>
     word.replace(/[A-Za-z]/g, (ch) => `[${ch.toLowerCase()}${ch.toUpperCase()}]`);
 
-  // Inject one inline icon before the FIRST `<strong>(The )?Name</strong>` for each entry.
-  // replace() without /g touches only the first match, so each archetype gets at most one icon.
+  // Inject one inline icon before the FIRST `<strong>...</strong>` block whose inner text contains
+  // the name as a whole word, for each entry. The tempered `(?:(?!</strong>)[\s\S])*?` segments
+  // keep the match inside a single <strong> element (they never cross a closing tag), so the name
+  // must appear within one bolded block. replace() without /g touches only the first match, so
+  // each archetype gets at most one icon.
   const injectIcons = (segment, entries) => {
     let out = segment;
     for (const { name, url } of entries) {
-      const re = new RegExp(`<strong>\\s*(?:The\\s+)?${ciWord(name)}\\s*</strong>`);
+      const re = new RegExp(
+        `<strong\\b[^>]*>(?:(?!</strong>)[\\s\\S])*?\\b${ciWord(name)}\\b(?:(?!</strong>)[\\s\\S])*?</strong>`
+      );
       const img = `<img class="subarchetype-icon-inline" src="${url}" alt="${name} icon">`;
       out = out.replace(re, (match) => `${img}${match}`);
     }

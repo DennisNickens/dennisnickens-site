@@ -1207,16 +1207,20 @@ function styleSubArchetypeIcons(html) {
   const ciWord = (word) =>
     word.replace(/[A-Za-z]/g, (ch) => `[${ch.toLowerCase()}${ch.toUpperCase()}]`);
 
-  // Inject one inline icon before the FIRST `<strong>...</strong>` block whose inner text contains
-  // the name as a whole word, for each entry. The tempered `(?:(?!</strong>)[\s\S])*?` segments
-  // keep the match inside a single <strong> element (they never cross a closing tag), so the name
-  // must appear within one bolded block. replace() without /g touches only the first match, so
-  // each archetype gets at most one icon.
+  // Inject one inline icon before the FIRST matching block whose inner text contains the name as a
+  // whole word, for each entry. A match is any `<strong>`, `<h3>`, or `<h4>` element: <strong>
+  // catches the bolded identity line, and h3/h4 catch the heading form the model uses for the
+  // prominent "### You Are: The X" archetype declarations in Sections 1-3 (and any heading-based
+  // Gift label). The `\1` backreference ties the closing tag to whichever opened, and the tempered
+  // `(?:(?!</\1>)[\s\S])*?` segments keep the match inside that single element (they never cross
+  // its closing tag), so the name must appear within one block. A single alternation across the
+  // three tags means the first occurrence of ANY of them wins. replace() without /g touches only
+  // the first match, so each archetype gets at most one icon per section.
   const injectIcons = (segment, entries) => {
     let out = segment;
     for (const { name, url } of entries) {
       const re = new RegExp(
-        `<strong\\b[^>]*>(?:(?!</strong>)[\\s\\S])*?\\b${ciWord(name)}\\b(?:(?!</strong>)[\\s\\S])*?</strong>`
+        `<(strong|h3|h4)\\b[^>]*>(?:(?!</\\1>)[\\s\\S])*?\\b${ciWord(name)}\\b(?:(?!</\\1>)[\\s\\S])*?</\\1>`
       );
       const img = `<img class="subarchetype-icon-inline" src="${url}" alt="${name} icon">`;
       out = out.replace(re, (match) => `${img}${match}`);

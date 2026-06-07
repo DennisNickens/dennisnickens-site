@@ -1298,7 +1298,10 @@ function styleSectionIcons(html) {
     { needle: 'Section 4: Your Connection Currency', url: 'https://dennisnickens.com/assessment/icons/pillars/04-currency.png', pillar: 'CURRENCY' },
     { needle: 'Section 5: Your Learning Channel',    url: 'https://dennisnickens.com/assessment/icons/pillars/05-channel.png',  pillar: 'CHANNEL' },
     { needle: 'Section 6: Your Spiritual Wiring',    url: 'https://dennisnickens.com/assessment/icons/pillars/06-compass.png',  pillar: 'COMPASS' },
-    { needle: '6.2 Your Spiritual Gifts',            url: 'https://dennisnickens.com/assessment/icons/pillars/07-gifts.png',    pillar: 'GIFTS' },
+    // Pillar 7 Path B: three subsection anchors replace the old single 6.2 gifts icon.
+    { needle: '6.2A Your Motivational Gifts',        url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/motivational-gifts.png',   pillar: 'Motivational Gifts' },
+    { needle: '6.2B Your Manifestation Gifts',       url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/manifestation-gifts.png',  pillar: 'Manifestation Gifts' },
+    { needle: '6.2C Your Fruits of the Spirit',      url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/fruit-of-the-spirit.png',  pillar: 'Fruits of the Spirit' },
   ];
   let out = html;
   for (const { needle, url, pillar } of MAP) {
@@ -1336,9 +1339,10 @@ function styleSectionIcons(html) {
 // grabbing an icon inside an unrelated section.
 function styleSubArchetypeIcons(html) {
   const BASE = 'https://dennisnickens.com/assessment/icons';
-  // Per-pillar dictionaries. `section` is the Blueprint Section number whose body owns the
-  // archetype names (GIFTS live in Subsection 6.2, inside Section 6). Each entry pairs the
-  // name as it appears in the copy with its absolute icon URL.
+  // Per-pillar dictionaries for Sections 1-5. `section` is the Blueprint Section number whose
+  // body owns the archetype names. Each entry pairs the name as it appears in the copy with its
+  // absolute icon URL. Pillar 7 (Section 6) is handled separately via SECTION6_SUBSCOPES below,
+  // because its names are scoped to h4 subsections (6.2A/B/C), not to the whole section.
   const PILLARS = [
     {
       section: 1, label: 'CORE',
@@ -1399,23 +1403,66 @@ function styleSubArchetypeIcons(html) {
         { name: 'Touch', url: `${BASE}/channel-subtypes/touch.png` },
       ],
     },
-    {
-      section: 6, label: 'GIFTS',
-      entries: [
-        { name: 'Administration', url: `${BASE}/gifts-subtypes/administration.png` },
-        { name: 'Discernment',    url: `${BASE}/gifts-subtypes/discernment.png` },
-        { name: 'Encouragement',  url: `${BASE}/gifts-subtypes/encouragement.png` },
-        { name: 'Evangelism',     url: `${BASE}/gifts-subtypes/evangelism.png` },
-        { name: 'Faith',          url: `${BASE}/gifts-subtypes/faith.png` },
-        { name: 'Giving',         url: `${BASE}/gifts-subtypes/giving.png` },
-        { name: 'Helps',          url: `${BASE}/gifts-subtypes/helps.png` },
-        { name: 'Hospitality',    url: `${BASE}/gifts-subtypes/hospitality.png` },
-        { name: 'Leadership',     url: `${BASE}/gifts-subtypes/leadership.png` },
-        { name: 'Mercy',          url: `${BASE}/gifts-subtypes/mercy.png` },
-        { name: 'Shepherding',    url: `${BASE}/gifts-subtypes/shepherding.png` },
-        { name: 'Teaching',       url: `${BASE}/gifts-subtypes/teaching.png` },
-      ],
-    },
+  ];
+
+  // Pillar 7 (Section 6 Subsection 6.2) expands into three h4 subsections, each with its OWN
+  // scoped dictionary. Scoping by subsection (not just by Section 6) is what keeps the two
+  // overlap pairs from colliding: motivational "Faith"/"Discernment" live ONLY in 6.2A, while
+  // manifestation "Gift of Faith"/"Discerning of Spirits" live ONLY in 6.2B. Because the
+  // matcher is word-boundary based, a bolded "Gift of Faith" inside 6.2B would otherwise also
+  // match the shorter "Faith" entry; keeping the two names in separate subsection scopes makes
+  // that impossible (the "Faith" entry never runs inside 6.2B).
+
+  // 6.2A Motivational Gifts (the existing 12, emerald). Unchanged names/URLs.
+  const MOTIVATIONAL_ENTRIES = [
+    { name: 'Administration', url: `${BASE}/gifts-subtypes/administration.png` },
+    { name: 'Discernment',    url: `${BASE}/gifts-subtypes/discernment.png` },
+    { name: 'Encouragement',  url: `${BASE}/gifts-subtypes/encouragement.png` },
+    { name: 'Evangelism',     url: `${BASE}/gifts-subtypes/evangelism.png` },
+    { name: 'Faith',          url: `${BASE}/gifts-subtypes/faith.png` },
+    { name: 'Giving',         url: `${BASE}/gifts-subtypes/giving.png` },
+    { name: 'Helps',          url: `${BASE}/gifts-subtypes/helps.png` },
+    { name: 'Hospitality',    url: `${BASE}/gifts-subtypes/hospitality.png` },
+    { name: 'Leadership',     url: `${BASE}/gifts-subtypes/leadership.png` },
+    { name: 'Mercy',          url: `${BASE}/gifts-subtypes/mercy.png` },
+    { name: 'Shepherding',    url: `${BASE}/gifts-subtypes/shepherding.png` },
+    { name: 'Teaching',       url: `${BASE}/gifts-subtypes/teaching.png` },
+  ];
+
+  // 6.2B Manifestation Gifts (9, amber). Longer/more-specific overlap phrases listed first as
+  // defense-in-depth; the real safeguard is subsection scoping above.
+  const MANIFESTATION_ENTRIES = [
+    { name: 'Gift of Faith',              url: `${BASE}/manifestation-gifts-subtypes/gift-of-faith.png` },
+    { name: 'Discerning of Spirits',      url: `${BASE}/manifestation-gifts-subtypes/discerning-of-spirits.png` },
+    { name: 'Word of Wisdom',             url: `${BASE}/manifestation-gifts-subtypes/word-of-wisdom.png` },
+    { name: 'Word of Knowledge',          url: `${BASE}/manifestation-gifts-subtypes/word-of-knowledge.png` },
+    { name: 'Gifts of Healing',           url: `${BASE}/manifestation-gifts-subtypes/gifts-of-healing.png` },
+    { name: 'Working of Miracles',        url: `${BASE}/manifestation-gifts-subtypes/working-of-miracles.png` },
+    { name: 'Prophecy',                   url: `${BASE}/manifestation-gifts-subtypes/prophecy.png` },
+    { name: 'Different Kinds of Tongues', url: `${BASE}/manifestation-gifts-subtypes/different-kinds-of-tongues.png` },
+    { name: 'Interpretation of Tongues',  url: `${BASE}/manifestation-gifts-subtypes/interpretation-of-tongues.png` },
+  ];
+
+  // 6.2C Fruits of the Spirit (9, wine red).
+  const FRUIT_ENTRIES = [
+    { name: 'Love',         url: `${BASE}/fruits-subtypes/love.png` },
+    { name: 'Joy',          url: `${BASE}/fruits-subtypes/joy.png` },
+    { name: 'Peace',        url: `${BASE}/fruits-subtypes/peace.png` },
+    { name: 'Patience',     url: `${BASE}/fruits-subtypes/patience.png` },
+    { name: 'Kindness',     url: `${BASE}/fruits-subtypes/kindness.png` },
+    { name: 'Goodness',     url: `${BASE}/fruits-subtypes/goodness.png` },
+    { name: 'Faithfulness', url: `${BASE}/fruits-subtypes/faithfulness.png` },
+    { name: 'Gentleness',   url: `${BASE}/fruits-subtypes/gentleness.png` },
+    { name: 'Self-Control', url: `${BASE}/fruits-subtypes/self-control.png` },
+  ];
+
+  // Section 6 subsection scopes, in document order. Each runs from its own 6.2x h4 heading to
+  // the next subscope's h4 (6.2C runs to the end of the Section 6 segment, i.e. the Section 7
+  // boundary). The 6.1 Compass text before 6.2A gets no entries.
+  const SECTION6_SUBSCOPES = [
+    { needle: '6.2A Your Motivational Gifts',   entries: MOTIVATIONAL_ENTRIES },
+    { needle: '6.2B Your Manifestation Gifts',  entries: MANIFESTATION_ENTRIES },
+    { needle: '6.2C Your Fruits of the Spirit', entries: FRUIT_ENTRIES },
   ];
 
   // Build a case-insensitive regex body for a single word by expanding each letter into a
@@ -1454,6 +1501,30 @@ function styleSubArchetypeIcons(html) {
     return out;
   };
 
+  // Section 6 carries three h4 subsections (6.2A/B/C), each with its own dictionary. Split the
+  // Section 6 segment at those h4 headings and run each subscope ONLY inside its own subsection,
+  // so the Faith / Gift of Faith and Discernment / Discerning of Spirits pairs never collide and
+  // amber/wine-red icons cannot leak into the wrong subsection. The 6.1 Compass text before 6.2A
+  // gets no entries. Returns the segment unchanged when no 6.2 subsection headings are present.
+  const injectSection6 = (seg) => {
+    const found = [];
+    for (const sub of SECTION6_SUBSCOPES) {
+      const esc = sub.needle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const re = new RegExp(`<h([1-6])\\b[^>]*>[^<]*?${esc}[^<]*</h\\1>`, 'i');
+      const mm = re.exec(seg);
+      if (mm) found.push({ start: mm.index, entries: sub.entries });
+    }
+    if (found.length === 0) return seg;
+    found.sort((a, b) => a.start - b.start);
+    const parts = [seg.slice(0, found[0].start)];
+    for (let i = 0; i < found.length; i++) {
+      const start = found[i].start;
+      const end = i + 1 < found.length ? found[i + 1].start : seg.length;
+      parts.push(injectIcons(seg.slice(start, end), found[i].entries));
+    }
+    return parts.join('');
+  };
+
   // Locate each "Section N:" heading so we can scope each pillar's dictionary to its own body.
   // The solo Blueprint has these headings; the Couples Map does not.
   const sectionRe = /<h([1-6])\b[^>]*>[^<]*?Section\s+(\d+)\s*:[^<]*<\/h\1>/gi;
@@ -1463,11 +1534,15 @@ function styleSubArchetypeIcons(html) {
     marks.push({ num: parseInt(m[2], 10), start: m.index });
   }
 
-  // Couples Map (or any document without numbered sections): single global pass. "Contact"
-  // and "Touch" are different words, so the two touch.png entries never collide here either.
+  // Couples Map (or any document without numbered sections): single global pass over Pillars
+  // 1-5 plus the motivational gifts (the names the Couples Map can reference). Manifestation and
+  // Fruit entries are intentionally NOT applied here: they only belong inside scoped 6.2B/6.2C
+  // subsections, and a Couples Map has no such subsections, so running them globally could only
+  // mis-attach. "Contact" and "Touch" are different words, so the touch.png entries never collide.
   if (marks.length === 0) {
     let out = html;
     for (const p of PILLARS) out = injectIcons(out, p.entries);
+    out = injectIcons(out, MOTIVATIONAL_ENTRIES);
     return out;
   }
 
@@ -1479,8 +1554,13 @@ function styleSubArchetypeIcons(html) {
     const start = marks[i].start;
     const end = i + 1 < marks.length ? marks[i + 1].start : html.length;
     let seg = html.slice(start, end);
-    const pillar = PILLARS.find((p) => p.section === marks[i].num);
-    if (pillar) seg = injectIcons(seg, pillar.entries);
+    if (marks[i].num === 6) {
+      // Section 6 is sub-scoped by its 6.2A/B/C h4 subsections (Pillar 7 Path B).
+      seg = injectSection6(seg);
+    } else {
+      const pillar = PILLARS.find((p) => p.section === marks[i].num);
+      if (pillar) seg = injectIcons(seg, pillar.entries);
+    }
     pieces.push(seg);
   }
   return pieces.join('');

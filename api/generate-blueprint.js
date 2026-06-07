@@ -20,6 +20,196 @@ const { scoreAssessment, buildRawAnswersFromCustomFields } = require('../lib/sco
 const { waitUntil } = require('@vercel/functions');
 
 // =======================================================================
+// PILLAR 7 PATH B SCORING (Set H Manifestation Gifts, Set I Fruits)
+// =======================================================================
+// Pre-processing layer for Blueprint subsections 6.2B and 6.2C. Set G
+// (Motivational Gifts, 6.2A) is scored upstream in lib/scoring.js via
+// scoreAssessment and is NOT touched here. These two functions read the raw
+// Set H / Set I conditional answers off the GHL contact and produce structured
+// results the model consumes (master prompt commit 6d53f73 defines 6.2B/6.2C).
+//
+// Both return null when their set is absent or too sparse, which lets the master
+// prompt's "skip the subsection" gating fire naturally.
+
+// Q-H Reference Table: each Set H question's option (A/B/C/D) -> Manifestation Gift.
+const QH_MAPPING = {
+  'srConditional_QH1':  { A: 'Word of Wisdom',             B: 'Word of Knowledge',         C: 'Gift of Faith',              D: 'Gifts of Healing' },
+  'srConditional_QH2':  { A: 'Word of Wisdom',             B: 'Word of Knowledge',         C: 'Gift of Faith',              D: 'Gifts of Healing' },
+  'srConditional_QH3':  { A: 'Different Kinds of Tongues', B: 'Interpretation of Tongues', C: 'Prophecy',                   D: 'Discerning of Spirits' },
+  'srConditional_QH4':  { A: 'Gift of Faith',              B: 'Gifts of Healing',          C: 'Different Kinds of Tongues', D: 'Prophecy' },
+  'srConditional_QH5':  { A: 'Word of Wisdom',             B: 'Word of Knowledge',         C: 'Gift of Faith',              D: 'Working of Miracles' },
+  'srConditional_QH6':  { A: 'Prophecy',                   B: 'Discerning of Spirits',     C: 'Different Kinds of Tongues', D: 'Interpretation of Tongues' },
+  'srConditional_QH7':  { A: 'Word of Wisdom',             B: 'Word of Knowledge',         C: 'Gift of Faith',              D: 'Gifts of Healing' },
+  'srConditional_QH8':  { A: 'Word of Wisdom',             B: 'Gift of Faith',             C: 'Discerning of Spirits',      D: 'Prophecy' },
+  'srConditional_QH9':  { A: 'Gifts of Healing',           B: 'Working of Miracles',       C: 'Prophecy',                   D: 'Gift of Faith' },
+  'srConditional_QH10': { A: 'Word of Knowledge',          B: 'Discerning of Spirits',     C: 'Word of Wisdom',             D: 'Gifts of Healing' },
+  'srConditional_QH11': { A: 'Different Kinds of Tongues', B: 'Interpretation of Tongues', C: 'Prophecy',                   D: 'Word of Wisdom' },
+  'srConditional_QH12': { A: 'Gift of Faith',              B: 'Working of Miracles',       C: 'Word of Knowledge',          D: 'Word of Wisdom' },
+  'srConditional_QH13': { A: 'Working of Miracles',        B: 'Prophecy',                  C: 'Discerning of Spirits',      D: 'Different Kinds of Tongues' },
+  'srConditional_QH14': { A: 'Word of Wisdom',             B: 'Word of Knowledge',         C: 'Gift of Faith',              D: 'Discerning of Spirits' },
+  'srConditional_QH15': { A: 'Gifts of Healing',           B: 'Working of Miracles',       C: 'Word of Wisdom',             D: 'Prophecy' },
+  'srConditional_QH16': { A: 'Different Kinds of Tongues', B: 'Interpretation of Tongues', C: 'Prophecy',                   D: 'Discerning of Spirits' },
+  'srConditional_QH17': { A: 'Word of Wisdom',             B: 'Word of Knowledge',         C: 'Gift of Faith',              D: 'Gifts of Healing' },
+  'srConditional_QH18': { A: 'Discerning of Spirits',      B: 'Prophecy',                  C: 'Word of Wisdom',             D: 'Different Kinds of Tongues' },
+  'srConditional_QH19': { A: 'Prophecy',                   B: 'Word of Wisdom',            C: 'Word of Knowledge',          D: 'Discerning of Spirits' },
+  'srConditional_QH20': { A: 'Gifts of Healing',           B: 'Working of Miracles',       C: 'Gift of Faith',              D: 'Prophecy' },
+};
+
+// Tie-break priority when two Manifestation Gifts have equal counts (earlier wins).
+const MANIFESTATION_TIEBREAK_ORDER = [
+  'Word of Wisdom', 'Word of Knowledge', 'Gift of Faith', 'Gifts of Healing', 'Working of Miracles',
+  'Prophecy', 'Discerning of Spirits', 'Different Kinds of Tongues', 'Interpretation of Tongues',
+];
+
+// Q-I mapping: each Set I question -> the Fruit it scores (two questions per fruit).
+const QI_FRUIT_MAPPING = {
+  'srConditional_QI1':  'Love',
+  'srConditional_QI2':  'Love',
+  'srConditional_QI3':  'Joy',
+  'srConditional_QI4':  'Joy',
+  'srConditional_QI5':  'Peace',
+  'srConditional_QI6':  'Peace',
+  'srConditional_QI7':  'Patience',
+  'srConditional_QI8':  'Patience',
+  'srConditional_QI9':  'Kindness',
+  'srConditional_QI10': 'Kindness',
+  'srConditional_QI11': 'Goodness',
+  'srConditional_QI12': 'Goodness',
+  'srConditional_QI13': 'Faithfulness',
+  'srConditional_QI14': 'Faithfulness',
+  'srConditional_QI15': 'Gentleness',
+  'srConditional_QI16': 'Gentleness',
+  'srConditional_QI17': 'Self-Control',
+  'srConditional_QI18': 'Self-Control',
+};
+
+// Set I frequency scale -> numeric score.
+const QI_SCORE_MAPPING = {
+  'A': 1,  // Almost Never
+  'B': 2,  // Sometimes
+  'C': 3,  // Often
+  'D': 4,  // Almost Always
+};
+
+const FRUIT_CANONICAL_ORDER = [
+  'Love', 'Joy', 'Peace', 'Patience', 'Kindness', 'Goodness', 'Faithfulness', 'Gentleness', 'Self-Control',
+];
+
+// Normalize a stored conditional answer to a single uppercase letter A-D.
+// Handles both a bare letter ("A") and GHL's stored option text, which carries a
+// leading letter prefix ("A) full option sentence..."). Returns null when no
+// letter can be extracted.
+function normalizeOptionLetter(value) {
+  if (value == null) return null;
+  const v = String(value).trim();
+  if (!v) return null;
+  if (/^[A-Da-d]$/.test(v)) return v.toUpperCase();          // bare letter
+  const m = v.match(/^([A-Da-d])\s*[).:\-\]]/);              // "A) ...", "A. ...", "A] ..."
+  if (m) return m[1].toUpperCase();
+  return null;
+}
+
+// Read one conditional answer by its srConditional_* key. Accepts either the GHL
+// customFields array (objects carrying key/fieldKey/conditionalKey + value) or a
+// plain object map { srConditional_QH1: 'A' } (used by tests). Returns the raw
+// stored value (string) or null.
+function readConditionalAnswer(contactFields, key) {
+  if (!contactFields) return null;
+  if (!Array.isArray(contactFields)) {
+    const direct = contactFields[key];
+    if (direct == null) return null;
+    if (typeof direct === 'object') {
+      return direct.value ?? direct.field_value ?? direct.fieldValueString ?? null;
+    }
+    return direct;
+  }
+  for (const f of contactFields) {
+    if (!f) continue;
+    const k = f.key || f.fieldKey || f.conditionalKey || '';
+    if (k === key) {
+      return f.value ?? f.field_value ?? f.fieldValueString ?? f.fieldValue ?? null;
+    }
+  }
+  return null;
+}
+
+// computeManifestationGifts: top-3 Manifestation Gifts from Set H (Q-H1..Q-H20).
+// Returns null (skip 6.2B) when fewer than 15 of the 20 answers are populated.
+function computeManifestationGifts(contactFields) {
+  const letters = {};
+  let populated = 0;
+  for (let i = 1; i <= 20; i++) {
+    const key = `srConditional_QH${i}`;
+    const letter = normalizeOptionLetter(readConditionalAnswer(contactFields, key));
+    if (letter) { letters[key] = letter; populated++; }
+  }
+  if (populated < 15) return null;
+
+  const counts = {};
+  MANIFESTATION_TIEBREAK_ORDER.forEach((g) => { counts[g] = 0; });
+  for (const key of Object.keys(letters)) {
+    const map = QH_MAPPING[key];
+    const gift = map && map[letters[key]];
+    if (gift && gift in counts) {
+      counts[gift]++;
+    } else {
+      console.warn(`[Blueprint] Set H ${key}: answer "${letters[key]}" did not map via QH_MAPPING`);
+    }
+  }
+
+  const ranked = MANIFESTATION_TIEBREAK_ORDER
+    .map((gift, order) => ({ gift, count: counts[gift], order }))
+    .sort((a, b) => b.count - a.count || a.order - b.order);
+
+  return {
+    primary:   ranked[0].gift,
+    secondary: ranked[1].gift,
+    tertiary:  ranked[2].gift,
+    rawCounts: counts,
+  };
+}
+
+// computeFruitsOfTheSpirit: growth-diagnostic over all 9 Fruits from Set I
+// (Q-I1..Q-I18). Returns null (skip 6.2C) when fewer than 14 of the 18 answers
+// are populated. Each fruit sums its two questions (A=1..D=4, range 2-8) and is
+// classified Strong (6-8) / Developing (4-5) / Growth Edge (2-3).
+function computeFruitsOfTheSpirit(contactFields) {
+  const totals = {};
+  FRUIT_CANONICAL_ORDER.forEach((fruit) => { totals[fruit] = 0; });
+  let populated = 0;
+  for (let i = 1; i <= 18; i++) {
+    const key = `srConditional_QI${i}`;
+    const letter = normalizeOptionLetter(readConditionalAnswer(contactFields, key));
+    if (!letter) continue;
+    const fruit = QI_FRUIT_MAPPING[key];
+    const score = QI_SCORE_MAPPING[letter];
+    if (fruit && score) {
+      totals[fruit] += score;
+      populated++;
+    } else {
+      console.warn(`[Blueprint] Set I ${key}: could not score (fruit=${fruit}, letter=${letter}) via QI_FRUIT_MAPPING/QI_SCORE_MAPPING`);
+    }
+  }
+  if (populated < 14) return null;
+
+  const tierFor = (total) => (total >= 6 ? 'Strong' : total >= 4 ? 'Developing' : 'Growth Edge');
+  const fruits = {};
+  const strongFruits = [];
+  const developingFruits = [];
+  const growthEdgeFruits = [];
+  for (const fruit of FRUIT_CANONICAL_ORDER) {
+    const score = totals[fruit];
+    const tier = tierFor(score);
+    fruits[fruit] = { score, tier };
+    if (tier === 'Strong') strongFruits.push(fruit);
+    else if (tier === 'Developing') developingFruits.push(fruit);
+    else growthEdgeFruits.push(fruit);
+  }
+
+  return { fruits, strongFruits, developingFruits, growthEdgeFruits };
+}
+
+// =======================================================================
 // MAIN HANDLER
 // =======================================================================
 
@@ -136,6 +326,11 @@ async function generateAndDeliverBlueprint(payload) {
   if (hasPrebuiltRawAnswers(payload)) {
     console.log(`[Blueprint] Using prebuilt rawAnswers (test mode) for ${payload.contact_id}`);
     const scores = scoreAssessment(payload.rawAnswers);
+    // Pillar 7 Path B (6.2B/6.2C): test path may pass contactFields on rawAnswers;
+    // absent => both null, so the master prompt skips those subsections.
+    const testFields = payload.rawAnswers && payload.rawAnswers.contactFields;
+    payload.manifestationGifts = computeManifestationGifts(testFields);
+    payload.fruitsOfTheSpirit = computeFruitsOfTheSpirit(testFields);
     console.log(`[Blueprint] Scoring complete for ${payload.contact_id}`);
     return produceAndDeliverBlueprint(payload, scores, null);
   }
@@ -149,6 +344,14 @@ async function generateAndDeliverBlueprint(payload) {
   const meCustomFields = Array.isArray(me.customFields) ? me.customFields : [];
   const meScores = scoreAssessment(buildRawAnswersFromCustomFields(meCustomFields));
   console.log(`[Blueprint] Scoring complete for ${payload.contact_id} (reconstructed from ${meCustomFields.length} customFields)`);
+
+  // Pillar 7 Path B (6.2B Manifestation Gifts, 6.2C Fruits of the Spirit). Read the
+  // raw Set H / Set I answers straight off the contact's customFields. Each returns
+  // null when its set is absent or too sparse, which lets the master prompt skip the
+  // subsection. Set G (6.2A) is already scored inside meScores.spiritualGifts above.
+  payload.manifestationGifts = computeManifestationGifts(meCustomFields);
+  payload.fruitsOfTheSpirit = computeFruitsOfTheSpirit(meCustomFields);
+  console.log(`[Blueprint] Pillar 7 Path B: manifestationGifts=${payload.manifestationGifts ? 'present' : 'absent'}, fruitsOfTheSpirit=${payload.fruitsOfTheSpirit ? 'present' : 'absent'}`);
 
   // Pair status no longer gates generation timing. Every contact's solo Blueprint
   // fires immediately on assessment completion, whether or not they belong to a
@@ -773,6 +976,20 @@ ${(() => {
   const sg = scores.spiritualGifts;
   if (!sg) return '';
   return `\nSPIRITUAL GIFTS (PILLAR 7):\n- Primary Gift: ${sg.primary}\n- Secondary Gift: ${sg.secondary}\n- Tertiary Gift: ${sg.tertiary}\n`;
+})()}${(() => {
+  // Pillar 7 Path B structured scoring for Subsection 6.2B. Pre-computed top three
+  // Manifestation Gifts plus the raw per-gift counts, as JSON the model references
+  // directly. Absent (no block) when Set H did not fire.
+  const mg = payload.manifestationGifts;
+  if (!mg) return '';
+  return `\nMANIFESTATION GIFTS (PILLAR 7, SUBSECTION 6.2B):\n${JSON.stringify(mg, null, 2)}\n`;
+})()}${(() => {
+  // Pillar 7 Path B structured scoring for Subsection 6.2C. Per-fruit score and tier
+  // for all nine Fruits plus the Strong/Developing/Growth-Edge groupings, as JSON.
+  // Absent (no block) when Set I did not fire.
+  const fos = payload.fruitsOfTheSpirit;
+  if (!fos) return '';
+  return `\nFRUITS OF THE SPIRIT (PILLAR 7, SUBSECTION 6.2C):\n${JSON.stringify(fos, null, 2)}\n`;
 })()}${conditionalAnswerBlock}${partnerBlock}`;
 }
 

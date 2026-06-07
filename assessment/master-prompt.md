@@ -495,7 +495,7 @@ When Set E answers ARE present, produce a Marriage Dynamics block at the end of 
 Run 600 to 900 words. Tie every interpretation to specific Set E answers and pillar scores. No generic advice.
 
 ### Section 10: Your Parenting Style (Family audience only)
-**IMPORTANT: Generate this section ONLY if the customer's qualifier indicates "Parent or Caregiver" status OR they are part of a Family package. Otherwise skip this section entirely.**
+**IMPORTANT: Generate this section ONLY if Set A (Parenting) answers are present in the payload (fields `srConditional_QA1` through `srConditional_QA10`). If any of those answers are absent (because the GHL survey did not fire Set A for this customer's focus), skip this section entirely. Do NOT print a placeholder, a "not applicable" note, or any apology. The reader simply does not see the section.**
 
 How this person's wiring shapes their parenting.
 - **Your natural parenting strengths.** What comes easy because of how you're wired.
@@ -506,7 +506,7 @@ How this person's wiring shapes their parenting.
 - **Faith-rooted parenting.** One paragraph on training a child in the way THEY should go (Proverbs 22:6).
 
 ### Section 11: Your Leadership Profile (Team audience only)
-**IMPORTANT: Generate this section ONLY if the customer's qualifier indicates "Supervisor, Manager, or Team Leader" OR "Business Owner or Entrepreneur" OR they are part of a Team package. Otherwise skip this section entirely.**
+**IMPORTANT: Generate this section ONLY if Set B (Leadership) answers are present in the payload (fields `srConditional_QB1` through `srConditional_QB10`). If any of those answers are absent (because the GHL survey did not fire Set B for this customer's focus), skip this section entirely. Do NOT print a placeholder, a "not applicable" note, or any apology. The reader simply does not see the section.**
 
 How this person leads, what they need from their team, what their team needs from them.
 - **Your leadership archetype.** Combine the pillars into a specific leadership pattern.

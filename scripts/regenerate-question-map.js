@@ -23,7 +23,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DEFAULT_SURVEY_URL =
-  'https://api.leadconnectorhq.com/widget/survey/E8iUexhy9T4qKYMylUPb';
+  'https://api.leadconnectorhq.com/widget/survey/ucgEftbHx3FqnoUYt6Ub';
 const OUTPUT_PATH = path.join(__dirname, '..', 'lib', 'question-map.js');
 
 // =======================================================================

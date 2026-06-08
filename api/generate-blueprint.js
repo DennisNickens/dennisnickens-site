@@ -1314,7 +1314,10 @@ function styleSectionIcons(html) {
     { needle: 'Section 12: Your Ministry Profile',          url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/ministry-profile.png',          pillar: 'Ministry Profile' },
     { needle: 'Section 14: Your Stress Response Map',       url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/stress-response-map.png',       pillar: 'Stress Response Map' },
     { needle: 'Section 15: Your Strategic Recommendations', url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/strategic-recommendations.png', pillar: 'Strategic Recommendations' },
-    { needle: 'Section 16: Your 30 Day Alignment Plan',     url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/thirty-day-plan.png',           pillar: '30 Day Alignment Plan' },
+    // Section 16 needle uses just "Section 16:" because the model sometimes renders the heading
+    // as "30-Day Alignment Plan" (with hyphen) and sometimes "30 Day Alignment Plan" (without).
+    // The section number alone is unambiguous and stable across model output variations.
+    { needle: 'Section 16:',                                url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/thirty-day-plan.png',           pillar: '30 Day Alignment Plan' },
   ];
   let out = html;
   for (const { needle, url, pillar } of MAP) {

@@ -885,19 +885,19 @@ Week-by-week:
 
 Generate ONLY when partner_data is present; this is the final section. Read the reader's Seven Lenses next to their partner's so both walk away with language for how they fit. Write from the reader's point of view (reader = "self"); name both people (reader by first name, partner by the partner_data name), use "the two of you", treat both as equals. Use the matching relationship lens (list below) for scripture and framing. Keep CORE Pure Type names and all SR-native pillar names. Target 2,000 to 3,000 words.
 
-#### 17.1 Your Pair at a Glance
+#### Your Pair at a Glance
 Quick snapshot of the two of you. Name both, give each their Pure Type from Pillar 1 with one tight line on how they show up, then name the single most striking place you align and the single most striking place you differ. Make it land fast.
 
-#### 17.2 What Each of You Brings
+#### What Each of You Brings
 Generous tone. For each person, name three specific strengths drawn from their actual pillar results (tie each to the score behind it), then one or two sentences on how those strengths serve the two of you together.
 
-#### 17.3 Where You Align
+#### Where You Align
 The pillars where you naturally line up (shared Pure Types, overlapping Currencies, same-direction Compass, similar Channels, matched Action Styles). Name two to four. For each, name the pillar, what you share, and how it shows up in ordinary life, with one concrete example. If overlap is thin, say so and frame it as a foundation.
 
-#### 17.4 Where You Speak Different Languages
+#### Where You Speak Different Languages
 The pillars where you operate differently. Frame as two operating systems needing translation, not conflict or right/wrong. Name two to four. For each, state both results, how the difference shows up in connection and friction, and one practical move each person can make toward the other. Honest about the cost, door kept open.
 
-#### 17.5 Your Connection Currency Map
+#### Your Connection Currency Map
 The heart of this section. Read each person's top three Connection Currencies and how they trade between the two of you. Cover, in plain language:
 - How the reader gives and receives.
 - How the partner gives and receives.
@@ -906,10 +906,10 @@ The heart of this section. Read each person's top three Connection Currencies an
 
 End with two concrete moves per person this week to spend in the other's currency. Specific, not "be more loving."
 
-#### 17.6 How to Bridge the Gaps
-Three to five concrete recommendations, each tied to a difference named in 17.4. Name both people. Make each move small enough to do and specific enough to picture: the actual behavior, the moment it applies, and what changes when they do it. No "communicate better."
+#### How to Bridge the Gaps
+Three to five concrete recommendations, each tied to a difference named in the "Where You Speak Different Languages" section above. Name both people. Make each move small enough to do and specific enough to picture: the actual behavior, the moment it applies, and what changes when they do it. No "communicate better."
 
-#### 17.7 Your 30-60-90 Day Plan
+#### Your 30-60-90 Day Plan
 A shared plan in three horizons, built from their actual pillars. Each item has a name, a one-sentence description, and a way to tell it worked.
 - **Week 1:** Two or three small practices they start now.
 - **Month 1:** Two or three that build on Week 1.
@@ -990,7 +990,7 @@ The relationship lens below sets the scripture and framing for the Connection Ma
 
 ### Linked Pair Report Structure
 
-The Linked Pair relational content is no longer a separate report. It lives in Section 17 (Your Connection Map) inside each person's Blueprint, with subsections 17.1 through 17.7 (Your Pair at a Glance, What Each of You Brings, Where You Align, Where You Speak Different Languages, Your Connection Currency Map, How to Bridge the Gaps, Your 30-60-90 Day Plan) plus the closing line. See Section 17 above for the full spec. Each person's Connection Map is written from their own point of view, so the two Blueprints in a pair are not identical.
+The Linked Pair relational content is no longer a separate report. It lives in Section 17 (Your Connection Map) inside each person's Blueprint, with seven subsections (Your Pair at a Glance, What Each of You Brings, Where You Align, Where You Speak Different Languages, Your Connection Currency Map, How to Bridge the Gaps, Your 30-60-90 Day Plan) plus the closing line. Render each subsection heading as plain title text with NO section number prefix. See Section 17 above for the full spec. Each person's Connection Map is written from their own point of view, so the two Blueprints in a pair are not identical.
 
 ### Team Package Report
 

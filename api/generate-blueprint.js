@@ -1079,7 +1079,7 @@ ${buildCustomerDataBlock(payload, scores, partnerData)}`;
 // Subsection 6.2, generated in Call A), so the numbering jumps 12 to 14.
 function buildCallCMessage(payload, scores, partnerData) {
   const connectionMapInstruction = partnerData
-    ? `- Section 17: Your Connection Map (REQUIRED here). partner_data IS present below, so generate the full Connection Map exactly as defined in the master prompt: subsections 17.1 through 17.7 plus the closing line. Write it comparing ${payload.first_name} (the reader, "self") with ${partnerData.first_name} (the partner). Substitute the partner's actual first name into the heading. This is the final Blueprint section.`
+    ? `- Section 17: Your Connection Map (REQUIRED here). partner_data IS present below, so generate the full Connection Map exactly as defined in the master prompt: all seven subsections (Your Pair at a Glance, What Each of You Brings, Where You Align, Where You Speak Different Languages, Your Connection Currency Map, How to Bridge the Gaps, Your 30-60-90 Day Plan) plus the closing line. Render each h4 heading WITHOUT any section number prefix (no 17.1, no 17.2, etc.), just the subsection title text. Write it comparing ${payload.first_name} (the reader, "self") with ${partnerData.first_name} (the partner). Substitute the partner's actual first name into the heading. This is the final Blueprint section.`
     : `- Section 17: Your Connection Map. SKIP entirely. No partner_data is present (this is a Solo Blueprint). Do not mention it or leave a placeholder.`;
 
   return `${MULTI_CALL_HEADER}

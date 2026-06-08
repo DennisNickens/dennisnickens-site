@@ -746,6 +746,8 @@ Reference detail for Subsection 6.2B (gating rule stated in Section 6.2B above; 
 | Different Kinds of Tongues | 1 Cor 12:10 | Spirit-given prayer language or message in an unlearned tongue, public or private |
 | Interpretation of Tongues | 1 Cor 12:10 | Spirit-given understanding of what a tongues message means so the body can be edified |
 
+**INTERNAL USE ONLY. DO NOT RENDER.** The Q-H Reference Table below is a scoring aid for YOUR computation only. Do NOT render this table, the raw Q-H answer letters, or any "Question | A | B | C | D" grid in the customer-facing output. Use it silently to map each answer to its Manifestation Gift, then write the readings as natural prose.
+
 **Q-H Reference Table (use this to interpret each answer; manifestation gift listed per option A/B/C/D):**
 
 | Question | A | B | C | D |
@@ -805,6 +807,8 @@ Reference detail for Subsection 6.2C (gating rule stated in Section 6.2C above; 
 | Gentleness | prautes | Strength under control, power restrained for the sake of others |
 | Self-Control | egkrateia | Mastery over impulse, the no that protects the yes |
 
+**INTERNAL USE ONLY. DO NOT RENDER.** The Q-I Reference Table below is a scoring aid for YOUR computation only. Do NOT render this table, the raw Q-I answer letters or numeric values, or any "Question | Fruit" grid in the customer-facing output. Use it silently to score each fruit, then write the readings as natural prose.
+
 **Q-I Reference Table (use this to score each fruit; each question maps to ONE fruit and uses a 4-point frequency scale: A=Almost Never, B=Sometimes, C=Often, D=Almost Always):**
 
 | Question | Fruit Scored |
@@ -827,6 +831,8 @@ Reference detail for Subsection 6.2C (gating rule stated in Section 6.2C above; 
 | Q-I16 | Gentleness |
 | Q-I17 | Self-Control |
 | Q-I18 | Self-Control |
+
+**INTERNAL SCORING GUIDANCE. DO NOT RENDER TO CUSTOMER.** The scoring rule below is for YOUR computation only. Do NOT render a scoring table, do NOT expose raw Q-I answer letters or numeric values, do NOT include any "Fruit | Q1 | Q2 | Total | Tier" table in the customer-facing output. The customer sees only the resulting tier classifications and the narrative reads (Strong / Developing / Growth Edge sections). Compute the tiers using the rule below, then write the readings as natural prose.
 
 **Scoring rule for Fruits:** Each fruit has 2 questions. Score each on a 1-to-4 scale (A=1, B=2, C=3, D=4). Sum the two scores per fruit for a 2-to-8 range per fruit. Classify each fruit into one of three tiers:
 - **Strong (6-8):** The fruit is visibly growing in this person's life right now.

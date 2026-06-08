@@ -1298,6 +1298,8 @@ function styleSectionIcons(html) {
     { needle: 'Section 4: Your Connection Currency', url: 'https://dennisnickens.com/assessment/icons/pillars/04-currency.png', pillar: 'CURRENCY' },
     { needle: 'Section 5: Your Learning Channel',    url: 'https://dennisnickens.com/assessment/icons/pillars/05-channel.png',  pillar: 'CHANNEL' },
     { needle: 'Section 6: Your Spiritual Wiring',    url: 'https://dennisnickens.com/assessment/icons/pillars/06-compass.png',  pillar: 'COMPASS' },
+    // Subsection 6.1 anchor (deep violet compass), same h3 before-heading pattern as the Sections above.
+    { needle: '6.1 Your Spiritual Compass',          url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/spiritual-compass.png', pillar: 'Spiritual Compass' },
     // Pillar 7 Path B: three subsection anchors replace the old single 6.2 gifts icon.
     { needle: 'Your Motivational Gifts',        url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/motivational-gifts.png',   pillar: 'Motivational Gifts' },
     { needle: 'Your Manifestation Gifts',       url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/manifestation-gifts.png',  pillar: 'Manifestation Gifts' },

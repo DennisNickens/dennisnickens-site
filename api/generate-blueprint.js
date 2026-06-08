@@ -1288,37 +1288,93 @@ function styleClosingSignoff(html) {
 // Lenient matching: any h1-h6 tag, optional attributes (marked may add id anchors), and
 // trailing text after the section title. Headings that do not match (e.g. in the Couples
 // Map, which has no pillar sections) are passed through unchanged.
+// Module-level so buildSidebarNav reads the same list of sections + icons that
+// styleSectionIcons uses to render inline anchors. Order is presentation order.
+// `sidebar: true` includes the entry in the left navigation rail. `sidebar: false`
+// means the entry renders an inline icon at its heading but does NOT appear in the
+// nav (subsection anchors like 6.1, Motivational/Manifestation/Fruits subsections).
+// `label` is the short text shown in the nav (no "Section N:" prefix, no "Your").
+// `anchor` is the id that will be injected just before the matched heading so the
+// nav item can scroll to it.
+const SECTION_ICON_MAP = [
+  { needle: 'Section 1: Your Behavior Profile',    url: 'https://dennisnickens.com/assessment/icons/pillars/01-core.png',     pillar: 'CORE',     label: 'Behavior Profile',         anchor: 'section-1',  sidebar: true },
+  { needle: 'Section 2: Your Personality Code',    url: 'https://dennisnickens.com/assessment/icons/pillars/02-lens.png',     pillar: 'LENS',     label: 'Personality Code',         anchor: 'section-2',  sidebar: true },
+  { needle: 'Section 3: Your Action Style',        url: 'https://dennisnickens.com/assessment/icons/pillars/03-drive.png',    pillar: 'DRIVE',    label: 'Action Style',             anchor: 'section-3',  sidebar: true },
+  { needle: 'Section 4: Your Connection Currency', url: 'https://dennisnickens.com/assessment/icons/pillars/04-currency.png', pillar: 'CURRENCY', label: 'Connection Currency',      anchor: 'section-4',  sidebar: true },
+  { needle: 'Section 5: Your Learning Channel',    url: 'https://dennisnickens.com/assessment/icons/pillars/05-channel.png',  pillar: 'CHANNEL',  label: 'Learning Channel',         anchor: 'section-5',  sidebar: true },
+  { needle: 'Section 6: Your Spiritual Wiring',    url: 'https://dennisnickens.com/assessment/icons/pillars/06-compass.png',  pillar: 'COMPASS',  label: 'Spiritual Wiring',         anchor: 'section-6',  sidebar: true },
+  // Subsection 6.1 anchor (deep violet compass). Inline icon only, not in sidebar.
+  { needle: '6.1 Your Spiritual Compass',          url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/spiritual-compass.png', pillar: 'Spiritual Compass',     sidebar: false },
+  // Pillar 7 Path B: three subsection anchors. Inline icons only, not in sidebar.
+  { needle: 'Your Motivational Gifts',        url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/motivational-gifts.png',   pillar: 'Motivational Gifts',  sidebar: false },
+  { needle: 'Your Manifestation Gifts',       url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/manifestation-gifts.png',  pillar: 'Manifestation Gifts', sidebar: false },
+  { needle: 'Your Fruits of the Spirit',      url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/fruit-of-the-spirit.png',  pillar: 'Fruits of the Spirit', sidebar: false },
+  // Synthesis sections (7 through 16, minus 13 which is unified into Section 6).
+  { needle: 'Section 7: Your Misalignment Map',           url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/misalignment-map.png',          pillar: 'Misalignment Map',         label: 'Misalignment Map',         anchor: 'section-7',  sidebar: true },
+  { needle: 'Section 8: Your Career Alignment',           url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/career-alignment.png',          pillar: 'Career Alignment',         label: 'Career Alignment',         anchor: 'section-8',  sidebar: true },
+  { needle: 'Section 9: Your Relationship Alignment',     url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/relationship-alignment.png',    pillar: 'Relationship Alignment',   label: 'Relationship Alignment',   anchor: 'section-9',  sidebar: true },
+  { needle: 'Section 10: Your Parenting Style',           url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/parenting-style.png',           pillar: 'Parenting Style',          label: 'Parenting Style',          anchor: 'section-10', sidebar: true },
+  { needle: 'Section 11: Your Leadership Profile',        url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/leadership-profile.png',        pillar: 'Leadership Profile',       label: 'Leadership Profile',       anchor: 'section-11', sidebar: true },
+  { needle: 'Section 12: Your Ministry Profile',          url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/ministry-profile.png',          pillar: 'Ministry Profile',         label: 'Ministry Profile',         anchor: 'section-12', sidebar: true },
+  { needle: 'Section 14: Your Stress Response Map',       url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/stress-response-map.png',       pillar: 'Stress Response Map',      label: 'Stress Response Map',      anchor: 'section-14', sidebar: true },
+  { needle: 'Section 15: Your Strategic Recommendations', url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/strategic-recommendations.png', pillar: 'Strategic Recommendations', label: 'Strategic Recommendations', anchor: 'section-15', sidebar: true },
+  // Section 16 needle uses just "Section 16:" because the model sometimes renders the heading
+  // as "30-Day Alignment Plan" (with hyphen) and sometimes "30 Day Alignment Plan" (without).
+  { needle: 'Section 16:',                                url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/thirty-day-plan.png',           pillar: '30 Day Alignment Plan',    label: '30 Day Plan',              anchor: 'section-16', sidebar: true },
+  // Section 17 (Linked Pair Connection Map) reuses the Relationship Alignment icon for now.
+  // Couples Map (standalone, mode=couples) has different subsection headings and skips this entry.
+  { needle: 'Section 17: Your Connection Map',            url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/relationship-alignment.png',    pillar: 'Connection Map',           label: 'Connection Map',           anchor: 'section-17', sidebar: true },
+];
+
+// Builds the left-rail navigation HTML for the Blueprint. Walks SECTION_ICON_MAP and
+// for each entry with sidebar:true, looks for the matching heading inside the rendered
+// content HTML. If a match is found, injects an empty anchor div with the entry's id
+// just before the heading so the nav link can scroll to it, and adds the entry to the
+// nav list.
+//
+// Returns { html, navHtml }. html is the content with anchor divs injected. navHtml is
+// the full nav UL ready to drop into the layout. If fewer than two sections matched
+// (e.g. the Couples Map, which has no Section X headings), navHtml is the empty string
+// so the layout collapses the sidebar entirely.
+function buildSidebarNav(html) {
+  let out = html;
+  const navItems = [];
+  for (const entry of SECTION_ICON_MAP) {
+    if (!entry.sidebar) continue;
+    const escaped = entry.needle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // Detect whether this section actually appears in the rendered HTML.
+    const presenceRe = new RegExp(`<h[1-6]\\b[^>]*>[^<]*?${escaped}[^<]*</h[1-6]>`, 'i');
+    if (!presenceRe.test(out)) continue;
+    // Inject an empty anchor div directly before the matched heading. This avoids any
+    // conflict with marked's auto-generated heading ids and gives the nav a stable
+    // scroll target regardless of how the model formatted the heading text.
+    const injectRe = new RegExp(`(<h[1-6]\\b[^>]*>[^<]*?${escaped}[^<]*</h[1-6]>)`, 'i');
+    out = out.replace(injectRe, `<div id="${entry.anchor}" class="section-anchor"></div>\n$1`);
+    navItems.push(entry);
+  }
+  if (navItems.length < 2) {
+    return { html: out, navHtml: '' };
+  }
+  const itemsHtml = navItems.map((e) => `
+        <li>
+          <a href="#${e.anchor}" data-anchor="${e.anchor}">
+            <img src="${e.url}" alt="" class="nav-icon" />
+            <span class="nav-label">${e.label}</span>
+          </a>
+        </li>`).join('');
+  const navHtml = `
+    <nav class="sidebar-nav" aria-label="Blueprint sections">
+      <div class="sidebar-header">Sections</div>
+      <ul class="sidebar-list">${itemsHtml}
+      </ul>
+    </nav>`;
+  return { html: out, navHtml };
+}
+
 function styleSectionIcons(html) {
   // Absolute URLs: the Blueprint HTML is served from a Vercel Blob subdomain, so a
   // relative path would 404. Icons live at dennisnickens.com/assessment/icons/pillars/.
-  const MAP = [
-    { needle: 'Section 1: Your Behavior Profile',    url: 'https://dennisnickens.com/assessment/icons/pillars/01-core.png',     pillar: 'CORE' },
-    { needle: 'Section 2: Your Personality Code',    url: 'https://dennisnickens.com/assessment/icons/pillars/02-lens.png',     pillar: 'LENS' },
-    { needle: 'Section 3: Your Action Style',        url: 'https://dennisnickens.com/assessment/icons/pillars/03-drive.png',    pillar: 'DRIVE' },
-    { needle: 'Section 4: Your Connection Currency', url: 'https://dennisnickens.com/assessment/icons/pillars/04-currency.png', pillar: 'CURRENCY' },
-    { needle: 'Section 5: Your Learning Channel',    url: 'https://dennisnickens.com/assessment/icons/pillars/05-channel.png',  pillar: 'CHANNEL' },
-    { needle: 'Section 6: Your Spiritual Wiring',    url: 'https://dennisnickens.com/assessment/icons/pillars/06-compass.png',  pillar: 'COMPASS' },
-    // Subsection 6.1 anchor (deep violet compass), same h3 before-heading pattern as the Sections above.
-    { needle: '6.1 Your Spiritual Compass',          url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/spiritual-compass.png', pillar: 'Spiritual Compass' },
-    // Pillar 7 Path B: three subsection anchors replace the old single 6.2 gifts icon.
-    { needle: 'Your Motivational Gifts',        url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/motivational-gifts.png',   pillar: 'Motivational Gifts' },
-    { needle: 'Your Manifestation Gifts',       url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/manifestation-gifts.png',  pillar: 'Manifestation Gifts' },
-    { needle: 'Your Fruits of the Spirit',      url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/fruit-of-the-spirit.png',  pillar: 'Fruits of the Spirit' },
-    // Synthesis sections (7 through 16, minus 13 which is unified into Section 6). Deep navy + gold
-    // medallion family. Distinct from the Pillar palette to signal "application of the Pillars."
-    { needle: 'Section 7: Your Misalignment Map',           url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/misalignment-map.png',          pillar: 'Misalignment Map' },
-    { needle: 'Section 8: Your Career Alignment',           url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/career-alignment.png',          pillar: 'Career Alignment' },
-    { needle: 'Section 9: Your Relationship Alignment',     url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/relationship-alignment.png',    pillar: 'Relationship Alignment' },
-    { needle: 'Section 10: Your Parenting Style',           url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/parenting-style.png',           pillar: 'Parenting Style' },
-    { needle: 'Section 11: Your Leadership Profile',        url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/leadership-profile.png',        pillar: 'Leadership Profile' },
-    { needle: 'Section 12: Your Ministry Profile',          url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/ministry-profile.png',          pillar: 'Ministry Profile' },
-    { needle: 'Section 14: Your Stress Response Map',       url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/stress-response-map.png',       pillar: 'Stress Response Map' },
-    { needle: 'Section 15: Your Strategic Recommendations', url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/strategic-recommendations.png', pillar: 'Strategic Recommendations' },
-    // Section 16 needle uses just "Section 16:" because the model sometimes renders the heading
-    // as "30-Day Alignment Plan" (with hyphen) and sometimes "30 Day Alignment Plan" (without).
-    // The section number alone is unambiguous and stable across model output variations.
-    { needle: 'Section 16:',                                url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/thirty-day-plan.png',           pillar: '30 Day Alignment Plan' },
-  ];
+  const MAP = SECTION_ICON_MAP;
   let out = html;
   for (const { needle, url, pillar } of MAP) {
     const escaped = needle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -1650,7 +1706,11 @@ function markdownToBrandedHtml(markdown, payload) {
   // Runs on the raw markdown so the cleaned content flows through marked + the icon
   // stylers unchanged.
   const cleanedMarkdown = stripQuestionCodeCitations(stripSectionNumberPrefixes(markdown));
-  const innerHtml = styleSubArchetypeIcons(styleSectionIcons(styleClosingSignoff(marked.parse(cleanedMarkdown))));
+  const styledHtml = styleSubArchetypeIcons(styleSectionIcons(styleClosingSignoff(marked.parse(cleanedMarkdown))));
+  // Sidebar nav for jumping between sections. Empty navHtml means the layout collapses
+  // back to single-column (e.g. for the Couples Map, which has no Section N headings).
+  const { html: innerHtml, navHtml } = buildSidebarNav(styledHtml);
+  const hasSidebar = navHtml.length > 0;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -1664,16 +1724,33 @@ function markdownToBrandedHtml(markdown, payload) {
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      max-width: 820px;
-      margin: 0 auto;
+      margin: 0;
       padding: 0;
       background: linear-gradient(180deg, #07071a 0%, #0f0a2e 50%, #07071a 100%);
       color: #f5f1e8;
       line-height: 1.7;
       min-height: 100vh;
     }
+    /* Sidebar layout. With sidebar: flex layout with fixed-width nav rail and centered
+       main content. Without sidebar (Couples Map, fallback): main content centers normally. */
+    body.has-sidebar {
+      display: flex;
+      align-items: flex-start;
+    }
+    .main-content {
+      max-width: 820px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+      min-width: 0;
+    }
     .content-wrap {
       padding: 3rem 2rem;
+    }
+    .section-anchor {
+      /* Negative top margin offsets the sticky positioning so anchored sections
+         scroll into view with breathing room above. */
+      scroll-margin-top: 1rem;
     }
     /* COVER PAGE */
     .cover-page {
@@ -1883,34 +1960,218 @@ function markdownToBrandedHtml(markdown, payload) {
       color: rgba(245,241,232,0.6);
       font-size: 0.85rem;
     }
+    /* ====================================================================
+       SIDEBAR NAVIGATION
+       ==================================================================== */
+    .sidebar-nav {
+      width: 260px;
+      flex-shrink: 0;
+      background: rgba(7, 7, 26, 0.85);
+      border-right: 1px solid rgba(212, 169, 87, 0.25);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 2rem 0;
+      box-sizing: border-box;
+      z-index: 50;
+    }
+    .sidebar-header {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #d4a957;
+      text-align: center;
+      padding: 0 1.25rem 1rem;
+      border-bottom: 1px solid rgba(212, 169, 87, 0.2);
+      margin-bottom: 1rem;
+    }
+    .sidebar-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .sidebar-list li {
+      margin: 0;
+    }
+    .sidebar-list a {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.75rem 1.25rem;
+      color: rgba(245, 241, 232, 0.78);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: background 0.18s ease, color 0.18s ease;
+      border-left: 3px solid transparent;
+    }
+    .sidebar-list a:hover {
+      background: rgba(212, 169, 87, 0.08);
+      color: #f5f1e8;
+    }
+    .sidebar-list a.active {
+      background: rgba(212, 169, 87, 0.12);
+      color: #f5f1e8;
+      border-left-color: #d4a957;
+    }
+    .nav-icon {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .nav-label {
+      flex: 1;
+      line-height: 1.3;
+    }
+    /* Hamburger button shown only on narrow screens. */
+    .nav-toggle {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #07071a;
+      border: 1px solid #d4a957;
+      color: #d4a957;
+      font-size: 1.4rem;
+      cursor: pointer;
+      z-index: 60;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-toggle:hover {
+      background: #0f0a2e;
+    }
+    /* Backdrop behind the drawer on mobile. */
+    .nav-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 45;
+    }
+    /* ==== Responsive: narrow screens convert sidebar to slide-in drawer ==== */
+    @media (max-width: 1099px) {
+      body.has-sidebar {
+        display: block;
+      }
+      .sidebar-nav {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.28s ease;
+      }
+      .sidebar-nav.open {
+        transform: translateX(0);
+      }
+      .nav-toggle {
+        display: flex;
+      }
+      .nav-backdrop.show {
+        display: block;
+      }
+    }
+    /* Print: hide nav entirely, expand main content to full width. */
+    @media print {
+      .sidebar-nav, .nav-toggle, .nav-backdrop {
+        display: none !important;
+      }
+      body.has-sidebar {
+        display: block;
+      }
+      .main-content {
+        max-width: none;
+      }
+    }
   </style>
 </head>
-<body>
-  <div class="cover-page">
-    <div class="cover-top"></div>
-    <div class="cover-content">
-      <img src="https://dennisnickens-site-psi.vercel.app/sr-logo-transparent.png" alt="Spiritual Romeo" class="cover-logo-img" />
-      <div class="cover-logo-subtitle">The Alignment Blueprint</div>
-      <div class="cover-divider"></div>
-      <h1 class="cover-name">Dennis Nickens</h1>
-      <p class="cover-aka">aka</p>
-      <h2 class="cover-brand">Spiritual Romeo</h2>
-      <p class="cover-tagline">An assessment system that helps people understand how they're wired so they can position themselves to give their best to the world.</p>
+<body${hasSidebar ? ' class="has-sidebar"' : ''}>
+  ${hasSidebar ? `<button class="nav-toggle" id="nav-toggle" aria-label="Open sections" aria-expanded="false">&#9776;</button>
+  <div class="nav-backdrop" id="nav-backdrop"></div>
+  ${navHtml}` : ''}
+  <main class="main-content">
+    <div class="cover-page">
+      <div class="cover-top"></div>
+      <div class="cover-content">
+        <img src="https://dennisnickens-site-psi.vercel.app/sr-logo-transparent.png" alt="Spiritual Romeo" class="cover-logo-img" />
+        <div class="cover-logo-subtitle">The Alignment Blueprint</div>
+        <div class="cover-divider"></div>
+        <h1 class="cover-name">Dennis Nickens</h1>
+        <p class="cover-aka">aka</p>
+        <h2 class="cover-brand">Spiritual Romeo</h2>
+        <p class="cover-tagline">An assessment system that helps people understand how they're wired so they can position themselves to give their best to the world.</p>
+      </div>
+      <div class="cover-footer">
+        <a href="https://dennisnickens.com">dennisnickens.com</a><br/>
+        <a href="mailto:Admin@dennisnickens.com">Admin@dennisnickens.com</a><br/>
+        1-866-944-7225
+      </div>
     </div>
-    <div class="cover-footer">
-      <a href="https://dennisnickens.com">dennisnickens.com</a><br/>
-      <a href="mailto:Admin@dennisnickens.com">Admin@dennisnickens.com</a><br/>
-      1-866-944-7225
+    <div class="content-wrap">
+      ${innerHtml}
+      <div class="footer">
+        Generated for ${payload.first_name || 'this customer'} ${payload.last_name || ''} on ${new Date().toLocaleDateString()}<br/>
+        Spiritual Romeo &middot; Behavioral and Alignment Consulting<br/>
+        dennisnickens.com
+      </div>
     </div>
-  </div>
-  <div class="content-wrap">
-    ${innerHtml}
-    <div class="footer">
-      Generated for ${payload.first_name || 'this customer'} ${payload.last_name || ''} on ${new Date().toLocaleDateString()}<br/>
-      Spiritual Romeo · Behavioral and Alignment Consulting<br/>
-      dennisnickens.com
-    </div>
-  </div>
+  </main>
+  ${hasSidebar ? `<script>
+(function(){
+  var sidebar = document.querySelector('.sidebar-nav');
+  var toggle = document.getElementById('nav-toggle');
+  var backdrop = document.getElementById('nav-backdrop');
+  if (!sidebar || !toggle || !backdrop) return;
+  function openDrawer(){ sidebar.classList.add('open'); backdrop.classList.add('show'); toggle.setAttribute('aria-expanded','true'); }
+  function closeDrawer(){ sidebar.classList.remove('open'); backdrop.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); }
+  toggle.addEventListener('click', function(){
+    if (sidebar.classList.contains('open')) closeDrawer(); else openDrawer();
+  });
+  backdrop.addEventListener('click', closeDrawer);
+  // Smooth scroll on link click + close drawer on mobile after navigation.
+  var links = sidebar.querySelectorAll('a[data-anchor]');
+  links.forEach(function(link){
+    link.addEventListener('click', function(e){
+      var anchor = link.getAttribute('data-anchor');
+      var target = document.getElementById(anchor);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Update URL hash without jumping.
+        history.pushState(null, '', '#' + anchor);
+        closeDrawer();
+      }
+    });
+  });
+  // Active-state tracking via IntersectionObserver. Highlights the section the
+  // reader is currently in. Falls back gracefully if the observer is unsupported.
+  if ('IntersectionObserver' in window) {
+    var byAnchor = {};
+    links.forEach(function(link){ byAnchor[link.getAttribute('data-anchor')] = link; });
+    var anchors = document.querySelectorAll('.section-anchor');
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var id = entry.target.id;
+        var link = byAnchor[id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(function(l){ l.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+    anchors.forEach(function(a){ observer.observe(a); });
+  }
+})();
+</script>` : ''}
 </body>
 </html>`;
 }

@@ -653,7 +653,7 @@ function buildCouplesMapMessage(primaryPayload, primaryScores, secondaryPayload,
   const primaryName = primaryPayload.first_name || 'Partner 1';
   const secondaryName = secondaryPayload.first_name || 'Partner 2';
 
-  return `Generate ONLY a standalone Couples Connection Map document for ${primaryName} and ${secondaryName}. Use the Connection Map subsection structure from Section 17 (Your Pair at a Glance, What Each of You Brings, Where You Align, Where You Speak Different Languages, Your Connection Currency Map, How to Bridge the Gaps, Your 30-60-90 Day Plan). Begin with a cover page that reads "Your Couples Connection Map for ${primaryName} and ${secondaryName}". Do not generate Sections 1-16. Do not include any preamble that references having read the individual Blueprints. The document stands on its own.
+  return `Generate ONLY a standalone Couples Connection Map document for ${primaryName} and ${secondaryName}. Use the Connection Map subsection structure from Section 17 of the master prompt, but render the seven subsection headings as plain title text. The seven headings are: "Your Pair at a Glance", "What Each of You Brings", "Where You Align", "Where You Speak Different Languages", "Your Connection Currency Map", "How to Bridge the Gaps", "Your 30-60-90 Day Plan". Render each one as a level-4 markdown heading (#### Your Pair at a Glance). Do NOT prefix any heading with "Section", "Section 17", "17.1", "17.2", or any other numeric or "Section" prefix. The subsection title is the entire heading. Begin with a cover page that reads "Your Couples Connection Map for ${primaryName} and ${secondaryName}". Do not generate Sections 1-16. Do not include any preamble that references having read the individual Blueprints. The document stands on its own.
 
 Use Dennis Nickens's voice: plain English, direct, warm, consultative. No em dashes or en dashes (use commas, periods, parentheses, or rephrase). No AI-sounding phrases. Use the SR-native CORE vocabulary. Address ${primaryName} and ${secondaryName} by name, and write the Map comparing the two of them. Sign off as "Dennis Nickens".
 
@@ -1583,10 +1583,33 @@ function styleSubArchetypeIcons(html) {
   return addBreaks(pieces.join(''));
 }
 
+// Strips stubborn "Section 17.X:", "Section 17:", "17.X." or "17.X " prefixes from
+// markdown heading lines. The model sometimes prepends these to Couples Map subsection
+// titles even when the prompt forbids it. Runs only on heading lines (#, ##, ###, ####)
+// so body text that references "Section 17.4" (etc.) remains intact.
+function stripSectionNumberPrefixes(markdown) {
+  if (typeof markdown !== 'string' || markdown.length === 0) return markdown;
+  return markdown.replace(/^(#{1,6})\s+(.*)$/gm, (full, hashes, rest) => {
+    let title = rest;
+    // "Section 17.4: Your Pair at a Glance" or "Section 17: Your Pair at a Glance"
+    title = title.replace(/^Section\s+17(?:\.\d+)?\s*[:.\-]\s*/i, '');
+    // "17.4 Your Pair at a Glance" or "17.4: Your Pair at a Glance" or "17.4. ..."
+    title = title.replace(/^17\.\d+\s*[:.\-]?\s+/, '');
+    // "Section 17 - Your Pair at a Glance"
+    title = title.replace(/^Section\s+17\s*[\-]\s*/i, '');
+    return `${hashes} ${title}`.replace(/\s+$/, '');
+  });
+}
+
 function markdownToBrandedHtml(markdown, payload) {
   // Lazy require to avoid import in handler boot
   const { marked } = require('marked');
-  const innerHtml = styleSubArchetypeIcons(styleSectionIcons(styleClosingSignoff(marked.parse(markdown))));
+  // Pre-process: strip stubborn "Section 17.X:", "17.X.", "17.X " prefixes the model
+  // keeps attaching to Couples Map subsection headings even though the master prompt
+  // tells it not to. Runs on the raw markdown so the cleaned heading flows through
+  // marked + the icon stylers unchanged.
+  const cleanedMarkdown = stripSectionNumberPrefixes(markdown);
+  const innerHtml = styleSubArchetypeIcons(styleSectionIcons(styleClosingSignoff(marked.parse(cleanedMarkdown))));
 
   return `<!DOCTYPE html>
 <html lang="en">

@@ -1304,6 +1304,17 @@ function styleSectionIcons(html) {
     { needle: 'Your Motivational Gifts',        url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/motivational-gifts.png',   pillar: 'Motivational Gifts' },
     { needle: 'Your Manifestation Gifts',       url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/manifestation-gifts.png',  pillar: 'Manifestation Gifts' },
     { needle: 'Your Fruits of the Spirit',      url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/fruit-of-the-spirit.png',  pillar: 'Fruits of the Spirit' },
+    // Synthesis sections (7 through 16, minus 13 which is unified into Section 6). Deep navy + gold
+    // medallion family. Distinct from the Pillar palette to signal "application of the Pillars."
+    { needle: 'Section 7: Your Misalignment Map',           url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/misalignment-map.png',          pillar: 'Misalignment Map' },
+    { needle: 'Section 8: Your Career Alignment',           url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/career-alignment.png',          pillar: 'Career Alignment' },
+    { needle: 'Section 9: Your Relationship Alignment',     url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/relationship-alignment.png',    pillar: 'Relationship Alignment' },
+    { needle: 'Section 10: Your Parenting Style',           url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/parenting-style.png',           pillar: 'Parenting Style' },
+    { needle: 'Section 11: Your Leadership Profile',        url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/leadership-profile.png',        pillar: 'Leadership Profile' },
+    { needle: 'Section 12: Your Ministry Profile',          url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/ministry-profile.png',          pillar: 'Ministry Profile' },
+    { needle: 'Section 14: Your Stress Response Map',       url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/stress-response-map.png',       pillar: 'Stress Response Map' },
+    { needle: 'Section 15: Your Strategic Recommendations', url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/strategic-recommendations.png', pillar: 'Strategic Recommendations' },
+    { needle: 'Section 16: Your 30 Day Alignment Plan',     url: 'https://dennisnickens.com/assessment/icons/synthesis-sections/thirty-day-plan.png',           pillar: '30 Day Alignment Plan' },
   ];
   let out = html;
   for (const { needle, url, pillar } of MAP) {

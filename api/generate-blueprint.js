@@ -1601,14 +1601,41 @@ function stripSectionNumberPrefixes(markdown) {
   });
 }
 
+// Strips internal question-code citations like "(Q-C8 from both)", "(per Q-A7)",
+// "Q-D1 and Q-D4", "Q-H7", from customer-facing prose. The master prompt uses these
+// codes internally to point the model at specific question answers, but the customer
+// has no map back from a code to a question, so they read as meaningless noise.
+// The model still slips these into output despite the writing rule. This sweep cleans
+// them up before HTML rendering.
+function stripQuestionCodeCitations(markdown) {
+  if (typeof markdown !== 'string' || markdown.length === 0) return markdown;
+  let out = markdown;
+  // Parenthetical wrappers: "(Q-C8)", "(Q-C8 from both)", "(per Q-A7)", "(Q-D1 and Q-D4)",
+  // "(see Q-H7)", "(from Q-E3)". Match an open paren containing at least one Q-XN and
+  // any short connecting words, no nested parens.
+  out = out.replace(/\s*\(\s*(?:(?:per|see|from|via|cf\.?|cf|ref|refs?\.?)\s+)?Q-[A-I]\d+(?:\s*(?:and|,|&|\+|\/|\\|to|through)\s*Q-[A-I]\d+)*(?:\s+(?:from\s+(?:both|him|her|each|them|themselves))?)?\s*\)/gi, '');
+  // Bare inline runs: "Q-D1 and Q-D4 indicate", "from Q-A7", "Q-H7,". Drop the codes
+  // but keep surrounding prose intact by removing the codes plus immediately attached
+  // connector words ("and Q-X", ", Q-X").
+  out = out.replace(/\bQ-[A-I]\d+(?:\s*(?:and|,|&|\+|\/|to|through)\s*Q-[A-I]\d+)*/g, '');
+  // Tidy double spaces or stray " ," / " ." left behind by the strips above.
+  out = out.replace(/[ \t]{2,}/g, ' ');
+  out = out.replace(/\s+([,.;:!?])/g, '$1');
+  out = out.replace(/\(\s*\)/g, '');
+  return out;
+}
+
 function markdownToBrandedHtml(markdown, payload) {
   // Lazy require to avoid import in handler boot
   const { marked } = require('marked');
-  // Pre-process: strip stubborn "Section 17.X:", "17.X.", "17.X " prefixes the model
-  // keeps attaching to Couples Map subsection headings even though the master prompt
-  // tells it not to. Runs on the raw markdown so the cleaned heading flows through
-  // marked + the icon stylers unchanged.
-  const cleanedMarkdown = stripSectionNumberPrefixes(markdown);
+  // Pre-process pass 1: strip stubborn "Section 17.X:", "17.X.", "17.X " prefixes the
+  // model keeps attaching to Couples Map subsection headings even though the master
+  // prompt tells it not to.
+  // Pre-process pass 2: strip internal question-code citations like "(Q-C8 from both)",
+  // "(Q-A7)", "Q-D1 and Q-D4 indicate" that the model leaks into customer-facing prose.
+  // Runs on the raw markdown so the cleaned content flows through marked + the icon
+  // stylers unchanged.
+  const cleanedMarkdown = stripQuestionCodeCitations(stripSectionNumberPrefixes(markdown));
   const innerHtml = styleSubArchetypeIcons(styleSectionIcons(styleClosingSignoff(marked.parse(cleanedMarkdown))));
 
   return `<!DOCTYPE html>

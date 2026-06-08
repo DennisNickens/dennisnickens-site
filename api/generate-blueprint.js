@@ -1471,35 +1471,48 @@ function styleSubArchetypeIcons(html) {
   const ciWord = (word) =>
     word.replace(/[A-Za-z]/g, (ch) => `[${ch.toLowerCase()}${ch.toUpperCase()}]`);
 
-  // Inject one inline icon at the FIRST matching block whose inner text contains the name as a
-  // whole word, for each entry. A match is any `<strong>`, `<h3>`, or `<h4>` element: <strong>
-  // catches the bolded identity line, and h3/h4 catch the heading form the model uses for the
-  // prominent "### You Are: The X" archetype declarations in Sections 1-3 (and any heading-based
-  // Gift label). The `\1` backreference ties the closing tag to whichever opened, and the tempered
+  // Inject an inline icon at the matching block whose inner text contains the name as a whole
+  // word, for each entry. A match is any `<strong>`, `<h3>`, or `<h4>` element: <strong> catches
+  // the bolded identity line, and h3/h4 catch the heading form the model uses for the prominent
+  // "### You Are: The X" archetype declarations in Sections 1-3 (and any heading-based Gift label).
+  // The `\1` backreference ties the closing tag to whichever opened, and the tempered
   // `(?:(?!</\1>)[\s\S])*?` segments keep the match inside that single element (they never cross
-  // its closing tag), so the name must appear within one block. A single alternation across the
-  // three tags means the first occurrence of ANY of them wins. replace() without /g touches only
-  // the first match, so each archetype gets at most one icon per section.
+  // its closing tag), so the name must appear within one block.
+  //
+  // allMatches controls the per-archetype cap. Default (false): first bolded mention only, used in
+  // CORE/LENS/DRIVE and Currency/Channel where one archetype owns the section and repeats would be
+  // noise. True (the 6.2A/B/C subscopes): EVERY bolded mention gets the icon, so the top-three
+  // summary line plus the Primary/Secondary/Tertiary (or per-fruit-tier) callouts each get one.
   //
   // Placement differs by tag. <strong> is inline, so the icon is prepended as a sibling right
-  // before it and renders on the same line. h3/h4 are block-level, so a sibling before them would
-  // float on its own line above the heading; instead the icon is inserted as the FIRST CHILD inside
-  // the opening tag (right after its `>`), which keeps it inline with the heading text.
-  const injectIcons = (segment, entries) => {
+  // before it; a single <br> is added afterward by addBreaks so the icon(s) stack on their own line
+  // above the bolded text. h3/h4 are block-level, so a sibling before them would float on its own
+  // line above the heading; instead the icon is inserted as the FIRST CHILD inside the opening tag
+  // (right after its `>`), which keeps it inline with the heading text (no <br>).
+  const injectIcons = (segment, entries, allMatches = false) => {
     let out = segment;
     for (const { name, url } of entries) {
       const re = new RegExp(
-        `<(strong|h3|h4)\\b[^>]*>(?:(?!</\\1>)[\\s\\S])*?\\b${ciWord(name)}\\b(?:(?!</\\1>)[\\s\\S])*?</\\1>`
+        `<(strong|h3|h4)\\b[^>]*>(?:(?!</\\1>)[\\s\\S])*?\\b${ciWord(name)}\\b(?:(?!</\\1>)[\\s\\S])*?</\\1>`,
+        allMatches ? 'g' : ''
       );
       const img = `<img class="subarchetype-icon-inline" src="${url}" alt="${name} icon">`;
       out = out.replace(re, (match, tag) =>
         tag === 'strong'
-          ? `${img}${match}`            // inline tag: sibling before it
+          ? `${img}${match}`            // inline tag: sibling before it (addBreaks inserts the <br>)
           : match.replace('>', `>${img}`) // heading: first child, just inside the opening tag
       );
     }
     return out;
   };
+
+  // After all injection, drop a single <br> between a run of inline sub-archetype icons and the
+  // <strong> that follows them, so the icon(s) render on their own line above the bolded text
+  // instead of squishing inline. Targets ONLY our injected `subarchetype-icon-inline` icons (never
+  // the model's own markdown images in 4/5), and never the in-heading icons (those are followed by
+  // heading text, not `<strong`). One <br> regardless of how many icons stacked.
+  const addBreaks = (s) =>
+    s.replace(/((?:<img class="subarchetype-icon-inline"[^>]*>)+)(<strong\b)/g, '$1<br>$2');
 
   // Section 6 carries three h4 subsections (6.2A/B/C), each with its own dictionary. Split the
   // Section 6 segment at those h4 headings and run each subscope ONLY inside its own subsection,
@@ -1520,7 +1533,9 @@ function styleSubArchetypeIcons(html) {
     for (let i = 0; i < found.length; i++) {
       const start = found[i].start;
       const end = i + 1 < found.length ? found[i + 1].start : seg.length;
-      parts.push(injectIcons(seg.slice(start, end), found[i].entries));
+      // allMatches=true: 6.2A/B/C drop the first-occurrence cap so the top-three summary AND each
+      // Primary/Secondary/Tertiary (or per-fruit-tier) callout each get their icon.
+      parts.push(injectIcons(seg.slice(start, end), found[i].entries, true));
     }
     return parts.join('');
   };
@@ -1543,7 +1558,7 @@ function styleSubArchetypeIcons(html) {
     let out = html;
     for (const p of PILLARS) out = injectIcons(out, p.entries);
     out = injectIcons(out, MOTIVATIONAL_ENTRIES);
-    return out;
+    return addBreaks(out);
   }
 
   // Solo Blueprint: slice the document at the section headings (contiguous, lossless) and run
@@ -1563,7 +1578,7 @@ function styleSubArchetypeIcons(html) {
     }
     pieces.push(seg);
   }
-  return pieces.join('');
+  return addBreaks(pieces.join(''));
 }
 
 function markdownToBrandedHtml(markdown, payload) {

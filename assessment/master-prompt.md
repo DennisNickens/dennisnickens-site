@@ -365,19 +365,19 @@ This section presents the reader's spiritual portrait as ONE integrated reading.
 - Verse 3: [Chapter:Verse] [Quote]. 2-3 sentences on why this speaks to their calling
 - Closing: One paragraph encouraging them to make this personal
 
-#### 6.2A Your Motivational Gifts
+#### Your Motivational Gifts
 
 **IMPORTANT: Generate this subsection ONLY if Set G data is present in the payload (fields `srConditional_QG1` through `srConditional_QG25`). Set G fires for customers who selected Option 6 (Spiritual Growth), Option 7 (Ministry Leader), or Option 8 (Full Blueprint) on the focus qualifier. If those fields are absent, skip 6.2A entirely. Do NOT print a placeholder.**
 
 When Set G data IS present, follow the full Motivational Gifts structure defined below. Motivational Gifts are how the customer is WIRED to serve (their default operating lane, drawn from Romans 12 + Ephesians 4 + 1 Corinthians 12:28). The customer's top three gifts are named and read in depth. See the detailed structure under "Motivational Gifts Detail (for Subsection 6.2A)" later in this prompt.
 
-#### 6.2B Your Manifestation Gifts
+#### Your Manifestation Gifts
 
 **IMPORTANT: Generate this subsection ONLY if Set H data is present in the payload (fields `srConditional_QH1` through `srConditional_QH20`). Set H fires under the same gating rule as Set G. If those fields are absent, skip 6.2B entirely.**
 
 When Set H data IS present, name the customer's top three Manifestation Gifts as Spirit-given operations through them (1 Corinthians 12:7-11). These are different from Motivational Gifts: Motivational is the wiring; Manifestation is the supernatural operation of the Holy Spirit through the believer in specific moments. The customer reads which of the 9 manifestations they tend to carry. See the detailed structure under "Manifestation Gifts Detail (for Subsection 6.2B)" later in this prompt.
 
-#### 6.2C Your Fruits of the Spirit
+#### Your Fruits of the Spirit
 
 **IMPORTANT: Generate this subsection ONLY if Set I data is present in the payload (fields `srConditional_QI1` through `srConditional_QI18`). Set I fires under the same gating rule as Set G. If those fields are absent, skip 6.2C entirely.**
 
@@ -710,7 +710,7 @@ Reference detail for Subsection 6.2A ONLY (gating rule stated above; generate on
 
 **Spiritual Gifts section structure (produce these bullets in order):**
 
-- **Your gift combination.** One paragraph naming all three gifts and what the combination reveals about how this person serves. Cross-reference Pillar 1 Behavior Archetype and Pillar 2 Personality Code to show how wiring shapes HOW the gifts express. About 40 to 60 words.
+- **Your gift combination.** First, present the top three gifts as a SINGLE bolded phrase on its own paragraph: write the three names inside ONE pair of bold markers, joined by commas with "and" before the last, followed by a period, with a paragraph break before and after the bolded line. Do NOT put each gift in its own separate bold block. Format it exactly like this: "Your top three, in order, are:" then a paragraph break, then "**Evangelism, Discernment, and Pastoring / Shepherding.**" alone on its own line. After that bolded list, in a new paragraph, explain what the combination reveals about how this person serves. Cross-reference Pillar 1 Behavior Archetype and Pillar 2 Personality Code to show how wiring shapes HOW the gifts express. About 40 to 60 words.
 
 - **Primary gift: [Gift Name].** Lead with the one-line SR definition. Make it personal using their specific Q-G answers as evidence. Name the shadow: the cost when overused or undirected. About 60 to 80 words.
 
@@ -775,7 +775,7 @@ Reference detail for Subsection 6.2B (gating rule stated in Section 6.2B above; 
 
 **Manifestation Gifts section structure (produce these bullets in order):**
 
-- **Your top three Manifestation Gifts.** One paragraph naming the three Manifestation Gifts with the highest option-counts from Q-H1 through Q-H20, in order of strength. Cross-reference how these supernatural operations show up given the customer's pillar profile. About 80 to 120 words.
+- **Your top three Manifestation Gifts.** First, present the three Manifestation Gifts with the highest option-counts from Q-H1 through Q-H20, in order of strength, as a SINGLE bolded phrase on its own paragraph: write the three names inside ONE pair of bold markers, joined by commas with "and" before the last, followed by a period, with a paragraph break before and after the bolded line. Do NOT put each gift in its own separate bold block. Format it exactly like this: "Your top three, in order, are:" then a paragraph break, then "**Word of Wisdom, Prophecy, and Discerning of Spirits.**" alone on its own line. After that bolded list, in a new paragraph, cross-reference how these supernatural operations show up given the customer's pillar profile. About 80 to 120 words.
 
 - **Primary Manifestation Gift.** Name it. One paragraph (about 100 to 150 words) interpreting how this specific manifestation operates through the customer. Reference 1 Corinthians 12:7-11 once. Use SR-native language alongside the biblical anchor: not "the gift of tongues" alone but "Different Kinds of Tongues, the Spirit-given prayer language or message in an unlearned tongue that flows through you in specific moments." Connect to Section 12 (Ministry Profile) if Set F is present.
 

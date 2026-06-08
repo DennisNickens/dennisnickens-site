@@ -1299,9 +1299,9 @@ function styleSectionIcons(html) {
     { needle: 'Section 5: Your Learning Channel',    url: 'https://dennisnickens.com/assessment/icons/pillars/05-channel.png',  pillar: 'CHANNEL' },
     { needle: 'Section 6: Your Spiritual Wiring',    url: 'https://dennisnickens.com/assessment/icons/pillars/06-compass.png',  pillar: 'COMPASS' },
     // Pillar 7 Path B: three subsection anchors replace the old single 6.2 gifts icon.
-    { needle: '6.2A Your Motivational Gifts',        url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/motivational-gifts.png',   pillar: 'Motivational Gifts' },
-    { needle: '6.2B Your Manifestation Gifts',       url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/manifestation-gifts.png',  pillar: 'Manifestation Gifts' },
-    { needle: '6.2C Your Fruits of the Spirit',      url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/fruit-of-the-spirit.png',  pillar: 'Fruits of the Spirit' },
+    { needle: 'Your Motivational Gifts',        url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/motivational-gifts.png',   pillar: 'Motivational Gifts' },
+    { needle: 'Your Manifestation Gifts',       url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/manifestation-gifts.png',  pillar: 'Manifestation Gifts' },
+    { needle: 'Your Fruits of the Spirit',      url: 'https://dennisnickens.com/assessment/icons/gifts-subsection/fruit-of-the-spirit.png',  pillar: 'Fruits of the Spirit' },
   ];
   let out = html;
   for (const { needle, url, pillar } of MAP) {
@@ -1460,9 +1460,9 @@ function styleSubArchetypeIcons(html) {
   // the next subscope's h4 (6.2C runs to the end of the Section 6 segment, i.e. the Section 7
   // boundary). The 6.1 Compass text before 6.2A gets no entries.
   const SECTION6_SUBSCOPES = [
-    { needle: '6.2A Your Motivational Gifts',   entries: MOTIVATIONAL_ENTRIES },
-    { needle: '6.2B Your Manifestation Gifts',  entries: MANIFESTATION_ENTRIES },
-    { needle: '6.2C Your Fruits of the Spirit', entries: FRUIT_ENTRIES },
+    { needle: 'Your Motivational Gifts',   entries: MOTIVATIONAL_ENTRIES },
+    { needle: 'Your Manifestation Gifts',  entries: MANIFESTATION_ENTRIES },
+    { needle: 'Your Fruits of the Spirit', entries: FRUIT_ENTRIES },
   ];
 
   // Build a case-insensitive regex body for a single word by expanding each letter into a

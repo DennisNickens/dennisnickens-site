@@ -1695,6 +1695,70 @@ function stripQuestionCodeCitations(markdown) {
   return out;
 }
 
+// Wraps the "Your Blueprint at a Glance" h3 (plus its content up to the next h2/h3) in
+// a card div. The card gets distinct styling so the executive summary stands out from the
+// rest of the document. Match is lenient (h2 or h3, case-insensitive, optional Section
+// number) so model output variations still get caught.
+function wrapAtAGlanceCard(html) {
+  if (typeof html !== 'string' || html.length === 0) return html;
+  // Find the opening heading.
+  const startRe = /<h([23])\b[^>]*>\s*(?:Your\s+)?(?:Blueprint\s+)?At\s+a\s+Glance[^<]*<\/h\1>/i;
+  const startMatch = html.match(startRe);
+  if (!startMatch) return html;
+  const startIdx = startMatch.index;
+  // Find where the card ends: the next h2 or h3 that comes AFTER the opening heading.
+  const after = html.slice(startIdx + startMatch[0].length);
+  const endRe = /<h[23]\b/i;
+  const endLocalMatch = after.match(endRe);
+  const endIdx = endLocalMatch ? (startIdx + startMatch[0].length + endLocalMatch.index) : html.length;
+  const block = html.slice(startIdx, endIdx);
+  const before = html.slice(0, startIdx);
+  const afterBlock = html.slice(endIdx);
+  return `${before}<section class="at-a-glance-card">${block}</section>${afterBlock}`;
+}
+
+// Replaces <!-- SCORE_BAR pillar="X" labels="A|B|C" values="1|2|3" letters="X|Y|Z" -->
+// markers with inline SVG horizontal bar charts. The chart shows the customer's score
+// breakdown for a pillar (e.g. CORE: Commander 13%, Organizer 25%, Relator 34%, Energizer
+// 28%) as colored bars sized to their percentage. Color-coded to match the pillar palette.
+function renderScoreBars(html) {
+  if (typeof html !== 'string' || html.length === 0) return html;
+  // Pillar accent colors that match the existing Pillar icon palette.
+  const COLORS = {
+    CORE: '#d4a957',      // gold
+    LENS: '#c8c8d0',      // platinum
+    DRIVE: '#a67039',     // bronze
+    CURRENCY: '#d99a8a',  // rose gold
+    CHANNEL: '#7a92b8',   // steel blue
+    COMPASS: '#7a4ea3',   // deep violet
+    GIFTS: '#3f9b6c',     // emerald
+  };
+  return html.replace(
+    /<!--\s*SCORE_BAR\s+pillar="([^"]+)"\s+labels="([^"]+)"\s+values="([^"]+)"\s+letters="([^"]*)"\s*-->/g,
+    (_, pillar, labelsStr, valuesStr, lettersStr) => {
+      const labels = labelsStr.split('|').map(s => s.trim());
+      const values = valuesStr.split('|').map(s => parseFloat(s) || 0);
+      const letters = lettersStr ? lettersStr.split('|').map(s => s.trim()) : labels.map(() => '');
+      const color = COLORS[pillar.toUpperCase()] || '#d4a957';
+      // Find the max value so we can scale bars to a consistent width.
+      const maxVal = Math.max(...values, 1);
+      const rows = labels.map((label, i) => {
+        const val = values[i];
+        const widthPct = Math.round((val / 100) * 100); // values are already percentages
+        const letter = letters[i] || '';
+        return `
+        <div class="sb-row">
+          <div class="sb-letter">${letter}</div>
+          <div class="sb-label">${label}</div>
+          <div class="sb-track"><div class="sb-fill" style="width:${widthPct}%;background:${color};"></div></div>
+          <div class="sb-value">${val.toFixed(1)}%</div>
+        </div>`;
+      }).join('');
+      return `<div class="score-bar-chart" data-pillar="${pillar}">${rows}\n      </div>`;
+    }
+  );
+}
+
 function markdownToBrandedHtml(markdown, payload) {
   // Lazy require to avoid import in handler boot
   const { marked } = require('marked');
@@ -1706,7 +1770,11 @@ function markdownToBrandedHtml(markdown, payload) {
   // Runs on the raw markdown so the cleaned content flows through marked + the icon
   // stylers unchanged.
   const cleanedMarkdown = stripQuestionCodeCitations(stripSectionNumberPrefixes(markdown));
-  const styledHtml = styleSubArchetypeIcons(styleSectionIcons(styleClosingSignoff(marked.parse(cleanedMarkdown))));
+  // Post-process pass: wrap "Your Blueprint at a Glance" in a card div, render score-bar
+  // markers as inline SVG bar charts, and chain through the existing icon stylers.
+  const styledHtml = renderScoreBars(wrapAtAGlanceCard(
+    styleSubArchetypeIcons(styleSectionIcons(styleClosingSignoff(marked.parse(cleanedMarkdown))))
+  ));
   // Sidebar nav for jumping between sections. Empty navHtml means the layout collapses
   // back to single-column (e.g. for the Couples Map, which has no Section N headings).
   const { html: innerHtml, navHtml } = buildSidebarNav(styledHtml);
@@ -1865,15 +1933,153 @@ function markdownToBrandedHtml(markdown, payload) {
     /* PILLAR SECTION ICONS */
     .pillar-icon-wrap {
       text-align: center;
-      margin: 3rem 0 0.5rem 0;
+      margin: 4rem 0 0.75rem 0;
       page-break-inside: avoid;
     }
     .pillar-icon-wrap img {
       display: inline-block;
-      width: 120px;
-      height: 120px;
+      width: 160px;
+      height: 160px;
       object-fit: contain;
       opacity: 0.95;
+      filter: drop-shadow(0 4px 24px rgba(212, 169, 87, 0.18));
+    }
+    /* Heading immediately following a pillar icon centers and breathes. Magazine-style entry. */
+    .pillar-icon-wrap + h2,
+    .pillar-icon-wrap + h3 {
+      text-align: center;
+      margin-top: 0.5rem;
+      margin-bottom: 1.25rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      letter-spacing: -0.01em;
+    }
+    /* Drop caps on the first paragraph after a Pillar section heading. */
+    .pillar-icon-wrap + h2 + p::first-letter,
+    .pillar-icon-wrap + h3 + p::first-letter {
+      font-family: 'Playfair Display', serif;
+      float: left;
+      font-size: 4.5rem;
+      line-height: 0.9;
+      padding: 0.45rem 0.6rem 0 0;
+      color: #d4a957;
+      font-weight: 700;
+    }
+    /* ====================================================================
+       AT A GLANCE CARD
+       The TL;DR card directly after the cover page. Dense, premium, the
+       90-second read for skimmers. Dark within dark, gold border, clear
+       internal hierarchy.
+       ==================================================================== */
+    .at-a-glance-card {
+      background: linear-gradient(180deg, rgba(15, 10, 46, 0.65) 0%, rgba(7, 7, 26, 0.7) 100%);
+      border: 1px solid rgba(212, 169, 87, 0.45);
+      border-radius: 8px;
+      padding: 2rem 2.25rem 1.5rem;
+      margin: 2.5rem 0 3rem;
+      box-shadow: 0 8px 36px rgba(0, 0, 0, 0.35);
+      page-break-inside: avoid;
+    }
+    .at-a-glance-card h2,
+    .at-a-glance-card h3 {
+      font-family: 'Playfair Display', serif;
+      color: #f5f1e8;
+      font-size: 1.5rem;
+      text-align: center;
+      letter-spacing: 0.02em;
+      margin-top: 0;
+      margin-bottom: 0.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(212, 169, 87, 0.3);
+    }
+    .at-a-glance-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #d4a957;
+      font-size: 0.85rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin: 1.25rem 0 0.5rem;
+      font-weight: 600;
+    }
+    .at-a-glance-card ol {
+      margin: 0;
+      padding-left: 1.4rem;
+    }
+    .at-a-glance-card ol li {
+      margin-bottom: 0.45rem;
+      line-height: 1.55;
+    }
+    .at-a-glance-card ol li strong {
+      color: #f5f1e8;
+    }
+    .at-a-glance-card p {
+      margin: 0.5rem 0;
+      line-height: 1.6;
+    }
+    .at-a-glance-card p strong {
+      color: #d4a957;
+    }
+    /* ====================================================================
+       SCORE BAR CHART
+       Renders the customer's pillar percentage breakdown as inline horizontal
+       bars. Color-coded per pillar (gold for CORE, steel blue for CHANNEL, etc.).
+       ==================================================================== */
+    .score-bar-chart {
+      margin: 1.5rem 0 2rem;
+      padding: 1.25rem 1.5rem;
+      background: rgba(7, 7, 26, 0.4);
+      border-left: 3px solid #d4a957;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      page-break-inside: avoid;
+    }
+    .sb-row {
+      display: grid;
+      grid-template-columns: 28px 1fr 3fr 60px;
+      align-items: center;
+      gap: 0.85rem;
+      margin: 0.45rem 0;
+    }
+    .sb-letter {
+      font-family: 'Playfair Display', serif;
+      color: #d4a957;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-align: center;
+    }
+    .sb-label {
+      color: rgba(245, 241, 232, 0.85);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .sb-track {
+      height: 12px;
+      background: rgba(212, 169, 87, 0.12);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    .sb-fill {
+      height: 100%;
+      border-radius: 6px;
+      transition: width 0.4s ease;
+      box-shadow: 0 0 12px rgba(212, 169, 87, 0.18);
+    }
+    .sb-value {
+      color: #f5f1e8;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    @media (max-width: 640px) {
+      .sb-row {
+        grid-template-columns: 24px 1fr 2fr 52px;
+        gap: 0.5rem;
+      }
+      .sb-label {
+        font-size: 0.85rem;
+      }
     }
     /* INLINE SUB-ARCHETYPE ICONS (next to the customer's specific archetype name) */
     .subarchetype-icon-inline {

@@ -293,6 +293,30 @@ The customer reads each section start as "What is this and why am I reading it?"
 
 ---
 
+### Your Blueprint at a Glance
+
+This is the FIRST content section after the cover page, before the Executive Summary. It is the 90-second read for the customer who wants the headline before they invest in the long-form sections. Render it exactly in this format, using these exact h3 subheadings, so the renderer can wrap the whole block in a premium card:
+
+```
+### Your Blueprint at a Glance
+
+#### Your Top 3 Strengths
+1. **[Strength name in 2-4 words].** One short sentence describing how it shows up in their life. Specific, not generic.
+2. **[Strength name].** One short sentence.
+3. **[Strength name].** One short sentence.
+
+#### Your 2 Biggest Friction Points
+1. **[Friction name in 2-4 words].** One short sentence describing the cost when it surfaces.
+2. **[Friction name].** One short sentence.
+
+#### Your One Move This Week
+**[Action name in 3-6 words].** One sentence telling them exactly what to do, when, and what changes when they do it. Specific, doable in the next 7 days.
+```
+
+Rules: 3 strengths (always), 2 friction points (always), exactly 1 move (always). Pull strengths from the dominant Pillar 1 archetype, dominant Connection Currency, and dominant Action Style. Pull friction points from the misalignments named in Section 7. Pull the One Move from the highest-leverage week-one practice that will appear in Section 16. The At a Glance must align with what comes later in the Blueprint, not contradict it.
+
+Word budget: 80 to 130 words total. Skim-able. No paragraphs, only the bolded items + one sentence each.
+
 ### Executive Summary
 
 **Intro paragraph rule applies here too.** Open with a short intro explaining that the Executive Summary is the top-of-the-funnel read on the customer: a synthesis of who they are across the Seven Lenses, before the per-section deep dives.
@@ -306,6 +330,7 @@ Then continue with the existing Executive Summary content:
 **Intro paragraph (always include first).** Open the section with a short paragraph in second person that explains what the Behavior Profile is and why it matters. Something close to this in tone: "Your Behavior Profile is the most visible part of your wiring. It is what people see when they meet you, especially under pressure or in conflict. The CORE framework measures four styles (Commander, Organizer, Relator, Energizer), and your blend is unique. The breakdown below shows the mix that drives how you instinctively act in the world." Adjust the wording to match the customer's actual data, but the intent is the same: tell the reader WHAT this section is BEFORE diving into their results.
 
 - CORE breakdown table for the four customer-facing letters (C, O, R, E). Use the translation rule from earlier in this prompt: internal D becomes C (Commander), internal I becomes E (Energizer), internal S becomes R (Relator), internal C becomes O (Organizer). Show each row as Letter / Style / Percentage. Percentages must total 100% and show to one decimal place. Do NOT show the raw score column. Format the table with these three columns only: Letter, Style, Percentage. Example formatting: "C / Commander / 13.0%" then "O / Organizer / 25.0%" then "R / Relator / 34.0%" then "E / Energizer / 28.0%".
+- IMMEDIATELY after the CORE breakdown table, emit ONE line containing this exact marker format (the renderer parses this to draw a visual score bar): `<!-- SCORE_BAR pillar="CORE" labels="Commander|Organizer|Relator|Energizer" values="13.0|25.0|34.0|28.0" letters="C|O|R|E" -->` Replace the values with the customer's actual percentages from the breakdown table above. Keep the four values in the order C, O, R, E. Keep the pipe (|) separators exactly as shown. The marker is an HTML comment, so it does NOT render as visible text; the renderer replaces it with an inline SVG bar chart.
 - What Each Letter Means For You: A short subsection that names each of the four customer-facing CORE letters (C, O, R, E) with its one-line plain-English meaning AND the customer's actual percentage for that letter. Format as four short bullets or four short labeled paragraphs. This is the per-letter breakdown. Use the customer-facing letters and Style names, never the internal D/I/S/C or the legacy DISC vocabulary.
 - Your Top Two Letters Combined: A REQUIRED subsection that must appear every time. State the customer's top two letters explicitly (e.g., "Your top two are S at 38% and I at 27%"). Then explain in 80-120 words what this specific blend means as a wiring pattern. Pull from the archetype paragraph for their two-letter combination (DI, DS, DC, ID, IS, IC, SD, SI, SC, CD, CI, CS). If the customer is a Pure Type (highest letter is more than 1.5x the second), state that they are a Pure Type and explain what their single dominant letter means as a standalone wiring pattern (80-120 words). Either way, this subsection must explicitly name both letters or the single pure letter and explain the combination logic, not just the archetype name.
 - "You are: The [Archetype Name]" displayed prominently (use the 16 SR Behavior Archetype table above to determine the right one based on top two letters or pure type)
@@ -346,6 +371,7 @@ Then continue with the existing Executive Summary content:
 
 ### Section 5: Your Learning Channel
 - Percentage table for Sight, Sound, Word, Touch (must total 100%)
+- IMMEDIATELY after the percentage table, emit ONE line containing this exact marker (the renderer parses it and replaces with an inline SVG bar): `<!-- SCORE_BAR pillar="CHANNEL" labels="Sight|Sound|Word|Touch" values="25.0|18.0|22.0|35.0" letters="S|N|W|T" -->` Replace the values with the customer's actual percentages from the table above. Keep the four values in the order Sight, Sound, Word, Touch. Keep the pipe (|) separators exactly as shown.
 - How You Take In Information
 - How You Make Decisions
 - Your Ideal Work Environment (specific bullets calibrated to the dominant channel)

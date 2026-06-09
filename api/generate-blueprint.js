@@ -1966,6 +1966,26 @@ function markdownToBrandedHtml(markdown, payload) {
       font-weight: 700;
     }
     /* ====================================================================
+       LEANING CELL FORMAT
+       Tables in the Personality Code section put a single letter on top
+       (gold, centered) above the leaning word (e.g. W / Inward, T / Tangible).
+       The model emits cells as <strong>W</strong><br>Inward; CSS centers them
+       and styles the letter as a small gold heading.
+       ==================================================================== */
+    td:has(> strong + br) {
+      text-align: center;
+      vertical-align: middle;
+    }
+    td:has(> strong + br) strong {
+      display: block;
+      color: #d4a957;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.35rem;
+    }
+    /* ====================================================================
        AT A GLANCE CARD
        The TL;DR card directly after the cover page. Dense, premium, the
        90-second read for skimmers. Dark within dark, gold border, clear

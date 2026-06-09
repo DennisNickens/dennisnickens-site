@@ -2305,9 +2305,61 @@ function markdownToBrandedHtml(markdown, payload) {
         display: block;
       }
     }
-    /* Print: hide nav entirely, expand main content to full width. */
+    /* ====================================================================
+       DOWNLOAD PDF BUTTON
+       Floating top-right button that triggers the browser print dialog
+       with a pre-set filename ("FirstName_LastName_Blueprint_YYYY-MM-DD").
+       Customer picks "Save as PDF" in the print dialog and the suggested
+       filename matches what they expect. Hidden in print so it does not
+       end up inside the PDF itself.
+       ==================================================================== */
+    .pdf-download-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 70;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.1rem;
+      background: linear-gradient(180deg, #1b1640 0%, #07071a 100%);
+      border: 1px solid #d4a957;
+      border-radius: 28px;
+      color: #d4a957;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+      text-decoration: none;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+    .pdf-download-btn:hover {
+      background: linear-gradient(180deg, #2a2055 0%, #0f0a2e 100%);
+      transform: translateY(-1px);
+    }
+    .pdf-download-btn .pdf-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+    /* When the sidebar is present, the nav-toggle sits at top-right on mobile.
+       Push the download button left so they don't overlap. */
+    @media (max-width: 1099px) {
+      body.has-sidebar .pdf-download-btn {
+        right: 4rem;
+      }
+    }
+    /* PDF / print page setup: thin margins, no background gradient (saves ink), keep
+       deep navy panels for premium look on print. */
+    @page {
+      size: Letter;
+      margin: 0.5in 0.4in 0.5in 0.4in;
+    }
+    /* Print: hide nav and the download button itself, expand main content. */
     @media print {
-      .sidebar-nav, .nav-toggle, .nav-backdrop {
+      .sidebar-nav, .nav-toggle, .nav-backdrop, .pdf-download-btn {
         display: none !important;
       }
       body.has-sidebar {
@@ -2316,10 +2368,24 @@ function markdownToBrandedHtml(markdown, payload) {
       .main-content {
         max-width: none;
       }
+      /* Soften the dark gradient for ink-saving while keeping brand-recognizable. */
+      body {
+        background: #0f0a2e !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
     }
   </style>
 </head>
 <body${hasSidebar ? ' class="has-sidebar"' : ''}>
+  <button class="pdf-download-btn" id="pdf-download-btn" aria-label="Download Blueprint as PDF">
+    <svg class="pdf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+      <polyline points="7 10 12 15 17 10"></polyline>
+      <line x1="12" y1="15" x2="12" y2="3"></line>
+    </svg>
+    Download PDF
+  </button>
   ${hasSidebar ? `<button class="nav-toggle" id="nav-toggle" aria-label="Open sections" aria-expanded="false">&#9776;</button>
   <div class="nav-backdrop" id="nav-backdrop"></div>
   ${navHtml}` : ''}
@@ -2398,6 +2464,35 @@ function markdownToBrandedHtml(markdown, payload) {
   }
 })();
 </script>` : ''}
+<script>
+// PDF download button. Click sets the document title to a structured filename
+// (FirstName_LastName_Blueprint_YYYY-MM-DD) so the browser's "Save as PDF" dialog
+// suggests that filename. After the print dialog closes, the title is restored.
+(function(){
+  var btn = document.getElementById('pdf-download-btn');
+  if (!btn) return;
+  function sanitize(s) {
+    return (s || '').toString().replace(/[^a-zA-Z0-9]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '');
+  }
+  var firstName = sanitize(${JSON.stringify(payload.first_name || 'Your')});
+  var lastName = sanitize(${JSON.stringify(payload.last_name || '')});
+  var originalTitle = document.title;
+  function restoreTitle(){ document.title = originalTitle; }
+  btn.addEventListener('click', function(){
+    var d = new Date();
+    var pad = function(n){ return n < 10 ? '0' + n : '' + n; };
+    var ymd = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+    var nameJoin = firstName + (lastName ? '_' + lastName : '');
+    var filename = (nameJoin || 'Your') + '_Blueprint_' + ymd;
+    document.title = filename;
+    setTimeout(function(){ window.print(); }, 50);
+    // Restore title after the print dialog closes. afterprint is the modern way;
+    // setTimeout is a safety net for browsers that don't fire afterprint reliably.
+    setTimeout(restoreTitle, 4000);
+  });
+  window.addEventListener('afterprint', restoreTitle);
+})();
+</script>
 </body>
 </html>`;
 }

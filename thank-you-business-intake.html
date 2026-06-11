@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You | Spiritual Romeo</title>
+<meta name="description" content="Your SR Blueprint for Businesses intake has been received. Dennis Nickens will personally review your responses within 48 hours.">
+<meta property="og:title" content="Thank You. Your Responses Are In.">
+<meta property="og:description" content="Dennis Nickens will personally review your intake within 48 hours and follow up with a reflection email and calendar link.">
+<meta property="og:image" content="https://dennisnickens.com/sr-logo-transparent.png">
+<meta property="og:url" content="https://dennisnickens.com/thank-you-business-intake">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Cormorant+Garamond:wght@500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html {
+    min-height: 100%;
+  }
+  body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #07071a 0%, #0f0a2e 100%);
+    background-attachment: fixed;
+    color: #f5f1e8;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 40px 96px;
+  }
+  /* ---------- Logo ---------- */
+  .logo-wrap {
+    text-align: center;
+    padding: 48px 0;
+  }
+  .logo-wrap img {
+    height: 96px;
+    width: auto;
+    display: inline-block;
+  }
+  /* ---------- Section 1: Confirmation header ---------- */
+  .confirm {
+    text-align: center;
+  }
+  .confirm h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 2.75rem;
+    line-height: 1.2;
+    color: #f5f1e8;
+  }
+  .gold-divider {
+    width: 80px;
+    height: 2px;
+    background: #d4a957;
+    border: none;
+    margin: 28px auto;
+  }
+  .confirm p {
+    font-size: 1.0625rem;
+    color: #f5f1e8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  /* ---------- Small caps labels ---------- */
+  .label {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 1.05rem;
+    color: #d4a957;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  /* ---------- Section 2: Note from Dennis ---------- */
+  .note {
+    margin-top: 48px;
+    border-left: 2px solid #d4a957;
+    padding: 28px 32px;
+    background: rgba(245, 241, 232, 0.03);
+  }
+  .note .label {
+    text-align: left;
+    margin-bottom: 14px;
+  }
+  .note p {
+    color: rgba(245, 241, 232, 0.88);
+    font-size: 1rem;
+  }
+  /* ---------- Section 3: What happens next ---------- */
+  .next {
+    margin-top: 64px;
+  }
+  .steps {
+    list-style: none;
+    margin-top: 32px;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    background: rgba(245, 241, 232, 0.035);
+    border: 1px solid rgba(212, 169, 87, 0.25);
+    border-radius: 6px;
+    padding: 24px 28px;
+  }
+  .step + .step {
+    margin-top: 24px;
+  }
+  .step-num {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #d4a957;
+    color: #07071a;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .step-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.0625rem;
+    color: #f5f1e8;
+    margin-bottom: 6px;
+  }
+  .step-desc {
+    font-weight: 400;
+    font-size: 0.96rem;
+    color: rgba(245, 241, 232, 0.75);
+  }
+  /* ---------- Section 4: Footer ---------- */
+  .footer {
+    margin-top: 48px;
+    text-align: center;
+  }
+  .footer .contact {
+    font-size: 0.9375rem;
+    color: rgba(245, 241, 232, 0.75);
+  }
+  .footer .contact a {
+    color: #d4a957;
+    text-decoration: none;
+  }
+  .footer .brand {
+    margin-top: 16px;
+    font-size: 0.8125rem;
+    color: rgba(245, 241, 232, 0.5);
+  }
+  /* ---------- Entrance animation ---------- */
+  @keyframes riseIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .fade {
+    opacity: 0;
+    animation: riseIn 0.25s ease-out forwards;
+  }
+  .fade-1 { animation-delay: 0s; }
+  .fade-2 { animation-delay: 0.2s; }
+  .fade-3 { animation-delay: 0.4s; }
+  .fade-4 { animation-delay: 0.6s; }
+  .fade-5 { animation-delay: 0.8s; }
+  .fade-6 { animation-delay: 1.0s; }
+  .fade-7 { animation-delay: 1.2s; }
+  @media (prefers-reduced-motion: reduce) {
+    .fade {
+      opacity: 1;
+      animation: none;
+    }
+  }
+  /* ---------- Responsive ---------- */
+  @media (max-width: 720px) {
+    .page {
+      padding: 0 24px 64px;
+    }
+    .logo-wrap {
+      padding: 36px 0;
+    }
+    .logo-wrap img {
+      height: 72px;
+    }
+    .confirm h1 {
+      font-size: 2rem;
+    }
+    .confirm p {
+      font-size: 1rem;
+    }
+    .note {
+      padding: 22px 22px;
+    }
+    .next {
+      margin-top: 48px;
+    }
+    .step {
+      gap: 16px;
+      padding: 20px 18px;
+    }
+    .step-num {
+      flex: 0 0 36px;
+      width: 36px;
+      height: 36px;
+      font-size: 1.1rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="logo-wrap fade fade-1">
+      <img
+        src="https://dennisnickens.com/sr-logo-transparent.png"
+        alt="Spiritual Romeo"
+        onerror="this.onerror=null;this.src='https://dennisnickens-site-psi.vercel.app/sr-logo-transparent.png';">
+    </div>
+    <section class="confirm">
+      <h1 class="fade fade-2">Thank you. Your responses are in.</h1>
+      <hr class="gold-divider fade fade-3">
+      <p class="fade fade-4">Dennis Nickens will personally review your intake within 48 hours. After he reads what you submitted, you will receive an email with two things: a short reflection on what stood out, and a calendar link to schedule a 30 minute discovery call.</p>
+    </section>
+    <section class="note fade fade-5">
+      <div class="label">A Note From Dennis</div>
+      <p>Every intake I receive gets read by me, not by a virtual assistant and not by software. That's the only way this works. The questions you just answered are the foundation for how I configure the Blueprint for your team. I take that seriously, and I want you to know that before we ever get on a call together.</p>
+    </section>
+    <section class="next fade fade-6">
+      <div class="label">What Happens Next</div>
+      <ol class="steps">
+        <li class="step">
+          <div class="step-num">1</div>
+          <div>
+            <div class="step-title">Dennis reviews your intake</div>
+            <div class="step-desc">Within 48 hours, he reads through everything you submitted and starts building the picture of where your company is right now.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">2</div>
+          <div>
+            <div class="step-title">A reflection email arrives</div>
+            <div class="step-desc">He sends you a personal email naming what stood out in your responses and what he wants to dig into on the call. This is not a templated message.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">3</div>
+          <div>
+            <div class="step-title">You schedule the 30 minute discovery call</div>
+            <div class="step-desc">The email includes a calendar link. Pick the time that works for your schedule. The call is by phone or video, your choice.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">4</div>
+          <div>
+            <div class="step-title">Engagement starts</div>
+            <div class="step-desc">After the discovery call, Dennis sends a proposal with scope, timeline, and investment. If it's a fit on both sides, the Blueprint engagement begins.</div>
+          </div>
+        </li>
+      </ol>
+    </section>
+    <footer class="footer fade fade-7">
+      <p class="contact">Questions before the reflection email arrives? Reply to your submission confirmation or email <a href="mailto:dennis@dennisnickens.com">dennis@dennisnickens.com</a> directly.</p>
+      <p class="brand">Spiritual Romeo. Executive consulting and team alignment.</p>
+    </footer>
+  </main>
+</body>
+</html>

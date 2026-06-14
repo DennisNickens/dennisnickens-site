@@ -21,8 +21,8 @@ html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !impo
 .fn-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,2.2vw,22px);color:rgba(245,241,232,0.78);text-align:center;line-height:1.6;max-width:600px;margin:0 auto 3rem;}
 .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
 @media(max-width:1024px){.card-grid{grid-template-columns:1fr;}}
-.pcard{display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(26,19,64,.6),rgba(15,10,46,.5));border:1px solid rgba(212,169,87,0.4);border-radius:18px;padding:clamp(1.75rem,3vw,2.5rem);transition:border-color .25s,transform .25s;}
-.pcard:hover{border-color:#d4a957;transform:translateY(-3px);}
+.pcard{display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(26,19,64,.6),rgba(15,10,46,.5));border:1px solid rgba(212,169,87,0.4);border-radius:18px;padding:clamp(1.75rem,3vw,2.5rem);transition:border-color .25s,transform .25s,box-shadow .25s;cursor:pointer;}
+.pcard:hover{border-color:#d4a957;transform:translateY(-3px);box-shadow:0 18px 44px rgba(0,0,0,.35);}
 .medallion{width:64px;height:64px;margin:0 auto 1.5rem;display:block;}
 .pcard h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(24px,3vw,30px);color:#fff;text-align:center;margin-bottom:.6rem;}
 .pcard .tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:#d4a957;text-align:center;margin-bottom:1.2rem;line-height:1.4;}
@@ -120,14 +120,19 @@ var cid=(new URLSearchParams(location.search)).get('cid')||'';
 if(!cid){window.location.href='intake.html';}
 
 var fullBtn=document.getElementById('fullBtn'),focusedBtn=document.getElementById('focusedBtn');
+var fullCard=fullBtn.closest('.pcard'),focusedCard=focusedBtn.closest('.pcard');
+var busy=false;
 
 // Best-effort persist: we fire the write, then navigate whether or not the
 // write succeeds. The new GHL fields do not exist until Step 3, so a write may
 // land as a no-op; the funnel must stay walkable in beta regardless.
 function go(url){window.location.href=url;}
 
-fullBtn.addEventListener('click',function(){
-  fullBtn.disabled=true;fullBtn.textContent='Saving...';
+// The whole card is the click target; the inner button is a visual CTA and its
+// clicks bubble up to the card handler. busy guards against double-submit.
+fullCard.addEventListener('click',function(){
+  if(busy)return;busy=true;
+  fullBtn.disabled=true;focusedBtn.disabled=true;fullBtn.textContent='Saving...';
   fetch('/api/sr-update-contact',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -137,7 +142,9 @@ fullBtn.addEventListener('click',function(){
           function(){go('qualifier-audience.html?cid='+encodeURIComponent(cid));});
 });
 
-focusedBtn.addEventListener('click',function(){
+focusedCard.addEventListener('click',function(){
+  if(busy)return;busy=true;
+  fullBtn.disabled=true;focusedBtn.disabled=true;focusedBtn.textContent='Loading...';
   go('focused-mode.html?cid='+encodeURIComponent(cid));
 });
 

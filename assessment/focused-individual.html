@@ -22,8 +22,8 @@ html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !impo
 .area-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
 @media(max-width:900px){.area-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:600px){.area-grid{grid-template-columns:1fr;}}
-.area{position:relative;cursor:pointer;border:1px solid rgba(212,169,87,0.4);border-radius:14px;background:linear-gradient(180deg,rgba(26,19,64,.5),rgba(15,10,46,.4));padding:1.4rem;transition:border-color .2s,background .2s,transform .15s;}
-.area:hover{border-color:#d4a957;}
+.area{position:relative;cursor:pointer;border:1px solid rgba(212,169,87,0.4);border-radius:14px;background:linear-gradient(180deg,rgba(26,19,64,.5),rgba(15,10,46,.4));padding:1.4rem;transition:border-color .2s,background .2s,transform .15s,box-shadow .2s;}
+.area:hover{border-color:#d4a957;transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.3);}
 .area.sel{border-color:#d4a957;background:rgba(212,169,87,0.1);}
 .area h3{font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:#fff;margin-bottom:.5rem;padding-right:1.5rem;}
 .area p{font-size:13.5px;color:rgba(245,241,232,0.72);line-height:1.55;}

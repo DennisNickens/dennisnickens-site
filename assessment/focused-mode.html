@@ -21,8 +21,8 @@ html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !impo
 .fn-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,2.2vw,22px);color:rgba(245,241,232,0.78);text-align:center;line-height:1.6;max-width:600px;margin:0 auto 3rem;}
 .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
 @media(max-width:1024px){.card-grid{grid-template-columns:1fr;}}
-.pcard{display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(26,19,64,.6),rgba(15,10,46,.5));border:1px solid rgba(212,169,87,0.4);border-radius:18px;padding:clamp(1.75rem,3vw,2.75rem);transition:border-color .25s,transform .25s;}
-.pcard:hover{border-color:#d4a957;transform:translateY(-3px);}
+.pcard{display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(26,19,64,.6),rgba(15,10,46,.5));border:1px solid rgba(212,169,87,0.4);border-radius:18px;padding:clamp(1.75rem,3vw,2.75rem);transition:border-color .25s,transform .25s,box-shadow .25s;cursor:pointer;}
+.pcard:hover{border-color:#d4a957;transform:translateY(-3px);box-shadow:0 18px 44px rgba(0,0,0,.35);}
 .medallion{width:60px;height:60px;margin:0 auto 1.5rem;display:block;}
 .pcard h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(23px,3vw,28px);color:#fff;text-align:center;margin-bottom:.6rem;}
 .pcard .tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:#d4a957;text-align:center;margin-bottom:1.2rem;line-height:1.4;}
@@ -113,11 +113,14 @@ if(!cid){window.location.href='intake.html';}
 document.getElementById('backBtn').href='path-picker.html?cid='+encodeURIComponent(cid);
 
 var individualBtn=document.getElementById('individualBtn'),packageBtn=document.getElementById('packageBtn');
+var individualCard=individualBtn.closest('.pcard'),packageCard=packageBtn.closest('.pcard');
+var busy=false;
 
 // Best-effort persist, then navigate regardless of write outcome (the new GHL
 // fields land as no-ops until Step 3 creates them).
 function go(url){window.location.href=url;}
-function persistThen(next,btn,label){
+function persistThen(next,btn){
+  if(busy)return;busy=true;
   btn.disabled=true;individualBtn.disabled=true;packageBtn.disabled=true;btn.textContent='Saving...';
   fetch('/api/sr-update-contact',{
     method:'POST',
@@ -127,10 +130,12 @@ function persistThen(next,btn,label){
     .then(function(){go(next);},function(){go(next);});
 }
 
-individualBtn.addEventListener('click',function(){
+// The whole card is the click target; the inner button is a visual CTA and its
+// clicks bubble up to the card handler.
+individualCard.addEventListener('click',function(){
   persistThen('focused-individual.html?cid='+encodeURIComponent(cid),individualBtn);
 });
-packageBtn.addEventListener('click',function(){
+packageCard.addEventListener('click',function(){
   persistThen('focused-package.html?cid='+encodeURIComponent(cid),packageBtn);
 });
 

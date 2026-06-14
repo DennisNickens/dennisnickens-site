@@ -28,7 +28,7 @@ main{position:relative;z-index:5;padding:4rem 1.5rem 5rem;}
 .pillar-label span{font-family:var(--fl);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;background:linear-gradient(135deg,var(--gold),var(--gold-s));color:#07071a;padding:.4rem 1.2rem;border-radius:100px;font-weight:700;}
 .tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
 @media(max-width:780px){.tiers-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto;}}
-.tier-card{background:linear-gradient(180deg,rgba(26,19,64,.6),rgba(15,10,46,.4));border:1px solid var(--line);border-radius:14px;padding:2.25rem 1.75rem 2rem;display:flex;flex-direction:column;gap:1.25rem;transition:all .3s;position:relative;overflow:hidden;}
+.tier-card{background:linear-gradient(180deg,rgba(26,19,64,.6),rgba(15,10,46,.4));border:1px solid var(--line);border-radius:14px;padding:2.25rem 1.75rem 2rem;display:flex;flex-direction:column;gap:1.25rem;transition:all .3s;position:relative;overflow:hidden;cursor:pointer;}
 .tier-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.4);}
 .tier-card.recommended{border-color:var(--gold);box-shadow:0 0 0 1px rgba(212,169,87,.3);}
 .rec-badge{position:absolute;top:0;right:0;font-family:var(--fl);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;background:linear-gradient(135deg,var(--gold),var(--gold-s));color:#07071a;padding:.3rem .85rem;border-radius:0 14px 0 8px;font-weight:700;}
@@ -156,9 +156,16 @@ const PILLAR_LABELS={singles:"Singles",married:"Married",families:"Families",edu
     card.innerHTML=html;
     grid.appendChild(card);
   });
+  let busy=false;
+  // The whole tier card is the click target. The inner button stays as a
+  // visual CTA; clicking it bubbles up to this delegated handler too.
   grid.addEventListener('click',function(ev){
-    const btn=ev.target.closest('.tier-btn');
+    if(busy)return;
+    const card=ev.target.closest('.tier-card');
+    if(!card)return;
+    const btn=card.querySelector('.tier-btn');
     if(!btn)return;
+    busy=true;
     const tier=btn.getAttribute('data-tier');
     grid.querySelectorAll('.tier-btn').forEach(function(b){b.disabled=true;});
     btn.textContent='Saving...';

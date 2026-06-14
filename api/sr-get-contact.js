@@ -32,6 +32,18 @@ const GHL_BASE = 'https://services.leadconnectorhq.com';
 // the known value if the env var is not configured in the deployment.
 const FALLBACK_LOCATION_ID = '9LA3gKzADpdRC78OmDCD';
 
+// Code-level id->key map for SR custom fields. GHL field ids are stable and not
+// secret. This guarantees resolution even when the GHL_FIELD_ID_MAP env var is
+// stale (missing newly created fields) AND the /locations/customFields endpoint
+// is out of the token's scope. Add new SR fields here when they are created.
+// The focused-product entitlement fields below were created in Step 3 (2026-06);
+// without them the confirm-focused page could not read the customer's picks back.
+const KNOWN_FIELD_IDS = {
+  'n045jYlHt7RN28XPWpBe': 'sr_focus_areas',
+  'iqStZ9PxeyZYT9aAH9O4': 'sr_purchase_type',
+  'R3Z1aY8T62OfwPJlHvOb': 'sr_package_name',
+};
+
 // Cache the id->key map across warm invocations to avoid re-fetching definitions.
 let fieldKeyMapCache = null;
 let fieldKeyMapSource = null;
@@ -185,10 +197,13 @@ async function getFieldKeyMap(token, locationId) {
   //    custom fields endpoint is unreachable with the current token scope.
   const envMap = readEnvFieldMap();
   if (envMap && Object.keys(envMap).length > 0) {
-    console.log('[sr-get-contact] Using GHL_FIELD_ID_MAP from env, entries:', Object.keys(envMap).length);
-    fieldKeyMapCache = envMap;
-    fieldKeyMapSource = 'env';
-    return envMap;
+    // Merge env entries over the code-level known SR field ids so newly created
+    // fields resolve even when the env map has not been updated. Env wins on overlap.
+    const merged = { ...KNOWN_FIELD_IDS, ...envMap };
+    console.log('[sr-get-contact] Using GHL_FIELD_ID_MAP from env merged with known SR field ids, entries:', Object.keys(merged).length);
+    fieldKeyMapCache = merged;
+    fieldKeyMapSource = 'env+known';
+    return merged;
   }
 
   // 2. Try the default custom fields list endpoint.
@@ -200,7 +215,9 @@ async function getFieldKeyMap(token, locationId) {
     source = 'locations/customFields?model=contact';
   }
 
-  const map = {};
+  // Seed with the code-level known SR field ids so they resolve regardless of what
+  // the definitions endpoint returns (and even if it is out of token scope).
+  const map = { ...KNOWN_FIELD_IDS };
   for (const def of defs) {
     // GHL field def shape: { id, fieldKey: "contact.sr_qual_focus_areas",
     //                       name: "SR Qualifier Focus Areas", ... }

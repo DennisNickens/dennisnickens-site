@@ -275,6 +275,30 @@ export default async function handler(req, res) {
     });
   }
 
+  // Synchronous test path. When wait_for_url is set (auth already enforced above), run
+  // generation inline and return the saved Blueprint URL in the HTTP response instead of
+  // a fire-and-forget 202. Used to verify focused and full generation end to end. The
+  // 800s vercel.json maxDuration covers even a full four-call run.
+  if (payload && payload.wait_for_url) {
+    try {
+      const url = await generateAndDeliverBlueprint(payload);
+      return res.status(200).json({ status: 'done', url });
+    } catch (err) {
+      console.error('[Blueprint] wait_for_url generation failed:', err);
+      if (payload.contact_id) {
+        try {
+          await updateGhlContact(payload.contact_id, {
+            sr_blueprint_status: 'Failed: ' + (err?.message || String(err)).slice(0, 800),
+            sr_blueprint_error: err.message || String(err),
+          });
+        } catch (updateErr) {
+          console.error('[Blueprint] Failed to write error status to GHL:', updateErr);
+        }
+      }
+      return res.status(500).json({ status: 'error', error: err.message || String(err) });
+    }
+  }
+
   // Tell Vercel to keep the function alive until generation completes.
   // waitUntil gives us up to 30s on Hobby tier and 5min on Pro tier.
   // Without this, Vercel kills the function as soon as the response is flushed.
@@ -332,7 +356,13 @@ async function generateAndDeliverBlueprint(payload) {
     payload.manifestationGifts = computeManifestationGifts(testFields);
     payload.fruitsOfTheSpirit = computeFruitsOfTheSpirit(testFields);
     console.log(`[Blueprint] Scoring complete for ${payload.contact_id}`);
-    return produceAndDeliverBlueprint(payload, scores, null);
+    // Focused entitlement can only come from the direct sections_owned param on the
+    // test path (no GHL contact to read sr_focus_areas from).
+    const focusedSections = resolveFocusedSections(payload, null);
+    if (focusedSections) {
+      console.log(`[Blueprint] Focused mode (test): sections ${focusedSections.map((s) => s.num).join(', ')} for ${payload.contact_id}`);
+    }
+    return produceAndDeliverBlueprint(payload, scores, null, focusedSections);
   }
 
   // Production GHL webhook path. Fetch the full contact once. We need it both to
@@ -367,18 +397,36 @@ async function generateAndDeliverBlueprint(payload) {
   // partnerData is passed as null so a solo Blueprint NEVER builds a partner data
   // block and NEVER generates the Section 17 Connection Map. The master prompt already
   // skips Section 17 when partner_data is absent.
-  await produceAndDeliverBlueprint(payload, meScores, null);
 
-  // AUTO-TRIGGER: Couples Connection Map. The solo Blueprint above has now delivered
-  // (generated, saved, GHL updated, email sent). If this contact is part of a Linked
-  // Pair AND their partner's solo Blueprint is already "Generated", then this contact
-  // is the second of the two to finish, so fire the Couples Map automatically. This
-  // removes the old manual text-Dennis trigger step.
-  //
-  // This entire block is best-effort and fire-and-forget: the solo Blueprint already
-  // shipped, so any failure here (network, GHL down, malformed partner data, a missing
-  // custom field) is logged and swallowed. It must NEVER roll back or fail the solo
-  // delivery that already succeeded.
+  // Focused product purchase: a single focused call for the purchased section(s),
+  // resolved from the direct sections_owned param or the contact's sr_focus_areas.
+  // Focused deliverables are standalone and never trigger the Couples Map, so we return
+  // the URL here without running the auto-trigger below.
+  const focusedSections = resolveFocusedSections(payload, me);
+  if (focusedSections) {
+    console.log(`[Blueprint] Focused mode: sections ${focusedSections.map((s) => s.num).join(', ')} for ${payload.contact_id}`);
+    return await produceAndDeliverBlueprint(payload, meScores, null, focusedSections);
+  }
+
+  const blueprintUrl = await produceAndDeliverBlueprint(payload, meScores, null);
+
+  // Full Blueprint delivered. Fire the Couples Map auto-trigger (best-effort, never
+  // throws), then return the solo Blueprint URL.
+  await maybeAutoTriggerCouplesMap(me, payload);
+  return blueprintUrl;
+}
+
+// AUTO-TRIGGER: Couples Connection Map. The solo Blueprint has already delivered
+// (generated, saved, GHL updated, email sent) by the time this runs. If the contact is
+// part of a Linked Pair AND their partner's solo Blueprint is already "Generated", then
+// this contact is the second of the two to finish, so fire the Couples Map automatically.
+// This removes the old manual text-Dennis trigger step.
+//
+// This entire helper is best-effort and fire-and-forget: the solo Blueprint already
+// shipped, so any failure here (network, GHL down, malformed partner data, a missing
+// custom field) is logged and swallowed. It must NEVER roll back or fail the solo
+// delivery that already succeeded.
+async function maybeAutoTriggerCouplesMap(me, payload) {
   try {
     const partnerContactId = readContactField(me, 'sr_pair_partner_contact_id');
     if (!partnerContactId) {
@@ -473,24 +521,139 @@ function buildPartnerData(partnerPayload, partnerScores) {
   };
 }
 
-// Generates the full Blueprint markdown using THREE parallel Claude calls, each
-// responsible for a range of sections, then stitches the outputs together in order.
-//   Call A: front matter (Cover Page through Executive Summary) plus Sections 1 to 6.
-//   Call B: Sections 7 to 11 (Misalignment, Career, Relationship, conditional Parenting/Leadership).
-//   Call C: Sections 12 to 17 (conditional Ministry, Stress, Strategic, 30 Day Plan,
-//           the paired Connection Map) plus What Is Next, the Disclaimer, and the close.
-// There is no Section 13: Spiritual Gifts live in Subsection 6.2 (generated in Call A),
+// =======================================================================
+// FOCUSED PRODUCT ENTITLEMENT (sections_owned)
+// =======================================================================
+// Maps each focus-area key from the funnel to its master-prompt section. `heading`
+// is the verbatim master-prompt heading the icon/sidebar machinery matches on (it
+// MUST equal the master prompt exactly); `title` is the clean display name.
+const FOCUS_AREA_SECTIONS = {
+  misalignment_map:          { num: 7,  heading: 'Section 7: Your Misalignment Map',           title: 'Misalignment Map' },
+  career_alignment:          { num: 8,  heading: 'Section 8: Your Career Alignment',           title: 'Career Alignment' },
+  relationship_alignment:    { num: 9,  heading: 'Section 9: Your Relationship Alignment',     title: 'Relationship Alignment' },
+  parenting_style:           { num: 10, heading: 'Section 10: Your Parenting Style',           title: 'Parenting Style' },
+  leadership_profile:        { num: 11, heading: 'Section 11: Your Leadership Profile',        title: 'Leadership Profile' },
+  ministry_profile:          { num: 12, heading: 'Section 12: Your Ministry Profile',          title: 'Ministry Profile' },
+  stress_response_map:       { num: 14, heading: 'Section 14: Your Stress Response Map',       title: 'Stress Response Map' },
+  strategic_recommendations: { num: 15, heading: 'Section 15: Your Strategic Recommendations', title: 'Strategic Recommendations' },
+  thirty_day_plan:           { num: 16, heading: 'Section 16: Your 30 Day Alignment Plan',     title: '30 Day Plan' },
+};
+
+// Resolves the focused-product entitlement. Returns an ordered array of section
+// descriptors (focused mode) or null (full Blueprint). Resolution order:
+//   1. payload.sections_owned (direct param: testing + explicit regen)
+//   2. the contact's sr_focus_areas custom field (comma-joined string)
+//   3. neither -> full Blueprint
+// "all" (in any shape), [], and missing are all treated as full Blueprint.
+function resolveFocusedSections(payload, contact) {
+  const hasDirect = payload && payload.sections_owned !== undefined && payload.sections_owned !== null;
+  const raw = hasDirect
+    ? payload.sections_owned
+    : (contact ? readContactField(contact, 'sr_focus_areas') : '');
+
+  // Normalize to an array of trimmed, non-empty string keys.
+  let keys;
+  if (Array.isArray(raw)) {
+    keys = raw.map((k) => String(k).trim()).filter(Boolean);
+  } else if (typeof raw === 'string') {
+    keys = raw.split(',').map((k) => k.trim()).filter(Boolean);
+  } else {
+    keys = [];
+  }
+
+  // Empty or any "all" => full Blueprint.
+  if (keys.length === 0 || keys.some((k) => k.toLowerCase() === 'all')) return null;
+
+  // Map known keys to descriptors, preserving the funnel's order and de-duping.
+  // Unrecognized keys are dropped. If nothing valid remains, fall back to full.
+  const sections = [];
+  const seen = new Set();
+  for (const k of keys) {
+    const sec = FOCUS_AREA_SECTIONS[k];
+    if (sec && !seen.has(k)) { sections.push(sec); seen.add(k); }
+  }
+  return sections.length ? sections : null;
+}
+
+// Generates a FOCUSED Blueprint with a SINGLE Claude call: a customer-named header,
+// a short intro, the purchased section(s) at full master-prompt depth, and a short
+// closing. No front matter, no Sections 1 to 6 summary, no Connection Map, no upsell.
+// Roughly a quarter of the cost and latency of the full four-call pipeline.
+async function generateFocusedBlueprintMarkdown(payload, scores, sections) {
+  const systemPrompt = await getMasterPrompt();
+  const cid = payload.contact_id;
+  const userMessage = buildFocusedCallMessage(payload, scores, sections);
+  // One call. One or two deep sections plus header/intro/closing stays well under
+  // budget; 200s timeout and 12000 max tokens give full depth room.
+  const chunk = await callClaude(systemPrompt, userMessage, cid, 'FOCUSED', 200000, 12000);
+  return chunk.trim();
+}
+
+// Builds the single user message for a focused generation. Each requested section is
+// emitted with its verbatim "Section N: Your X" heading so the downstream icon/sidebar
+// stylers attach the right icon and anchor; the prefix is stripped for display later.
+function buildFocusedCallMessage(payload, scores, sections) {
+  const first = payload.first_name || 'the customer';
+  const titles = sections.map((s) => s.title);
+  const titleList = titles.length === 2 ? `${titles[0]} and ${titles[1]}` : titles.join(', ');
+  const sectionLines = sections.map((s) => `- ${s.heading}`).join('\n');
+  const areaWord = sections.length === 2 ? 'two areas' : 'area';
+
+  return `You are generating a FOCUSED Alignment Blueprint deep dive for this customer. Follow the master prompt voice, depth, and per-section specifications EXACTLY. This is NOT a full Blueprint: the customer purchased a focused read covering ONLY the section(s) listed below.
+
+Output the following, IN THIS ORDER, and NOTHING ELSE:
+
+1. A single H1 heading naming the customer and the focus, in this exact shape:
+   # ${first}'s ${titleList} Deep Dive
+   Use the clean area name(s) shown, with NO "Section" number in this H1.
+
+2. One short intro paragraph (3 to 5 sentences) in Dennis Nickens's voice. Explain what this focused read covers (name the ${areaWord}) and what ${first} can expect. Do NOT explain the Seven Lenses, do NOT reference pillars or sections the customer did not purchase, do NOT mention pricing.
+
+3. Each requested section below, IN ORDER, at FULL master-prompt depth (same length target and same subsection rules the master prompt specifies for that section). Begin each section with the master prompt's EXACT heading INCLUDING its section number, e.g. "## ${sections[0].heading}". The section-number prefix is REQUIRED so downstream rendering attaches the correct icon; it is stripped from the final display. The customer explicitly PURCHASED each section below, so generate it in full EVEN IF its usual audience or conditional gate would normally skip it. Build it from ${first}'s actual pillar scores in the payload. If a subsection normally needs specific conditional answers that are absent, build the strongest read you can from the pillar profile instead of skipping it or writing a placeholder.
+
+Requested sections:
+${sectionLines}
+
+4. A short closing paragraph in Dennis Nickens's voice (2 to 3 sentences), then this exact signoff on its own line, with nothing after it:
+   Talk soon, Dennis
+
+DO NOT include any of the following:
+- No Cover Page, no "How Your Blueprint Works", no "How To Read It", no "What This Blueprint Is", no Executive Summary, no "At a Glance" card.
+- No Behavior Profile, Personality Code, Action Style, Connection Currency, Learning Channel, or Spiritual Wiring summary (Sections 1 through 6). The customer did not purchase those.
+- No score bars, percentage bars, or pillar charts.
+- No "what else you could unlock", no upsell, no cross-sell. The Customer Portal handles upsells.
+- No Connection Map and no partner comparison.
+- No sections other than the ones listed above. Do NOT add an Important Disclaimer or a closing benediction block; the short closing line above is the ending.
+
+Voice: Use Dennis Nickens's voice. Plain English, direct, warm, consultative. No em dashes or en dashes (use commas, periods, parentheses, or rephrase). No AI-sounding phrases ("delve into," "navigate the landscape," "in today's fast-paced world," "tapestry," "embark on a journey"). Use the SR-native CORE vocabulary throughout. Be specific to ${first}, reference their actual scores, and address them by first name.
+
+Customer payload:
+${buildCustomerDataBlock(payload, scores, null)}`;
+}
+
+// Generates the full Blueprint markdown using FOUR Claude calls, each responsible for a
+// range of sections, then stitches the outputs together in order. Call A1 is awaited
+// first to warm the prompt cache; A2, B, and C then fire together in parallel.
+//   Call A1: front matter (Cover Page through Executive Summary) plus Sections 1 to 3.
+//   Call A2: Sections 4 to 6 (Connection Currency, Learning Channel, Spiritual Wiring).
+//   Call B:  Sections 7 to 11 (Misalignment, Career, Relationship, conditional Parenting/Leadership).
+//   Call C:  Sections 12 to 17 (conditional Ministry, Stress, Strategic, 30 Day Plan,
+//            the paired Connection Map) plus What Is Next, the Disclaimer, and the close.
+// There is no Section 13: Spiritual Gifts live in Subsection 6.2 (generated in Call A2),
 // so Call C's numbering jumps 12 to 14.
 //
-// All three calls share the SAME cached system prompt (master-prompt.md wrapped in a
+// All four calls share the SAME cached system prompt (master-prompt.md wrapped in a
 // cache_control: ephemeral content block, set in callClaude) and the SAME customer data
 // block. Only the per-call section instruction differs. The shared system prompt is the
-// large input, so after the first call warms the cache the other two read it from cache
-// (the original Tier 1 rate-limit problem from the reverted multi-call attempt is gone).
-// Running the three in parallel keeps wall-clock near the slowest single call, and each
-// call has its own 90s AbortController. If ANY call throws (timeout or API error),
+// large input, so after A1 warms the cache the other three read it from cache (the
+// original Tier 1 rate-limit problem from the reverted multi-call attempt is gone).
+// Running A2, B, and C in parallel keeps wall-clock near the slowest single call, and each
+// call has its own AbortController. If ANY call throws (timeout or API error), the await /
 // Promise.all rejects and the existing Failed-status path records it. We never ship a
 // partial Blueprint.
+//
+// Focused product purchases do NOT use this four-call path; see
+// generateFocusedBlueprintMarkdown, which fires a single call for the purchased section(s).
 async function generateMultiCallBlueprintMarkdown(payload, scores, partnerData) {
   const systemPrompt = await getMasterPrompt();
   const cid = payload.contact_id;
@@ -521,14 +684,19 @@ async function generateMultiCallBlueprintMarkdown(payload, scores, partnerData) 
   return [chunkA1, chunkA2, chunkB, chunkC].map((p) => p.trim()).join('\n\n');
 }
 
-// Produces one person's Blueprint end to end: generate (3 parallel calls), render
-// HTML, save to Blob, update GHL, email. When partnerData is present, Call C writes
-// the Connection Map. Shared by the solo and paired flows.
-async function produceAndDeliverBlueprint(payload, scores, partnerData) {
-  const blueprintMarkdown = await generateMultiCallBlueprintMarkdown(payload, scores, partnerData);
-  console.log(`[Blueprint] Multi-call generation produced ${blueprintMarkdown.length} characters for ${payload.contact_id}`);
+// Produces one person's Blueprint end to end: generate, render HTML, save to Blob,
+// update GHL, email. Full Blueprints run the four-call pipeline; when focusedSections is
+// a non-empty array, a single focused call runs instead (focused product purchase).
+// When partnerData is present (full mode only), Call C writes the Connection Map. Shared
+// by the solo and paired flows. Returns the saved Blueprint URL.
+async function produceAndDeliverBlueprint(payload, scores, partnerData, focusedSections) {
+  const focused = Array.isArray(focusedSections) && focusedSections.length > 0;
+  const blueprintMarkdown = focused
+    ? await generateFocusedBlueprintMarkdown(payload, scores, focusedSections)
+    : await generateMultiCallBlueprintMarkdown(payload, scores, partnerData);
+  console.log(`[Blueprint] ${focused ? 'Focused' : 'Multi-call'} generation produced ${blueprintMarkdown.length} characters for ${payload.contact_id}`);
 
-  const blueprintHtml = markdownToBrandedHtml(blueprintMarkdown, payload);
+  const blueprintHtml = markdownToBrandedHtml(blueprintMarkdown, payload, focused ? { focused: true } : undefined);
   const blueprintUrl = await saveToBlob(payload.contact_id, blueprintHtml);
   console.log(`[Blueprint] Saved to ${blueprintUrl} for ${payload.contact_id}`);
 
@@ -561,6 +729,8 @@ async function produceAndDeliverBlueprint(payload, scores, partnerData) {
   // Send delivery email DIRECTLY via Resend. Bypasses GHL workflow enrollment.
   await sendBlueprintEmail(payload, blueprintUrl);
   console.log(`[Blueprint] Delivery email sent to ${payload.email} for ${payload.contact_id}.`);
+
+  return blueprintUrl;
 }
 
 // =======================================================================
@@ -884,9 +1054,10 @@ async function getMasterPrompt() {
 // HELPER: BUILD USER MESSAGE FOR CLAUDE
 // =======================================================================
 
-// Builds the shared customer data context. This block is IDENTICAL across all three
-// generation calls so each Claude call has full context of who the customer is. Only
-// the per-call section instruction (added by the call builders) differs.
+// Builds the shared customer data context. This block is IDENTICAL across all four
+// generation calls (and the single focused call) so each Claude call has full context of
+// who the customer is. Only the per-call section instruction (added by the call builders
+// or the focused message builder) differs.
 function buildCustomerDataBlock(payload, scores, partnerData) {
   // Build the conditional answers block. Groups by set letter (A-E), sorted
   // numerically within each set. Omitted entirely when the bucket is empty
@@ -993,9 +1164,9 @@ ${(() => {
 })()}${conditionalAnswerBlock}${partnerBlock}`;
 }
 
-// Shared header prepended to every call. The full voice and section specs live in the
-// cached system prompt (master-prompt.md); this is a per-call reminder that each pass is
-// one chunk of a Blueprint stitched together from three parallel passes.
+// Shared header prepended to every full-Blueprint call. The full voice and section specs
+// live in the cached system prompt (master-prompt.md); this is a per-call reminder that
+// each pass is one chunk of a Blueprint stitched together from the four passes.
 const MULTI_CALL_HEADER = `Generate part of a complete Alignment Blueprint for this customer, following the master prompt structure and voice exactly. The full Blueprint is produced in several parallel passes and stitched together in order. This pass covers ONLY the section range named below. Do not repeat or reference sections from the other passes.`;
 
 // Per-call voice reminder. The detailed rules are in the system prompt; this keeps the
@@ -1148,12 +1319,11 @@ async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs
   const tag = label ? `chunk ${label}` : 'call';
   if (label) console.log(`[Blueprint] ${tag} start for contact ${contactId}`);
 
-  // Client-side timeout PER CALL, default 90s, overridable via timeoutMs. Multi-call
-  // generation runs three chunks; B and C are light and keep the 90s default, but A is
-  // the heaviest (front matter plus Sections 1 to 6) and gets 180s from its call site so
-  // it does not abort mid-generation. The Vercel function ceiling is 300s (vercel.json
-  // maxDuration), and A runs before B and C fire, so 180 + max(B, C) stays under it. We
-  // abort at timeoutMs to leave headroom for writing the failure status to GHL.
+  // Client-side timeout PER CALL, default 90s, overridable via timeoutMs. The full
+  // Blueprint runs four chunks: A1 warms the cache (200s) before A2, B, and C fire in
+  // parallel (240s each). The focused product path runs a single chunk (200s). The Vercel
+  // function ceiling is 800s (vercel.json maxDuration). We abort at timeoutMs to leave
+  // headroom for writing the failure status to GHL.
   const callStartedAt = Date.now();
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
@@ -1169,14 +1339,15 @@ async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        // Multi-call generation with Anthropic prompt caching. This function runs three
-        // times in parallel, each producing a different range of Blueprint sections. The
-        // master prompt (about 15K input tokens) is sent as a cache_control: ephemeral
-        // content block, so the first call warms the cache and the other two read it from
-        // cache instead of reprocessing it. That caching is what makes three parallel calls
-        // safe now (the reverted multi-call attempt tripped a Tier 1 rate limit without it).
-        // max_tokens 14000 per call gives one chunk room to reach full depth without the
-        // single-call output length that tripped the old 270s timeout.
+        // Multi-call generation with Anthropic prompt caching. The full Blueprint runs four
+        // calls (A1, then A2, B, C); each produces a different range of sections. The
+        // focused product path runs a single call. The master prompt (about 15K input
+        // tokens) is sent as a cache_control: ephemeral content block, so the first call
+        // warms the cache and the rest read it from cache instead of reprocessing it. That
+        // caching is what makes the parallel calls safe (the reverted multi-call attempt
+        // tripped a Tier 1 rate limit without it). max_tokens per call gives one chunk room
+        // to reach full depth without the single-call output length that tripped the old
+        // 270s timeout.
         model: 'claude-sonnet-4-6',
         max_tokens: maxTokens,
         system: [
@@ -1759,7 +1930,8 @@ function renderScoreBars(html) {
   );
 }
 
-function markdownToBrandedHtml(markdown, payload) {
+function markdownToBrandedHtml(markdown, payload, options) {
+  const focused = !!(options && options.focused);
   // Lazy require to avoid import in handler boot
   const { marked } = require('marked');
   // Pre-process pass 1: strip stubborn "Section 17.X:", "17.X.", "17.X " prefixes the
@@ -1777,7 +1949,14 @@ function markdownToBrandedHtml(markdown, payload) {
   ));
   // Sidebar nav for jumping between sections. Empty navHtml means the layout collapses
   // back to single-column (e.g. for the Couples Map, which has no Section N headings).
-  const { html: innerHtml, navHtml } = buildSidebarNav(styledHtml);
+  let { html: innerHtml, navHtml } = buildSidebarNav(styledHtml);
+  // Focused deliverables show clean section titles (no "Section N: Your" prefix). The
+  // icon/sidebar stylers above already matched on the full heading text, so it is safe to
+  // strip the prefix from the rendered headings now. The H1 (the customer-named title)
+  // has no "Section N:" prefix, so it is untouched. The sidebar labels are already clean.
+  if (focused) {
+    innerHtml = innerHtml.replace(/(<h[1-6]\b[^>]*>)\s*Section\s+\d+\s*:\s*(?:Your\s+)?/gi, '$1');
+  }
   const hasSidebar = navHtml.length > 0;
 
   return `<!DOCTYPE html>
@@ -1906,6 +2085,27 @@ function markdownToBrandedHtml(markdown, payload) {
     .cover-footer a {
       color: #d4a957;
       text-decoration: none;
+    }
+    /* FOCUSED DELIVERABLE HEADER
+       Compact branded header used for focused product reads in place of the full-page
+       cover. SR logo + subtitle; the customer-named H1 from the content follows it. */
+    .focused-cover {
+      text-align: center;
+      padding: 3rem 2rem 0.5rem;
+    }
+    .focused-logo {
+      max-width: 220px;
+      width: 60%;
+      height: auto;
+      filter: drop-shadow(0 0 24px rgba(212, 169, 87, 0.25));
+    }
+    .focused-cover-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      color: rgba(245, 241, 232, 0.75);
+      font-size: 0.95rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
     }
     /* MAIN CONTENT */
     h1, h2, h3, h4 {
@@ -2390,7 +2590,10 @@ function markdownToBrandedHtml(markdown, payload) {
   <div class="nav-backdrop" id="nav-backdrop"></div>
   ${navHtml}` : ''}
   <main class="main-content">
-    <div class="cover-page">
+    ${focused ? `<header class="focused-cover">
+      <img src="https://dennisnickens-site-psi.vercel.app/sr-logo-transparent.png" alt="Spiritual Romeo" class="focused-logo" />
+      <div class="focused-cover-subtitle">The Alignment Blueprint</div>
+    </header>` : `<div class="cover-page">
       <div class="cover-top"></div>
       <div class="cover-content">
         <img src="https://dennisnickens-site-psi.vercel.app/sr-logo-transparent.png" alt="Spiritual Romeo" class="cover-logo-img" />
@@ -2406,7 +2609,7 @@ function markdownToBrandedHtml(markdown, payload) {
         <a href="mailto:Admin@dennisnickens.com">Admin@dennisnickens.com</a><br/>
         1-866-944-7225
       </div>
-    </div>
+    </div>`}
     <div class="content-wrap">
       ${innerHtml}
       <div class="footer">

@@ -275,10 +275,13 @@ export default async function handler(req, res) {
     });
   }
 
-  // Synchronous test path. When wait_for_url is set (auth already enforced above), run
-  // generation inline and return the saved Blueprint URL in the HTTP response instead of
-  // a fire-and-forget 202. Used to verify focused and full generation end to end. The
-  // 800s vercel.json maxDuration covers even a full four-call run.
+  // Synchronous DRY-RUN test path. When wait_for_url is set (auth already enforced above),
+  // run generation inline and return the saved Blueprint URL in the HTTP response instead
+  // of a fire-and-forget 202. This is a DRY RUN: it generates, renders, and saves the blob
+  // so the URL can be inspected, but writes nothing to the GHL contact, sends no email, and
+  // never fires the Couples Map. That lets a test source real assessment data from a real
+  // contact without mutating their record or delivering anything to them (Test Recipient
+  // Rule). The 800s vercel.json maxDuration covers even a full four-call run.
   if (payload && payload.wait_for_url) {
     try {
       const url = await generateAndDeliverBlueprint(payload);
@@ -409,6 +412,12 @@ async function generateAndDeliverBlueprint(payload) {
   }
 
   const blueprintUrl = await produceAndDeliverBlueprint(payload, meScores, null);
+
+  // Dry-run test path delivers nothing, so it must never fire the Couples Map auto-trigger
+  // (which would generate a Map and email both partners). Return the URL for inspection.
+  if (payload.wait_for_url) {
+    return blueprintUrl;
+  }
 
   // Full Blueprint delivered. Fire the Couples Map auto-trigger (best-effort, never
   // throws), then return the solo Blueprint URL.
@@ -699,6 +708,15 @@ async function produceAndDeliverBlueprint(payload, scores, partnerData, focusedS
   const blueprintHtml = markdownToBrandedHtml(blueprintMarkdown, payload, focused ? { focused: true } : undefined);
   const blueprintUrl = await saveToBlob(payload.contact_id, blueprintHtml);
   console.log(`[Blueprint] Saved to ${blueprintUrl} for ${payload.contact_id}`);
+
+  // Dry-run test path (wait_for_url). Generate + render + save the blob so the URL can be
+  // inspected, but do NOT write to the GHL contact and do NOT send the delivery email.
+  // This keeps test runs from mutating a real contact's record or firing real emails (see
+  // the Test Recipient Rule: source a test from real data, never deliver to that person).
+  if (payload && payload.wait_for_url) {
+    console.log(`[Blueprint] DRY RUN (wait_for_url): skipping GHL write and delivery email for ${payload.contact_id}.`);
+    return blueprintUrl;
+  }
 
   await updateGhlContact(payload.contact_id, {
     sr_blueprint_status: 'Generated',

@@ -36,8 +36,14 @@ export default async function handler(req, res) {
 
   const { firstName, lastName, email, phone, delivery_preference, tcpa_consent } = body;
 
-  if (!firstName || !lastName || !email || !phone) {
-    return res.status(400).json({ success: false, error: 'Missing required fields' });
+  // firstName and lastName are always required. Email OR phone is required (at least one);
+  // both is fine. The funnel intake form always sends both, so its behavior is unchanged.
+  // SMS-only invites (no email) and email-only contacts are now both accepted.
+  if (!firstName || !lastName) {
+    return res.status(400).json({ success: false, error: 'Missing required fields: firstName and lastName are required' });
+  }
+  if (!email && !phone) {
+    return res.status(400).json({ success: false, error: 'Missing required fields: at least one of email or phone is required' });
   }
 
   const customFields = [
@@ -45,14 +51,16 @@ export default async function handler(req, res) {
     { key: 'tcpa_sms_consent', field_value: tcpa_consent ? 'Yes' : 'No' },
   ];
 
+  // Only include contact channels that are actually present. Sending an empty email or
+  // phone to GHL's upsert can muddy its dedup matching, so omit absent fields entirely.
   const payload = {
     firstName,
     lastName,
-    email,
-    phone,
     locationId,
     customFields,
   };
+  if (email) payload.email = email;
+  if (phone) payload.phone = phone;
 
   try {
     const response = await fetch(`${GHL_BASE}/contacts/upsert`, {

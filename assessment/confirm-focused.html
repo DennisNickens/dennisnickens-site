@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Here's What You Picked | The Blueprint</title>
+<meta name="description" content="Confirm your focused assessment selection." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !important;min-height:100vh;color:#fff;}
+.fn-wrap{position:relative;z-index:5;max-width:760px;margin:0 auto;padding:120px 1.5rem 4rem;}
+.progress-wrap{margin-bottom:2.5rem;}
+.progress-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;margin-bottom:.6rem;text-align:center;}
+.progress-track{height:6px;background:rgba(255,255,255,0.1);border-radius:50px;overflow:hidden;max-width:680px;margin:0 auto;}
+.progress-fill{height:100%;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:50px;transition:width .4s ease;}
+.fn-eyebrow{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#d4a957;text-align:center;display:block;margin-bottom:.85rem;}
+.fn-head{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30px,5vw,46px);color:#fff;text-align:center;line-height:1.15;margin-bottom:2.5rem;}
+.card{background:linear-gradient(180deg,rgba(26,19,64,.7),rgba(15,10,46,.55));border:1px solid #d4a957;border-radius:16px;padding:clamp(1.9rem,4vw,2.75rem);margin-bottom:2rem;}
+.card-eyebrow{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#d4a957;text-align:center;margin-bottom:1.5rem;}
+.pkg-name{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(24px,4vw,32px);color:#FFD700;text-align:center;line-height:1.2;margin-bottom:.5rem;}
+.pkg-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:rgba(245,241,232,0.82);text-align:center;margin-bottom:1.75rem;}
+.areas{display:flex;flex-direction:column;gap:1.1rem;}
+.aitem{padding:1.1rem 1.35rem;background:rgba(212,169,87,0.06);border:1px solid rgba(212,169,87,0.18);border-radius:10px;}
+.aitem h3{font-family:'Playfair Display',serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:.4rem;}
+.aitem p{font-size:14px;color:rgba(245,241,232,0.74);line-height:1.55;}
+.sub-areas-label{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(245,241,232,0.5);text-align:center;margin-bottom:1rem;}
+.loading{text-align:center;color:rgba(245,241,232,0.7);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;padding:1rem 0;}
+.confidence{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(16px,2vw,18px);color:rgba(245,241,232,0.7);text-align:center;line-height:1.6;max-width:560px;margin:0 auto 1rem;}
+.takes{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(17px,2vw,19px);color:rgba(245,241,232,0.82);text-align:center;line-height:1.6;margin-bottom:2.25rem;}
+.btn-stack{display:flex;flex-direction:column;align-items:center;gap:1rem;}
+.fn-btn{display:inline-block;text-align:center;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0D0B1E;padding:16px 44px;border-radius:50px;font-weight:700;font-size:17px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:transform .2s,box-shadow .2s;}
+.fn-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,215,0,0.4);}
+.ghost-btn{display:inline-block;text-align:center;background:transparent;border:1px solid rgba(245,241,232,0.35);color:rgba(245,241,232,0.85);padding:14px 32px;border-radius:50px;font-weight:600;font-size:15px;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:all .2s;}
+.ghost-btn:hover{border-color:#d4a957;color:#d4a957;}
+</style>
+</head>
+<body>
+<canvas id="pc" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../SpiritualRomeo_Assessment.html">Assessment</a></li>
+    <li><a href="../testimonials.html">Testimonials</a></li>
+    <li><a href="../book.html" class="nav-cta">Book Now</a></li>
+    <li><a href="../store.html">Store</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="fn-wrap">
+  <div class="progress-wrap">
+    <div class="progress-label">Step 4 of 5</div>
+    <div class="progress-track"><div class="progress-fill" style="width:80%"></div></div>
+  </div>
+  <div class="bp-brand">
+    <img src="../sr-logo-transparent.png" alt="Spiritual Romeo" class="bp-brand-logo" />
+    <div class="bp-brand-name">The Blueprint</div>
+    <div class="bp-brand-by">By <span class="bp-brand-byline-name">Dennis Nickens</span>, AKA Spiritual Romeo</div>
+  </div>
+  <span class="fn-eyebrow">Step 4 of 5</span>
+  <h1 class="fn-head">Here's what you picked.</h1>
+  <div class="card" id="reviewCard"><div class="loading">Loading your selection&hellip;</div></div>
+  <p class="takes">The assessment takes about 15 minutes. You'll see your results within a day.</p>
+  <p class="confidence">Pricing is revealed after you complete your assessment, when you can see exactly what your results are worth to you.</p>
+  <div class="btn-stack">
+    <button type="button" class="fn-btn" id="beginBtn">Begin My Assessment &rarr;</button>
+    <a href="#" class="ghost-btn" id="backBtn">Go Back and Change My Pick</a>
+  </div>
+</div>
+<footer style="position:relative;z-index:5;background:#080615;padding:3rem 2rem;text-align:center;border-top:1px solid rgba(124,58,237,0.2);font-size:13px;color:rgba(255,255,255,0.4);">
+  <p>&#128231; dennis@dennisnickens.com | &#128205; Indian Trail, NC</p>
+  <p>&#169; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+</footer>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+
+var cid=(new URLSearchParams(location.search)).get('cid')||'';
+if(!cid){window.location.href='intake.html';}
+document.getElementById('backBtn').href='path-picker.html?cid='+encodeURIComponent(cid);
+document.getElementById('beginBtn').addEventListener('click',function(){
+  this.disabled=true;this.textContent='Loading...';
+  window.location.href='welcome.html?cid='+encodeURIComponent(cid);
+});
+
+// Lookup tables (keys match master prompt section names).
+var AREA_MAP={
+  misalignment_map:{title:'Misalignment Map',desc:"The places where the way you're wired collides with the way your life is currently set up."},
+  career_alignment:{title:'Career Alignment',desc:'How your wiring lines up with the work you do, including the work you should be doing.'},
+  relationship_alignment:{title:'Relationship Alignment',desc:'How you show up in close relationships and where your relational patterns come from.'},
+  parenting_style:{title:'Parenting Style',desc:'How your wiring shapes the way you parent. What you do well, what to watch for.'},
+  leadership_profile:{title:'Leadership Profile',desc:'How you lead, who you lead well, and where your leadership gets blocked.'},
+  ministry_profile:{title:'Ministry Profile',desc:"For those in ministry, where your gifts fit and where you'll likely get stuck."},
+  stress_response_map:{title:'Stress Response Map',desc:'How you respond under pressure and what to do when the response gets loud.'},
+  strategic_recommendations:{title:'Strategic Recommendations',desc:'Custom recommendations based on where you are right now.'},
+  thirty_day_plan:{title:'30 Day Plan',desc:'A concrete plan you can actually follow for the next month.'}
+};
+var PKG_MAP={
+  career_pro:{name:'The Career Pro Package',tagline:'For working professionals who lead.',areas:['career_alignment','leadership_profile']},
+  faith_leader:{name:'The Faith Leader Package',tagline:'For pastors and ministry leaders.',areas:['ministry_profile','leadership_profile']},
+  family_foundation:{name:'The Family Foundation Package',tagline:'For married couples raising kids.',areas:['relationship_alignment','parenting_style']},
+  resilience:{name:'The Resilience Package',tagline:'For high-pressure professionals.',areas:['stress_response_map','career_alignment']},
+  self_awareness:{name:'The Self Awareness Package',tagline:'For someone navigating a season of change.',areas:['misalignment_map','strategic_recommendations']}
+};
+
+function keysFrom(v){
+  if(Array.isArray(v))return v;
+  if(typeof v==='string'&&v.trim())return v.split(/\s*,\s*/).filter(Boolean);
+  return [];
+}
+function areaItems(keys){
+  var html='';
+  keys.forEach(function(k){
+    var a=AREA_MAP[k];
+    if(a)html+='<div class="aitem"><h3>'+a.title+'</h3><p>'+a.desc+'</p></div>';
+  });
+  return html;
+}
+
+function renderPackage(pkgKey){
+  var p=PKG_MAP[pkgKey];
+  if(!p){renderFallback();return;}
+  var html='<div class="card-eyebrow">Your Package</div>'
+    +'<div class="pkg-name">'+p.name+'</div>'
+    +'<div class="pkg-tag">'+p.tagline+'</div>'
+    +'<div class="sub-areas-label">What we will write for you</div>'
+    +'<div class="areas">'+areaItems(p.areas)+'</div>';
+  document.getElementById('reviewCard').innerHTML=html;
+}
+function renderIndividual(keys){
+  if(!keys.length){renderFallback();return;}
+  var label=keys.length>1?'Your Focus Areas':'Your Focus Area';
+  var html='<div class="card-eyebrow">'+label+'</div><div class="areas">'+areaItems(keys)+'</div>';
+  document.getElementById('reviewCard').innerHTML=html;
+}
+function renderFallback(){
+  document.getElementById('reviewCard').innerHTML='<div class="card-eyebrow">Your Focused Read</div>'
+    +'<p class="loading">Your selection is saved. Click Begin My Assessment to continue, or go back to review your pick.</p>';
+}
+
+fetch('/api/sr-get-contact?cid='+encodeURIComponent(cid))
+  .then(function(r){return r.json();})
+  .then(function(data){
+    var f=(data&&data.success&&data.contact&&data.contact.fields)||{};
+    var pkg=(f.sr_package_name||'').trim();
+    var focus=keysFrom(f.sr_focus_areas);
+    if(pkg){renderPackage(pkg);}
+    else if(focus.length){renderIndividual(focus);}
+    else{renderFallback();}
+  })
+  .catch(function(){renderFallback();});
+
+var cv=document.getElementById('pc'),cx=cv.getContext('2d');let ps=[];function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();window.addEventListener('resize',rsz);class P{constructor(){this.reset();}reset(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;const t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;}}for(let i=0;i<110;i++)ps.push(new P());function ani(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(ani);}ani();
+</script>
+</body>
+</html>

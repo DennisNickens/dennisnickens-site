@@ -156,7 +156,7 @@ document.getElementById('intakeForm').addEventListener('submit',function(ev){
   .then(function(r){return r.json();})
   .then(function(data){
     if(data&&data.success&&data.contact_id){
-      window.location.href='qualifier-focus.html?cid='+encodeURIComponent(data.contact_id);
+      window.location.href='path-picker.html?cid='+encodeURIComponent(data.contact_id);
     }else{
       showErr((data&&data.error)||'Something went wrong. Please try again.');
       btn.disabled=false;btn.textContent='Continue →';

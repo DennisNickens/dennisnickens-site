@@ -68,7 +68,9 @@ var cid=(new URLSearchParams(location.search)).get('cid')||'';
 if(!cid){window.location.href='intake.html';}
 
 // Prefetch the contact's selections so we can pass them to GHL for prefill.
-var selections={focus:'',audience:'',tier:''};
+// Includes both the Full Blueprint qualifier fields and the focused-funnel
+// entitlement fields, so the survey receives context regardless of path taken.
+var selections={focus:'',audience:'',tier:'',purchaseType:'',focusAreas:'',packageName:''};
 fetch('/api/sr-get-contact?cid='+encodeURIComponent(cid))
   .then(function(r){return r.json();})
   .then(function(data){
@@ -78,6 +80,10 @@ fetch('/api/sr-get-contact?cid='+encodeURIComponent(cid))
       selections.focus=Array.isArray(focus)?focus.join(', '):(focus||'');
       selections.audience=f.sr_qual_who_for||'';
       selections.tier=f.sr_sku_tier||'';
+      var fa=f.sr_focus_areas;
+      selections.purchaseType=f.sr_purchase_type||'';
+      selections.focusAreas=Array.isArray(fa)?fa.join(', '):(fa||'');
+      selections.packageName=f.sr_package_name||'';
     }
   })
   .catch(function(){});
@@ -87,7 +93,10 @@ document.getElementById('beginBtn').addEventListener('click',function(){
   var url=SURVEY_BASE+'?contact_id='+encodeURIComponent(cid)
     +'&sr_qual_focus_areas='+encodeURIComponent(selections.focus)
     +'&sr_qual_who_for='+encodeURIComponent(selections.audience)
-    +'&sr_sku_tier='+encodeURIComponent(selections.tier);
+    +'&sr_sku_tier='+encodeURIComponent(selections.tier)
+    +'&sr_purchase_type='+encodeURIComponent(selections.purchaseType)
+    +'&sr_focus_areas='+encodeURIComponent(selections.focusAreas)
+    +'&sr_package_name='+encodeURIComponent(selections.packageName);
   window.location.href=url;
 });
 

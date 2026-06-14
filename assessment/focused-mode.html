@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How Do You Want to Pick? | The Blueprint</title>
+<meta name="description" content="Build it yourself, or take one we put together for you." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !important;min-height:100vh;color:#fff;}
+.fn-wrap{position:relative;z-index:5;max-width:980px;margin:0 auto;padding:120px 1.5rem 4rem;}
+.progress-wrap{margin-bottom:2.5rem;}
+.progress-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;margin-bottom:.6rem;text-align:center;}
+.progress-track{height:6px;background:rgba(255,255,255,0.1);border-radius:50px;overflow:hidden;max-width:680px;margin:0 auto;}
+.progress-fill{height:100%;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:50px;transition:width .4s ease;}
+.fn-eyebrow{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#d4a957;text-align:center;display:block;margin-bottom:.85rem;}
+.fn-head{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30px,5vw,46px);color:#fff;text-align:center;line-height:1.15;margin-bottom:1rem;}
+.fn-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,2.2vw,22px);color:rgba(245,241,232,0.78);text-align:center;line-height:1.6;max-width:600px;margin:0 auto 3rem;}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
+@media(max-width:1024px){.card-grid{grid-template-columns:1fr;}}
+.pcard{display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(26,19,64,.6),rgba(15,10,46,.5));border:1px solid rgba(212,169,87,0.4);border-radius:18px;padding:clamp(1.75rem,3vw,2.75rem);transition:border-color .25s,transform .25s;}
+.pcard:hover{border-color:#d4a957;transform:translateY(-3px);}
+.medallion{width:60px;height:60px;margin:0 auto 1.5rem;display:block;}
+.pcard h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(23px,3vw,28px);color:#fff;text-align:center;margin-bottom:.6rem;}
+.pcard .tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:#d4a957;text-align:center;margin-bottom:1.2rem;line-height:1.4;}
+.pcard .desc{font-size:15.5px;color:rgba(245,241,232,0.8);line-height:1.7;margin-bottom:1.75rem;text-align:center;}
+.pcard .spacer{flex:1;}
+.fn-btn{display:inline-block;width:100%;text-align:center;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0D0B1E;padding:15px 28px;border-radius:50px;font-weight:700;font-size:16px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:transform .2s,box-shadow .2s;}
+.fn-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(255,215,0,0.35);}
+.fn-btn:disabled{opacity:.5;cursor:wait;transform:none;box-shadow:none;}
+.btn-row{display:flex;justify-content:center;}
+.back-btn{background:transparent;border:1px solid rgba(245,241,232,0.3);color:rgba(245,241,232,0.85);padding:13px 28px;border-radius:50px;font-weight:600;font-size:15px;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:all .2s;}
+.back-btn:hover{border-color:#d4a957;color:#d4a957;}
+.fn-err{display:none;color:#ff8585;font-size:14px;margin-top:1.25rem;text-align:center;}
+.fn-err.show{display:block;}
+</style>
+</head>
+<body>
+<canvas id="pc" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../SpiritualRomeo_Assessment.html">Assessment</a></li>
+    <li><a href="../testimonials.html">Testimonials</a></li>
+    <li><a href="../book.html" class="nav-cta">Book Now</a></li>
+    <li><a href="../store.html">Store</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="fn-wrap">
+  <div class="progress-wrap">
+    <div class="progress-label">Step 2 of 5</div>
+    <div class="progress-track"><div class="progress-fill" style="width:40%"></div></div>
+  </div>
+  <div class="bp-brand">
+    <img src="../sr-logo-transparent.png" alt="Spiritual Romeo" class="bp-brand-logo" />
+    <div class="bp-brand-name">The Blueprint</div>
+    <div class="bp-brand-by">By <span class="bp-brand-byline-name">Dennis Nickens</span>, AKA Spiritual Romeo</div>
+  </div>
+  <span class="fn-eyebrow">Step 2 of 5</span>
+  <h1 class="fn-head">How do you want to pick?</h1>
+  <p class="fn-sub">Build it yourself, or take one we put together for you.</p>
+  <div class="card-grid">
+    <div class="pcard">
+      <svg class="medallion" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="28" stroke="#d4a957" stroke-width="1.5"/>
+        <rect x="22" y="22" width="20" height="20" rx="3" stroke="#d4a957" stroke-width="1.5"/>
+        <path d="M27 32 L31 36 L38 27" stroke="#d4a957" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h2>Pick Individually</h2>
+      <div class="tagline">You know what you want.</div>
+      <p class="desc">Choose one or two focus areas from our full menu. We'll write deep dives on exactly what you select.</p>
+      <div class="spacer"></div>
+      <button type="button" class="fn-btn" id="individualBtn">Pick My Areas</button>
+    </div>
+    <div class="pcard">
+      <svg class="medallion" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="28" stroke="#d4a957" stroke-width="1.5"/>
+        <rect x="20" y="24" width="24" height="16" rx="2" stroke="#d4a957" stroke-width="1.5"/>
+        <path d="M20 30 H44" stroke="#d4a957" stroke-width="1.5"/>
+        <path d="M32 24 V20 M32 20 C30 18 27 18 27 21 C27 23 30 24 32 24 M32 20 C34 18 37 18 37 21 C37 23 34 24 32 24" stroke="#d4a957" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <h2>Pre-Built Package</h2>
+      <div class="tagline">Let Dennis recommend the combo.</div>
+      <p class="desc">Pick one of five curated packages designed for a specific kind of person.</p>
+      <div class="spacer"></div>
+      <button type="button" class="fn-btn" id="packageBtn">Browse Packages</button>
+    </div>
+  </div>
+  <div class="btn-row">
+    <a href="#" class="back-btn" id="backBtn">&larr; Back</a>
+  </div>
+  <div class="fn-err" id="errBox"></div>
+</div>
+<footer style="position:relative;z-index:5;background:#080615;padding:3rem 2rem;text-align:center;border-top:1px solid rgba(124,58,237,0.2);font-size:13px;color:rgba(255,255,255,0.4);">
+  <p>&#128231; dennis@dennisnickens.com | &#128205; Indian Trail, NC</p>
+  <p>&#169; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+</footer>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+
+var cid=(new URLSearchParams(location.search)).get('cid')||'';
+if(!cid){window.location.href='intake.html';}
+document.getElementById('backBtn').href='path-picker.html?cid='+encodeURIComponent(cid);
+
+var individualBtn=document.getElementById('individualBtn'),packageBtn=document.getElementById('packageBtn');
+
+// Best-effort persist, then navigate regardless of write outcome (the new GHL
+// fields land as no-ops until Step 3 creates them).
+function go(url){window.location.href=url;}
+function persistThen(next,btn,label){
+  btn.disabled=true;individualBtn.disabled=true;packageBtn.disabled=true;btn.textContent='Saving...';
+  fetch('/api/sr-update-contact',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({contact_id:cid,sr_path_choice:'focused'})
+  }).then(function(r){return r.json();})
+    .then(function(){go(next);},function(){go(next);});
+}
+
+individualBtn.addEventListener('click',function(){
+  persistThen('focused-individual.html?cid='+encodeURIComponent(cid),individualBtn);
+});
+packageBtn.addEventListener('click',function(){
+  persistThen('focused-package.html?cid='+encodeURIComponent(cid),packageBtn);
+});
+
+var cv=document.getElementById('pc'),cx=cv.getContext('2d');let ps=[];function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();window.addEventListener('resize',rsz);class P{constructor(){this.reset();}reset(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;const t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;}}for(let i=0;i<110;i++)ps.push(new P());function ani(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(ani);}ani();
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pick Your Areas | The Blueprint</title>
+<meta name="description" content="Choose one or two focus areas for your deep dive." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !important;min-height:100vh;color:#fff;}
+.fn-wrap{position:relative;z-index:5;max-width:1040px;margin:0 auto;padding:120px 1.5rem 9rem;}
+.progress-wrap{margin-bottom:2.5rem;}
+.progress-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;margin-bottom:.6rem;text-align:center;}
+.progress-track{height:6px;background:rgba(255,255,255,0.1);border-radius:50px;overflow:hidden;max-width:680px;margin:0 auto;}
+.progress-fill{height:100%;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:50px;transition:width .4s ease;}
+.fn-eyebrow{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#d4a957;text-align:center;display:block;margin-bottom:.85rem;}
+.fn-head{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30px,5vw,46px);color:#fff;text-align:center;line-height:1.15;margin-bottom:1rem;}
+.fn-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,2.2vw,22px);color:rgba(245,241,232,0.78);text-align:center;line-height:1.6;max-width:620px;margin:0 auto 3rem;}
+.area-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+@media(max-width:900px){.area-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.area-grid{grid-template-columns:1fr;}}
+.area{position:relative;cursor:pointer;border:1px solid rgba(212,169,87,0.4);border-radius:14px;background:linear-gradient(180deg,rgba(26,19,64,.5),rgba(15,10,46,.4));padding:1.4rem;transition:border-color .2s,background .2s,transform .15s;}
+.area:hover{border-color:#d4a957;}
+.area.sel{border-color:#d4a957;background:rgba(212,169,87,0.1);}
+.area h3{font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:#fff;margin-bottom:.5rem;padding-right:1.5rem;}
+.area p{font-size:13.5px;color:rgba(245,241,232,0.72);line-height:1.55;}
+.area .check{position:absolute;top:13px;right:13px;width:22px;height:22px;border-radius:50%;background:#d4a957;color:#07071a;display:none;align-items:center;justify-content:center;font-size:13px;font-weight:700;}
+.area.sel .check{display:flex;}
+.shake{animation:shake .4s;}
+@keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-6px);}40%{transform:translateX(6px);}60%{transform:translateX(-4px);}80%{transform:translateX(4px);}}
+.tip{position:fixed;left:50%;transform:translateX(-50%);bottom:96px;z-index:60;background:#1a1235;border:1px solid #d4a957;color:#f5f1e8;padding:13px 20px;border-radius:12px;font-size:14.5px;max-width:360px;text-align:center;line-height:1.5;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 12px 34px rgba(0,0,0,.45);}
+.tip.show{opacity:1;}
+.sticky-foot{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(7,7,26,0.94);backdrop-filter:blur(12px);border-top:1px solid rgba(212,169,87,0.3);padding:1rem 1.5rem;}
+.sticky-inner{max-width:1040px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.sticky-status{font-family:'Inter',sans-serif;font-size:15px;color:rgba(245,241,232,0.85);font-weight:500;}
+.fn-btn{display:inline-block;text-align:center;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0D0B1E;padding:14px 34px;border-radius:50px;font-weight:700;font-size:16px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:transform .2s,box-shadow .2s;}
+.fn-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(255,215,0,0.35);}
+.fn-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none;}
+.back-btn{background:transparent;border:1px solid rgba(245,241,232,0.3);color:rgba(245,241,232,0.85);padding:14px 26px;border-radius:50px;font-weight:600;font-size:15px;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:all .2s;}
+.back-btn:hover{border-color:#d4a957;color:#d4a957;}
+</style>
+</head>
+<body>
+<canvas id="pc" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../SpiritualRomeo_Assessment.html">Assessment</a></li>
+    <li><a href="../testimonials.html">Testimonials</a></li>
+    <li><a href="../book.html" class="nav-cta">Book Now</a></li>
+    <li><a href="../store.html">Store</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="fn-wrap">
+  <div class="progress-wrap">
+    <div class="progress-label">Step 3 of 5</div>
+    <div class="progress-track"><div class="progress-fill" style="width:60%"></div></div>
+  </div>
+  <div class="bp-brand">
+    <img src="../sr-logo-transparent.png" alt="Spiritual Romeo" class="bp-brand-logo" />
+    <div class="bp-brand-name">The Blueprint</div>
+    <div class="bp-brand-by">By <span class="bp-brand-byline-name">Dennis Nickens</span>, AKA Spiritual Romeo</div>
+  </div>
+  <span class="fn-eyebrow">Step 3 of 5</span>
+  <h1 class="fn-head">Pick your areas.</h1>
+  <p class="fn-sub">Choose one or two. We'll write a deep dive on each one you pick.</p>
+  <div class="area-grid" id="areaGrid"></div>
+</div>
+<div class="tip" id="tip">Two areas max in the focused read. Want more? Consider the Full Blueprint.</div>
+<div class="sticky-foot">
+  <div class="sticky-inner">
+    <a href="#" class="back-btn" id="backBtn">&larr; Back</a>
+    <span class="sticky-status" id="status">Pick at least one area to continue</span>
+    <button type="button" class="fn-btn" id="continueBtn" disabled>Continue to confirmation &rarr;</button>
+  </div>
+</div>
+<footer style="position:relative;z-index:5;background:#080615;padding:3rem 2rem 7rem;text-align:center;border-top:1px solid rgba(124,58,237,0.2);font-size:13px;color:rgba(255,255,255,0.4);">
+  <p>&#128231; dennis@dennisnickens.com | &#128205; Indian Trail, NC</p>
+  <p>&#169; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+</footer>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+
+var cid=(new URLSearchParams(location.search)).get('cid')||'';
+if(!cid){window.location.href='intake.html';}
+document.getElementById('backBtn').href='focused-mode.html?cid='+encodeURIComponent(cid);
+
+// Keys match the master prompt section names exactly.
+var AREAS=[
+  {key:'misalignment_map',title:'Misalignment Map',desc:"The places where the way you're wired collides with the way your life is currently set up."},
+  {key:'career_alignment',title:'Career Alignment',desc:'How your wiring lines up with the work you do, including the work you should be doing.'},
+  {key:'relationship_alignment',title:'Relationship Alignment',desc:'How you show up in close relationships and where your relational patterns come from.'},
+  {key:'parenting_style',title:'Parenting Style',desc:'How your wiring shapes the way you parent. What you do well, what to watch for.'},
+  {key:'leadership_profile',title:'Leadership Profile',desc:'How you lead, who you lead well, and where your leadership gets blocked.'},
+  {key:'ministry_profile',title:'Ministry Profile',desc:"For those in ministry, where your gifts fit and where you'll likely get stuck."},
+  {key:'stress_response_map',title:'Stress Response Map',desc:'How you respond under pressure and what to do when the response gets loud.'},
+  {key:'strategic_recommendations',title:'Strategic Recommendations',desc:'Custom recommendations based on where you are right now.'},
+  {key:'thirty_day_plan',title:'30 Day Plan',desc:'A concrete plan you can actually follow for the next month.'}
+];
+
+var selected=[];
+var grid=document.getElementById('areaGrid');
+var statusEl=document.getElementById('status');
+var continueBtn=document.getElementById('continueBtn');
+var tip=document.getElementById('tip');
+var tipTimer=null;
+
+AREAS.forEach(function(a){
+  var card=document.createElement('div');
+  card.className='area';
+  card.setAttribute('data-key',a.key);
+  card.innerHTML='<div class="check">&#10003;</div><h3>'+a.title+'</h3><p>'+a.desc+'</p>';
+  card.addEventListener('click',function(){toggle(card,a.key);});
+  grid.appendChild(card);
+});
+
+function showTip(card){
+  if(card){card.classList.remove('shake');void card.offsetWidth;card.classList.add('shake');}
+  tip.classList.add('show');
+  if(tipTimer)clearTimeout(tipTimer);
+  tipTimer=setTimeout(function(){tip.classList.remove('show');},2600);
+}
+
+function toggle(card,key){
+  var idx=selected.indexOf(key);
+  if(idx!==-1){
+    selected.splice(idx,1);
+    card.classList.remove('sel');
+  }else{
+    if(selected.length>=2){showTip(card);return;}
+    selected.push(key);
+    card.classList.add('sel');
+  }
+  refresh();
+}
+
+function refresh(){
+  var n=selected.length;
+  if(n===0){
+    statusEl.textContent='Pick at least one area to continue';
+    continueBtn.disabled=true;
+  }else if(n===1){
+    statusEl.textContent='Selected: 1 area';
+    continueBtn.disabled=false;
+  }else{
+    statusEl.textContent='Selected: 2 areas';
+    continueBtn.disabled=false;
+  }
+}
+
+function go(url){window.location.href=url;}
+
+continueBtn.addEventListener('click',function(){
+  if(selected.length===0)return;
+  continueBtn.disabled=true;continueBtn.textContent='Saving...';
+  var purchaseType=selected.length===2?'two_pack_individual':'single_focus';
+  var focusValue=selected.join(', ');
+  fetch('/api/sr-update-contact',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({contact_id:cid,sr_purchase_type:purchaseType,sr_focus_areas:focusValue,sr_package_name:''})
+  }).then(function(r){return r.json();})
+    .then(function(){go('confirm-focused.html?cid='+encodeURIComponent(cid));},
+          function(){go('confirm-focused.html?cid='+encodeURIComponent(cid));});
+});
+
+var cv=document.getElementById('pc'),cx=cv.getContext('2d');let ps=[];function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();window.addEventListener('resize',rsz);class P{constructor(){this.reset();}reset(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;const t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;}}for(let i=0;i<110;i++)ps.push(new P());function ani(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(ani);}ani();
+</script>
+</body>
+</html>

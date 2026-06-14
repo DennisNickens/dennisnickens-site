@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pick Your Package | The Blueprint</title>
+<meta name="description" content="Choose one of five curated focus area packages." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !important;min-height:100vh;color:#fff;}
+.fn-wrap{position:relative;z-index:5;max-width:1000px;margin:0 auto;padding:120px 1.5rem 9rem;}
+.progress-wrap{margin-bottom:2.5rem;}
+.progress-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;margin-bottom:.6rem;text-align:center;}
+.progress-track{height:6px;background:rgba(255,255,255,0.1);border-radius:50px;overflow:hidden;max-width:680px;margin:0 auto;}
+.progress-fill{height:100%;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:50px;transition:width .4s ease;}
+.fn-eyebrow{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#d4a957;text-align:center;display:block;margin-bottom:.85rem;}
+.fn-head{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30px,5vw,46px);color:#fff;text-align:center;line-height:1.15;margin-bottom:1rem;}
+.fn-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,2.2vw,22px);color:rgba(245,241,232,0.78);text-align:center;line-height:1.6;max-width:640px;margin:0 auto 3rem;}
+.pkg-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+@media(max-width:820px){.pkg-grid{grid-template-columns:1fr;}}
+.pkg{position:relative;cursor:pointer;border:1px solid rgba(212,169,87,0.4);border-radius:16px;background:linear-gradient(180deg,rgba(26,19,64,.55),rgba(15,10,46,.45));padding:1.7rem;transition:border-color .2s,background .2s,transform .15s;}
+.pkg:hover{border-color:#d4a957;transform:translateY(-2px);}
+.pkg.sel{border-color:#d4a957;background:rgba(212,169,87,0.1);}
+.pkg h3{font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:#fff;margin-bottom:.4rem;padding-right:1.8rem;}
+.pkg .tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:#d4a957;margin-bottom:1.1rem;}
+.pkg .includes{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,241,232,0.5);margin-bottom:.45rem;font-family:'Inter',sans-serif;font-weight:600;}
+.pkg .pair{font-size:15.5px;color:rgba(245,241,232,0.88);line-height:1.6;}
+.pkg .check{position:absolute;top:16px;right:16px;width:24px;height:24px;border-radius:50%;background:#d4a957;color:#07071a;display:none;align-items:center;justify-content:center;font-size:14px;font-weight:700;}
+.pkg.sel .check{display:flex;}
+.sticky-foot{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(7,7,26,0.94);backdrop-filter:blur(12px);border-top:1px solid rgba(212,169,87,0.3);padding:1rem 1.5rem;}
+.sticky-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.sticky-status{font-family:'Inter',sans-serif;font-size:15px;color:rgba(245,241,232,0.85);font-weight:500;}
+.fn-btn{display:inline-block;text-align:center;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0D0B1E;padding:14px 34px;border-radius:50px;font-weight:700;font-size:16px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:transform .2s,box-shadow .2s;}
+.fn-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(255,215,0,0.35);}
+.fn-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none;}
+.back-btn{background:transparent;border:1px solid rgba(245,241,232,0.3);color:rgba(245,241,232,0.85);padding:14px 26px;border-radius:50px;font-weight:600;font-size:15px;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:all .2s;}
+.back-btn:hover{border-color:#d4a957;color:#d4a957;}
+</style>
+</head>
+<body>
+<canvas id="pc" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../SpiritualRomeo_Assessment.html">Assessment</a></li>
+    <li><a href="../testimonials.html">Testimonials</a></li>
+    <li><a href="../book.html" class="nav-cta">Book Now</a></li>
+    <li><a href="../store.html">Store</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="fn-wrap">
+  <div class="progress-wrap">
+    <div class="progress-label">Step 3 of 5</div>
+    <div class="progress-track"><div class="progress-fill" style="width:60%"></div></div>
+  </div>
+  <div class="bp-brand">
+    <img src="../sr-logo-transparent.png" alt="Spiritual Romeo" class="bp-brand-logo" />
+    <div class="bp-brand-name">The Blueprint</div>
+    <div class="bp-brand-by">By <span class="bp-brand-byline-name">Dennis Nickens</span>, AKA Spiritual Romeo</div>
+  </div>
+  <span class="fn-eyebrow">Step 3 of 5</span>
+  <h1 class="fn-head">Pick your package.</h1>
+  <p class="fn-sub">Each one is a smart pairing of two focus areas designed for a specific kind of person.</p>
+  <div class="pkg-grid" id="pkgGrid"></div>
+</div>
+<div class="sticky-foot">
+  <div class="sticky-inner">
+    <a href="#" class="back-btn" id="backBtn">&larr; Back</a>
+    <span class="sticky-status" id="status">Pick a package to continue</span>
+    <button type="button" class="fn-btn" id="continueBtn" disabled>Continue to confirmation &rarr;</button>
+  </div>
+</div>
+<footer style="position:relative;z-index:5;background:#080615;padding:3rem 2rem 7rem;text-align:center;border-top:1px solid rgba(124,58,237,0.2);font-size:13px;color:rgba(255,255,255,0.4);">
+  <p>&#128231; dennis@dennisnickens.com | &#128205; Indian Trail, NC</p>
+  <p>&#169; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+</footer>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+
+var cid=(new URLSearchParams(location.search)).get('cid')||'';
+if(!cid){window.location.href='intake.html';}
+document.getElementById('backBtn').href='focused-mode.html?cid='+encodeURIComponent(cid);
+
+// Package keys and their two focus areas (keys match master prompt section names).
+var PACKAGES=[
+  {key:'career_pro',name:'The Career Pro Package',tagline:'For working professionals who lead.',areas:['career_alignment','leadership_profile'],pair:'Career Alignment + Leadership Profile'},
+  {key:'faith_leader',name:'The Faith Leader Package',tagline:'For pastors and ministry leaders.',areas:['ministry_profile','leadership_profile'],pair:'Ministry Profile + Leadership Profile'},
+  {key:'family_foundation',name:'The Family Foundation Package',tagline:'For married couples raising kids.',areas:['relationship_alignment','parenting_style'],pair:'Relationship Alignment + Parenting Style'},
+  {key:'resilience',name:'The Resilience Package',tagline:'For high-pressure professionals.',areas:['stress_response_map','career_alignment'],pair:'Stress Response Map + Career Alignment'},
+  {key:'self_awareness',name:'The Self Awareness Package',tagline:'For someone navigating a season of change.',areas:['misalignment_map','strategic_recommendations'],pair:'Misalignment Map + Strategic Recommendations'}
+];
+
+var selectedKey='';
+var grid=document.getElementById('pkgGrid');
+var statusEl=document.getElementById('status');
+var continueBtn=document.getElementById('continueBtn');
+
+PACKAGES.forEach(function(p){
+  var card=document.createElement('div');
+  card.className='pkg';
+  card.setAttribute('data-key',p.key);
+  card.innerHTML='<div class="check">&#10003;</div><h3>'+p.name+'</h3>'
+    +'<div class="tagline">'+p.tagline+'</div>'
+    +'<div class="includes">Includes</div>'
+    +'<div class="pair">'+p.pair+'</div>';
+  card.addEventListener('click',function(){select(p);});
+  grid.appendChild(card);
+});
+
+function select(p){
+  selectedKey=p.key;
+  grid.querySelectorAll('.pkg').forEach(function(c){c.classList.toggle('sel',c.getAttribute('data-key')===p.key);});
+  statusEl.textContent='Selected: '+p.name;
+  continueBtn.disabled=false;
+}
+
+function go(url){window.location.href=url;}
+
+continueBtn.addEventListener('click',function(){
+  if(!selectedKey)return;
+  var pkg=PACKAGES.filter(function(p){return p.key===selectedKey;})[0];
+  if(!pkg)return;
+  continueBtn.disabled=true;continueBtn.textContent='Saving...';
+  var focusValue=pkg.areas.join(', ');
+  fetch('/api/sr-update-contact',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({contact_id:cid,sr_purchase_type:'two_pack_package',sr_package_name:pkg.key,sr_focus_areas:focusValue})
+  }).then(function(r){return r.json();})
+    .then(function(){go('confirm-focused.html?cid='+encodeURIComponent(cid));},
+          function(){go('confirm-focused.html?cid='+encodeURIComponent(cid));});
+});
+
+var cv=document.getElementById('pc'),cx=cv.getContext('2d');let ps=[];function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();window.addEventListener('resize',rsz);class P{constructor(){this.reset();}reset(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;const t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;}}for(let i=0;i<110;i++)ps.push(new P());function ani(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(ani);}ani();
+</script>
+</body>
+</html>

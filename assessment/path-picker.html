@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What Kind of Read Are You Looking For? | The Blueprint</title>
+<meta name="description" content="Choose the Full Blueprint or a Focused Read." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !important;min-height:100vh;color:#fff;}
+.fn-wrap{position:relative;z-index:5;max-width:980px;margin:0 auto;padding:120px 1.5rem 4rem;}
+.progress-wrap{margin-bottom:2.5rem;}
+.progress-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FFD700;margin-bottom:.6rem;text-align:center;}
+.progress-track{height:6px;background:rgba(255,255,255,0.1);border-radius:50px;overflow:hidden;max-width:680px;margin:0 auto;}
+.progress-fill{height:100%;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:50px;transition:width .4s ease;}
+.fn-eyebrow{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#d4a957;text-align:center;display:block;margin-bottom:.85rem;}
+.fn-head{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30px,5vw,46px);color:#fff;text-align:center;line-height:1.15;margin-bottom:1rem;}
+.fn-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,2.2vw,22px);color:rgba(245,241,232,0.78);text-align:center;line-height:1.6;max-width:600px;margin:0 auto 3rem;}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+@media(max-width:1024px){.card-grid{grid-template-columns:1fr;}}
+.pcard{display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(26,19,64,.6),rgba(15,10,46,.5));border:1px solid rgba(212,169,87,0.4);border-radius:18px;padding:clamp(1.75rem,3vw,2.5rem);transition:border-color .25s,transform .25s;}
+.pcard:hover{border-color:#d4a957;transform:translateY(-3px);}
+.medallion{width:64px;height:64px;margin:0 auto 1.5rem;display:block;}
+.pcard h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(24px,3vw,30px);color:#fff;text-align:center;margin-bottom:.6rem;}
+.pcard .tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:#d4a957;text-align:center;margin-bottom:1.2rem;line-height:1.4;}
+.pcard .desc{font-size:15px;color:rgba(245,241,232,0.78);line-height:1.7;margin-bottom:1.5rem;text-align:center;}
+.pcard ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.75rem;}
+.pcard li{padding-left:1.6rem;position:relative;font-size:14.5px;color:rgba(245,241,232,0.85);line-height:1.5;}
+.pcard li::before{content:"\2726";position:absolute;left:0;top:.2rem;color:#d4a957;font-size:.7rem;}
+.pcard .spacer{flex:1;}
+.fn-btn{display:inline-block;width:100%;text-align:center;background:linear-gradient(135deg,#FFD700,#FFA500);color:#0D0B1E;padding:15px 28px;border-radius:50px;font-weight:700;font-size:16px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:transform .2s,box-shadow .2s;}
+.fn-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(255,215,0,0.35);}
+.fn-btn:disabled{opacity:.5;cursor:wait;transform:none;box-shadow:none;}
+.fn-err{display:none;color:#ff8585;font-size:14px;margin-top:1.5rem;text-align:center;}
+.fn-err.show{display:block;}
+</style>
+</head>
+<body>
+<canvas id="pc" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<nav id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-logo-wrap"><span class="nav-logo-crown">&#9819;</span><span class="nav-logo-sr">SR</span></div>
+    <div class="nav-brand-text"><span class="nav-name">Dennis Nickens</span><span class="nav-sub">AKA Spiritual Romeo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../SpiritualRomeo_Assessment.html">Assessment</a></li>
+    <li><a href="../testimonials.html">Testimonials</a></li>
+    <li><a href="../book.html" class="nav-cta">Book Now</a></li>
+    <li><a href="../store.html">Store</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="fn-wrap">
+  <div class="progress-wrap">
+    <div class="progress-label">Step 1 of 5</div>
+    <div class="progress-track"><div class="progress-fill" style="width:20%"></div></div>
+  </div>
+  <div class="bp-brand">
+    <img src="../sr-logo-transparent.png" alt="Spiritual Romeo" class="bp-brand-logo" />
+    <div class="bp-brand-name">The Blueprint</div>
+    <div class="bp-brand-by">By <span class="bp-brand-byline-name">Dennis Nickens</span>, AKA Spiritual Romeo</div>
+  </div>
+  <span class="fn-eyebrow">Step 1 of 5</span>
+  <h1 class="fn-head">What kind of read are you looking for?</h1>
+  <p class="fn-sub">Pick the path that fits where you are.</p>
+  <div class="card-grid">
+    <div class="pcard">
+      <svg class="medallion" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="28" stroke="#d4a957" stroke-width="1.5"/>
+        <circle cx="32" cy="32" r="20" stroke="#d4a957" stroke-width="1" opacity="0.55"/>
+        <path d="M32 11 L35 29 L53 32 L35 35 L32 53 L29 35 L11 32 L29 29 Z" fill="#d4a957"/>
+      </svg>
+      <h2>The Full Blueprint</h2>
+      <div class="tagline">All seven dimensions of how you're wired.</div>
+      <p class="desc">The complete picture. Your behavior, personality, action style, connection currency, learning channel, spiritual wiring, and spiritual gifts. Plus everything you need to start working with what you find.</p>
+      <ul>
+        <li>7 Pillar deep reads, your full Blueprint</li>
+        <li>Your personalized Behavior Profile and Personality Code</li>
+        <li>Access to upgrade with any add-on deep dive section later</li>
+        <li>About 25 minutes to complete</li>
+      </ul>
+      <div class="spacer"></div>
+      <button type="button" class="fn-btn" id="fullBtn">Choose Full Blueprint</button>
+    </div>
+    <div class="pcard">
+      <svg class="medallion" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="28" stroke="#d4a957" stroke-width="1.5"/>
+        <circle cx="32" cy="32" r="18" stroke="#d4a957" stroke-width="1.2" opacity="0.65"/>
+        <circle cx="32" cy="32" r="7" fill="#d4a957"/>
+      </svg>
+      <h2>Focused Read</h2>
+      <div class="tagline">Skip the rest. Go straight to what matters most right now.</div>
+      <p class="desc">Pick one or two specific areas of your life and we'll write a focused deep dive on just those. Same depth, narrower scope, faster to read and act on.</p>
+      <ul>
+        <li>1 or 2 focus area deep dives, no full Blueprint</li>
+        <li>Pick from career, relationships, parenting, leadership, ministry, stress response, and more</li>
+        <li>Same depth as the full Blueprint sections, no compromise</li>
+        <li>About 15 minutes to complete</li>
+      </ul>
+      <div class="spacer"></div>
+      <button type="button" class="fn-btn" id="focusedBtn">Choose Focused Read</button>
+    </div>
+  </div>
+  <div class="fn-err" id="errBox"></div>
+</div>
+<footer style="position:relative;z-index:5;background:#080615;padding:3rem 2rem;text-align:center;border-top:1px solid rgba(124,58,237,0.2);font-size:13px;color:rgba(255,255,255,0.4);">
+  <p>&#128231; dennis@dennisnickens.com | &#128205; Indian Trail, NC</p>
+  <p>&#169; 2026 Dennis Nickens, Spiritual Romeo. All rights reserved.</p>
+</footer>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+
+var cid=(new URLSearchParams(location.search)).get('cid')||'';
+if(!cid){window.location.href='intake.html';}
+
+var fullBtn=document.getElementById('fullBtn'),focusedBtn=document.getElementById('focusedBtn');
+
+// Best-effort persist: we fire the write, then navigate whether or not the
+// write succeeds. The new GHL fields do not exist until Step 3, so a write may
+// land as a no-op; the funnel must stay walkable in beta regardless.
+function go(url){window.location.href=url;}
+
+fullBtn.addEventListener('click',function(){
+  fullBtn.disabled=true;fullBtn.textContent='Saving...';
+  fetch('/api/sr-update-contact',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({contact_id:cid,sr_path_choice:'full'})
+  }).then(function(r){return r.json();})
+    .then(function(){go('qualifier-audience.html?cid='+encodeURIComponent(cid));},
+          function(){go('qualifier-audience.html?cid='+encodeURIComponent(cid));});
+});
+
+focusedBtn.addEventListener('click',function(){
+  go('focused-mode.html?cid='+encodeURIComponent(cid));
+});
+
+var cv=document.getElementById('pc'),cx=cv.getContext('2d');let ps=[];function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();window.addEventListener('resize',rsz);class P{constructor(){this.reset();}reset(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;const t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;}}for(let i=0;i<110;i++)ps.push(new P());function ani(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(ani);}ani();
+</script>
+</body>
+</html>

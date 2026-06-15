@@ -92,42 +92,37 @@ main{position:relative;z-index:5;padding:4rem 1.5rem 5rem;}
   </div>
 </main>
 <script>
+// Tier definitions. The "What you walk away with" list (items) describes the PRODUCT at
+// each tier and is the same regardless of audience, because the tier is the differentiator
+// (Light = pillars concise, Medium = pillars deeper + 4 synthesis sections, Deep = the
+// complete Blueprint). The audience badge above the grid still shows which profile the
+// customer picked, for continuity.
 const TIERS={
-  light:{name:"Light",count:"25 Questions",tagline:"A fast, clear snapshot that gives you something real to work with today.",btn:"ghost"},
-  medium:{name:"Medium",count:"50 Questions",tagline:"A fuller picture. You will start to see patterns you did not know were there.",btn:"ghost"},
-  deep:{name:"Deep",count:"75 Questions",tagline:"The complete picture. Everything revealed, nothing held back.",recommended:true,btn:"gold"}
-};
-const PILLAR_COVERS={
-  singles:{
-    light:["How you communicate","How you handle disagreement","Your natural style — where it helps or trips you up"],
-    medium:["Everything in Light","How you give and receive love","Your instinctive relationship approach","Patterns you tend to repeat"],
-    deep:["Everything in Medium","How you process and learn","Your deeper purpose and gifting","Your blind spots","A full readiness picture for the relationship you actually want"]
-  },
-  married:{
-    light:["How you and your partner communicate","How you handle conflict as a couple","A quick read on your dynamic"],
-    medium:["Everything in Light","How each of you gives and receives love","How each of you naturally takes action","The real sources of friction between you"],
-    deep:["Everything in Medium","How you each process and learn differently","Your shared purpose and direction","A full compatibility and growth map"]
-  },
-  families:{
-    light:["How your household communicates","How conflict gets resolved across the family"],
-    medium:["Everything in Light","How each family member gives and receives love","The natural strengths each person brings"],
-    deep:["Everything in Medium","How each member learns and processes — big for parents and kids","The gifting inside the family","A full map of how your family works together"]
-  },
-  education:{
-    light:["How you learn and take in information","How you communicate in learning settings"],
-    medium:["Everything in Light","Your natural strengths","How you take action","What actually motivates you"],
-    deep:["Everything in Medium","Your complete learning profile","Your gifting","A plan for how to get the most out of your growth"]
-  },
-  businesses:{
-    light:["How you communicate at work","How you handle conflict on the job"],
-    medium:["Everything in Light","Your natural work style","Your strengths","How you collaborate with others"],
-    deep:["Everything in Medium","How you process and learn","How your calling lines up with your career","A full professional profile"]
-  },
-  leadership:{
-    light:["How you communicate as a leader","How you handle conflict and decisions"],
-    medium:["Everything in Light","Your natural leadership style","How you take action","How you motivate the people around you"],
-    deep:["Everything in Medium","How your team learns and works","Your spiritual gifts and calling","A full leadership profile for your ministry or organization"]
-  }
+  light:{name:"Light",count:"25 Questions",btn:"ghost",
+    tagline:"A fast, clear snapshot of how you're wired across all seven dimensions.",
+    items:[
+      "Your Behavior Profile and Personality Code",
+      "All seven dimensions of your wiring, in concise form",
+      "A short read you can finish in 10 minutes"
+    ]},
+  medium:{name:"Medium",count:"50 Questions",btn:"ghost",
+    tagline:"A fuller picture. Where your wiring helps, where it gets in your way, and what to do about it.",
+    items:[
+      "Everything in Light at deeper depth",
+      "Your Misalignment Map (where your wiring collides with your life)",
+      "Your Career Alignment",
+      "Your Stress Response Map",
+      "Strategic Recommendations tailored to your wiring"
+    ]},
+  deep:{name:"Deep",count:"75 Questions",recommended:true,btn:"gold",
+    tagline:"The complete picture. Everything revealed, nothing held back.",
+    items:[
+      "Everything in Medium at full depth",
+      "Your Relationship Alignment",
+      "Your audience-specific deep dives (Parenting, Leadership, Ministry)",
+      "Your 30 Day Alignment Plan",
+      "The complete Blueprint with no sections held back"
+    ]}
 };
 const PILLAR_LABELS={singles:"Singles",married:"Married",families:"Families",education:"Education",businesses:"Businesses",leadership:"Leadership"};
 (function(){
@@ -136,13 +131,12 @@ const PILLAR_LABELS={singles:"Singles",married:"Married",families:"Families",edu
   // contact id from the funnel; accept legacy ?contact= as a fallback
   const cid=params.get('cid')||params.get('contact')||'';
   if(!cid){window.location.href='intake.html';return;}
-  const covers=PILLAR_COVERS[pillar]||PILLAR_COVERS.singles;
   document.getElementById('pillarLabel').textContent=PILLAR_LABELS[pillar]||'Singles';
   document.getElementById('backBtn').href='qualifier-audience.html?cid='+encodeURIComponent(cid);
   const grid=document.getElementById('tiersGrid');
   ['light','medium','deep'].forEach(function(key){
     const t=TIERS[key];
-    const items=covers[key]||[];
+    const items=t.items||[];
     const card=document.createElement('div');
     card.className='tier-card'+(t.recommended?' recommended':'');
     let html='';

@@ -364,8 +364,14 @@ async function generateAndDeliverBlueprint(payload) {
     const focusedSections = resolveFocusedSections(payload, null);
     if (focusedSections) {
       console.log(`[Blueprint] Focused mode (test): sections ${focusedSections.map((s) => s.num).join(', ')} for ${payload.contact_id}`);
+      return produceAndDeliverBlueprint(payload, scores, null, focusedSections);
     }
-    return produceAndDeliverBlueprint(payload, scores, null, focusedSections);
+    const testTier = resolveTier(payload, null);
+    if (testTier === 'Light' || testTier === 'Medium') {
+      console.log(`[Blueprint] Tier mode (test): ${testTier} for ${payload.contact_id}`);
+      return produceAndDeliverBlueprint(payload, scores, null, null, testTier);
+    }
+    return produceAndDeliverBlueprint(payload, scores, null);
   }
 
   // Production GHL webhook path. Fetch the full contact once. We need it both to
@@ -409,6 +415,16 @@ async function generateAndDeliverBlueprint(payload) {
   if (focusedSections) {
     console.log(`[Blueprint] Focused mode: sections ${focusedSections.map((s) => s.num).join(', ')} for ${payload.contact_id}`);
     return await produceAndDeliverBlueprint(payload, meScores, null, focusedSections);
+  }
+
+  // Tier-limited Blueprint (Light / Medium). A separate lane from focused mode and from
+  // the full Deep pipeline. Like focused mode, these are standalone solo deliverables and
+  // do not run the Couples Map auto-trigger, so we return the URL here. Deep, Full, absent,
+  // and anything unrecognized fall through to the unchanged full pipeline below.
+  const tier = resolveTier(payload, me);
+  if (tier === 'Light' || tier === 'Medium') {
+    console.log(`[Blueprint] Tier mode: ${tier} for ${payload.contact_id}`);
+    return await produceAndDeliverBlueprint(payload, meScores, null, null, tier);
   }
 
   const blueprintUrl = await produceAndDeliverBlueprint(payload, meScores, null);
@@ -640,6 +656,139 @@ Customer payload:
 ${buildCustomerDataBlock(payload, scores, null)}`;
 }
 
+// =======================================================================
+// TIER-AWARE BLUEPRINT (Light / Medium / Deep)
+// =======================================================================
+// sr_sku_tier controls how much Blueprint a customer receives. This is a separate lane
+// from focused mode (sections_owned). Resolution priority lives in
+// generateAndDeliverBlueprint: focused first, then Light/Medium here, else Deep (the
+// full four-call pipeline, unchanged). Like focused mode, tier mode reuses the compact
+// branded layout and the same id/sidebar machinery; it only changes which sections are
+// emitted and at what depth. Depth is controlled by a per-call instruction in the user
+// message (Option A), which keeps master-prompt.md as the single source AND preserves the
+// cached-system-prompt savings (a per-tier system prompt would defeat the cache).
+//
+//   Light  -> the 6 pillar sections only, concise (~200 words each). One call.
+//   Medium -> the 6 pillars at moderate depth (~400 words each) PLUS 4 synthesis sections
+//             (Misalignment, Career, Stress, Strategic) at full depth. Two calls.
+//   Deep   -> unchanged full pipeline (not handled here).
+
+// Pillar sections 1 to 6. `heading` matches the master prompt and SECTION_ICON_MAP
+// verbatim so icons, anchors, and the sidebar attach; the prefix is stripped for display.
+const TIER_PILLAR_SECTIONS = [
+  { num: 1, heading: 'Section 1: Your Behavior Profile',    title: 'Behavior Profile' },
+  { num: 2, heading: 'Section 2: Your Personality Code',    title: 'Personality Code' },
+  { num: 3, heading: 'Section 3: Your Action Style',        title: 'Action Style' },
+  { num: 4, heading: 'Section 4: Your Connection Currency', title: 'Connection Currency' },
+  { num: 5, heading: 'Section 5: Your Learning Channel',    title: 'Learning Channel' },
+  { num: 6, heading: 'Section 6: Your Spiritual Wiring',    title: 'Spiritual Wiring' },
+];
+
+// The 4 synthesis sections a Medium tier adds, in order. Pulled from the shared
+// FOCUS_AREA_SECTIONS map so section metadata has one source of truth.
+const MEDIUM_SYNTHESIS_KEYS = ['misalignment_map', 'career_alignment', 'stress_response_map', 'strategic_recommendations'];
+
+// Resolves the SKU tier. Returns 'Light', 'Medium', or 'Deep'. Reads the direct param
+// first (sr_sku_tier / sku_tier / tier, for testing and explicit regen), then the
+// contact's sr_sku_tier field. Deep, Full, absent, and anything unrecognized all map to
+// 'Deep' (the full pipeline), so the existing behavior is the safe default.
+function resolveTier(payload, contact) {
+  const direct = (payload && (payload.sr_sku_tier || payload.sku_tier || payload.tier)) || '';
+  const raw = direct || (contact ? readContactField(contact, 'sr_sku_tier') : '');
+  const t = String(raw || '').trim().toLowerCase();
+  if (t === 'light') return 'Light';
+  if (t === 'medium') return 'Medium';
+  return 'Deep';
+}
+
+// Generates a tier-limited Blueprint. Light = one call (6 pillars, concise). Medium = two
+// calls (pillars moderate, then the 4 synthesis sections at full depth), stitched. The
+// first call warms the cached system prompt for the second.
+async function generateTieredBlueprintMarkdown(payload, scores, tier) {
+  const systemPrompt = await getMasterPrompt();
+  const cid = payload.contact_id;
+
+  if (tier === 'Light') {
+    const msg = buildTierPillarsMessage(payload, scores, 'Light', { includeClose: true });
+    const chunk = await callClaude(systemPrompt, msg, cid, 'LIGHT', 200000, 9000);
+    return chunk.trim();
+  }
+
+  // Medium: pillars (moderate) then synthesis (full). MED1 warms the cache; MED2 reads it.
+  const synthesis = MEDIUM_SYNTHESIS_KEYS.map((k) => FOCUS_AREA_SECTIONS[k]);
+  const msgPillars = buildTierPillarsMessage(payload, scores, 'Medium', { includeClose: false });
+  const chunkPillars = await callClaude(systemPrompt, msgPillars, cid, 'MED1', 220000, 11000);
+  const msgSynth = buildTierSynthesisMessage(payload, scores, synthesis);
+  const chunkSynth = await callClaude(systemPrompt, msgSynth, cid, 'MED2', 220000, 11000);
+  return [chunkPillars, chunkSynth].map((p) => p.trim()).join('\n\n');
+}
+
+// Builds the pillars pass (the first / only chunk). Carries the H1 header and intro.
+// includeClose=true for Light (one-call doc); false for Medium (the synthesis pass closes).
+function buildTierPillarsMessage(payload, scores, tier, opts) {
+  const includeClose = !!(opts && opts.includeClose);
+  const first = payload.first_name || 'the customer';
+  const pillarLines = TIER_PILLAR_SECTIONS.map((s) => `- ${s.heading}`).join('\n');
+  const depth = tier === 'Light'
+    ? "Write each pillar section as 2 to 3 short paragraphs, about 200 words. Name what the customer's wiring is in that dimension and what it means at a high level. Skip deeper personalization, skip any \"what to do this week\" or action-step subsections, and do NOT include score-bar charts or tables. Concise and clear."
+    : "Write each pillar section as 4 to 6 paragraphs, about 400 words. Name the wiring, what it means, and where it helps or trips the customer up. Reference their actual scores in prose. Do NOT include score-bar charts or tables; keep it readable narrative.";
+  const intro = tier === 'Light'
+    ? `One short intro paragraph (2 to 4 sentences) in Dennis Nickens's voice: this is a concise read across all seven dimensions of how ${first} is wired, and what to do with it.`
+    : `A short intro (2 paragraphs) in Dennis Nickens's voice: a fuller read of how ${first} is wired across all seven dimensions, plus where that wiring helps, where it gets in the way, and what to do about it.`;
+  const closeBlock = includeClose
+    ? `\n\nAfter the last pillar section, add a short closing paragraph in Dennis Nickens's voice (2 to 3 sentences), then this exact signoff on its own line, with nothing after it:\n   Talk soon, Dennis`
+    : `\n\nEnd cleanly after Section 6. Do NOT write a closing paragraph, benediction, or any "continue to" transition; later sections are generated separately and stitched after yours.`;
+
+  return `You are generating a TIER-LIMITED Alignment Blueprint for this customer. Follow the master prompt voice and per-section structure, but at the REDUCED depth specified below. This is NOT the full Blueprint.
+
+Output the following, IN THIS ORDER, and NOTHING ELSE in this pass:
+
+1. A single H1 heading: "# ${first}'s Alignment Blueprint" (no tier name, no "Section" number).
+
+2. ${intro}
+
+3. The six pillar sections below, IN ORDER. Begin each with the master prompt's EXACT heading INCLUDING its section number, e.g. "## ${TIER_PILLAR_SECTIONS[0].heading}". The section-number prefix is REQUIRED so downstream rendering attaches the correct icon; it is stripped from the final display.
+
+DEPTH OVERRIDE (this overrides any per-section word targets in the system prompt): ${depth}
+
+Pillar sections to generate:
+${pillarLines}
+${closeBlock}
+
+DO NOT include any of the following:
+- No Cover Page, no "How Your Blueprint Works", no "How To Read It", no "What This Blueprint Is", no Executive Summary, no "At a Glance" card.
+- No synthesis sections (Misalignment Map, Career Alignment, Stress Response Map, etc.) in this pass.
+- No Connection Map, no partner comparison, no upsell language.
+
+Voice: Dennis Nickens. Plain English, direct, warm. No em dashes or en dashes (use commas, periods, parentheses, or rephrase). No AI-sounding phrases. SR-native CORE vocabulary. Be specific to ${first} and address them by first name.
+
+Customer payload:
+${buildCustomerDataBlock(payload, scores, null)}`;
+}
+
+// Builds the Medium synthesis pass (second chunk). No header/intro/pillars; just the 4
+// synthesis sections at full depth, then the closing line.
+function buildTierSynthesisMessage(payload, scores, sections) {
+  const first = payload.first_name || 'the customer';
+  const sectionLines = sections.map((s) => `- ${s.heading}`).join('\n');
+  return `You are generating the SECOND pass of a tier-limited Alignment Blueprint for this customer. The first pass already produced the H1 header, the intro, and the six pillar sections; do NOT repeat any of that. This pass adds the synthesis sections below at FULL master-prompt depth.
+
+Begin your output directly at the first section heading. Generate, IN ORDER, each section at FULL master-prompt depth (same length target and subsection rules the system prompt specifies for that section). Begin each with its EXACT heading INCLUDING the section number, e.g. "## ${sections[0].heading}". Build each from ${first}'s actual pillar scores. If a subsection normally needs conditional answers that are absent, build the strongest read you can from the pillar profile rather than skipping it or leaving a placeholder.
+
+Sections to generate:
+${sectionLines}
+
+After the last section, add a short closing paragraph in Dennis Nickens's voice (2 to 3 sentences), then this exact signoff on its own line, with nothing after it:
+   Talk soon, Dennis
+
+DO NOT regenerate the header, intro, or any pillar section (Sections 1 through 6). DO NOT include a Cover Page, Executive Summary, Connection Map, 30 Day Plan, Relationship Alignment, Parenting Style, Leadership Profile, or Ministry Profile section. DO NOT include score-bar charts. No upsell language.
+
+Voice: Dennis Nickens. Plain English, direct, warm. No em dashes or en dashes. No AI-sounding phrases. SR-native CORE vocabulary. Be specific to ${first}.
+
+Customer payload:
+${buildCustomerDataBlock(payload, scores, null)}`;
+}
+
 // Generates the full Blueprint markdown using FOUR Claude calls, each responsible for a
 // range of sections, then stitches the outputs together in order. Call A1 is awaited
 // first to warm the prompt cache; A2, B, and C then fire together in parallel.
@@ -698,14 +847,27 @@ async function generateMultiCallBlueprintMarkdown(payload, scores, partnerData) 
 // a non-empty array, a single focused call runs instead (focused product purchase).
 // When partnerData is present (full mode only), Call C writes the Connection Map. Shared
 // by the solo and paired flows. Returns the saved Blueprint URL.
-async function produceAndDeliverBlueprint(payload, scores, partnerData, focusedSections) {
+async function produceAndDeliverBlueprint(payload, scores, partnerData, focusedSections, tier) {
   const focused = Array.isArray(focusedSections) && focusedSections.length > 0;
-  const blueprintMarkdown = focused
-    ? await generateFocusedBlueprintMarkdown(payload, scores, focusedSections)
-    : await generateMultiCallBlueprintMarkdown(payload, scores, partnerData);
-  console.log(`[Blueprint] ${focused ? 'Focused' : 'Multi-call'} generation produced ${blueprintMarkdown.length} characters for ${payload.contact_id}`);
+  const tiered = !focused && (tier === 'Light' || tier === 'Medium');
+  let blueprintMarkdown;
+  let mode;
+  if (focused) {
+    blueprintMarkdown = await generateFocusedBlueprintMarkdown(payload, scores, focusedSections);
+    mode = 'Focused';
+  } else if (tiered) {
+    blueprintMarkdown = await generateTieredBlueprintMarkdown(payload, scores, tier);
+    mode = `Tier:${tier}`;
+  } else {
+    blueprintMarkdown = await generateMultiCallBlueprintMarkdown(payload, scores, partnerData);
+    mode = 'Multi-call';
+  }
+  console.log(`[Blueprint] ${mode} generation produced ${blueprintMarkdown.length} characters for ${payload.contact_id}`);
 
-  const blueprintHtml = markdownToBrandedHtml(blueprintMarkdown, payload, focused ? { focused: true } : undefined);
+  // Focused and tier-limited Blueprints use the compact branded layout (compact header,
+  // clean section titles, auto-collapsing sidebar). Deep keeps the full cover page.
+  const compactLayout = focused || tiered;
+  const blueprintHtml = markdownToBrandedHtml(blueprintMarkdown, payload, compactLayout ? { focused: true } : undefined);
   const blueprintUrl = await saveToBlob(payload.contact_id, blueprintHtml);
   console.log(`[Blueprint] Saved to ${blueprintUrl} for ${payload.contact_id}`);
 

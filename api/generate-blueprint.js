@@ -745,9 +745,12 @@ Output the following, IN THIS ORDER, and NOTHING ELSE in this pass:
 
 1. A single H1 heading: "# ${first}'s Alignment Blueprint" (no tier name, no "Section" number).
 
-2. ${intro}
+2. On its own line immediately after the H1, output this HTML comment marker EXACTLY, with nothing else on the line: <!-- HOW_TO_READ -->
+   This is a placeholder the renderer replaces with a branded callout. Do NOT write the callout text yourself, do NOT alter the marker, and do NOT add any heading or prose around it.
 
-3. The six pillar sections below, IN ORDER. Begin each with the master prompt's EXACT heading INCLUDING its section number, e.g. "## ${TIER_PILLAR_SECTIONS[0].heading}". The section-number prefix is REQUIRED so downstream rendering attaches the correct icon; it is stripped from the final display.
+3. ${intro}
+
+4. The six pillar sections below, IN ORDER. Begin each with the master prompt's EXACT heading INCLUDING its section number, e.g. "## ${TIER_PILLAR_SECTIONS[0].heading}". The section-number prefix is REQUIRED so downstream rendering attaches the correct icon; it is stripped from the final display.
 
 DEPTH OVERRIDE (this overrides any per-section word targets in the system prompt): ${depth}
 
@@ -1370,6 +1373,8 @@ Because this is the first chunk, include, in this exact order, BEFORE Section 1:
 3. How To Read It
 4. What This Blueprint Is, And What It Isn't (output verbatim, as defined in the system prompt)
 5. Executive Summary
+6. On its own line immediately after the Executive Summary (and before Section 1), output this HTML comment marker EXACTLY, with nothing else on the line: <!-- HOW_TO_READ -->
+   This is a placeholder the renderer replaces with a branded callout. Do NOT write the callout text yourself, do NOT alter the marker, and do NOT add any heading or prose around it. This is separate from the "How To Read It" front-matter section above (item 3); keep that section exactly as the system prompt defines it and add this marker in addition.
 
 Then generate, in order:
 - Section 1: Your Behavior Profile
@@ -2110,6 +2115,26 @@ function renderScoreBars(html) {
   );
 }
 
+// Replaces the <!-- HOW_TO_READ --> marker with the styled "How To Read This" callout.
+// The marker is emitted by the model right after the customer-named H1 (Light/Medium) or
+// right after the Executive Summary (Deep). Same wording, same styling on every tier, so
+// the callout HTML is a single constant rather than something the model writes. Mirrors
+// renderScoreBars: the marker survives marked.parse as a raw HTML comment and is swapped
+// for real markup in this post-process pass. The bullets are an ordered list so they
+// render as a numbered 1/2/3 sequence.
+const HOW_TO_READ_HTML = `<div class="how-to-read">
+        <h4>How To Read This</h4>
+        <ol>
+          <li>Read it as a portrait of yourself, not a verdict.</li>
+          <li>Notice what lands as obviously true, and what surprises you.</li>
+          <li>Share it with someone who knows you. Their "yes, that's you" is the strongest confirmation this Blueprint is real.</li>
+        </ol>
+      </div>`;
+function renderHowToRead(html) {
+  if (typeof html !== 'string' || html.length === 0) return html;
+  return html.replace(/<!--\s*HOW_TO_READ\s*-->/g, HOW_TO_READ_HTML);
+}
+
 function markdownToBrandedHtml(markdown, payload, options) {
   const focused = !!(options && options.focused);
   // Lazy require to avoid import in handler boot
@@ -2124,9 +2149,9 @@ function markdownToBrandedHtml(markdown, payload, options) {
   const cleanedMarkdown = stripQuestionCodeCitations(stripSectionNumberPrefixes(markdown));
   // Post-process pass: wrap "Your Blueprint at a Glance" in a card div, render score-bar
   // markers as inline SVG bar charts, and chain through the existing icon stylers.
-  const styledHtml = renderScoreBars(wrapAtAGlanceCard(
+  const styledHtml = renderHowToRead(renderScoreBars(wrapAtAGlanceCard(
     styleSubArchetypeIcons(styleSectionIcons(styleClosingSignoff(marked.parse(cleanedMarkdown))))
-  ));
+  )));
   // Sidebar nav for jumping between sections. Empty navHtml means the layout collapses
   // back to single-column (e.g. for the Couples Map, which has no Section N headings).
   let { html: innerHtml, navHtml } = buildSidebarNav(styledHtml);
@@ -2418,6 +2443,44 @@ function markdownToBrandedHtml(markdown, payload, options) {
     }
     .at-a-glance-card p strong {
       color: #d4a957;
+    }
+    /* ====================================================================
+       HOW TO READ THIS
+       A small brand-moment callout that lands right after the customer-named
+       header (after the Executive Summary on Deep). Thin gold left border,
+       subtle gold tint, brand typography. Same wording and styling on every
+       tier. Injected from the <!-- HOW_TO_READ --> marker by renderHowToRead.
+       ==================================================================== */
+    .how-to-read {
+      border-left: 3px solid #d4a957;
+      background: rgba(212, 169, 87, 0.05);
+      padding: 20px 24px;
+      margin: 24px 0 32px 0;
+      border-radius: 0 6px 6px 0;
+      page-break-inside: avoid;
+    }
+    .how-to-read h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: #d4a957;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 0 0 0.85rem 0;
+    }
+    .how-to-read ol {
+      margin: 0;
+      padding-left: 1.35rem;
+    }
+    .how-to-read ol li {
+      font-family: 'Inter', sans-serif;
+      color: #f5f1e8;
+      line-height: 1.6;
+      margin-bottom: 0.55rem;
+    }
+    .how-to-read ol li:last-child {
+      margin-bottom: 0;
     }
     /* ====================================================================
        SCORE BAR CHART

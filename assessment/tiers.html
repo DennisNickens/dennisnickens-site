@@ -26,6 +26,11 @@ main{position:relative;z-index:5;padding:4rem 1.5rem 5rem;}
 .page-sub{font-family:var(--fs);font-style:italic;font-size:clamp(1.05rem,2vw,1.25rem);color:var(--ink-s);text-align:center;max-width:640px;margin:0 auto 1rem;}
 .pillar-label{text-align:center;margin-bottom:3rem;}
 .pillar-label span{font-family:var(--fl);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;background:linear-gradient(135deg,var(--gold),var(--gold-s));color:#07071a;padding:.4rem 1.2rem;border-radius:100px;font-weight:700;}
+.holistic-framing{max-width:660px;margin:0 auto 2.75rem;text-align:center;}
+.holistic-framing .hf-rule{width:60px;border-top:1px solid var(--gold);opacity:.6;margin:0 auto 1.25rem;}
+.holistic-framing h2{font-family:var(--ff);font-weight:400;font-size:clamp(1.35rem,2.8vw,1.85rem);line-height:1.25;margin:0 0 .55rem;color:var(--ink);}
+.holistic-framing h2 em{font-style:italic;background:linear-gradient(135deg,var(--gold),#f0d490);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.holistic-framing p{font-family:var(--fs);font-style:italic;font-size:clamp(1.02rem,1.9vw,1.18rem);color:var(--ink-s);line-height:1.5;margin:0 auto;}
 .tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
 @media(max-width:780px){.tiers-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto;}}
 .tier-card{background:linear-gradient(180deg,rgba(26,19,64,.6),rgba(15,10,46,.4));border:1px solid var(--line);border-radius:14px;padding:2.25rem 1.75rem 2rem;display:flex;flex-direction:column;gap:1.25rem;transition:all .3s;position:relative;overflow:hidden;cursor:pointer;}
@@ -86,6 +91,11 @@ main{position:relative;z-index:5;padding:4rem 1.5rem 5rem;}
     <h1 class="page-title">How far do you want <em>to go?</em></h1>
     <p class="page-sub">Every tier gives you something real. The deeper you go, the fuller the picture.</p>
     <div class="pillar-label"><span id="pillarLabel">Loading&hellip;</span></div>
+    <div class="holistic-framing">
+      <div class="hf-rule"></div>
+      <h2>The Blueprint is a <em>Holistic View.</em></h2>
+      <p>Seven dimensions of how you're wired, woven into one picture. Pick the depth that matches what you're looking for.</p>
+    </div>
     <div class="tiers-grid" id="tiersGrid"></div>
     <p class="note">Pricing is revealed after you complete your assessment, when you can see exactly what your results are worth to you.</p>
     <div class="tiers-back"><a href="#" id="backBtn">&larr; Back</a></div>

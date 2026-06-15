@@ -2449,7 +2449,7 @@ function markdownToBrandedHtml(markdown, payload, options) {
        A small brand-moment callout that lands right after the customer-named
        header (after the Executive Summary on Deep). Thin gold left border,
        subtle gold tint, brand typography. Same wording and styling on every
-       tier. Injected from the <!-- HOW_TO_READ --> marker by renderHowToRead.
+       tier. Injected from the HOW_TO_READ marker by renderHowToRead.
        ==================================================================== */
     .how-to-read {
       border-left: 3px solid #d4a957;

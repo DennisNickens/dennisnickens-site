@@ -85,7 +85,13 @@ h1 em{font-style:italic;background:linear-gradient(135deg,var(--gold),#f0d490);-
   </div>
 </main>
 <script>
-var TIER_LABELS={light:"Light (25 Questions)",medium:"Medium (50 Questions)",deep:"Deep (75 Questions)"};
+// Tier labels keyed BOTH capitalized (current convention, matches survey radio options)
+// AND lowercase (legacy convention, kept for backward compat with old contact records
+// that were written before the case fix in tiers.html).
+var TIER_LABELS={
+  Light:"Light (about 10 minutes)",Medium:"Medium (about 20 minutes)",Deep:"Deep (about 45 minutes)",
+  light:"Light (about 10 minutes)",medium:"Medium (about 20 minutes)",deep:"Deep (about 45 minutes)"
+};
 var cid=(new URLSearchParams(location.search)).get('cid')||'';
 if(!cid){window.location.href='intake.html';}
 

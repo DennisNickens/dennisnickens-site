@@ -171,12 +171,17 @@ const PILLAR_LABELS={singles:"Singles",married:"Married",families:"Families",edu
     if(!btn)return;
     busy=true;
     const tier=btn.getAttribute('data-tier');
+    // Capitalize the tier value before writing to GHL. The survey's tier-routing
+    // rules match on case-sensitive "Light" / "Medium" / "Deep". Writing lowercase
+    // here causes the survey to treat the tier as blank and bypass the Light gates,
+    // which is what produced the "James Smith got 100+ questions on Light" bug.
+    const tierCapitalized=tier.charAt(0).toUpperCase()+tier.slice(1);
     grid.querySelectorAll('.tier-btn').forEach(function(b){b.disabled=true;});
     btn.textContent='Saving...';
     fetch('/api/sr-update-contact',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({contact_id:cid,sr_sku_tier:tier})
+      body:JSON.stringify({contact_id:cid,sr_sku_tier:tierCapitalized})
     })
     .then(function(r){return r.json();})
     .then(function(data){

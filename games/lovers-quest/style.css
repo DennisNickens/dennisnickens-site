@@ -136,18 +136,25 @@ body{
 .qcard-flourish{margin-top:1.8rem;width:120px;}
 .qcard-flourish svg{width:100%;height:auto;stroke:var(--gold);fill:var(--gold);stroke-width:1;opacity:.7;}
 
-/* small italic gold "Context" affordance under the question */
+/* small outlined gold "Context" pill under the question.
+   -webkit-appearance:none is REQUIRED so iOS Safari does not override
+   the background/border with its default system button styling. */
 .qcard-context{
-  margin-top:1.4rem;background:transparent;border:none;cursor:pointer;
-  display:inline-flex;align-items:center;gap:.42rem;
-  font-family:var(--fs);font-style:italic;font-weight:500;
-  font-size:.92rem;letter-spacing:.06em;
-  color:var(--gold);opacity:.78;
-  padding:.35rem .65rem;border-radius:14px;
-  transition:opacity .25s var(--ease),background .25s var(--ease);
+  -webkit-appearance:none;appearance:none;
+  margin-top:1.6rem;
+  background:rgba(212,169,87,.07);
+  border:1px solid rgba(212,169,87,.45);
+  cursor:pointer;
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-family:var(--fs);font-style:italic;font-weight:600;
+  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);
+  padding:.55rem 1.15rem;border-radius:999px;
+  transition:background .25s var(--ease),border-color .25s var(--ease);
 }
-.qcard-context:hover,.qcard-context:focus-visible{opacity:1;background:rgba(212,169,87,.08);outline:none;}
-.qcard-context .ctx-ic{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.qcard-context:hover,.qcard-context:focus-visible{background:rgba(212,169,87,.14);border-color:var(--gold);outline:none;}
+.qcard-context:active{background:rgba(212,169,87,.22);}
+.qcard-context .ctx-ic{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 
 /* the context modal body (inherits modal styling, adds the question header) */
 .ctx-question{

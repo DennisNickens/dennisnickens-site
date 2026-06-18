@@ -1,0 +1,447 @@
+{
+  "deck_name": "Lovers Quest",
+  "subtitle": "A Faith-Rooted Journey for Couples",
+  "author": "Dennis Nickens, AKA Spiritual Romeo",
+  "welcome": {
+    "title": "Before You Start",
+    "body": [
+      "This is not a quiz. There are no right answers. There is no winning.",
+      "What this is, is an invitation. An invitation to ask each other the questions you stopped asking. To remember why you chose each other. To make room for what God is still building in your marriage.",
+      "Pull one card. Read it aloud. Take turns answering. Listen all the way through before you respond. Stay soft.",
+      "Some questions will be easy. Some will open something you did not know was closed. Both are good.",
+      "Welcome to the quest."
+    ],
+    "signoff": "Dennis Nickens, AKA Spiritual Romeo"
+  },
+  "instructions": {
+    "title": "How to Play Lovers Quest",
+    "steps": [
+      "Shuffle the deck. Either of you can go first.",
+      "Draw one card. Read the question aloud.",
+      "The person who drew answers first. Take your time. Speak from where you actually are, not where you think you should be.",
+      "When you finish answering, ask your spouse, \"What would you add?\" Then they answer.",
+      "Before moving to the next card, take three seconds of silence together. Let what was said settle.",
+      "When you are done for the night, set the deck aside. Pick up again next time."
+    ],
+    "ground_rules_title": "Ground Rules",
+    "ground_rules": [
+      "Do not use a card as a weapon.",
+      "Do not bring up an old fight while answering.",
+      "Do not check your phone between cards."
+    ],
+    "final_note_title": "One Final Note",
+    "final_note": "If a question is too hard for tonight, set it aside. There is no requirement to answer every card the same evening. Real conversation is not a race."
+  },
+  "completion": {
+    "title": "You've reached the end of the deck.",
+    "subtitle": "Some marriages drift. Yours does not.",
+    "note": "Take a minute before you put it down. What came up tonight that is worth carrying into the week?"
+  },
+  "about": {
+    "tagline": "Some marriages drift. Yours does not have to.",
+    "body": "Lovers Quest is a faith-rooted card game for couples who refuse to let their marriage run on autopilot. 72 honest questions across six dimensions of how you love each other: Intimacy, Trust, Purpose, Conflict, Grace, and Legacy.",
+    "credit": "A Spiritual Romeo Production. By Dennis Nickens.",
+    "physical_edition_label": "Get the physical edition",
+    "physical_edition_url": "https://dennisnickens.com/store/"
+  },
+  "categories": [
+    {
+      "key": "intimacy",
+      "name": "Intimacy",
+      "icon": "flame",
+      "description": "The flame represents what's burning between you. Not just physical intimacy, but the closeness of being fully known and fully chosen."
+    },
+    {
+      "key": "trust",
+      "name": "Trust",
+      "icon": "key",
+      "description": "The key represents what's locked between you. Trust is the access you grant each other to the parts of yourself you protect from everyone else."
+    },
+    {
+      "key": "purpose",
+      "name": "Purpose",
+      "icon": "compass",
+      "description": "The compass represents where you are headed together. Marriage is not just two people. It is a direction. This is the category that pulls you toward what God is building."
+    },
+    {
+      "key": "conflict",
+      "name": "Conflict",
+      "icon": "hand-leaf",
+      "description": "The hand offering the leaf represents the fight FOR each other instead of AGAINST each other. Every marriage has conflict. The question is whether yours moves you toward each other or pulls you apart."
+    },
+    {
+      "key": "grace",
+      "name": "Grace",
+      "icon": "rose",
+      "description": "The rose represents the beauty that grows in soil that has been broken open. Grace is not just forgiveness. It is the soft place you give each other to land when you are not at your best."
+    },
+    {
+      "key": "legacy",
+      "name": "Legacy",
+      "icon": "crown",
+      "description": "The crown represents what outlives you both. The love story you write together will keep speaking long after you stop. This category asks what you want it to say."
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "category": "intimacy",
+      "text": "When did you feel most known by me?"
+    },
+    {
+      "id": 2,
+      "category": "intimacy",
+      "text": "What do you wish I would ask you more often?"
+    },
+    {
+      "id": 3,
+      "category": "intimacy",
+      "text": "When was the last time you felt fully wanted by me, and how did I show it?"
+    },
+    {
+      "id": 4,
+      "category": "intimacy",
+      "text": "What part of you do you think I have stopped seeing?"
+    },
+    {
+      "id": 5,
+      "category": "intimacy",
+      "text": "What does it feel like to be loved by me right now?"
+    },
+    {
+      "id": 6,
+      "category": "intimacy",
+      "text": "When you need to feel close to me but cannot find the words, what would help?"
+    },
+    {
+      "id": 7,
+      "category": "intimacy",
+      "text": "What is one thing about how we love each other that you never want to lose?"
+    },
+    {
+      "id": 8,
+      "category": "intimacy",
+      "text": "When was the last time we were intimate that you felt was about US, and not just about being intimate?"
+    },
+    {
+      "id": 9,
+      "category": "intimacy",
+      "text": "What is the most intimate moment we have had in the last six months that did not involve our bodies?"
+    },
+    {
+      "id": 10,
+      "category": "intimacy",
+      "text": "What about the way we used to be close do you miss, and what about how we are close now do you not want to give up?"
+    },
+    {
+      "id": 11,
+      "category": "intimacy",
+      "text": "What part of you do you keep walled off, even from me, and what would it take for you to let me in?"
+    },
+    {
+      "id": 12,
+      "category": "intimacy",
+      "text": "When I look at you, what do you wish I saw that I am not seeing?"
+    },
+    {
+      "id": 13,
+      "category": "trust",
+      "text": "What would help you feel safer being fully yourself with me?"
+    },
+    {
+      "id": 14,
+      "category": "trust",
+      "text": "Is there something you have been carrying alone that I should know about?"
+    },
+    {
+      "id": 15,
+      "category": "trust",
+      "text": "When have I broken trust with you in a small way that you have not told me about?"
+    },
+    {
+      "id": 16,
+      "category": "trust",
+      "text": "What does trust look like to you in this season of our marriage, that did not look the same before?"
+    },
+    {
+      "id": 17,
+      "category": "trust",
+      "text": "Where do you need me to be more dependable, and what does that look like in practice?"
+    },
+    {
+      "id": 18,
+      "category": "trust",
+      "text": "What would I have to do for you to feel completely safe sharing your hardest thoughts with me?"
+    },
+    {
+      "id": 19,
+      "category": "trust",
+      "text": "When you do not trust me with something, what is the fear underneath that?"
+    },
+    {
+      "id": 20,
+      "category": "trust",
+      "text": "Is there a financial decision we have made together that you have not been fully honest about how you feel?"
+    },
+    {
+      "id": 21,
+      "category": "trust",
+      "text": "What is something I do or have done that makes you wonder if I am the same person you said yes to?"
+    },
+    {
+      "id": 22,
+      "category": "trust",
+      "text": "What is one trust I have rebuilt with you that you still secretly question, and what do you need from me to fully let it go?"
+    },
+    {
+      "id": 23,
+      "category": "trust",
+      "text": "Where in our marriage are you carrying something alone because you do not believe I can handle it?"
+    },
+    {
+      "id": 24,
+      "category": "trust",
+      "text": "What is the thing I would need to do today for you to feel like I am completely on your side?"
+    },
+    {
+      "id": 25,
+      "category": "purpose",
+      "text": "What is God inviting us to build together?"
+    },
+    {
+      "id": 26,
+      "category": "purpose",
+      "text": "If we lived the next ten years the way we have lived the last two, where would we end up?"
+    },
+    {
+      "id": 27,
+      "category": "purpose",
+      "text": "What do you think we are uniquely positioned to do as a couple that no other couple in our circle can do?"
+    },
+    {
+      "id": 28,
+      "category": "purpose",
+      "text": "What is one assignment you sense God has put on our marriage, that we have not stepped into yet?"
+    },
+    {
+      "id": 29,
+      "category": "purpose",
+      "text": "Where do you feel called that I have not fully gotten behind you on?"
+    },
+    {
+      "id": 30,
+      "category": "purpose",
+      "text": "What is the version of us you most want to see in five years, and what is in the way of that?"
+    },
+    {
+      "id": 31,
+      "category": "purpose",
+      "text": "When you imagine the legacy God wants from this marriage, what is the first image that comes up?"
+    },
+    {
+      "id": 32,
+      "category": "purpose",
+      "text": "What is something you are sensing God wants from you that you are afraid to tell me, because you do not know how it would change us?"
+    },
+    {
+      "id": 33,
+      "category": "purpose",
+      "text": "If we had to choose between two callings, one for each of us, that would not both fit in the same season, how would we decide together?"
+    },
+    {
+      "id": 34,
+      "category": "purpose",
+      "text": "What are we putting time and money into right now that you suspect is not part of what we are actually called to build?"
+    },
+    {
+      "id": 35,
+      "category": "purpose",
+      "text": "When was the last time you felt God spoke directly to you about us as a couple, and did you tell me what you heard?"
+    },
+    {
+      "id": 36,
+      "category": "purpose",
+      "text": "What is the assignment I have been resisting, that you have already seen and have been waiting for me to step into?"
+    },
+    {
+      "id": 37,
+      "category": "conflict",
+      "text": "How do you want us to fight for each other, not against each other?"
+    },
+    {
+      "id": 38,
+      "category": "conflict",
+      "text": "What is the pattern in our disagreements that you wish would change?"
+    },
+    {
+      "id": 39,
+      "category": "conflict",
+      "text": "When we are in conflict, what do you need from me that you rarely ask for?"
+    },
+    {
+      "id": 40,
+      "category": "conflict",
+      "text": "What is something I do during arguments that makes it harder for you to hear me?"
+    },
+    {
+      "id": 41,
+      "category": "conflict",
+      "text": "Is there an old wound between us that has never fully healed, and what would healing it look like?"
+    },
+    {
+      "id": 42,
+      "category": "conflict",
+      "text": "What is one thing I could say in the middle of a hard moment that would help you feel safe?"
+    },
+    {
+      "id": 43,
+      "category": "conflict",
+      "text": "When was the last time we had a fight that brought us closer, and what was different about it?"
+    },
+    {
+      "id": 44,
+      "category": "conflict",
+      "text": "When we fight while we are exhausted, what do I do that makes it harder, and what could I do instead?"
+    },
+    {
+      "id": 45,
+      "category": "conflict",
+      "text": "Who is usually the first to repair after a fight between us, and is that the way we both want it, or have we both gotten used to it?"
+    },
+    {
+      "id": 46,
+      "category": "conflict",
+      "text": "What is the conflict between us we keep avoiding, even though we both know it is sitting there?"
+    },
+    {
+      "id": 47,
+      "category": "conflict",
+      "text": "When my family of origin shows up in our fights, what pattern do you wish I would acknowledge before we have to keep fighting it?"
+    },
+    {
+      "id": 48,
+      "category": "conflict",
+      "text": "When is your silence harder for me than your words, and how do I tell the difference between you needing space and you needing me to follow?"
+    },
+    {
+      "id": 49,
+      "category": "grace",
+      "text": "Where do you need more grace from me right now?"
+    },
+    {
+      "id": 50,
+      "category": "grace",
+      "text": "What is something you have not been able to forgive yourself for that you wish I would help you carry?"
+    },
+    {
+      "id": 51,
+      "category": "grace",
+      "text": "When have I given you grace in a way that changed something in you?"
+    },
+    {
+      "id": 52,
+      "category": "grace",
+      "text": "What does grace look like to you when you have hurt me, and how do I extend it well?"
+    },
+    {
+      "id": 53,
+      "category": "grace",
+      "text": "Is there a part of yourself you keep apologizing for, that I want you to know does not need apology?"
+    },
+    {
+      "id": 54,
+      "category": "grace",
+      "text": "What does it cost you to stay soft with me, and how can I make it easier?"
+    },
+    {
+      "id": 55,
+      "category": "grace",
+      "text": "When you mess up, what kind of response from me actually helps you become better?"
+    },
+    {
+      "id": 56,
+      "category": "grace",
+      "text": "What does grace look like in our marriage on the days we do not feel like extending it to each other?"
+    },
+    {
+      "id": 57,
+      "category": "grace",
+      "text": "What is something you have already forgiven me for that I do not even know you had to forgive?"
+    },
+    {
+      "id": 58,
+      "category": "grace",
+      "text": "Is there grace you have been withholding from me that you are starting to realize I have been waiting for?"
+    },
+    {
+      "id": 59,
+      "category": "grace",
+      "text": "What would it look like for you to receive my grace fully, instead of holding part of yourself back to prove you do not need it?"
+    },
+    {
+      "id": 60,
+      "category": "grace",
+      "text": "What grace does our marriage itself need from both of us right now, separate from the grace we extend each other?"
+    },
+    {
+      "id": 61,
+      "category": "legacy",
+      "text": "What kind of love story do you want us to leave behind?"
+    },
+    {
+      "id": 62,
+      "category": "legacy",
+      "text": "If our children, or the people who watched us, were to describe our marriage in one sentence, what would you want them to say?"
+    },
+    {
+      "id": 63,
+      "category": "legacy",
+      "text": "What is one thing about how we love each other that you hope sets a standard for the next generation?"
+    },
+    {
+      "id": 64,
+      "category": "legacy",
+      "text": "What is something we have been through together that you would not trade for an easier story?"
+    },
+    {
+      "id": 65,
+      "category": "legacy",
+      "text": "When we are old and looking back on this season, what do you want to remember about us?"
+    },
+    {
+      "id": 66,
+      "category": "legacy",
+      "text": "What is the prayer you most often pray over us, and what would it look like to step into that prayer more fully?"
+    },
+    {
+      "id": 67,
+      "category": "legacy",
+      "text": "If God called you home tomorrow, what would you want me to know about what our marriage gave you?"
+    },
+    {
+      "id": 68,
+      "category": "legacy",
+      "text": "What legacy is our marriage already leaving in our extended family, that we have not named out loud but that everyone around us can see?"
+    },
+    {
+      "id": 69,
+      "category": "legacy",
+      "text": "When our children or the people we are raising remember what marriage looked like in this house, what do you most want them to remember?"
+    },
+    {
+      "id": 70,
+      "category": "legacy",
+      "text": "What failure in our marriage became part of our story, that we would tell another couple about if we were ever asked to share something real?"
+    },
+    {
+      "id": 71,
+      "category": "legacy",
+      "text": "What faith inheritance specifically do you want our marriage to leave behind, that you are not sure we are actually building yet?"
+    },
+    {
+      "id": 72,
+      "category": "legacy",
+      "text": "If our marriage were a book that someone wrote about us in 50 years, what chapter title would describe the season we are in right now?"
+    }
+  ]
+}

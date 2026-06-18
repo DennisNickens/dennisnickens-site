@@ -1,0 +1,19 @@
+{
+  "name": "Lovers Quest",
+  "short_name": "Lovers Quest",
+  "description": "A Faith-Rooted Journey for Couples by Dennis Nickens. 72 honest questions across Intimacy, Trust, Purpose, Conflict, Grace, and Legacy.",
+  "id": "/games/lovers-quest/",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#07071a",
+  "theme_color": "#07071a",
+  "categories": ["lifestyle", "books", "entertainment"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Lovers Quest | A Faith-Rooted Journey for Couples</title>
+<meta name="description" content="A Faith-Rooted Journey for Couples by Dennis Nickens. 72 honest questions across Intimacy, Trust, Purpose, Conflict, Grace, and Legacy." />
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#07071a" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Lovers Quest" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+
+<!-- ================= SCREEN 1: SPLASH ================= -->
+<section id="screen-splash" class="screen" aria-label="Welcome">
+  <div class="splash-inner">
+    <img src="icons/icon-512.png" alt="Lovers Quest" class="splash-logo" />
+    <h1 class="splash-title">Lovers Quest</h1>
+    <p class="splash-sub">A Faith-Rooted Journey for Couples</p>
+    <button class="btn btn-gold splash-begin" data-action="begin">Begin</button>
+    <p class="splash-byline">by Dennis Nickens, AKA Spiritual Romeo</p>
+  </div>
+</section>
+
+<!-- ================= SCREEN 2: WELCOME CARD ================= -->
+<section id="screen-welcome" class="screen" aria-label="Before You Start" hidden>
+  <div class="sheet">
+    <div class="sheet-rule"></div>
+    <h2 class="sheet-title" id="welcome-title">Before You Start</h2>
+    <div class="sheet-body" id="welcome-body"></div>
+    <p class="sheet-signoff" id="welcome-signoff"></p>
+    <div class="sheet-rule"></div>
+    <button class="btn btn-gold" data-action="ready">I'm Ready</button>
+  </div>
+</section>
+
+<!-- ================= SCREEN 3: MAIN CARD VIEW ================= -->
+<section id="screen-card" class="screen" aria-label="Card" hidden>
+  <!-- Top bar -->
+  <div class="topbar">
+    <button class="icon-btn" data-action="back" aria-label="Previous card" id="btn-back">
+      <svg viewBox="0 0 24 24" class="ui-svg"><path d="M15 5l-7 7 7 7" /></svg>
+    </button>
+    <button class="icon-btn" data-action="favorite" aria-label="Favorite this card" id="btn-fav">
+      <svg viewBox="0 0 24 24" class="ui-svg heart"><path d="M12 20s-7-4.6-9.4-8.4C1 8.8 2.3 5.5 5.4 5.5c1.9 0 3.1 1.1 3.9 2.3.8-1.2 2-2.3 3.9-2.3 3.1 0 4.4 3.3 2.8 6.1C19 15.4 12 20 12 20z" /></svg>
+    </button>
+    <button class="icon-btn" data-action="menu" aria-label="Open menu" id="btn-menu">
+      <svg viewBox="0 0 24 24" class="ui-svg"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+    </button>
+  </div>
+
+  <!-- The card -->
+  <div class="card-stage">
+    <article class="qcard" id="qcard">
+      <div class="qcard-inner">
+        <div class="qcard-icon" id="card-icon"></div>
+        <div class="qcard-cat" id="card-cat"></div>
+        <p class="qcard-text" id="card-text"></p>
+        <div class="qcard-flourish" id="card-flourish">
+          <svg viewBox="0 0 120 16" aria-hidden="true">
+            <path d="M2 8h40M118 8H78" stroke-linecap="round"/>
+            <path d="M60 3l5 5-5 5-5-5z"/>
+            <circle cx="49" cy="8" r="1.6"/>
+            <circle cx="71" cy="8" r="1.6"/>
+          </svg>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Bottom -->
+  <div class="card-bottom">
+    <div class="progress-count" id="progress-count"></div>
+    <button class="btn btn-gold btn-next" data-action="next">Next Card</button>
+  </div>
+</section>
+
+<!-- ================= SCREEN 5: COMPLETION ================= -->
+<section id="screen-done" class="screen" aria-label="End of deck" hidden>
+  <div class="done-inner">
+    <div class="done-crown" id="done-crown"></div>
+    <h2 class="done-title">You've reached the end of the deck.</h2>
+    <p class="done-sub">Some marriages drift. Yours does not.</p>
+    <div class="done-actions">
+      <button class="btn btn-gold" data-action="reshuffle">Reshuffle and Start Again</button>
+      <button class="btn btn-ghost" data-action="menu">Back to Menu</button>
+    </div>
+    <p class="done-note" id="done-note"></p>
+  </div>
+</section>
+
+<!-- ================= MENU DRAWER ================= -->
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Menu">
+  <div class="drawer-head">
+    <span class="drawer-brand">Lovers Quest</span>
+    <button class="icon-btn" data-action="close-menu" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" class="ui-svg"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav class="drawer-nav">
+    <button class="drawer-item" data-action="how-to-play">How to Play</button>
+    <button class="drawer-item" data-action="categories">Categories</button>
+    <button class="drawer-item" data-action="favorites">Favorites <span class="drawer-count" id="fav-count"></span></button>
+    <button class="drawer-item" data-action="shuffle">Shuffle Deck</button>
+    <button class="drawer-item" data-action="about">About</button>
+  </nav>
+  <p class="drawer-foot">A Spiritual Romeo Production</p>
+</aside>
+
+<!-- ================= MODAL ================= -->
+<div class="modal-backdrop" id="modal-backdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="icon-btn modal-close" data-action="close-modal" aria-label="Close">
+      <svg viewBox="0 0 24 24" class="ui-svg"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <h3 class="modal-title" id="modal-title"></h3>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

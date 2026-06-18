@@ -256,6 +256,18 @@
     openModal('Favorites', html);
   }
 
+  function showContext() {
+    var card = byId[deck[pos]];
+    if (!card) return;
+    var cat = catByKey[card.category];
+    var ctx = card.context || 'Context for this card is coming soon.';
+    // split on blank lines into paragraphs
+    var paras = ctx.split(/\n\s*\n/).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+    var html = '<div class="ctx-question">' + esc(card.text) + '</div>' +
+               '<div class="ctx-body">' + paras + '</div>';
+    openModal(cat ? cat.name + ' · Context' : 'Context', html);
+  }
+
   function showAbout() {
     var a = DATA.about;
     var html = '<p class="about-tag">' + esc(a.tagline) + '</p>' +
@@ -286,6 +298,7 @@
       case 'next': goNext(); break;
       case 'back': goBack(); break;
       case 'favorite': toggleFav(); break;
+      case 'context': showContext(); break;
       case 'menu': openMenu(); break;
       case 'close-menu': closeMenu(); break;
       case 'how-to-play': closeMenu(); showHowToPlay(); break;

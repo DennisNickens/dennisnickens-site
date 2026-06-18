@@ -136,6 +136,31 @@ body{
 .qcard-flourish{margin-top:1.8rem;width:120px;}
 .qcard-flourish svg{width:100%;height:auto;stroke:var(--gold);fill:var(--gold);stroke-width:1;opacity:.7;}
 
+/* small italic gold "Context" affordance under the question */
+.qcard-context{
+  margin-top:1.4rem;background:transparent;border:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:.42rem;
+  font-family:var(--fs);font-style:italic;font-weight:500;
+  font-size:.92rem;letter-spacing:.06em;
+  color:var(--gold);opacity:.78;
+  padding:.35rem .65rem;border-radius:14px;
+  transition:opacity .25s var(--ease),background .25s var(--ease);
+}
+.qcard-context:hover,.qcard-context:focus-visible{opacity:1;background:rgba(212,169,87,.08);outline:none;}
+.qcard-context .ctx-ic{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+
+/* the context modal body (inherits modal styling, adds the question header) */
+.ctx-question{
+  font-family:var(--ff);font-style:italic;font-weight:500;
+  font-size:1.05rem;color:var(--cream);line-height:1.55;
+  text-align:center;
+  padding:.4rem 1rem 1.2rem;
+  border-bottom:1px solid rgba(212,169,87,.18);
+  margin-bottom:1.2rem;
+}
+.ctx-body p{margin:0 0 1rem;line-height:1.7;color:var(--cream-mute);}
+.ctx-body p:last-child{margin-bottom:0;}
+
 /* card animation states */
 .qcard.out{opacity:0;transform:translateY(-26px) scale(.985);}
 .qcard.in-back.out{transform:translateY(26px) scale(.985);}

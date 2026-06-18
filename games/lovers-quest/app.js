@@ -106,7 +106,12 @@
     var qcard = $('qcard');
 
     function paint() {
-      $('card-icon').innerHTML = ICONS[cat.icon] || '';
+      var iconSvg = ICONS[cat.icon] || '';
+      $('card-icon').innerHTML = iconSvg;
+      // mirror the category icon into the side watermarks so the empty space
+      // around the card carries the category's meaning instead of staying dead.
+      var wmL = $('sr-wm-left'); if (wmL) wmL.innerHTML = iconSvg;
+      var wmR = $('sr-wm-right'); if (wmR) wmR.innerHTML = iconSvg;
       $('card-cat').textContent = cat.name;
       $('card-text').textContent = card.text;
       updateFavBtn();

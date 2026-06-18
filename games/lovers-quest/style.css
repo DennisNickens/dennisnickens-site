@@ -237,3 +237,78 @@ body{
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.06s !important;}
 }
+
+/* ============================================================
+   Card screen ambient decoration
+   Adds depth and ceremony to the empty space around the card:
+   - Faded category icon watermarks flanking the card (swaps per card)
+   - Vertical gold pillar filigree down the far edges
+   - Ornamental flourishes at the four corners
+   - Top-center ornament
+   - Warm halo glow behind the card
+   ============================================================ */
+#screen-card{position:fixed;overflow:hidden;}
+
+/* category watermark, set by app.js to current category's icon */
+.sr-watermark{
+  position:absolute;top:50%;
+  width:clamp(220px,32vw,460px);height:clamp(220px,32vw,460px);
+  color:var(--gold);opacity:.07;pointer-events:none;z-index:1;
+  transition:opacity .6s var(--ease);
+}
+.sr-watermark.left{left:-3%;transform:translateY(-50%);}
+.sr-watermark.right{right:-3%;transform:translateY(-50%) scaleX(-1);}
+.sr-watermark svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* vertical gold pillars on the far edges */
+.sr-pillar{
+  position:absolute;top:8%;bottom:8%;width:1px;pointer-events:none;z-index:2;
+  background:linear-gradient(180deg,
+    transparent 0%,
+    rgba(212,169,87,.32) 12%,
+    rgba(212,169,87,.45) 50%,
+    rgba(212,169,87,.32) 88%,
+    transparent 100%);
+}
+.sr-pillar.left{left:32px;}
+.sr-pillar.right{right:32px;}
+
+/* ornamental flourishes at all four corners */
+.sr-flour{position:absolute;width:38px;height:14px;pointer-events:none;z-index:2;opacity:.7;color:var(--gold);}
+.sr-flour.left{left:14px;}
+.sr-flour.right{right:14px;}
+.sr-flour.top{top:6%;}
+.sr-flour.bottom{bottom:6%;}
+.sr-flour svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;}
+
+/* top center ornament */
+.sr-top-orn{
+  position:absolute;top:14px;left:50%;transform:translateX(-50%);
+  width:180px;height:18px;pointer-events:none;z-index:2;opacity:.55;color:var(--gold);
+}
+.sr-top-orn svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;}
+
+/* warm halo glow behind the card */
+.card-stage{position:relative;}
+.card-stage::before{
+  content:"";position:absolute;inset:-25%;
+  background:radial-gradient(ellipse at center,
+    rgba(212,169,87,.18) 0%,
+    rgba(212,169,87,.07) 38%,
+    rgba(212,169,87,0) 68%);
+  z-index:0;pointer-events:none;filter:blur(22px);
+}
+.qcard{position:relative;z-index:3;}
+
+/* mobile: scale ornaments down, pull pillars in */
+@media (max-width:540px){
+  .sr-watermark{width:clamp(180px,70vw,320px);height:clamp(180px,70vw,320px);opacity:.05;}
+  .sr-watermark.left{left:-22%;}
+  .sr-watermark.right{right:-22%;}
+  .sr-pillar.left{left:12px;}
+  .sr-pillar.right{right:12px;}
+  .sr-top-orn{width:130px;}
+  .sr-flour{width:30px;}
+  .sr-flour.left{left:8px;}
+  .sr-flour.right{right:8px;}
+}

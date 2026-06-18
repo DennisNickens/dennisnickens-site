@@ -263,8 +263,15 @@
 
   // ---------- Event wiring ----------
   function onAction(action, target) {
+    // Actions that don't need DATA loaded
+    if (action === 'begin') { showScreen('screen-welcome', true); return; }
+
+    // Everything below needs cards.json to be loaded. If a user taps fast
+    // before the deck arrives, swallow the action quietly. boot() will
+    // populate the welcome screen content the moment DATA is ready.
+    if (!DATA) return;
+
     switch (action) {
-      case 'begin': showScreen('screen-welcome', true); break;
       case 'ready':
         save(K.opened, true);
         if (!deck.length) buildDeck(null);
@@ -347,7 +354,6 @@
     updateFavCount();
 
     var opened = load(K.opened, false);
-    wire();
 
     if (opened) {
       // returning visitor: skip splash, straight to the deck (restored place)
@@ -364,6 +370,11 @@
       '<div><p style="color:#d4a957;font-size:1.4rem;margin-bottom:.6rem;">Lovers Quest</p>' +
       '<p>' + esc(msg) + '</p></div></div>';
   }
+
+  // Attach all event handlers IMMEDIATELY so the splash Begin button responds
+  // even if cards.json is still in flight. onAction() guards data-dependent
+  // actions until DATA is loaded.
+  wire();
 
   // Load deck data (relative path so it works at any base)
   fetch('cards.json', { cache: 'no-cache' })

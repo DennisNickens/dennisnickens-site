@@ -13,7 +13,13 @@
     pos: 'lq_current_position',
     favs: 'lq_favorites',
     date: 'lq_last_session_date',
-    filter: 'lq_active_filter'
+    filter: 'lq_active_filter',
+    // license-related
+    licenseToken: 'lq_license_token',
+    deviceFingerprint: 'lq_device_fp',
+    licenseFirstName: 'lq_license_first_name',
+    licenseEmail: 'lq_license_email',
+    onboarded: 'lq_onboarded'
   };
 
   // ---------- SVG icons (gold line art) ----------
@@ -45,7 +51,7 @@
   var favs = [];            // favorited ids
   var filter = null;        // active category key or null (full deck)
 
-  var SCREENS = ['screen-splash', 'screen-welcome', 'screen-card', 'screen-done'];
+  var SCREENS = ['screen-activate', 'screen-onboarding', 'screen-splash', 'screen-welcome', 'screen-card', 'screen-done'];
 
   // Fisher-Yates shuffle (returns a new array)
   function shuffle(arr) {
@@ -278,10 +284,272 @@
     openModal('About Lovers Quest', html);
   }
 
-  // ---------- Event wiring ----------
+  // ============================================================
+  //   License / activation flow
+  // ============================================================
+
+  function makeDeviceFingerprint() {
+    // Local-only, stable random id. Stored in localStorage on first
+    // generation. Not a real fingerprint, just a per-install identifier
+    // so the server can count this device toward the 2-device limit.
+    var fp = load(K.deviceFingerprint, null);
+    if (fp) return fp;
+    var bytes = new Uint8Array(12);
+    (window.crypto || window.msCrypto).getRandomValues(bytes);
+    var hex = '';
+    for (var i = 0; i < bytes.length; i++) hex += bytes[i].toString(16).padStart(2, '0');
+    save(K.deviceFingerprint, hex);
+    return hex;
+  }
+
+  function postJson(url, body) {
+    return fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body || {})
+    }).then(function (r) { return r.json().then(function (j) { return { status: r.status, body: j }; }); });
+  }
+
+  function storeLicense(token, firstName, email) {
+    save(K.licenseToken, token);
+    save(K.licenseFirstName, firstName || '');
+    save(K.licenseEmail, email || '');
+  }
+
+  function clearLicense() {
+    try {
+      localStorage.removeItem(K.licenseToken);
+      localStorage.removeItem(K.licenseFirstName);
+      localStorage.removeItem(K.licenseEmail);
+    } catch (e) {}
+  }
+
+  function hasLicense() {
+    return !!load(K.licenseToken, null);
+  }
+
+  // ---------- Activation UI state ----------
+  var pendingActivateEmail = '';
+
+  function showActivateStep(step) {
+    $('activate-step-email').hidden = (step !== 'email');
+    $('activate-step-code').hidden = (step !== 'code');
+    $('activate-email-err').hidden = true;
+    $('activate-code-err').hidden = true;
+  }
+
+  function showActivateError(elId, msg) {
+    var el = $(elId);
+    el.textContent = msg;
+    el.hidden = false;
+  }
+
+  function showActivateScreen() {
+    showActivateStep('email');
+    $('activate-email').value = load(K.licenseEmail, '') || '';
+    showScreen('screen-activate', false);
+  }
+
+  async function activateWithUrlToken(urlToken) {
+    var fp = makeDeviceFingerprint();
+    var r;
+    try {
+      r = await postJson('/api/lq-activate', {
+        action: 'activate',
+        token: urlToken,
+        fingerprint: fp
+      });
+    } catch (err) {
+      return { ok: false, reason: 'network' };
+    }
+    if (r.status === 200 && r.body && r.body.ok) {
+      storeLicense(urlToken, r.body.firstName, r.body.email);
+      return { ok: true };
+    }
+    return { ok: false, reason: (r.body && r.body.error) || 'unknown' };
+  }
+
+  async function sendVerificationCode(email) {
+    try {
+      var r = await postJson('/api/lq-activate', { action: 'send_code', email: email });
+      return r.status === 200 && r.body && r.body.ok;
+    } catch (e) { return false; }
+  }
+
+  async function verifyCodeAndActivate(email, code) {
+    var fp = makeDeviceFingerprint();
+    var r;
+    try {
+      r = await postJson('/api/lq-activate', {
+        action: 'verify_code',
+        email: email,
+        code: code,
+        fingerprint: fp
+      });
+    } catch (err) { return { ok: false, reason: 'network' }; }
+    if (r.status === 200 && r.body && r.body.ok) {
+      storeLicense(r.body.token, r.body.firstName, r.body.email);
+      return { ok: true };
+    }
+    return { ok: false, reason: (r.body && r.body.error) || 'unknown' };
+  }
+
+  async function handleSendCode() {
+    var email = String($('activate-email').value || '').trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showActivateError('activate-email-err', 'Enter a valid email address.');
+      return;
+    }
+    pendingActivateEmail = email;
+    $('activate-email-echo').textContent = email;
+    var ok = await sendVerificationCode(email);
+    if (!ok) {
+      showActivateError('activate-email-err', 'Could not send the code. Try again in a moment.');
+      return;
+    }
+    showActivateStep('code');
+  }
+
+  async function handleVerifyCode() {
+    var code = String($('activate-code').value || '').replace(/[^0-9]/g, '');
+    if (code.length !== 6) {
+      showActivateError('activate-code-err', 'Enter the 6-digit code from the email.');
+      return;
+    }
+    var result = await verifyCodeAndActivate(pendingActivateEmail, code);
+    if (!result.ok) {
+      var msg = 'That code did not work. Check the email or request a new code.';
+      if (result.reason === 'invalid_or_expired_code') msg = 'That code is expired or wrong. Request a new one.';
+      if (result.reason === 'license_not_found') msg = 'No purchase found for that email. Double-check the address.';
+      showActivateError('activate-code-err', msg);
+      return;
+    }
+    // Activated successfully. Drop into the post-activation flow.
+    afterActivation();
+  }
+
+  function afterActivation() {
+    var onboarded = load(K.onboarded, false);
+    if (!onboarded) {
+      startOnboarding();
+    } else {
+      // already onboarded previously, go straight to the splash/deck
+      enterPostOnboarding();
+    }
+  }
+
+  // ============================================================
+  //   Onboarding flow (4 screens, first time only)
+  // ============================================================
+
+  var ONBOARDING = [
+    {
+      title: 'The Thank You',
+      paragraphs: [
+        'Welcome to Lovers Quest.',
+        'You just made a decision a lot of couples never get around to. You decided your marriage was worth a deliberate hour. That by itself counts for something.',
+        'What you are holding is not a card game. It is a tool. The card is the doorway. The conversation that happens between you and your spouse is the actual work.'
+      ]
+    },
+    {
+      title: 'How This Helps',
+      paragraphs: [
+        'Here is what the deck does, if you let it.',
+        'The cards ask the questions you both stopped asking. The questions open doors you did not know were closed. The conversations that follow are where your marriage actually changes.',
+        'Some cards will land easy. Some will open something you have been quietly carrying. Both are good. Both are the deck doing its job.'
+      ]
+    },
+    {
+      title: 'The Honest Part',
+      paragraphs: [
+        'Before you start, one truth.',
+        'This will not work if you treat it like entertainment. It will not work if you scroll between cards, check your phone, or rush through. It will not work if you give half answers because the real ones are uncomfortable.',
+        'Anything worth having is worth putting in the work. Your marriage is worth more than most things in your life. Treat the deck like that.',
+        'You and your spouse, alone, no distractions, willing to actually answer the question in front of you. That is the deal.'
+      ]
+    },
+    {
+      title: "You're In",
+      paragraphs: [
+        'You are ready.',
+        'Tap below and the deck opens. You can revisit this any time from the menu under How to Play.',
+        'Welcome to the quest.',
+        '<em>Dennis Nickens, AKA Spiritual Romeo</em>'
+      ]
+    }
+  ];
+
+  var onbIndex = 0;
+
+  function renderOnboardingStep() {
+    var step = ONBOARDING[onbIndex];
+    $('onb-step-num').textContent = (onbIndex + 1) + ' of ' + ONBOARDING.length;
+    $('onb-title').textContent = step.title;
+    $('onb-body').innerHTML = step.paragraphs.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+    var backBtn = document.querySelector('.onb-back');
+    if (backBtn) backBtn.hidden = (onbIndex === 0);
+    $('onb-next-btn').textContent = (onbIndex === ONBOARDING.length - 1) ? 'Open the Deck' : 'Continue';
+  }
+
+  function startOnboarding() {
+    onbIndex = 0;
+    renderOnboardingStep();
+    showScreen('screen-onboarding', true);
+  }
+
+  function onbAdvance() {
+    if (onbIndex < ONBOARDING.length - 1) {
+      onbIndex += 1;
+      renderOnboardingStep();
+      return;
+    }
+    // Finished onboarding.
+    save(K.onboarded, true);
+    enterPostOnboarding();
+  }
+
+  function onbGoBack() {
+    if (onbIndex > 0) {
+      onbIndex -= 1;
+      renderOnboardingStep();
+    }
+  }
+
+  // After activation + onboarding (or skipping onboarding if already done),
+  // route into the existing flow. New buyers see the Welcome card with the
+  // "Licensed to <Name>" watermark. Returning users go straight to the deck.
+  function enterPostOnboarding() {
+    paintLicenseWatermark();
+    var opened = load(K.opened, false);
+    if (opened) {
+      if (!deck.length) buildDeck(null);
+      enterDeck();
+    } else {
+      showScreen('screen-welcome', true);
+    }
+  }
+
+  function paintLicenseWatermark() {
+    var name = load(K.licenseFirstName, '') || '';
+    var el = $('license-watermark');
+    if (!el) return;
+    if (!name) { el.hidden = true; el.textContent = ''; return; }
+    el.textContent = 'Licensed to ' + name;
+    el.hidden = false;
+  }
+
+  // ============================================================
+  //   Event wiring
+  // ============================================================
   function onAction(action, target) {
     // Actions that don't need DATA loaded
     if (action === 'begin') { showScreen('screen-welcome', true); return; }
+    if (action === 'send-code')      { handleSendCode(); return; }
+    if (action === 'verify-code')    { handleVerifyCode(); return; }
+    if (action === 'resend-code')    { handleSendCode(); return; }
+    if (action === 'back-to-email')  { showActivateStep('email'); return; }
+    if (action === 'onb-next')       { onbAdvance(); return; }
+    if (action === 'onb-back')       { onbGoBack(); return; }
 
     // Everything below needs cards.json to be loaded. If a user taps fast
     // before the deck arrives, swallow the action quietly. boot() will
@@ -371,15 +639,53 @@
     filter = load(K.filter, null);
     updateFavCount();
 
-    var opened = load(K.opened, false);
+    // ----- License gate -----
+    // The PWA used to drop you straight into the splash. Now it needs
+    // a valid license first. Three boot paths:
+    //   1. ?access=<token> in the URL  -> activate that token, store it
+    //   2. token already in localStorage -> trust it (offline-safe)
+    //   3. nothing                       -> show activation screen
+    var params = new URLSearchParams(location.search);
+    var urlAccess = params.get('access');
 
-    if (opened) {
-      // returning visitor: skip splash, straight to the deck (restored place)
-      if (!deck.length) buildDeck(null);
-      enterDeck();
-    } else {
-      showScreen('screen-splash', false);
+    if (urlAccess) {
+      activateWithUrlToken(urlAccess).then(function (result) {
+        // Strip the token from the URL so it doesn't get screenshotted
+        // or shared accidentally.
+        history.replaceState(null, '', location.pathname);
+        if (result.ok) {
+          paintLicenseWatermark();
+          afterActivation();
+        } else if (hasLicense()) {
+          // The URL token was bad but they already had a working
+          // license stored. Honor what's stored.
+          paintLicenseWatermark();
+          enterPostOnboarding();
+        } else {
+          showActivateScreen();
+        }
+      });
+      return;
     }
+
+    if (hasLicense()) {
+      // Returning visitor with a stored license. Trust it (works offline).
+      // Background re-verify; if the server says no, kick them to activation.
+      paintLicenseWatermark();
+      enterPostOnboarding();
+      // Silent server check, fail-open on network errors.
+      var fp = makeDeviceFingerprint();
+      var tok = load(K.licenseToken, '');
+      postJson('/api/lq-verify', { token: tok, fingerprint: fp }).then(function (r) {
+        if (r.status === 200 && r.body && r.body.ok === false &&
+            (r.body.reason === 'license_not_found' || r.body.reason === 'device_not_registered')) {
+          clearLicense();
+        }
+      }).catch(function () { /* offline, do nothing */ });
+      return;
+    }
+
+    showActivateScreen();
   }
 
   function fail(msg) {

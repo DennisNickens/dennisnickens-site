@@ -26,8 +26,51 @@
 <body>
 <div class="bg" aria-hidden="true"></div>
 
+<!-- ================= SCREEN 0a: ACTIVATION (license gate) ================= -->
+<section id="screen-activate" class="screen" aria-label="Activate Lovers Quest" hidden>
+  <div class="sheet activate-sheet">
+    <div class="sheet-rule"></div>
+    <h2 class="sheet-title">Activate Your Copy</h2>
+
+    <!-- Step 1: ask for the email they bought with -->
+    <div id="activate-step-email" class="activate-step">
+      <p class="activate-lead">Enter the email you used to purchase Lovers Quest. We will send you a 6-digit code to confirm this device.</p>
+      <input type="email" id="activate-email" class="activate-input" autocomplete="email" inputmode="email" placeholder="you@example.com" />
+      <p class="activate-err" id="activate-email-err" hidden></p>
+      <button class="btn btn-gold" data-action="send-code">Send My Code</button>
+      <p class="activate-help">Don't have a copy yet? <a href="/store/lovers-quest.html" class="activate-link">Get one here.</a></p>
+    </div>
+
+    <!-- Step 2: enter the 6-digit code -->
+    <div id="activate-step-code" class="activate-step" hidden>
+      <p class="activate-lead">Check your inbox. Enter the 6-digit code we just sent to <span id="activate-email-echo" class="activate-email-echo"></span>.</p>
+      <input type="text" id="activate-code" class="activate-input activate-code-input" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" placeholder="123456" />
+      <p class="activate-err" id="activate-code-err" hidden></p>
+      <button class="btn btn-gold" data-action="verify-code">Activate</button>
+      <p class="activate-help"><button class="activate-link-btn" data-action="resend-code">Resend code</button> &middot; <button class="activate-link-btn" data-action="back-to-email">Use a different email</button></p>
+    </div>
+
+    <div class="sheet-rule"></div>
+  </div>
+</section>
+
+<!-- ================= SCREEN 0b: ONBOARDING (first-time only) ================= -->
+<section id="screen-onboarding" class="screen" aria-label="Welcome to Lovers Quest" hidden>
+  <div class="sheet onboarding-sheet">
+    <div class="sheet-rule"></div>
+    <div class="onboarding-step-num" id="onb-step-num">1 of 4</div>
+    <h2 class="sheet-title" id="onb-title">The Thank You</h2>
+    <div class="sheet-body onboarding-body" id="onb-body"></div>
+    <div class="sheet-rule"></div>
+    <div class="onboarding-actions">
+      <button class="btn btn-ghost onb-back" data-action="onb-back" hidden>Back</button>
+      <button class="btn btn-gold" data-action="onb-next" id="onb-next-btn">Continue</button>
+    </div>
+  </div>
+</section>
+
 <!-- ================= SCREEN 1: SPLASH ================= -->
-<section id="screen-splash" class="screen" aria-label="Welcome">
+<section id="screen-splash" class="screen" aria-label="Welcome" hidden>
   <div class="splash-inner">
     <img src="icons/icon-512.png" alt="Lovers Quest" class="splash-logo" />
     <h1 class="splash-title">Lovers Quest</h1>
@@ -52,6 +95,7 @@
     <p class="sheet-signoff" id="welcome-signoff"><em>Dennis Nickens, AKA Spiritual Romeo</em></p>
     <div class="sheet-rule"></div>
     <button class="btn btn-gold" data-action="ready">I'm Ready</button>
+    <p class="license-watermark" id="license-watermark" hidden></p>
   </div>
 </section>
 

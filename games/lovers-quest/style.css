@@ -271,6 +271,57 @@ body{
 }
 
 /* ============================================================
+   License activation screen
+   ============================================================ */
+.activate-sheet{max-width:460px;}
+.activate-step{display:flex;flex-direction:column;align-items:center;gap:1.2rem;padding:.6rem 0;}
+.activate-lead{font-family:var(--ff);font-size:1.05rem;color:var(--cream-mute);line-height:1.55;text-align:center;margin:0;max-width:36ch;}
+.activate-input{
+  -webkit-appearance:none;appearance:none;
+  width:100%;max-width:340px;
+  font-family:var(--ff);font-size:1.1rem;
+  color:var(--cream);background:rgba(212,169,87,.05);
+  border:1px solid rgba(212,169,87,.32);border-radius:8px;
+  padding:.85rem 1rem;
+  text-align:center;
+  transition:border-color .25s var(--ease),background .25s var(--ease);
+}
+.activate-input:focus{outline:none;border-color:var(--gold);background:rgba(212,169,87,.1);}
+.activate-code-input{font-family:'Courier New',monospace;font-size:1.6rem;letter-spacing:.4em;font-weight:700;}
+.activate-err{font-size:.9rem;color:#e07a7a;margin:0;text-align:center;}
+.activate-help{font-size:.82rem;color:var(--cream-faint);margin:.4rem 0 0;text-align:center;}
+.activate-link,.activate-link-btn{
+  background:transparent;border:none;cursor:pointer;padding:0;
+  font:inherit;color:var(--gold);text-decoration:underline;text-underline-offset:.18em;
+}
+.activate-link-btn:hover{color:#f0d490;}
+.activate-email-echo{color:var(--gold);font-weight:600;}
+
+/* ============================================================
+   Onboarding screen (first-time after activation)
+   ============================================================ */
+.onboarding-sheet{max-width:520px;text-align:center;}
+.onboarding-step-num{
+  font-family:var(--fn);font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--cream-faint);margin-bottom:1rem;
+}
+.onboarding-body{margin:1.2rem 0 1.6rem;}
+.onboarding-body p{margin:0 0 1rem;line-height:1.7;color:var(--cream-mute);font-size:1.02rem;}
+.onboarding-body p:last-child{margin-bottom:0;}
+.onboarding-body em{color:var(--cream);font-style:italic;}
+.onboarding-actions{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:.4rem;flex-wrap:wrap;}
+.onb-back{padding:.7rem 1.4rem;font-size:.74rem;}
+
+/* ============================================================
+   "Licensed to <Name>" watermark on welcome card
+   ============================================================ */
+.license-watermark{
+  margin:1.4rem 0 0;font-family:var(--fs);font-style:italic;
+  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--cream-faint);opacity:.7;
+}
+
+/* ============================================================
    Card screen ambient decoration
    Adds depth and ceremony to the empty space around the card:
    - Faded category icon watermarks flanking the card (swaps per card)

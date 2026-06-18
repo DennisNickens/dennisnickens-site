@@ -45,6 +45,11 @@ body{
 .screen[hidden]{display:none;}
 .screen.fading{opacity:0;}
 
+/* Belt-and-suspenders: any element with the hidden attribute must NOT render,
+   even when component CSS sets display:flex/block/etc. Without this rule,
+   invisible (opacity:0) backdrops cover the viewport and swallow taps. */
+[hidden]{display:none !important;}
+
 /* ---------- Buttons ---------- */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.5rem;

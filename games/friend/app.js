@@ -190,6 +190,11 @@
     var p = (room.players || []).find(function (x) { return x.id === room.currentSubjectId; });
     return p ? p.name : 'Subject';
   }
+  // Interpolate the [Subject] token into any card-authored text (the card
+  // body AND answer-option text both use it), substituting the live Subject.
+  function interp(text, room) {
+    return String(text == null ? '' : text).replace(/\[Subject\]/g, subjectName(room));
+  }
   function playerNameById(room, pid) {
     if (pid === 'NOT_AT_TABLE') return 'Someone not at this table';
     var p = (room.players || []).find(function (x) { return x.id === pid; });
@@ -299,7 +304,7 @@
     if (card.type === 'mc4' || card.type === 'mc6' || card.type === 'tf') {
       letters(card).forEach(function (L) {
         var optText = (card.type === 'tf') ? tfLabel(L)
-          : ((card.options || []).find(function (o) { return o.letter === L; }) || {}).text || '';
+          : interp(((card.options || []).find(function (o) { return o.letter === L; }) || {}).text || '', room);
         var li = makeAnswerTile(L, optText, current === L);
         if (!locked) {
           li.setAttribute('data-action', 'pick-answer');
@@ -350,7 +355,7 @@
     if (card.type === 'mc4' || card.type === 'mc6' || card.type === 'tf') {
       letters(card).forEach(function (L) {
         var optText = (card.type === 'tf') ? tfLabel(L)
-          : ((card.options || []).find(function (o) { return o.letter === L; }) || {}).text || '';
+          : interp(((card.options || []).find(function (o) { return o.letter === L; }) || {}).text || '', room);
         var li = makeAnswerTile(L, optText, current === L);
         li.setAttribute('data-action', 'pick-truth');
         li.setAttribute('data-value', L);
@@ -407,7 +412,7 @@
     var truthText = '';
     if (card.type === 'mc4' || card.type === 'mc6') {
       var opt = (card.options || []).find(function (o) { return o.letter === truth; });
-      truthText = truth + '. ' + (opt ? opt.text : '');
+      truthText = truth + '. ' + (opt ? interp(opt.text, room) : '');
     } else if (card.type === 'tf') {
       truthText = tfLabel(truth);
     } else if (card.type === 'group_vote') {

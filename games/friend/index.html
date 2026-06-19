@@ -246,7 +246,9 @@
     <p class="game-over-lead" id="game-over-lead"></p>
     <ul class="final-scores" id="final-scores"></ul>
     <div class="game-over-actions">
-      <button class="btn btn-primary" data-action="leave-room">Back to Start</button>
+      <button class="btn btn-primary" id="rematch-btn" data-action="host-rematch" hidden>Rematch (Same Teams) &rarr;</button>
+      <button class="btn btn-ghost" data-action="leave-room">Back to Start</button>
+      <p class="game-over-host-note" id="game-over-host-note" hidden>Only the host can start a rematch.</p>
     </div>
   </div>
 </section>

@@ -805,6 +805,16 @@
     var titleEl = $('game-over-title');
     var leadEl = $('game-over-lead');
     var ul = $('final-scores'); if (!ul) return;
+    var me = load(K.playerId, null);
+    var isHost = room.hostId === me;
+    var rematchBtn = $('rematch-btn');
+    if (rematchBtn) {
+      rematchBtn.hidden = !isHost;
+      rematchBtn.disabled = false;
+      rematchBtn.textContent = 'Rematch (Same Teams) →';
+    }
+    var note = $('game-over-host-note');
+    if (note) note.hidden = isHost;
     ul.innerHTML = '';
     var winner = (room.pairs || []).find(function (pr) { return pr.id === room.winnerPairId; });
     if (winner) {
@@ -877,6 +887,26 @@
     } catch (e) {
       alert('Network error revealing truth.');
       renderRoom(lastRoom);
+    }
+  }
+
+  async function hostRematchAct() {
+    var btn = $('rematch-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Starting rematch...'; }
+    try {
+      var r = await api('/api/friend-rematch', {
+        method: 'POST',
+        body: { code: load(K.code, ''), hostId: load(K.playerId, '') },
+      });
+      if (r.status === 200 && r.body && r.body.ok) {
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        alert('Could not start rematch: ' + ((r.body && r.body.error) || 'unknown'));
+        if (btn) { btn.disabled = false; btn.textContent = 'Rematch (Same Teams) →'; }
+      }
+    } catch (e) {
+      alert('Network error starting rematch.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Rematch (Same Teams) →'; }
     }
   }
 
@@ -1264,6 +1294,7 @@
       if (a === 'reveal-truth') return revealTruthAct();
       if (a === 'done-talking') return nextCardAct();
       if (a === 'next-card')    return nextCardAct();
+      if (a === 'host-rematch') return hostRematchAct();
     });
     // Pressing Enter inside an input submits the obvious action.
     document.body.addEventListener('keydown', function (e) {

@@ -389,6 +389,25 @@ body {
   font-style: italic; margin: 0;
 }
 
+/* Game-started placeholder until Phase 3 ships the real round loop */
+.paired-summary {
+  list-style: none; padding: 0; margin: 1.2rem 0 0;
+  width: 100%; max-width: 380px;
+  display: flex; flex-direction: column; gap: .6rem;
+}
+.paired-summary li {
+  display: flex; align-items: center; justify-content: center; gap: .6rem;
+  background: linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  border: 2px solid var(--line);
+  border-radius: 12px; padding: .8rem 1rem;
+  color: var(--cream); font-weight: 600;
+}
+.paired-summary li.pair-coral { border-color: var(--coral); background: rgba(255,139,74,.12); }
+.paired-summary li.pair-sky   { border-color: var(--sky);   background: rgba(74,185,255,.12); }
+.paired-summary li.pair-sun   { border-color: var(--sun);   background: rgba(255,210,74,.12); }
+.paired-summary li.pair-pink  { border-color: var(--pink);  background: rgba(255,107,157,.12); }
+.paired-summary li.pair-teal  { border-color: var(--teal);  background: rgba(78,197,176,.12); }
+
 /* ---------- animations ---------- */
 @keyframes pop-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) {

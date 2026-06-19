@@ -26,7 +26,7 @@
   function save(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {} }
   function clear(key) { try { localStorage.removeItem(key); } catch (e) {} }
 
-  var SCREENS = ['screen-router', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing'];
+  var SCREENS = ['screen-router', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing', 'screen-playing'];
   function show(id) {
     SCREENS.forEach(function (s) { var el = $(s); if (!el) return; el.hidden = (s !== id); });
   }
@@ -147,10 +147,33 @@
       show('screen-pairing');
       renderPairing(room);
     } else if (room.phase === 'playing' || room.phase === 'roundEnd' || room.phase === 'gameOver') {
-      // Phase 3 ships the playing UI; for now keep them on pairing if they got here.
-      show('screen-pairing');
-      renderPairing(room);
+      show('screen-playing');
+      renderPlaying(room);
     }
+  }
+
+  // Placeholder render for the playing phase. Phase 3 ships the real
+  // round loop, question display, guess submission, score updates, and
+  // race-car visualization. For now we just show all the locked pairs so
+  // the host has clear feedback that Start the Game actually worked.
+  function renderPlaying(room) {
+    var players = room.players || [];
+    var pairs = room.pairs || [];
+    var ul = $('playing-pairs');
+    if (ul) {
+      ul.innerHTML = '';
+      pairs.forEach(function (pr) {
+        var a = players.find(function (x) { return x.id === pr.playerIds[0]; });
+        var b = players.find(function (x) { return x.id === pr.playerIds[1]; });
+        if (!a || !b) return;
+        var li = document.createElement('li');
+        li.className = 'pair-' + (pr.color || 'coral');
+        li.textContent = a.name + ' & ' + b.name;
+        ul.appendChild(li);
+      });
+    }
+    var status = $('playing-status');
+    if (status) status.textContent = 'Round 1 of ' + (pairs.length + ' pairs racing to 25');
   }
 
   // Local-only state: when the host taps a first player, we remember it

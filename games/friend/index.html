@@ -131,14 +131,79 @@
   </div>
 </section>
 
-<!-- ================= SCREEN: PLAYING (placeholder until Phase 3 ships) ================= -->
-<section id="screen-playing" class="screen" aria-label="Game in progress" hidden>
-  <div class="pairing-inner">
-    <p class="pairing-eyebrow">Game Started</p>
-    <h2 class="pairing-title">The Race Is On</h2>
-    <p class="pairing-lead">All pairs are locked in. The round loop, the question deck, and the race-car tracker land in the next deploy.</p>
-    <ul class="paired-summary" id="playing-pairs"></ul>
-    <p class="pairing-status" id="playing-status"></p>
+<!-- ================= SCREEN: PLAYING (live game) ================= -->
+<section id="screen-playing" class="screen play-screen" aria-label="Game in progress" hidden>
+  <div class="play-inner">
+
+    <!-- Race track: one car per pair, animated to current score / cap. -->
+    <div class="race-wrap" aria-label="Race to 25">
+      <div class="race-header">
+        <span class="race-label">RACE TO 25</span>
+        <span class="race-round" id="race-round">Round 1</span>
+      </div>
+      <div class="race-track" id="race-track">
+        <div class="race-finish" aria-hidden="true"></div>
+        <ul class="race-cars" id="race-cars"></ul>
+      </div>
+    </div>
+
+    <!-- Card body: theme, subject hint, question text. -->
+    <div class="card-frame" id="card-frame">
+      <p class="card-theme" id="card-theme">Theme</p>
+      <p class="card-subject-hint" id="card-subject-hint"></p>
+      <p class="card-text" id="card-text"></p>
+    </div>
+
+    <!-- Action area: changes by subPhase + viewer role -->
+    <div class="play-action" id="play-action">
+
+      <!-- Guesser view: pick A/B/C/D, T/F, or a player -->
+      <div class="guesser-view" id="guesser-view" hidden>
+        <p class="action-eyebrow" id="guesser-eyebrow">Your pick</p>
+        <ul class="answer-grid" id="answer-grid"></ul>
+        <button class="btn btn-primary" id="submit-guess-btn" data-action="submit-guess" disabled>Lock In Guess</button>
+        <p class="action-status" id="guesser-status"></p>
+      </div>
+
+      <!-- Subject view: pick the truth, then Reveal -->
+      <div class="subject-view" id="subject-view" hidden>
+        <p class="action-eyebrow" id="subject-eyebrow">You're up. Pick what's actually true.</p>
+        <ul class="answer-grid" id="truth-grid"></ul>
+        <button class="btn btn-primary" id="reveal-btn" data-action="reveal-truth" disabled>Reveal The Truth</button>
+        <p class="action-status" id="subject-status"></p>
+      </div>
+
+      <!-- Talk view: reflection/discussion. Subject taps Done Sharing -->
+      <div class="talk-view" id="talk-view" hidden>
+        <p class="action-eyebrow" id="talk-eyebrow">No scoring. Just talk.</p>
+        <button class="btn btn-primary" id="done-talking-btn" data-action="done-talking">Done Sharing</button>
+        <p class="action-status" id="talk-status"></p>
+      </div>
+
+      <!-- Reveal view: shows truth, everyone's guess, score deltas -->
+      <div class="reveal-view" id="reveal-view" hidden>
+        <p class="action-eyebrow">The truth</p>
+        <p class="reveal-truth" id="reveal-truth"></p>
+        <ul class="reveal-guesses" id="reveal-guesses"></ul>
+        <ul class="reveal-scores" id="reveal-scores"></ul>
+        <button class="btn btn-primary" id="next-card-btn" data-action="next-card">Next Card &rarr;</button>
+        <p class="action-status" id="reveal-status"></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCREEN: GAME OVER ================= -->
+<section id="screen-game-over" class="screen" aria-label="Game over" hidden>
+  <div class="game-over-inner">
+    <p class="game-over-eyebrow">Game Over</p>
+    <h2 class="game-over-title" id="game-over-title">We Have A Winner</h2>
+    <p class="game-over-lead" id="game-over-lead"></p>
+    <ul class="final-scores" id="final-scores"></ul>
+    <div class="game-over-actions">
+      <button class="btn btn-primary" data-action="leave-room">Back to Start</button>
+    </div>
   </div>
 </section>
 

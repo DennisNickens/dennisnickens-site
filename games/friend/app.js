@@ -26,7 +26,7 @@
   function save(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {} }
   function clear(key) { try { localStorage.removeItem(key); } catch (e) {} }
 
-  var SCREENS = ['screen-router', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing', 'screen-playing'];
+  var SCREENS = ['screen-router', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing', 'screen-playing', 'screen-game-over'];
   function show(id) {
     SCREENS.forEach(function (s) { var el = $(s); if (!el) return; el.hidden = (s !== id); });
   }
@@ -146,34 +146,426 @@
     if (room.phase === 'pairing') {
       show('screen-pairing');
       renderPairing(room);
-    } else if (room.phase === 'playing' || room.phase === 'roundEnd' || room.phase === 'gameOver') {
+    } else if (room.phase === 'playing' || room.phase === 'roundEnd') {
       show('screen-playing');
       renderPlaying(room);
+    } else if (room.phase === 'gameOver') {
+      show('screen-game-over');
+      renderGameOver(room);
     }
   }
 
-  // Placeholder render for the playing phase. Phase 3 ships the real
-  // round loop, question display, guess submission, score updates, and
-  // race-car visualization. For now we just show all the locked pairs so
-  // the host has clear feedback that Start the Game actually worked.
+  // ---------- Phase 3: live game loop ----------
+  // CARDS_DATA / CARD_BY_ID lazy-loaded from cards.json. We don't block
+  // boot on it; if the game enters the playing phase before the file
+  // lands, renderPlaying just re-queues itself when the fetch resolves.
+  var CARDS_DATA = null;
+  var CARD_BY_ID = {};
+  var cardsLoadPromise = null;
+  function loadCardsOnce() {
+    if (CARDS_DATA) return Promise.resolve(CARDS_DATA);
+    if (cardsLoadPromise) return cardsLoadPromise;
+    cardsLoadPromise = fetch('cards.json', { credentials: 'same-origin' })
+      .then(function (r) { if (!r.ok) throw new Error('cards.json ' + r.status); return r.json(); })
+      .then(function (j) {
+        CARDS_DATA = j;
+        (j.cards || []).forEach(function (c) { CARD_BY_ID[c.id] = c; });
+        return j;
+      });
+    return cardsLoadPromise;
+  }
+
+  // Local-only pick state: what the viewer has tapped but not yet
+  // submitted. Cleared whenever the card or subPhase changes.
+  var pendingPick = null;
+
+  function letters(card) {
+    if (card.type === 'mc4') return ['A','B','C','D'];
+    if (card.type === 'mc6') return ['A','B','C','D','E','F'];
+    if (card.type === 'tf') return ['T','F'];
+    return [];
+  }
+  function tfLabel(L) { return L === 'T' ? 'True' : 'False'; }
+  function subjectName(room) {
+    var p = (room.players || []).find(function (x) { return x.id === room.currentSubjectId; });
+    return p ? p.name : 'Subject';
+  }
+  function playerNameById(room, pid) {
+    if (pid === 'NOT_AT_TABLE') return 'Someone not at this table';
+    var p = (room.players || []).find(function (x) { return x.id === pid; });
+    return p ? p.name : '?';
+  }
+  function pickDisplay(card, pick, room) {
+    if (!pick) return '—';
+    if (card.type === 'mc4' || card.type === 'mc6') return pick;
+    if (card.type === 'tf') return tfLabel(pick);
+    if (card.type === 'group_vote') return playerNameById(room, pick);
+    return String(pick);
+  }
+  function makeAnswerTile(letter, text, selected) {
+    var li = document.createElement('li');
+    li.className = 'answer-tile' + (selected ? ' is-selected' : '');
+    if (letter) {
+      var l = document.createElement('span');
+      l.className = 'answer-letter'; l.textContent = letter;
+      li.appendChild(l);
+    }
+    var t = document.createElement('span');
+    t.className = 'answer-text'; t.textContent = text;
+    li.appendChild(t);
+    return li;
+  }
+  function showElem(id) { var el = $(id); if (el) el.hidden = false; }
+  function hideElems(ids) { ids.forEach(function (i) { var el = $(i); if (el) el.hidden = true; }); }
+
   function renderPlaying(room) {
-    var players = room.players || [];
-    var pairs = room.pairs || [];
-    var ul = $('playing-pairs');
-    if (ul) {
-      ul.innerHTML = '';
-      pairs.forEach(function (pr) {
-        var a = players.find(function (x) { return x.id === pr.playerIds[0]; });
-        var b = players.find(function (x) { return x.id === pr.playerIds[1]; });
-        if (!a || !b) return;
-        var li = document.createElement('li');
-        li.className = 'pair-' + (pr.color || 'coral');
-        li.textContent = a.name + ' & ' + b.name;
-        ul.appendChild(li);
+    if (!CARDS_DATA) {
+      loadCardsOnce().then(function () { if (lastRoom) renderPlaying(lastRoom); }).catch(function () {});
+      // Show a soft loading state in the card area so the screen isn't blank
+      var ct = $('card-text'); if (ct) ct.textContent = 'Loading the deck...';
+      return;
+    }
+    var me = load(K.playerId, null);
+    var card = CARD_BY_ID[room.currentCardId];
+    if (!card) return;
+
+    // Detect card or subPhase change → clear local pending pick
+    if (renderPlaying._lastCardId !== room.currentCardId ||
+        renderPlaying._lastSubPhase !== room.subPhase) {
+      pendingPick = null;
+      renderPlaying._lastCardId = room.currentCardId;
+      renderPlaying._lastSubPhase = room.subPhase;
+    }
+
+    var isSubject = room.currentSubjectId === me;
+    var isTalkCard = card.type === 'reflection' || card.type === 'discussion';
+
+    renderRace(room);
+    renderCardFrame(room, card);
+    hideElems(['guesser-view','subject-view','talk-view','reveal-view']);
+
+    if (room.subPhase === 'reveal') {
+      renderReveal(room, card);
+      showElem('reveal-view');
+    } else if (isTalkCard) {
+      renderTalk(room, card, isSubject);
+      showElem('talk-view');
+    } else if (isSubject) {
+      renderSubject(room, card);
+      showElem('subject-view');
+    } else {
+      renderGuesser(room, card, me);
+      showElem('guesser-view');
+    }
+  }
+
+  function renderRace(room) {
+    var r = $('race-round'); if (r) r.textContent = 'Round ' + (room.round || 1);
+    var ul = $('race-cars'); if (!ul) return;
+    ul.innerHTML = '';
+    var cap = room.cap || 25;
+    (room.pairs || []).forEach(function (pr) {
+      var li = document.createElement('li');
+      li.className = 'race-car pair-' + (pr.color || 'coral');
+      var pct = Math.max(0, Math.min(100, ((pr.score || 0) / cap) * 100));
+      li.style.left = pct + '%';
+      var names = (room.players || [])
+        .filter(function (p) { return pr.playerIds.indexOf(p.id) !== -1; })
+        .map(function (p) { return p.name; }).join(' + ');
+      var car = document.createElement('span');
+      car.className = 'race-car-icon'; car.textContent = '🏎';
+      var bub = document.createElement('span');
+      bub.className = 'race-car-label';
+      bub.textContent = names + ' · ' + (pr.score || 0);
+      li.appendChild(car); li.appendChild(bub);
+      ul.appendChild(li);
+    });
+  }
+
+  function renderCardFrame(room, card) {
+    var t = $('card-theme'); if (t) t.textContent = String(card.theme || '').toUpperCase();
+    var h = $('card-subject-hint'); if (h) h.textContent = 'About ' + subjectName(room);
+    var x = $('card-text');
+    if (x) x.textContent = String(card.text || '').replace(/\[Subject\]/g, subjectName(room));
+  }
+
+  function renderGuesser(room, card, me) {
+    var grid = $('answer-grid'); if (!grid) return;
+    grid.innerHTML = '';
+    var mine = (room.guesses && room.guesses[me]) || null;
+    var locked = !!mine;
+    var current = mine || pendingPick;
+
+    if (card.type === 'mc4' || card.type === 'mc6' || card.type === 'tf') {
+      letters(card).forEach(function (L) {
+        var optText = (card.type === 'tf') ? tfLabel(L)
+          : ((card.options || []).find(function (o) { return o.letter === L; }) || {}).text || '';
+        var li = makeAnswerTile(L, optText, current === L);
+        if (!locked) {
+          li.setAttribute('data-action', 'pick-answer');
+          li.setAttribute('data-value', L);
+        }
+        grid.appendChild(li);
+      });
+    } else if (card.type === 'group_vote') {
+      (room.players || []).forEach(function (p) {
+        if (p.id === me) return;
+        var li = makeAnswerTile('', p.name, current === p.id);
+        if (!locked) {
+          li.setAttribute('data-action', 'pick-answer');
+          li.setAttribute('data-value', p.id);
+        }
+        grid.appendChild(li);
       });
     }
-    var status = $('playing-status');
-    if (status) status.textContent = 'Round 1 of ' + (pairs.length + ' pairs racing to 25');
+
+    var btn = $('submit-guess-btn');
+    if (btn) {
+      btn.disabled = !pendingPick || locked;
+      btn.textContent = locked ? 'Guess locked in' : 'Lock In Guess';
+    }
+    var eyebrow = $('guesser-eyebrow');
+    if (eyebrow) {
+      eyebrow.textContent = card.type === 'group_vote'
+        ? 'Who would ' + subjectName(room) + ' pick?'
+        : 'Your pick';
+    }
+    var status = $('guesser-status');
+    if (status) {
+      if (locked) {
+        var submitted = room.guessersSubmitted || 0;
+        var total = (room.players || []).length - 1;
+        status.textContent = 'Locked in. ' + submitted + ' of ' + total + ' guesses in. Waiting on ' + subjectName(room) + ' to reveal.';
+      } else {
+        status.textContent = '';
+      }
+    }
+  }
+
+  function renderSubject(room, card) {
+    var grid = $('truth-grid'); if (!grid) return;
+    grid.innerHTML = '';
+    var current = pendingPick;
+
+    if (card.type === 'mc4' || card.type === 'mc6' || card.type === 'tf') {
+      letters(card).forEach(function (L) {
+        var optText = (card.type === 'tf') ? tfLabel(L)
+          : ((card.options || []).find(function (o) { return o.letter === L; }) || {}).text || '';
+        var li = makeAnswerTile(L, optText, current === L);
+        li.setAttribute('data-action', 'pick-truth');
+        li.setAttribute('data-value', L);
+        grid.appendChild(li);
+      });
+    } else if (card.type === 'group_vote') {
+      (room.players || []).forEach(function (p) {
+        if (p.id === room.currentSubjectId) return;
+        var li = makeAnswerTile('', p.name, current === p.id);
+        li.setAttribute('data-action', 'pick-truth');
+        li.setAttribute('data-value', p.id);
+        grid.appendChild(li);
+      });
+      var li2 = makeAnswerTile('', 'Someone not at this table', current === 'NOT_AT_TABLE');
+      li2.setAttribute('data-action', 'pick-truth');
+      li2.setAttribute('data-value', 'NOT_AT_TABLE');
+      grid.appendChild(li2);
+    }
+
+    var submitted = room.guessersSubmitted || 0;
+    var total = (room.players || []).length - 1;
+    var allIn = submitted >= total;
+
+    var btn = $('reveal-btn');
+    if (btn) {
+      btn.disabled = !pendingPick || !allIn;
+      btn.textContent = allIn ? 'Reveal The Truth' : 'Waiting on guesses (' + submitted + '/' + total + ')';
+    }
+    var status = $('subject-status');
+    if (status) {
+      if (!allIn) status.textContent = 'Pick your truth in the meantime. You can reveal as soon as everyone\'s guessed.';
+      else if (!pendingPick) status.textContent = 'Pick the truth, then reveal.';
+      else status.textContent = '';
+    }
+  }
+
+  function renderTalk(room, card, isSubject) {
+    var eyebrow = $('talk-eyebrow');
+    if (eyebrow) eyebrow.textContent = card.type === 'discussion' ? 'Group discussion. No scoring.' : 'Reflection. No scoring.';
+    var btn = $('done-talking-btn'); if (btn) btn.hidden = !isSubject;
+    var status = $('talk-status');
+    if (status) {
+      status.textContent = isSubject
+        ? 'Take your time. Tap Done Sharing when you\'re ready.'
+        : subjectName(room) + ' is sharing. Listen up.';
+    }
+  }
+
+  function renderReveal(room, card) {
+    var me = load(K.playerId, null);
+    var isSubject = room.currentSubjectId === me;
+    var detail = room.lastReveal || {};
+    var truth = detail.truth || room.subjectAnswer;
+    var truthText = '';
+    if (card.type === 'mc4' || card.type === 'mc6') {
+      var opt = (card.options || []).find(function (o) { return o.letter === truth; });
+      truthText = truth + '. ' + (opt ? opt.text : '');
+    } else if (card.type === 'tf') {
+      truthText = tfLabel(truth);
+    } else if (card.type === 'group_vote') {
+      truthText = playerNameById(room, truth);
+    } else {
+      truthText = '(no truth)';
+    }
+    var truthEl = $('reveal-truth'); if (truthEl) truthEl.textContent = truthText;
+
+    var ulG = $('reveal-guesses');
+    if (ulG) {
+      ulG.innerHTML = '';
+      var guessers = (room.players || []).filter(function (p) { return p.id !== room.currentSubjectId; });
+      guessers.forEach(function (p) {
+        var li = document.createElement('li');
+        var pick = (detail.guesses || {})[p.id];
+        var correct = pick === truth;
+        li.className = correct ? 'guess-right' : 'guess-wrong';
+        li.innerHTML =
+          '<span class="g-name">' + esc(p.name) + '</span>' +
+          '<span class="g-pick">' + esc(pickDisplay(card, pick, room)) + '</span>' +
+          '<span class="g-mark">' + (correct ? '✓' : '×') + '</span>';
+        ulG.appendChild(li);
+      });
+    }
+
+    var ulS = $('reveal-scores');
+    if (ulS) {
+      ulS.innerHTML = '';
+      var ba = detail.pairBeforeAfter || {};
+      (room.pairs || []).forEach(function (pr) {
+        var rec = ba[pr.id] || { before: pr.score || 0, delta: 0, after: pr.score || 0 };
+        var li = document.createElement('li');
+        li.className = 'pair-' + (pr.color || 'coral');
+        var names = (room.players || [])
+          .filter(function (p) { return pr.playerIds.indexOf(p.id) !== -1; })
+          .map(function (p) { return p.name; }).join(' & ');
+        var deltaStr = rec.delta > 0 ? ' (+' + rec.delta + ')' : '';
+        li.innerHTML =
+          '<span class="s-name">' + esc(names) + '</span>' +
+          '<span class="s-score">' + rec.after + deltaStr + '</span>';
+        ulS.appendChild(li);
+      });
+    }
+
+    var btn = $('next-card-btn');
+    if (btn) {
+      btn.hidden = !isSubject;
+      btn.disabled = false;
+      btn.textContent = room.winnerPairId ? 'See Final Results →' : 'Next Card →';
+    }
+    var status = $('reveal-status');
+    if (status) {
+      status.textContent = isSubject ? '' : 'Waiting on ' + subjectName(room) + ' to advance...';
+    }
+  }
+
+  function renderGameOver(room) {
+    var titleEl = $('game-over-title');
+    var leadEl = $('game-over-lead');
+    var ul = $('final-scores'); if (!ul) return;
+    ul.innerHTML = '';
+    var winner = (room.pairs || []).find(function (pr) { return pr.id === room.winnerPairId; });
+    if (winner) {
+      var wn = (room.players || [])
+        .filter(function (p) { return winner.playerIds.indexOf(p.id) !== -1; })
+        .map(function (p) { return p.name; }).join(' & ');
+      if (titleEl) titleEl.textContent = wn + ' Win';
+      if (leadEl) leadEl.textContent = 'First pair to ' + (room.cap || 25) + '. The race is run.';
+    } else {
+      if (titleEl) titleEl.textContent = 'Game Over';
+      if (leadEl) leadEl.textContent = '';
+    }
+    var sorted = (room.pairs || []).slice().sort(function (a, b) { return (b.score || 0) - (a.score || 0); });
+    sorted.forEach(function (pr) {
+      var li = document.createElement('li');
+      li.className = 'pair-' + (pr.color || 'coral') + (pr.id === room.winnerPairId ? ' is-winner' : '');
+      var names = (room.players || [])
+        .filter(function (p) { return pr.playerIds.indexOf(p.id) !== -1; })
+        .map(function (p) { return p.name; }).join(' & ');
+      li.innerHTML = '<span class="s-name">' + esc(names) + '</span><span class="s-score">' + (pr.score || 0) + '</span>';
+      ul.appendChild(li);
+    });
+  }
+
+  // ---------- Phase 3 action handlers ----------
+  function pickAnswer(value) { pendingPick = value; renderRoom(lastRoom); }
+  function pickTruth(value) { pendingPick = value; renderRoom(lastRoom); }
+
+  async function submitGuessAct() {
+    if (!pendingPick) return;
+    var code = load(K.code, ''), pid = load(K.playerId, '');
+    var guess = pendingPick;
+    var btn = $('submit-guess-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Locking in...'; }
+    try {
+      var r = await api('/api/friend-submit-guess', { method: 'POST', body: { code: code, playerId: pid, guess: guess } });
+      if (r.status === 200 && r.body && r.body.ok) {
+        pendingPick = null;
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        var msg = (r.body && r.body.error) || 'unknown';
+        alert('Could not submit guess: ' + msg);
+        renderRoom(lastRoom);
+      }
+    } catch (e) {
+      alert('Network error submitting guess.');
+      renderRoom(lastRoom);
+    }
+  }
+
+  async function revealTruthAct() {
+    if (!pendingPick) return;
+    var code = load(K.code, ''), pid = load(K.playerId, '');
+    var truth = pendingPick;
+    var btn = $('reveal-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Revealing...'; }
+    try {
+      var r = await api('/api/friend-submit-truth', { method: 'POST', body: { code: code, playerId: pid, truth: truth } });
+      if (r.status === 200 && r.body && r.body.ok) {
+        pendingPick = null;
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        var msg = (r.body && r.body.error) || 'unknown';
+        if (msg === 'waiting_for_guessers') {
+          var on = (r.body && r.body.waitingOn) || [];
+          alert('Still waiting on: ' + on.join(', '));
+        } else {
+          alert('Could not reveal: ' + msg);
+        }
+        renderRoom(lastRoom);
+      }
+    } catch (e) {
+      alert('Network error revealing truth.');
+      renderRoom(lastRoom);
+    }
+  }
+
+  async function nextCardAct() {
+    var code = load(K.code, ''), pid = load(K.playerId, '');
+    var btn = $('next-card-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Advancing...'; }
+    var dbtn = $('done-talking-btn'); if (dbtn) { dbtn.disabled = true; dbtn.textContent = 'Advancing...'; }
+    try {
+      var r = await api('/api/friend-next-card', { method: 'POST', body: { code: code, playerId: pid } });
+      if (r.status === 200 && r.body && r.body.ok) {
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        var msg = (r.body && r.body.error) || 'unknown';
+        alert('Could not advance: ' + msg);
+        if (btn) { btn.disabled = false; btn.textContent = 'Next Card →'; }
+        if (dbtn) { dbtn.disabled = false; dbtn.textContent = 'Done Sharing'; }
+      }
+    } catch (e) {
+      alert('Network error advancing.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Next Card →'; }
+      if (dbtn) { dbtn.disabled = false; dbtn.textContent = 'Done Sharing'; }
+    }
   }
 
   // Local-only state: when the host taps a first player, we remember it
@@ -518,6 +910,13 @@
       if (a === 'host-remove')  return hostRemove(el.getAttribute('data-target'), el.getAttribute('data-name'));
       if (a === 'host-toggle-pair') return hostTogglePair(el.getAttribute('data-target'));
       if (a === 'host-start-game') return hostStartGame();
+      // Phase 3 actions
+      if (a === 'pick-answer')  return pickAnswer(el.getAttribute('data-value'));
+      if (a === 'pick-truth')   return pickTruth(el.getAttribute('data-value'));
+      if (a === 'submit-guess') return submitGuessAct();
+      if (a === 'reveal-truth') return revealTruthAct();
+      if (a === 'done-talking') return nextCardAct();
+      if (a === 'next-card')    return nextCardAct();
     });
     // Pressing Enter inside an input submits the obvious action.
     document.body.addEventListener('keydown', function (e) {
@@ -530,6 +929,9 @@
   // ----- boot -----
   function boot() {
     wire();
+    // Kick off cards.json fetch immediately so it's cached by the time the
+    // game actually starts. Silently swallow errors; renderPlaying retries.
+    loadCardsOnce().catch(function () {});
     var params = new URLSearchParams(location.search);
     var joinPrefilled = (params.get('join') || '').toUpperCase();
     var existingCode = load(K.code, null);

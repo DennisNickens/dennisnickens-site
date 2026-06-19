@@ -125,9 +125,41 @@
     <p class="pairing-status" id="pairing-status"></p>
 
     <div class="pairing-actions">
-      <button class="btn btn-primary" id="start-game-btn" data-action="host-start-game" disabled hidden>Start the Game</button>
+      <button class="btn btn-primary" id="start-game-btn" data-action="host-start-team-setup" disabled hidden>Next: Pick Icons &rarr;</button>
       <p class="pairing-host-note" id="pairing-host-note" hidden>The host is pairing everyone up. Hold tight.</p>
     </div>
+  </div>
+</section>
+
+<!-- ================= SCREEN: TEAM SETUP (icons + names + confirm) ================= -->
+<section id="screen-team-setup" class="screen" aria-label="Set up your teams" hidden>
+  <div class="team-setup-inner">
+
+    <!-- Sub-view A: pick icons -->
+    <div id="team-icons-view" class="team-setup-view">
+      <p class="pairing-eyebrow">Team Setup</p>
+      <h2 class="pairing-title">Pick Your Team Icon</h2>
+      <p class="pairing-lead" id="icons-lead">Tap a team's row, then pick an icon to claim it. Every team needs one.</p>
+      <ul class="team-rows" id="team-rows-icons"></ul>
+      <div class="team-setup-actions">
+        <button class="btn btn-primary" id="confirm-icons-btn" data-action="host-advance-to-confirm" disabled hidden>Next: Confirm Teams &rarr;</button>
+        <p class="pairing-host-note" id="icons-host-note" hidden>The host is picking team icons. Hold tight.</p>
+      </div>
+    </div>
+
+    <!-- Sub-view B: confirmation + optional team names -->
+    <div id="team-confirm-view" class="team-setup-view" hidden>
+      <p class="pairing-eyebrow">Confirm Teams</p>
+      <h2 class="pairing-title">Ready To Race</h2>
+      <p class="pairing-lead">Add a team name if you want (optional). Tap any team to edit.</p>
+      <ul class="team-rows team-rows-confirm" id="team-rows-confirm"></ul>
+      <div class="team-setup-actions">
+        <button class="btn btn-ghost" id="back-to-icons-btn" data-action="host-back-to-picking-icons" hidden>Back</button>
+        <button class="btn btn-primary" id="real-start-game-btn" data-action="host-start-game" hidden>Start the Game</button>
+        <p class="pairing-host-note" id="confirm-host-note" hidden>The host is locking in teams. Hold tight.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 

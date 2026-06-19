@@ -26,7 +26,12 @@
   function save(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {} }
   function clear(key) { try { localStorage.removeItem(key); } catch (e) {} }
 
-  var SCREENS = ['screen-router', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing', 'screen-playing', 'screen-game-over'];
+  var SCREENS = ['screen-router', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing', 'screen-team-setup', 'screen-playing', 'screen-game-over'];
+
+  // Same palette as lib/friend-state.js TEAM_ICONS. Hardcoded here so the
+  // picker grid renders immediately without an extra round trip. Server is
+  // still the authority on validation.
+  var TEAM_ICONS = ['🔥', '⚡', '💎', '⭐', '🚀', '🌊', '🦁', '🦊', '🐯', '🐺', '🌙', '☀️'];
   function show(id) {
     SCREENS.forEach(function (s) { var el = $(s); if (!el) return; el.hidden = (s !== id); });
   }
@@ -146,6 +151,9 @@
     if (room.phase === 'pairing') {
       show('screen-pairing');
       renderPairing(room);
+    } else if (room.phase === 'teamSetup') {
+      show('screen-team-setup');
+      renderTeamSetup(room);
     } else if (room.phase === 'playing' || room.phase === 'roundEnd') {
       // Stale-room guard: a room created before Phase 3 deployed will be in
       // phase 'playing' but missing the deck, pair colors, or currentCardId.
@@ -192,6 +200,256 @@
   // Local-only pick state: what the viewer has tapped but not yet
   // submitted. Cleared whenever the card or subPhase changes.
   var pendingPick = null;
+
+  // Local-only: which team row the host has expanded in the icon picker
+  // or has open for team-name editing. Not synced.
+  var teamRowOpen = null;
+
+  // ---------- Team Setup (icons + names + confirm) ----------
+  function renderTeamSetup(room) {
+    var me = load(K.playerId, null);
+    var isHost = room.hostId === me;
+    var iconsView = $('team-icons-view');
+    var confirmView = $('team-confirm-view');
+    if (!iconsView || !confirmView) return;
+    if (room.subPhase === 'confirming') {
+      iconsView.hidden = true;
+      confirmView.hidden = false;
+      renderTeamConfirm(room, isHost);
+    } else {
+      iconsView.hidden = false;
+      confirmView.hidden = true;
+      renderTeamIcons(room, isHost);
+    }
+  }
+
+  function renderTeamIcons(room, isHost) {
+    var ul = $('team-rows-icons'); if (!ul) return;
+    ul.innerHTML = '';
+    var pairs = room.pairs || [];
+    var usedIcons = pairs.map(function (pr) { return pr.icon; }).filter(Boolean);
+
+    pairs.forEach(function (pr) {
+      var li = document.createElement('li');
+      var open = teamRowOpen === pr.id;
+      li.className = 'team-row pair-' + (pr.color || 'coral') + (open ? ' is-open' : '');
+      if (isHost) li.setAttribute('data-action', 'host-open-team-row');
+      li.setAttribute('data-target', pr.id);
+
+      var head = document.createElement('div');
+      head.className = 'team-row-head';
+      var iconSlot = document.createElement('span');
+      iconSlot.className = 'team-row-icon';
+      iconSlot.textContent = pr.icon || '?';
+      var names = document.createElement('span');
+      names.className = 'team-row-names';
+      names.textContent = (room.players || [])
+        .filter(function (p) { return pr.playerIds.indexOf(p.id) !== -1; })
+        .map(function (p) { return p.name; }).join(' & ');
+      head.appendChild(iconSlot);
+      head.appendChild(names);
+      li.appendChild(head);
+
+      if (open && isHost) {
+        var picker = document.createElement('ul');
+        picker.className = 'icon-picker';
+        TEAM_ICONS.forEach(function (ic) {
+          var b = document.createElement('li');
+          var taken = usedIcons.indexOf(ic) !== -1 && pr.icon !== ic;
+          b.className = 'icon-tile'
+            + (pr.icon === ic ? ' is-selected' : '')
+            + (taken ? ' is-taken' : '');
+          b.textContent = ic;
+          if (!taken) {
+            b.setAttribute('data-action', 'host-pick-team-icon');
+            b.setAttribute('data-pair', pr.id);
+            b.setAttribute('data-icon', ic);
+          }
+          picker.appendChild(b);
+        });
+        li.appendChild(picker);
+      }
+      ul.appendChild(li);
+    });
+
+    var allIconed = pairs.length > 0 && pairs.every(function (pr) { return !!pr.icon; });
+    var btn = $('confirm-icons-btn');
+    if (btn) {
+      btn.hidden = !isHost;
+      btn.disabled = !allIconed;
+    }
+    var note = $('icons-host-note'); if (note) note.hidden = isHost;
+    var lead = $('icons-lead');
+    if (lead) {
+      var count = pairs.filter(function (pr) { return !!pr.icon; }).length;
+      lead.textContent = isHost
+        ? count + ' of ' + pairs.length + ' teams have icons. Tap a team to pick.'
+        : 'The host is choosing team icons.';
+    }
+  }
+
+  function renderTeamConfirm(room, isHost) {
+    var ul = $('team-rows-confirm'); if (!ul) return;
+    ul.innerHTML = '';
+    var pairs = room.pairs || [];
+    pairs.forEach(function (pr) {
+      var li = document.createElement('li');
+      var open = teamRowOpen === pr.id;
+      li.className = 'team-row pair-' + (pr.color || 'coral') + (open ? ' is-open' : '');
+
+      var head = document.createElement('div');
+      head.className = 'team-row-head';
+      if (isHost) head.setAttribute('data-action', 'host-open-team-row');
+      head.setAttribute('data-target', pr.id);
+      var iconSlot = document.createElement('span');
+      iconSlot.className = 'team-row-icon';
+      iconSlot.textContent = pr.icon || '?';
+      var meta = document.createElement('span');
+      meta.className = 'team-row-meta';
+      var nameLine = document.createElement('span');
+      nameLine.className = 'team-row-team-name';
+      nameLine.textContent = pr.teamName || 'Team ' + (pr.icon || '?');
+      var memberLine = document.createElement('span');
+      memberLine.className = 'team-row-members';
+      memberLine.textContent = (room.players || [])
+        .filter(function (p) { return pr.playerIds.indexOf(p.id) !== -1; })
+        .map(function (p) { return p.name; }).join(' & ');
+      meta.appendChild(nameLine);
+      meta.appendChild(memberLine);
+      head.appendChild(iconSlot);
+      head.appendChild(meta);
+      li.appendChild(head);
+
+      if (open && isHost) {
+        var editor = document.createElement('div');
+        editor.className = 'team-name-editor';
+        var input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'text-input';
+        input.placeholder = 'Team name (optional)';
+        input.maxLength = 24;
+        input.value = pr.teamName || '';
+        input.setAttribute('data-pair', pr.id);
+        input.setAttribute('data-action-target', 'team-name-input');
+        editor.appendChild(input);
+        var save = document.createElement('button');
+        save.className = 'btn btn-primary team-name-save';
+        save.textContent = 'Save';
+        save.setAttribute('data-action', 'host-save-team-name');
+        save.setAttribute('data-pair', pr.id);
+        editor.appendChild(save);
+        li.appendChild(editor);
+      }
+      ul.appendChild(li);
+    });
+
+    var startBtn = $('real-start-game-btn');
+    var backBtn = $('back-to-icons-btn');
+    if (startBtn) startBtn.hidden = !isHost;
+    if (backBtn) backBtn.hidden = !isHost;
+    var note = $('confirm-host-note'); if (note) note.hidden = isHost;
+  }
+
+  async function hostStartTeamSetupAct() {
+    var btn = $('start-game-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Loading...'; }
+    try {
+      var r = await api('/api/friend-start-team-setup', {
+        method: 'POST',
+        body: { code: load(K.code, ''), hostId: load(K.playerId, '') },
+      });
+      if (r.status === 200 && r.body && r.body.ok) {
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        alert('Could not advance: ' + ((r.body && r.body.error) || 'unknown'));
+        if (btn) { btn.disabled = false; btn.textContent = 'Next: Pick Icons →'; }
+      }
+    } catch (e) {
+      alert('Network error.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Next: Pick Icons →'; }
+    }
+  }
+
+  function hostOpenTeamRow(pairId) {
+    teamRowOpen = (teamRowOpen === pairId) ? null : pairId;
+    renderRoom(lastRoom);
+  }
+
+  async function hostPickTeamIcon(pairId, icon) {
+    try {
+      var r = await api('/api/friend-set-team-icon', {
+        method: 'POST',
+        body: { code: load(K.code, ''), hostId: load(K.playerId, ''), pairId: pairId, icon: icon },
+      });
+      if (r.status === 200 && r.body && r.body.ok) {
+        teamRowOpen = null;
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        var err = (r.body && r.body.error) || 'unknown';
+        if (err === 'icon_taken') alert('That icon is already taken by another team.');
+        else alert('Could not set icon: ' + err);
+      }
+    } catch (e) {
+      alert('Network error setting icon.');
+    }
+  }
+
+  async function hostAdvanceToConfirmAct() {
+    var btn = $('confirm-icons-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Confirming...'; }
+    try {
+      var r = await api('/api/friend-advance-to-confirm', {
+        method: 'POST',
+        body: { code: load(K.code, ''), hostId: load(K.playerId, '') },
+      });
+      if (r.status === 200 && r.body && r.body.ok) {
+        teamRowOpen = null;
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        alert('Could not advance: ' + ((r.body && r.body.error) || 'unknown'));
+        if (btn) { btn.disabled = false; btn.textContent = 'Next: Confirm Teams →'; }
+      }
+    } catch (e) {
+      alert('Network error.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Next: Confirm Teams →'; }
+    }
+  }
+
+  async function hostBackToIconsAct() {
+    try {
+      var r = await api('/api/friend-back-to-picking-icons', {
+        method: 'POST',
+        body: { code: load(K.code, ''), hostId: load(K.playerId, '') },
+      });
+      if (r.status === 200 && r.body && r.body.ok) {
+        teamRowOpen = null;
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      }
+    } catch (e) {}
+  }
+
+  async function hostSaveTeamNameAct(pairId) {
+    var input = document.querySelector('input[data-action-target="team-name-input"][data-pair="' + pairId + '"]');
+    if (!input) return;
+    var value = String(input.value || '').trim();
+    try {
+      var r = await api('/api/friend-set-team-name', {
+        method: 'POST',
+        body: { code: load(K.code, ''), hostId: load(K.playerId, ''), pairId: pairId, teamName: value },
+      });
+      if (r.status === 200 && r.body && r.body.ok) {
+        teamRowOpen = null;
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        alert('Could not save name: ' + ((r.body && r.body.error) || 'unknown'));
+      }
+    } catch (e) {
+      alert('Network error.');
+    }
+  }
 
   function letters(card) {
     if (card.type === 'mc4') return ['A','B','C','D'];
@@ -288,17 +546,28 @@
       li.className = 'race-car pair-' + (pr.color || 'coral');
       var pct = Math.max(0, Math.min(100, ((pr.score || 0) / cap) * 100));
       li.style.left = pct + '%';
-      var names = (room.players || [])
-        .filter(function (p) { return pr.playerIds.indexOf(p.id) !== -1; })
-        .map(function (p) { return p.name; }).join(' + ');
+      // Car is the team's chosen icon; name labels removed so they don't
+      // overlap at low scores. Color comes through on the score badge.
       var car = document.createElement('span');
-      car.className = 'race-car-icon'; car.textContent = '🏎';
+      car.className = 'race-car-icon'; car.textContent = pr.icon || '🏎';
       var bub = document.createElement('span');
-      bub.className = 'race-car-label';
-      bub.textContent = names + ' · ' + (pr.score || 0);
+      bub.className = 'race-car-score';
+      bub.textContent = String(pr.score || 0);
       li.appendChild(car); li.appendChild(bub);
       ul.appendChild(li);
     });
+  }
+
+  // Display label for a pair in reveal / game-over panels.
+  // Format: "🔥 Team Name (Dennis & Brandi)" when name is set,
+  //         "🔥 Dennis & Brandi" when not.
+  function pairLabel(room, pr) {
+    var icon = pr.icon || '🏎';
+    var names = (room.players || [])
+      .filter(function (p) { return pr.playerIds.indexOf(p.id) !== -1; })
+      .map(function (p) { return p.name; }).join(' & ');
+    if (pr.teamName) return icon + ' ' + pr.teamName + ' (' + names + ')';
+    return icon + ' ' + names;
   }
 
   function renderCardFrame(room, card) {
@@ -461,12 +730,9 @@
         var rec = ba[pr.id] || { before: pr.score || 0, delta: 0, after: pr.score || 0 };
         var li = document.createElement('li');
         li.className = 'pair-' + (pr.color || 'coral');
-        var names = (room.players || [])
-          .filter(function (p) { return pr.playerIds.indexOf(p.id) !== -1; })
-          .map(function (p) { return p.name; }).join(' & ');
         var deltaStr = rec.delta > 0 ? ' (+' + rec.delta + ')' : '';
         li.innerHTML =
-          '<span class="s-name">' + esc(names) + '</span>' +
+          '<span class="s-name">' + esc(pairLabel(room, pr)) + '</span>' +
           '<span class="s-score">' + rec.after + deltaStr + '</span>';
         ulS.appendChild(li);
       });
@@ -491,10 +757,11 @@
     ul.innerHTML = '';
     var winner = (room.pairs || []).find(function (pr) { return pr.id === room.winnerPairId; });
     if (winner) {
-      var wn = (room.players || [])
-        .filter(function (p) { return winner.playerIds.indexOf(p.id) !== -1; })
-        .map(function (p) { return p.name; }).join(' & ');
-      if (titleEl) titleEl.textContent = wn + ' Win';
+      var wn = winner.teamName
+        || (room.players || [])
+            .filter(function (p) { return winner.playerIds.indexOf(p.id) !== -1; })
+            .map(function (p) { return p.name; }).join(' & ');
+      if (titleEl) titleEl.textContent = (winner.icon || '🏎') + ' ' + wn + ' Win';
       if (leadEl) leadEl.textContent = 'First pair to ' + (room.cap || 25) + '. The race is run.';
     } else {
       if (titleEl) titleEl.textContent = 'Game Over';
@@ -504,10 +771,7 @@
     sorted.forEach(function (pr) {
       var li = document.createElement('li');
       li.className = 'pair-' + (pr.color || 'coral') + (pr.id === room.winnerPairId ? ' is-winner' : '');
-      var names = (room.players || [])
-        .filter(function (p) { return pr.playerIds.indexOf(p.id) !== -1; })
-        .map(function (p) { return p.name; }).join(' & ');
-      li.innerHTML = '<span class="s-name">' + esc(names) + '</span><span class="s-score">' + (pr.score || 0) + '</span>';
+      li.innerHTML = '<span class="s-name">' + esc(pairLabel(room, pr)) + '</span><span class="s-score">' + (pr.score || 0) + '</span>';
       ul.appendChild(li);
     });
   }
@@ -929,6 +1193,13 @@
       if (a === 'host-remove')  return hostRemove(el.getAttribute('data-target'), el.getAttribute('data-name'));
       if (a === 'host-toggle-pair') return hostTogglePair(el.getAttribute('data-target'));
       if (a === 'host-start-game') return hostStartGame();
+      // Phase 4: team setup actions
+      if (a === 'host-start-team-setup')   return hostStartTeamSetupAct();
+      if (a === 'host-open-team-row')      return hostOpenTeamRow(el.getAttribute('data-target'));
+      if (a === 'host-pick-team-icon')     return hostPickTeamIcon(el.getAttribute('data-pair'), el.getAttribute('data-icon'));
+      if (a === 'host-advance-to-confirm') return hostAdvanceToConfirmAct();
+      if (a === 'host-back-to-picking-icons') return hostBackToIconsAct();
+      if (a === 'host-save-team-name')     return hostSaveTeamNameAct(el.getAttribute('data-pair'));
       // Phase 3 actions
       if (a === 'pick-answer')  return pickAnswer(el.getAttribute('data-value'));
       if (a === 'pick-truth')   return pickTruth(el.getAttribute('data-value'));

@@ -469,20 +469,25 @@ body {
   font-size: 1.3rem; line-height: 1;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,.5));
 }
-.race-car-label {
-  font-size: .62rem; font-weight: 700;
-  letter-spacing: .08em; text-transform: uppercase;
-  padding: .15rem .45rem;
+.race-car-icon {
+  font-size: 1.5rem; line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.5));
+}
+.race-car-score {
+  font-size: .68rem; font-weight: 800;
+  letter-spacing: .04em;
+  padding: .1rem .45rem;
   border-radius: 999px;
   background: rgba(0,0,0,.55);
   color: var(--cream);
-  border: 1px solid rgba(254,249,241,.18);
+  border: 1px solid rgba(254,249,241,.22);
+  min-width: 1.6rem; text-align: center;
 }
-.race-car.pair-coral .race-car-label { border-color: var(--coral); }
-.race-car.pair-sky   .race-car-label { border-color: var(--sky); }
-.race-car.pair-sun   .race-car-label { border-color: var(--sun); color: #1a0a05; background: var(--sun); }
-.race-car.pair-pink  .race-car-label { border-color: var(--pink); }
-.race-car.pair-teal  .race-car-label { border-color: var(--teal); }
+.race-car.pair-coral .race-car-score { border-color: var(--coral); }
+.race-car.pair-sky   .race-car-score { border-color: var(--sky); }
+.race-car.pair-sun   .race-car-score { border-color: var(--sun); color: #1a0a05; background: var(--sun); }
+.race-car.pair-pink  .race-car-score { border-color: var(--pink); }
+.race-car.pair-teal  .race-car-score { border-color: var(--teal); }
 
 /* Stagger cars vertically so they don't sit on top of each other */
 .race-car:nth-child(1) { top: 30%; }
@@ -662,6 +667,99 @@ body {
 }
 .final-scores .s-score { color: var(--sun); font-weight: 700; }
 .game-over-actions { margin-top: .8rem; }
+
+/* ============================================================
+   Phase 4: Team Setup (icon picker + confirmation)
+   ============================================================ */
+.team-setup-inner {
+  width: 100%; max-width: 520px;
+  display: flex; flex-direction: column; gap: 1rem;
+  text-align: center;
+}
+.team-setup-view { display: flex; flex-direction: column; gap: 1rem; }
+
+.team-rows {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: .6rem;
+}
+.team-row {
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  padding: .6rem .85rem;
+  cursor: pointer;
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+.team-row.is-open {
+  background: linear-gradient(180deg, rgba(255,210,74,.12), rgba(255,210,74,.04));
+  border-color: var(--sun);
+}
+.team-row.pair-coral { border-left: 4px solid var(--coral); }
+.team-row.pair-sky   { border-left: 4px solid var(--sky); }
+.team-row.pair-sun   { border-left: 4px solid var(--sun); }
+.team-row.pair-pink  { border-left: 4px solid var(--pink); }
+.team-row.pair-teal  { border-left: 4px solid var(--teal); }
+.team-row-head {
+  display: flex; align-items: center; gap: .8rem;
+  text-align: left;
+}
+.team-row-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(254,249,241,.18);
+  font-size: 1.5rem; line-height: 1;
+  flex-shrink: 0;
+}
+.team-row-names { color: var(--cream); font-weight: 600; flex: 1; }
+.team-row-meta { display: flex; flex-direction: column; gap: .15rem; flex: 1; }
+.team-row-team-name {
+  color: var(--cream); font-weight: 700; line-height: 1.2;
+}
+.team-row-members {
+  color: var(--cream-faint); font-size: .8rem;
+}
+
+.icon-picker {
+  list-style: none; padding: .8rem 0 .2rem; margin: 0;
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: .5rem;
+}
+.icon-tile {
+  display: flex; align-items: center; justify-content: center;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  background: rgba(0,0,0,.32);
+  border: 2px solid rgba(254,249,241,.14);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
+}
+.icon-tile:active { transform: scale(.92); }
+.icon-tile.is-selected {
+  border-color: var(--sun);
+  background: rgba(255,210,74,.18);
+  box-shadow: 0 0 0 1px var(--sun);
+}
+.icon-tile.is-taken {
+  opacity: .25; cursor: not-allowed; filter: grayscale(.8);
+}
+
+.team-name-editor {
+  margin-top: .7rem;
+  display: flex; gap: .5rem; align-items: stretch;
+}
+.team-name-editor .text-input { flex: 1; }
+.team-name-save {
+  padding: .7rem 1rem;
+  font-size: .7rem;
+}
+
+.team-setup-actions {
+  display: flex; flex-direction: column; gap: .6rem;
+  align-items: stretch; margin-top: .4rem;
+}
+.team-setup-actions .btn { width: 100%; }
 
 /* ---------- animations ---------- */
 @keyframes pop-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }

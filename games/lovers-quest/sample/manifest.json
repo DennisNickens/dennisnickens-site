@@ -1,0 +1,14 @@
+{
+  "name": "Lovers Quest (Sample)",
+  "short_name": "LQ Sample",
+  "description": "A free 12-card taste of Lovers Quest by Dennis Nickens.",
+  "start_url": "/games/lovers-quest/sample/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#07071a",
+  "theme_color": "#07071a",
+  "icons": [
+    { "src": "../icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "../icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Lovers Quest (Sample) | A Faith-Rooted Journey for Couples</title>
+<meta name="description" content="A free 12-card sample of Lovers Quest. The full deck has 72 questions across Intimacy, Trust, Purpose, Conflict, Grace, and Legacy." />
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#07071a" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Lovers Quest" />
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../icons/icon-192.png" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<!-- Reuse the parent app's stylesheet so the sample matches the full deck exactly -->
+<link rel="stylesheet" href="../style.css" />
+<style>
+  /* Sample-only badge at the top of the splash so visitors know
+     they're trying a teaser, not the full deck. */
+  .splash-sample-badge{
+    margin-top:1rem;font-family:var(--fs);font-style:italic;
+    font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold);opacity:.78;
+    padding:.4rem 1rem;border:1px solid rgba(212,169,87,.4);border-radius:999px;
+    display:inline-block;
+  }
+  /* Closing CTA on the done screen */
+  .sample-cta{
+    display:inline-block;
+    margin:1.6rem 0 .4rem;
+    -webkit-appearance:none;appearance:none;
+    background:linear-gradient(135deg,var(--gold),var(--gold-2));
+    color:#07071a;text-decoration:none;
+    padding:1rem 2rem;border-radius:6px;
+    font-family:var(--fn);font-weight:600;font-size:.82rem;
+    letter-spacing:.14em;text-transform:uppercase;
+    box-shadow:0 8px 26px rgba(212,169,87,.26);
+  }
+  .sample-cta:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(212,169,87,.4);}
+  .done-sub-note{font-family:var(--fs);font-style:italic;color:var(--cream-mute);max-width:30ch;margin:0 auto 1rem;line-height:1.55;}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+
+<!-- SPLASH -->
+<section id="screen-splash" class="screen" aria-label="Welcome">
+  <div class="splash-inner">
+    <img src="../icons/icon-512.png" alt="Lovers Quest" class="splash-logo" />
+    <h1 class="splash-title">Lovers Quest</h1>
+    <p class="splash-sub">A Faith-Rooted Journey for Couples</p>
+    <span class="splash-sample-badge">12-card free sample</span>
+    <button class="btn btn-gold splash-begin" data-action="begin">Begin</button>
+    <p class="splash-byline">by Dennis Nickens, AKA Spiritual Romeo</p>
+  </div>
+</section>
+
+<!-- WELCOME CARD -->
+<section id="screen-welcome" class="screen" aria-label="Before You Start" hidden>
+  <div class="sheet">
+    <div class="sheet-rule"></div>
+    <h2 class="sheet-title" id="welcome-title">Before You Start</h2>
+    <div class="sheet-body" id="welcome-body">
+      <p>This is a 12-card taste of Lovers Quest. The full deck has 72 questions across the same six categories.</p>
+      <p>This is not a quiz. There are no right answers. There is no winning. What this is, is an invitation to ask each other the questions you stopped asking.</p>
+      <p>Pull one card. Read it aloud. Take turns answering. Listen all the way through before you respond. Stay soft.</p>
+      <p>Welcome to the quest.</p>
+    </div>
+    <p class="sheet-signoff" id="welcome-signoff"><em>Dennis Nickens, AKA Spiritual Romeo</em></p>
+    <div class="sheet-rule"></div>
+    <button class="btn btn-gold" data-action="ready">I'm Ready</button>
+  </div>
+</section>
+
+<!-- MAIN CARD VIEW (reuses parent CSS classes) -->
+<section id="screen-card" class="screen" aria-label="Card" hidden>
+  <div class="sr-watermark left" id="sr-wm-left" aria-hidden="true"></div>
+  <div class="sr-watermark right" id="sr-wm-right" aria-hidden="true"></div>
+  <div class="sr-pillar left" aria-hidden="true"></div>
+  <div class="sr-pillar right" aria-hidden="true"></div>
+  <div class="sr-flour top left" aria-hidden="true"><svg viewBox="0 0 38 14"><path d="M2 7h12M24 7h12"/><circle cx="19" cy="7" r="2.2"/><circle cx="16" cy="7" r="0.8"/><circle cx="22" cy="7" r="0.8"/></svg></div>
+  <div class="sr-flour top right" aria-hidden="true"><svg viewBox="0 0 38 14"><path d="M2 7h12M24 7h12"/><circle cx="19" cy="7" r="2.2"/><circle cx="16" cy="7" r="0.8"/><circle cx="22" cy="7" r="0.8"/></svg></div>
+  <div class="sr-flour bottom left" aria-hidden="true"><svg viewBox="0 0 38 14"><path d="M2 7h12M24 7h12"/><circle cx="19" cy="7" r="2.2"/><circle cx="16" cy="7" r="0.8"/><circle cx="22" cy="7" r="0.8"/></svg></div>
+  <div class="sr-flour bottom right" aria-hidden="true"><svg viewBox="0 0 38 14"><path d="M2 7h12M24 7h12"/><circle cx="19" cy="7" r="2.2"/><circle cx="16" cy="7" r="0.8"/><circle cx="22" cy="7" r="0.8"/></svg></div>
+  <div class="sr-top-orn" aria-hidden="true"><svg viewBox="0 0 180 18"><path d="M2 9h60M118 9h60"/><circle cx="90" cy="9" r="3.5"/><circle cx="80" cy="9" r="1.2"/><circle cx="100" cy="9" r="1.2"/><path d="M68 9l8-4M68 9l8 4M112 9l-8-4M112 9l-8 4"/></svg></div>
+
+  <div class="topbar">
+    <button class="icon-btn" data-action="back" aria-label="Previous card" id="btn-back">
+      <svg viewBox="0 0 24 24" class="ui-svg"><path d="M15 5l-7 7 7 7" /></svg>
+    </button>
+    <span style="flex:1"></span>
+  </div>
+
+  <div class="card-stage">
+    <article class="qcard" id="qcard">
+      <div class="qcard-inner">
+        <div class="qcard-icon" id="card-icon"></div>
+        <div class="qcard-cat" id="card-cat"></div>
+        <p class="qcard-text" id="card-text"></p>
+        <button class="qcard-context" data-action="context" aria-label="Show context for this question">
+          <svg viewBox="0 0 24 24" class="ctx-ic" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 10.5v5.5M12 7.5v.5"/></svg>
+          <span>Context</span>
+        </button>
+        <div class="qcard-flourish" id="card-flourish">
+          <svg viewBox="0 0 120 16" aria-hidden="true">
+            <path d="M2 8h40M118 8H78" stroke-linecap="round"/>
+            <path d="M60 3l5 5-5 5-5-5z"/>
+            <circle cx="49" cy="8" r="1.6"/>
+            <circle cx="71" cy="8" r="1.6"/>
+          </svg>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="card-bottom">
+    <div class="progress-count" id="progress-count"></div>
+    <button class="btn btn-gold btn-next" data-action="next">Next Card</button>
+  </div>
+</section>
+
+<!-- COMPLETION (with full-deck CTA) -->
+<section id="screen-done" class="screen" aria-label="End of sample" hidden>
+  <div class="done-inner">
+    <div class="done-crown" id="done-crown"></div>
+    <h2 class="done-title">You have finished the sample.</h2>
+    <p class="done-sub">The full deck has 60 more cards.</p>
+    <p class="done-sub-note" id="done-note">If these 12 cards opened something between you, the full Lovers Quest deck of 72 questions is waiting.</p>
+    <a class="sample-cta" href="/store/lovers-quest.html">Get the Full Deck</a>
+    <div class="done-actions" style="margin-top:1rem;">
+      <button class="btn btn-ghost" data-action="reshuffle">Reshuffle the Sample</button>
+    </div>
+  </div>
+</section>
+
+<!-- Modal (Context popups reuse this) -->
+<div class="modal-backdrop" id="modal-backdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="icon-btn modal-close" data-action="close-modal" aria-label="Close">
+      <svg viewBox="0 0 24 24" class="ui-svg"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <h3 class="modal-title" id="modal-title"></h3>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<!-- Dummy drawer so showScreen / closeMenu etc. don't break -->
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<aside class="drawer" id="drawer" hidden></aside>
+
+<script src="app.js"></script>
+</body>
+</html>

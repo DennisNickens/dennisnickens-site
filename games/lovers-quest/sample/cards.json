@@ -1,0 +1,158 @@
+{
+  "deck_name": "Lovers Quest (Sample)",
+  "subtitle": "A 12-card taste of the full deck",
+  "author": "Dennis Nickens, AKA Spiritual Romeo",
+  "welcome": {
+    "title": "Before You Start",
+    "body": [
+      "This is a 12-card taste of Lovers Quest. The full deck has 72 questions across the same six categories.",
+      "This is not a quiz. There are no right answers. There is no winning. What this is, is an invitation to ask each other the questions you stopped asking.",
+      "Pull one card. Read it aloud. Take turns answering. Listen all the way through before you respond. Stay soft.",
+      "Welcome to the quest."
+    ],
+    "signoff": "Dennis Nickens, AKA Spiritual Romeo"
+  },
+  "instructions": {
+    "title": "How to Play Lovers Quest",
+    "steps": [
+      "Shuffle the deck. Either of you can go first.",
+      "Draw one card. Read the question aloud.",
+      "The person who drew answers first. Take your time. Speak from where you actually are, not where you think you should be.",
+      "When you finish answering, ask your spouse, \"What would you add?\" Then they answer.",
+      "Before moving to the next card, take three seconds of silence together. Let what was said settle.",
+      "When you are done for the night, set the deck aside. Pick up again next time."
+    ],
+    "ground_rules_title": "Ground Rules",
+    "ground_rules": [
+      "Do not use a card as a weapon.",
+      "Do not bring up an old fight while answering.",
+      "Do not check your phone between cards."
+    ],
+    "final_note_title": "One Final Note",
+    "final_note": "If a question is too hard for tonight, set it aside. There is no requirement to answer every card the same evening. Real conversation is not a race."
+  },
+  "completion": {
+    "title": "You have finished the sample.",
+    "subtitle": "The full deck has 60 more cards.",
+    "note": "If these 12 cards opened something between you, the full Lovers Quest deck of 72 questions is waiting at dennisnickens.com/store/lovers-quest.html."
+  },
+  "about": {
+    "tagline": "Some marriages drift. Yours does not have to.",
+    "body": "Lovers Quest is a faith-rooted card game for couples who refuse to let their marriage run on autopilot. This 12-card sample is a taste of the full 72-card deck.",
+    "credit": "A Spiritual Romeo Production. By Dennis Nickens.",
+    "physical_edition_label": "Get the full deck",
+    "physical_edition_url": "/store/lovers-quest.html"
+  },
+  "categories": [
+    {
+      "key": "intimacy",
+      "name": "Intimacy",
+      "icon": "flame",
+      "description": "The flame represents what's burning between you. Not just physical intimacy, but the closeness of being fully known and fully chosen."
+    },
+    {
+      "key": "trust",
+      "name": "Trust",
+      "icon": "key",
+      "description": "The key represents what's locked between you. Trust is the access you grant each other to the parts of yourself you protect from everyone else."
+    },
+    {
+      "key": "purpose",
+      "name": "Purpose",
+      "icon": "compass",
+      "description": "The compass represents where you are headed together. Marriage is not just two people. It is a direction. This is the category that pulls you toward what God is building."
+    },
+    {
+      "key": "conflict",
+      "name": "Conflict",
+      "icon": "hand-leaf",
+      "description": "The hand offering the leaf represents the fight FOR each other instead of AGAINST each other. Every marriage has conflict. The question is whether yours moves you toward each other or pulls you apart."
+    },
+    {
+      "key": "grace",
+      "name": "Grace",
+      "icon": "rose",
+      "description": "The rose represents the beauty that grows in soil that has been broken open. Grace is not just forgiveness. It is the soft place you give each other to land when you are not at your best."
+    },
+    {
+      "key": "legacy",
+      "name": "Legacy",
+      "icon": "crown",
+      "description": "The crown represents what outlives you both. The love story you write together will keep speaking long after you stop. This category asks what you want it to say."
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "category": "intimacy",
+      "text": "When did you feel most known by me?",
+      "context": "This one asks about a specific moment, not a general feeling. Think about a recent time where your spouse saw something in you that no one else would have caught. Not what they said about it. What you felt when you realized they saw it.\n\nThe point isn't to find the perfect example. It's to put words to what being known by your spouse actually feels like, so they know which way to keep moving."
+    },
+    {
+      "id": 2,
+      "category": "intimacy",
+      "text": "What is one thing about how we love each other that you never want to lose?",
+      "context": "Marriages lose things slowly, sometimes without noticing. Some habits and rhythms between you are sacred and worth protecting before they fade.\n\nName one. Not the obvious one. The small specific one only the two of you would notice. The point is to put a stake in the ground so neither of you accidentally lets it go."
+    },
+    {
+      "id": 3,
+      "category": "trust",
+      "text": "What would help you feel safer being fully yourself with me?",
+      "context": "Safety in a marriage isn't physical safety, it's permission to bring the whole self to the table. Most spouses still edit themselves a little, even after years.\n\nThink about what you'd stop editing if you knew it would land softly. Then describe what your spouse would need to do (or stop doing) for that to be the case. Be specific. Vague safety is hard to provide."
+    },
+    {
+      "id": 4,
+      "category": "trust",
+      "text": "What is the thing I would need to do today for you to feel like I am completely on your side?",
+      "context": "Spouses can be on each other's side in general and still leave moments where the other one doesn't feel it.\n\nThis asks for a specific present-tense action. Not a year-long change. One thing they could do today, this week, that would land in your body as \"they have my back.\" Make it concrete. Make it something they could actually do."
+    },
+    {
+      "id": 5,
+      "category": "purpose",
+      "text": "What is God inviting us to build together?",
+      "context": "Marriage is a partnership and most partnerships have a build, a shared assignment, a thing the two of you are uniquely positioned to do.\n\nThis asks you to put words to what you sense God is asking of you AS A COUPLE, not just as individuals. It doesn't have to be big. It doesn't have to be public. It just has to be true."
+    },
+    {
+      "id": 6,
+      "category": "purpose",
+      "text": "When you imagine the legacy God wants from this marriage, what is the first image that comes up?",
+      "context": "Don't think too hard. The first image is usually the truest one. It might be your kids. It might be a stage. It might be a quiet meal table with people you've poured into.\n\nWhatever flashes first, describe it. Then describe what would have to be true in your marriage today for that image to actually become real."
+    },
+    {
+      "id": 7,
+      "category": "conflict",
+      "text": "How do you want us to fight for each other, not against each other?",
+      "context": "Healthy couples still fight. The difference is the direction of the fight.\n\nThis asks you to describe what fighting FOR each other actually looks like in real time. Specific behaviors. A pause before reacting. A phrase that signals you're both on the same team. The framework only works if you've defined it in advance."
+    },
+    {
+      "id": 8,
+      "category": "conflict",
+      "text": "What is one thing I could say in the middle of a hard moment that would help you feel safe?",
+      "context": "A single phrase, said at the right moment, can de-escalate a fight. What's yours? Not what should be theirs.\n\nWhat's the line that, if your spouse said it to you mid-conflict, would let you exhale? Tell them. They cannot say what they don't know to say."
+    },
+    {
+      "id": 9,
+      "category": "grace",
+      "text": "Where do you need more grace from me right now?",
+      "context": "Grace isn't a general topic, it's a specific present-tense need. There's a place in your life right now where you need your spouse to extend you something softer than what you're getting.\n\nMaybe in how they react to your mistakes. Maybe in how patient they are with your growth. Maybe in how they hold a struggle of yours. Name the place. Be specific."
+    },
+    {
+      "id": 10,
+      "category": "grace",
+      "text": "When have I given you grace in a way that changed something in you?",
+      "context": "This is a thank-you in question form. There was a moment where your spouse extended you grace you didn't expect, and something in you shifted because of it.\n\nName it. Tell them what it did for you. The point isn't to pay them back. It's to let them know that the grace landed somewhere real."
+    },
+    {
+      "id": 11,
+      "category": "legacy",
+      "text": "What kind of love story do you want us to leave behind?",
+      "context": "Your marriage is going to be a story someone tells eventually. To your kids. To other couples. To people who watched it.\n\nThis asks you to describe the version of that story you want told. Not the polished version. The true version that includes what you want the takeaway to be. Name it now and you have something to live toward."
+    },
+    {
+      "id": 12,
+      "category": "legacy",
+      "text": "When we are old and looking back on this season, what do you want to remember about us?",
+      "context": "You're going to be old together. That's the assumption this question is built on. The season you're in right now will look very different in 30 years.\n\nSo zoom out. What about this exact chapter (the kids being young, the business being new, the season being hard, whatever it is) do you want your future selves to remember? Not what you'll be proud of. What you'll be glad you didn't miss."
+    }
+  ]
+}

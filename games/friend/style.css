@@ -1,0 +1,210 @@
+/* ============================================================
+   You Call Yourself A Friend - styles
+   ------------------------------------------------------------
+   Brand: deep midnight blue + warm coral accent. Different
+   palette from Lovers Quest (which is navy + gold) so the
+   two games feel like siblings, not twins.
+   ============================================================ */
+
+:root {
+  --bg: #08111f;
+  --bg-2: #0d1a2c;
+  --panel: #11203a;
+  --panel-2: #182d4d;
+  --cream: #f5f1e8;
+  --cream-mute: rgba(245,241,232,.78);
+  --cream-faint: rgba(245,241,232,.5);
+  --coral: #ff7a59;
+  --coral-2: #e85c3a;
+  --teal: #4ec5b0;
+  --line: rgba(245,241,232,.14);
+  --ff: 'Playfair Display', Georgia, serif;
+  --fn: 'Inter', system-ui, sans-serif;
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; min-height: 100%; background: var(--bg); color: var(--cream); }
+body {
+  font-family: var(--fn);
+  font-weight: 400;
+  line-height: 1.5;
+  background:
+    radial-gradient(ellipse at 22% 12%, rgba(255,122,89,.10), transparent 55%),
+    radial-gradient(ellipse at 80% 88%, rgba(78,197,176,.10), transparent 55%),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- screens ---------- */
+.screen {
+  position: fixed; inset: 0; z-index: 5;
+  display: flex; align-items: center; justify-content: center;
+  padding: calc(env(safe-area-inset-top) + 1.25rem) 1.25rem calc(env(safe-area-inset-bottom) + 1.25rem);
+  opacity: 1; transition: opacity .35s var(--ease);
+}
+.screen[hidden] { display: none; }
+.screen.fading { opacity: 0; }
+[hidden] { display: none !important; }
+
+/* ---------- buttons ---------- */
+.btn {
+  -webkit-appearance: none; appearance: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--fn); font-size: .85rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 1rem 2rem; border-radius: 8px; border: none; cursor: pointer;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease), color .25s var(--ease);
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--coral), var(--coral-2)); color: #1a0a05;
+  box-shadow: 0 12px 28px rgba(255,122,89,.28);
+}
+.btn-primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 16px 36px rgba(255,122,89,.4); }
+.btn-primary:disabled { opacity: .42; cursor: not-allowed; box-shadow: none; }
+.btn-ghost {
+  background: transparent; color: var(--cream-mute);
+  border: 1px solid var(--line);
+}
+.btn-ghost:hover { color: var(--cream); border-color: rgba(245,241,232,.36); }
+
+/* ---------- router (landing) ---------- */
+.router-inner {
+  text-align: center; display: flex; flex-direction: column; align-items: center;
+  gap: 1.6rem; max-width: 560px;
+}
+.brand-title {
+  font-family: var(--ff); font-weight: 800;
+  font-size: clamp(2.2rem, 8vw, 3.4rem);
+  letter-spacing: -.01em; line-height: 1.05; margin: 0;
+  background: linear-gradient(135deg, #fff, #ffe6dc, var(--coral));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.brand-sub {
+  font-family: var(--ff); font-style: italic; font-weight: 500;
+  font-size: clamp(1.05rem, 3.8vw, 1.3rem);
+  color: var(--cream-mute); margin: 0;
+}
+.brand-byline {
+  font-size: .75rem; letter-spacing: .08em; color: var(--cream-faint); margin-top: 1.8rem;
+}
+.router-actions { display: flex; flex-direction: column; gap: .9rem; width: min(320px, 100%); margin-top: .6rem; }
+
+/* ---------- sheet (host setup, join setup, pairing placeholder) ---------- */
+.sheet {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 2.2rem 1.8rem 2rem;
+  max-width: 460px; width: 100%;
+  box-shadow: 0 30px 70px rgba(0,0,0,.5);
+}
+.sheet-title {
+  font-family: var(--ff); font-weight: 700;
+  font-size: clamp(1.6rem, 5vw, 2rem);
+  color: var(--cream); margin: 0 0 .5rem;
+}
+.sheet-lead { color: var(--cream-mute); margin: 0 0 1.4rem; }
+.sheet-actions { display: flex; gap: .8rem; justify-content: flex-end; margin-top: 1.4rem; flex-wrap: wrap; }
+.dim-text { color: var(--cream-faint); font-size: .9rem; }
+
+.field-label {
+  display: block; font-size: .75rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--cream-mute); margin: .8rem 0 .4rem;
+}
+.text-input {
+  -webkit-appearance: none; appearance: none;
+  width: 100%;
+  font-family: var(--fn); font-size: 1.05rem;
+  color: var(--cream); background: var(--panel-2);
+  border: 1px solid var(--line); border-radius: 8px;
+  padding: .85rem 1rem;
+  transition: border-color .25s var(--ease), background .25s var(--ease);
+}
+.text-input:focus { outline: none; border-color: var(--coral); background: rgba(255,122,89,.06); }
+.code-input {
+  font-family: 'Courier New', monospace; font-size: 1.8rem;
+  letter-spacing: .42em; font-weight: 700; text-align: center; text-transform: uppercase;
+}
+.error-text { color: #ff9c8a; font-size: .9rem; margin: .6rem 0 0; }
+
+/* ---------- lobby ---------- */
+.lobby-inner {
+  text-align: center; display: flex; flex-direction: column; align-items: center;
+  gap: 1.1rem; max-width: 520px; width: 100%;
+}
+.lobby-eyebrow {
+  font-size: .7rem; letter-spacing: .32em; text-transform: uppercase;
+  color: var(--cream-faint); margin: 0;
+}
+.lobby-code {
+  font-family: 'Courier New', monospace; font-weight: 700;
+  font-size: clamp(3rem, 12vw, 4.4rem); letter-spacing: .18em;
+  color: var(--coral); margin: 0;
+}
+.lobby-qr {
+  width: 188px; height: 188px;
+  background: #fff; border-radius: 14px; padding: 10px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,.4);
+}
+.lobby-qr img, .lobby-qr canvas { display: block; width: 100%; height: 100%; }
+.lobby-share-note {
+  color: var(--cream-mute); font-size: .92rem; max-width: 36ch; margin: .2rem auto 0;
+}
+.kbd {
+  display: inline; font-family: 'Courier New', monospace; font-size: .9em;
+  background: var(--panel-2); padding: .12em .42em; border-radius: 4px; color: var(--cream);
+}
+.lobby-section-title {
+  font-family: var(--ff); font-weight: 700;
+  font-size: 1.05rem; letter-spacing: .04em;
+  color: var(--cream); margin: 1.6rem 0 .4rem;
+}
+.player-list {
+  list-style: none; padding: 0; margin: 0;
+  width: 100%; max-width: 360px;
+  display: flex; flex-direction: column; gap: .5rem;
+}
+.player-list li {
+  display: flex; align-items: center; gap: .8rem;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 10px; padding: .8rem 1rem;
+  animation: pop-in .35s var(--ease) both;
+}
+.player-list li.is-host::after {
+  content: 'HOST'; margin-left: auto;
+  font-size: .65rem; letter-spacing: .2em; color: var(--coral);
+  background: rgba(255,122,89,.12); padding: .2rem .55rem; border-radius: 999px;
+}
+.player-list li.is-you::after {
+  content: 'YOU'; margin-left: auto;
+  font-size: .65rem; letter-spacing: .2em; color: var(--teal);
+  background: rgba(78,197,176,.12); padding: .2rem .55rem; border-radius: 999px;
+}
+.player-list li.is-host.is-you::after { content: 'HOST · YOU'; }
+.player-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--teal);
+}
+.player-name { color: var(--cream); font-weight: 500; }
+.lobby-count {
+  font-size: .8rem; color: var(--cream-faint); margin: .2rem 0;
+  letter-spacing: .14em; text-transform: uppercase;
+}
+.lobby-actions {
+  display: flex; flex-direction: column; gap: .8rem;
+  align-items: center; margin-top: 1rem;
+  width: min(320px, 100%);
+}
+.lobby-host-note {
+  font-size: .82rem; color: var(--cream-faint); max-width: 32ch; line-height: 1.45;
+  font-style: italic; margin: 0;
+}
+
+/* ---------- animations ---------- */
+@keyframes pop-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; transition-duration: .06s !important; }
+}

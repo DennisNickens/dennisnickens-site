@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>You Call Yourself A Friend | A Game of Knowing Your People</title>
+<meta name="description" content="A multiplayer game by Dennis Nickens. How well do you really know the people you call friends? Pair up, race to the finish, find out." />
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#08111f" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="You Call Yourself A Friend" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- QR code library for the host's lobby invite (single inlined dependency) -->
+<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@04f46c6a0708418cb7b96fc563eacae0fbf77674/qrcode.min.js"></script>
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ================= SCREEN: ROUTER (landing) ================= -->
+<section id="screen-router" class="screen" aria-label="Welcome">
+  <div class="router-inner">
+    <h1 class="brand-title">You Call Yourself A Friend</h1>
+    <p class="brand-sub">A real-time game of knowing your people.</p>
+
+    <div class="router-actions">
+      <button class="btn btn-primary" data-action="goto-host">Start a Game</button>
+      <button class="btn btn-ghost" data-action="goto-join">Join a Game</button>
+    </div>
+
+    <p class="brand-byline">by Dennis Nickens, AKA Spiritual Romeo</p>
+  </div>
+</section>
+
+<!-- ================= SCREEN: HOST SETUP ================= -->
+<section id="screen-host-setup" class="screen" aria-label="Start a game" hidden>
+  <div class="sheet">
+    <h2 class="sheet-title">Start a Game</h2>
+    <p class="sheet-lead">Your name shows up at the table. Use what your friends call you.</p>
+    <label class="field-label" for="host-name">Your name</label>
+    <input type="text" id="host-name" class="text-input" placeholder="e.g. Dennis" autocomplete="given-name" maxlength="32" />
+    <p class="error-text" id="host-name-err" hidden></p>
+    <div class="sheet-actions">
+      <button class="btn btn-ghost" data-action="back-router">Back</button>
+      <button class="btn btn-primary" data-action="host-create">Create Room</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCREEN: JOIN SETUP ================= -->
+<section id="screen-join-setup" class="screen" aria-label="Join a game" hidden>
+  <div class="sheet">
+    <h2 class="sheet-title">Join a Game</h2>
+    <p class="sheet-lead">Enter the 4-letter code your host gave you (or scan their QR code with your camera).</p>
+
+    <label class="field-label" for="join-code">Room code</label>
+    <input type="text" id="join-code" class="text-input code-input" placeholder="ABCD" autocomplete="off" autocapitalize="characters" maxlength="4" />
+
+    <label class="field-label" for="join-name">Your name</label>
+    <input type="text" id="join-name" class="text-input" placeholder="e.g. Brandi" autocomplete="given-name" maxlength="32" />
+
+    <p class="error-text" id="join-err" hidden></p>
+
+    <div class="sheet-actions">
+      <button class="btn btn-ghost" data-action="back-router">Back</button>
+      <button class="btn btn-primary" data-action="join-go">Join Room</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCREEN: LOBBY ================= -->
+<section id="screen-lobby" class="screen" aria-label="Lobby" hidden>
+  <div class="lobby-inner">
+    <p class="lobby-eyebrow">Room code</p>
+    <h2 class="lobby-code" id="lobby-code">----</h2>
+    <div class="lobby-qr" id="lobby-qr" aria-hidden="true"></div>
+    <p class="lobby-share-note" id="lobby-share-note">Tell your friends to scan the code or enter the room code above at <span class="kbd">dennisnickens.com/games/friend/</span></p>
+
+    <h3 class="lobby-section-title">At the Table</h3>
+    <ul class="player-list" id="player-list"></ul>
+    <p class="lobby-count" id="lobby-count"></p>
+
+    <div class="lobby-actions">
+      <button class="btn btn-primary" id="start-btn" data-action="host-start" disabled>Pair Up &rarr;</button>
+      <p class="lobby-host-note" id="lobby-host-note" hidden>Only the host can start the game. You'll move on as soon as they tap Pair Up.</p>
+      <button class="btn btn-ghost" data-action="leave-room">Leave</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCREEN: TEMP placeholder for the pairing phase ================= -->
+<section id="screen-pairing" class="screen" aria-label="Pairing" hidden>
+  <div class="sheet">
+    <h2 class="sheet-title">Pick Your Partner</h2>
+    <p class="sheet-lead">Coming next: tap the friend you came in with. This phase ships in the next deploy.</p>
+    <p class="dim-text">For now, the foundation (room, lobby, QR join, real-time sync) is what's live. The pairing UI, the round loop, and the race tracker land in subsequent deploys.</p>
+    <div class="sheet-actions">
+      <button class="btn btn-ghost" data-action="back-router">Back to Start</button>
+    </div>
+  </div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>

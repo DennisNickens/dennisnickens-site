@@ -1,0 +1,14 @@
+{
+  "name": "You Call Yourself A Friend",
+  "short_name": "Friend",
+  "description": "A multiplayer game of knowing your people, by Dennis Nickens.",
+  "start_url": "/games/friend/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#08111f",
+  "theme_color": "#08111f",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

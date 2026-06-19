@@ -1,0 +1,1804 @@
+{
+  "deck_name": "You Call Yourself A Friend",
+  "subtitle": "How well do you really know your people?",
+  "author": "Dennis Nickens, AKA Spiritual Romeo",
+  "scoring_cap": 25,
+  "min_players": 4,
+  "max_players": 10,
+  "type_counts": {
+    "mc4": 35,
+    "mc6": 14,
+    "tf": 7,
+    "group_vote": 6,
+    "reflection": 5,
+    "discussion": 5
+  },
+  "cards": [
+    {
+      "id": 1,
+      "theme": "Presence",
+      "type": "mc4",
+      "text": "When [Subject]'s friend is going through something hard, [Subject] usually:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Drops everything and shows up in person"
+        },
+        {
+          "letter": "B",
+          "text": "Sends a thoughtful text and follows up later"
+        },
+        {
+          "letter": "C",
+          "text": "Waits to be asked because they don't want to overstep"
+        },
+        {
+          "letter": "D",
+          "text": "Means well but forgets to follow through"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Other players each pick a letter. Reveal at the same time. Subject reveals which is true. Scoring: 2 points for the correct letter. Subject gets 1 point for every correct guess."
+    },
+    {
+      "id": 2,
+      "theme": "Presence",
+      "type": "mc4",
+      "text": "If you texted [Subject] at 2 a.m. saying \"are you up?\" they would:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Call you within five minutes"
+        },
+        {
+          "letter": "B",
+          "text": "Reply with a text but not call"
+        },
+        {
+          "letter": "C",
+          "text": "See it in the morning and check in then"
+        },
+        {
+          "letter": "D",
+          "text": "Probably miss it entirely until you mentioned it"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal at the same time. Subject reveals truth. Scoring: 2 points correct + 1 point to Subject per correct guesser."
+    },
+    {
+      "id": 3,
+      "theme": "Presence",
+      "type": "mc6",
+      "text": "[Subject]'s last canceled plan was canceled because:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "They were genuinely sick or had an emergency"
+        },
+        {
+          "letter": "B",
+          "text": "Work blew up at the last minute"
+        },
+        {
+          "letter": "C",
+          "text": "Their energy was low and they couldn't fake it"
+        },
+        {
+          "letter": "D",
+          "text": "Something better came along"
+        },
+        {
+          "letter": "E",
+          "text": "They forgot until it was too late"
+        },
+        {
+          "letter": "F",
+          "text": "Family pulled them away"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal at the same time. Subject reveals truth. Scoring: 3 points correct + 1 point to Subject per correct guesser."
+    },
+    {
+      "id": 4,
+      "theme": "Presence",
+      "type": "mc4",
+      "text": "The version of [Subject] their friends get at parties versus the version they get one on one is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Identical, [Subject] is the same everywhere"
+        },
+        {
+          "letter": "B",
+          "text": "Different but only slightly"
+        },
+        {
+          "letter": "C",
+          "text": "Noticeably different, [Subject] performs more in groups"
+        },
+        {
+          "letter": "D",
+          "text": "Two totally different people"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals truth. Scoring: 2 + 1."
+    },
+    {
+      "id": 5,
+      "theme": "Presence",
+      "type": "tf",
+      "text": "[Subject] has flaked on a friend in the past month.",
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "playNotes": "Players write T or F. Reveal at the same time. Subject reveals truth. Scoring: 1 point correct + 1 point to Subject per correct guesser."
+    },
+    {
+      "id": 6,
+      "theme": "Presence",
+      "type": "mc4",
+      "text": "When [Subject] says \"let me know if you need anything,\" they:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Mean it and will show up if asked"
+        },
+        {
+          "letter": "B",
+          "text": "Mean it but secretly hope they don't get asked"
+        },
+        {
+          "letter": "C",
+          "text": "Say it out of habit without thinking"
+        },
+        {
+          "letter": "D",
+          "text": "Are already planning to follow up before you ask"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 7,
+      "theme": "Presence",
+      "type": "group_vote",
+      "text": "Point to the person in this room you think [Subject] would call FIRST if they got terrible news right now.",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 3
+      },
+      "playNotes": "All players point at the same time. Subject reveals who they would actually call. If the person Subject would call is sitting at the table, players who pointed at them score. If Subject would call someone NOT at the table, no one scores on the point but Subject reveals who. Scoring: 2 points for correctly pointing. 3 points to Subject if a majority pointed correctly."
+    },
+    {
+      "id": 8,
+      "theme": "Presence",
+      "type": "mc6",
+      "text": "The friend [Subject] is the BEST at showing up for is best described as:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "The one who's been going through it for years"
+        },
+        {
+          "letter": "B",
+          "text": "The one [Subject] has known the longest"
+        },
+        {
+          "letter": "C",
+          "text": "The newest friend [Subject] is still impressing"
+        },
+        {
+          "letter": "D",
+          "text": "The one who makes it easy by asking directly"
+        },
+        {
+          "letter": "E",
+          "text": "The one [Subject] feels guilty about because they show up so much"
+        },
+        {
+          "letter": "F",
+          "text": "[Subject] would say they show up equally for everyone"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1."
+    },
+    {
+      "id": 9,
+      "theme": "Presence",
+      "type": "reflection",
+      "text": "[Subject], tell us about a moment recently when you wished you had shown up for someone and didn't. What got in the way?",
+      "scoring": {
+        "guesserPoints": 0,
+        "subjectPoints": 0
+      },
+      "playNotes": "Subject shares. Others listen. No guessing, no scoring."
+    },
+    {
+      "id": 10,
+      "theme": "Presence",
+      "type": "discussion",
+      "text": "Group discussion: What's the difference between being a present friend and being a busy friend? Is there a line, and who decides where it is?",
+      "scoring": {
+        "guesserPoints": 0,
+        "subjectPoints": 0
+      },
+      "playNotes": "Everyone weighs in. No scoring. Move on when the conversation runs its course."
+    },
+    {
+      "id": 11,
+      "theme": "Presence",
+      "type": "mc4",
+      "text": "When [Subject] is at dinner with a friend, their phone is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Face down on the table, untouched"
+        },
+        {
+          "letter": "B",
+          "text": "In their pocket on silent"
+        },
+        {
+          "letter": "C",
+          "text": "On the table face up so they can glance"
+        },
+        {
+          "letter": "D",
+          "text": "In their hand at least once per course"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 12,
+      "theme": "Presence",
+      "type": "mc4",
+      "text": "The last friend [Subject] reached out to first (no reply chain, no obligation) was:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Someone in this room"
+        },
+        {
+          "letter": "B",
+          "text": "A friend they see less than once a month"
+        },
+        {
+          "letter": "C",
+          "text": "A friend who lives in a different city"
+        },
+        {
+          "letter": "D",
+          "text": "Honestly, they cannot remember"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 13,
+      "theme": "Truth",
+      "type": "mc4",
+      "text": "The hardest truth [Subject] is currently NOT telling a friend is most likely about:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "How they actually feel about that friend"
+        },
+        {
+          "letter": "B",
+          "text": "Something the friend is doing that's not working"
+        },
+        {
+          "letter": "C",
+          "text": "Something [Subject] is going through privately"
+        },
+        {
+          "letter": "D",
+          "text": "Something [Subject] regrets from their shared past"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 14,
+      "theme": "Truth",
+      "type": "mc4",
+      "text": "When a friend asks [Subject] \"what do you really think,\" [Subject] usually:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tells them straight, no softening"
+        },
+        {
+          "letter": "B",
+          "text": "Tells them but cushions it"
+        },
+        {
+          "letter": "C",
+          "text": "Asks what they want to hear and steers there"
+        },
+        {
+          "letter": "D",
+          "text": "Avoids the question by reframing it"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 15,
+      "theme": "Truth",
+      "type": "mc6",
+      "text": "[Subject] tells the most lies (even small ones) to friends about:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "How they really feel about other friends in the group"
+        },
+        {
+          "letter": "B",
+          "text": "Why they canceled a plan"
+        },
+        {
+          "letter": "C",
+          "text": "How well they're actually doing"
+        },
+        {
+          "letter": "D",
+          "text": "How they spent their weekend"
+        },
+        {
+          "letter": "E",
+          "text": "Their feelings about another friend's partner"
+        },
+        {
+          "letter": "F",
+          "text": "[Subject] would say they don't lie to friends"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1."
+    },
+    {
+      "id": 16,
+      "theme": "Truth",
+      "type": "tf",
+      "text": "[Subject] has lied to someone in this room in the past month.",
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal at the same time. Subject reveals. Scoring: 1 + 1."
+    },
+    {
+      "id": 17,
+      "theme": "Truth",
+      "type": "mc4",
+      "text": "The thing [Subject] hides from their friends to seem \"fine\" is mostly:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Financial stress"
+        },
+        {
+          "letter": "B",
+          "text": "Loneliness even in a full room"
+        },
+        {
+          "letter": "C",
+          "text": "How much they actually need their friends"
+        },
+        {
+          "letter": "D",
+          "text": "That something they do for fun is actually exhausting"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 18,
+      "theme": "Truth",
+      "type": "mc4",
+      "text": "If a friend asked [Subject] \"do you actually like spending time with me,\" [Subject] would:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Say yes immediately and mean it"
+        },
+        {
+          "letter": "B",
+          "text": "Say yes and partly mean it"
+        },
+        {
+          "letter": "C",
+          "text": "Pause too long before answering"
+        },
+        {
+          "letter": "D",
+          "text": "Honestly ask \"why are you asking that\""
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 19,
+      "theme": "Truth",
+      "type": "group_vote",
+      "text": "Point to the person in this room you think [Subject] is most honest with about themselves.",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 3
+      },
+      "playNotes": "All players point at the same time. Subject reveals who they're actually most honest with (in or out of the room). Scoring: 2 for pointing correctly. 3 to Subject if a majority pointed at the person Subject named."
+    },
+    {
+      "id": 20,
+      "theme": "Truth",
+      "type": "mc6",
+      "text": "The truth [Subject] most wishes one specific friend would just SAY to them is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "\"I miss you and I'm not great at saying it\""
+        },
+        {
+          "letter": "B",
+          "text": "\"I'm jealous of how your life looks right now\""
+        },
+        {
+          "letter": "C",
+          "text": "\"You changed and I'm not sure how to be your friend now\""
+        },
+        {
+          "letter": "D",
+          "text": "\"I need more from you than I'm asking for\""
+        },
+        {
+          "letter": "E",
+          "text": "\"I'm proud of you and I never say it enough\""
+        },
+        {
+          "letter": "F",
+          "text": "\"I'm struggling and I don't know how to bring it up\""
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1."
+    },
+    {
+      "id": 21,
+      "theme": "Truth",
+      "type": "mc4",
+      "text": "When [Subject] disagrees with what a friend is doing, [Subject] usually:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Says it directly the next time it comes up"
+        },
+        {
+          "letter": "B",
+          "text": "Talks about it with a different friend first"
+        },
+        {
+          "letter": "C",
+          "text": "Sits with it and hopes the friend figures it out"
+        },
+        {
+          "letter": "D",
+          "text": "Says nothing because it's not their place"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 22,
+      "theme": "Truth",
+      "type": "reflection",
+      "text": "[Subject], tell us one truth about yourself that you have rehearsed telling a friend but never have. Don't tell us who, just what.",
+      "scoring": {
+        "guesserPoints": 0,
+        "subjectPoints": 0
+      },
+      "playNotes": "Subject shares. Others listen."
+    },
+    {
+      "id": 23,
+      "theme": "Truth",
+      "type": "discussion",
+      "text": "Group discussion: Is there such a thing as too honest with a friend? When does honesty become an excuse for cruelty?",
+      "scoring": {
+        "guesserPoints": 0,
+        "subjectPoints": 0
+      },
+      "playNotes": "Everyone weighs in."
+    },
+    {
+      "id": 24,
+      "theme": "Truth",
+      "type": "mc4",
+      "text": "The friend [Subject] is currently NOT telling something important to is most likely:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Someone in this room"
+        },
+        {
+          "letter": "B",
+          "text": "A friend they've known the longest"
+        },
+        {
+          "letter": "C",
+          "text": "A friend they don't see often anymore"
+        },
+        {
+          "letter": "D",
+          "text": "The friend who'd take it the hardest"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 25,
+      "theme": "Investment",
+      "type": "mc4",
+      "text": "In the last 30 days, [Subject] has done something significant for a friend that cost them:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Real money"
+        },
+        {
+          "letter": "B",
+          "text": "A full day or evening"
+        },
+        {
+          "letter": "C",
+          "text": "A hard conversation they didn't want to have"
+        },
+        {
+          "letter": "D",
+          "text": "Nothing significant, honestly"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 26,
+      "theme": "Investment",
+      "type": "mc4",
+      "text": "[Subject]'s friendships function more like:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A bank account where they always make deposits"
+        },
+        {
+          "letter": "B",
+          "text": "A bank account where they always take withdrawals"
+        },
+        {
+          "letter": "C",
+          "text": "Roughly balanced"
+        },
+        {
+          "letter": "D",
+          "text": "[Subject] honestly has no idea"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 27,
+      "theme": "Investment",
+      "type": "mc6",
+      "text": "The friend [Subject] is currently UNDER-investing in is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "The one they've known the longest"
+        },
+        {
+          "letter": "B",
+          "text": "The newest friend they made"
+        },
+        {
+          "letter": "C",
+          "text": "A friend they had a small fight with"
+        },
+        {
+          "letter": "D",
+          "text": "A friend who's been needier than usual"
+        },
+        {
+          "letter": "E",
+          "text": "A friend doing too well and [Subject] feels unneeded"
+        },
+        {
+          "letter": "F",
+          "text": "Someone in this room"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1."
+    },
+    {
+      "id": 28,
+      "theme": "Investment",
+      "type": "tf",
+      "text": "[Subject] reached out to a friend first (no prompt, no obligation) within the last week.",
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 1 + 1."
+    },
+    {
+      "id": 29,
+      "theme": "Investment",
+      "type": "mc4",
+      "text": "Last time a friend hit a real milestone (engagement, promotion, hard recovery, real win), [Subject]:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Called or showed up immediately"
+        },
+        {
+          "letter": "B",
+          "text": "Sent a thoughtful text or gift"
+        },
+        {
+          "letter": "C",
+          "text": "Liked the post and meant to follow up"
+        },
+        {
+          "letter": "D",
+          "text": "Did not see it / did not act"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 30,
+      "theme": "Investment",
+      "type": "mc4",
+      "text": "The most recent thing [Subject] did just because a friend would enjoy it:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Within the last week"
+        },
+        {
+          "letter": "B",
+          "text": "Within the last month"
+        },
+        {
+          "letter": "C",
+          "text": "Within the last six months"
+        },
+        {
+          "letter": "D",
+          "text": "Honestly cannot remember"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 31,
+      "theme": "Investment",
+      "type": "group_vote",
+      "text": "Point to the person in this room you think [Subject] has invested the MOST time in over the past year.",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 3
+      },
+      "playNotes": "Pointing at the same time. Scoring: 2 for pointing correctly. 3 to Subject if half or more pointed correctly."
+    },
+    {
+      "id": 32,
+      "theme": "Investment",
+      "type": "mc6",
+      "text": "The cost of [Subject]'s friendships shows up most as:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Time"
+        },
+        {
+          "letter": "B",
+          "text": "Money"
+        },
+        {
+          "letter": "C",
+          "text": "Emotional weight they carry quietly"
+        },
+        {
+          "letter": "D",
+          "text": "Sleep, schedule, their own peace"
+        },
+        {
+          "letter": "E",
+          "text": "Career or family time they trade for friend time"
+        },
+        {
+          "letter": "F",
+          "text": "Friendships do not currently cost [Subject] much"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1."
+    },
+    {
+      "id": 33,
+      "theme": "Investment",
+      "type": "mc4",
+      "text": "When a friend asks [Subject] for a favor, [Subject] usually:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Says yes before thinking about whether they can"
+        },
+        {
+          "letter": "B",
+          "text": "Says yes and resents it later"
+        },
+        {
+          "letter": "C",
+          "text": "Pauses and gives an honest yes or no"
+        },
+        {
+          "letter": "D",
+          "text": "Defers the answer and forgets to come back"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 34,
+      "theme": "Investment",
+      "type": "mc6",
+      "text": "The friend [Subject] could do something thoughtful for THIS WEEK, that they probably won't, is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Someone in this room"
+        },
+        {
+          "letter": "B",
+          "text": "The friend going through the hardest thing right now"
+        },
+        {
+          "letter": "C",
+          "text": "A long-distance friend they keep losing touch with"
+        },
+        {
+          "letter": "D",
+          "text": "A friend who reached out and didn't get a real reply"
+        },
+        {
+          "letter": "E",
+          "text": "A friend they owe an apology to"
+        },
+        {
+          "letter": "F",
+          "text": "[Subject] is honestly planning to do something for someone already"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1."
+    },
+    {
+      "id": 35,
+      "theme": "Investment",
+      "type": "discussion",
+      "text": "Group discussion: What does it actually cost to be a great friend? Is it possible to be one without trading something away?",
+      "scoring": {
+        "guesserPoints": 0,
+        "subjectPoints": 0
+      },
+      "playNotes": "Everyone weighs in."
+    },
+    {
+      "id": 36,
+      "theme": "Investment",
+      "type": "mc4",
+      "text": "[Subject]'s friendships would suffer the most if [Subject] suddenly:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Lost the ability to text quickly"
+        },
+        {
+          "letter": "B",
+          "text": "Could not spend money on friends for a year"
+        },
+        {
+          "letter": "C",
+          "text": "Could not see anyone in person for six months"
+        },
+        {
+          "letter": "D",
+          "text": "Stopped initiating contact entirely"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 37,
+      "theme": "Knowledge",
+      "type": "mc4",
+      "text": "[Subject] knows their best friend's:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Greatest fear right now"
+        },
+        {
+          "letter": "B",
+          "text": "Greatest hope for the next year"
+        },
+        {
+          "letter": "C",
+          "text": "Both"
+        },
+        {
+          "letter": "D",
+          "text": "Neither, honestly"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 38,
+      "theme": "Knowledge",
+      "type": "mc4",
+      "text": "The thing [Subject] does NOT know about a close friend, that they probably should, is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "What their parents are actually like"
+        },
+        {
+          "letter": "B",
+          "text": "The exact moment something hard happened to them"
+        },
+        {
+          "letter": "C",
+          "text": "What their relationship with money is"
+        },
+        {
+          "letter": "D",
+          "text": "What their faith situation actually is"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 39,
+      "theme": "Knowledge",
+      "type": "mc6",
+      "text": "The friend [Subject] knows the LEAST about (despite calling them close) is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "The friend with the loudest personality"
+        },
+        {
+          "letter": "B",
+          "text": "The friend who always asks about [Subject] but deflects from themselves"
+        },
+        {
+          "letter": "C",
+          "text": "The friend [Subject] has known the longest (and assumes they know already)"
+        },
+        {
+          "letter": "D",
+          "text": "The newest friend who hasn't opened up yet"
+        },
+        {
+          "letter": "E",
+          "text": "A friend in this room"
+        },
+        {
+          "letter": "F",
+          "text": "[Subject] would say they know all their close friends deeply"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1."
+    },
+    {
+      "id": 40,
+      "theme": "Knowledge",
+      "type": "tf",
+      "text": "[Subject] could name the three biggest things happening in their best friend's life right now.",
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals truth (and offers to name them if they can). Scoring: 1 + 1."
+    },
+    {
+      "id": 41,
+      "theme": "Knowledge",
+      "type": "mc4",
+      "text": "Of all the people in this room, [Subject] knows most about:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Person to Subject's left"
+        },
+        {
+          "letter": "B",
+          "text": "Person across the table"
+        },
+        {
+          "letter": "C",
+          "text": "Person to Subject's right"
+        },
+        {
+          "letter": "D",
+          "text": "Honestly, knows everyone in the room about equally"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Subject's neighbors can choose who fits A/B/C from where they sit. Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 42,
+      "theme": "Knowledge",
+      "type": "mc4",
+      "text": "The last thing [Subject] learned about a friend that genuinely surprised them was about:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Their childhood"
+        },
+        {
+          "letter": "B",
+          "text": "A current struggle"
+        },
+        {
+          "letter": "C",
+          "text": "Their finances or work"
+        },
+        {
+          "letter": "D",
+          "text": "Their faith or beliefs"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 43,
+      "theme": "Knowledge",
+      "type": "group_vote",
+      "text": "Point to the person in this room you think KNOWS [Subject] the best.",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 3
+      },
+      "playNotes": "All point at the same time. Subject reveals who they think knows them best. Scoring: 2 for pointing at the person Subject named. 3 to Subject if a majority pointed at the same person Subject did."
+    },
+    {
+      "id": 44,
+      "theme": "Knowledge",
+      "type": "mc6",
+      "text": "The biggest gap in [Subject]'s knowledge about a close friend is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "What their childhood was actually like"
+        },
+        {
+          "letter": "B",
+          "text": "What they're afraid of right now"
+        },
+        {
+          "letter": "C",
+          "text": "What they want out of the next five years"
+        },
+        {
+          "letter": "D",
+          "text": "What they think of [Subject]"
+        },
+        {
+          "letter": "E",
+          "text": "What their relationship with God or faith is"
+        },
+        {
+          "letter": "F",
+          "text": "Something else entirely"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1."
+    },
+    {
+      "id": 45,
+      "theme": "Knowledge",
+      "type": "mc4",
+      "text": "[Subject] could tell you their best friend's deepest fear:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Word for word, [Subject] knows it cold"
+        },
+        {
+          "letter": "B",
+          "text": "Roughly, [Subject] has a sense"
+        },
+        {
+          "letter": "C",
+          "text": "[Subject] could guess but isn't sure"
+        },
+        {
+          "letter": "D",
+          "text": "[Subject] honestly does not know"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 46,
+      "theme": "Knowledge",
+      "type": "reflection",
+      "text": "[Subject], name a friend who knows something about you that almost no one else knows. Without revealing the secret, tell us why that friend earned that level of trust.",
+      "scoring": {
+        "guesserPoints": 0,
+        "subjectPoints": 0
+      },
+      "playNotes": "Subject shares."
+    },
+    {
+      "id": 47,
+      "theme": "Knowledge",
+      "type": "mc4",
+      "text": "When [Subject] thinks of their three closest friends, the one [Subject] would have the HARDEST time describing accurately to a stranger is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "The funniest one"
+        },
+        {
+          "letter": "B",
+          "text": "The most successful one"
+        },
+        {
+          "letter": "C",
+          "text": "The one [Subject] sees most often"
+        },
+        {
+          "letter": "D",
+          "text": "The one [Subject] has known the longest"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 48,
+      "theme": "Knowledge",
+      "type": "mc6",
+      "text": "If [Subject] had to write a one-sentence description of each close friend, the friend they'd struggle most to capture is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "The most complicated one"
+        },
+        {
+          "letter": "B",
+          "text": "The one [Subject] is closest to"
+        },
+        {
+          "letter": "C",
+          "text": "The newest one"
+        },
+        {
+          "letter": "D",
+          "text": "The one [Subject] sees only occasionally"
+        },
+        {
+          "letter": "E",
+          "text": "The one [Subject] doesn't fully understand"
+        },
+        {
+          "letter": "F",
+          "text": "[Subject] could describe all of them easily"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1."
+    },
+    {
+      "id": 49,
+      "theme": "Repair",
+      "type": "mc4",
+      "text": "The last time [Subject] hurt a friend, [Subject] handled it by:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Saying sorry quickly and meaning it"
+        },
+        {
+          "letter": "B",
+          "text": "Apologizing but explaining why it happened"
+        },
+        {
+          "letter": "C",
+          "text": "Hoping it would blow over"
+        },
+        {
+          "letter": "D",
+          "text": "Not realizing they'd hurt the friend at all"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 50,
+      "theme": "Repair",
+      "type": "mc4",
+      "text": "[Subject]'s apologies tend to be:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Specific, direct, no excuses"
+        },
+        {
+          "letter": "B",
+          "text": "Heartfelt but with a defense built in"
+        },
+        {
+          "letter": "C",
+          "text": "Quick and slightly awkward"
+        },
+        {
+          "letter": "D",
+          "text": "Rare, [Subject] does not apologize easily"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 51,
+      "theme": "Repair",
+      "type": "mc6",
+      "text": "The friend [Subject] currently owes the biggest apology to is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Someone in this room"
+        },
+        {
+          "letter": "B",
+          "text": "A friend [Subject] hasn't talked to in months"
+        },
+        {
+          "letter": "C",
+          "text": "A friend [Subject] talks to every day"
+        },
+        {
+          "letter": "D",
+          "text": "A friend who already moved on without it"
+        },
+        {
+          "letter": "E",
+          "text": "A friend who is still waiting for it"
+        },
+        {
+          "letter": "F",
+          "text": "[Subject] doesn't believe they owe anyone an apology right now"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1."
+    },
+    {
+      "id": 52,
+      "theme": "Repair",
+      "type": "tf",
+      "text": "There is a friendship [Subject] has lost in the past five years that they secretly believe could have been saved if [Subject] had handled the repair differently.",
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 1 + 1."
+    },
+    {
+      "id": 53,
+      "theme": "Repair",
+      "type": "tf",
+      "text": "A friend has apologized to [Subject] in the past year and [Subject] has not fully accepted it.",
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 1 + 1."
+    },
+    {
+      "id": 54,
+      "theme": "Repair",
+      "type": "mc4",
+      "text": "When [Subject] is the one who needs to apologize, [Subject]'s first instinct is to:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Move toward the conversation immediately"
+        },
+        {
+          "letter": "B",
+          "text": "Wait until the friend brings it up first"
+        },
+        {
+          "letter": "C",
+          "text": "Send a text rather than say it out loud"
+        },
+        {
+          "letter": "D",
+          "text": "Avoid the friend until time defuses it"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 55,
+      "theme": "Repair",
+      "type": "group_vote",
+      "text": "Point to the person in this room [Subject] is most likely to need to apologize to in the next year.",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 3
+      },
+      "playNotes": "All point. Subject reveals who they think it's most likely to be. Scoring: 2 for pointing at the person Subject named. 3 to Subject if a majority pointed correctly."
+    },
+    {
+      "id": 56,
+      "theme": "Repair",
+      "type": "mc4",
+      "text": "[Subject] is currently carrying an unresolved fight with a friend that's:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Less than a month old"
+        },
+        {
+          "letter": "B",
+          "text": "Months old"
+        },
+        {
+          "letter": "C",
+          "text": "Years old"
+        },
+        {
+          "letter": "D",
+          "text": "[Subject] has no current unresolved fight"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 57,
+      "theme": "Repair",
+      "type": "mc6",
+      "text": "The reason a past friendship of [Subject]'s ended was most likely:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Distance or life moving in different directions"
+        },
+        {
+          "letter": "B",
+          "text": "A specific event that was never repaired"
+        },
+        {
+          "letter": "C",
+          "text": "Slow drift, no specific cause"
+        },
+        {
+          "letter": "D",
+          "text": "[Subject] outgrew the friendship"
+        },
+        {
+          "letter": "E",
+          "text": "The friend outgrew [Subject]"
+        },
+        {
+          "letter": "F",
+          "text": "Mutual realization that the friendship had run its course"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1."
+    },
+    {
+      "id": 58,
+      "theme": "Repair",
+      "type": "reflection",
+      "text": "[Subject], tell us about a friendship that ended that you still think about. What would you say to that person if you could say it cleanly?",
+      "scoring": {
+        "guesserPoints": 0,
+        "subjectPoints": 0
+      },
+      "playNotes": "Subject shares."
+    },
+    {
+      "id": 59,
+      "theme": "Repair",
+      "type": "discussion",
+      "text": "Group discussion: Is every friendship worth repairing? When is letting one go the right move, and how do you know?",
+      "scoring": {
+        "guesserPoints": 0,
+        "subjectPoints": 0
+      },
+      "playNotes": "Everyone weighs in."
+    },
+    {
+      "id": 60,
+      "theme": "Repair",
+      "type": "mc4",
+      "text": "When [Subject] has been wronged by a friend, [Subject]:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Says something within 24 hours"
+        },
+        {
+          "letter": "B",
+          "text": "Sits with it for a few days then speaks"
+        },
+        {
+          "letter": "C",
+          "text": "Lets it pile up until something breaks"
+        },
+        {
+          "letter": "D",
+          "text": "Cuts the friend off without explaining"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 61,
+      "theme": "Reflection",
+      "type": "mc4",
+      "text": "If a stranger watched [Subject] for a month, they'd say [Subject] is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Exactly the friend [Subject] claims to be"
+        },
+        {
+          "letter": "B",
+          "text": "Better than [Subject] gives themselves credit for"
+        },
+        {
+          "letter": "C",
+          "text": "Less of a friend than [Subject] thinks"
+        },
+        {
+          "letter": "D",
+          "text": "A different kind of friend than [Subject] describes"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 62,
+      "theme": "Reflection",
+      "type": "mc4",
+      "text": "If [Subject]'s friends made a group chat without [Subject] in it (about [Subject], not against), the chat would mostly say:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "[Subject] is the rock of the group"
+        },
+        {
+          "letter": "B",
+          "text": "[Subject] is going through something and they're worried"
+        },
+        {
+          "letter": "C",
+          "text": "[Subject] has been distant lately"
+        },
+        {
+          "letter": "D",
+          "text": "[Subject] is doing great and they're proud"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 63,
+      "theme": "Reflection",
+      "type": "mc6",
+      "text": "The biggest gap between the friend [Subject] WANTS to be and the friend [Subject] ACTUALLY is, comes down to:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "[Subject] talks more than they listen"
+        },
+        {
+          "letter": "B",
+          "text": "[Subject] over-commits and under-delivers"
+        },
+        {
+          "letter": "C",
+          "text": "[Subject] is consistent in flashes but not over time"
+        },
+        {
+          "letter": "D",
+          "text": "[Subject] gives advice instead of presence"
+        },
+        {
+          "letter": "E",
+          "text": "[Subject] disappears when life gets full"
+        },
+        {
+          "letter": "F",
+          "text": "There is no significant gap"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1."
+    },
+    {
+      "id": 64,
+      "theme": "Reflection",
+      "type": "tf",
+      "text": "[Subject] is the friend they wanted to be ten years ago.",
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 1 + 1."
+    },
+    {
+      "id": 65,
+      "theme": "Reflection",
+      "type": "mc4",
+      "text": "The friend [Subject] would most like to BECOME more like is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Someone in this room"
+        },
+        {
+          "letter": "B",
+          "text": "An old friend [Subject] doesn't see often"
+        },
+        {
+          "letter": "C",
+          "text": "A public figure [Subject] admires"
+        },
+        {
+          "letter": "D",
+          "text": "Honestly, no one in particular"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 66,
+      "theme": "Reflection",
+      "type": "mc4",
+      "text": "If [Subject] could trade ONE habit with a friend in this room, [Subject] would trade their:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Communication habits"
+        },
+        {
+          "letter": "B",
+          "text": "Conflict habits"
+        },
+        {
+          "letter": "C",
+          "text": "Investment habits (time, energy)"
+        },
+        {
+          "letter": "D",
+          "text": "Honesty habits"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 2 + 1."
+    },
+    {
+      "id": 67,
+      "theme": "Reflection",
+      "type": "group_vote",
+      "text": "Point to the person in this room whose friendship style [Subject] would most like to ADOPT.",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 3
+      },
+      "playNotes": "All point. Subject reveals who they actually admire most. Scoring: 2 for pointing at the person Subject named. 3 to Subject if a majority pointed correctly."
+    },
+    {
+      "id": 68,
+      "theme": "Reflection",
+      "type": "mc6",
+      "text": "The friend version of [Subject] that does NOT exist yet, but that [Subject] wants to grow into, would mostly be characterized by:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Being slower to react and quicker to listen"
+        },
+        {
+          "letter": "B",
+          "text": "Showing up before being asked"
+        },
+        {
+          "letter": "C",
+          "text": "Saying the hard things sooner"
+        },
+        {
+          "letter": "D",
+          "text": "Holding fewer friendships but holding them deeper"
+        },
+        {
+          "letter": "E",
+          "text": "Holding more friendships and accepting they'll be lighter"
+        },
+        {
+          "letter": "F",
+          "text": "Being okay being needed less"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1."
+    },
+    {
+      "id": 69,
+      "theme": "Reflection",
+      "type": "reflection",
+      "text": "[Subject], if you could rewrite one specific thing about how you've been a friend in the past year, what would it be?",
+      "scoring": {
+        "guesserPoints": 0,
+        "subjectPoints": 0
+      },
+      "playNotes": "Subject shares."
+    },
+    {
+      "id": 70,
+      "theme": "Reflection",
+      "type": "discussion",
+      "text": "Group discussion: If everyone in this room had to grade themselves as a friend, on a scale of one to ten, and announce the grade, what would you each give yourself and why?",
+      "scoring": {
+        "guesserPoints": 0,
+        "subjectPoints": 0
+      },
+      "playNotes": "Everyone weighs in. No scoring. The grading is for the conversation, not points."
+    },
+    {
+      "id": 71,
+      "theme": "Reflection",
+      "type": "mc4",
+      "text": "[Subject] thinks the people in this room would say [Subject] is best at:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Being there when it counts"
+        },
+        {
+          "letter": "B",
+          "text": "Knowing what to say"
+        },
+        {
+          "letter": "C",
+          "text": "Showing up consistently in small ways"
+        },
+        {
+          "letter": "D",
+          "text": "Telling them the truth even when it's hard"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "Reveal. Subject reveals what they think. Others reveal what they actually believe. Scoring: 2 + 1."
+    },
+    {
+      "id": 72,
+      "theme": "Reflection",
+      "type": "mc4",
+      "text": "The version of [Subject] this game has shown to the room is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Pretty close to who [Subject] thought they were"
+        },
+        {
+          "letter": "B",
+          "text": "Better than [Subject] realized"
+        },
+        {
+          "letter": "C",
+          "text": "Less than [Subject] wanted to be"
+        },
+        {
+          "letter": "D",
+          "text": "Honestly, [Subject] has not made up their mind yet"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "playNotes": "This is the closer card. Subject reveals at the end of the night. Scoring: 2 + 1."
+    }
+  ]
+}

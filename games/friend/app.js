@@ -147,6 +147,20 @@
       show('screen-pairing');
       renderPairing(room);
     } else if (room.phase === 'playing' || room.phase === 'roundEnd') {
+      // Stale-room guard: a room created before Phase 3 deployed will be in
+      // phase 'playing' but missing the deck, pair colors, or currentCardId.
+      // Trying to render that state strands the user on a blank playing
+      // screen with no way out. Eject them cleanly to the router instead so
+      // they can start fresh.
+      var hasGameState = room.currentCardId && (room.pairs || []).length > 0
+        && (room.turnOrder || []).length > 0;
+      if (!hasGameState) {
+        console.warn('[ycyf] stale room state detected; ejecting to router');
+        clearLocalState();
+        stopPolling();
+        show('screen-router');
+        return;
+      }
       show('screen-playing');
       renderPlaying(room);
     } else if (room.phase === 'gameOver') {

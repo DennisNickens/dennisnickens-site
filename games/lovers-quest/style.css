@@ -173,7 +173,11 @@ body{
 .qcard.in-back.out{transform:translateY(26px) scale(.985);}
 
 .card-bottom{flex:0 0 auto;width:100%;max-width:560px;display:flex;flex-direction:column;align-items:center;gap:.9rem;padding-top:.5rem;}
-.progress-count{font-family:var(--fn);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cream-faint);}
+/* Card position counter intentionally hidden. Lovers Quest is a conversation
+   tool, not a progress-tracked game; surfacing "1 of 72" makes the experience
+   feel quantified in a way that conflicts with the brand. JS still updates
+   the element so the value is available if we ever want it back. */
+.progress-count{display:none;}
 .btn-next{min-width:200px;}
 
 /* ---------- Screen 5: Completion ---------- */
@@ -402,11 +406,9 @@ body{
 }
 .home-greeting[hidden]{display:none;}
 .home-open-btn{margin-top:.4rem;min-width:200px;}
-.home-progress{
-  margin:1.4rem 0 0;
-  font-family:var(--fn);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--cream-faint);
-}
+/* Home progress text intentionally hidden for the same reason as
+   .progress-count above. JS still populates the element silently. */
+.home-progress{display:none;}
 .home-license{margin-top:1.4rem;}
 
 /* ============================================================

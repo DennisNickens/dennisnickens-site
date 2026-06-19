@@ -3,7 +3,7 @@
    Cache-first for the app shell so the game works fully offline.
    Bump CACHE_VERSION to invalidate old caches on the next load.
    ============================================================ */
-var CACHE_VERSION = 'lq-v9';
+var CACHE_VERSION = 'lq-v10';
 var CACHE_NAME = 'lovers-quest-' + CACHE_VERSION;
 
 // Resolve all paths relative to this worker's location so the app is

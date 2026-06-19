@@ -623,7 +623,9 @@
       case 'context': showContext(); break;
       case 'menu': openMenu(); break;
       case 'home': closeMenu(); showHomeScreen(); break;
-      case 'home-open': enterDeck(); break;
+      // Home is the start of the deck, not a resume point. Tapping
+      // Open the Deck always begins at card 1 of a fresh shuffle.
+      case 'home-open': startDeck(filter); break;
       case 'close-menu': closeMenu(); break;
       case 'how-to-play': closeMenu(); showHowToPlay(); break;
       case 'categories': closeMenu(); showCategories(); break;

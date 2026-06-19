@@ -7,17 +7,22 @@
    ============================================================ */
 
 :root {
-  --bg: #08111f;
-  --bg-2: #0d1a2c;
-  --panel: #11203a;
-  --panel-2: #182d4d;
-  --cream: #f5f1e8;
-  --cream-mute: rgba(245,241,232,.78);
-  --cream-faint: rgba(245,241,232,.5);
-  --coral: #ff7a59;
-  --coral-2: #e85c3a;
+  --bg: #0a1426;
+  --bg-2: #142142;
+  --panel: #17264a;
+  --panel-2: #1e335f;
+  --cream: #fef9f1;
+  --cream-mute: rgba(254,249,241,.82);
+  --cream-faint: rgba(254,249,241,.55);
+  /* Pulled directly from the box cover so the page feels like an
+     extension of the product, not a foreign container. */
+  --coral: #ff8b4a;
+  --coral-2: #e85c1a;
+  --sun: #ffd24a;
+  --sky: #4ab9ff;
   --teal: #4ec5b0;
-  --line: rgba(245,241,232,.14);
+  --pink: #ff6b9d;
+  --line: rgba(254,249,241,.16);
   --ff: 'Playfair Display', Georgia, serif;
   --fn: 'Inter', system-ui, sans-serif;
   --ease: cubic-bezier(.22,.61,.36,1);
@@ -30,8 +35,9 @@ body {
   font-weight: 400;
   line-height: 1.5;
   background:
-    radial-gradient(ellipse at 22% 12%, rgba(255,122,89,.10), transparent 55%),
-    radial-gradient(ellipse at 80% 88%, rgba(78,197,176,.10), transparent 55%),
+    radial-gradient(ellipse at 18% 8%, rgba(255,139,74,.22), transparent 50%),
+    radial-gradient(ellipse at 82% 18%, rgba(74,185,255,.18), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(255,210,74,.14), transparent 60%),
     linear-gradient(180deg, var(--bg), var(--bg-2));
   -webkit-font-smoothing: antialiased;
 }
@@ -71,24 +77,93 @@ body {
 /* ---------- router (landing) ---------- */
 .router-inner {
   text-align: center; display: flex; flex-direction: column; align-items: center;
-  gap: 1.6rem; max-width: 560px;
+  gap: 1rem; max-width: 560px; position: relative; z-index: 2;
+}
+/* Big illustrated cover. The whole point of the page. */
+.router-cover {
+  width: clamp(220px, 60vw, 320px);
+  margin-bottom: .8rem;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow:
+    0 32px 60px rgba(0,0,0,.55),
+    0 0 0 1px rgba(255,210,74,.22),
+    0 0 80px rgba(255,139,74,.22);
+  transform: rotate(-2.5deg);
+  animation: cover-float 4.5s var(--ease) infinite alternate;
+}
+.router-cover img { display: block; width: 100%; height: auto; }
+@keyframes cover-float {
+  from { transform: rotate(-2.5deg) translateY(0); }
+  to   { transform: rotate(2deg) translateY(-6px); }
+}
+.brand-eyebrow {
+  font-family: var(--fn); font-size: .82rem; font-weight: 600;
+  letter-spacing: .28em; text-transform: uppercase;
+  color: var(--sun); opacity: .85; margin: 0;
 }
 .brand-title {
   font-family: var(--ff); font-weight: 800;
-  font-size: clamp(2.2rem, 8vw, 3.4rem);
-  letter-spacing: -.01em; line-height: 1.05; margin: 0;
-  background: linear-gradient(135deg, #fff, #ffe6dc, var(--coral));
+  font-size: clamp(2.4rem, 9vw, 3.8rem);
+  letter-spacing: -.01em; line-height: 1.02; margin: 0;
+  background: linear-gradient(135deg, #fff, #ffe6dc 30%, var(--coral) 70%, var(--sun));
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 6px 18px rgba(255,139,74,.25));
 }
 .brand-sub {
   font-family: var(--ff); font-style: italic; font-weight: 500;
   font-size: clamp(1.05rem, 3.8vw, 1.3rem);
-  color: var(--cream-mute); margin: 0;
+  color: var(--cream); margin: 0; max-width: 38ch; line-height: 1.45;
 }
 .brand-byline {
-  font-size: .75rem; letter-spacing: .08em; color: var(--cream-faint); margin-top: 1.8rem;
+  font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--cream-faint); margin-top: 1.2rem;
 }
-.router-actions { display: flex; flex-direction: column; gap: .9rem; width: min(320px, 100%); margin-top: .6rem; }
+.router-actions {
+  display: flex; flex-direction: column; gap: .9rem;
+  width: min(340px, 100%); margin-top: .8rem;
+}
+/* Make the primary button pop with a soft pulse so the page feels alive */
+#screen-router .btn-primary {
+  font-size: .95rem; padding: 1.15rem 2.2rem;
+  background: linear-gradient(135deg, var(--coral), var(--coral-2));
+  box-shadow: 0 14px 32px rgba(255,139,74,.42), 0 0 0 1px rgba(255,210,74,.3);
+  animation: btn-pulse 2.4s ease-in-out infinite;
+}
+@keyframes btn-pulse {
+  0%, 100% { box-shadow: 0 14px 32px rgba(255,139,74,.42), 0 0 0 1px rgba(255,210,74,.3); }
+  50%      { box-shadow: 0 18px 44px rgba(255,139,74,.55), 0 0 0 1px rgba(255,210,74,.6); }
+}
+
+/* ---------- confetti dots (floating background decoration) ---------- */
+.confetti {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1;
+}
+.confetti .dot {
+  position: absolute; width: 14px; height: 14px; border-radius: 50%;
+  opacity: .55; filter: blur(.5px);
+  animation: confetti-drift 14s linear infinite;
+}
+.confetti .d1  { left: 6%;  top: 12%; background: var(--coral); animation-duration: 16s; animation-delay: 0s; }
+.confetti .d2  { left: 88%; top: 8%;  background: var(--sun);   animation-duration: 12s; animation-delay: 1s; width: 10px; height: 10px; }
+.confetti .d3  { left: 16%; top: 78%; background: var(--sky);   animation-duration: 18s; animation-delay: 2s; }
+.confetti .d4  { left: 80%; top: 64%; background: var(--pink);  animation-duration: 15s; animation-delay: 0.5s; width: 8px; height: 8px; }
+.confetti .d5  { left: 4%;  top: 50%; background: var(--teal);  animation-duration: 20s; animation-delay: 1.5s; width: 12px; height: 12px; }
+.confetti .d6  { left: 90%; top: 38%; background: var(--coral); animation-duration: 13s; animation-delay: 3s; width: 9px; height: 9px; }
+.confetti .d7  { left: 22%; top: 28%; background: var(--sun);   animation-duration: 17s; animation-delay: 0.8s; width: 8px; height: 8px; }
+.confetti .d8  { left: 72%; top: 86%; background: var(--sky);   animation-duration: 14s; animation-delay: 2.5s; width: 12px; height: 12px; }
+.confetti .d9  { left: 36%; top: 92%; background: var(--coral); animation-duration: 19s; animation-delay: 1.2s; width: 7px; height: 7px; }
+.confetti .d10 { left: 60%; top: 6%;  background: var(--pink);  animation-duration: 16s; animation-delay: 2.8s; width: 11px; height: 11px; }
+.confetti .d11 { left: 50%; top: 48%; background: var(--sun);   animation-duration: 22s; animation-delay: 4s; width: 6px; height: 6px; }
+.confetti .d12 { left: 30%; top: 60%; background: var(--teal);  animation-duration: 15s; animation-delay: 3.5s; width: 9px; height: 9px; }
+@keyframes confetti-drift {
+  from { transform: translateY(0) rotate(0deg); }
+  to   { transform: translateY(-40px) rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .router-cover, #screen-router .btn-primary, .confetti .dot { animation: none !important; }
+}
 
 /* ---------- sheet (host setup, join setup, pairing placeholder) ---------- */
 .sheet {

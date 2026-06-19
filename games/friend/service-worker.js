@@ -6,7 +6,7 @@
    try to cache /api/* responses; the game is multiplayer and
    the room state must always come from the server.
    ============================================================ */
-var CACHE_VERSION = 'ycyf-v1';
+var CACHE_VERSION = 'ycyf-v2';
 var CACHE_NAME = 'ycyf-' + CACHE_VERSION;
 
 function rel(p) { return new URL(p, self.location.href).toString(); }
@@ -19,7 +19,9 @@ var APP_SHELL = [
   'manifest.json',
   'icons/icon-192.png',
   'icons/icon-512.png',
-  'icons/apple-touch-icon.png'
+  'icons/apple-touch-icon.png',
+  // Big illustrated cover that anchors the landing page
+  '../../images/you-call-yourself-a-friend-cover.jpg'
 ].map(rel);
 
 var FONT_PRECACHE = [

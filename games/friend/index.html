@@ -212,11 +212,18 @@
         <p class="action-status" id="talk-status"></p>
       </div>
 
-      <!-- Reveal view: shows truth, everyone's guess, score deltas -->
+      <!-- Spectator view: not in the active pair, just watching -->
+      <div class="spectator-view" id="spectator-view" hidden>
+        <p class="action-eyebrow" id="spectator-eyebrow">Watching</p>
+        <p class="spectator-line" id="spectator-line"></p>
+        <p class="action-status" id="spectator-status"></p>
+      </div>
+
+      <!-- Reveal view: shows truth, partner's guess, pair score delta -->
       <div class="reveal-view" id="reveal-view" hidden>
         <p class="action-eyebrow">The truth</p>
         <p class="reveal-truth" id="reveal-truth"></p>
-        <ul class="reveal-guesses" id="reveal-guesses"></ul>
+        <p class="reveal-partner-line" id="reveal-partner-line"></p>
         <ul class="reveal-scores" id="reveal-scores"></ul>
         <button class="btn btn-primary" id="next-card-btn" data-action="next-card">Next Card &rarr;</button>
         <p class="action-status" id="reveal-status"></p>

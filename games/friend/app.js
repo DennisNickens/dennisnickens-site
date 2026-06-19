@@ -495,10 +495,17 @@
   function showElem(id) { var el = $(id); if (el) el.hidden = false; }
   function hideElems(ids) { ids.forEach(function (i) { var el = $(i); if (el) el.hidden = true; }); }
 
+  // Phase 5: each player is in one of three roles per turn.
+  function roleOf(room, viewerId) {
+    if (viewerId === room.currentSubjectId) return 'subject';
+    var activePair = (room.pairs || []).find(function (pr) { return pr.id === room.currentPairId; });
+    if (activePair && activePair.playerIds.indexOf(viewerId) !== -1) return 'partner';
+    return 'spectator';
+  }
+
   function renderPlaying(room) {
     if (!CARDS_DATA) {
       loadCardsOnce().then(function () { if (lastRoom) renderPlaying(lastRoom); }).catch(function () {});
-      // Show a soft loading state in the card area so the screen isn't blank
       var ct = $('card-text'); if (ct) ct.textContent = 'Loading the deck...';
       return;
     }
@@ -506,7 +513,6 @@
     var card = CARD_BY_ID[room.currentCardId];
     if (!card) return;
 
-    // Detect card or subPhase change → clear local pending pick
     if (renderPlaying._lastCardId !== room.currentCardId ||
         renderPlaying._lastSubPhase !== room.subPhase) {
       pendingPick = null;
@@ -514,25 +520,28 @@
       renderPlaying._lastSubPhase = room.subPhase;
     }
 
-    var isSubject = room.currentSubjectId === me;
+    var role = roleOf(room, me);
     var isTalkCard = card.type === 'reflection' || card.type === 'discussion';
 
     renderRace(room);
     renderCardFrame(room, card);
-    hideElems(['guesser-view','subject-view','talk-view','reveal-view']);
+    hideElems(['guesser-view','subject-view','talk-view','spectator-view','reveal-view']);
 
     if (room.subPhase === 'reveal') {
-      renderReveal(room, card);
+      renderReveal(room, card, role);
       showElem('reveal-view');
     } else if (isTalkCard) {
-      renderTalk(room, card, isSubject);
+      renderTalk(room, card, role);
       showElem('talk-view');
-    } else if (isSubject) {
+    } else if (role === 'subject') {
       renderSubject(room, card);
       showElem('subject-view');
-    } else {
-      renderGuesser(room, card, me);
+    } else if (role === 'partner') {
+      renderPartnerGuesser(room, card, me);
       showElem('guesser-view');
+    } else {
+      renderSpectator(room, card);
+      showElem('spectator-view');
     }
   }
 
@@ -572,12 +581,27 @@
 
   function renderCardFrame(room, card) {
     var t = $('card-theme'); if (t) t.textContent = String(card.theme || '').toUpperCase();
-    var h = $('card-subject-hint'); if (h) h.textContent = 'About ' + subjectName(room);
+    var h = $('card-subject-hint');
+    if (h) {
+      var partner = partnerNameInActivePair(room);
+      h.textContent = 'About ' + subjectName(room)
+        + (partner ? ' · ' + partner + ' guesses' : '');
+    }
     var x = $('card-text');
     if (x) x.textContent = String(card.text || '').replace(/\[Subject\]/g, subjectName(room));
   }
 
-  function renderGuesser(room, card, me) {
+  function partnerNameInActivePair(room) {
+    var pr = (room.pairs || []).find(function (x) { return x.id === room.currentPairId; });
+    if (!pr) return '';
+    var partnerId = pr.playerIds.find(function (pid) { return pid !== room.currentSubjectId; });
+    if (!partnerId) return '';
+    var p = (room.players || []).find(function (x) { return x.id === partnerId; });
+    return p ? p.name : '';
+  }
+
+  // Phase 5: only the Subject's Partner sees the guesser tiles.
+  function renderPartnerGuesser(room, card, me) {
     var grid = $('answer-grid'); if (!grid) return;
     grid.innerHTML = '';
     var mine = (room.guesses && room.guesses[me]) || null;
@@ -616,17 +640,13 @@
     if (eyebrow) {
       eyebrow.textContent = card.type === 'group_vote'
         ? 'Who would ' + subjectName(room) + ' pick?'
-        : 'Your pick';
+        : 'What did ' + subjectName(room) + ' pick?';
     }
     var status = $('guesser-status');
     if (status) {
-      if (locked) {
-        var submitted = room.guessersSubmitted || 0;
-        var total = (room.players || []).length - 1;
-        status.textContent = 'Locked in. ' + submitted + ' of ' + total + ' guesses in. Waiting on ' + subjectName(room) + ' to reveal.';
-      } else {
-        status.textContent = '';
-      }
+      status.textContent = locked
+        ? 'Guess locked in. Waiting on ' + subjectName(room) + ' to reveal.'
+        : '';
     }
   }
 
@@ -658,40 +678,71 @@
       grid.appendChild(li2);
     }
 
-    var submitted = room.guessersSubmitted || 0;
-    var total = (room.players || []).length - 1;
-    var allIn = submitted >= total;
+    var partner = partnerNameInActivePair(room);
+    var partnerIn = !!room.partnerHasGuessed;
 
     var btn = $('reveal-btn');
     if (btn) {
-      btn.disabled = !pendingPick || !allIn;
-      btn.textContent = allIn ? 'Reveal The Truth' : 'Waiting on guesses (' + submitted + '/' + total + ')';
+      btn.disabled = !pendingPick || !partnerIn;
+      btn.textContent = partnerIn
+        ? 'Reveal The Truth'
+        : 'Waiting on ' + (partner || 'partner');
     }
+    var eyebrow = $('subject-eyebrow');
+    if (eyebrow) eyebrow.textContent = 'You\'re up. Pick what\'s actually true.';
     var status = $('subject-status');
     if (status) {
-      if (!allIn) status.textContent = 'Pick your truth in the meantime. You can reveal as soon as everyone\'s guessed.';
+      if (!partnerIn) status.textContent = 'Pick your truth in the meantime. You can reveal once ' + (partner || 'your partner') + ' has guessed.';
       else if (!pendingPick) status.textContent = 'Pick the truth, then reveal.';
       else status.textContent = '';
     }
   }
 
-  function renderTalk(room, card, isSubject) {
+  function renderTalk(room, card, role) {
+    var isSubject = role === 'subject';
+    var partner = partnerNameInActivePair(room);
     var eyebrow = $('talk-eyebrow');
     if (eyebrow) eyebrow.textContent = card.type === 'discussion' ? 'Group discussion. No scoring.' : 'Reflection. No scoring.';
     var btn = $('done-talking-btn'); if (btn) btn.hidden = !isSubject;
     var status = $('talk-status');
     if (status) {
-      status.textContent = isSubject
-        ? 'Take your time. Tap Done Sharing when you\'re ready.'
-        : subjectName(room) + ' is sharing. Listen up.';
+      if (isSubject) status.textContent = 'Take your time. Tap Done Sharing when you\'re ready.';
+      else if (role === 'partner') status.textContent = subjectName(room) + ' is sharing. Listen up.';
+      else status.textContent = subjectName(room) + ' and ' + (partner || 'partner') + ' are up. Listen in.';
     }
   }
 
-  function renderReveal(room, card) {
-    var me = load(K.playerId, null);
-    var isSubject = room.currentSubjectId === me;
+  // Spectator: not in the active pair. Read-only view.
+  function renderSpectator(room, card) {
+    var eyebrow = $('spectator-eyebrow');
+    var line = $('spectator-line');
+    var status = $('spectator-status');
+    var subject = subjectName(room);
+    var partner = partnerNameInActivePair(room);
+    var activePair = (room.pairs || []).find(function (pr) { return pr.id === room.currentPairId; });
+    var icon = activePair && activePair.icon ? activePair.icon : '';
+    if (eyebrow) eyebrow.textContent = 'Watching · ' + (icon ? icon + ' ' : '') + (activePair && activePair.teamName ? activePair.teamName : (subject + ' & ' + partner));
+    if (line) {
+      line.textContent = subject + ' is the subject. '
+        + (partner ? partner + ' is guessing what ' + subject + ' picked.' : '');
+    }
+    if (status) {
+      status.textContent = room.partnerHasGuessed
+        ? (partner || 'Partner') + ' locked in. Waiting on ' + subject + ' to reveal.'
+        : 'Waiting on the pair...';
+    }
+  }
+
+  // Phase 5: reveal shows the truth, the Partner's single guess, the pair's
+  // delta. Subject controls Next Card; everyone else just watches.
+  function renderReveal(room, card, role) {
     var detail = room.lastReveal || {};
     var truth = detail.truth || room.subjectAnswer;
+    var partnerId = detail.partnerId || null;
+    var partner = partnerId
+      ? ((room.players || []).find(function (p) { return p.id === partnerId; }) || { name: '' }).name
+      : partnerNameInActivePair(room);
+
     var truthText = '';
     if (card.type === 'mc4' || card.type === 'mc6') {
       var opt = (card.options || []).find(function (o) { return o.letter === truth; });
@@ -705,21 +756,20 @@
     }
     var truthEl = $('reveal-truth'); if (truthEl) truthEl.textContent = truthText;
 
-    var ulG = $('reveal-guesses');
-    if (ulG) {
-      ulG.innerHTML = '';
-      var guessers = (room.players || []).filter(function (p) { return p.id !== room.currentSubjectId; });
-      guessers.forEach(function (p) {
-        var li = document.createElement('li');
-        var pick = (detail.guesses || {})[p.id];
-        var correct = pick === truth;
-        li.className = correct ? 'guess-right' : 'guess-wrong';
-        li.innerHTML =
-          '<span class="g-name">' + esc(p.name) + '</span>' +
-          '<span class="g-pick">' + esc(pickDisplay(card, pick, room)) + '</span>' +
-          '<span class="g-mark">' + (correct ? '✓' : '×') + '</span>';
-        ulG.appendChild(li);
-      });
+    var partnerLine = $('reveal-partner-line');
+    if (partnerLine) {
+      var isTalk = card.type === 'reflection' || card.type === 'discussion';
+      if (isTalk) {
+        partnerLine.textContent = '';
+        partnerLine.className = 'reveal-partner-line';
+      } else {
+        var pg = detail.partnerGuess;
+        var correct = !!detail.correct;
+        var pgText = pickDisplay(card, pg, room);
+        partnerLine.textContent = (partner || 'Partner') + ' guessed: ' + pgText
+          + (correct ? '  ✓ ' : '  × ');
+        partnerLine.className = 'reveal-partner-line ' + (correct ? 'guess-right' : 'guess-wrong');
+      }
     }
 
     var ulS = $('reveal-scores');
@@ -738,6 +788,7 @@
       });
     }
 
+    var isSubject = role === 'subject';
     var btn = $('next-card-btn');
     if (btn) {
       btn.hidden = !isSubject;

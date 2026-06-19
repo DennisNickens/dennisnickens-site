@@ -51,7 +51,7 @@
   var favs = [];            // favorited ids
   var filter = null;        // active category key or null (full deck)
 
-  var SCREENS = ['screen-activate', 'screen-onboarding', 'screen-splash', 'screen-welcome', 'screen-card', 'screen-done'];
+  var SCREENS = ['screen-activate', 'screen-onboarding', 'screen-home', 'screen-splash', 'screen-welcome', 'screen-card', 'screen-done'];
 
   // Fisher-Yates shuffle (returns a new array)
   function shuffle(arr) {
@@ -542,14 +542,15 @@
   }
 
   // After activation + onboarding (or skipping onboarding if already done),
-  // route into the existing flow. New buyers see the Welcome card with the
-  // "Licensed to <Name>" watermark. Returning users go straight to the deck.
+  // route into the existing flow. First-time users land on the Welcome card
+  // ("Before You Start"). Returning users land on the Home screen instead of
+  // dropping straight into mid-deck; they can tap Open the Deck to resume.
   function enterPostOnboarding() {
     paintLicenseWatermark();
     var opened = load(K.opened, false);
     if (opened) {
       if (!deck.length) buildDeck(null);
-      enterDeck();
+      showHomeScreen();
     } else {
       showScreen('screen-welcome', true);
     }
@@ -557,11 +558,38 @@
 
   function paintLicenseWatermark() {
     var name = load(K.licenseFirstName, '') || '';
-    var el = $('license-watermark');
-    if (!el) return;
-    if (!name) { el.hidden = true; el.textContent = ''; return; }
-    el.textContent = 'Licensed to ' + name;
-    el.hidden = false;
+    var text = name ? 'Licensed to ' + name : '';
+    // Same text appears on the welcome card and the home screen.
+    ['license-watermark', 'home-license'].forEach(function (id) {
+      var el = $(id);
+      if (!el) return;
+      if (!text) { el.hidden = true; el.textContent = ''; return; }
+      el.textContent = text;
+      el.hidden = false;
+    });
+  }
+
+  // Persistent Home / cover screen. Shown to returning visitors and reachable
+  // from the menu drawer at any time.
+  function showHomeScreen() {
+    var name = load(K.licenseFirstName, '') || '';
+    var greet = $('home-greeting');
+    if (greet) {
+      if (name) { greet.textContent = 'Welcome back, ' + name + '.'; greet.hidden = false; }
+      else { greet.textContent = ''; greet.hidden = true; }
+    }
+    var prog = $('home-progress');
+    if (prog) {
+      if (deck && deck.length && DATA) {
+        var total = DATA.cards.length;
+        var current = Math.min(pos + 1, deck.length);
+        prog.textContent = 'On card ' + current + ' of ' + total;
+      } else {
+        prog.textContent = '';
+      }
+    }
+    paintLicenseWatermark();
+    showScreen('screen-home', true);
   }
 
   // ============================================================
@@ -594,6 +622,8 @@
       case 'favorite': toggleFav(); break;
       case 'context': showContext(); break;
       case 'menu': openMenu(); break;
+      case 'home': closeMenu(); showHomeScreen(); break;
+      case 'home-open': enterDeck(); break;
       case 'close-menu': closeMenu(); break;
       case 'how-to-play': closeMenu(); showHowToPlay(); break;
       case 'categories': closeMenu(); showCategories(); break;

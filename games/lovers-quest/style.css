@@ -369,6 +369,47 @@ body{
 }
 
 /* ============================================================
+   Home screen (persistent cover landing, accessible from menu)
+   ============================================================ */
+.home-inner{
+  text-align:center;display:flex;flex-direction:column;align-items:center;
+  max-width:480px;animation:rise .8s var(--ease) both;
+  padding:0 1.4rem;
+}
+.home-cover{
+  width:clamp(180px,46vw,260px);
+  margin-bottom:1.6rem;
+  border-radius:12px;overflow:hidden;
+  box-shadow:0 22px 50px rgba(0,0,0,.6),0 0 0 1px rgba(212,169,87,.28),0 0 40px rgba(212,169,87,.18);
+}
+.home-cover img{display:block;width:100%;height:auto;}
+.home-title{
+  font-family:var(--ff);font-weight:500;
+  font-size:clamp(2rem,7vw,2.8rem);letter-spacing:.04em;line-height:1.05;
+  background:linear-gradient(135deg,#f0d490,var(--gold),#b88a3a);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  margin:0 0 .35rem;
+}
+.home-sub{
+  font-family:var(--fs);font-style:italic;
+  font-size:clamp(1rem,3.4vw,1.2rem);
+  color:var(--cream-mute);margin:0 0 1.2rem;
+}
+.home-greeting{
+  font-family:var(--fs);font-style:italic;font-weight:500;
+  font-size:1.05rem;color:var(--cream);
+  margin:0 0 1.6rem;
+}
+.home-greeting[hidden]{display:none;}
+.home-open-btn{margin-top:.4rem;min-width:200px;}
+.home-progress{
+  margin:1.4rem 0 0;
+  font-family:var(--fn);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cream-faint);
+}
+.home-license{margin-top:1.4rem;}
+
+/* ============================================================
    Card screen ambient decoration
    Adds depth and ceremony to the empty space around the card:
    - Faded category icon watermarks flanking the card (swaps per card)

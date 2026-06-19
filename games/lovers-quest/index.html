@@ -85,6 +85,21 @@
   </div>
 </section>
 
+<!-- ================= SCREEN 0c: HOME (persistent cover landing) ================= -->
+<section id="screen-home" class="screen" aria-label="Home" hidden>
+  <div class="home-inner">
+    <div class="home-cover">
+      <img src="../../images/lovers-quest-cover.jpg" alt="Lovers Quest tuck box, by Dennis Nickens" />
+    </div>
+    <h1 class="home-title">Lovers Quest</h1>
+    <p class="home-sub">A Faith-Rooted Journey for Couples</p>
+    <p class="home-greeting" id="home-greeting" hidden></p>
+    <button class="btn btn-gold home-open-btn" data-action="home-open">Open the Deck</button>
+    <p class="home-progress" id="home-progress"></p>
+    <p class="license-watermark home-license" id="home-license" hidden></p>
+  </div>
+</section>
+
 <!-- ================= SCREEN 1: SPLASH ================= -->
 <section id="screen-splash" class="screen" aria-label="Welcome" hidden>
   <div class="splash-inner">
@@ -195,6 +210,7 @@
     </button>
   </div>
   <nav class="drawer-nav">
+    <button class="drawer-item" data-action="home">Home</button>
     <button class="drawer-item" data-action="how-to-play">How to Play</button>
     <button class="drawer-item" data-action="categories">Categories</button>
     <button class="drawer-item" data-action="favorites">Favorites <span class="drawer-count" id="fav-count"></span></button>

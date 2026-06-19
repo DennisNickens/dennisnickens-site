@@ -348,6 +348,26 @@
     if (startBtn) startBtn.hidden = !isHost;
     if (backBtn) backBtn.hidden = !isHost;
     var note = $('confirm-host-note'); if (note) note.hidden = isHost;
+
+    // Depth picker reflects room.depth (defaults to 'real' from startTeamSetup)
+    var chosen = room.depth || 'real';
+    var picker = $('depth-picker');
+    if (picker) {
+      var tiles = picker.querySelectorAll('.depth-tile');
+      for (var i = 0; i < tiles.length; i++) {
+        var t = tiles[i];
+        var d = t.getAttribute('data-depth');
+        if (d === chosen) t.classList.add('is-selected');
+        else t.classList.remove('is-selected');
+        // Non-hosts can't tap the selectable tile either
+        if (!isHost && t.classList.contains('depth-selectable')) {
+          t.removeAttribute('data-action');
+        } else if (isHost && t.classList.contains('depth-selectable')) {
+          t.setAttribute('data-action', 'host-set-depth');
+        }
+      }
+    }
+    var dnote = $('depth-host-note'); if (dnote) dnote.hidden = isHost;
   }
 
   async function hostStartTeamSetupAct() {
@@ -428,6 +448,26 @@
         renderRoom(lastRoom);
       }
     } catch (e) {}
+  }
+
+  async function hostSetDepthAct(depth) {
+    if (!depth) return;
+    try {
+      var r = await api('/api/friend-set-depth', {
+        method: 'POST',
+        body: { code: load(K.code, ''), hostId: load(K.playerId, ''), depth: depth },
+      });
+      if (r.status === 200 && r.body && r.body.ok) {
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        var err = (r.body && r.body.error) || 'unknown';
+        if (err === 'depth_coming_soon') alert('That depth is coming soon. Real is ready to play right now.');
+        else alert('Could not set depth: ' + err);
+      }
+    } catch (e) {
+      alert('Network error setting depth.');
+    }
   }
 
   async function hostSaveTeamNameAct(pairId) {
@@ -1287,6 +1327,7 @@
       if (a === 'host-advance-to-confirm') return hostAdvanceToConfirmAct();
       if (a === 'host-back-to-picking-icons') return hostBackToIconsAct();
       if (a === 'host-save-team-name')     return hostSaveTeamNameAct(el.getAttribute('data-pair'));
+      if (a === 'host-set-depth')          return hostSetDepthAct(el.getAttribute('data-depth'));
       // Phase 3 actions
       if (a === 'pick-answer')  return pickAnswer(el.getAttribute('data-value'));
       if (a === 'pick-truth')   return pickTruth(el.getAttribute('data-value'));

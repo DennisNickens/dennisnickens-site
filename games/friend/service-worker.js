@@ -6,7 +6,7 @@
    try to cache /api/* responses; the game is multiplayer and
    the room state must always come from the server.
    ============================================================ */
-var CACHE_VERSION = 'ycyf-v13';
+var CACHE_VERSION = 'ycyf-v14';
 var CACHE_NAME = 'ycyf-' + CACHE_VERSION;
 
 function rel(p) { return new URL(p, self.location.href).toString(); }

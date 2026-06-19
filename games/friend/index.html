@@ -149,12 +149,37 @@
       </div>
     </div>
 
-    <!-- Sub-view B: confirmation + optional team names -->
+    <!-- Sub-view B: confirmation + optional team names + depth picker -->
     <div id="team-confirm-view" class="team-setup-view" hidden>
       <p class="pairing-eyebrow">Confirm Teams</p>
       <h2 class="pairing-title">Ready To Race</h2>
       <p class="pairing-lead">Add a team name if you want (optional). Tap any team to edit.</p>
       <ul class="team-rows team-rows-confirm" id="team-rows-confirm"></ul>
+
+      <!-- Depth picker. Real is the only mode with content shipped right now;
+           Light and Deep are locked until their content batches drop. -->
+      <div class="depth-picker-wrap">
+        <p class="pairing-eyebrow depth-eyebrow">Card Depth</p>
+        <ul class="depth-picker" id="depth-picker">
+          <li class="depth-tile depth-locked" data-depth="light">
+            <span class="depth-tile-name">Light</span>
+            <span class="depth-tile-sub">Party prompts</span>
+            <span class="depth-tile-badge">Coming soon</span>
+          </li>
+          <li class="depth-tile depth-selectable is-selected" data-depth="real" data-action="host-set-depth">
+            <span class="depth-tile-name">Real</span>
+            <span class="depth-tile-sub">How well do you know me?</span>
+            <span class="depth-tile-badge depth-tile-badge-active">Ready</span>
+          </li>
+          <li class="depth-tile depth-locked" data-depth="deep">
+            <span class="depth-tile-name">Deep</span>
+            <span class="depth-tile-sub">Vulnerable questions</span>
+            <span class="depth-tile-badge">Coming soon</span>
+          </li>
+        </ul>
+        <p class="depth-host-note" id="depth-host-note" hidden>The host picks the deck depth.</p>
+      </div>
+
       <div class="team-setup-actions">
         <button class="btn btn-ghost" id="back-to-icons-btn" data-action="host-back-to-picking-icons" hidden>Back</button>
         <button class="btn btn-primary" id="real-start-game-btn" data-action="host-start-game" hidden>Start the Game</button>

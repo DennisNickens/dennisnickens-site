@@ -796,6 +796,69 @@ body {
 }
 .team-setup-actions .btn { width: 100%; }
 
+/* ---------- Depth picker (Phase 6 infrastructure) ---------- */
+.depth-picker-wrap {
+  margin-top: 1.2rem;
+  display: flex; flex-direction: column; gap: .55rem;
+  text-align: center;
+}
+.depth-eyebrow { margin: 0; }
+.depth-picker {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .5rem;
+}
+.depth-tile {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .25rem;
+  padding: .75rem .5rem;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border: 2px solid var(--line);
+  color: var(--cream);
+  font-family: var(--fn);
+  cursor: default;
+  text-align: center;
+  transition: border-color .18s var(--ease), background .18s var(--ease), transform .18s var(--ease);
+}
+.depth-tile-name {
+  font-family: var(--ff);
+  font-size: 1.05rem; font-weight: 700;
+  line-height: 1.1;
+}
+.depth-tile-sub {
+  font-size: .65rem; color: var(--cream-faint);
+  line-height: 1.2;
+}
+.depth-tile-badge {
+  margin-top: .2rem;
+  font-size: .55rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--cream-faint);
+  padding: .15rem .4rem;
+  border-radius: 999px;
+  background: rgba(0,0,0,.32);
+  border: 1px solid rgba(254,249,241,.14);
+}
+.depth-tile-badge-active {
+  color: var(--sun);
+  border-color: var(--sun);
+  background: rgba(255,210,74,.14);
+}
+.depth-tile.depth-selectable { cursor: pointer; }
+.depth-tile.depth-selectable:active { transform: scale(.97); }
+.depth-tile.is-selected {
+  border-color: var(--coral);
+  background: linear-gradient(180deg, rgba(255,139,74,.18), rgba(255,139,74,.06));
+  box-shadow: 0 0 0 1px var(--coral), 0 8px 22px rgba(255,139,74,.18);
+}
+.depth-tile.depth-locked {
+  opacity: .55;
+  filter: grayscale(.4);
+}
+.depth-host-note {
+  font-size: .75rem; color: var(--cream-faint);
+  margin: .25rem 0 0;
+}
+
 /* ---------- animations ---------- */
 @keyframes pop-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) {

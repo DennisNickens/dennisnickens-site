@@ -113,14 +113,23 @@
   </div>
 </section>
 
-<!-- ================= SCREEN: TEMP placeholder for the pairing phase ================= -->
-<section id="screen-pairing" class="screen" aria-label="Pairing" hidden>
-  <div class="sheet">
-    <h2 class="sheet-title">Pick Your Partner</h2>
-    <p class="sheet-lead">Coming next: tap the friend you came in with. This phase ships in the next deploy.</p>
-    <p class="dim-text">For now, the foundation (room, lobby, QR join, real-time sync) is what's live. The pairing UI, the round loop, and the race tracker land in subsequent deploys.</p>
-    <div class="sheet-actions">
-      <button class="btn btn-ghost" data-action="back-router">Back to Start</button>
+<!-- ================= SCREEN: PAIRING ================= -->
+<section id="screen-pairing" class="screen" aria-label="Pick your partner" hidden>
+  <div class="pairing-inner">
+    <p class="pairing-eyebrow">Phase 2</p>
+    <h2 class="pairing-title">Pick Your Partner</h2>
+    <p class="pairing-lead" id="pairing-lead">Tap the friend you came in with. When you both tap each other, you're locked in.</p>
+
+    <ul class="partner-list" id="partner-list"></ul>
+
+    <h3 class="pairing-section-title" id="paired-section-title" hidden>Paired Up</h3>
+    <ul class="paired-list" id="paired-list"></ul>
+
+    <p class="pairing-status" id="pairing-status"></p>
+
+    <div class="pairing-actions">
+      <button class="btn btn-primary" id="start-game-btn" data-action="host-start-game" disabled hidden>Start the Game</button>
+      <p class="pairing-host-note" id="pairing-host-note" hidden>Once everyone is paired up, the host taps Start the Game.</p>
     </div>
   </div>
 </section>

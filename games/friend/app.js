@@ -142,12 +142,110 @@
     }
     var c = $('lobby-count'); if (c) c.textContent = msg;
 
-    // Future deploy: if room.phase === 'pairing' we'd swap to a pairing UI;
-    // for Phase 1 we just stay on the lobby screen.
+    // Route screen by phase
     if (room.phase === 'pairing') {
-      // Placeholder so the host's "Pair Up" tap doesn't strand everyone on lobby.
       show('screen-pairing');
+      renderPairing(room);
+    } else if (room.phase === 'playing' || room.phase === 'roundEnd' || room.phase === 'gameOver') {
+      // Phase 3 ships the playing UI; for now keep them on pairing if they got here.
+      show('screen-pairing');
+      renderPairing(room);
     }
+  }
+
+  // Render the pairing screen for the current viewer.
+  function renderPairing(room) {
+    var me = load(K.playerId, null);
+    var pairs = room.pairs || [];
+    var pendingPicks = room.pendingPicks || {};
+    var players = room.players || [];
+    var pairedIds = pairs.reduce(function (a, p) { return a.concat(p.playerIds); }, []);
+
+    // Find this viewer's current state
+    var iAmPaired = pairedIds.indexOf(me) !== -1;
+    var myPick = pendingPicks[me] || null;
+    var whoPickedMe = Object.keys(pendingPicks).filter(function (pid) {
+      return pendingPicks[pid] === me;
+    });
+
+    // List of unpaired players (excluding myself)
+    var unpaired = players.filter(function (p) {
+      return p.id !== me && pairedIds.indexOf(p.id) === -1;
+    });
+
+    var partnerUl = $('partner-list');
+    if (partnerUl) {
+      partnerUl.innerHTML = '';
+      if (iAmPaired) {
+        var partnerPair = pairs.find(function (pr) { return pr.playerIds.indexOf(me) !== -1; });
+        var partnerId = partnerPair.playerIds.find(function (id) { return id !== me; });
+        var partner = players.find(function (p) { return p.id === partnerId; });
+        var msg = document.createElement('li');
+        msg.style.cssText = 'background:transparent;border:none;cursor:default;justify-content:center;color:var(--cream-mute);font-style:italic;';
+        msg.textContent = partner ? ('You and ' + partner.name + ' are locked in.') : 'You are paired.';
+        partnerUl.appendChild(msg);
+      } else {
+        unpaired.forEach(function (p) {
+          var li = document.createElement('li');
+          li.setAttribute('data-action', 'pick-partner');
+          li.setAttribute('data-target', p.id);
+          var classes = [];
+          if (myPick === p.id) classes.push('is-my-pick');
+          if (whoPickedMe.indexOf(p.id) !== -1) classes.push('picked-me');
+          if (classes.length) li.className = classes.join(' ');
+          var dot = document.createElement('span'); dot.className = 'player-dot';
+          var name = document.createElement('span'); name.className = 'player-name'; name.textContent = p.name;
+          li.appendChild(dot);
+          li.appendChild(name);
+          partnerUl.appendChild(li);
+        });
+      }
+    }
+
+    // Paired list at the bottom (everyone who's already locked in)
+    var pairedUl = $('paired-list');
+    var pairedTitle = $('paired-section-title');
+    if (pairedUl) {
+      pairedUl.innerHTML = '';
+      if (pairs.length === 0) {
+        if (pairedTitle) pairedTitle.hidden = true;
+      } else {
+        if (pairedTitle) pairedTitle.hidden = false;
+        pairs.forEach(function (pr) {
+          var a = players.find(function (x) { return x.id === pr.playerIds[0]; });
+          var b = players.find(function (x) { return x.id === pr.playerIds[1]; });
+          if (!a || !b) return;
+          var li = document.createElement('li');
+          if (pr.playerIds.indexOf(me) !== -1) li.className = 'is-my-pair';
+          li.innerHTML = '<span class="checkmark">&check;</span><span>' + esc(a.name) + ' & ' + esc(b.name) + '</span>';
+          pairedUl.appendChild(li);
+        });
+      }
+    }
+
+    // Pairing status line
+    var status = $('pairing-status');
+    if (status) {
+      var totalPlayers = players.length;
+      var pairedCount = pairedIds.length;
+      status.textContent = pairedCount + ' of ' + totalPlayers + ' players paired';
+    }
+
+    // Host gets the Start the Game button once everyone is paired
+    var isHost = room.hostId === me;
+    var startBtn = $('start-game-btn');
+    var startNote = $('pairing-host-note');
+    if (startBtn) {
+      startBtn.hidden = !isHost;
+      startBtn.disabled = pairedIds.length !== players.length;
+    }
+    if (startNote) startNote.hidden = isHost;
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
   }
 
   function clearLocalState() {
@@ -282,13 +380,74 @@
     }
   }
 
-  // host taps Pair Up. Placeholder POST will land in the next deploy.
-  function hostStart() {
+  // Host taps Pair Up. Calls the backend to transition lobby -> pairing.
+  // All other devices pick up the new phase via their 2-second poll.
+  async function hostStart() {
     var btn = $('start-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Pairing...'; }
-    // For Phase 1 we just navigate locally to the placeholder pairing screen.
-    // Phase 2 will POST to /api/friend-action with action=advance_to_pairing and
-    // sync everyone via the next poll.
-    show('screen-pairing');
+    try {
+      var r = await api('/api/friend-start-pairing', {
+        method: 'POST',
+        body: { code: load(K.code, ''), hostId: load(K.playerId, '') }
+      });
+      if (r.status === 200 && r.body && r.body.ok) {
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        var msg = (r.body && r.body.error) || 'unknown';
+        if (msg === 'odd_player_count') msg = 'The game needs an even number of players. Remove or add one.';
+        if (msg === 'too_few_players') msg = 'Need at least 4 players to start.';
+        alert('Could not start pairing: ' + msg);
+        if (btn) { btn.disabled = false; btn.textContent = 'Pair Up →'; }
+      }
+    } catch (err) {
+      alert('Network error. Try again.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Pair Up →'; }
+    }
+  }
+
+  // Player taps another player's tile to pick them as a partner. If the
+  // other player has already picked them back, the pair is locked in.
+  async function pickPartnerAction(targetId) {
+    if (!targetId) return;
+    try {
+      var r = await api('/api/friend-pick-partner', {
+        method: 'POST',
+        body: { code: load(K.code, ''), playerId: load(K.playerId, ''), targetPlayerId: targetId }
+      });
+      if (r.status === 200 && r.body && r.body.ok) {
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        var msg = (r.body && r.body.error) || 'unknown';
+        if (msg !== 'already_paired' && msg !== 'target_already_paired') {
+          alert('Could not pick partner: ' + msg);
+        }
+      }
+    } catch (err) {
+      // Silent on network blip; next poll will catch up.
+    }
+  }
+
+  // Host taps Start the Game after everyone is paired.
+  async function hostStartGame() {
+    var btn = $('start-game-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Starting...'; }
+    try {
+      var r = await api('/api/friend-start-game', {
+        method: 'POST',
+        body: { code: load(K.code, ''), hostId: load(K.playerId, '') }
+      });
+      if (r.status === 200 && r.body && r.body.ok) {
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        var msg = (r.body && r.body.error) || 'unknown';
+        alert('Could not start game: ' + msg);
+        if (btn) { btn.disabled = false; btn.textContent = 'Start the Game'; }
+      }
+    } catch (err) {
+      alert('Network error. Try again.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Start the Game'; }
+    }
   }
 
   // ----- wire -----
@@ -305,6 +464,8 @@
       if (a === 'leave-room')   return leaveRoom();
       if (a === 'host-start')   return hostStart();
       if (a === 'host-remove')  return hostRemove(el.getAttribute('data-target'), el.getAttribute('data-name'));
+      if (a === 'pick-partner') return pickPartnerAction(el.getAttribute('data-target'));
+      if (a === 'host-start-game') return hostStartGame();
     });
     // Pressing Enter inside an input submits the obvious action.
     document.body.addEventListener('keydown', function (e) {

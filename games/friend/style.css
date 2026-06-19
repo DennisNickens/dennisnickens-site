@@ -299,6 +299,102 @@ body {
   font-style: italic; margin: 0;
 }
 
+/* ---------- pairing screen ---------- */
+.pairing-inner {
+  display: flex; flex-direction: column; align-items: center;
+  gap: .8rem; max-width: 520px; width: 100%;
+  text-align: center;
+}
+.pairing-eyebrow {
+  font-size: .7rem; letter-spacing: .32em; text-transform: uppercase;
+  color: var(--sun); opacity: .85; margin: 0;
+}
+.pairing-title {
+  font-family: var(--ff); font-weight: 800;
+  font-size: clamp(1.8rem, 6vw, 2.4rem);
+  background: linear-gradient(135deg, #fff, var(--coral) 60%, var(--sun));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+.pairing-lead {
+  color: var(--cream-mute); margin: .2rem 0 1rem; max-width: 36ch; line-height: 1.5;
+}
+.pairing-section-title {
+  font-family: var(--ff); font-weight: 700;
+  font-size: 1rem; letter-spacing: .04em;
+  color: var(--cream); margin: 1.4rem 0 .4rem;
+}
+.partner-list, .paired-list {
+  list-style: none; padding: 0; margin: 0;
+  width: 100%; max-width: 380px;
+  display: flex; flex-direction: column; gap: .6rem;
+}
+.partner-list li {
+  display: flex; align-items: center; gap: .8rem;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px; padding: .9rem 1rem;
+  cursor: pointer;
+  transition: border-color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease);
+  animation: pop-in .35s var(--ease) both;
+}
+.partner-list li:hover { border-color: rgba(255,139,74,.42); background: var(--panel-2); transform: translateY(-1px); }
+/* You picked them; waiting for them to pick you back */
+.partner-list li.is-my-pick {
+  border-color: var(--coral); background: rgba(255,139,74,.12);
+}
+.partner-list li.is-my-pick::after {
+  content: 'Waiting for them...'; margin-left: auto;
+  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--sun);
+}
+/* They picked you; you haven't picked back */
+.partner-list li.picked-me {
+  border-color: var(--sun); background: rgba(255,210,74,.1);
+  animation: pulse-pick 1.6s ease-in-out infinite;
+}
+.partner-list li.picked-me::after {
+  content: 'Wants to pair with you'; margin-left: auto;
+  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--sun);
+}
+@keyframes pulse-pick {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,210,74,0); }
+  50%      { box-shadow: 0 0 0 6px rgba(255,210,74,.18); }
+}
+.partner-list .player-name { color: var(--cream); font-weight: 600; flex: 1 1 auto; text-align: left; }
+.partner-list .player-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); }
+
+/* Paired list (locked pairs at the bottom) */
+.paired-list li {
+  display: flex; align-items: center; justify-content: center; gap: .6rem;
+  background: linear-gradient(135deg, rgba(78,197,176,.14), rgba(78,197,176,.04));
+  border: 1px solid rgba(78,197,176,.45);
+  border-radius: 12px; padding: .8rem 1rem;
+  color: var(--cream); font-weight: 600;
+  animation: pop-in .35s var(--ease) both;
+}
+.paired-list li .checkmark {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--teal); color: #08111f;
+  font-weight: 800; font-size: .85rem;
+}
+.paired-list li.is-my-pair { box-shadow: 0 0 0 1px var(--coral); }
+
+.pairing-status {
+  margin: 1rem 0 0;
+  font-size: .8rem; color: var(--cream-faint);
+  letter-spacing: .14em; text-transform: uppercase;
+}
+.pairing-actions {
+  display: flex; flex-direction: column; gap: .6rem; align-items: center;
+  margin-top: 1rem; width: min(320px, 100%);
+}
+.pairing-host-note {
+  font-size: .82rem; color: var(--cream-faint); max-width: 32ch; line-height: 1.45;
+  font-style: italic; margin: 0;
+}
+
 /* ---------- animations ---------- */
 @keyframes pop-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) {

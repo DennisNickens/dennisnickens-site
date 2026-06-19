@@ -302,7 +302,7 @@ body {
 /* ---------- pairing screen ---------- */
 .pairing-inner {
   display: flex; flex-direction: column; align-items: center;
-  gap: .8rem; max-width: 520px; width: 100%;
+  gap: .8rem; max-width: 560px; width: 100%;
   text-align: center;
 }
 .pairing-eyebrow {
@@ -317,69 +317,63 @@ body {
   margin: 0;
 }
 .pairing-lead {
-  color: var(--cream-mute); margin: .2rem 0 1rem; max-width: 36ch; line-height: 1.5;
+  color: var(--cream-mute); margin: .2rem 0 1rem; max-width: 38ch; line-height: 1.5;
 }
-.pairing-section-title {
-  font-family: var(--ff); font-weight: 700;
-  font-size: 1rem; letter-spacing: .04em;
-  color: var(--cream); margin: 1.4rem 0 .4rem;
-}
-.partner-list, .paired-list {
-  list-style: none; padding: 0; margin: 0;
-  width: 100%; max-width: 380px;
-  display: flex; flex-direction: column; gap: .6rem;
-}
-.partner-list li {
-  display: flex; align-items: center; gap: .8rem;
-  background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; padding: .9rem 1rem;
-  cursor: pointer;
-  transition: border-color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease);
-  animation: pop-in .35s var(--ease) both;
-}
-.partner-list li:hover { border-color: rgba(255,139,74,.42); background: var(--panel-2); transform: translateY(-1px); }
-/* You picked them; waiting for them to pick you back */
-.partner-list li.is-my-pick {
-  border-color: var(--coral); background: rgba(255,139,74,.12);
-}
-.partner-list li.is-my-pick::after {
-  content: 'Waiting for them...'; margin-left: auto;
-  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--sun);
-}
-/* They picked you; you haven't picked back */
-.partner-list li.picked-me {
-  border-color: var(--sun); background: rgba(255,210,74,.1);
-  animation: pulse-pick 1.6s ease-in-out infinite;
-}
-.partner-list li.picked-me::after {
-  content: 'Wants to pair with you'; margin-left: auto;
-  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--sun);
-}
-@keyframes pulse-pick {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255,210,74,0); }
-  50%      { box-shadow: 0 0 0 6px rgba(255,210,74,.18); }
-}
-.partner-list .player-name { color: var(--cream); font-weight: 600; flex: 1 1 auto; text-align: left; }
-.partner-list .player-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); }
 
-/* Paired list (locked pairs at the bottom) */
-.paired-list li {
-  display: flex; align-items: center; justify-content: center; gap: .6rem;
-  background: linear-gradient(135deg, rgba(78,197,176,.14), rgba(78,197,176,.04));
-  border: 1px solid rgba(78,197,176,.45);
-  border-radius: 12px; padding: .8rem 1rem;
-  color: var(--cream); font-weight: 600;
+/* All players appear as tiles in a single grid the host taps */
+.players-grid {
+  list-style: none; padding: 0; margin: 0;
+  width: 100%; max-width: 460px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: .7rem;
+}
+.players-grid li {
+  background: var(--panel);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem .8rem;
+  display: flex; flex-direction: column; align-items: center; gap: .35rem;
+  cursor: pointer; user-select: none;
+  transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease);
   animation: pop-in .35s var(--ease) both;
+  position: relative;
 }
-.paired-list li .checkmark {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 22px; height: 22px; border-radius: 50%;
-  background: var(--teal); color: #08111f;
-  font-weight: 800; font-size: .85rem;
+.players-grid li:hover { transform: translateY(-1px); background: var(--panel-2); }
+.players-grid li.read-only { cursor: default; }
+.players-grid li.read-only:hover { transform: none; background: var(--panel); }
+.players-grid .grid-name {
+  color: var(--cream); font-weight: 600; font-size: 1rem;
+  text-align: center; word-break: break-word;
 }
-.paired-list li.is-my-pair { box-shadow: 0 0 0 1px var(--coral); }
+.players-grid .grid-role {
+  font-size: .58rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--cream-faint); margin-top: .1rem;
+}
+/* Selected (first tap, waiting for second tap) */
+.players-grid li.is-selected {
+  border-color: #fff; background: rgba(255,255,255,.08);
+  animation: pulse-select 1.4s ease-in-out infinite;
+}
+@keyframes pulse-select {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,.0); }
+  50%      { box-shadow: 0 0 0 6px rgba(255,255,255,.14); }
+}
+/* Paired tiles, color-coded by pair index */
+.players-grid li.paired { font-weight: 700; }
+.players-grid li.paired::after {
+  content: ''; position: absolute; bottom: 8px; right: 10px;
+  width: 10px; height: 10px; border-radius: 50%;
+}
+.players-grid li.pair-coral { border-color: var(--coral); background: rgba(255,139,74,.16); }
+.players-grid li.pair-coral::after { background: var(--coral); }
+.players-grid li.pair-sky   { border-color: var(--sky);   background: rgba(74,185,255,.16); }
+.players-grid li.pair-sky::after   { background: var(--sky); }
+.players-grid li.pair-sun   { border-color: var(--sun);   background: rgba(255,210,74,.16); }
+.players-grid li.pair-sun::after   { background: var(--sun); }
+.players-grid li.pair-pink  { border-color: var(--pink);  background: rgba(255,107,157,.16); }
+.players-grid li.pair-pink::after  { background: var(--pink); }
+.players-grid li.pair-teal  { border-color: var(--teal);  background: rgba(78,197,176,.16); }
+.players-grid li.pair-teal::after  { background: var(--teal); }
 
 .pairing-status {
   margin: 1rem 0 0;

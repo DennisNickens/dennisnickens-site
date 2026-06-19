@@ -153,91 +153,79 @@
     }
   }
 
+  // Local-only state: when the host taps a first player, we remember it
+  // so the next tap can complete the pair. Stays in memory; not synced.
+  var selectedForPair = null;
+
   // Render the pairing screen for the current viewer.
+  // Host can tap tiles to pair/unpair. Guests see the same grid read-only.
   function renderPairing(room) {
     var me = load(K.playerId, null);
-    var pairs = room.pairs || [];
-    var pendingPicks = room.pendingPicks || {};
+    var isHost = room.hostId === me;
     var players = room.players || [];
-    var pairedIds = pairs.reduce(function (a, p) { return a.concat(p.playerIds); }, []);
+    var pairs = room.pairs || [];
 
-    // Find this viewer's current state
-    var iAmPaired = pairedIds.indexOf(me) !== -1;
-    var myPick = pendingPicks[me] || null;
-    var whoPickedMe = Object.keys(pendingPicks).filter(function (pid) {
-      return pendingPicks[pid] === me;
+    // Build a quick lookup: playerId -> { pairIndex, color }
+    var pairIndex = {};
+    pairs.forEach(function (pr, idx) {
+      pr.playerIds.forEach(function (pid) {
+        pairIndex[pid] = { idx: idx, color: pr.color || 'coral' };
+      });
     });
 
-    // List of unpaired players (excluding myself)
-    var unpaired = players.filter(function (p) {
-      return p.id !== me && pairedIds.indexOf(p.id) === -1;
-    });
-
-    var partnerUl = $('partner-list');
-    if (partnerUl) {
-      partnerUl.innerHTML = '';
-      if (iAmPaired) {
-        var partnerPair = pairs.find(function (pr) { return pr.playerIds.indexOf(me) !== -1; });
-        var partnerId = partnerPair.playerIds.find(function (id) { return id !== me; });
-        var partner = players.find(function (p) { return p.id === partnerId; });
-        var msg = document.createElement('li');
-        msg.style.cssText = 'background:transparent;border:none;cursor:default;justify-content:center;color:var(--cream-mute);font-style:italic;';
-        msg.textContent = partner ? ('You and ' + partner.name + ' are locked in.') : 'You are paired.';
-        partnerUl.appendChild(msg);
-      } else {
-        unpaired.forEach(function (p) {
-          var li = document.createElement('li');
-          li.setAttribute('data-action', 'pick-partner');
+    var grid = $('players-grid');
+    if (grid) {
+      grid.innerHTML = '';
+      players.forEach(function (p) {
+        var li = document.createElement('li');
+        var info = pairIndex[p.id];
+        var classes = [];
+        if (info) {
+          classes.push('paired');
+          classes.push('pair-' + info.color);
+        }
+        if (selectedForPair === p.id) classes.push('is-selected');
+        if (!isHost) classes.push('read-only');
+        if (classes.length) li.className = classes.join(' ');
+        // Host tiles dispatch the pair-toggle action; guest tiles do nothing.
+        if (isHost) {
+          li.setAttribute('data-action', 'host-toggle-pair');
           li.setAttribute('data-target', p.id);
-          var classes = [];
-          if (myPick === p.id) classes.push('is-my-pick');
-          if (whoPickedMe.indexOf(p.id) !== -1) classes.push('picked-me');
-          if (classes.length) li.className = classes.join(' ');
-          var dot = document.createElement('span'); dot.className = 'player-dot';
-          var name = document.createElement('span'); name.className = 'player-name'; name.textContent = p.name;
-          li.appendChild(dot);
-          li.appendChild(name);
-          partnerUl.appendChild(li);
-        });
-      }
+        }
+        var name = document.createElement('span');
+        name.className = 'grid-name';
+        name.textContent = p.name;
+        li.appendChild(name);
+        if (p.id === room.hostId) {
+          var role = document.createElement('span');
+          role.className = 'grid-role';
+          role.textContent = p.id === me ? 'Host · You' : 'Host';
+          li.appendChild(role);
+        } else if (p.id === me) {
+          var youTag = document.createElement('span');
+          youTag.className = 'grid-role';
+          youTag.textContent = 'You';
+          li.appendChild(youTag);
+        }
+        grid.appendChild(li);
+      });
     }
 
-    // Paired list at the bottom (everyone who's already locked in)
-    var pairedUl = $('paired-list');
-    var pairedTitle = $('paired-section-title');
-    if (pairedUl) {
-      pairedUl.innerHTML = '';
-      if (pairs.length === 0) {
-        if (pairedTitle) pairedTitle.hidden = true;
-      } else {
-        if (pairedTitle) pairedTitle.hidden = false;
-        pairs.forEach(function (pr) {
-          var a = players.find(function (x) { return x.id === pr.playerIds[0]; });
-          var b = players.find(function (x) { return x.id === pr.playerIds[1]; });
-          if (!a || !b) return;
-          var li = document.createElement('li');
-          if (pr.playerIds.indexOf(me) !== -1) li.className = 'is-my-pair';
-          li.innerHTML = '<span class="checkmark">&check;</span><span>' + esc(a.name) + ' & ' + esc(b.name) + '</span>';
-          pairedUl.appendChild(li);
-        });
-      }
-    }
-
-    // Pairing status line
+    // Status line: paired count + (host) instruction hint
     var status = $('pairing-status');
     if (status) {
       var totalPlayers = players.length;
-      var pairedCount = pairedIds.length;
+      var pairedCount = pairs.length * 2;
       status.textContent = pairedCount + ' of ' + totalPlayers + ' players paired';
     }
 
-    // Host gets the Start the Game button once everyone is paired
-    var isHost = room.hostId === me;
+    // Host gets the Start the Game button once everyone is paired.
+    // Guests see a note that the host is doing the pairing.
     var startBtn = $('start-game-btn');
     var startNote = $('pairing-host-note');
     if (startBtn) {
       startBtn.hidden = !isHost;
-      startBtn.disabled = pairedIds.length !== players.length;
+      startBtn.disabled = (pairs.length * 2) !== players.length;
     }
     if (startNote) startNote.hidden = isHost;
   }
@@ -405,26 +393,67 @@
     }
   }
 
-  // Player taps another player's tile to pick them as a partner. If the
-  // other player has already picked them back, the pair is locked in.
-  async function pickPartnerAction(targetId) {
+  // Host taps a player tile. Three behaviors:
+  //   1. If that player is currently in a pair → unpair them (and partner).
+  //   2. Else if no one is selected yet → make this player the "selected" one.
+  //   3. Else if a different player is selected → pair them together.
+  //   4. Else if the SAME player is selected → deselect.
+  async function hostTogglePair(targetId) {
     if (!targetId) return;
+    var code = load(K.code, '');
+    var hostId = load(K.playerId, '');
+    if (!code || !hostId || !lastRoom) return;
+
+    var pairs = lastRoom.pairs || [];
+    var inPair = pairs.find(function (pr) { return pr.playerIds.indexOf(targetId) !== -1; });
+
+    if (inPair) {
+      // Unpair the target (and their partner) and clear any selection.
+      selectedForPair = null;
+      try {
+        var r = await api('/api/friend-unpair-player', {
+          method: 'POST',
+          body: { code: code, hostId: hostId, playerId: targetId }
+        });
+        if (r.status === 200 && r.body && r.body.ok) {
+          lastRoom = r.body.room;
+          renderRoom(lastRoom);
+        }
+      } catch (err) {}
+      return;
+    }
+
+    if (selectedForPair === targetId) {
+      // Tapped the already-selected player → deselect.
+      selectedForPair = null;
+      renderPairing(lastRoom);
+      return;
+    }
+
+    if (!selectedForPair) {
+      // First tap → mark as selected.
+      selectedForPair = targetId;
+      renderPairing(lastRoom);
+      return;
+    }
+
+    // Second tap on a different unpaired player → pair them with the first.
+    var firstId = selectedForPair;
+    selectedForPair = null;
     try {
-      var r = await api('/api/friend-pick-partner', {
+      var r2 = await api('/api/friend-pair-players', {
         method: 'POST',
-        body: { code: load(K.code, ''), playerId: load(K.playerId, ''), targetPlayerId: targetId }
+        body: { code: code, hostId: hostId, playerIdA: firstId, playerIdB: targetId }
       });
-      if (r.status === 200 && r.body && r.body.ok) {
-        lastRoom = r.body.room;
+      if (r2.status === 200 && r2.body && r2.body.ok) {
+        lastRoom = r2.body.room;
         renderRoom(lastRoom);
       } else {
-        var msg = (r.body && r.body.error) || 'unknown';
-        if (msg !== 'already_paired' && msg !== 'target_already_paired') {
-          alert('Could not pick partner: ' + msg);
-        }
+        // Show the room state as-is so the selected indicator clears.
+        renderPairing(lastRoom);
       }
     } catch (err) {
-      // Silent on network blip; next poll will catch up.
+      renderPairing(lastRoom);
     }
   }
 
@@ -464,7 +493,7 @@
       if (a === 'leave-room')   return leaveRoom();
       if (a === 'host-start')   return hostStart();
       if (a === 'host-remove')  return hostRemove(el.getAttribute('data-target'), el.getAttribute('data-name'));
-      if (a === 'pick-partner') return pickPartnerAction(el.getAttribute('data-target'));
+      if (a === 'host-toggle-pair') return hostTogglePair(el.getAttribute('data-target'));
       if (a === 'host-start-game') return hostStartGame();
     });
     // Pressing Enter inside an input submits the obvious action.

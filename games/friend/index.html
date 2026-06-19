@@ -114,22 +114,19 @@
 </section>
 
 <!-- ================= SCREEN: PAIRING ================= -->
-<section id="screen-pairing" class="screen" aria-label="Pick your partner" hidden>
+<section id="screen-pairing" class="screen" aria-label="Pair everyone up" hidden>
   <div class="pairing-inner">
-    <p class="pairing-eyebrow">Phase 2</p>
+    <p class="pairing-eyebrow">Pair Everyone Up</p>
     <h2 class="pairing-title">Pick Your Partner</h2>
-    <p class="pairing-lead" id="pairing-lead">Tap the friend you came in with. When you both tap each other, you're locked in.</p>
+    <p class="pairing-lead" id="pairing-lead">Tap two players to pair them. Tap a paired player to undo.</p>
 
-    <ul class="partner-list" id="partner-list"></ul>
-
-    <h3 class="pairing-section-title" id="paired-section-title" hidden>Paired Up</h3>
-    <ul class="paired-list" id="paired-list"></ul>
+    <ul class="players-grid" id="players-grid"></ul>
 
     <p class="pairing-status" id="pairing-status"></p>
 
     <div class="pairing-actions">
       <button class="btn btn-primary" id="start-game-btn" data-action="host-start-game" disabled hidden>Start the Game</button>
-      <p class="pairing-host-note" id="pairing-host-note" hidden>Once everyone is paired up, the host taps Start the Game.</p>
+      <p class="pairing-host-note" id="pairing-host-note" hidden>The host is pairing everyone up. Hold tight.</p>
     </div>
   </div>
 </section>

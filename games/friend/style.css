@@ -580,6 +580,16 @@ body {
   border: 1px solid var(--sun);
   border-radius: 12px;
 }
+/* Persistent Leave Game button for mid-game escape (Phase 5.5) */
+.btn-leave {
+  margin-top: .8rem;
+  font-size: .7rem;
+  letter-spacing: .14em;
+  opacity: .6;
+  padding: .65rem 1.2rem;
+}
+.btn-leave:hover { opacity: 1; }
+
 /* Phase 5: spectator view + single-partner reveal */
 .spectator-view {
   display: flex; flex-direction: column; gap: .7rem; align-items: center; text-align: center;

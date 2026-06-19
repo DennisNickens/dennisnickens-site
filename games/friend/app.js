@@ -1072,6 +1072,12 @@
   }
 
   function leaveRoom() {
+    // Confirm only when there's an actual game in flight, so accidental taps
+    // mid-card don't wipe state. Lobby/game-over Leaves stay one-tap.
+    var phase = lastRoom && lastRoom.phase;
+    var midGame = phase === 'pairing' || phase === 'teamSetup'
+      || phase === 'playing' || phase === 'roundEnd';
+    if (midGame && !confirm('Leave this game and go back to the start?')) return;
     clearLocalState();
     stopPolling();
     show('screen-router');

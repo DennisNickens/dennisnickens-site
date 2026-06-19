@@ -127,6 +127,7 @@
     <div class="pairing-actions">
       <button class="btn btn-primary" id="start-game-btn" data-action="host-start-team-setup" disabled hidden>Next: Pick Icons &rarr;</button>
       <p class="pairing-host-note" id="pairing-host-note" hidden>The host is pairing everyone up. Hold tight.</p>
+      <button class="btn btn-ghost btn-leave" data-action="leave-room">Leave Game</button>
     </div>
   </div>
 </section>
@@ -144,6 +145,7 @@
       <div class="team-setup-actions">
         <button class="btn btn-primary" id="confirm-icons-btn" data-action="host-advance-to-confirm" disabled hidden>Next: Confirm Teams &rarr;</button>
         <p class="pairing-host-note" id="icons-host-note" hidden>The host is picking team icons. Hold tight.</p>
+        <button class="btn btn-ghost btn-leave" data-action="leave-room">Leave Game</button>
       </div>
     </div>
 
@@ -157,6 +159,7 @@
         <button class="btn btn-ghost" id="back-to-icons-btn" data-action="host-back-to-picking-icons" hidden>Back</button>
         <button class="btn btn-primary" id="real-start-game-btn" data-action="host-start-game" hidden>Start the Game</button>
         <p class="pairing-host-note" id="confirm-host-note" hidden>The host is locking in teams. Hold tight.</p>
+        <button class="btn btn-ghost btn-leave" data-action="leave-room">Leave Game</button>
       </div>
     </div>
 
@@ -230,6 +233,8 @@
       </div>
 
     </div>
+
+    <button class="btn btn-ghost btn-leave" data-action="leave-room">Leave Game</button>
   </div>
 </section>
 

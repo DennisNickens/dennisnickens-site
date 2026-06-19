@@ -111,8 +111,21 @@
         if (p.isHost) cls.push('is-host');
         if (p.id === pid) cls.push('is-you');
         if (cls.length) li.className = cls.join(' ');
-        li.innerHTML = '<span class="player-dot"></span><span class="player-name"></span>';
-        li.querySelector('.player-name').textContent = p.name;
+        // Build row: dot + name + (host-only) remove button for non-host players
+        var dot = document.createElement('span'); dot.className = 'player-dot';
+        var name = document.createElement('span'); name.className = 'player-name'; name.textContent = p.name;
+        li.appendChild(dot);
+        li.appendChild(name);
+        if (isHost && !p.isHost) {
+          var btn = document.createElement('button');
+          btn.className = 'player-remove';
+          btn.setAttribute('aria-label', 'Remove ' + p.name);
+          btn.setAttribute('data-action', 'host-remove');
+          btn.setAttribute('data-target', p.id);
+          btn.setAttribute('data-name', p.name);
+          btn.innerHTML = '&times;';
+          li.appendChild(btn);
+        }
         ul.appendChild(li);
       });
     }
@@ -244,6 +257,31 @@
   }
   function backRouter() { show('screen-router'); }
 
+  // Host taps the × on a non-host player row to drop them from the lobby.
+  async function hostRemove(targetId, targetName) {
+    if (!targetId) return;
+    if (!confirm('Remove ' + (targetName || 'this player') + ' from the lobby?')) return;
+    var code = load(K.code, null);
+    var hostId = load(K.playerId, null);
+    if (!code || !hostId) return;
+    try {
+      var r = await api('/api/friend-remove-player', {
+        method: 'POST',
+        body: { code: code, hostId: hostId, targetPlayerId: targetId }
+      });
+      if (r.status === 200 && r.body && r.body.ok) {
+        // Re-render immediately from the response so we don't wait for the poll.
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        var msg = (r.body && r.body.error) || 'unknown';
+        alert('Could not remove player: ' + msg);
+      }
+    } catch (err) {
+      alert('Network error removing player. Try again.');
+    }
+  }
+
   // host taps Pair Up. Placeholder POST will land in the next deploy.
   function hostStart() {
     var btn = $('start-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Pairing...'; }
@@ -266,6 +304,7 @@
       if (a === 'join-go')      return joinGo();
       if (a === 'leave-room')   return leaveRoom();
       if (a === 'host-start')   return hostStart();
+      if (a === 'host-remove')  return hostRemove(el.getAttribute('data-target'), el.getAttribute('data-name'));
     });
     // Pressing Enter inside an input submits the obvious action.
     document.body.addEventListener('keydown', function (e) {

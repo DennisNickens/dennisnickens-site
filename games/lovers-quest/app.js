@@ -444,6 +444,16 @@
 
   var ONBOARDING = [
     {
+      // NEW page 1: cover image + personalized welcome.
+      // The title is set dynamically from the buyer's first name in renderOnboardingStep().
+      cover: true,
+      title: 'Welcome',
+      paragraphs: [
+        'You and your spouse just chose to spend a quiet hour together. Most couples don\'t. That alone is worth saying out loud.',
+        'On the next few screens, a quick word from me on how this deck works, what to expect from it, and one truth you need to hear before you start.'
+      ]
+    },
+    {
       title: 'The Thank You',
       paragraphs: [
         'Welcome to Lovers Quest.',
@@ -484,7 +494,23 @@
   function renderOnboardingStep() {
     var step = ONBOARDING[onbIndex];
     $('onb-step-num').textContent = (onbIndex + 1) + ' of ' + ONBOARDING.length;
-    $('onb-title').textContent = step.title;
+
+    // Title: personalize Welcome with the buyer's first name when we have it.
+    var title = step.title;
+    if (step.cover) {
+      var name = load(K.licenseFirstName, '') || '';
+      title = name ? ('Welcome, ' + name) : 'Welcome';
+    }
+    $('onb-title').textContent = title;
+
+    // Cover image visible only on pages flagged cover; crown on the rest.
+    var cover = $('onb-cover');
+    var crown = $('onb-crown');
+    if (cover && crown) {
+      cover.hidden = !step.cover;
+      crown.hidden = !!step.cover;
+    }
+
     $('onb-body').innerHTML = step.paragraphs.map(function (p) { return '<p>' + p + '</p>'; }).join('');
     var backBtn = document.querySelector('.onb-back');
     if (backBtn) backBtn.hidden = (onbIndex === 0);

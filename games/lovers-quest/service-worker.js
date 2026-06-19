@@ -3,7 +3,7 @@
    Cache-first for the app shell so the game works fully offline.
    Bump CACHE_VERSION to invalidate old caches on the next load.
    ============================================================ */
-var CACHE_VERSION = 'lq-v7';
+var CACHE_VERSION = 'lq-v8';
 var CACHE_NAME = 'lovers-quest-' + CACHE_VERSION;
 
 // Resolve all paths relative to this worker's location so the app is
@@ -20,7 +20,9 @@ var APP_SHELL = [
   'manifest.json',
   'icons/icon-192.png',
   'icons/icon-512.png',
-  'icons/apple-touch-icon.png'
+  'icons/apple-touch-icon.png',
+  // Cover image shown on the first onboarding page; cache for offline.
+  '../../images/lovers-quest-cover.jpg'
 ].map(rel);
 
 // Google Fonts (CSS + woff2). Cached opportunistically; the runtime fetch

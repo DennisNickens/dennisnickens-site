@@ -57,9 +57,25 @@
 <!-- ================= SCREEN 0b: ONBOARDING (first-time only) ================= -->
 <section id="screen-onboarding" class="screen" aria-label="Welcome to Lovers Quest" hidden>
   <div class="sheet onboarding-sheet">
-    <div class="sheet-rule"></div>
-    <div class="onboarding-step-num" id="onb-step-num">1 of 4</div>
-    <h2 class="sheet-title" id="onb-title">The Thank You</h2>
+    <!-- Cover image, shown only on the first welcome page -->
+    <div class="onb-cover" id="onb-cover" hidden>
+      <img src="../../images/lovers-quest-cover.jpg" alt="Lovers Quest tuck box, by Dennis Nickens" />
+    </div>
+    <!-- Crown ornament shown on the other pages (replaces the cover) -->
+    <div class="onb-crown" id="onb-crown" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M3 8l3.2 3L12 5l5.8 6L21 8l-1.6 10.5H4.6z"/><path d="M4.6 18.5h14.8"/><circle cx="3" cy="8" r="1"/><circle cx="21" cy="8" r="1"/><circle cx="12" cy="5" r="1"/></svg>
+    </div>
+    <div class="onboarding-step-num" id="onb-step-num">1 of 5</div>
+    <h2 class="sheet-title" id="onb-title">Welcome</h2>
+    <!-- Decorative gold flourish under the title -->
+    <div class="onb-flourish" aria-hidden="true">
+      <svg viewBox="0 0 160 16">
+        <path d="M2 8h54M158 8h-54" stroke-linecap="round"/>
+        <path d="M80 3l5 5-5 5-5-5z"/>
+        <circle cx="63" cy="8" r="1.8"/>
+        <circle cx="97" cy="8" r="1.8"/>
+      </svg>
+    </div>
     <div class="sheet-body onboarding-body" id="onb-body"></div>
     <div class="sheet-rule"></div>
     <div class="onboarding-actions">

@@ -6,7 +6,7 @@
     "title": "Before You Start",
     "body": [
       "This is not a quiz. There are no right answers. There is no winning.",
-      "What this is, is an invitation. An invitation to ask each other the questions you stopped asking. To remember why you chose each other. To make room for what God is still building in your marriage.",
+      "What this is, is an invitation. An invitation to ask each other the questions you stopped asking. To remember why you chose each other. To make room for what God is still building in your marriage/relationship.",
       "Pull one card. Read it aloud. Take turns answering. Listen all the way through before you respond. Stay soft.",
       "Some questions will be easy. Some will open something you did not know was closed. Both are good.",
       "Welcome to the quest."
@@ -34,12 +34,12 @@
   },
   "completion": {
     "title": "You've reached the end of the deck.",
-    "subtitle": "Some marriages drift. Yours does not.",
+    "subtitle": "Some marriages/relationships drift. Yours does not.",
     "note": "Take a minute before you put it down. What came up tonight that is worth carrying into the week?"
   },
   "about": {
-    "tagline": "Some marriages drift. Yours does not have to.",
-    "body": "Lovers Quest is a faith-rooted card game for couples who refuse to let their marriage run on autopilot. 72 honest questions across six dimensions of how you love each other: Intimacy, Trust, Purpose, Conflict, Grace, and Legacy.",
+    "tagline": "Some marriages/relationships drift. Yours does not have to.",
+    "body": "Lovers Quest is a faith-rooted card game for couples who refuse to let their marriage/relationship run on autopilot. 72 honest questions across six dimensions of how you love each other: Intimacy, Trust, Purpose, Conflict, Grace, and Legacy.",
     "credit": "A Spiritual Romeo Production. By Dennis Nickens.",
     "physical_edition_label": "Get the physical edition",
     "physical_edition_url": "https://dennisnickens.com/store/"
@@ -61,13 +61,13 @@
       "key": "purpose",
       "name": "Purpose",
       "icon": "compass",
-      "description": "The compass represents where you are headed together. Marriage is not just two people. It is a direction. This is the category that pulls you toward what God is building."
+      "description": "The compass represents where you are headed together. Marriage/Relationship is not just two people. It is a direction. This is the category that pulls you toward what God is building."
     },
     {
       "key": "conflict",
       "name": "Conflict",
       "icon": "hand-leaf",
-      "description": "The hand offering the leaf represents the fight FOR each other instead of AGAINST each other. Every marriage has conflict. The question is whether yours moves you toward each other or pulls you apart."
+      "description": "The hand offering the leaf represents the fight FOR each other instead of AGAINST each other. Every marriage/relationship has conflict. The question is whether yours moves you toward each other or pulls you apart."
     },
     {
       "key": "grace",
@@ -105,7 +105,7 @@
       "id": 4,
       "category": "intimacy",
       "text": "What part of you do you think I have stopped seeing?",
-      "context": "Long marriages slowly stop noticing. The parts of you they fell in love with don't disappear, but their attention to them can. This question asks you to point at something specific, not to complain.\n\nA trait, a gift, a softness, a strength. Something that's still there but isn't being seen lately. The point is to put it back on their radar so they can choose to look again."
+      "context": "Long marriages/relationships slowly stop noticing. The parts of you they fell in love with don't disappear, but their attention to them can. This question asks you to point at something specific, not to complain.\n\nA trait, a gift, a softness, a strength. Something that's still there but isn't being seen lately. The point is to put it back on their radar so they can choose to look again."
     },
     {
       "id": 5,
@@ -123,7 +123,7 @@
       "id": 7,
       "category": "intimacy",
       "text": "What is one thing about how we love each other that you never want to lose?",
-      "context": "Marriages lose things slowly, sometimes without noticing. Some habits and rhythms between you are sacred and worth protecting before they fade.\n\nName one. Not the obvious one. The small specific one only the two of you would notice. The point is to put a stake in the ground so neither of you accidentally lets it go."
+      "context": "Marriages/Relationships lose things slowly, sometimes without noticing. Some habits and rhythms between you are sacred and worth protecting before they fade.\n\nName one. Not the obvious one. The small specific one only the two of you would notice. The point is to put a stake in the ground so neither of you accidentally lets it go."
     },
     {
       "id": 8,
@@ -141,7 +141,7 @@
       "id": 10,
       "category": "intimacy",
       "text": "What about the way we used to be close do you miss, and what about how we are close now do you not want to give up?",
-      "context": "This is a both-and question. Marriages evolve, and what you miss is real, and what you've gained is real. Both halves matter. Don't let yourself only answer one.\n\nName one thing from earlier that you wish was still part of how you love each other. Then name one thing that's developed since that you would not trade back."
+      "context": "This is a both-and question. Marriages/Relationships evolve, and what you miss is real, and what you've gained is real. Both halves matter. Don't let yourself only answer one.\n\nName one thing from earlier that you wish was still part of how you love each other. Then name one thing that's developed since that you would not trade back."
     },
     {
       "id": 11,
@@ -159,13 +159,13 @@
       "id": 13,
       "category": "trust",
       "text": "What would help you feel safer being fully yourself with me?",
-      "context": "Safety in a marriage isn't physical safety, it's permission to bring the whole self to the table. Most spouses still edit themselves a little, even after years.\n\nThink about what you'd stop editing if you knew it would land softly. Then describe what your spouse would need to do (or stop doing) for that to be the case. Be specific. Vague safety is hard to provide."
+      "context": "Safety in a marriage/relationship isn't physical safety, it's permission to bring the whole self to the table. Most spouses still edit themselves a little, even after years.\n\nThink about what you'd stop editing if you knew it would land softly. Then describe what your spouse would need to do (or stop doing) for that to be the case. Be specific. Vague safety is hard to provide."
     },
     {
       "id": 14,
       "category": "trust",
       "text": "Is there something you have been carrying alone that I should know about?",
-      "context": "Long marriages accidentally develop \"things one of us is handling.\" Sometimes that's fine. Sometimes it's a weight one of you has been carrying that the other one would have happily helped with if they'd known.\n\nThis is your chance to put that thing on the table. Not as a complaint. As an invitation to share the load."
+      "context": "Long marriages/relationships accidentally develop \"things one of us is handling.\" Sometimes that's fine. Sometimes it's a weight one of you has been carrying that the other one would have happily helped with if they'd known.\n\nThis is your chance to put that thing on the table. Not as a complaint. As an invitation to share the load."
     },
     {
       "id": 15,
@@ -176,8 +176,8 @@
     {
       "id": 16,
       "category": "trust",
-      "text": "What does trust look like to you in this season of our marriage, that did not look the same before?",
-      "context": "The trust required in early marriage isn't the same as the trust required ten years in. As the seasons shift (kids, jobs, health, callings), what you need to feel safe with each other shifts too.\n\nThis asks you to describe what trust LOOKS like for you right now, not what it looked like five years ago. The form of it has probably changed. Name the current shape."
+      "text": "What does trust look like to you in this season of our marriage/relationship, that did not look the same before?",
+      "context": "The trust required in early marriage/relationship isn't the same as the trust required ten years in. As the seasons shift (kids, jobs, health, callings), what you need to feel safe with each other shifts too.\n\nThis asks you to describe what trust LOOKS like for you right now, not what it looked like five years ago. The form of it has probably changed. Name the current shape."
     },
     {
       "id": 17,
@@ -207,7 +207,7 @@
       "id": 21,
       "category": "trust",
       "text": "What is something I do or have done that makes you wonder if I am the same person you said yes to?",
-      "context": "Marriages span seasons, and both spouses change. Sometimes a change is good. Sometimes it makes the other person wonder where the person they married went.\n\nThis is a hard question on purpose. Speak it without weaponizing it. The goal isn't to accuse them of being a stranger, it's to name what's shifted so the two of you can decide together whether to lean in or lean back."
+      "context": "Marriages/Relationships span seasons, and both spouses change. Sometimes a change is good. Sometimes it makes the other person wonder where the person they married went.\n\nThis is a hard question on purpose. Speak it without weaponizing it. The goal isn't to accuse them of being a stranger, it's to name what's shifted so the two of you can decide together whether to lean in or lean back."
     },
     {
       "id": 22,
@@ -218,7 +218,7 @@
     {
       "id": 23,
       "category": "trust",
-      "text": "Where in our marriage are you carrying something alone because you do not believe I can handle it?",
+      "text": "Where in our marriage/relationship are you carrying something alone because you do not believe I can handle it?",
       "context": "Some weights get carried alone because we've decided our spouse can't bear them. Sometimes that's protection. Sometimes that's a quiet judgment about who they are.\n\nThis question invites you to name where you've made that call, and to consider whether you're underestimating them. They may be ready to carry more than you've given them credit for."
     },
     {
@@ -231,7 +231,7 @@
       "id": 25,
       "category": "purpose",
       "text": "What is God inviting us to build together?",
-      "context": "Marriage is a partnership and most partnerships have a build, a shared assignment, a thing the two of you are uniquely positioned to do.\n\nThis asks you to put words to what you sense God is asking of you AS A COUPLE, not just as individuals. It doesn't have to be big. It doesn't have to be public. It just has to be true."
+      "context": "Marriage/Relationship is a partnership and most partnerships have a build, a shared assignment, a thing the two of you are uniquely positioned to do.\n\nThis asks you to put words to what you sense God is asking of you AS A COUPLE, not just as individuals. It doesn't have to be big. It doesn't have to be public. It just has to be true."
     },
     {
       "id": 26,
@@ -248,7 +248,7 @@
     {
       "id": 28,
       "category": "purpose",
-      "text": "What is one assignment you sense God has put on our marriage, that we have not stepped into yet?",
+      "text": "What is one assignment you sense God has put on our marriage/relationship, that we have not stepped into yet?",
       "context": "Most couples can name something they've felt called to that they haven't yet acted on. Fear, timing, finances, doubt.\n\nThis is your chance to name it out loud, even if you can't act on it tonight. Naming it is the first step toward stepping into it. Don't let another season pass with this one unspoken."
     },
     {
@@ -266,20 +266,20 @@
     {
       "id": 31,
       "category": "purpose",
-      "text": "When you imagine the legacy God wants from this marriage, what is the first image that comes up?",
-      "context": "Don't think too hard. The first image is usually the truest one. It might be your kids. It might be a stage. It might be a quiet meal table with people you've poured into.\n\nWhatever flashes first, describe it. Then describe what would have to be true in your marriage today for that image to actually become real."
+      "text": "When you imagine the legacy God wants from this marriage/relationship, what is the first image that comes up?",
+      "context": "Don't think too hard. The first image is usually the truest one. It might be your kids. It might be a stage. It might be a quiet meal table with people you've poured into.\n\nWhatever flashes first, describe it. Then describe what would have to be true in your marriage/relationship today for that image to actually become real."
     },
     {
       "id": 32,
       "category": "purpose",
       "text": "What is something you are sensing God wants from you that you are afraid to tell me, because you do not know how it would change us?",
-      "context": "Some callings come to one spouse first, and they sit on them because they're afraid of what it would mean for the marriage. A move. A career shift. A ministry. A change in lifestyle.\n\nThis is your chance to put it on the table. Not as a decision. As something you've been carrying alone that you need help thinking about with the person you're going to do it with."
+      "context": "Some callings come to one spouse first, and they sit on them because they're afraid of what it would mean for the marriage/relationship. A move. A career shift. A ministry. A change in lifestyle.\n\nThis is your chance to put it on the table. Not as a decision. As something you've been carrying alone that you need help thinking about with the person you're going to do it with."
     },
     {
       "id": 33,
       "category": "purpose",
       "text": "If we had to choose between two callings, one for each of us, that would not both fit in the same season, how would we decide together?",
-      "context": "Marriages eventually face moments where you can't both have what you sense. Whose dream takes priority? Whose calling waits?\n\nThis question asks you to think about your decision-making process BEFORE you're in the heat of it. What values would you use? What conversation would you have? Building the framework now makes the actual decision easier later."
+      "context": "Marriages/Relationships eventually face moments where you can't both have what you sense. Whose dream takes priority? Whose calling waits?\n\nThis question asks you to think about your decision-making process BEFORE you're in the heat of it. What values would you use? What conversation would you have? Building the framework now makes the actual decision easier later."
     },
     {
       "id": 34,
@@ -291,7 +291,7 @@
       "id": 35,
       "category": "purpose",
       "text": "When was the last time you felt God spoke directly to you about us as a couple, and did you tell me what you heard?",
-      "context": "God speaks. Sometimes to one spouse, sometimes to both. Sometimes the one who heard kept it to themselves because they weren't sure how to share it.\n\nThis asks you to bring that word into the room. Not as a debate. As something the two of you need to hold together, since the marriage was the subject."
+      "context": "God speaks. Sometimes to one spouse, sometimes to both. Sometimes the one who heard kept it to themselves because they weren't sure how to share it.\n\nThis asks you to bring that word into the room. Not as a debate. As something the two of you need to hold together, since the marriage/relationship was the subject."
     },
     {
       "id": 36,
@@ -309,7 +309,7 @@
       "id": 38,
       "category": "conflict",
       "text": "What is the pattern in our disagreements that you wish would change?",
-      "context": "Conflict in a marriage is usually patterned. The same dance, the same triggers, the same escalation. This asks you to name the pattern from your perspective, not to assign blame.\n\nOnce both of you can see the same pattern, you can both interrupt it. Patterns are easier to break when both people know the choreography."
+      "context": "Conflict in a marriage/relationship is usually patterned. The same dance, the same triggers, the same escalation. This asks you to name the pattern from your perspective, not to assign blame.\n\nOnce both of you can see the same pattern, you can both interrupt it. Patterns are easier to break when both people know the choreography."
     },
     {
       "id": 39,
@@ -327,7 +327,7 @@
       "id": 41,
       "category": "conflict",
       "text": "Is there an old wound between us that has never fully healed, and what would healing it look like?",
-      "context": "Most marriages carry at least one wound that got bandaged but never fully closed. It comes up sideways in unrelated fights.\n\nThis is your chance to name it AND describe what healing it would actually look like. Not just \"an apology.\" The actual texture of what closure would feel like for you."
+      "context": "Most marriages/relationships carry at least one wound that got bandaged but never fully closed. It comes up sideways in unrelated fights.\n\nThis is your chance to name it AND describe what healing it would actually look like. Not just \"an apology.\" The actual texture of what closure would feel like for you."
     },
     {
       "id": 42,
@@ -339,7 +339,7 @@
       "id": 43,
       "category": "conflict",
       "text": "When was the last time we had a fight that brought us closer, and what was different about it?",
-      "context": "Not all fights damage the marriage. Some of them actually deepen it. This asks you to think back to one that ended in more closeness than you started with.\n\nWhat was different about it? The timing? The honesty? The willingness to hear before responding? Naming what worked teaches you both how to do it again."
+      "context": "Not all fights damage the marriage/relationship. Some of them actually deepen it. This asks you to think back to one that ended in more closeness than you started with.\n\nWhat was different about it? The timing? The honesty? The willingness to hear before responding? Naming what worked teaches you both how to do it again."
     },
     {
       "id": 44,
@@ -357,19 +357,19 @@
       "id": 46,
       "category": "conflict",
       "text": "What is the conflict between us we keep avoiding, even though we both know it is sitting there?",
-      "context": "Every marriage has at least one conversation both people know is needed and both people keep stepping around.\n\nThis is the chance to name it without yet having it. Just put the topic on the table. The actual conversation can happen later. Naming what you're avoiding is half the work of stopping the avoidance."
+      "context": "Every marriage/relationship has at least one conversation both people know is needed and both people keep stepping around.\n\nThis is the chance to name it without yet having it. Just put the topic on the table. The actual conversation can happen later. Naming what you're avoiding is half the work of stopping the avoidance."
     },
     {
       "id": 47,
       "category": "conflict",
       "text": "When my family of origin shows up in our fights, what pattern do you wish I would acknowledge before we have to keep fighting it?",
-      "context": "We all bring our families into our marriages. Some of those patterns are gifts. Some of them are landmines.\n\nThis asks your spouse to name a specific pattern from your family of origin that they wish you would recognize on your own, before it has to be pointed out for the hundredth time. Hear them. Don't defend the family. Listen to what they're saying about the pattern."
+      "context": "We all bring our families into our marriages/relationships. Some of those patterns are gifts. Some of them are landmines.\n\nThis asks your spouse to name a specific pattern from your family of origin that they wish you would recognize on your own, before it has to be pointed out for the hundredth time. Hear them. Don't defend the family. Listen to what they're saying about the pattern."
     },
     {
       "id": 48,
       "category": "conflict",
       "text": "When is your silence harder for me than your words, and how do I tell the difference between you needing space and you needing me to follow?",
-      "context": "Silence in marriage means many things, and most spouses misread it at least some of the time.\n\nThis asks you to help your spouse decode yours. When does your silence mean \"give me room?\" When does it mean \"come find me?\" Without the decoder, they'll guess wrong half the time and you'll feel unseen for it."
+      "context": "Silence in marriage/relationship means many things, and most spouses misread it at least some of the time.\n\nThis asks you to help your spouse decode yours. When does your silence mean \"give me room?\" When does it mean \"come find me?\" Without the decoder, they'll guess wrong half the time and you'll feel unseen for it."
     },
     {
       "id": 49,
@@ -405,7 +405,7 @@
       "id": 54,
       "category": "grace",
       "text": "What does it cost you to stay soft with me, and how can I make it easier?",
-      "context": "Softness in marriage isn't free. It costs energy, especially when the other person is going through something hard.\n\nThis asks you to name what staying soft is currently costing you, and what your spouse could do to lighten that cost. Soft isn't sustainable on its own. It needs support to keep being soft."
+      "context": "Softness in marriage/relationship isn't free. It costs energy, especially when the other person is going through something hard.\n\nThis asks you to name what staying soft is currently costing you, and what your spouse could do to lighten that cost. Soft isn't sustainable on its own. It needs support to keep being soft."
     },
     {
       "id": 55,
@@ -416,7 +416,7 @@
     {
       "id": 56,
       "category": "grace",
-      "text": "What does grace look like in our marriage on the days we do not feel like extending it to each other?",
+      "text": "What does grace look like in our marriage/relationship on the days we do not feel like extending it to each other?",
       "context": "Grace on a good day is easy. Grace on a hard day is the actual practice.\n\nThis asks you to describe what grace looks like specifically on the days when neither of you wants to give it. The minimum viable version. The version that gets you through without becoming someone who withholds. Define it now, while you're calm. Use it when you're not."
     },
     {
@@ -440,26 +440,26 @@
     {
       "id": 60,
       "category": "grace",
-      "text": "What grace does our marriage itself need from both of us right now, separate from the grace we extend each other?",
-      "context": "Sometimes the marriage as a thing needs grace too. Not from one spouse to the other. From both of you to the relationship itself.\n\nMaybe patience while it's adjusting. Maybe mercy during a hard chapter. This asks you to name what the marriage needs from both of you collectively, not what either of you needs individually."
+      "text": "What grace does our marriage/relationship itself need from both of us right now, separate from the grace we extend each other?",
+      "context": "Sometimes the marriage/relationship as a thing needs grace too. Not from one spouse to the other. From both of you to the relationship itself.\n\nMaybe patience while it's adjusting. Maybe mercy during a hard chapter. This asks you to name what the marriage/relationship needs from both of you collectively, not what either of you needs individually."
     },
     {
       "id": 61,
       "category": "legacy",
       "text": "What kind of love story do you want us to leave behind?",
-      "context": "Your marriage is going to be a story someone tells eventually. To your kids. To other couples. To people who watched it.\n\nThis asks you to describe the version of that story you want told. Not the polished version. The true version that includes what you want the takeaway to be. Name it now and you have something to live toward."
+      "context": "Your marriage/relationship is going to be a story someone tells eventually. To your kids. To other couples. To people who watched it.\n\nThis asks you to describe the version of that story you want told. Not the polished version. The true version that includes what you want the takeaway to be. Name it now and you have something to live toward."
     },
     {
       "id": 62,
       "category": "legacy",
-      "text": "If our children, or the people who watched us, were to describe our marriage in one sentence, what would you want them to say?",
+      "text": "If our children, or the people who watched us, were to describe our marriage/relationship in one sentence, what would you want them to say?",
       "context": "One sentence forces you to choose. Not five things. The one thing you most want people to remember about how you two loved each other.\n\nSay it out loud. Then notice if your current life is making that sentence true. If not, what would need to shift?"
     },
     {
       "id": 63,
       "category": "legacy",
       "text": "What is one thing about how we love each other that you hope sets a standard for the next generation?",
-      "context": "Marriages set standards whether they mean to or not. Your kids, your nieces and nephews, the younger couples in your circle. They're watching how you handle each other.\n\nThis asks you to name the one thing you most want them to take as the standard. Then you can be intentional about modeling it."
+      "context": "Marriages/Relationships set standards whether they mean to or not. Your kids, your nieces and nephews, the younger couples in your circle. They're watching how you handle each other.\n\nThis asks you to name the one thing you most want them to take as the standard. Then you can be intentional about modeling it."
     },
     {
       "id": 64,
@@ -477,42 +477,42 @@
       "id": 66,
       "category": "legacy",
       "text": "What is the prayer you most often pray over us, and what would it look like to step into that prayer more fully?",
-      "context": "There's a prayer you keep coming back to about your marriage. Maybe protection. Maybe peace. Maybe direction.\n\nThis asks you to name it, then ask what it would look like to live as if God were already answering it. Sometimes the prayer is the assignment."
+      "context": "There's a prayer you keep coming back to about your marriage/relationship. Maybe protection. Maybe peace. Maybe direction.\n\nThis asks you to name it, then ask what it would look like to live as if God were already answering it. Sometimes the prayer is the assignment."
     },
     {
       "id": 67,
       "category": "legacy",
-      "text": "If God called you home tomorrow, what would you want me to know about what our marriage gave you?",
-      "context": "This question is heavy on purpose. It asks you to think about what you'd want your spouse to carry forward about what the marriage meant to you, if you weren't here to keep telling them.\n\nDon't rush past this one. The answer is what makes the marriage holy."
+      "text": "If God called you home tomorrow, what would you want me to know about what our marriage/relationship gave you?",
+      "context": "This question is heavy on purpose. It asks you to think about what you'd want your spouse to carry forward about what the marriage/relationship meant to you, if you weren't here to keep telling them.\n\nDon't rush past this one. The answer is what makes the marriage/relationship holy."
     },
     {
       "id": 68,
       "category": "legacy",
-      "text": "What legacy is our marriage already leaving in our extended family, that we have not named out loud but that everyone around us can see?",
-      "context": "Sometimes the people watching see what the people inside don't. Your marriage is already doing something for your siblings, your cousins, your parents, your kids.\n\nThis asks you to consider what that legacy already is. Name it. Then decide if you want to lean into it on purpose."
+      "text": "What legacy is our marriage/relationship already leaving in our extended family, that we have not named out loud but that everyone around us can see?",
+      "context": "Sometimes the people watching see what the people inside don't. Your marriage/relationship is already doing something for your siblings, your cousins, your parents, your kids.\n\nThis asks you to consider what that legacy already is. Name it. Then decide if you want to lean into it on purpose."
     },
     {
       "id": 69,
       "category": "legacy",
-      "text": "When our children or the people we are raising remember what marriage looked like in this house, what do you most want them to remember?",
-      "context": "Children remember texture more than they remember events. They remember whether their parents touched each other in the kitchen, whether they laughed, whether they fought softly or loud.\n\nThis asks you to name the specific texture you most want them to carry into their own marriages. Then make sure your house has it."
+      "text": "When our children or the people we are raising remember what marriage/relationship looked like in this house, what do you most want them to remember?",
+      "context": "Children remember texture more than they remember events. They remember whether their parents touched each other in the kitchen, whether they laughed, whether they fought softly or loud.\n\nThis asks you to name the specific texture you most want them to carry into their own marriages/relationships. Then make sure your house has it."
     },
     {
       "id": 70,
       "category": "legacy",
-      "text": "What failure in our marriage became part of our story, that we would tell another couple about if we were ever asked to share something real?",
-      "context": "Every honest marriage has a failure or a near-failure that became part of how it grew. Not the polished version. The one you'd actually tell a young couple if they asked.\n\nThis asks you to name yours together. Then decide whether the two of you are ready to start telling that story to people who need to hear it."
+      "text": "What failure in our marriage/relationship became part of our story, that we would tell another couple about if we were ever asked to share something real?",
+      "context": "Every honest marriage/relationship has a failure or a near-failure that became part of how it grew. Not the polished version. The one you'd actually tell a young couple if they asked.\n\nThis asks you to name yours together. Then decide whether the two of you are ready to start telling that story to people who need to hear it."
     },
     {
       "id": 71,
       "category": "legacy",
-      "text": "What faith inheritance specifically do you want our marriage to leave behind, that you are not sure we are actually building yet?",
+      "text": "What faith inheritance specifically do you want our marriage/relationship to leave behind, that you are not sure we are actually building yet?",
       "context": "There's something spiritual you want to leave behind that you haven't yet built. A practice. A standard. A way of seeing God together.\n\nThis asks you to name what's missing, and consider what would have to change for it to actually become part of your legacy. The legacy you leave is the legacy you build on purpose."
     },
     {
       "id": 72,
       "category": "legacy",
-      "text": "If our marriage were a book that someone wrote about us in 50 years, what chapter title would describe the season we are in right now?",
+      "text": "If our marriage/relationship were a book that someone wrote about us in 50 years, what chapter title would describe the season we are in right now?",
       "context": "Zoom out one more time. Look at the chapter you're currently in. Give it a title, the kind that captures what's true about this season for you both.\n\nMaybe it's \"The Hard Year.\" Maybe it's \"When We Finally Got Honest.\" Maybe it's \"The Beginning of the Build.\" Title it. Then ask what you want the next chapter to be called."
     }
   ]

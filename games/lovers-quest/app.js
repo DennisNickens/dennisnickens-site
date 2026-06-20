@@ -457,7 +457,7 @@
       title: 'The Thank You',
       paragraphs: [
         'Welcome to Lovers Quest.',
-        'You just made a decision a lot of couples never get around to. You decided your marriage was worth a deliberate hour. That by itself counts for something.',
+        'You just made a decision a lot of couples never get around to. You decided your marriage/relationship was worth a deliberate hour. That by itself counts for something.',
         'What you are holding is not a card game. It is a tool. The card is the doorway. The conversation that happens between you and your spouse is the actual work.'
       ]
     },
@@ -465,7 +465,7 @@
       title: 'How This Helps',
       paragraphs: [
         'Here is what the deck does, if you let it.',
-        'The cards ask the questions you both stopped asking. The questions open doors you did not know were closed. The conversations that follow are where your marriage actually changes.',
+        'The cards ask the questions you both stopped asking. The questions open doors you did not know were closed. The conversations that follow are where your marriage/relationship actually changes.',
         'Some cards will land easy. Some will open something you have been quietly carrying. Both are good. Both are the deck doing its job.'
       ]
     },
@@ -474,7 +474,7 @@
       paragraphs: [
         'Before you start, one truth.',
         'This will not work if you treat it like entertainment. It will not work if you scroll between cards, check your phone, or rush through. It will not work if you give half answers because the real ones are uncomfortable.',
-        'Anything worth having is worth putting in the work. Your marriage is worth more than most things in your life. Treat the deck like that.',
+        'Anything worth having is worth putting in the work. Your marriage/relationship is worth more than most things in your life. Treat the deck like that.',
         'You and your spouse, alone, no distractions, willing to actually answer the question in front of you. That is the deal.'
       ]
     },

@@ -6,11 +6,11 @@
   "min_players": 4,
   "max_players": 10,
   "type_counts": {
-    "mc4": 35,
-    "mc6": 14,
-    "tf": 7,
-    "group_vote": 6,
-    "reflection": 5,
+    "mc4": 62,
+    "mc6": 15,
+    "tf": 12,
+    "group_vote": 11,
+    "reflection": 7,
     "discussion": 5
   },
   "cards": [
@@ -1871,6 +1871,998 @@
       },
       "playNotes": "This is the closer card. Subject reveals at the end of the night. Scoring: 2 + 1.",
       "depth": "real"
+    },
+    {
+      "id": 73,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "What is [Subject]'s comfort food when they've had a bad day?",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Pizza"
+        },
+        {
+          "letter": "B",
+          "text": "Mac and cheese or another childhood favorite"
+        },
+        {
+          "letter": "C",
+          "text": "Fast food, eaten in the car"
+        },
+        {
+          "letter": "D",
+          "text": "Something their mom or grandma made"
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject]'s drink order at a bar is closest to:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Whiskey, neat or on the rocks"
+        },
+        {
+          "letter": "B",
+          "text": "A simple cocktail (margarita, old fashioned)"
+        },
+        {
+          "letter": "C",
+          "text": "Beer or wine"
+        },
+        {
+          "letter": "D",
+          "text": "Something fruity they pretend to be embarrassed about"
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "The weather that puts [Subject] in their best mood is:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Sunny and warm, beach weather"
+        },
+        {
+          "letter": "B",
+          "text": "Crisp fall, sweater weather"
+        },
+        {
+          "letter": "C",
+          "text": "Cool rainy day, indoor weather"
+        },
+        {
+          "letter": "D",
+          "text": "First snow of the year"
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject]'s perfect weekend looks most like:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Out with friends both nights"
+        },
+        {
+          "letter": "B",
+          "text": "Quiet at home with a show and good food"
+        },
+        {
+          "letter": "C",
+          "text": "A short road trip somewhere new"
+        },
+        {
+          "letter": "D",
+          "text": "Productive errands and one long workout"
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "If [Subject] could only listen to one music genre for the rest of their life, they would pick:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "R&B or Soul"
+        },
+        {
+          "letter": "B",
+          "text": "Hip-hop"
+        },
+        {
+          "letter": "C",
+          "text": "Pop or Rock"
+        },
+        {
+          "letter": "D",
+          "text": "Gospel or Worship"
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject]'s biggest pet peeve is:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Loud chewing"
+        },
+        {
+          "letter": "B",
+          "text": "People who are always late"
+        },
+        {
+          "letter": "C",
+          "text": "Bad grammar or spelling in texts"
+        },
+        {
+          "letter": "D",
+          "text": "People talking over them"
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject]'s coffee order is closest to:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Black, no sugar"
+        },
+        {
+          "letter": "B",
+          "text": "Iced anything"
+        },
+        {
+          "letter": "C",
+          "text": "Latte with flavor (vanilla, caramel)"
+        },
+        {
+          "letter": "D",
+          "text": "They do not drink coffee"
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "If [Subject] could live anywhere in the world, they would pick:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A big city (NYC, LA, Atlanta)"
+        },
+        {
+          "letter": "B",
+          "text": "A small beach town"
+        },
+        {
+          "letter": "C",
+          "text": "The mountains or somewhere quiet"
+        },
+        {
+          "letter": "D",
+          "text": "Somewhere international"
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "[Subject]'s dream job if money did not matter is:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Something creative (writer, artist, designer)"
+        },
+        {
+          "letter": "B",
+          "text": "Something that helps people (counselor, teacher, ministry)"
+        },
+        {
+          "letter": "C",
+          "text": "Running their own business"
+        },
+        {
+          "letter": "D",
+          "text": "Something completely different from what they do now"
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "If [Subject] got $10,000 with no rules, they would:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Pay off something they owe"
+        },
+        {
+          "letter": "B",
+          "text": "Take a trip they have been putting off"
+        },
+        {
+          "letter": "C",
+          "text": "Invest it or save it"
+        },
+        {
+          "letter": "D",
+          "text": "Split it between people they love and themselves"
+        }
+      ]
+    },
+    {
+      "id": 83,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "The vacation [Subject] dreams about most is:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Beach with an all-inclusive resort"
+        },
+        {
+          "letter": "B",
+          "text": "Europe trip (Italy, Greece)"
+        },
+        {
+          "letter": "C",
+          "text": "Africa (homeland trip, safari)"
+        },
+        {
+          "letter": "D",
+          "text": "A road trip across the US"
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "[Subject]'s ideal way to celebrate a birthday is:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Big party with everyone they love"
+        },
+        {
+          "letter": "B",
+          "text": "Dinner with their closest 3 to 5 people"
+        },
+        {
+          "letter": "C",
+          "text": "Something low-key, just family"
+        },
+        {
+          "letter": "D",
+          "text": "They would rather skip the birthday thing entirely"
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "If [Subject] could pick one superpower, they would pick:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Read minds"
+        },
+        {
+          "letter": "B",
+          "text": "Teleport anywhere"
+        },
+        {
+          "letter": "C",
+          "text": "Be invisible"
+        },
+        {
+          "letter": "D",
+          "text": "Heal people"
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "theme": "Dreams",
+      "type": "mc6",
+      "text": "The last meal [Subject] would want before they died is:",
+      "scoring": {
+        "guesserPoints": 3,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 3 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Their mom's or grandma's cooking"
+        },
+        {
+          "letter": "B",
+          "text": "A really good steak dinner"
+        },
+        {
+          "letter": "C",
+          "text": "Soul food (chicken, greens, mac, cornbread)"
+        },
+        {
+          "letter": "D",
+          "text": "Seafood or sushi"
+        },
+        {
+          "letter": "E",
+          "text": "Whatever their partner makes"
+        },
+        {
+          "letter": "F",
+          "text": "A burger and fries"
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "theme": "Tells",
+      "type": "mc4",
+      "text": "When [Subject] is bored at a party, they:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Find the host and chat them up"
+        },
+        {
+          "letter": "B",
+          "text": "Find one person to talk to deeply"
+        },
+        {
+          "letter": "C",
+          "text": "Get on their phone"
+        },
+        {
+          "letter": "D",
+          "text": "Quietly start figuring out when they can leave"
+        }
+      ]
+    },
+    {
+      "id": 88,
+      "theme": "Tells",
+      "type": "mc4",
+      "text": "[Subject]'s go-to karaoke song would be:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "An R&B classic"
+        },
+        {
+          "letter": "B",
+          "text": "A 2000s pop or hip-hop hit"
+        },
+        {
+          "letter": "C",
+          "text": "Something gospel or inspirational"
+        },
+        {
+          "letter": "D",
+          "text": "They would never do karaoke"
+        }
+      ]
+    },
+    {
+      "id": 89,
+      "theme": "Tells",
+      "type": "mc4",
+      "text": "When [Subject] is stressed, the first thing they reach for is:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Food"
+        },
+        {
+          "letter": "B",
+          "text": "Their phone (scroll, TV, distraction)"
+        },
+        {
+          "letter": "C",
+          "text": "Talking to someone"
+        },
+        {
+          "letter": "D",
+          "text": "Working out or moving their body"
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "theme": "Tells",
+      "type": "mc4",
+      "text": "[Subject]'s most-used emoji is closest to:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Laughing crying face"
+        },
+        {
+          "letter": "B",
+          "text": "Heart or praying hands"
+        },
+        {
+          "letter": "C",
+          "text": "Skull or rolling on floor"
+        },
+        {
+          "letter": "D",
+          "text": "Eyes or smirk"
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "theme": "Tells",
+      "type": "tf",
+      "text": "[Subject] has a snack drawer or hidden snack stash at home.",
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject answers True or False. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 92,
+      "theme": "Tells",
+      "type": "tf",
+      "text": "[Subject] has watched the same movie or show more than 10 times.",
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject answers True or False. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 93,
+      "theme": "Identity",
+      "type": "mc4",
+      "text": "The compliment [Subject] secretly wants to hear is about:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "How they look"
+        },
+        {
+          "letter": "B",
+          "text": "How smart they are"
+        },
+        {
+          "letter": "C",
+          "text": "How they make people feel"
+        },
+        {
+          "letter": "D",
+          "text": "How strong they are"
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "theme": "Identity",
+      "type": "mc4",
+      "text": "[Subject]'s toxic trait, if they are being honest, is:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ignoring messages on purpose"
+        },
+        {
+          "letter": "B",
+          "text": "Holding a grudge longer than they should"
+        },
+        {
+          "letter": "C",
+          "text": "Talking about people behind their back (just a little)"
+        },
+        {
+          "letter": "D",
+          "text": "Pretending to be busier than they are"
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "theme": "Identity",
+      "type": "mc4",
+      "text": "The petty thing [Subject] would never admit to is:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Checking an ex's profile on social media"
+        },
+        {
+          "letter": "B",
+          "text": "Keeping score in a friendship"
+        },
+        {
+          "letter": "C",
+          "text": "Enjoying when someone they do not like fails"
+        },
+        {
+          "letter": "D",
+          "text": "Faking they are on a phone call to get out of conversations"
+        }
+      ]
+    },
+    {
+      "id": 96,
+      "theme": "Identity",
+      "type": "mc4",
+      "text": "[Subject]'s celebrity crush is closest to:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Someone classic (timeless, older)"
+        },
+        {
+          "letter": "B",
+          "text": "Someone current (active in their 30s or 40s)"
+        },
+        {
+          "letter": "C",
+          "text": "Someone younger than they should admit"
+        },
+        {
+          "letter": "D",
+          "text": "They would rather not say"
+        }
+      ]
+    },
+    {
+      "id": 97,
+      "theme": "Identity",
+      "type": "mc4",
+      "text": "If a movie was made about [Subject]'s life, the actor they would want playing them is:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Someone who could be them, but more polished"
+        },
+        {
+          "letter": "B",
+          "text": "Someone funny who would add comedy"
+        },
+        {
+          "letter": "C",
+          "text": "Someone serious and dramatic"
+        },
+        {
+          "letter": "D",
+          "text": "Whoever, as long as the movie got made"
+        }
+      ]
+    },
+    {
+      "id": 98,
+      "theme": "Identity",
+      "type": "mc4",
+      "text": "If you asked [Subject] where they actually want to be in five years, they would say:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Building something big they have not told many people about"
+        },
+        {
+          "letter": "B",
+          "text": "Slowed down, enjoying life more"
+        },
+        {
+          "letter": "C",
+          "text": "Making a major move (city, career, relationship)"
+        },
+        {
+          "letter": "D",
+          "text": "Honestly, they do not know yet"
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "If [Subject] got news that changed their life (good or bad), the first person they would want to tell is:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Their partner or spouse"
+        },
+        {
+          "letter": "B",
+          "text": "Their mom or a parent"
+        },
+        {
+          "letter": "C",
+          "text": "Their best friend"
+        },
+        {
+          "letter": "D",
+          "text": "Whoever picks up first"
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "[Subject]'s love language as a friend is most:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Words of affirmation (texts, voice notes, calls)"
+        },
+        {
+          "letter": "B",
+          "text": "Acts of service (showing up, doing things)"
+        },
+        {
+          "letter": "C",
+          "text": "Quality time (just being present)"
+        },
+        {
+          "letter": "D",
+          "text": "Gifts (bringing thoughtful things)"
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "theme": "Friendship",
+      "type": "group_vote",
+      "text": "Point to the person in this room [Subject] would call first if they needed honest advice.",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject points to a person in the room. Partner guesses which person. Pair scores 2 if partner matches, else 0."
+    },
+    {
+      "id": 102,
+      "theme": "Friendship",
+      "type": "group_vote",
+      "text": "Point to the person in this room [Subject] is most likely to laugh the hardest with.",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject points to a person in the room. Partner guesses which person. Pair scores 2 if partner matches, else 0."
+    },
+    {
+      "id": 103,
+      "theme": "Friendship",
+      "type": "group_vote",
+      "text": "Point to the person in this room [Subject] would most likely borrow money from if they had to.",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject points to a person in the room. Partner guesses which person. Pair scores 2 if partner matches, else 0."
+    },
+    {
+      "id": 104,
+      "theme": "Friendship",
+      "type": "group_vote",
+      "text": "Point to the person in this room [Subject] has known the longest.",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject points to a person in the room. Partner guesses which person. Pair scores 2 if partner matches, else 0."
+    },
+    {
+      "id": 105,
+      "theme": "Friendship",
+      "type": "group_vote",
+      "text": "Point to the person in this room who has helped [Subject] through their hardest moment.",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject points to a person in the room. Partner guesses which person. Pair scores 2 if partner matches, else 0."
+    },
+    {
+      "id": 106,
+      "theme": "Tells",
+      "type": "tf",
+      "text": "[Subject] has cried in the car alone in the last six months.",
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject answers True or False. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 107,
+      "theme": "Friendship",
+      "type": "tf",
+      "text": "[Subject] has at least one close friend they have never met in person.",
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject answers True or False. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 108,
+      "theme": "Identity",
+      "type": "tf",
+      "text": "[Subject] has saved a voice note from someone they love just to listen to it again.",
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject answers True or False. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 109,
+      "theme": "Pride",
+      "type": "mc4",
+      "text": "The thing [Subject] is most proud of right now is:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Their work or career"
+        },
+        {
+          "letter": "B",
+          "text": "A relationship they have built"
+        },
+        {
+          "letter": "C",
+          "text": "Personal growth they have put in"
+        },
+        {
+          "letter": "D",
+          "text": "A specific thing they overcame"
+        }
+      ]
+    },
+    {
+      "id": 110,
+      "theme": "Giving",
+      "type": "mc4",
+      "text": "[Subject]'s go-to gift to give a friend is:",
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Something they made or wrote"
+        },
+        {
+          "letter": "B",
+          "text": "Their favorite restaurant or experience"
+        },
+        {
+          "letter": "C",
+          "text": "Cash or a gift card"
+        },
+        {
+          "letter": "D",
+          "text": "Something specific they noticed the friend wanted"
+        }
+      ]
+    },
+    {
+      "id": 111,
+      "theme": "Closing",
+      "type": "reflection",
+      "text": "[Subject], tell us about a song, a place, or a person that always brings you back to yourself when you have gotten away from who you really are.",
+      "scoring": {
+        "guesserPoints": 0,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject shares. Partner and spectators listen. No scoring."
+    },
+    {
+      "id": 112,
+      "theme": "Closing",
+      "type": "reflection",
+      "text": "[Subject], if your best friend wrote a one-sentence description of you that would last forever, what is the sentence you would want them to write?",
+      "scoring": {
+        "guesserPoints": 0,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "Subject shares. Partner and spectators listen. No scoring."
     }
   ],
   "valid_depths": [

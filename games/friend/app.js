@@ -621,6 +621,17 @@
 
   function renderCardFrame(room, card) {
     var t = $('card-theme'); if (t) t.textContent = String(card.theme || '').toUpperCase();
+    var ty = $('card-type-label');
+    if (ty) {
+      var labels = {
+        mc4: '4 options',
+        mc6: '6 options',
+        group_vote: 'Point at a person',
+        reflection: 'Reflection · no scoring',
+        discussion: 'Group discussion · no scoring'
+      };
+      ty.textContent = labels[card.type] || '';
+    }
     var h = $('card-subject-hint');
     if (h) {
       var partner = partnerNameInActivePair(room);

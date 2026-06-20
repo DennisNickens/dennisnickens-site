@@ -6,9 +6,8 @@
   "min_players": 4,
   "max_players": 10,
   "type_counts": {
-    "mc4": 62,
+    "mc4": 74,
     "mc6": 15,
-    "tf": 12,
     "group_vote": 11,
     "reflection": 7,
     "discussion": 5
@@ -145,14 +144,32 @@
     {
       "id": 5,
       "theme": "Presence",
-      "type": "tf",
-      "text": "[Subject] has flaked on a friend in the past month.",
+      "type": "mc4",
+      "text": "In the past month, [Subject] has flaked on a friend:",
       "scoring": {
-        "guesserPoints": 1,
+        "guesserPoints": 2,
         "subjectPoints": 1
       },
-      "playNotes": "Players write T or F. Reveal at the same time. Subject reveals truth. Scoring: 1 point correct + 1 point to Subject per correct guesser.",
-      "depth": "real"
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "depth": "real",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Yes, more than once"
+        },
+        {
+          "letter": "B",
+          "text": "Once"
+        },
+        {
+          "letter": "C",
+          "text": "Came close but pulled it together"
+        },
+        {
+          "letter": "D",
+          "text": "No, kept every commitment"
+        }
+      ]
     },
     {
       "id": 6,
@@ -419,14 +436,32 @@
     {
       "id": 16,
       "theme": "Truth",
-      "type": "tf",
-      "text": "[Subject] has lied to someone in this room in the past month.",
+      "type": "mc4",
+      "text": "In the past month, [Subject] has been less than fully honest with someone in this room:",
       "scoring": {
-        "guesserPoints": 1,
+        "guesserPoints": 2,
         "subjectPoints": 1
       },
-      "playNotes": "Reveal at the same time. Subject reveals. Scoring: 1 + 1.",
-      "depth": "real"
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "depth": "real",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Told an outright lie"
+        },
+        {
+          "letter": "B",
+          "text": "Shaded the truth, but it counts"
+        },
+        {
+          "letter": "C",
+          "text": "Kept something quiet that maybe they should not have"
+        },
+        {
+          "letter": "D",
+          "text": "Has been straight with everyone here"
+        }
+      ]
     },
     {
       "id": 17,
@@ -723,14 +758,32 @@
     {
       "id": 28,
       "theme": "Investment",
-      "type": "tf",
-      "text": "[Subject] reached out to a friend first (no prompt, no obligation) within the last week.",
+      "type": "mc4",
+      "text": "Within the last week, when it comes to reaching out to a friend first (no prompt, no obligation), [Subject]:",
       "scoring": {
-        "guesserPoints": 1,
+        "guesserPoints": 2,
         "subjectPoints": 1
       },
-      "playNotes": "Reveal. Subject reveals. Scoring: 1 + 1.",
-      "depth": "real"
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "depth": "real",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Reached out to multiple friends"
+        },
+        {
+          "letter": "B",
+          "text": "Reached out to one friend"
+        },
+        {
+          "letter": "C",
+          "text": "Thought about it but did not follow through"
+        },
+        {
+          "letter": "D",
+          "text": "Has been waiting for friends to reach them"
+        }
+      ]
     },
     {
       "id": 29,
@@ -1053,14 +1106,32 @@
     {
       "id": 40,
       "theme": "Knowledge",
-      "type": "tf",
-      "text": "[Subject] could name the three biggest things happening in their best friend's life right now.",
+      "type": "mc4",
+      "text": "If asked right now, [Subject] could name the three biggest things happening in their best friend's life:",
       "scoring": {
-        "guesserPoints": 1,
+        "guesserPoints": 2,
         "subjectPoints": 1
       },
-      "playNotes": "Reveal. Subject reveals truth (and offers to name them if they can). Scoring: 1 + 1.",
-      "depth": "real"
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "depth": "real",
+      "options": [
+        {
+          "letter": "A",
+          "text": "All three, with detail"
+        },
+        {
+          "letter": "B",
+          "text": "Two of the three"
+        },
+        {
+          "letter": "C",
+          "text": "One, plus a vague sense of the others"
+        },
+        {
+          "letter": "D",
+          "text": "Not really, they would have to guess"
+        }
+      ]
     },
     {
       "id": 41,
@@ -1383,26 +1454,62 @@
     {
       "id": 52,
       "theme": "Repair",
-      "type": "tf",
-      "text": "There is a friendship [Subject] has lost in the past five years that they secretly believe could have been saved if [Subject] had handled the repair differently.",
+      "type": "mc4",
+      "text": "When [Subject] thinks about friendships they've lost in the past five years:",
       "scoring": {
-        "guesserPoints": 1,
+        "guesserPoints": 2,
         "subjectPoints": 1
       },
-      "playNotes": "Reveal. Subject reveals. Scoring: 1 + 1.",
-      "depth": "real"
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "depth": "real",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Yes, there is one they believe they could have saved"
+        },
+        {
+          "letter": "B",
+          "text": "There is more than one they wish they had handled differently"
+        },
+        {
+          "letter": "C",
+          "text": "It bothers them, but they would not change what they did"
+        },
+        {
+          "letter": "D",
+          "text": "No, they are at peace with how each one went"
+        }
+      ]
     },
     {
       "id": 53,
       "theme": "Repair",
-      "type": "tf",
-      "text": "A friend has apologized to [Subject] in the past year and [Subject] has not fully accepted it.",
+      "type": "mc4",
+      "text": "When [Subject] thinks about apologies they've received in the past year:",
       "scoring": {
-        "guesserPoints": 1,
+        "guesserPoints": 2,
         "subjectPoints": 1
       },
-      "playNotes": "Reveal. Subject reveals. Scoring: 1 + 1.",
-      "depth": "real"
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "depth": "real",
+      "options": [
+        {
+          "letter": "A",
+          "text": "There is one they accepted out loud but have not actually forgiven"
+        },
+        {
+          "letter": "B",
+          "text": "There is one they are still deciding whether to accept at all"
+        },
+        {
+          "letter": "C",
+          "text": "They have accepted every apology fully"
+        },
+        {
+          "letter": "D",
+          "text": "They have not received an apology this year worth thinking about"
+        }
+      ]
     },
     {
       "id": 54,
@@ -1669,14 +1776,32 @@
     {
       "id": 64,
       "theme": "Reflection",
-      "type": "tf",
-      "text": "[Subject] is the friend they wanted to be ten years ago.",
+      "type": "mc4",
+      "text": "Compared to who [Subject] wanted to be as a friend ten years ago, today they are:",
       "scoring": {
-        "guesserPoints": 1,
+        "guesserPoints": 2,
         "subjectPoints": 1
       },
-      "playNotes": "Reveal. Subject reveals. Scoring: 1 + 1.",
-      "depth": "real"
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "depth": "real",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Closer than they realize, just being modest about it"
+        },
+        {
+          "letter": "B",
+          "text": "Almost there, still building toward it"
+        },
+        {
+          "letter": "C",
+          "text": "Drifted away from that version, but could come back"
+        },
+        {
+          "letter": "D",
+          "text": "A completely different version of friend now, and okay with that"
+        }
+      ]
     },
     {
       "id": 65,
@@ -2423,26 +2548,62 @@
     {
       "id": 91,
       "theme": "Tells",
-      "type": "tf",
-      "text": "[Subject] has a snack drawer or hidden snack stash at home.",
+      "type": "mc4",
+      "text": "[Subject]'s relationship with hidden snacks at home is:",
       "scoring": {
-        "guesserPoints": 1,
+        "guesserPoints": 2,
         "subjectPoints": 0
       },
       "depth": "deep",
-      "playNotes": "Subject answers True or False. Partner guesses. Pair scores 1 if partner matches, else 0."
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Yes, a full snack drawer they do not share"
+        },
+        {
+          "letter": "B",
+          "text": "A few hidden treats stashed in specific places"
+        },
+        {
+          "letter": "C",
+          "text": "Treats are out in the open, no hiding"
+        },
+        {
+          "letter": "D",
+          "text": "They do not really keep snacks around"
+        }
+      ]
     },
     {
       "id": 92,
       "theme": "Tells",
-      "type": "tf",
-      "text": "[Subject] has watched the same movie or show more than 10 times.",
+      "type": "mc4",
+      "text": "There is a movie or show [Subject] has watched more than 10 times:",
       "scoring": {
-        "guesserPoints": 1,
+        "guesserPoints": 2,
         "subjectPoints": 0
       },
       "depth": "deep",
-      "playNotes": "Subject answers True or False. Partner guesses. Pair scores 1 if partner matches, else 0."
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Multiple, they are a serial rewatcher"
+        },
+        {
+          "letter": "B",
+          "text": "One or two go-tos they return to"
+        },
+        {
+          "letter": "C",
+          "text": "Maybe one that is close to 10 but they are not sure"
+        },
+        {
+          "letter": "D",
+          "text": "No, they prefer something new every time"
+        }
+      ]
     },
     {
       "id": 93,
@@ -2747,38 +2908,92 @@
     {
       "id": 106,
       "theme": "Tells",
-      "type": "tf",
-      "text": "[Subject] has cried in the car alone in the last six months.",
+      "type": "mc4",
+      "text": "In the last six months, [Subject] has cried in the car alone:",
       "scoring": {
-        "guesserPoints": 1,
+        "guesserPoints": 2,
         "subjectPoints": 0
       },
       "depth": "deep",
-      "playNotes": "Subject answers True or False. Partner guesses. Pair scores 1 if partner matches, else 0."
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Yes, more than once"
+        },
+        {
+          "letter": "B",
+          "text": "Once, a memorable time"
+        },
+        {
+          "letter": "C",
+          "text": "Almost did but caught it"
+        },
+        {
+          "letter": "D",
+          "text": "Has not cried in the car alone"
+        }
+      ]
     },
     {
       "id": 107,
       "theme": "Friendship",
-      "type": "tf",
-      "text": "[Subject] has at least one close friend they have never met in person.",
+      "type": "mc4",
+      "text": "Among [Subject]'s close friends:",
       "scoring": {
-        "guesserPoints": 1,
+        "guesserPoints": 2,
         "subjectPoints": 0
       },
       "depth": "deep",
-      "playNotes": "Subject answers True or False. Partner guesses. Pair scores 1 if partner matches, else 0."
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Yes, at least one they have never met in person"
+        },
+        {
+          "letter": "B",
+          "text": "Used to have one online-only but they have met now"
+        },
+        {
+          "letter": "C",
+          "text": "They have online connections but would not call them close"
+        },
+        {
+          "letter": "D",
+          "text": "All close friends are people they have met in person"
+        }
+      ]
     },
     {
       "id": 108,
       "theme": "Identity",
-      "type": "tf",
-      "text": "[Subject] has saved a voice note from someone they love just to listen to it again.",
+      "type": "mc4",
+      "text": "When it comes to voice notes from someone [Subject] loves:",
       "scoring": {
-        "guesserPoints": 1,
+        "guesserPoints": 2,
         "subjectPoints": 0
       },
       "depth": "deep",
-      "playNotes": "Subject answers True or False. Partner guesses. Pair scores 1 if partner matches, else 0."
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Yes, they have saved one specifically to listen to again"
+        },
+        {
+          "letter": "B",
+          "text": "They have a few saved, but not for that reason"
+        },
+        {
+          "letter": "C",
+          "text": "They listen and delete, would never save"
+        },
+        {
+          "letter": "D",
+          "text": "They do not really get voice notes"
+        }
+      ]
     },
     {
       "id": 109,

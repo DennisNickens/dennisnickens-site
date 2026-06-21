@@ -578,6 +578,15 @@ body {
 .answer-tile.is-selected .answer-letter {
   background: var(--coral); color: #1a0a05;
 }
+/* Read-only tiles for the spectator view: visible so spectators can play
+   along mentally, but not interactive. Dimmed and de-saturated so they
+   read as "not your turn" without being invisible. */
+.answer-tile.is-readonly {
+  opacity: .58;
+  cursor: default;
+  filter: grayscale(.35);
+}
+.spectator-options { margin-top: .25rem; }
 .answer-text { flex: 1; line-height: 1.3; }
 
 /* ---------- reveal view ---------- */

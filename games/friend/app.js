@@ -777,6 +777,30 @@
       line.textContent = subject + ' is the subject. '
         + (partner ? partner + ' is guessing what ' + subject + ' picked.' : '');
     }
+
+    // Read-only options grid: spectators can see the four options and play
+    // along mentally. No data-action so tiles aren't tappable.
+    var grid = $('spectator-options');
+    if (grid) {
+      grid.innerHTML = '';
+      if (card.type === 'mc4' || card.type === 'mc6' || card.type === 'tf') {
+        letters(card).forEach(function (L) {
+          var optText = (card.type === 'tf') ? tfLabel(L)
+            : interp(((card.options || []).find(function (o) { return o.letter === L; }) || {}).text || '', room);
+          var li = makeAnswerTile(L, optText, false);
+          li.classList.add('is-readonly');
+          grid.appendChild(li);
+        });
+      } else if (card.type === 'group_vote') {
+        (room.players || []).forEach(function (p) {
+          if (p.id === room.currentSubjectId) return;
+          var li = makeAnswerTile('', p.name, false);
+          li.classList.add('is-readonly');
+          grid.appendChild(li);
+        });
+      }
+    }
+
     if (status) {
       status.textContent = room.partnerHasGuessed
         ? (partner || 'Partner') + ' locked in. Waiting on ' + subject + ' to reveal.'

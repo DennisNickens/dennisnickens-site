@@ -3,7 +3,7 @@
    Cache-first for the app shell so the game works fully offline.
    Bump CACHE_VERSION to invalidate old caches on the next load.
    ============================================================ */
-var CACHE_VERSION = 'lq-v12';
+var CACHE_VERSION = 'lq-v13';
 var CACHE_NAME = 'lovers-quest-' + CACHE_VERSION;
 
 // Resolve all paths relative to this worker's location so the app is
@@ -17,6 +17,7 @@ var APP_SHELL = [
   'style.css',
   'app.js',
   'cards.json',
+  'cards.es.json',
   'manifest.json',
   'icons/icon-192.png',
   'icons/icon-512.png',

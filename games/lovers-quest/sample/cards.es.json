@@ -1,0 +1,157 @@
+{
+  "deck_name": "Lovers Quest",
+  "subtitle": "Un Viaje Enraizado en la Fe para Parejas",
+  "welcome": {
+    "title": "Antes de Empezar",
+    "body": [
+      "Esto no es un examen. No hay respuestas correctas. No hay forma de ganar.",
+      "Lo que esto es, es una invitación a hacerse las preguntas que dejaron de hacerse.",
+      "Esta es una muestra gratuita. El mazo completo tiene 60 cartas más."
+    ],
+    "signoff": "Dennis Nickens, AKA Spiritual Romeo"
+  },
+  "about": {
+    "tagline": "Algunos matrimonios/relaciones se enfrían. El tuyo/la tuya no tiene que hacerlo.",
+    "body": "Lovers Quest es un juego de cartas con raíces de fe para parejas que se niegan a dejar que su matrimonio/relación funcione en piloto automático. Esta muestra de 12 cartas es una probadita del mazo completo de 72 cartas.",
+    "credit": "Una producción de Spiritual Romeo. Por Dennis Nickens.",
+    "physical_edition_label": "Obtén la edición física",
+    "physical_edition_url": "https://dennisnickens.com/store/"
+  },
+  "instructions": {
+    "title": "Cómo Jugar Lovers Quest",
+    "steps": [
+      "Mezclen el mazo. Cualquiera de los dos puede empezar.",
+      "Saquen una carta. Lean la pregunta en voz alta.",
+      "La persona que sacó la carta responde primero. Tómense su tiempo. Hablen desde donde realmente están, no desde donde piensan que deberían estar.",
+      "Cuando terminen de responder, pregúntenle a su pareja: '¿Qué añadirías?' Luego responden ellos.",
+      "Antes de pasar a la siguiente carta, tomen tres segundos de silencio juntos. Dejen que lo que se dijo se asiente.",
+      "Cuando hayan terminado por la noche, dejen el mazo a un lado. Continúen la próxima vez."
+    ],
+    "ground_rules_title": "Reglas Básicas",
+    "ground_rules": [
+      "No usen una carta como arma.",
+      "No traigan una pelea vieja al responder.",
+      "No miren su teléfono entre cartas."
+    ],
+    "final_note_title": "Una Nota Final",
+    "final_note": "Si una pregunta es muy difícil para esta noche, déjenla a un lado. No hay requisito de responder cada carta la misma noche. La conversación real toma tiempo. Confíen en el ritmo que se le da."
+  },
+  "completion": {
+    "title": "Has terminado la muestra.",
+    "subtitle": "El mazo completo tiene 60 cartas más.",
+    "note": "Si estas 12 cartas abrieron algo entre ustedes, el mazo completo de Lovers Quest de 72 preguntas los está esperando."
+  },
+  "categories": [
+    {
+      "key": "intimacy",
+      "name": "Intimidad",
+      "icon": "flame",
+      "description": "La llama representa lo que arde entre ustedes. No solo la intimidad física, sino la cercanía que se construye cuando dejan que su pareja vea quiénes son realmente. Esta es la categoría sobre el acceso, no sobre el rendimiento."
+    },
+    {
+      "key": "trust",
+      "name": "Confianza",
+      "icon": "key",
+      "description": "La llave representa lo que está cerrado entre ustedes. La confianza es el acceso que se otorgan el uno al otro a las partes más vulnerables de quienes son. Esta categoría trata sobre lo que se han ganado y lo que todavía están construyendo."
+    },
+    {
+      "key": "purpose",
+      "name": "Propósito",
+      "icon": "compass",
+      "description": "La brújula representa hacia dónde se dirigen juntos. El matrimonio/relación no es solo dos personas. Es una dirección. Esta es la categoría que los empuja hacia lo que Dios está construyendo."
+    },
+    {
+      "key": "conflict",
+      "name": "Conflicto",
+      "icon": "hand-leaf",
+      "description": "La mano ofreciendo la hoja representa la lucha POR el otro en lugar de CONTRA el otro. Todo matrimonio/relación tiene conflicto. La pregunta es si el suyo los acerca o los separa."
+    },
+    {
+      "key": "grace",
+      "name": "Gracia",
+      "icon": "rose",
+      "description": "La rosa representa la belleza que crece en suelo que ha sido abierto. La gracia no es ignorar el daño. Es elegir, una y otra vez, dejar espacio para que la otra persona crezca, falle y vuelva."
+    },
+    {
+      "key": "legacy",
+      "name": "Legado",
+      "icon": "crown",
+      "description": "La corona representa lo que les sobrevive a los dos. La historia de amor que escriban juntos seguirá hablándole a las personas que los observen mucho después de que dejen de hablar. Esta categoría trata sobre lo que quieren dejar atrás."
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "category": "intimacy",
+      "text": "¿Cuándo te sentiste más conocido/a por mí?",
+      "context": "Algunas semanas, una pareja se siente vista hasta los huesos. Algunas semanas pasan días sin contacto real.\n\nPiensa en un momento, reciente o lejano, en el que sentiste que tu pareja realmente te conocía. Nómbralo en voz alta. Luego describe qué hizo diferente ese momento."
+    },
+    {
+      "id": 2,
+      "category": "intimacy",
+      "text": "¿Qué es una cosa de cómo nos amamos que nunca quieres perder?",
+      "context": "Las relaciones evolucionan con el tiempo. Algunas costumbres pequeñas y sagradas son específicas de ustedes dos.\n\nNombra una. Específica. La que solo ustedes notarían si desapareciera. Luego pídele a tu pareja que diga la suya. El acto de nombrarlas las protege."
+    },
+    {
+      "id": 3,
+      "category": "trust",
+      "text": "¿Qué me ayudaría a sentirme más seguro/a siendo completamente yo contigo?",
+      "context": "La seguridad en una pareja no es seguridad física, es permiso para traer todo el ser a la mesa. La mayoría de las personas todavía se editan un poco, incluso después de años.\n\nPiensa en qué dejarías de editar si supieras que aterrizaría suavemente. Luego describe qué necesitaría hacer tu pareja (o dejar de hacer) para que eso sea así. Sé específico/a. La seguridad vaga es difícil de proporcionar."
+    },
+    {
+      "id": 4,
+      "category": "trust",
+      "text": "¿Qué es lo que yo necesitaría hacer hoy para que sintieras que estoy completamente de tu lado?",
+      "context": "A veces las personas necesitan algo específico que no han sabido pedir. Esta carta da permiso a la otra persona para nombrarlo.\n\nPidan especificidad. No 'apóyame más', sino 'envíame un mensaje a media tarde sin razón', o 'no defiendas a tu mamá cuando me critique', o 'ven a la cama a la misma hora que yo esta semana'. La especificidad es donde vive el cuidado real."
+    },
+    {
+      "id": 5,
+      "category": "purpose",
+      "text": "¿A qué nos está invitando Dios a construir juntos?",
+      "context": "El matrimonio/relación es una sociedad y la mayoría de las sociedades tienen una construcción, una asignación compartida, algo que ustedes dos están en posición única para hacer.\n\nEsto te pide poner palabras a lo que sientes que Dios les está pidiendo COMO PAREJA, no solo como individuos. No tiene que ser grande. No tiene que ser público. Solo tiene que ser verdad."
+    },
+    {
+      "id": 6,
+      "category": "purpose",
+      "text": "Cuando te imaginas el legado que Dios quiere de este matrimonio/relación, ¿cuál es la primera imagen que viene?",
+      "context": "No pienses demasiado. La primera imagen suele ser la más verdadera. Pueden ser sus hijos. Puede ser un escenario. Puede ser una mesa tranquila con personas en las que han invertido.\n\nLo que sea que aparezca primero, descríbelo. Luego describe qué tendría que ser cierto en su matrimonio/relación hoy para que esa imagen realmente se haga realidad."
+    },
+    {
+      "id": 7,
+      "category": "conflict",
+      "text": "¿Cómo quieres que peleemos POR el otro, no CONTRA el otro?",
+      "context": "El conflicto está garantizado. Lo que no está garantizado es la dirección. Algunas parejas pelean para ganar. Algunas pelean para entender. Algunas pelean para terminar.\n\nEsto te pide describir lo que quieres que sea verdad sobre cómo manejan los desacuerdos. No es una promesa. Es una imagen. Trabajen hacia ella juntos."
+    },
+    {
+      "id": 8,
+      "category": "conflict",
+      "text": "¿Qué es una cosa que yo podría decir en medio de un momento difícil que te ayudaría a sentirte seguro/a?",
+      "context": "En el calor de un desacuerdo, las palabras correctas son difíciles de encontrar. Esta carta te ayuda a darle a tu pareja las palabras de antemano.\n\nNombra una frase específica que, si la dijeras en medio de tensión, te ayudaría a saber que tu pareja todavía está contigo. Luego escucha lo que tu pareja necesita escuchar. Recuerden ambas frases para la próxima."
+    },
+    {
+      "id": 9,
+      "category": "grace",
+      "text": "¿Dónde necesitas más gracia de mi parte ahora mismo?",
+      "context": "La gracia es una elección, no un sentimiento. Esta carta crea espacio para que tu pareja nombre dónde han estado cargando algo que necesita más amabilidad de la que has estado ofreciendo.\n\nEscucha sin defenderte. La defensa cierra la puerta que esta conversación está tratando de abrir."
+    },
+    {
+      "id": 10,
+      "category": "grace",
+      "text": "¿Cuándo te he dado gracia de una manera que cambió algo en ti?",
+      "context": "A veces no nos damos cuenta del impacto de la gracia que recibimos hasta que miramos hacia atrás.\n\nPiensa en un momento donde tu pareja te dio gracia (perdón, paciencia, espacio, amabilidad) y eso cambió cómo te ves a ti mismo/a o cómo amas. Nombra el momento. Diles lo que hizo en ti."
+    },
+    {
+      "id": 11,
+      "category": "legacy",
+      "text": "¿Qué tipo de historia de amor quieres que dejemos detrás?",
+      "context": "Su matrimonio/relación va a ser una historia que alguien contará eventualmente. A sus hijos. A otras parejas. A las personas que los observaron.\n\nEsto te pide describir la versión de esa historia que quieres que se cuente. No la versión pulida. La versión verdadera que incluye lo que quieres que sea el mensaje. Nómbrenla ahora y tendrán algo hacia lo que vivir."
+    },
+    {
+      "id": 12,
+      "category": "legacy",
+      "text": "Cuando seamos viejos y miremos atrás a esta temporada, ¿qué quieres recordar de nosotros?",
+      "context": "Una pareja construye recuerdos sin saber cuáles van a perdurar. Esta carta te pide pensar a propósito sobre qué quieres que dure.\n\nNombra una textura, un hábito, una sensación, un momento. Algo de cómo se aman ahora que quieres llevar contigo el resto de su vida. Luego pregúntate qué tienen que hacer hoy para protegerlo."
+    }
+  ],
+  "author": "Dennis Nickens, AKA Spiritual Romeo"
+}

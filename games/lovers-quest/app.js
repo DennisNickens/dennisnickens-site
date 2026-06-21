@@ -19,7 +19,9 @@
     deviceFingerprint: 'lq_device_fp',
     licenseFirstName: 'lq_license_first_name',
     licenseEmail: 'lq_license_email',
-    onboarded: 'lq_onboarded'
+    onboarded: 'lq_onboarded',
+    // i18n
+    lang: 'lq_lang'  // 'en' (default) | 'es'
   };
 
   // ---------- SVG icons (gold line art) ----------
@@ -51,7 +53,17 @@
   var favs = [];            // favorited ids
   var filter = null;        // active category key or null (full deck)
 
-  var SCREENS = ['screen-activate', 'screen-onboarding', 'screen-home', 'screen-splash', 'screen-welcome', 'screen-card', 'screen-done'];
+  var SCREENS = ['screen-activate', 'screen-onboarding', 'screen-home', 'screen-language', 'screen-splash', 'screen-welcome', 'screen-card', 'screen-done'];
+
+  // Returns the current language code ('en' or 'es'). Defaults to 'en' until
+  // the user picks. Used to choose between cards.json and cards.es.json.
+  function currentLang() {
+    var v = load(K.lang, null);
+    return (v === 'es') ? 'es' : 'en';
+  }
+  function cardsUrl() {
+    return currentLang() === 'es' ? 'cards.es.json' : 'cards.json';
+  }
 
   // Fisher-Yates shuffle (returns a new array)
   function shuffle(arr) {
@@ -625,7 +637,23 @@
       case 'home': closeMenu(); showHomeScreen(); break;
       // Home is the start of the deck, not a resume point. Tapping
       // Open the Deck always begins at card 1 of a fresh shuffle.
-      case 'home-open': startDeck(filter); break;
+      // First-time users land on the language picker before the deck opens.
+      case 'home-open':
+        if (load(K.lang, null) === null) { showScreen('screen-language', true); }
+        else { startDeck(filter); }
+        break;
+      case 'lang-en':
+        save(K.lang, 'en');
+        startDeck(filter);
+        break;
+      case 'lang-es':
+        save(K.lang, 'es');
+        // Re-fetch the Spanish deck before continuing into the game.
+        fetch('cards.es.json', { cache: 'no-cache' })
+          .then(function (r) { return r.json(); })
+          .then(function (j) { DATA = j; rebuildIndex(); startDeck(filter); })
+          .catch(function () { startDeck(filter); });
+        break;
       case 'close-menu': closeMenu(); break;
       case 'how-to-play': closeMenu(); showHowToPlay(); break;
       case 'categories': closeMenu(); showCategories(); break;
@@ -674,6 +702,16 @@
         if (e.key === 'ArrowLeft') { e.preventDefault(); goBack(); }
       }
     });
+  }
+
+  // Rebuilds the byId / catByKey indices after DATA has been swapped (e.g.,
+  // user picked Spanish and we re-fetched cards.es.json mid-session).
+  function rebuildIndex() {
+    byId = {};
+    catByKey = {};
+    if (!DATA) return;
+    (DATA.cards || []).forEach(function (c) { byId[c.id] = c; });
+    (DATA.categories || []).forEach(function (c) { catByKey[c.key] = c; });
   }
 
   // ---------- Boot ----------
@@ -758,13 +796,15 @@
   // actions until DATA is loaded.
   wire();
 
-  // Load deck data (relative path so it works at any base)
-  fetch('cards.json', { cache: 'no-cache' })
+  // Load deck data (relative path so it works at any base). Pick the right
+  // language file based on the user's saved preference; defaults to English.
+  var _initialCardsUrl = cardsUrl();
+  fetch(_initialCardsUrl, { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(boot)
     .catch(function () {
       // retry without no-cache (offline / cached SW response)
-      fetch('cards.json').then(function (r) { return r.json(); }).then(boot)
+      fetch(_initialCardsUrl).then(function (r) { return r.json(); }).then(boot)
         .catch(function () { fail('The deck could not load. Please reconnect once so the cards can be saved for offline use.'); });
     });
 

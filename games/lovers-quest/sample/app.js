@@ -192,6 +192,18 @@
         break;
       case 'next':         goNext(); break;
       case 'back':         goBack(); break;
+      // Home button in the card topbar: confirm if mid-deck, then reset
+      // position and return to splash. Language choice (lq_lang) persists
+      // so they don't re-pick.
+      case 'home-sample':
+        if (pos > 0 && pos < deck.length) {
+          if (!confirm('Leave this sample and go back to the start?')) break;
+        }
+        save(K.pos, 0);
+        save(K.opened, false);
+        pos = 0;
+        showScreen('screen-splash', false);
+        break;
       case 'context':      showContext(); break;
       case 'reshuffle':    startSample(); break;
       case 'close-modal':  closeModal(); break;
@@ -220,13 +232,11 @@
     $('done-crown').innerHTML = ICONS.crown;
     deck = load(K.order, []) || [];
     pos = load(K.pos, 0) || 0;
-    var opened = load(K.opened, false);
-    if (opened && deck.length && pos < deck.length) {
-      showScreen('screen-card', true);
-      renderCard(null);
-    } else {
-      showScreen('screen-splash', false);
-    }
+    // The sample is a shareable preview. Every visit starts at the splash
+    // so a recipient who clicks the share link always sees the intro, not
+    // a half-finished deck from a previous session. Resume-to-card is the
+    // wrong default for a marketing preview.
+    showScreen('screen-splash', false);
   }
 
   function fail(msg) {

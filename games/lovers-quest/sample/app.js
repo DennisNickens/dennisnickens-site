@@ -231,11 +231,13 @@
     data.categories.forEach(function (c) { catByKey[c.key] = c; });
     $('done-crown').innerHTML = ICONS.crown;
     deck = load(K.order, []) || [];
-    pos = load(K.pos, 0) || 0;
     // The sample is a shareable preview. Every visit starts at the splash
-    // so a recipient who clicks the share link always sees the intro, not
-    // a half-finished deck from a previous session. Resume-to-card is the
-    // wrong default for a marketing preview.
+    // AND every tap-through starts at card 1 (not resumed mid-deck). Reset
+    // position both in memory and storage on every boot so a returning
+    // device with stale state still gets a fresh first impression.
+    pos = 0;
+    save(K.pos, 0);
+    save(K.opened, false);
     showScreen('screen-splash', false);
   }
 

@@ -643,16 +643,13 @@
         else { startDeck(filter); }
         break;
       case 'lang-en':
-        save(K.lang, 'en');
-        startDeck(filter);
-        break;
       case 'lang-es':
-        save(K.lang, 'es');
-        // Re-fetch the Spanish deck before continuing into the game.
-        fetch('cards.es.json', { cache: 'no-cache' })
-          .then(function (r) { return r.json(); })
-          .then(function (j) { DATA = j; rebuildIndex(); startDeck(filter); })
-          .catch(function () { startDeck(filter); });
+        // Save the choice then reload so all DATA-baked DOM (welcome,
+        // categories, completion) repaints fresh from the right cards file.
+        // Welcome/About is populated inside boot(), so a clean reload is the
+        // simplest path; the picker only fires once on first run.
+        save(K.lang, action === 'lang-es' ? 'es' : 'en');
+        location.reload();
         break;
       case 'close-menu': closeMenu(); break;
       case 'how-to-play': closeMenu(); showHowToPlay(); break;

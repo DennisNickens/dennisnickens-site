@@ -13,8 +13,19 @@
     opened: 'lq_sample_has_opened',
     order: 'lq_sample_deck_order',
     pos: 'lq_sample_pos',
-    date: 'lq_sample_last_date'
+    date: 'lq_sample_last_date',
+    // i18n: shared with the main app so picking once on either lands you in
+    // the right language on both. 'en' (default) | 'es'.
+    lang: 'lq_lang'
   };
+  function currentLang() {
+    var v = null;
+    try { v = JSON.parse(localStorage.getItem(K.lang)); } catch (e) {}
+    return v === 'es' ? 'es' : 'en';
+  }
+  function cardsUrl() {
+    return currentLang() === 'es' ? 'cards.es.json' : 'cards.json';
+  }
 
   // Icons mirror the parent app's set (only the 6 category icons).
   var ICONS = {
@@ -36,7 +47,7 @@
   var deck = [];
   var pos = 0;
 
-  var SCREENS = ['screen-splash', 'screen-welcome', 'screen-card', 'screen-done'];
+  var SCREENS = ['screen-splash', 'screen-language', 'screen-welcome', 'screen-card', 'screen-done'];
 
   function shuffle(arr) {
     var a = arr.slice();
@@ -151,7 +162,26 @@
   }
 
   function onAction(action) {
-    if (action === 'begin')        { showScreen('screen-welcome', true); return; }
+    if (action === 'begin') {
+      // First-time users land on the language picker; returning users skip
+      // straight to the welcome screen in their saved language.
+      var hasLang = false;
+      try { hasLang = localStorage.getItem(K.lang) !== null; } catch (e) {}
+      if (!hasLang) { showScreen('screen-language', true); }
+      else { showScreen('screen-welcome', true); }
+      return;
+    }
+    if (action === 'lang-en') {
+      save(K.lang, 'en');
+      // Reload so all DATA-baked DOM (welcome, completion) repaints fresh.
+      location.reload();
+      return;
+    }
+    if (action === 'lang-es') {
+      save(K.lang, 'es');
+      location.reload();
+      return;
+    }
     if (!DATA) return;
     switch (action) {
       case 'ready':
@@ -210,11 +240,12 @@
   // before cards.json finishes loading.
   wire();
 
-  fetch('cards.json', { cache: 'no-cache' })
+  var _initialUrl = cardsUrl();
+  fetch(_initialUrl, { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(boot)
     .catch(function () {
-      fetch('cards.json').then(function (r) { return r.json(); }).then(boot)
+      fetch(_initialUrl).then(function (r) { return r.json(); }).then(boot)
         .catch(function () { fail('The sample could not load. Please reconnect once.'); });
     });
 

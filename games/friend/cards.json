@@ -40,8 +40,9 @@
         "guesserPoints": 2,
         "subjectPoints": 1
       },
-      "playNotes": "Other players each pick a letter. Reveal at the same time. Subject reveals which is true. Scoring: 2 points for the correct letter. Subject gets 1 point for every correct guess.",
-      "depth": "real"
+      "playNotes": "BONUS CARD. Other players each pick a letter. Reveal at the same time. Subject reveals which is true. Scoring: 2 points for the correct letter. Subject gets 1 point for every correct guess. If partner matches, pair scores 4 (double).",
+      "depth": "real",
+      "bonus": true
     },
     {
       "id": 2,
@@ -70,8 +71,9 @@
         "guesserPoints": 2,
         "subjectPoints": 1
       },
-      "playNotes": "Reveal at the same time. Subject reveals truth. Scoring: 2 points correct + 1 point to Subject per correct guesser.",
-      "depth": "real"
+      "playNotes": "BONUS CARD. Reveal at the same time. Subject reveals truth. Scoring: 2 points correct + 1 point to Subject per correct guesser. If partner matches, pair scores 4 (double).",
+      "depth": "real",
+      "bonus": true
     },
     {
       "id": 3,
@@ -108,8 +110,9 @@
         "guesserPoints": 3,
         "subjectPoints": 1
       },
-      "playNotes": "Reveal at the same time. Subject reveals truth. Scoring: 3 points correct + 1 point to Subject per correct guesser.",
-      "depth": "real"
+      "playNotes": "BONUS CARD. Reveal at the same time. Subject reveals truth. Scoring: 3 points correct + 1 point to Subject per correct guesser. If partner matches, pair scores 6 (double).",
+      "depth": "real",
+      "bonus": true
     },
     {
       "id": 4,
@@ -210,8 +213,9 @@
         "guesserPoints": 2,
         "subjectPoints": 3
       },
-      "playNotes": "All players point at the same time. Subject reveals who they would actually call. If the person Subject would call is sitting at the table, players who pointed at them score. If Subject would call someone NOT at the table, no one scores on the point but Subject reveals who. Scoring: 2 points for correctly pointing. 3 points to Subject if a majority pointed correctly.",
-      "depth": "real"
+      "playNotes": "BONUS CARD. All players point at the same time. Subject reveals who they would actually call. If the person Subject would call is sitting at the table, players who pointed at them score. If Subject would call someone NOT at the table, no one scores on the point but Subject reveals who. Scoring: 2 points for correctly pointing. 3 points to Subject if a majority pointed correctly. If partner matches, pair scores 4 (double).",
+      "depth": "real",
+      "bonus": true
     },
     {
       "id": 8,
@@ -248,8 +252,9 @@
         "guesserPoints": 3,
         "subjectPoints": 1
       },
-      "playNotes": "Reveal. Subject reveals. Scoring: 3 + 1.",
-      "depth": "real"
+      "playNotes": "BONUS CARD. Reveal. Subject reveals. Scoring: 3 + 1. If partner matches, pair scores 6 (double).",
+      "depth": "real",
+      "bonus": true
     },
     {
       "id": 9,
@@ -532,8 +537,9 @@
         "guesserPoints": 2,
         "subjectPoints": 3
       },
-      "playNotes": "All players point at the same time. Subject reveals who they're actually most honest with (in or out of the room). Scoring: 2 for pointing correctly. 3 to Subject if a majority pointed at the person Subject named.",
-      "depth": "real"
+      "playNotes": "BONUS CARD. All players point at the same time. Subject reveals who they're actually most honest with (in or out of the room). Scoring: 2 for pointing correctly. 3 to Subject if a majority pointed at the person Subject named. If partner matches, pair scores 4 (double).",
+      "depth": "real",
+      "bonus": true
     },
     {
       "id": 20,
@@ -2007,7 +2013,7 @@
         "subjectPoints": 0
       },
       "depth": "deep",
-      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "playNotes": "BONUS CARD. Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0. If partner matches, pair scores 4 (double).",
       "options": [
         {
           "letter": "A",
@@ -2025,7 +2031,8 @@
           "letter": "D",
           "text": "Something their mom or grandma made"
         }
-      ]
+      ],
+      "bonus": true
     },
     {
       "id": 74,
@@ -2037,7 +2044,7 @@
         "subjectPoints": 0
       },
       "depth": "deep",
-      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0.",
+      "playNotes": "BONUS CARD. Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0. If partner matches, pair scores 4 (double).",
       "options": [
         {
           "letter": "A",
@@ -2055,7 +2062,8 @@
           "letter": "D",
           "text": "Something fruity they pretend to be embarrassed about"
         }
-      ]
+      ],
+      "bonus": true
     },
     {
       "id": 75,
@@ -2397,7 +2405,7 @@
         "subjectPoints": 0
       },
       "depth": "deep",
-      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 3 if partner matches, else 0.",
+      "playNotes": "BONUS CARD. Subject locks their truth. Partner guesses. Pair scores 3 if partner matches, else 0. If partner matches, pair scores 6 (double).",
       "options": [
         {
           "letter": "A",
@@ -2423,7 +2431,8 @@
           "letter": "F",
           "text": "A burger and fries"
         }
-      ]
+      ],
+      "bonus": true
     },
     {
       "id": 87,
@@ -2855,7 +2864,8 @@
         "subjectPoints": 0
       },
       "depth": "deep",
-      "playNotes": "Subject points to a person in the room. Partner guesses which person. Pair scores 2 if partner matches, else 0."
+      "playNotes": "BONUS CARD. Subject points to a person in the room. Partner guesses which person. Pair scores 2 if partner matches, else 0. If partner matches, pair scores 4 (double).",
+      "bonus": true
     },
     {
       "id": 102,
@@ -2867,7 +2877,8 @@
         "subjectPoints": 0
       },
       "depth": "deep",
-      "playNotes": "Subject points to a person in the room. Partner guesses which person. Pair scores 2 if partner matches, else 0."
+      "playNotes": "BONUS CARD. Subject points to a person in the room. Partner guesses which person. Pair scores 2 if partner matches, else 0. If partner matches, pair scores 4 (double).",
+      "bonus": true
     },
     {
       "id": 103,

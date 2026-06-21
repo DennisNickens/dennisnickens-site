@@ -632,6 +632,10 @@
       };
       ty.textContent = labels[card.type] || '';
     }
+    // Bonus banner appears on the card frame for any card with bonus:true,
+    // so everyone at the table (Subject, Partner, spectators) knows the
+    // points are doubled this round.
+    var bb = $('card-bonus-banner'); if (bb) bb.hidden = !card.bonus;
     var h = $('card-subject-hint');
     if (h) {
       var partner = partnerNameInActivePair(room);

@@ -521,6 +521,26 @@ body {
   border-radius: 999px;
   white-space: nowrap;
 }
+/* Bonus card banner: appears on bonus cards, sits between the card-frame-head
+   and the subject hint. Big enough to be unmissable, animated to make it pop. */
+.card-bonus-banner {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: .2rem;
+  font-size: .68rem; font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase;
+  padding: .25rem .7rem;
+  border-radius: 999px;
+  background: var(--sun);
+  color: #1a0a05;
+  border: 1px solid var(--sun);
+  box-shadow: 0 0 0 2px rgba(255,210,74,.25);
+  animation: bonus-pulse 1.6s ease-in-out infinite;
+}
+@keyframes bonus-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 2px rgba(255,210,74,.25); }
+  50%      { transform: scale(1.04); box-shadow: 0 0 0 6px rgba(255,210,74,.18); }
+}
 .card-subject-hint {
   font-size: .72rem; letter-spacing: .12em;
   text-transform: uppercase;

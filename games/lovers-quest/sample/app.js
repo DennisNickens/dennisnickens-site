@@ -16,7 +16,12 @@
     date: 'lq_sample_last_date',
     // i18n: shared with the main app so picking once on either lands you in
     // the right language on both. 'en' (default) | 'es'.
-    lang: 'lq_lang'
+    lang: 'lq_lang',
+    // Lead capture: once the visitor submits name + phone, skip the form
+    // on return visits. Stores the contact_id GHL returned so Dennis can
+    // cross-reference if needed.
+    leadCaptured: 'lq_sample_lead_captured',
+    leadContactId: 'lq_sample_lead_contact_id'
   };
   function currentLang() {
     var v = null;
@@ -47,7 +52,7 @@
   var deck = [];
   var pos = 0;
 
-  var SCREENS = ['screen-splash', 'screen-language', 'screen-welcome', 'screen-card', 'screen-done'];
+  var SCREENS = ['screen-splash', 'screen-lead', 'screen-language', 'screen-welcome', 'screen-card', 'screen-done'];
 
   function shuffle(arr) {
     var a = arr.slice();
@@ -161,14 +166,77 @@
     renderCard(null);
   }
 
+  // Lead capture form submit. Posts firstName + phone to /api/lq-sample-lead,
+  // which upserts the contact in GHL and adds the "Lovers Quest Sample Lead"
+  // tag. On success, persist the captured flag so the form doesn't re-show.
+  function submitLeadForm() {
+    var fnameEl = $('lead-first-name');
+    var phoneEl = $('lead-phone');
+    var errEl = $('lead-error');
+    var btn = document.querySelector('[data-action="submit-lead"]');
+    if (errEl) { errEl.hidden = true; errEl.textContent = ''; }
+
+    var firstName = (fnameEl && fnameEl.value || '').trim();
+    var phoneRaw = (phoneEl && phoneEl.value || '');
+    var digits = String(phoneRaw).replace(/\D/g, '');
+    var tenDigit = digits;
+    if (tenDigit.length === 11 && tenDigit.charAt(0) === '1') tenDigit = tenDigit.slice(1);
+
+    if (!firstName) { return showLeadError('Please add your first name.'); }
+    if (tenDigit.length !== 10) {
+      return showLeadError('Please enter a 10-digit US phone number.');
+    }
+
+    if (btn) { btn.disabled = true; btn.textContent = 'Saving...'; }
+    fetch('/api/lq-sample-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: firstName,
+        phone: tenDigit,
+        tcpa_consent: true,
+      }),
+    }).then(function (r) { return r.json().then(function (j) { return { status: r.status, body: j }; }); })
+      .then(function (r) {
+        if (r.status === 200 && r.body && r.body.success) {
+          save(K.leadCaptured, true);
+          if (r.body.contact_id) save(K.leadContactId, r.body.contact_id);
+          // Continue to language picker (or welcome if lang already set)
+          var hasLang = false;
+          try { hasLang = localStorage.getItem(K.lang) !== null; } catch (e) {}
+          showScreen(hasLang ? 'screen-welcome' : 'screen-language', true);
+        } else {
+          var msg = (r.body && r.body.error) || 'Could not save your info. Please try again.';
+          showLeadError(msg);
+          if (btn) { btn.disabled = false; btn.textContent = 'Get the Sample'; }
+        }
+      })
+      .catch(function () {
+        showLeadError('Network error. Please try again.');
+        if (btn) { btn.disabled = false; btn.textContent = 'Get the Sample'; }
+      });
+  }
+  function showLeadError(msg) {
+    var errEl = $('lead-error');
+    if (errEl) { errEl.textContent = msg; errEl.hidden = false; }
+  }
+
   function onAction(action) {
     if (action === 'begin') {
-      // First-time users land on the language picker; returning users skip
-      // straight to the welcome screen in their saved language.
+      // First visit goes through the lead form. Once captured, second-time
+      // users skip the form. Then the language picker is shown if the lang
+      // is unset, otherwise straight to the welcome screen.
+      var leadDone = false;
+      try { leadDone = JSON.parse(localStorage.getItem(K.leadCaptured) || 'false') === true; } catch (e) {}
+      if (!leadDone) { showScreen('screen-lead', true); return; }
       var hasLang = false;
       try { hasLang = localStorage.getItem(K.lang) !== null; } catch (e) {}
       if (!hasLang) { showScreen('screen-language', true); }
       else { showScreen('screen-welcome', true); }
+      return;
+    }
+    if (action === 'submit-lead') {
+      submitLeadForm();
       return;
     }
     if (action === 'lang-en') {
@@ -215,6 +283,14 @@
       var el = e.target.closest('[data-action]');
       if (el) { onAction(el.getAttribute('data-action')); return; }
       if (e.target.id === 'modal-backdrop') { closeModal(); return; }
+    });
+    // Lead form: catch Enter-key submits and the submit button so the page
+    // does not navigate. The actual handler is submit-lead via data-action.
+    document.body.addEventListener('submit', function (e) {
+      if (e.target && e.target.id === 'lead-form') {
+        e.preventDefault();
+        submitLeadForm();
+      }
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { if (!$('modal-backdrop').hidden) closeModal(); return; }

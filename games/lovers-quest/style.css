@@ -518,3 +518,46 @@ body{
   font-size: .8rem; color: var(--cream-faint, rgba(255,255,255,.55));
   margin: 0;
 }
+
+/* Lead capture form (sample only) */
+.lead-inner {
+  display: flex; flex-direction: column; align-items: stretch;
+  gap: 1rem;
+  padding: 2rem 1.25rem;
+  max-width: 420px; margin: 0 auto;
+}
+.lead-title {
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-size: clamp(1.7rem, 5vw, 2.2rem);
+  font-weight: 700; color: var(--gold, #d4af6a);
+  margin: 0; text-align: center;
+}
+.lead-sub {
+  font-size: .95rem; line-height: 1.45;
+  color: var(--cream-mute, rgba(255,255,255,.78));
+  margin: 0 0 .5rem; text-align: center;
+}
+#lead-form {
+  display: flex; flex-direction: column; gap: .6rem;
+}
+#lead-form .field-label {
+  font-size: .8rem;
+  color: var(--cream-mute, rgba(255,255,255,.7));
+  margin-top: .35rem;
+}
+.lead-tcpa {
+  font-size: .72rem; line-height: 1.35;
+  color: var(--cream-faint, rgba(255,255,255,.5));
+  margin: .6rem 0 0;
+}
+.lead-error {
+  font-size: .85rem;
+  color: #ff8a8a;
+  margin: .25rem 0 0;
+}
+.lead-submit-btn {
+  width: 100%;
+  margin-top: .8rem;
+  padding: 1rem 1.25rem;
+  font-size: 1rem; font-weight: 600;
+}

@@ -64,6 +64,25 @@
   </div>
 </section>
 
+<!-- LEAD CAPTURE -->
+<section id="screen-lead" class="screen" aria-label="Save your spot" hidden>
+  <div class="lead-inner">
+    <h1 class="lead-title">Save your spot</h1>
+    <p class="lead-sub">Drop your name and number so we can send you the full deck when it's ready (July 1).</p>
+    <form id="lead-form" autocomplete="on">
+      <label class="field-label" for="lead-first-name">First name</label>
+      <input class="text-input" type="text" id="lead-first-name" name="firstName" placeholder="e.g. Brandi" required autocomplete="given-name" maxlength="40" />
+
+      <label class="field-label" for="lead-phone">Phone number</label>
+      <input class="text-input" type="tel" id="lead-phone" name="phone" placeholder="(555) 123-4567" required autocomplete="tel" inputmode="tel" />
+
+      <p class="lead-tcpa">By submitting, you agree to receive SMS messages from Spiritual Romeo. Message and data rates may apply. Reply STOP to unsubscribe.</p>
+      <p class="lead-error" id="lead-error" hidden></p>
+      <button class="btn btn-gold lead-submit-btn" type="submit" data-action="submit-lead">Get the Sample</button>
+    </form>
+  </div>
+</section>
+
 <!-- LANGUAGE PICKER -->
 <section id="screen-language" class="screen" aria-label="Choose your language / Elige tu idioma" hidden>
   <div class="lang-inner">

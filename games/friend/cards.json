@@ -6,7 +6,7 @@
   "min_players": 4,
   "max_players": 10,
   "type_counts": {
-    "mc4": 112
+    "mc4": 148
   },
   "cards": [
     {
@@ -3380,6 +3380,1086 @@
       },
       "depth": "deep",
       "playNotes": "Subject locks their truth. Partner guesses. Pair scores 2 if partner matches, else 0."
+    },
+    {
+      "id": 113,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "[Subject]'s favorite season is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Spring"
+        },
+        {
+          "letter": "B",
+          "text": "Summer"
+        },
+        {
+          "letter": "C",
+          "text": "Fall"
+        },
+        {
+          "letter": "D",
+          "text": "Winter"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 114,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "[Subject] prefers a morning that starts with:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Quiet and coffee"
+        },
+        {
+          "letter": "B",
+          "text": "A workout or walk"
+        },
+        {
+          "letter": "C",
+          "text": "Music and movement"
+        },
+        {
+          "letter": "D",
+          "text": "Sleeping in as long as possible"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 115,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "[Subject]'s ideal vacation pace is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Packed schedule, see everything"
+        },
+        {
+          "letter": "B",
+          "text": "Mix of plans and free time"
+        },
+        {
+          "letter": "C",
+          "text": "Mostly relaxed, a few highlights"
+        },
+        {
+          "letter": "D",
+          "text": "Nothing planned, no agenda"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 116,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "After a long week, [Subject] recovers best by:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Going out with people"
+        },
+        {
+          "letter": "B",
+          "text": "Staying home alone"
+        },
+        {
+          "letter": "C",
+          "text": "Spending time outdoors"
+        },
+        {
+          "letter": "D",
+          "text": "Doing something creative"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 117,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "[Subject]'s default Friday night is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Out with friends"
+        },
+        {
+          "letter": "B",
+          "text": "Date night or one-on-one time"
+        },
+        {
+          "letter": "C",
+          "text": "Home with a show or book"
+        },
+        {
+          "letter": "D",
+          "text": "Working on something they care about"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 118,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "[Subject] enjoys a long drive most when:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "The road is open and music is loud"
+        },
+        {
+          "letter": "B",
+          "text": "Someone they love is in the passenger seat"
+        },
+        {
+          "letter": "C",
+          "text": "They have a podcast or audiobook playing"
+        },
+        {
+          "letter": "D",
+          "text": "The destination matters more than the drive"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 119,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject]'s coffee order is closest to:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Black or barely altered"
+        },
+        {
+          "letter": "B",
+          "text": "Sweet and creamy"
+        },
+        {
+          "letter": "C",
+          "text": "Iced no matter the weather"
+        },
+        {
+          "letter": "D",
+          "text": "Tea, actually"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 120,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject]'s go-to comfort food is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Something savory and warm"
+        },
+        {
+          "letter": "B",
+          "text": "Something sweet"
+        },
+        {
+          "letter": "C",
+          "text": "Something spicy"
+        },
+        {
+          "letter": "D",
+          "text": "Whatever reminds them of childhood"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 121,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject]'s music taste leans:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Old school, the stuff that raised them"
+        },
+        {
+          "letter": "B",
+          "text": "Current, whatever's on the radar"
+        },
+        {
+          "letter": "C",
+          "text": "Across the map, depends on the mood"
+        },
+        {
+          "letter": "D",
+          "text": "One specific scene, deep and loyal"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 122,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject] decorates a space to feel:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Warm and lived-in"
+        },
+        {
+          "letter": "B",
+          "text": "Clean and uncluttered"
+        },
+        {
+          "letter": "C",
+          "text": "Personal and full of meaning"
+        },
+        {
+          "letter": "D",
+          "text": "Bold and expressive"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 123,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject]'s ideal night out includes:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A great meal"
+        },
+        {
+          "letter": "B",
+          "text": "A live show or event"
+        },
+        {
+          "letter": "C",
+          "text": "Long conversation with a few people"
+        },
+        {
+          "letter": "D",
+          "text": "Doing something they've never done before"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 124,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject]'s go-to outfit when they want to feel like themselves is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Comfortable, no thinking about it"
+        },
+        {
+          "letter": "B",
+          "text": "Sharp, put-together"
+        },
+        {
+          "letter": "C",
+          "text": "Something with character or a story behind it"
+        },
+        {
+          "letter": "D",
+          "text": "Whatever's clean and works"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 125,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "People come to [Subject] when they need:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A clear answer to a hard question"
+        },
+        {
+          "letter": "B",
+          "text": "Someone to listen and not fix"
+        },
+        {
+          "letter": "C",
+          "text": "Help getting something done"
+        },
+        {
+          "letter": "D",
+          "text": "A laugh and a reset"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 126,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "[Subject] is most in their element when:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Leading a group toward a goal"
+        },
+        {
+          "letter": "B",
+          "text": "Solving a problem nobody else cracked"
+        },
+        {
+          "letter": "C",
+          "text": "Making someone feel cared for"
+        },
+        {
+          "letter": "D",
+          "text": "Creating something from scratch"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 127,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "The way [Subject] makes a decision is usually:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Quick, trust the gut"
+        },
+        {
+          "letter": "B",
+          "text": "Slow, weigh every angle"
+        },
+        {
+          "letter": "C",
+          "text": "Talk it through with someone they trust"
+        },
+        {
+          "letter": "D",
+          "text": "Pray on it"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 128,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "[Subject]'s superpower at work is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Reading people and the room"
+        },
+        {
+          "letter": "B",
+          "text": "Getting things across the finish line"
+        },
+        {
+          "letter": "C",
+          "text": "Thinking ahead while everyone reacts"
+        },
+        {
+          "letter": "D",
+          "text": "Calming chaos with steady presence"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 129,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "When [Subject] makes a mistake, they:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Own it fast and move forward"
+        },
+        {
+          "letter": "B",
+          "text": "Sit with it before saying anything"
+        },
+        {
+          "letter": "C",
+          "text": "Make it right with action"
+        },
+        {
+          "letter": "D",
+          "text": "Need a beat alone before talking about it"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 130,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "The compliment that lands hardest for [Subject] is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "\"You're really good at what you do.\""
+        },
+        {
+          "letter": "B",
+          "text": "\"You make people feel seen.\""
+        },
+        {
+          "letter": "C",
+          "text": "\"You're the most dependable person I know.\""
+        },
+        {
+          "letter": "D",
+          "text": "\"You make me laugh.\""
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 131,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "If [Subject] could live anywhere, it would be:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Somewhere quiet, near water or trees"
+        },
+        {
+          "letter": "B",
+          "text": "A vibrant city with energy around them"
+        },
+        {
+          "letter": "C",
+          "text": "Close to family, wherever that is"
+        },
+        {
+          "letter": "D",
+          "text": "Somewhere they've never been before"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 132,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "[Subject]'s bucket-list trip is closest to:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A long stretch of nature, hiking or camping"
+        },
+        {
+          "letter": "B",
+          "text": "A historic city, walking and eating"
+        },
+        {
+          "letter": "C",
+          "text": "A beach where nothing happens for a week"
+        },
+        {
+          "letter": "D",
+          "text": "Somewhere none of their people have been"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 133,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "If [Subject] could master one skill instantly:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Speak another language fluently"
+        },
+        {
+          "letter": "B",
+          "text": "Play an instrument really well"
+        },
+        {
+          "letter": "C",
+          "text": "Cook anything they want from memory"
+        },
+        {
+          "letter": "D",
+          "text": "Build or fix anything with their hands"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 134,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "The thing [Subject] would do if money was no object:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Travel for a year or more"
+        },
+        {
+          "letter": "B",
+          "text": "Start a business or project they've been holding"
+        },
+        {
+          "letter": "C",
+          "text": "Give significant money away"
+        },
+        {
+          "letter": "D",
+          "text": "Buy back time, work less"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 135,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "[Subject]'s ideal version of \"retired one day\" looks like:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Quiet and slow, time with one or two people"
+        },
+        {
+          "letter": "B",
+          "text": "Still working at something they love"
+        },
+        {
+          "letter": "C",
+          "text": "Around grandkids or family often"
+        },
+        {
+          "letter": "D",
+          "text": "On the move, doing things they didn't get to before"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 136,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "[Subject]'s big dream most days is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Build something that outlives them"
+        },
+        {
+          "letter": "B",
+          "text": "Be deeply present with the people they love"
+        },
+        {
+          "letter": "C",
+          "text": "Become the version of themselves they keep glimpsing"
+        },
+        {
+          "letter": "D",
+          "text": "Make a real difference in something they care about"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 137,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "[Subject] would describe themselves as:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Loyal first"
+        },
+        {
+          "letter": "B",
+          "text": "Honest first"
+        },
+        {
+          "letter": "C",
+          "text": "Generous first"
+        },
+        {
+          "letter": "D",
+          "text": "Steady first"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 138,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "The trait [Subject] respects most in others is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Kindness without conditions"
+        },
+        {
+          "letter": "B",
+          "text": "Follow-through, doing what they said"
+        },
+        {
+          "letter": "C",
+          "text": "Courage to say the hard thing"
+        },
+        {
+          "letter": "D",
+          "text": "Wisdom that doesn't show off"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 139,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "[Subject] gets most uncomfortable around:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Drama for the sake of drama"
+        },
+        {
+          "letter": "B",
+          "text": "Slow movement when something needs doing"
+        },
+        {
+          "letter": "C",
+          "text": "Surface-level interactions"
+        },
+        {
+          "letter": "D",
+          "text": "Sharp criticism that lacks warmth"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 140,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "When [Subject] gives, they prefer to:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Give time"
+        },
+        {
+          "letter": "B",
+          "text": "Give resources"
+        },
+        {
+          "letter": "C",
+          "text": "Give attention and presence"
+        },
+        {
+          "letter": "D",
+          "text": "Give without anyone knowing"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 141,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "[Subject]'s faith or spiritual life is mostly:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Central and visible to the people around them"
+        },
+        {
+          "letter": "B",
+          "text": "Real but private"
+        },
+        {
+          "letter": "C",
+          "text": "Something they're still working out"
+        },
+        {
+          "letter": "D",
+          "text": "Practiced through how they treat people"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 142,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "The thing [Subject] would not compromise on is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Their family"
+        },
+        {
+          "letter": "B",
+          "text": "Their integrity"
+        },
+        {
+          "letter": "C",
+          "text": "Their faith or values"
+        },
+        {
+          "letter": "D",
+          "text": "Their peace"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 143,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "[Subject] shows up for friends mostly by:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Being there in hard moments"
+        },
+        {
+          "letter": "B",
+          "text": "Remembering the small stuff"
+        },
+        {
+          "letter": "C",
+          "text": "Doing something practical to help"
+        },
+        {
+          "letter": "D",
+          "text": "Speaking life into them when they need it"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 144,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "The friend [Subject] keeps closest is usually:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "The one who's known them the longest"
+        },
+        {
+          "letter": "B",
+          "text": "The one who's the most honest"
+        },
+        {
+          "letter": "C",
+          "text": "The one who matches their energy"
+        },
+        {
+          "letter": "D",
+          "text": "The one who never lets them shrink"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 145,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "[Subject]'s ideal way to spend time with a close friend is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A long walk or drive, talking"
+        },
+        {
+          "letter": "B",
+          "text": "Sitting somewhere doing nothing in particular"
+        },
+        {
+          "letter": "C",
+          "text": "Working on something together"
+        },
+        {
+          "letter": "D",
+          "text": "A meal that goes for hours"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 146,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "[Subject] reaches out to friends:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Constantly, low-effort touches"
+        },
+        {
+          "letter": "B",
+          "text": "Sporadically but deep when they do"
+        },
+        {
+          "letter": "C",
+          "text": "When something specific comes up"
+        },
+        {
+          "letter": "D",
+          "text": "Less than they wish they did"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 147,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "A friendship feels off to [Subject] when:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "The other person stops showing up"
+        },
+        {
+          "letter": "B",
+          "text": "Conversations stay surface for too long"
+        },
+        {
+          "letter": "C",
+          "text": "One person carries the whole thing"
+        },
+        {
+          "letter": "D",
+          "text": "Trust gets broken in something small"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 148,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "[Subject]'s love language for friends is closest to:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Quality time, undistracted"
+        },
+        {
+          "letter": "B",
+          "text": "Words that name what they see"
+        },
+        {
+          "letter": "C",
+          "text": "Acts that lighten the load"
+        },
+        {
+          "letter": "D",
+          "text": "Showing up physically when it matters"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
     }
   ],
   "valid_depths": [

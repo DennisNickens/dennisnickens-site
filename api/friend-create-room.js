@@ -1,13 +1,15 @@
 /* ============================================================
    POST /api/friend-create-room
    ------------------------------------------------------------
-   Body: { hostName }
+   Body: { hostName, gender }
    Returns: { ok, code, hostId, room }
+   Errors: host_name_required, invalid_gender
 
    Creates a new game room in KV with the caller as the host
-   (first player in the players list). Returns the join code,
-   the host's session id (which the client stores locally), and
-   the initial room state.
+   (first player in the players list). gender is required and must
+   be "male" or "female" (gates gendered Choice+Explain card pools).
+   Returns the join code, the host's session id (which the client
+   stores locally), and the initial room state.
    ============================================================ */
 
 'use strict';
@@ -31,8 +33,17 @@ module.exports = async (req, res) => {
       res.status(400).json({ ok: false, error: 'host_name_required' });
       return;
     }
-    const { room, hostId } = await createRoom({ hostName: hostName });
-    res.status(200).json({ ok: true, code: room.code, hostId: hostId, room: room });
+    const gender = String(body.gender || '').trim().toLowerCase();
+    if (gender !== 'male' && gender !== 'female') {
+      res.status(400).json({ ok: false, error: 'invalid_gender' });
+      return;
+    }
+    const result = await createRoom({ hostName: hostName, gender: gender });
+    if (result && result.ok === false) {
+      res.status(400).json(result);
+      return;
+    }
+    res.status(200).json({ ok: true, code: result.room.code, hostId: result.hostId, room: result.room });
   } catch (err) {
     console.error('[friend-create-room] error:', err);
     res.status(500).json({ ok: false, error: 'server_error' });

@@ -65,9 +65,14 @@
     <label class="field-label" for="host-name">Your name</label>
     <input type="text" id="host-name" class="text-input" placeholder="e.g. Dennis" autocomplete="given-name" maxlength="32" />
     <p class="error-text" id="host-name-err" hidden></p>
+    <label class="field-label">I am</label>
+    <div class="gender-select" id="host-gender" style="display:flex;gap:.5rem;margin-bottom:.5rem;">
+      <button type="button" class="btn btn-ghost gender-tile" style="flex:1;" data-action="set-gender" data-gender="male">Male</button>
+      <button type="button" class="btn btn-ghost gender-tile" style="flex:1;" data-action="set-gender" data-gender="female">Female</button>
+    </div>
     <div class="sheet-actions">
       <button class="btn btn-ghost" data-action="back-router">Back</button>
-      <button class="btn btn-primary" data-action="host-create">Create Room</button>
+      <button class="btn btn-primary" id="host-create-btn" data-action="host-create" disabled>Create Room</button>
     </div>
   </div>
 </section>
@@ -84,11 +89,17 @@
     <label class="field-label" for="join-name">Your name</label>
     <input type="text" id="join-name" class="text-input" placeholder="e.g. Brandi" autocomplete="given-name" maxlength="32" />
 
+    <label class="field-label">I am</label>
+    <div class="gender-select" id="join-gender" style="display:flex;gap:.5rem;margin-bottom:.5rem;">
+      <button type="button" class="btn btn-ghost gender-tile" style="flex:1;" data-action="set-gender" data-gender="male">Male</button>
+      <button type="button" class="btn btn-ghost gender-tile" style="flex:1;" data-action="set-gender" data-gender="female">Female</button>
+    </div>
+
     <p class="error-text" id="join-err" hidden></p>
 
     <div class="sheet-actions">
       <button class="btn btn-ghost" data-action="back-router">Back</button>
-      <button class="btn btn-primary" data-action="join-go">Join Room</button>
+      <button class="btn btn-primary" id="join-go-btn" data-action="join-go" disabled>Join Room</button>
     </div>
   </div>
 </section>
@@ -264,6 +275,20 @@
 
     </div>
 
+    <button class="btn btn-ghost btn-leave" data-action="leave-room">Leave Game</button>
+  </div>
+</section>
+
+<!-- ============== SCREEN: EXPLAIN (Choice + Explain cards) ============== -->
+<section id="screen-explain" class="screen" aria-label="Explain step" hidden>
+  <div class="sheet">
+    <p class="action-eyebrow">Choice + Explain</p>
+    <h2 class="sheet-title">Subject's turn. Tell us why you picked that one.</h2>
+    <p class="card-text" id="explain-card-text" style="margin:.75rem 0;"></p>
+    <p class="field-label">Their answer</p>
+    <p class="reveal-truth" id="explain-answer"></p>
+    <p class="action-status" id="explain-listen" hidden></p>
+    <button class="btn btn-primary" id="explain-done-btn" data-action="finish-explain" hidden>Done. Next card. &rarr;</button>
     <button class="btn btn-ghost btn-leave" data-action="leave-room">Leave Game</button>
   </div>
 </section>

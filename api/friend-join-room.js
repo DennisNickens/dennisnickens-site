@@ -1,10 +1,12 @@
 /* ============================================================
    POST /api/friend-join-room
    ------------------------------------------------------------
-   Body: { code, name }
+   Body: { code, name, gender }
    Returns: { ok, playerId, room } on success
             { ok:false, error } on failure (room_not_found,
-            game_already_started, room_full, name_required)
+            game_already_started, room_full, name_required,
+            invalid_gender)
+   gender is required and must be "male" or "female".
    ============================================================ */
 
 'use strict';
@@ -29,9 +31,16 @@ module.exports = async (req, res) => {
       res.status(400).json({ ok: false, error: 'code_required' });
       return;
     }
-    const result = await joinRoom(code, name);
+    const gender = String(body.gender || '').trim().toLowerCase();
+    if (gender !== 'male' && gender !== 'female') {
+      res.status(400).json({ ok: false, error: 'invalid_gender' });
+      return;
+    }
+    const result = await joinRoom(code, name, gender);
     if (!result.ok) {
-      res.status(200).json(result); // structured failure, not a 500
+      // invalid_gender from the state layer is a 400; other structured
+      // failures (room_full, etc.) stay 200 so the client can show them.
+      res.status(result.error === 'invalid_gender' ? 400 : 200).json(result);
       return;
     }
     res.status(200).json({

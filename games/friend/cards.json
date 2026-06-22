@@ -6,7 +6,7 @@
   "min_players": 4,
   "max_players": 10,
   "type_counts": {
-    "mc4": 148
+    "mc4": 160
   },
   "cards": [
     {
@@ -4460,6 +4460,462 @@
       },
       "depth": "light",
       "playNotes": "Subject locks their truth. Partner guesses. Pair scores 1 if partner matches, else 0."
+    },
+    {
+      "id": 149,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "If [Subject] could trade places with anyone for a day, who would they pick?",
+      "optionsMale": [
+        {
+          "letter": "A",
+          "text": "Barack Obama"
+        },
+        {
+          "letter": "B",
+          "text": "Tom Brady"
+        },
+        {
+          "letter": "C",
+          "text": "Denzel Washington"
+        },
+        {
+          "letter": "D",
+          "text": "Jay-Z"
+        }
+      ],
+      "optionsFemale": [
+        {
+          "letter": "A",
+          "text": "Michelle Obama"
+        },
+        {
+          "letter": "B",
+          "text": "Serena Williams"
+        },
+        {
+          "letter": "C",
+          "text": "Oprah Winfrey"
+        },
+        {
+          "letter": "D",
+          "text": "Beyoncé"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": true,
+      "requireExplain": true,
+      "playNotes": "CHOICE + EXPLAIN CARD. Subject locks their truth. Partner guesses. Pair scores 4 if partner matches, else 0. After reveal, Subject explains in 1-2 sentences why they picked that answer. The explain step is required, untimed, and Subject-controlled."
+    },
+    {
+      "id": 150,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Whose career path would [Subject] secretly want to walk?",
+      "optionsMale": [
+        {
+          "letter": "A",
+          "text": "A pro athlete like Michael Jordan"
+        },
+        {
+          "letter": "B",
+          "text": "A business mogul like Magic Johnson"
+        },
+        {
+          "letter": "C",
+          "text": "A faith leader like T.D. Jakes"
+        },
+        {
+          "letter": "D",
+          "text": "An actor like Denzel Washington"
+        }
+      ],
+      "optionsFemale": [
+        {
+          "letter": "A",
+          "text": "A pro athlete like Serena Williams"
+        },
+        {
+          "letter": "B",
+          "text": "A media mogul like Oprah"
+        },
+        {
+          "letter": "C",
+          "text": "A faith leader like Priscilla Shirer"
+        },
+        {
+          "letter": "D",
+          "text": "An actress like Viola Davis"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": true,
+      "requireExplain": true,
+      "playNotes": "CHOICE + EXPLAIN CARD. Subject locks their truth. Partner guesses. Pair scores 4 if partner matches, else 0. After reveal, Subject explains in 1-2 sentences why they picked that answer. The explain step is required, untimed, and Subject-controlled."
+    },
+    {
+      "id": 151,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "Whose voice would [Subject] want as their inner coach?",
+      "optionsMale": [
+        {
+          "letter": "A",
+          "text": "Denzel Washington"
+        },
+        {
+          "letter": "B",
+          "text": "Bishop T.D. Jakes"
+        },
+        {
+          "letter": "C",
+          "text": "A coach who shaped them"
+        },
+        {
+          "letter": "D",
+          "text": "Their own father or grandfather"
+        }
+      ],
+      "optionsFemale": [
+        {
+          "letter": "A",
+          "text": "Oprah Winfrey"
+        },
+        {
+          "letter": "B",
+          "text": "Maya Angelou"
+        },
+        {
+          "letter": "C",
+          "text": "A mentor who shaped them"
+        },
+        {
+          "letter": "D",
+          "text": "Their own mother or grandmother"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": true,
+      "requireExplain": true,
+      "playNotes": "CHOICE + EXPLAIN CARD. Subject locks their truth. Partner guesses. Pair scores 4 if partner matches, else 0. After reveal, Subject explains in 1-2 sentences why they picked that answer. The explain step is required, untimed, and Subject-controlled."
+    },
+    {
+      "id": 152,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "Which Bible figure does [Subject] most identify with?",
+      "optionsMale": [
+        {
+          "letter": "A",
+          "text": "David (the warrior-king with a heart for God)"
+        },
+        {
+          "letter": "B",
+          "text": "Joseph (the dreamer who endured)"
+        },
+        {
+          "letter": "C",
+          "text": "Paul (the convert who rebuilt his life)"
+        },
+        {
+          "letter": "D",
+          "text": "Moses (the reluctant leader)"
+        }
+      ],
+      "optionsFemale": [
+        {
+          "letter": "A",
+          "text": "Esther (the one who stepped into her moment)"
+        },
+        {
+          "letter": "B",
+          "text": "Ruth (the loyal one who stayed)"
+        },
+        {
+          "letter": "C",
+          "text": "Mary (the one who said yes)"
+        },
+        {
+          "letter": "D",
+          "text": "Deborah (the judge who led)"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": true,
+      "requireExplain": true,
+      "playNotes": "CHOICE + EXPLAIN CARD. Subject locks their truth. Partner guesses. Pair scores 4 if partner matches, else 0. After reveal, Subject explains in 1-2 sentences why they picked that answer. The explain step is required, untimed, and Subject-controlled."
+    },
+    {
+      "id": 153,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "If [Subject] could attend ONE championship event in person, which would it be?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Super Bowl"
+        },
+        {
+          "letter": "B",
+          "text": "NBA Finals"
+        },
+        {
+          "letter": "C",
+          "text": "NCAA Final Four"
+        },
+        {
+          "letter": "D",
+          "text": "World Cup"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CHOICE + EXPLAIN CARD. Subject locks their truth. Partner guesses. Pair scores 4 if partner matches, else 0. After reveal, Subject explains in 1-2 sentences why they picked that answer. The explain step is required, untimed, and Subject-controlled."
+    },
+    {
+      "id": 154,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "If [Subject] could attend ONE concert from history, which would they pick?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Whitney Houston at her peak"
+        },
+        {
+          "letter": "B",
+          "text": "Michael Jackson on the Bad tour"
+        },
+        {
+          "letter": "C",
+          "text": "Prince at Paisley Park"
+        },
+        {
+          "letter": "D",
+          "text": "Aretha Franklin at the Apollo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CHOICE + EXPLAIN CARD. Subject locks their truth. Partner guesses. Pair scores 4 if partner matches, else 0. After reveal, Subject explains in 1-2 sentences why they picked that answer. The explain step is required, untimed, and Subject-controlled."
+    },
+    {
+      "id": 155,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "If [Subject] could witness ONE historical moment live, which would they pick?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "MLK's \"I Have a Dream\" speech"
+        },
+        {
+          "letter": "B",
+          "text": "Obama's first inauguration"
+        },
+        {
+          "letter": "C",
+          "text": "Nelson Mandela walking out of prison"
+        },
+        {
+          "letter": "D",
+          "text": "Michael Jordan's Last Shot, Game 6 in 1998"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CHOICE + EXPLAIN CARD. Subject locks their truth. Partner guesses. Pair scores 4 if partner matches, else 0. After reveal, Subject explains in 1-2 sentences why they picked that answer. The explain step is required, untimed, and Subject-controlled."
+    },
+    {
+      "id": 156,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "If [Subject] had to pick ONE place to vacation every year for the rest of their life:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A Caribbean island"
+        },
+        {
+          "letter": "B",
+          "text": "A European city"
+        },
+        {
+          "letter": "C",
+          "text": "An African safari"
+        },
+        {
+          "letter": "D",
+          "text": "A quiet mountain retreat"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CHOICE + EXPLAIN CARD. Subject locks their truth. Partner guesses. Pair scores 4 if partner matches, else 0. After reveal, Subject explains in 1-2 sentences why they picked that answer. The explain step is required, untimed, and Subject-controlled."
+    },
+    {
+      "id": 157,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "If [Subject] could be world-class at ONE thing, which would it be?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Speaking (preaching, public speaking)"
+        },
+        {
+          "letter": "B",
+          "text": "Building (entrepreneurship, real estate, business)"
+        },
+        {
+          "letter": "C",
+          "text": "Creating (art, music, design, writing)"
+        },
+        {
+          "letter": "D",
+          "text": "Athletics (sport at the highest level)"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CHOICE + EXPLAIN CARD. Subject locks their truth. Partner guesses. Pair scores 4 if partner matches, else 0. After reveal, Subject explains in 1-2 sentences why they picked that answer. The explain step is required, untimed, and Subject-controlled."
+    },
+    {
+      "id": 158,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "If [Subject] had to live in ONE city for a full year, which would they choose?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Atlanta"
+        },
+        {
+          "letter": "B",
+          "text": "Los Angeles"
+        },
+        {
+          "letter": "C",
+          "text": "New York"
+        },
+        {
+          "letter": "D",
+          "text": "An African city (Lagos, Accra, Cape Town)"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CHOICE + EXPLAIN CARD. Subject locks their truth. Partner guesses. Pair scores 4 if partner matches, else 0. After reveal, Subject explains in 1-2 sentences why they picked that answer. The explain step is required, untimed, and Subject-controlled."
+    },
+    {
+      "id": 159,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "If [Subject] had to eat ONE meal every day for a month:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Steak and seafood"
+        },
+        {
+          "letter": "B",
+          "text": "Mom's home cooking"
+        },
+        {
+          "letter": "C",
+          "text": "Soul food (mac, greens, cornbread, fried fish)"
+        },
+        {
+          "letter": "D",
+          "text": "Tacos and Mexican"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CHOICE + EXPLAIN CARD. Subject locks their truth. Partner guesses. Pair scores 4 if partner matches, else 0. After reveal, Subject explains in 1-2 sentences why they picked that answer. The explain step is required, untimed, and Subject-controlled."
+    },
+    {
+      "id": 160,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "If [Subject] could pick ONE person to give the eulogy at their funeral:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Their pastor"
+        },
+        {
+          "letter": "B",
+          "text": "Their closest friend"
+        },
+        {
+          "letter": "C",
+          "text": "Their spouse"
+        },
+        {
+          "letter": "D",
+          "text": "Their oldest child"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CHOICE + EXPLAIN CARD. Subject locks their truth. Partner guesses. Pair scores 4 if partner matches, else 0. After reveal, Subject explains in 1-2 sentences why they picked that answer. The explain step is required, untimed, and Subject-controlled."
     }
   ],
   "valid_depths": [

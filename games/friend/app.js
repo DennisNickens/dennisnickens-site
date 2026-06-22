@@ -26,7 +26,7 @@
   function save(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {} }
   function clear(key) { try { localStorage.removeItem(key); } catch (e) {} }
 
-  var SCREENS = ['screen-router', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing', 'screen-team-setup', 'screen-playing', 'screen-game-over'];
+  var SCREENS = ['screen-router', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing', 'screen-team-setup', 'screen-playing', 'screen-explain', 'screen-game-over'];
 
   // Same palette as lib/friend-state.js TEAM_ICONS. Hardcoded here so the
   // picker grid renders immediately without an extra round trip. Server is
@@ -41,7 +41,8 @@
     code: 'ycyf_room_code',
     playerId: 'ycyf_player_id',
     name: 'ycyf_name',
-    isHost: 'ycyf_is_host'
+    isHost: 'ycyf_is_host',
+    gender: 'ycyf_gender'
   };
 
   // ----- API helpers -----
@@ -553,6 +554,17 @@
     var card = CARD_BY_ID[room.currentCardId];
     if (!card) return;
 
+    // Gendered Choice+Explain cards carry optionsMale / optionsFemale instead
+    // of options. The server resolves the Subject-gender-matched pool into
+    // room.currentCardOptions; use that, falling back to a local resolve from
+    // the Subject's gender. Clone the card so we never mutate the cached copy.
+    if (card.genderedOptions) {
+      var resolved = (room.currentCardOptions && room.currentCardOptions.length)
+        ? room.currentCardOptions
+        : ((subjectGenderIsFemale(room) ? card.optionsFemale : card.optionsMale) || []);
+      card = assignCard(card, resolved);
+    }
+
     if (renderPlaying._lastCardId !== room.currentCardId ||
         renderPlaying._lastSubPhase !== room.subPhase) {
       pendingPick = null;
@@ -562,6 +574,14 @@
 
     var role = roleOf(room, me);
     var isTalkCard = card.type === 'reflection' || card.type === 'discussion';
+
+    // Choice+Explain cards: once the truth is revealed, the whole table moves
+    // to the EXPLAIN panel (its own screen). The Subject controls advancing.
+    if (card.requireExplain && room.subPhase === 'reveal') {
+      renderExplain(room, card, role);
+      show('screen-explain');
+      return;
+    }
 
     renderRace(room);
     renderCardFrame(room, card);
@@ -582,6 +602,43 @@
     } else {
       renderSpectator(room, card);
       showElem('spectator-view');
+    }
+  }
+
+  // Is the current Subject female? Used as a client-side fallback for gendered
+  // option pools when the server-resolved currentCardOptions isn't present.
+  function subjectGenderIsFemale(room) {
+    var subj = (room.players || []).find(function (p) { return p.id === room.currentSubjectId; });
+    return !!(subj && subj.gender === 'female');
+  }
+  // Shallow card clone with options swapped in (avoids mutating CARD_BY_ID).
+  function assignCard(card, options) {
+    var out = {};
+    for (var k in card) { if (Object.prototype.hasOwnProperty.call(card, k)) out[k] = card[k]; }
+    out.options = options;
+    return out;
+  }
+
+  // EXPLAIN panel (Choice+Explain cards). Re-shows the card text and the
+  // Subject's revealed answer. The Subject gets the "Done. Next card." button;
+  // partner and spectators get a listen prompt. No timer, no auto-advance.
+  function renderExplain(room, card, role) {
+    var t = $('explain-card-text'); if (t) t.textContent = interp(card.text || '', room);
+    var truth = room.subjectAnswer;
+    var ans = '';
+    if (truth != null) {
+      var opt = (card.options || []).find(function (o) { return o.letter === truth; });
+      ans = opt ? (opt.letter + '. ' + interp(opt.text || '', room)) : String(truth);
+    }
+    var a = $('explain-answer'); if (a) a.textContent = ans;
+    var btn = $('explain-done-btn');
+    var listen = $('explain-listen');
+    if (role === 'subject') {
+      if (btn) { btn.hidden = false; btn.disabled = false; }
+      if (listen) listen.hidden = true;
+    } else {
+      if (btn) btn.hidden = true;
+      if (listen) { listen.hidden = false; listen.textContent = 'Listen to ' + (subjectName(room) || 'the subject') + "'s answer."; }
     }
   }
 
@@ -1011,6 +1068,27 @@
     }
   }
 
+  // Subject taps "Done. Next card." on a Choice+Explain card's EXPLAIN panel.
+  async function finishExplainAct() {
+    var code = load(K.code, ''), pid = load(K.playerId, '');
+    var cardId = lastRoom && lastRoom.currentCardId;
+    var btn = $('explain-done-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Advancing...'; }
+    try {
+      var r = await api('/api/friend-finish-explain', { method: 'POST', body: { code: code, playerId: pid, cardId: cardId } });
+      if (r.status === 200 && r.body && r.body.ok) {
+        lastRoom = r.body.room;
+        renderRoom(lastRoom);
+      } else {
+        var msg = (r.body && r.body.error) || 'unknown';
+        alert('Could not advance: ' + msg);
+        if (btn) { btn.disabled = false; btn.textContent = 'Done. Next card. →'; }
+      }
+    } catch (e) {
+      alert('Network error advancing.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Done. Next card. →'; }
+    }
+  }
+
   // Local-only state: when the host taps a first player, we remember it
   // so the next tap can complete the pair. Stays in memory; not synced.
   var selectedForPair = null;
@@ -1129,11 +1207,13 @@
     hideErr('host-name-err');
     var name = String(($('host-name').value || '')).trim();
     if (!name) { showErr('host-name-err', 'Pick a name first.'); return; }
+    var gender = load(K.gender, null);
+    if (gender !== 'male' && gender !== 'female') { showErr('host-name-err', 'Pick Male or Female to continue.'); return; }
     save(K.name, name);
-    var btn = document.querySelector('[data-action="host-create"]');
+    var btn = $('host-create-btn') || document.querySelector('[data-action="host-create"]');
     if (btn) { btn.disabled = true; btn.textContent = 'Creating...'; }
     try {
-      var r = await api('/api/friend-create-room', { method: 'POST', body: { hostName: name } });
+      var r = await api('/api/friend-create-room', { method: 'POST', body: { hostName: name, gender: gender } });
       if (r.status === 200 && r.body && r.body.ok) {
         save(K.code, r.body.code);
         save(K.playerId, r.body.hostId);
@@ -1155,11 +1235,13 @@
     var name = String(($('join-name').value || '')).trim();
     if (!code || code.length < 4) { showErr('join-err', 'Enter the 4-letter room code from your host.'); return; }
     if (!name) { showErr('join-err', 'Add your name so the table knows who joined.'); return; }
+    var gender = load(K.gender, null);
+    if (gender !== 'male' && gender !== 'female') { showErr('join-err', 'Pick Male or Female to continue.'); return; }
     save(K.name, name);
-    var btn = document.querySelector('[data-action="join-go"]');
+    var btn = $('join-go-btn') || document.querySelector('[data-action="join-go"]');
     if (btn) { btn.disabled = true; btn.textContent = 'Joining...'; }
     try {
-      var r = await api('/api/friend-join-room', { method: 'POST', body: { code: code, name: name } });
+      var r = await api('/api/friend-join-room', { method: 'POST', body: { code: code, name: name, gender: gender } });
       if (r.status === 200 && r.body && r.body.ok) {
         save(K.code, r.body.room.code);
         save(K.playerId, r.body.playerId);
@@ -1192,9 +1274,34 @@
     show('screen-router');
   }
 
+  // Gender select: persist the choice, light up the chosen tile, and enable
+  // the create/join submit (required selection per spec).
+  function setGenderAct(el) {
+    var g = el && el.getAttribute('data-gender');
+    if (g !== 'male' && g !== 'female') return;
+    save(K.gender, g);
+    refreshGenderUI();
+  }
+  function refreshGenderUI() {
+    var g = load(K.gender, null);
+    var valid = (g === 'male' || g === 'female');
+    ['host-gender', 'join-gender'].forEach(function (id) {
+      var box = $(id);
+      if (!box) return;
+      [].slice.call(box.querySelectorAll('.gender-tile')).forEach(function (t) {
+        var sel = t.getAttribute('data-gender') === g;
+        t.classList.toggle('btn-primary', sel);
+        t.classList.toggle('btn-ghost', !sel);
+      });
+    });
+    var hc = $('host-create-btn'); if (hc) hc.disabled = !valid;
+    var jg = $('join-go-btn'); if (jg) jg.disabled = !valid;
+  }
+
   function gotoHostSetup() {
     var n = load(K.name, '');
     if (n) $('host-name').value = n;
+    refreshGenderUI();
     show('screen-host-setup');
   }
   function gotoJoinSetup() {
@@ -1203,6 +1310,7 @@
     if (preCode) $('join-code').value = preCode;
     var n = load(K.name, '');
     if (n) $('join-name').value = n;
+    refreshGenderUI();
     show('screen-join-setup');
   }
   function backRouter() { show('screen-router'); }
@@ -1352,6 +1460,7 @@
       if (a === 'goto-host')    return gotoHostSetup();
       if (a === 'goto-join')    return gotoJoinSetup();
       if (a === 'back-router')  return backRouter();
+      if (a === 'set-gender')   return setGenderAct(el);
       if (a === 'host-create')  return hostCreate();
       if (a === 'join-go')      return joinGo();
       if (a === 'leave-room')   return leaveRoom();
@@ -1374,6 +1483,7 @@
       if (a === 'reveal-truth') return revealTruthAct();
       if (a === 'done-talking') return nextCardAct();
       if (a === 'next-card')    return nextCardAct();
+      if (a === 'finish-explain') return finishExplainAct();
       if (a === 'host-rematch') return hostRematchAct();
     });
     // Pressing Enter inside an input submits the obvious action.

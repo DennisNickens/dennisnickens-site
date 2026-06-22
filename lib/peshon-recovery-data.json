@@ -1,0 +1,1930 @@
+[
+  {
+    "id": "xUTEoMUHLWtrZaMKyjFY",
+    "field_value": "Greet everyone with energy and humor",
+    "_meta": {
+      "key": "Q1",
+      "answer": "Greet everyone with energy and humor"
+    }
+  },
+  {
+    "id": "qAibKOQ2ZUkB1YEIJmxE",
+    "field_value": "Rally people and lift the mood",
+    "_meta": {
+      "key": "Q2",
+      "answer": "Rally people and lift the mood"
+    }
+  },
+  {
+    "id": "odHQDoa4ZbbEdwajctJm",
+    "field_value": "The data and the facts",
+    "_meta": {
+      "key": "Q3",
+      "answer": "The data and the facts"
+    }
+  },
+  {
+    "id": "NSqCtp4p0WS9LfVXfsRs",
+    "field_value": "Cold, unfriendly, or negative",
+    "_meta": {
+      "key": "Q4",
+      "answer": "Cold, unfriendly, or negative"
+    }
+  },
+  {
+    "id": "Fh3gOEiuS5rZGLCRKc6R",
+    "field_value": "Lead with encouragement and warmth",
+    "_meta": {
+      "key": "Q5",
+      "answer": "Lead with encouragement and warmth"
+    }
+  },
+  {
+    "id": "ysSMn2XCmd0IeuEFY1qL",
+    "field_value": "Re-energize the team and rebuild morale",
+    "_meta": {
+      "key": "Q6",
+      "answer": "Re-energize the team and rebuild morale"
+    }
+  },
+  {
+    "id": "JIftaZHroJzVt7hNnIMW",
+    "field_value": "Personal, full of photos and energy",
+    "_meta": {
+      "key": "Q7",
+      "answer": "Personal, full of photos and energy"
+    }
+  },
+  {
+    "id": "eIVQYo8sfhkMgKKwlFLR",
+    "field_value": "Laugh at yourself and own it openly",
+    "_meta": {
+      "key": "Q8",
+      "answer": "Laugh at yourself and own it openly"
+    }
+  },
+  {
+    "id": "nFRv6H1cPW0QP5Okdppl",
+    "field_value": "Connecting. Inspiring people.",
+    "_meta": {
+      "key": "Q9",
+      "answer": "Connecting. Inspiring people."
+    }
+  },
+  {
+    "id": "AveCYqkerwHFOKLCoN9Q",
+    "field_value": "Build the energy and bring others in",
+    "_meta": {
+      "key": "Q10",
+      "answer": "Build the energy and bring others in"
+    }
+  },
+  {
+    "id": "Ij2BdHt0slO14ZedkDgt",
+    "field_value": "Steamrolling people who think slower than you",
+    "_meta": {
+      "key": "Q11",
+      "answer": "Steamrolling people who think slower than you"
+    }
+  },
+  {
+    "id": "WkK9dygHT8bUfAVZVUI5",
+    "field_value": "Charm them and reframe the room",
+    "_meta": {
+      "key": "Q12",
+      "answer": "Charm them and reframe the room"
+    }
+  },
+  {
+    "id": "ZKtpxOQ5e2WejZ3nY1DI",
+    "field_value": "Knowing your people are safe and cared for",
+    "_meta": {
+      "key": "Q13",
+      "answer": "Knowing your people are safe and cared for"
+    }
+  },
+  {
+    "id": "Qss1TdXpViygiFfrtb8f",
+    "field_value": "Endless meetings without decisions",
+    "_meta": {
+      "key": "Q14",
+      "answer": "Endless meetings without decisions"
+    }
+  },
+  {
+    "id": "7TvQiVxraqGAeEnok52U",
+    "field_value": "\"Get it done.\"",
+    "_meta": {
+      "key": "Q15",
+      "answer": "\"Get it done.\""
+    }
+  },
+  {
+    "id": "bjuj2OXK5lG5ESjVByHA",
+    "field_value": "Pump up the team and rally them through it",
+    "_meta": {
+      "key": "Q16",
+      "answer": "Pump up the team and rally them through it"
+    }
+  },
+  {
+    "id": "PSQHUfeihJ8DtKAiSFvU",
+    "field_value": "Too much discussion, not enough action",
+    "_meta": {
+      "key": "Q17",
+      "answer": "Too much discussion, not enough action"
+    }
+  },
+  {
+    "id": "PIgdG26xJYuucfH7sBHF",
+    "field_value": "Loyalty, reliability, and steady character",
+    "_meta": {
+      "key": "Q18",
+      "answer": "Loyalty, reliability, and steady character"
+    }
+  },
+  {
+    "id": "VuRBUIFfBGOPxI37jRGu",
+    "field_value": "A slow morning, no agenda, comfort food",
+    "_meta": {
+      "key": "Q19",
+      "answer": "A slow morning, no agenda, comfort food"
+    }
+  },
+  {
+    "id": "yf2HRSuUzB9cTGX5pwR0",
+    "field_value": "Lots of emojis, voice notes, exclamation points",
+    "_meta": {
+      "key": "Q20",
+      "answer": "Lots of emojis, voice notes, exclamation points"
+    }
+  },
+  {
+    "id": "GXIK2GbF5UtHtNrKi3H2",
+    "field_value": "Being ignored or talked over",
+    "_meta": {
+      "key": "Q21",
+      "answer": "Being ignored or talked over"
+    }
+  },
+  {
+    "id": "B3x3eaIAAgo9D7Cqj5Zy",
+    "field_value": "Showing up consistently, no matter what",
+    "_meta": {
+      "key": "Q22",
+      "answer": "Showing up consistently, no matter what"
+    }
+  },
+  {
+    "id": "nI8L1VEGuGzjYVZsQRvP",
+    "field_value": "\"He's the heart of the team. Everyone loves him.\"",
+    "_meta": {
+      "key": "Q23",
+      "answer": "\"He's the heart of the team. Everyone loves him.\""
+    }
+  },
+  {
+    "id": "5gzfsRUVK39Iz6yWTgBL",
+    "field_value": "Withdraw. Analyze. Build the case.",
+    "_meta": {
+      "key": "Q24",
+      "answer": "Withdraw. Analyze. Build the case."
+    }
+  },
+  {
+    "id": "YuvnxYNfq9cZuKb3Z6Tr",
+    "field_value": "Drained, needing time alone to recover",
+    "_meta": {
+      "key": "Q25",
+      "answer": "Drained, needing time alone to recover"
+    }
+  },
+  {
+    "id": "Aew0belbN46Kj4YNZngu",
+    "field_value": "People, values, and emotional impact",
+    "_meta": {
+      "key": "Q26",
+      "answer": "People, values, and emotional impact"
+    }
+  },
+  {
+    "id": "T8RXqD9M7d9L0v47DMjW",
+    "field_value": "Plans are made and decisions are settled",
+    "_meta": {
+      "key": "Q28",
+      "answer": "Plans are made and decisions are settled"
+    }
+  },
+  {
+    "id": "bq4XSMg57RKwK5UWEwXQ",
+    "field_value": "Outgoing and expressive",
+    "_meta": {
+      "key": "Q29",
+      "answer": "Outgoing and expressive"
+    }
+  },
+  {
+    "id": "4rZvX5r7oISRnKelAguN",
+    "field_value": "Hands-on experience and step-by-step instructions",
+    "_meta": {
+      "key": "Q30",
+      "answer": "Hands-on experience and step-by-step instructions"
+    }
+  },
+  {
+    "id": "YO0faSHJojXIICgwz8De",
+    "field_value": "To feel the weight of it and process the emotion",
+    "_meta": {
+      "key": "Q31",
+      "answer": "To feel the weight of it and process the emotion"
+    }
+  },
+  {
+    "id": "TWD2Xa2OHUufjEd3XDVa",
+    "field_value": "Plans set in advance, knowing what's happening",
+    "_meta": {
+      "key": "Q32",
+      "answer": "Plans set in advance, knowing what's happening"
+    }
+  },
+  {
+    "id": "uzw6WkFw2HAoZ0SYYW9X",
+    "field_value": "Listen more, speak when you have something specific to say",
+    "_meta": {
+      "key": "Q33",
+      "answer": "Listen more, speak when you have something specific to say"
+    }
+  },
+  {
+    "id": "vCSIz6cIhKo9D7Ug6yFd",
+    "field_value": "What could be, behind the surface, possible",
+    "_meta": {
+      "key": "Q34",
+      "answer": "What could be, behind the surface, possible"
+    }
+  },
+  {
+    "id": "Fc1EDlT9DAffnDiytsT5",
+    "field_value": "Tell people the honest truth, even if it stings",
+    "_meta": {
+      "key": "Q35",
+      "answer": "Tell people the honest truth, even if it stings"
+    }
+  },
+  {
+    "id": "GhgCgqY952vZFVsyIDUY",
+    "field_value": "Curious or excited, new options just opened",
+    "_meta": {
+      "key": "Q36",
+      "answer": "Curious or excited, new options just opened"
+    }
+  },
+  {
+    "id": "Vja0WbOnWOXKlte5ewxv",
+    "field_value": "Being alone with your thoughts",
+    "_meta": {
+      "key": "Q37",
+      "answer": "Being alone with your thoughts"
+    }
+  },
+  {
+    "id": "q3lMyNoO5zeh3l4ib3n6",
+    "field_value": "Intuition and what could work next",
+    "_meta": {
+      "key": "Q38",
+      "answer": "Intuition and what could work next"
+    }
+  },
+  {
+    "id": "3sbKJgn2sRh938FRrMdB",
+    "field_value": "The wellbeing and growth of the people involved",
+    "_meta": {
+      "key": "Q39",
+      "answer": "The wellbeing and growth of the people involved"
+    }
+  },
+  {
+    "id": "2KOMy4KLu8ldqQ9Y0d09",
+    "field_value": "A clear schedule of what's happening when",
+    "_meta": {
+      "key": "Q40",
+      "answer": "A clear schedule of what's happening when"
+    }
+  },
+  {
+    "id": "wUm0HpQY2lhdKSSuGRbX",
+    "field_value": "You can't move around and meet new people",
+    "_meta": {
+      "key": "Q41",
+      "answer": "You can't move around and meet new people"
+    }
+  },
+  {
+    "id": "pTbkiiJFSeiWduL9Fyl9",
+    "field_value": "Is grounded in real, lived experience",
+    "_meta": {
+      "key": "Q42",
+      "answer": "Is grounded in real, lived experience"
+    }
+  },
+  {
+    "id": "oPrxhxIl87JR2wyTfkrq",
+    "field_value": "Naming the issue clearly and resolving it logically",
+    "_meta": {
+      "key": "Q43",
+      "answer": "Naming the issue clearly and resolving it logically"
+    }
+  },
+  {
+    "id": "IIesGeVtgKuPqK0pbR7J",
+    "field_value": "Lived-in, spontaneous, with stuff around you love",
+    "_meta": {
+      "key": "Q44",
+      "answer": "Lived-in, spontaneous, with stuff around you love"
+    }
+  },
+  {
+    "id": "HUTC13Qlwj2E44wI8x8a",
+    "field_value": "In a team where ideas bounce off each other",
+    "_meta": {
+      "key": "Q45",
+      "answer": "In a team where ideas bounce off each other"
+    }
+  },
+  {
+    "id": "OJ95xZOfcyrJvXdO3Htn",
+    "field_value": "Noticing the practical thing that needs doing",
+    "_meta": {
+      "key": "Q46",
+      "answer": "Noticing the practical thing that needs doing"
+    }
+  },
+  {
+    "id": "xstHW1raqnZO4gQdi4xY",
+    "field_value": "They make people feel seen and valued",
+    "_meta": {
+      "key": "Q47",
+      "answer": "They make people feel seen and valued"
+    }
+  },
+  {
+    "id": "1Jt5OWhb8xXOUj7DRlur",
+    "field_value": "Like helpful structure that drives focus",
+    "_meta": {
+      "key": "Q48",
+      "answer": "Like helpful structure that drives focus"
+    }
+  },
+  {
+    "id": "9IKUSI0xj5qOFzSH3Gxy",
+    "field_value": "In real-time conversation",
+    "_meta": {
+      "key": "Q49",
+      "answer": "In real-time conversation"
+    }
+  },
+  {
+    "id": "M7QjlnS31MPNLGOCkuDl",
+    "field_value": "Let's see what's actually possible.",
+    "_meta": {
+      "key": "Q50",
+      "answer": "Let's see what's actually possible."
+    }
+  },
+  {
+    "id": "MhxufhgRaO9R6SOxMiH1",
+    "field_value": "Find a way to address it that keeps them encouraged",
+    "_meta": {
+      "key": "Q51",
+      "answer": "Find a way to address it that keeps them encouraged"
+    }
+  },
+  {
+    "id": "DpPEZJsEl9PKKDaP6kGm",
+    "field_value": "Exists, gets followed, gets crossed off",
+    "_meta": {
+      "key": "Q52",
+      "answer": "Exists, gets followed, gets crossed off"
+    }
+  },
+  {
+    "id": "g61zMHB99se0yaVHHOZe",
+    "field_value": "Research everything you can find about it",
+    "_meta": {
+      "key": "Q53",
+      "answer": "Research everything you can find about it"
+    }
+  },
+  {
+    "id": "dw5vZCeaqN2cJYrkkZ81",
+    "field_value": "Someone to actually fix the broken thing",
+    "_meta": {
+      "key": "Q54",
+      "answer": "Someone to actually fix the broken thing"
+    }
+  },
+  {
+    "id": "wFPdd9psj0uMzzdbFHiq",
+    "field_value": "The whole thing runs like a well-oiled machine",
+    "_meta": {
+      "key": "Q55",
+      "answer": "The whole thing runs like a well-oiled machine"
+    }
+  },
+  {
+    "id": "dvhfWQJpp6XA1ZEs0WcV",
+    "field_value": "The one who pushes through when others stall",
+    "_meta": {
+      "key": "Q56",
+      "answer": "The one who pushes through when others stall"
+    }
+  },
+  {
+    "id": "4KEFNM5Brq5kttS6D2e0",
+    "field_value": "Build a checklist and work through it methodically",
+    "_meta": {
+      "key": "Q57",
+      "answer": "Build a checklist and work through it methodically"
+    }
+  },
+  {
+    "id": "qzjc0EpIw4zw4PGKfQkd",
+    "field_value": "Nobody actually builds the thing, they just talk",
+    "_meta": {
+      "key": "Q58",
+      "answer": "Nobody actually builds the thing, they just talk"
+    }
+  },
+  {
+    "id": "Uw9YKNndnnKik9NgSF8Z",
+    "field_value": "Knocking out a list of organized errands",
+    "_meta": {
+      "key": "Q59",
+      "answer": "Knocking out a list of organized errands"
+    }
+  },
+  {
+    "id": "KET7t2cDwUynD9wWMc4l",
+    "field_value": "Being capable",
+    "_meta": {
+      "key": "Q60",
+      "answer": "Being capable"
+    }
+  },
+  {
+    "id": "9d0BvIGCE9yODDSoUc39",
+    "field_value": "You build a step-by-step timeline and pad it",
+    "_meta": {
+      "key": "Q61",
+      "answer": "You build a step-by-step timeline and pad it"
+    }
+  },
+  {
+    "id": "XQX9aE9aaNOKJtkXJzIr",
+    "field_value": "Articles, links, research you've saved",
+    "_meta": {
+      "key": "Q62",
+      "answer": "Articles, links, research you've saved"
+    }
+  },
+  {
+    "id": "BKUEEJf47Dh2QuZATqor",
+    "field_value": "The data point everyone else missed",
+    "_meta": {
+      "key": "Q63",
+      "answer": "The data point everyone else missed"
+    }
+  },
+  {
+    "id": "JStXo8jrB2HD5gU90hiK",
+    "field_value": "Research the heck out of every option before deciding",
+    "_meta": {
+      "key": "Q64",
+      "answer": "Research the heck out of every option before deciding"
+    }
+  },
+  {
+    "id": "0vwDLbjULeSvukA49hbA",
+    "field_value": "Reading deeply about it",
+    "_meta": {
+      "key": "Q65",
+      "answer": "Reading deeply about it"
+    }
+  },
+  {
+    "id": "zeFuxn9Nm9IYKcJrsELe",
+    "field_value": "You investigate why before doing anything",
+    "_meta": {
+      "key": "Q66",
+      "answer": "You investigate why before doing anything"
+    }
+  },
+  {
+    "id": "sOwsH6wOBeEjjKO146pJ",
+    "field_value": "Hands-on, practical, gets it done",
+    "_meta": {
+      "key": "Q67",
+      "answer": "Hands-on, practical, gets it done"
+    }
+  },
+  {
+    "id": "BsStIYaavSKgWVW6d9q9",
+    "field_value": "Talk about doing it instead of doing it",
+    "_meta": {
+      "key": "Q68",
+      "answer": "Talk about doing it instead of doing it"
+    }
+  },
+  {
+    "id": "hIgJJreR5LJr4NNWl8oF",
+    "field_value": "\"The system is running smoothly\"",
+    "_meta": {
+      "key": "Q69",
+      "answer": "\"The system is running smoothly\""
+    }
+  },
+  {
+    "id": "1jSi5qYTAvEUqHDKefD4",
+    "field_value": "Practical guides for building things",
+    "_meta": {
+      "key": "Q70",
+      "answer": "Practical guides for building things"
+    }
+  },
+  {
+    "id": "Kf5rKpN6C23cEtupeADP",
+    "field_value": "Agreement on what we're actually going to build",
+    "_meta": {
+      "key": "Q71",
+      "answer": "Agreement on what we're actually going to build"
+    }
+  },
+  {
+    "id": "i2Jnyyd27xkYkZBDw0jz",
+    "field_value": "Turning chaos into structure",
+    "_meta": {
+      "key": "Q72",
+      "answer": "Turning chaos into structure"
+    }
+  },
+  {
+    "id": "RCw1SyrJUKOuJSbwCslp",
+    "field_value": "Spends focused time with you, no distractions",
+    "_meta": {
+      "key": "Q73",
+      "answer": "Spends focused time with you, no distractions"
+    }
+  },
+  {
+    "id": "1c53rD19xG1aKTkWlV3D",
+    "field_value": "Show up and just be there with them",
+    "_meta": {
+      "key": "Q74",
+      "answer": "Show up and just be there with them"
+    }
+  },
+  {
+    "id": "6yPbRdf0mBhLbkjFRkMc",
+    "field_value": "You're in the same room but never actually present together",
+    "_meta": {
+      "key": "Q75",
+      "answer": "You're in the same room but never actually present together"
+    }
+  },
+  {
+    "id": "S9HKUIpCfQZ5iOm6OmQQ",
+    "field_value": "Slow dance in the kitchen",
+    "_meta": {
+      "key": "Q76",
+      "answer": "Slow dance in the kitchen"
+    }
+  },
+  {
+    "id": "jEXOBV93GsIuxO2E7mSO",
+    "field_value": "Reaching for them, touching them, holding them",
+    "_meta": {
+      "key": "Q77",
+      "answer": "Reaching for them, touching them, holding them"
+    }
+  },
+  {
+    "id": "YJotaJj0auCd5QRNFISN",
+    "field_value": "Telling someone they did a great job, specifically",
+    "_meta": {
+      "key": "Q78",
+      "answer": "Telling someone they did a great job, specifically"
+    }
+  },
+  {
+    "id": "WUFnjBqpPAUp01am6oX2",
+    "field_value": "Someone says cruel words",
+    "_meta": {
+      "key": "Q79",
+      "answer": "Someone says cruel words"
+    }
+  },
+  {
+    "id": "D6BggpCoXkYS6OBOwhJd",
+    "field_value": "Anticipating what you need and handling it",
+    "_meta": {
+      "key": "Q80",
+      "answer": "Anticipating what you need and handling it"
+    }
+  },
+  {
+    "id": "GyTa5dKwapZT63N48VFC",
+    "field_value": "Someone to take dinner off your plate",
+    "_meta": {
+      "key": "Q81",
+      "answer": "Someone to take dinner off your plate"
+    }
+  },
+  {
+    "id": "LExVvPumKvDkGryqmvVL",
+    "field_value": "Forgot every birthday and anniversary",
+    "_meta": {
+      "key": "Q82",
+      "answer": "Forgot every birthday and anniversary"
+    }
+  },
+  {
+    "id": "23NENjMs6nj3w1zjHOPq",
+    "field_value": "Bring a meaningful gift that fits them",
+    "_meta": {
+      "key": "Q83",
+      "answer": "Bring a meaningful gift that fits them"
+    }
+  },
+  {
+    "id": "qWrvztT7IxCG7ysoDLtr",
+    "field_value": "Closeness, touching, being physically wrapped up in each other",
+    "_meta": {
+      "key": "Q84",
+      "answer": "Closeness, touching, being physically wrapped up in each other"
+    }
+  },
+  {
+    "id": "rPcks1gxai2rbPA3n4mi",
+    "field_value": "You weren't physically there when someone needed you",
+    "_meta": {
+      "key": "Q85",
+      "answer": "You weren't physically there when someone needed you"
+    }
+  },
+  {
+    "id": "WsskwhTGySiWuvK7rcA6",
+    "field_value": "\"I saw this and thought of you.\"",
+    "_meta": {
+      "key": "Q86",
+      "answer": "\"I saw this and thought of you.\""
+    }
+  },
+  {
+    "id": "JGtrHKoIow8WQMTcIImG",
+    "field_value": "You're spending real, undistracted time together",
+    "_meta": {
+      "key": "Q87",
+      "answer": "You're spending real, undistracted time together"
+    }
+  },
+  {
+    "id": "RxE1JibENeOumbEAuxvw",
+    "field_value": "Hand it to them in person, with a hug",
+    "_meta": {
+      "key": "Q88",
+      "answer": "Hand it to them in person, with a hug"
+    }
+  },
+  {
+    "id": "vcboEOgvqoESCdN9EuHS",
+    "field_value": "Brings home something that says they were thinking of you",
+    "_meta": {
+      "key": "Q89",
+      "answer": "Brings home something that says they were thinking of you"
+    }
+  },
+  {
+    "id": "ZiyvA8ed1EF0vrnaSxOT",
+    "field_value": "Look what I got you",
+    "_meta": {
+      "key": "Q90",
+      "answer": "Look what I got you"
+    }
+  },
+  {
+    "id": "IFnr0m6vjFmYJdHKHBbe",
+    "field_value": "A gift, especially an extravagant one",
+    "_meta": {
+      "key": "Q91",
+      "answer": "A gift, especially an extravagant one"
+    }
+  },
+  {
+    "id": "BUSemA0xnmjPwXXvrHqI",
+    "field_value": "Time, real and undistracted",
+    "_meta": {
+      "key": "Q92",
+      "answer": "Time, real and undistracted"
+    }
+  },
+  {
+    "id": "z6KD445lT9gEmGwLnyXB",
+    "field_value": "You try it yourself",
+    "_meta": {
+      "key": "Q93",
+      "answer": "You try it yourself"
+    }
+  },
+  {
+    "id": "oL5zERGw20plG8CEPOKL",
+    "field_value": "You drive the route once",
+    "_meta": {
+      "key": "Q94",
+      "answer": "You drive the route once"
+    }
+  },
+  {
+    "id": "ScynbOYKeYqyAio1iCGD",
+    "field_value": "Hands-on labs, demos, practice",
+    "_meta": {
+      "key": "Q95",
+      "answer": "Hands-on labs, demos, practice"
+    }
+  },
+  {
+    "id": "VTf25LyftpiyBUlH15UI",
+    "field_value": "Repeat the name out loud",
+    "_meta": {
+      "key": "Q96",
+      "answer": "Repeat the name out loud"
+    }
+  },
+  {
+    "id": "qizvtdMt32LchAzkTUzG",
+    "field_value": "Has visuals, slides, a clear agenda on screen",
+    "_meta": {
+      "key": "Q97",
+      "answer": "Has visuals, slides, a clear agenda on screen"
+    }
+  },
+  {
+    "id": "ZELAGysGq9Q6JSttEyDj",
+    "field_value": "Look at the picture diagram",
+    "_meta": {
+      "key": "Q98",
+      "answer": "Look at the picture diagram"
+    }
+  },
+  {
+    "id": "Zy085CqQ8CkomxovAanw",
+    "field_value": "Talk through it step by step",
+    "_meta": {
+      "key": "Q99",
+      "answer": "Talk through it step by step"
+    }
+  },
+  {
+    "id": "p3ExF6BehVknu0QyZhHg",
+    "field_value": "Listening to it over and over",
+    "_meta": {
+      "key": "Q101",
+      "answer": "Listening to it over and over"
+    }
+  },
+  {
+    "id": "kE0k9fi0TXRI9Z8khYvr",
+    "field_value": "Talk it through with someone",
+    "_meta": {
+      "key": "Q102",
+      "answer": "Talk it through with someone"
+    }
+  },
+  {
+    "id": "v8DtHbuzTBwlNoGaedgB",
+    "field_value": "Looking at art and exhibits",
+    "_meta": {
+      "key": "Q103",
+      "answer": "Looking at art and exhibits"
+    }
+  },
+  {
+    "id": "3KA3YIoAOisbAFhJth3o",
+    "field_value": "Is delivered by a great speaker",
+    "_meta": {
+      "key": "Q104",
+      "answer": "Is delivered by a great speaker"
+    }
+  },
+  {
+    "id": "sqRIahdlA0A93nCqnQtZ",
+    "field_value": "Test drive it, walk through it, touch everything",
+    "_meta": {
+      "key": "Q105",
+      "answer": "Test drive it, walk through it, touch everything"
+    }
+  },
+  {
+    "id": "oOCQX0IylJjCj6nPAhHk",
+    "field_value": "Pages of structured, written-out notes",
+    "_meta": {
+      "key": "Q106",
+      "answer": "Pages of structured, written-out notes"
+    }
+  },
+  {
+    "id": "LoN30Li8m6HSk5OUtYCj",
+    "field_value": "Want a video where someone talks you through it",
+    "_meta": {
+      "key": "Q107",
+      "answer": "Want a video where someone talks you through it"
+    }
+  },
+  {
+    "id": "n3zRt8e2w9Duec02Nzpw",
+    "field_value": "Did it with your hands",
+    "_meta": {
+      "key": "Q108",
+      "answer": "Did it with your hands"
+    }
+  },
+  {
+    "id": "hg6IHBOGGl8t87rqDg32",
+    "field_value": "Spiritual but not tied to a specific religion",
+    "_meta": {
+      "key": "Q109",
+      "answer": "Spiritual but not tied to a specific religion"
+    }
+  },
+  {
+    "id": "IkSHMGKXtRME8v4zbxtg",
+    "field_value": "Pray or talk to God",
+    "_meta": {
+      "key": "Q110",
+      "answer": "Pray or talk to God"
+    }
+  },
+  {
+    "id": "7aVqTnnXc66zWeZua6Oy",
+    "field_value": "Worship in community with others",
+    "_meta": {
+      "key": "Q111",
+      "answer": "Worship in community with others"
+    }
+  },
+  {
+    "id": "CmsrDuLc6taSiq93lDys",
+    "field_value": "Love, for self and for others",
+    "_meta": {
+      "key": "Q112",
+      "answer": "Love, for self and for others"
+    }
+  },
+  {
+    "id": "kP11VtavQpOawAJol8X7",
+    "field_value": "You're helping someone in need",
+    "_meta": {
+      "key": "Q113",
+      "answer": "You're helping someone in need"
+    }
+  },
+  {
+    "id": "fwVEVohbuGvaL67mqJcJ",
+    "field_value": "Personal experiences and lessons learned",
+    "_meta": {
+      "key": "Q114",
+      "answer": "Personal experiences and lessons learned"
+    }
+  },
+  {
+    "id": "ftip83cQZ14IY8Md2ce6",
+    "field_value": "Looking for the meaning or lesson",
+    "_meta": {
+      "key": "Q115",
+      "answer": "Looking for the meaning or lesson"
+    }
+  },
+  {
+    "id": "Ejb2bQeCviBGs8Uil7Ji",
+    "field_value": "Daily, structured, part of a clear path",
+    "_meta": {
+      "key": "Q116",
+      "answer": "Daily, structured, part of a clear path"
+    }
+  },
+  {
+    "id": "mcniSy0JzqYfdDx5vz47",
+    "field_value": "Someone deeply rooted in a religious tradition",
+    "_meta": {
+      "key": "Q117",
+      "answer": "Someone deeply rooted in a religious tradition"
+    }
+  },
+  {
+    "id": "zTpKc2seWpZ99DeoViGq",
+    "field_value": "Serving God or a higher calling",
+    "_meta": {
+      "key": "Q118",
+      "answer": "Serving God or a higher calling"
+    }
+  },
+  {
+    "id": "bxN1oZhkB7S2M1PZubRk",
+    "field_value": "Respect their path, stay grounded in yours",
+    "_meta": {
+      "key": "Q119",
+      "answer": "Respect their path, stay grounded in yours"
+    }
+  },
+  {
+    "id": "IVHsp3CDMOy5etiWUnx2",
+    "field_value": "How should I love better?",
+    "_meta": {
+      "key": "Q120",
+      "answer": "How should I love better?"
+    }
+  },
+  {
+    "id": "LCz8qH4mG9pGhcOoGfN3",
+    "field_value": "B) Engage immediately. Talk through what they're feeling.",
+    "_meta": {
+      "key": "QA1",
+      "answer": "B) Engage immediately. Talk through what they're feeling."
+    }
+  },
+  {
+    "id": "QovdlssJTcZmxw4y0THN",
+    "field_value": "You are deeply loved, no matter what",
+    "_meta": {
+      "key": "QA10",
+      "answer": "You are deeply loved, no matter what"
+    }
+  },
+  {
+    "id": "0JSqKZk0bSf2o5DhKqSz",
+    "field_value": "A) Curiosity. Why did they do that? What's underneath it?",
+    "_meta": {
+      "key": "QA2",
+      "answer": "A) Curiosity. Why did they do that? What's underneath it?"
+    }
+  },
+  {
+    "id": "sgKEXytkB3pQrJOofwJA",
+    "field_value": "A) Stop what I'm doing. They take priority.",
+    "_meta": {
+      "key": "QA3",
+      "answer": "A) Stop what I'm doing. They take priority."
+    }
+  },
+  {
+    "id": "WQOaVjUHRq4F5uRDvBjl",
+    "field_value": "A) Tell them directly: \"I'm proud of you. That was good work.\"",
+    "_meta": {
+      "key": "QA4",
+      "answer": "A) Tell them directly: \"I'm proud of you. That was good work.\""
+    }
+  },
+  {
+    "id": "685PrJlUzcgL2qT7okPc",
+    "field_value": "A little anxious. I want to make sure they're on a good path.",
+    "_meta": {
+      "key": "QA5",
+      "answer": "A little anxious. I want to make sure they're on a good path."
+    }
+  },
+  {
+    "id": "NcMj333gCq0bWFuvOmkX",
+    "field_value": "Conversation first. We talk about what happened and why",
+    "_meta": {
+      "key": "QA6",
+      "answer": "Conversation first. We talk about what happened and why"
+    }
+  },
+  {
+    "id": "PyT3LCKBII4UrUnh918u",
+    "field_value": "The Center. We pray, we read scripture, we go to church together",
+    "_meta": {
+      "key": "QA7",
+      "answer": "The Center. We pray, we read scripture, we go to church together"
+    }
+  },
+  {
+    "id": "Cb0oBwwsYpvdyoi2SJuq",
+    "field_value": "Not being present enough. They'll grow up and I'll miss it.",
+    "_meta": {
+      "key": "QA8",
+      "answer": "Not being present enough. They'll grow up and I'll miss it."
+    }
+  },
+  {
+    "id": "6HtnVT9aFse4OwtRzKnn",
+    "field_value": "Help them see what they can learn. We problem-solve together.",
+    "_meta": {
+      "key": "QA9",
+      "answer": "Help them see what they can learn. We problem-solve together."
+    }
+  },
+  {
+    "id": "BfBzZ2dMDUiOJrOJs074",
+    "field_value": "Pull the team back together and find consensus.",
+    "_meta": {
+      "key": "QB1",
+      "answer": "Pull the team back together and find consensus."
+    }
+  },
+  {
+    "id": "kQuoZhcGbww9jhotL1TC",
+    "field_value": "The shepherd. Cares for each person while still calling them higher.",
+    "_meta": {
+      "key": "QB10",
+      "answer": "The shepherd. Cares for each person while still calling them higher."
+    }
+  },
+  {
+    "id": "0hVUa5WfNJ5HggENzCvF",
+    "field_value": "Natural. Other people often do it better than I could.",
+    "_meta": {
+      "key": "QB2",
+      "answer": "Natural. Other people often do it better than I could."
+    }
+  },
+  {
+    "id": "Kbh8c725Ok6gIR2hr94p",
+    "field_value": "Open direct. State the issue, then talk solutions.",
+    "_meta": {
+      "key": "QB3",
+      "answer": "Open direct. State the issue, then talk solutions."
+    }
+  },
+  {
+    "id": "XU771Csqu2k5t9AuMWIQ",
+    "field_value": "Investigate first. What's going on under the surface",
+    "_meta": {
+      "key": "QB4",
+      "answer": "Investigate first. What's going on under the surface"
+    }
+  },
+  {
+    "id": "T4sTiKA4ne3rJ2ZQ4XQP",
+    "field_value": "Casting the vision. Telling the story of where we're going.",
+    "_meta": {
+      "key": "QB5",
+      "answer": "Casting the vision. Telling the story of where we're going."
+    }
+  },
+  {
+    "id": "E3GfOf9H5kCpg3YgfTir",
+    "field_value": "The interpersonal friction. Mediating between team members.",
+    "_meta": {
+      "key": "QB6",
+      "answer": "The interpersonal friction. Mediating between team members."
+    }
+  },
+  {
+    "id": "eV0clDd0z0VX77V8W29b",
+    "field_value": "Fit. How will they mesh with the team?",
+    "_meta": {
+      "key": "QB7",
+      "answer": "Fit. How will they mesh with the team?"
+    }
+  },
+  {
+    "id": "rXkcugLOQRnVJ1pT6kqQ",
+    "field_value": "Useful, if it's specific. General complaining is not.",
+    "_meta": {
+      "key": "QB8",
+      "answer": "Useful, if it's specific. General complaining is not."
+    }
+  },
+  {
+    "id": "EzvaLty5ZFTyflfKwl6f",
+    "field_value": "Give them clear direction. Less ambiguity is better when they're new.",
+    "_meta": {
+      "key": "QB9",
+      "answer": "Give them clear direction. Less ambiguity is better when they're new."
+    }
+  },
+  {
+    "id": "sas9WB59cm6LGCwwQssS",
+    "field_value": "Watch how they treat the server or other people. Character first",
+    "_meta": {
+      "key": "QC1",
+      "answer": "Watch how they treat the server or other people. Character first"
+    }
+  },
+  {
+    "id": "u4wlG4zLNHz3rSAm21aN",
+    "field_value": "Mission partners. We're building something together.",
+    "_meta": {
+      "key": "QC10",
+      "answer": "Mission partners. We're building something together."
+    }
+  },
+  {
+    "id": "Z5VJvFJ0BpcGBGdHl17n",
+    "field_value": "How I feel in their presence. Calm and curious means stay.",
+    "_meta": {
+      "key": "QC2",
+      "answer": "How I feel in their presence. Calm and curious means stay."
+    }
+  },
+  {
+    "id": "pnIUVZGzmCcwT5MrttoM",
+    "field_value": "Values mismatch. We were heading different directions.",
+    "_meta": {
+      "key": "QC3",
+      "answer": "Values mismatch. We were heading different directions."
+    }
+  },
+  {
+    "id": "giZXJ9CCBwqkCvd2Bwbg",
+    "field_value": "Notice but don't reach out. Wait to see what happens.",
+    "_meta": {
+      "key": "QC4",
+      "answer": "Notice but don't reach out. Wait to see what happens."
+    }
+  },
+  {
+    "id": "U0sBAw8TA64FQ4XPW7Bq",
+    "field_value": "Like a test. How they handle it tells me who they really are.",
+    "_meta": {
+      "key": "QC5",
+      "answer": "Like a test. How they handle it tells me who they really are."
+    }
+  },
+  {
+    "id": "O9IyjJANPUA0lQ71B5TR",
+    "field_value": "Slowly. Months of dating before exclusivity.",
+    "_meta": {
+      "key": "QC6",
+      "answer": "Slowly. Months of dating before exclusivity."
+    }
+  },
+  {
+    "id": "EKsnZ0tylMXe4BObJiEv",
+    "field_value": "Earned. They have to demonstrate trustworthiness first.",
+    "_meta": {
+      "key": "QC7",
+      "answer": "Earned. They have to demonstrate trustworthiness first."
+    }
+  },
+  {
+    "id": "LB8Ljx5uIIb9jWh0FYWC",
+    "field_value": "Faith alignment. Either we share the same foundation or we don't.",
+    "_meta": {
+      "key": "QC8",
+      "answer": "Faith alignment. Either we share the same foundation or we don't."
+    }
+  },
+  {
+    "id": "e6BAPC0JKm8szPAtPKZF",
+    "field_value": "What I need to feel safe. Without that, I shut down.",
+    "_meta": {
+      "key": "QC9",
+      "answer": "What I need to feel safe. Without that, I shut down."
+    }
+  },
+  {
+    "id": "WOzcCOBNgAuHEleLixh7",
+    "field_value": "B) Work that helps people directly. I want to see the change in their face.",
+    "_meta": {
+      "key": "QD1",
+      "answer": "B) Work that helps people directly. I want to see the change in their face."
+    }
+  },
+  {
+    "id": "wtFvKEWcnZjSzECmxBir",
+    "field_value": "B) The builder. The one who creates something that outlasts them.",
+    "_meta": {
+      "key": "QD10",
+      "answer": "B) The builder. The one who creates something that outlasts them."
+    }
+  },
+  {
+    "id": "nnlgWFYXpv1DbR98yLTG",
+    "field_value": "B) Lots of conversation and movement. Energy keeps me sharp.",
+    "_meta": {
+      "key": "QD2",
+      "answer": "B) Lots of conversation and movement. Energy keeps me sharp."
+    }
+  },
+  {
+    "id": "6EXsl8fPZXOAF1SIZpep",
+    "field_value": "A) Calendar-driven. Plan the week, work the plan.",
+    "_meta": {
+      "key": "QD3",
+      "answer": "A) Calendar-driven. Plan the week, work the plan."
+    }
+  },
+  {
+    "id": "BlsYjUSKJtMfJtFTAQGH",
+    "field_value": "C) Freedom. The kind of work that lets me live the life I actually want.",
+    "_meta": {
+      "key": "QD4",
+      "answer": "C) Freedom. The kind of work that lets me live the life I actually want."
+    }
+  },
+  {
+    "id": "kvY636DbsCc5Rw2JBGab",
+    "field_value": "B) Resist it. I draw a hard line. After-hours is sacred.",
+    "_meta": {
+      "key": "QD5",
+      "answer": "B) Resist it. I draw a hard line. After-hours is sacred."
+    }
+  },
+  {
+    "id": "kvucotfqHvWWcDWypjpq",
+    "field_value": "B) Sit with it for a day before saying anything. Make sure I'm reading it right.",
+    "_meta": {
+      "key": "QD6",
+      "answer": "B) Sit with it for a day before saying anything. Make sure I'm reading it right."
+    }
+  },
+  {
+    "id": "glfIDP1099UDzsrTIFDq",
+    "field_value": "A) Not enough exposure. The right people don't know what I can do.",
+    "_meta": {
+      "key": "QD7",
+      "answer": "A) Not enough exposure. The right people don't know what I can do."
+    }
+  },
+  {
+    "id": "YyZ0TDAbVKuNfPzkpFS6",
+    "field_value": "B) Stability versus risk. Leaving something secure to try something new.",
+    "_meta": {
+      "key": "QD8",
+      "answer": "B) Stability versus risk. Leaving something secure to try something new."
+    }
+  },
+  {
+    "id": "ljIpaoAPWbTjDgBPOtT9",
+    "field_value": "A) Faith is the foundation. My work is part of how I live it out.",
+    "_meta": {
+      "key": "QD9",
+      "answer": "A) Faith is the foundation. My work is part of how I live it out."
+    }
+  },
+  {
+    "id": "xME69riTiKkzqKCAm1sM",
+    "field_value": "A) We have the same fight, over and over. The topics change; the dance is the same.",
+    "_meta": {
+      "key": "QE1",
+      "answer": "A) We have the same fight, over and over. The topics change; the dance is the same."
+    }
+  },
+  {
+    "id": "gqtVO66NLS2vsecZ77ws",
+    "field_value": "A) Deeper than what we have now. Same direction, more intimacy.",
+    "_meta": {
+      "key": "QE10",
+      "answer": "A) Deeper than what we have now. Same direction, more intimacy."
+    }
+  },
+  {
+    "id": "u24t0n4ss8lgYrzU8ATI",
+    "field_value": "B) Pull back. Take time alone to think, come back later.",
+    "_meta": {
+      "key": "QE2",
+      "answer": "B) Pull back. Take time alone to think, come back later."
+    }
+  },
+  {
+    "id": "GSEmuqBHLDTluFpdgJJh",
+    "field_value": "B) Steady but not what it used to be. We have drifted some.",
+    "_meta": {
+      "key": "QE3",
+      "answer": "B) Steady but not what it used to be. We have drifted some."
+    }
+  },
+  {
+    "id": "KG3LMoGgvoDZ7B027YwG",
+    "field_value": "A) Talk it through together until we are aligned, then act.",
+    "_meta": {
+      "key": "QE4",
+      "answer": "A) Talk it through together until we are aligned, then act."
+    }
+  },
+  {
+    "id": "3z8avJ5xAnxwjfBqFDq6",
+    "field_value": "A) The way they handle things without me asking.",
+    "_meta": {
+      "key": "QE5",
+      "answer": "A) The way they handle things without me asking."
+    }
+  },
+  {
+    "id": "VhVPVudFgIfG0BpRaOTU",
+    "field_value": "B) Real but bridgeable. We see it and are working on it.",
+    "_meta": {
+      "key": "QE6",
+      "answer": "B) Real but bridgeable. We see it and are working on it."
+    }
+  },
+  {
+    "id": "Ui0D4haJEVmpxbPd8Ml5",
+    "field_value": "A) Pull closer. The hard thing becomes ours, not mine and theirs.",
+    "_meta": {
+      "key": "QE7",
+      "answer": "A) Pull closer. The hard thing becomes ours, not mine and theirs."
+    }
+  },
+  {
+    "id": "jBY1S4nx3HETQmHLuqGw",
+    "field_value": "A) The conversations get shorter. Less talk about the real stuff.",
+    "_meta": {
+      "key": "QE8",
+      "answer": "A) The conversations get shorter. Less talk about the real stuff."
+    }
+  },
+  {
+    "id": "MCBNHF8kuxOvoENsomwa",
+    "field_value": "A) Easier with them than with anyone else. They are my safest person.",
+    "_meta": {
+      "key": "QE9",
+      "answer": "A) Easier with them than with anyone else. They are my safest person."
+    }
+  },
+  {
+    "id": "ADfxpXwrO1dZWdnOeIaS",
+    "field_value": "A) Start with the text. Let scripture or the lesson lead the room.",
+    "_meta": {
+      "key": "QF1",
+      "answer": "A) Start with the text. Let scripture or the lesson lead the room."
+    }
+  },
+  {
+    "id": "FlNHjTurcVpzaDhkJzDu",
+    "field_value": "B) Disciples one or two generations into leaders. Reproduces themselves.",
+    "_meta": {
+      "key": "QF10",
+      "answer": "B) Disciples one or two generations into leaders. Reproduces themselves."
+    }
+  },
+  {
+    "id": "2aPptG3iLuqc4lCGrdoj",
+    "field_value": "A) Sit with them in it. Don't rush to fix.",
+    "_meta": {
+      "key": "QF2",
+      "answer": "A) Sit with them in it. Don't rush to fix."
+    }
+  },
+  {
+    "id": "uASYjHIStZgUtsTLOUDA",
+    "field_value": "D) The loneliness. Hard to be honest with people you also lead.",
+    "_meta": {
+      "key": "QF3",
+      "answer": "D) The loneliness. Hard to be honest with people you also lead."
+    }
+  },
+  {
+    "id": "qTRXFmHC2uCpxruQjPWh",
+    "field_value": "A) Address it directly and quickly. Better to clear the air.",
+    "_meta": {
+      "key": "QF4",
+      "answer": "A) Address it directly and quickly. Better to clear the air."
+    }
+  },
+  {
+    "id": "1C3DJfbzhX72xmU0Zaqp",
+    "field_value": "A) Preaching and teaching. Standing in front of people with truth.",
+    "_meta": {
+      "key": "QF5",
+      "answer": "A) Preaching and teaching. Standing in front of people with truth."
+    }
+  },
+  {
+    "id": "ZYpRTR77wfOklacgFH8Q",
+    "field_value": "A) Hold the family line. Ministry comes second to home.",
+    "_meta": {
+      "key": "QF6",
+      "answer": "A) Hold the family line. Ministry comes second to home."
+    }
+  },
+  {
+    "id": "nXFks51ocegSywyKbL0e",
+    "field_value": "A) Strong and consistent. Daily, structured, sustaining.",
+    "_meta": {
+      "key": "QF7",
+      "answer": "A) Strong and consistent. Daily, structured, sustaining."
+    }
+  },
+  {
+    "id": "nWuUOImDiuKwPjGbOorf",
+    "field_value": "A) Depth. Smaller, deeply formed disciples who reproduce.",
+    "_meta": {
+      "key": "QF8",
+      "answer": "A) Depth. Smaller, deeply formed disciples who reproduce."
+    }
+  },
+  {
+    "id": "ivtoMVO3UAfFCx50xaGs",
+    "field_value": "A) Pray about it, then act with clarity once I sense direction.",
+    "_meta": {
+      "key": "QF9",
+      "answer": "A) Pray about it, then act with clarity once I sense direction."
+    }
+  },
+  {
+    "id": "fYLVTUR1T3MRzZlSNiih",
+    "field_value": "A) Sit with them. You do not rush to fix anything. You just want them to feel less alone.",
+    "_meta": {
+      "key": "QG1",
+      "answer": "A) Sit with them. You do not rush to fix anything. You just want them to feel less alone."
+    }
+  },
+  {
+    "id": "T6Nvlz3C82ihomnoxkCe",
+    "field_value": "C) You ask questions until they surface the blind spot themselves.",
+    "_meta": {
+      "key": "QG10",
+      "answer": "C) You ask questions until they surface the blind spot themselves."
+    }
+  },
+  {
+    "id": "9IhN0OBazPJcXq1JvWtx",
+    "field_value": "B) Watching someone come to faith or renew their faith. That moment is the whole thing for you.",
+    "_meta": {
+      "key": "QG11",
+      "answer": "B) Watching someone come to faith or renew their faith. That moment is the whole thing for you."
+    }
+  },
+  {
+    "id": "BqX6t1GIbjUtKCPDPVSg",
+    "field_value": "C) You ask more questions. The first thing someone asks for is rarely the real ask.",
+    "_meta": {
+      "key": "QG12",
+      "answer": "C) You ask more questions. The first thing someone asks for is rarely the real ask."
+    }
+  },
+  {
+    "id": "ZlpE5oxwtX8cJjjUZyW0",
+    "field_value": "C) You go to the person or family in need. They need someone present before they need anything else.",
+    "_meta": {
+      "key": "QG13",
+      "answer": "C) You go to the person or family in need. They need someone present before they need anything else."
+    }
+  },
+  {
+    "id": "MjHy8nSCrac1G4JrR7Mc",
+    "field_value": "B) You read what is underneath the fear before you respond. The surface fear is rarely the whole story.",
+    "_meta": {
+      "key": "QG14",
+      "answer": "B) You read what is underneath the fear before you respond. The surface fear is rarely the whole story."
+    }
+  },
+  {
+    "id": "q52JIyR5TRwaFMpEulRk",
+    "field_value": "C) You would speak into them. What you see in them, what you sense God is saying about them.",
+    "_meta": {
+      "key": "QG15",
+      "answer": "C) You would speak into them. What you see in them, what you sense God is saying about them."
+    }
+  },
+  {
+    "id": "vFoTlX7n1PsJxtKoY75Y",
+    "field_value": "C) You pray until you sense something specific, then you act on it.",
+    "_meta": {
+      "key": "QG16",
+      "answer": "C) You pray until you sense something specific, then you act on it."
+    }
+  },
+  {
+    "id": "KWI41wXq4jFpUHS6Awtx",
+    "field_value": "C) You love them well, openly, and without agenda. The life you live is the argument.",
+    "_meta": {
+      "key": "QG17",
+      "answer": "C) You love them well, openly, and without agenda. The life you live is the argument."
+    }
+  },
+  {
+    "id": "eiq6o1WhRVIR7FqLr66N",
+    "field_value": "B) You give to it. Your money goes where your concern goes.",
+    "_meta": {
+      "key": "QG18",
+      "answer": "B) You give to it. Your money goes where your concern goes."
+    }
+  },
+  {
+    "id": "ohtnoQJ0QV6narEwvZfK",
+    "field_value": "A) You want to know each person before you lead them. You get in the room with them one by one.",
+    "_meta": {
+      "key": "QG19",
+      "answer": "A) You want to know each person before you lead them. You get in the room with them one by one."
+    }
+  },
+  {
+    "id": "LTA7TVFoDejBMbd0QM7j",
+    "field_value": "A) Find the person standing alone and go to them first.",
+    "_meta": {
+      "key": "QG2",
+      "answer": "A) Find the person standing alone and go to them first."
+    }
+  },
+  {
+    "id": "n0x2WhtkzwIRK9QnqYYH",
+    "field_value": "B) Your words. You say things that give people strength when they are running on empty.",
+    "_meta": {
+      "key": "QG20",
+      "answer": "B) Your words. You say things that give people strength when they are running on empty."
+    }
+  },
+  {
+    "id": "HPwrPQ8SZJIKyrSSHN9p",
+    "field_value": "B) Time. Who you could serve and what you could do with your hands.",
+    "_meta": {
+      "key": "QG21",
+      "answer": "B) Time. Who you could serve and what you could do with your hands."
+    }
+  },
+  {
+    "id": "aPg2v7OI5BhcC1TMxNrg",
+    "field_value": "C) Pray about it. You need to know it is from God before you act on it.",
+    "_meta": {
+      "key": "QG22",
+      "answer": "C) Pray about it. You need to know it is from God before you act on it."
+    }
+  },
+  {
+    "id": "M92MjVCbPt0KTGY3kbK5",
+    "field_value": "B) Time and presence. You showed up with your hands and your hours when it cost you something.",
+    "_meta": {
+      "key": "QG23",
+      "answer": "B) Time and presence. You showed up with your hands and your hours when it cost you something."
+    }
+  },
+  {
+    "id": "2uDjPVhVf9H47jQNIEms",
+    "field_value": "C) Walk with them over time. No rushing. The relationship builds while the faith builds.",
+    "_meta": {
+      "key": "QG24",
+      "answer": "C) Walk with them over time. No rushing. The relationship builds while the faith builds."
+    }
+  },
+  {
+    "id": "tVlEeph8HoJjZnfL1EX4",
+    "field_value": "C) Walking beside whoever has to make the hard call. You are not the decision-maker, but you want to be there while they decide.",
+    "_meta": {
+      "key": "QG25",
+      "answer": "C) Walking beside whoever has to make the hard call. You are not the decision-maker, but you want to be there while they decide."
+    }
+  },
+  {
+    "id": "9UCgY6oiI8unGmvTaMPb",
+    "field_value": "A) Read what is underneath it. You want to understand what is actually happening before you speak.",
+    "_meta": {
+      "key": "QG3",
+      "answer": "A) Read what is underneath it. You want to understand what is actually happening before you speak."
+    }
+  },
+  {
+    "id": "8UhbwQRc4rAmh2TrufOo",
+    "field_value": "C) Walk through what scripture says on the specific question they are wrestling with.",
+    "_meta": {
+      "key": "QG4",
+      "answer": "C) Walk through what scripture says on the specific question they are wrestling with."
+    }
+  },
+  {
+    "id": "zZg8IXFbuxUZHSL3DI9l",
+    "field_value": "D) Think through the system. Where does this resource fit in the larger picture?",
+    "_meta": {
+      "key": "QG5",
+      "answer": "D) Think through the system. Where does this resource fit in the larger picture?"
+    }
+  },
+  {
+    "id": "T8iTFeRtrDOf4gqgoeRO",
+    "field_value": "C) Pray about it first. You want to know if this is yours to lead before you say yes.",
+    "_meta": {
+      "key": "QG6",
+      "answer": "C) Pray about it first. You want to know if this is yours to lead before you say yes."
+    }
+  },
+  {
+    "id": "JPtK9n2RSQm89HiZmP9F",
+    "field_value": "B) Encouraging them. Speaking into who they are and what you see in them.",
+    "_meta": {
+      "key": "QG7",
+      "answer": "B) Encouraging them. Speaking into who they are and what you see in them."
+    }
+  },
+  {
+    "id": "yuJNykxdxnRgGMZyDcid",
+    "field_value": "B) The person who does not quite fit in. The one who has not connected yet.",
+    "_meta": {
+      "key": "QG8",
+      "answer": "B) The person who does not quite fit in. The one who has not connected yet."
+    }
+  },
+  {
+    "id": "KgUA2YxrnKNRhOvop1l5",
+    "field_value": "A) Preparing carefully and wanting to explain the text as accurately as possible.",
+    "_meta": {
+      "key": "QG9",
+      "answer": "A) Preparing carefully and wanting to explain the text as accurately as possible."
+    }
+  },
+  {
+    "id": "AUR0FpgomQwpgvpFAXKt",
+    "field_value": "A. Receiving a sudden insight that brought clarity to a confusing situation for someone else. [Word of Wisdom]",
+    "_meta": {
+      "key": "QH1",
+      "answer": "A. Receiving a sudden insight that brought clarity to a confusing situation for someone else. [Word of Wisdom]"
+    }
+  },
+  {
+    "id": "6eIkbE5CtP5dLMWp9aw5",
+    "field_value": "B. You suddenly know a fact about their life or history that they had not shared with you. [Word of Knowledge]",
+    "_meta": {
+      "key": "QH2",
+      "answer": "B. You suddenly know a fact about their life or history that they had not shared with you. [Word of Knowledge]"
+    }
+  },
+  {
+    "id": "HkPz1OzhXA2IGqiPtUuq",
+    "field_value": "C. You feel led to declare a specific word for the room or a specific person. [Prophecy]",
+    "_meta": {
+      "key": "QH3",
+      "answer": "C. You feel led to declare a specific word for the room or a specific person. [Prophecy]"
+    }
+  },
+  {
+    "id": "YOkmKZBU8J3H4fVB7SWD",
+    "field_value": "A. Believing for outcomes that seem impossible until they happen. [Gift of Faith]",
+    "_meta": {
+      "key": "QH4",
+      "answer": "A. Believing for outcomes that seem impossible until they happen. [Gift of Faith]"
+    }
+  },
+  {
+    "id": "zlHRBPe8UWwdzORv5DGT",
+    "field_value": "C. Holding the faith that pulls the breakthrough in. [Gift of Faith]",
+    "_meta": {
+      "key": "QH5",
+      "answer": "C. Holding the faith that pulls the breakthrough in. [Gift of Faith]"
+    }
+  },
+  {
+    "id": "FuTxUjG7jk98VpzDrC6W",
+    "field_value": "A. You spoke a word over someone and it shifted their direction. [Prophecy]",
+    "_meta": {
+      "key": "QH6",
+      "answer": "A. You spoke a word over someone and it shifted their direction. [Prophecy]"
+    }
+  },
+  {
+    "id": "nPTSRkGwMMMiTtp5aECS",
+    "field_value": "C. Receive an unshakable conviction about something coming. [Gift of Faith]",
+    "_meta": {
+      "key": "QH7",
+      "answer": "C. Receive an unshakable conviction about something coming. [Gift of Faith]"
+    }
+  },
+  {
+    "id": "VSoctgYPSXInNV5RzA4x",
+    "field_value": "C. See the spirit operating behind the conflict. [Discerning of Spirits]",
+    "_meta": {
+      "key": "QH8",
+      "answer": "C. See the spirit operating behind the conflict. [Discerning of Spirits]"
+    }
+  },
+  {
+    "id": "IZOeLTwwmC0LFIm9qXzU",
+    "field_value": "C. A word spoken that aligned with what someone needed to hear. [Prophecy]",
+    "_meta": {
+      "key": "QH9",
+      "answer": "C. A word spoken that aligned with what someone needed to hear. [Prophecy]"
+    }
+  },
+  {
+    "id": "xSWw5JWWXIt9ykSq2sLc",
+    "field_value": "B. Sense what spiritual influence is operating in their life. [Discerning of Spirits]",
+    "_meta": {
+      "key": "QH10",
+      "answer": "B. Sense what spiritual influence is operating in their life. [Discerning of Spirits]"
+    }
+  },
+  {
+    "id": "uiJN2z21Ur1Il6JEheRn",
+    "field_value": "D. Speaking out the wisdom that comes from above in the moment. [Word of Wisdom]",
+    "_meta": {
+      "key": "QH11",
+      "answer": "D. Speaking out the wisdom that comes from above in the moment. [Word of Wisdom]"
+    }
+  },
+  {
+    "id": "EzQtD2VcgT6vFt0YQP55",
+    "field_value": "A. To hold faith for an outcome that seems impossible. [Gift of Faith]",
+    "_meta": {
+      "key": "QH12",
+      "answer": "A. To hold faith for an outcome that seems impossible. [Gift of Faith]"
+    }
+  },
+  {
+    "id": "1kBmsIE9yNLq5PZGugPV",
+    "field_value": "B. Speaking a prophetic word that was confirmed in the person's life. [Prophecy]",
+    "_meta": {
+      "key": "QH13",
+      "answer": "B. Speaking a prophetic word that was confirmed in the person's life. [Prophecy]"
+    }
+  },
+  {
+    "id": "AnzJxOc7NqvuZnvhtndl",
+    "field_value": "C. Operates in faith that pulls the room into expectation. [Gift of Faith]",
+    "_meta": {
+      "key": "QH14",
+      "answer": "C. Operates in faith that pulls the room into expectation. [Gift of Faith]"
+    }
+  },
+  {
+    "id": "Cbu6ipae86GtPJgeU4oL",
+    "field_value": "C. A wisdom that breaks the spiritual stronghold underneath the symptom. [Word of Wisdom]",
+    "_meta": {
+      "key": "QH15",
+      "answer": "C. A wisdom that breaks the spiritual stronghold underneath the symptom. [Word of Wisdom]"
+    }
+  },
+  {
+    "id": "9gTS8gXxnH7PCPzUuf3d",
+    "field_value": "C. Prophecy that turned out accurate. [Prophecy]",
+    "_meta": {
+      "key": "QH16",
+      "answer": "C. Prophecy that turned out accurate. [Prophecy]"
+    }
+  },
+  {
+    "id": "sF2Z636ojoel3mWKJBvB",
+    "field_value": "C. To stand in faith for them when they cannot stand for themselves. [Gift of Faith]",
+    "_meta": {
+      "key": "QH17",
+      "answer": "C. To stand in faith for them when they cannot stand for themselves. [Gift of Faith]"
+    }
+  },
+  {
+    "id": "GKbOjpPoqcHDY3if8Yf3",
+    "field_value": "D. Pray in tongues until you sense a shift. [Different Kinds of Tongues]",
+    "_meta": {
+      "key": "QH18",
+      "answer": "D. Pray in tongues until you sense a shift. [Different Kinds of Tongues]"
+    }
+  },
+  {
+    "id": "xBj1mSsLLv4CBD8Xu48n",
+    "field_value": "C. Word of Knowledge (knowing what could not be naturally known). [Word of Knowledge]",
+    "_meta": {
+      "key": "QH19",
+      "answer": "C. Word of Knowledge (knowing what could not be naturally known). [Word of Knowledge]"
+    }
+  },
+  {
+    "id": "OysyMPBDeoCHQwShNueh",
+    "field_value": "C. A faith-filled declaration over their life. [Gift of Faith]",
+    "_meta": {
+      "key": "QH20",
+      "answer": "C. A faith-filled declaration over their life. [Gift of Faith]"
+    }
+  },
+  {
+    "id": "785bjxLDI7NNyyBsya8u",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI1",
+      "answer": "D. Almost Always"
+    }
+  },
+  {
+    "id": "4yzdtkPzI2capHd5i7Mh",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI2",
+      "answer": "D. Almost Always"
+    }
+  },
+  {
+    "id": "Bh1aR7SGUKYU668RBV1M",
+    "field_value": "B. Sometimes",
+    "_meta": {
+      "key": "QI3",
+      "answer": "B. Sometimes"
+    }
+  },
+  {
+    "id": "nCXDl0aMq2aNF9AvW0X1",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI4",
+      "answer": "D. Almost Always"
+    }
+  },
+  {
+    "id": "HswE4LtLVczePyqsxKfR",
+    "field_value": "C. Often",
+    "_meta": {
+      "key": "QI5",
+      "answer": "C. Often"
+    }
+  },
+  {
+    "id": "6sPGC3pYpj4S4IZMx34p",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI6",
+      "answer": "D. Almost Always"
+    }
+  },
+  {
+    "id": "CUf3ulsYngprcVhimLTU",
+    "field_value": "C. Often",
+    "_meta": {
+      "key": "QI7",
+      "answer": "C. Often"
+    }
+  },
+  {
+    "id": "myISZB0Wepga6hOC5U5s",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI8",
+      "answer": "D. Almost Always"
+    }
+  },
+  {
+    "id": "hPxDFtAIyUe6rQi6JuZJ",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI9",
+      "answer": "D. Almost Always"
+    }
+  },
+  {
+    "id": "OnDV6rh5ydRCFV5PnFW0",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI10",
+      "answer": "D. Almost Always"
+    }
+  },
+  {
+    "id": "ymRqWiQvzYVi0Zvfy4Fh",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI11",
+      "answer": "D. Almost Always"
+    }
+  },
+  {
+    "id": "ei5H7gENCTrsvEE80TeS",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI12",
+      "answer": "D. Almost Always"
+    }
+  },
+  {
+    "id": "ElrAZconqZvxJC0l6YBx",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI13",
+      "answer": "D. Almost Always"
+    }
+  },
+  {
+    "id": "2ktSjSXuDujOvv6g8Pkt",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI14",
+      "answer": "D. Almost Always"
+    }
+  },
+  {
+    "id": "op0HYcs404xn6WWJNNcd",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI15",
+      "answer": "D. Almost Always"
+    }
+  },
+  {
+    "id": "LNKNWmW22nIi6I60VjkW",
+    "field_value": "C. Often",
+    "_meta": {
+      "key": "QI16",
+      "answer": "C. Often"
+    }
+  },
+  {
+    "id": "Mv1B9wh4FVd8PxN1VwcO",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI17",
+      "answer": "D. Almost Always"
+    }
+  },
+  {
+    "id": "STnSmGdf3s8p3Q53lxfY",
+    "field_value": "D. Almost Always",
+    "_meta": {
+      "key": "QI18",
+      "answer": "D. Almost Always"
+    }
+  }
+]

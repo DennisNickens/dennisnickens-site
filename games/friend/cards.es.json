@@ -4935,7 +4935,8 @@
       "submit": "Crear sala",
       "gender_label": "Tu género",
       "gender_male": "Hombre",
-      "gender_female": "Mujer"
+      "gender_female": "Mujer",
+      "lead": "Tu nombre aparece en la mesa. Usa como te dicen tus amigos."
     },
     "join_setup": {
       "title": "Unirme a una partida",
@@ -4944,20 +4945,38 @@
       "submit": "Unirme",
       "gender_label": "Tu género",
       "gender_male": "Hombre",
-      "gender_female": "Mujer"
+      "gender_female": "Mujer",
+      "lead": "Ingresa el código de 4 letras que te dio tu anfitrión (o escanea su código QR con tu cámara)."
     },
     "lobby": {
       "title": "Esperando jugadores...",
       "players_header": "En la sala",
       "pair_button": "Emparejar",
-      "leave_button": "Salir"
+      "leave_button": "Salir",
+      "code_eyebrow": "Código de sala",
+      "share_note": "Diles a tus amigos que escaneen el código o ingresen el código de sala de arriba en",
+      "table_header": "En la mesa",
+      "start_button": "Emparejar",
+      "host_note": "Solo el anfitrión puede empezar el juego. Avanzarás en cuanto toque Emparejar."
     },
     "team_setup": {
       "title": "Arma tu equipo",
       "icon_label": "Elige el ícono",
       "name_label": "Nombre del equipo",
       "ready_button": "Listos",
-      "confirmed": "Confirmado"
+      "confirmed": "Confirmado",
+      "icon_eyebrow": "Configurar equipos",
+      "icon_picker_header": "Elige el ícono de tu equipo",
+      "icons_lead": "Toca la fila de un equipo y elige un ícono para reclamarlo. Cada equipo necesita uno.",
+      "next_confirm_button": "Siguiente: Confirmar equipos",
+      "icons_host_note": "El anfitrión está eligiendo los íconos. Espera un momento.",
+      "confirm_eyebrow": "Confirmar equipos",
+      "ready_to_race": "Listos para arrancar",
+      "confirm_lead": "Agrega un nombre de equipo si quieres (opcional). Toca cualquier equipo para editar.",
+      "depth_eyebrow": "Profundidad de las cartas",
+      "start_button": "Empezar el juego",
+      "confirm_host_note": "El anfitrión está confirmando los equipos. Espera un momento.",
+      "depth_host_note": "El anfitrión elige la profundidad del mazo."
     },
     "playing": {
       "subject_label": "Sujeto",
@@ -4966,19 +4985,25 @@
       "spectator_label": "Espectador",
       "reveal_button": "Revelar",
       "next_card": "Siguiente carta",
-      "bonus_banner": "BONUS, puntos x2"
+      "bonus_banner": "BONUS, puntos x2",
+      "race_label": "CARRERA A 25",
+      "truth_eyebrow": "La verdad"
     },
     "explain": {
       "title": "Turno del Sujeto. Cuéntanos por qué elegiste esa.",
       "done_button": "Listo. Siguiente carta.",
-      "spectator_note": "Escucha la respuesta."
+      "spectator_note": "Escucha la respuesta.",
+      "eyebrow": "Elección + Explicación",
+      "answer_label": "Su respuesta"
     },
     "game_over": {
       "title": "Fin del juego",
       "knower_header": "El Conocedor",
       "known_header": "El Conocido",
       "rematch_button": "Otra ronda",
-      "exit_button": "Salir"
+      "exit_button": "Salir",
+      "back_button": "Volver al inicio",
+      "host_note": "Solo el anfitrión puede empezar otra ronda."
     },
     "depth_picker": {
       "title": "¿Qué tan profundo quieres dibujar?",
@@ -4990,7 +5015,9 @@
       "real_desc": "La versión central. Lo que realmente te dice si las personas que llamas amigos te conocen.",
       "deep_name": "Profundo",
       "deep_subtitle": "Para los que no se sueltan",
-      "deep_desc": "Las preguntas más vulnerables. Para grupos con confianza ya construida y ganas de ir más adentro."
+      "deep_desc": "Las preguntas más vulnerables. Para grupos con confianza ya construida y ganas de ir más adentro.",
+      "badge_coming_soon": "Próximamente",
+      "badge_ready": "Listo"
     },
     "welcome_card": {
       "title": "Antes de Comenzar",
@@ -5001,6 +5028,23 @@
         "El que más adivina es El Conocedor. El Sujeto que más es adivinado es El Conocido.",
         "Ambos importan."
       ]
+    },
+    "common": {
+      "back": "Atrás",
+      "leave": "Salir",
+      "leave_game": "Salir del juego"
+    },
+    "router": {
+      "eyebrow": "Un juego en tiempo real de",
+      "title": "Conocer a tu gente",
+      "sub": "Emparéjense. Corran a la meta. Descubran quién de verdad presta atención."
+    },
+    "pairing": {
+      "eyebrow": "Emparejen a todos",
+      "title": "Elige tu pareja",
+      "lead": "Toca a dos jugadores para emparejarlos. Toca un jugador emparejado para deshacer.",
+      "next_button": "Siguiente: Elegir íconos",
+      "host_note": "El anfitrión está emparejando a todos. Espera un momento."
     }
   }
 }

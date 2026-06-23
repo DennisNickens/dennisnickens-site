@@ -44,9 +44,9 @@
       <img src="../../images/you-call-yourself-a-friend-cover.jpg" alt="You Call Yourself A Friend game box, by Dennis Nickens" />
     </div>
 
-    <p class="brand-eyebrow">A real-time game of</p>
-    <h1 class="brand-title">Knowing Your People</h1>
-    <p class="brand-sub">Pair up. Race the finish line. Find out who actually pays attention.</p>
+    <p class="brand-eyebrow" data-i18n="router.eyebrow">A real-time game of</p>
+    <h1 class="brand-title" data-i18n="router.title">Knowing Your People</h1>
+    <p class="brand-sub" data-i18n="router.sub">Pair up. Race the finish line. Find out who actually pays attention.</p>
 
     <div class="router-actions">
       <button class="btn btn-primary" data-action="goto-host" data-i18n="splash.host">Start a Game</button>
@@ -74,7 +74,7 @@
 <section id="screen-host-setup" class="screen" aria-label="Start a game" hidden>
   <div class="sheet">
     <h2 class="sheet-title" data-i18n="host_setup.title">Start a Game</h2>
-    <p class="sheet-lead">Your name shows up at the table. Use what your friends call you.</p>
+    <p class="sheet-lead" data-i18n="host_setup.lead">Your name shows up at the table. Use what your friends call you.</p>
     <label class="field-label" for="host-name" data-i18n="host_setup.name_label">Your name</label>
     <input type="text" id="host-name" class="text-input" placeholder="e.g. Dennis" autocomplete="given-name" maxlength="32" />
     <p class="error-text" id="host-name-err" hidden></p>
@@ -84,7 +84,7 @@
       <button type="button" class="btn btn-ghost gender-tile" style="flex:1;" data-action="set-gender" data-gender="female" data-i18n="host_setup.gender_female">Female</button>
     </div>
     <div class="sheet-actions">
-      <button class="btn btn-ghost" data-action="back-router">Back</button>
+      <button class="btn btn-ghost" data-action="back-router" data-i18n="common.back">Back</button>
       <button class="btn btn-primary" id="host-create-btn" data-action="host-create" data-i18n="host_setup.submit" disabled>Create Room</button>
     </div>
   </div>
@@ -94,7 +94,7 @@
 <section id="screen-join-setup" class="screen" aria-label="Join a game" hidden>
   <div class="sheet">
     <h2 class="sheet-title" data-i18n="join_setup.title">Join a Game</h2>
-    <p class="sheet-lead">Enter the 4-letter code your host gave you (or scan their QR code with your camera).</p>
+    <p class="sheet-lead" data-i18n="join_setup.lead">Enter the 4-letter code your host gave you (or scan their QR code with your camera).</p>
 
     <label class="field-label" for="join-code" data-i18n="join_setup.code_label">Room code</label>
     <input type="text" id="join-code" class="text-input code-input" placeholder="ABCD" autocomplete="off" autocapitalize="characters" maxlength="4" />
@@ -111,7 +111,7 @@
     <p class="error-text" id="join-err" hidden></p>
 
     <div class="sheet-actions">
-      <button class="btn btn-ghost" data-action="back-router">Back</button>
+      <button class="btn btn-ghost" data-action="back-router" data-i18n="common.back">Back</button>
       <button class="btn btn-primary" id="join-go-btn" data-action="join-go" data-i18n="join_setup.submit" disabled>Join Room</button>
     </div>
   </div>
@@ -120,19 +120,19 @@
 <!-- ================= SCREEN: LOBBY ================= -->
 <section id="screen-lobby" class="screen" aria-label="Lobby" hidden>
   <div class="lobby-inner">
-    <p class="lobby-eyebrow">Room code</p>
+    <p class="lobby-eyebrow" data-i18n="lobby.code_eyebrow">Room code</p>
     <h2 class="lobby-code" id="lobby-code">----</h2>
     <div class="lobby-qr" id="lobby-qr" aria-hidden="true"></div>
-    <p class="lobby-share-note" id="lobby-share-note">Tell your friends to scan the code or enter the room code above at <span class="kbd">dennisnickens.com/games/friend/</span></p>
+    <p class="lobby-share-note" id="lobby-share-note"><span data-i18n="lobby.share_note">Tell your friends to scan the code or enter the room code above at</span> <span class="kbd">dennisnickens.com/games/friend/</span></p>
 
-    <h3 class="lobby-section-title">At the Table</h3>
+    <h3 class="lobby-section-title" data-i18n="lobby.table_header">At the Table</h3>
     <ul class="player-list" id="player-list"></ul>
     <p class="lobby-count" id="lobby-count"></p>
 
     <div class="lobby-actions">
-      <button class="btn btn-primary" id="start-btn" data-action="host-start" disabled>Pair Up &rarr;</button>
-      <p class="lobby-host-note" id="lobby-host-note" hidden>Only the host can start the game. You'll move on as soon as they tap Pair Up.</p>
-      <button class="btn btn-ghost" data-action="leave-room">Leave</button>
+      <button class="btn btn-primary" id="start-btn" data-action="host-start" data-i18n="lobby.start_button" disabled>Pair Up &rarr;</button>
+      <p class="lobby-host-note" id="lobby-host-note" data-i18n="lobby.host_note" hidden>Only the host can start the game. You'll move on as soon as they tap Pair Up.</p>
+      <button class="btn btn-ghost" data-action="leave-room" data-i18n="common.leave">Leave</button>
     </div>
   </div>
 </section>
@@ -140,18 +140,18 @@
 <!-- ================= SCREEN: PAIRING ================= -->
 <section id="screen-pairing" class="screen" aria-label="Pair everyone up" hidden>
   <div class="pairing-inner">
-    <p class="pairing-eyebrow">Pair Everyone Up</p>
-    <h2 class="pairing-title">Pick Your Partner</h2>
-    <p class="pairing-lead" id="pairing-lead">Tap two players to pair them. Tap a paired player to undo.</p>
+    <p class="pairing-eyebrow" data-i18n="pairing.eyebrow">Pair Everyone Up</p>
+    <h2 class="pairing-title" data-i18n="pairing.title">Pick Your Partner</h2>
+    <p class="pairing-lead" id="pairing-lead" data-i18n="pairing.lead">Tap two players to pair them. Tap a paired player to undo.</p>
 
     <ul class="players-grid" id="players-grid"></ul>
 
     <p class="pairing-status" id="pairing-status"></p>
 
     <div class="pairing-actions">
-      <button class="btn btn-primary" id="start-game-btn" data-action="host-start-team-setup" disabled hidden>Next: Pick Icons &rarr;</button>
-      <p class="pairing-host-note" id="pairing-host-note" hidden>The host is pairing everyone up. Hold tight.</p>
-      <button class="btn btn-ghost btn-leave" data-action="leave-room">Leave Game</button>
+      <button class="btn btn-primary" id="start-game-btn" data-action="host-start-team-setup" data-i18n="pairing.next_button" disabled hidden>Next: Pick Icons &rarr;</button>
+      <p class="pairing-host-note" id="pairing-host-note" data-i18n="pairing.host_note" hidden>The host is pairing everyone up. Hold tight.</p>
+      <button class="btn btn-ghost btn-leave" data-action="leave-room" data-i18n="common.leave_game">Leave Game</button>
     </div>
   </div>
 </section>
@@ -162,53 +162,53 @@
 
     <!-- Sub-view A: pick icons -->
     <div id="team-icons-view" class="team-setup-view">
-      <p class="pairing-eyebrow">Team Setup</p>
-      <h2 class="pairing-title">Pick Your Team Icon</h2>
-      <p class="pairing-lead" id="icons-lead">Tap a team's row, then pick an icon to claim it. Every team needs one.</p>
+      <p class="pairing-eyebrow" data-i18n="team_setup.icon_eyebrow">Team Setup</p>
+      <h2 class="pairing-title" data-i18n="team_setup.icon_picker_header">Pick Your Team Icon</h2>
+      <p class="pairing-lead" id="icons-lead" data-i18n="team_setup.icons_lead">Tap a team's row, then pick an icon to claim it. Every team needs one.</p>
       <ul class="team-rows" id="team-rows-icons"></ul>
       <div class="team-setup-actions">
-        <button class="btn btn-primary" id="confirm-icons-btn" data-action="host-advance-to-confirm" disabled hidden>Next: Confirm Teams &rarr;</button>
-        <p class="pairing-host-note" id="icons-host-note" hidden>The host is picking team icons. Hold tight.</p>
-        <button class="btn btn-ghost btn-leave" data-action="leave-room">Leave Game</button>
+        <button class="btn btn-primary" id="confirm-icons-btn" data-action="host-advance-to-confirm" data-i18n="team_setup.next_confirm_button" disabled hidden>Next: Confirm Teams &rarr;</button>
+        <p class="pairing-host-note" id="icons-host-note" data-i18n="team_setup.icons_host_note" hidden>The host is picking team icons. Hold tight.</p>
+        <button class="btn btn-ghost btn-leave" data-action="leave-room" data-i18n="common.leave_game">Leave Game</button>
       </div>
     </div>
 
     <!-- Sub-view B: confirmation + optional team names + depth picker -->
     <div id="team-confirm-view" class="team-setup-view" hidden>
-      <p class="pairing-eyebrow">Confirm Teams</p>
-      <h2 class="pairing-title">Ready To Race</h2>
-      <p class="pairing-lead">Add a team name if you want (optional). Tap any team to edit.</p>
+      <p class="pairing-eyebrow" data-i18n="team_setup.confirm_eyebrow">Confirm Teams</p>
+      <h2 class="pairing-title" data-i18n="team_setup.ready_to_race">Ready To Race</h2>
+      <p class="pairing-lead" data-i18n="team_setup.confirm_lead">Add a team name if you want (optional). Tap any team to edit.</p>
       <ul class="team-rows team-rows-confirm" id="team-rows-confirm"></ul>
 
       <!-- Depth picker. Real is the only mode with content shipped right now;
            Light and Deep are locked until their content batches drop. -->
       <div class="depth-picker-wrap">
-        <p class="pairing-eyebrow depth-eyebrow">Card Depth</p>
+        <p class="pairing-eyebrow depth-eyebrow" data-i18n="team_setup.depth_eyebrow">Card Depth</p>
         <ul class="depth-picker" id="depth-picker">
           <li class="depth-tile depth-locked" data-depth="light">
             <span class="depth-tile-name" data-i18n="depth_picker.light_name">Light</span>
             <span class="depth-tile-sub" data-i18n="depth_picker.light_subtitle">Party prompts</span>
-            <span class="depth-tile-badge">Coming soon</span>
+            <span class="depth-tile-badge" data-i18n="depth_picker.badge_coming_soon">Coming soon</span>
           </li>
           <li class="depth-tile depth-selectable is-selected" data-depth="real" data-action="host-set-depth">
             <span class="depth-tile-name" data-i18n="depth_picker.real_name">Real</span>
             <span class="depth-tile-sub" data-i18n="depth_picker.real_subtitle">How well do you know me?</span>
-            <span class="depth-tile-badge depth-tile-badge-active">Ready</span>
+            <span class="depth-tile-badge depth-tile-badge-active" data-i18n="depth_picker.badge_ready">Ready</span>
           </li>
           <li class="depth-tile depth-selectable" data-depth="deep" data-action="host-set-depth">
             <span class="depth-tile-name" data-i18n="depth_picker.deep_name">Deep</span>
             <span class="depth-tile-sub" data-i18n="depth_picker.deep_subtitle">Know me know me</span>
-            <span class="depth-tile-badge depth-tile-badge-active">Ready</span>
+            <span class="depth-tile-badge depth-tile-badge-active" data-i18n="depth_picker.badge_ready">Ready</span>
           </li>
         </ul>
-        <p class="depth-host-note" id="depth-host-note" hidden>The host picks the deck depth.</p>
+        <p class="depth-host-note" id="depth-host-note" data-i18n="team_setup.depth_host_note" hidden>The host picks the deck depth.</p>
       </div>
 
       <div class="team-setup-actions">
-        <button class="btn btn-ghost" id="back-to-icons-btn" data-action="host-back-to-picking-icons" hidden>Back</button>
-        <button class="btn btn-primary" id="real-start-game-btn" data-action="host-start-game" hidden>Start the Game</button>
-        <p class="pairing-host-note" id="confirm-host-note" hidden>The host is locking in teams. Hold tight.</p>
-        <button class="btn btn-ghost btn-leave" data-action="leave-room">Leave Game</button>
+        <button class="btn btn-ghost" id="back-to-icons-btn" data-action="host-back-to-picking-icons" data-i18n="common.back" hidden>Back</button>
+        <button class="btn btn-primary" id="real-start-game-btn" data-action="host-start-game" data-i18n="team_setup.start_button" hidden>Start the Game</button>
+        <p class="pairing-host-note" id="confirm-host-note" data-i18n="team_setup.confirm_host_note" hidden>The host is locking in teams. Hold tight.</p>
+        <button class="btn btn-ghost btn-leave" data-action="leave-room" data-i18n="common.leave_game">Leave Game</button>
       </div>
     </div>
 
@@ -222,7 +222,7 @@
     <!-- Race track: one car per pair, animated to current score / cap. -->
     <div class="race-wrap" aria-label="Race to 25">
       <div class="race-header">
-        <span class="race-label">RACE TO 25</span>
+        <span class="race-label" data-i18n="playing.race_label">RACE TO 25</span>
         <span class="race-round" id="race-round">Round 1</span>
       </div>
       <div class="race-track" id="race-track">
@@ -237,7 +237,7 @@
         <p class="card-theme" id="card-theme">Theme</p>
         <span class="card-type-label" id="card-type-label"></span>
       </div>
-      <span class="card-bonus-banner" id="card-bonus-banner" hidden>&#9733; Bonus card &middot; double points</span>
+      <span class="card-bonus-banner" id="card-bonus-banner" data-i18n="playing.bonus_banner" hidden>&#9733; Bonus card &middot; double points</span>
       <p class="card-subject-hint" id="card-subject-hint"></p>
       <p class="card-text" id="card-text"></p>
     </div>
@@ -278,7 +278,7 @@
 
       <!-- Reveal view: shows truth, partner's guess, pair score delta -->
       <div class="reveal-view" id="reveal-view" hidden>
-        <p class="action-eyebrow">The truth</p>
+        <p class="action-eyebrow" data-i18n="playing.truth_eyebrow">The truth</p>
         <p class="reveal-truth" id="reveal-truth"></p>
         <p class="reveal-partner-line" id="reveal-partner-line"></p>
         <ul class="reveal-scores" id="reveal-scores"></ul>
@@ -288,21 +288,21 @@
 
     </div>
 
-    <button class="btn btn-ghost btn-leave" data-action="leave-room">Leave Game</button>
+    <button class="btn btn-ghost btn-leave" data-action="leave-room" data-i18n="common.leave_game">Leave Game</button>
   </div>
 </section>
 
 <!-- ============== SCREEN: EXPLAIN (Choice + Explain cards) ============== -->
 <section id="screen-explain" class="screen" aria-label="Explain step" hidden>
   <div class="sheet">
-    <p class="action-eyebrow">Choice + Explain</p>
+    <p class="action-eyebrow" data-i18n="explain.eyebrow">Choice + Explain</p>
     <h2 class="sheet-title" data-i18n="explain.title">Subject's turn. Tell us why you picked that one.</h2>
     <p class="card-text" id="explain-card-text" style="margin:.75rem 0;"></p>
-    <p class="field-label">Their answer</p>
+    <p class="field-label" data-i18n="explain.answer_label">Their answer</p>
     <p class="reveal-truth" id="explain-answer"></p>
     <p class="action-status" id="explain-listen" hidden></p>
-    <button class="btn btn-primary" id="explain-done-btn" data-action="finish-explain" hidden>Done. Next card. &rarr;</button>
-    <button class="btn btn-ghost btn-leave" data-action="leave-room">Leave Game</button>
+    <button class="btn btn-primary" id="explain-done-btn" data-action="finish-explain" data-i18n="explain.done_button" hidden>Done. Next card. &rarr;</button>
+    <button class="btn btn-ghost btn-leave" data-action="leave-room" data-i18n="common.leave_game">Leave Game</button>
   </div>
 </section>
 
@@ -314,9 +314,9 @@
     <p class="game-over-lead" id="game-over-lead"></p>
     <ul class="final-scores" id="final-scores"></ul>
     <div class="game-over-actions">
-      <button class="btn btn-primary" id="rematch-btn" data-action="host-rematch" hidden>Rematch (Same Teams) &rarr;</button>
-      <button class="btn btn-ghost" data-action="leave-room">Back to Start</button>
-      <p class="game-over-host-note" id="game-over-host-note" hidden>Only the host can start a rematch.</p>
+      <button class="btn btn-primary" id="rematch-btn" data-action="host-rematch" data-i18n="game_over.rematch_button" hidden>Rematch (Same Teams) &rarr;</button>
+      <button class="btn btn-ghost" data-action="leave-room" data-i18n="game_over.back_button">Back to Start</button>
+      <p class="game-over-host-note" id="game-over-host-note" data-i18n="game_over.host_note" hidden>Only the host can start a rematch.</p>
     </div>
   </div>
 </section>

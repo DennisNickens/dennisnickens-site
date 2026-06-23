@@ -49,30 +49,43 @@
     <p class="brand-sub">Pair up. Race the finish line. Find out who actually pays attention.</p>
 
     <div class="router-actions">
-      <button class="btn btn-primary" data-action="goto-host">Start a Game</button>
-      <button class="btn btn-ghost" data-action="goto-join">Join a Game</button>
+      <button class="btn btn-primary" data-action="goto-host" data-i18n="splash.host">Start a Game</button>
+      <button class="btn btn-ghost" data-action="goto-join" data-i18n="splash.join">Join a Game</button>
     </div>
 
     <p class="brand-byline">by Dennis Nickens, AKA Spiritual Romeo</p>
   </div>
 </section>
 
+<!-- ================= SCREEN: LANGUAGE PICKER ================= -->
+<section id="screen-language" class="screen" aria-label="Choose your language / Elige tu idioma" hidden>
+  <div class="lang-inner">
+    <h1 class="lang-title">Choose Your Language</h1>
+    <p class="lang-sub">Elige Tu Idioma</p>
+    <div class="lang-grid">
+      <button class="btn btn-primary lang-btn" data-action="lang-en">English</button>
+      <button class="btn btn-primary lang-btn" data-action="lang-es">Español</button>
+    </div>
+    <p class="lang-note">You can change this later from the menu / Puedes cambiarlo después desde el menú</p>
+  </div>
+</section>
+
 <!-- ================= SCREEN: HOST SETUP ================= -->
 <section id="screen-host-setup" class="screen" aria-label="Start a game" hidden>
   <div class="sheet">
-    <h2 class="sheet-title">Start a Game</h2>
+    <h2 class="sheet-title" data-i18n="host_setup.title">Start a Game</h2>
     <p class="sheet-lead">Your name shows up at the table. Use what your friends call you.</p>
-    <label class="field-label" for="host-name">Your name</label>
+    <label class="field-label" for="host-name" data-i18n="host_setup.name_label">Your name</label>
     <input type="text" id="host-name" class="text-input" placeholder="e.g. Dennis" autocomplete="given-name" maxlength="32" />
     <p class="error-text" id="host-name-err" hidden></p>
-    <label class="field-label">I am</label>
+    <label class="field-label" data-i18n="host_setup.gender_label">I am</label>
     <div class="gender-select" id="host-gender" style="display:flex;gap:.5rem;margin-bottom:.5rem;">
-      <button type="button" class="btn btn-ghost gender-tile" style="flex:1;" data-action="set-gender" data-gender="male">Male</button>
-      <button type="button" class="btn btn-ghost gender-tile" style="flex:1;" data-action="set-gender" data-gender="female">Female</button>
+      <button type="button" class="btn btn-ghost gender-tile" style="flex:1;" data-action="set-gender" data-gender="male" data-i18n="host_setup.gender_male">Male</button>
+      <button type="button" class="btn btn-ghost gender-tile" style="flex:1;" data-action="set-gender" data-gender="female" data-i18n="host_setup.gender_female">Female</button>
     </div>
     <div class="sheet-actions">
       <button class="btn btn-ghost" data-action="back-router">Back</button>
-      <button class="btn btn-primary" id="host-create-btn" data-action="host-create" disabled>Create Room</button>
+      <button class="btn btn-primary" id="host-create-btn" data-action="host-create" data-i18n="host_setup.submit" disabled>Create Room</button>
     </div>
   </div>
 </section>
@@ -80,26 +93,26 @@
 <!-- ================= SCREEN: JOIN SETUP ================= -->
 <section id="screen-join-setup" class="screen" aria-label="Join a game" hidden>
   <div class="sheet">
-    <h2 class="sheet-title">Join a Game</h2>
+    <h2 class="sheet-title" data-i18n="join_setup.title">Join a Game</h2>
     <p class="sheet-lead">Enter the 4-letter code your host gave you (or scan their QR code with your camera).</p>
 
-    <label class="field-label" for="join-code">Room code</label>
+    <label class="field-label" for="join-code" data-i18n="join_setup.code_label">Room code</label>
     <input type="text" id="join-code" class="text-input code-input" placeholder="ABCD" autocomplete="off" autocapitalize="characters" maxlength="4" />
 
-    <label class="field-label" for="join-name">Your name</label>
+    <label class="field-label" for="join-name" data-i18n="join_setup.name_label">Your name</label>
     <input type="text" id="join-name" class="text-input" placeholder="e.g. Brandi" autocomplete="given-name" maxlength="32" />
 
-    <label class="field-label">I am</label>
+    <label class="field-label" data-i18n="join_setup.gender_label">I am</label>
     <div class="gender-select" id="join-gender" style="display:flex;gap:.5rem;margin-bottom:.5rem;">
-      <button type="button" class="btn btn-ghost gender-tile" style="flex:1;" data-action="set-gender" data-gender="male">Male</button>
-      <button type="button" class="btn btn-ghost gender-tile" style="flex:1;" data-action="set-gender" data-gender="female">Female</button>
+      <button type="button" class="btn btn-ghost gender-tile" style="flex:1;" data-action="set-gender" data-gender="male" data-i18n="join_setup.gender_male">Male</button>
+      <button type="button" class="btn btn-ghost gender-tile" style="flex:1;" data-action="set-gender" data-gender="female" data-i18n="join_setup.gender_female">Female</button>
     </div>
 
     <p class="error-text" id="join-err" hidden></p>
 
     <div class="sheet-actions">
       <button class="btn btn-ghost" data-action="back-router">Back</button>
-      <button class="btn btn-primary" id="join-go-btn" data-action="join-go" disabled>Join Room</button>
+      <button class="btn btn-primary" id="join-go-btn" data-action="join-go" data-i18n="join_setup.submit" disabled>Join Room</button>
     </div>
   </div>
 </section>
@@ -173,18 +186,18 @@
         <p class="pairing-eyebrow depth-eyebrow">Card Depth</p>
         <ul class="depth-picker" id="depth-picker">
           <li class="depth-tile depth-locked" data-depth="light">
-            <span class="depth-tile-name">Light</span>
-            <span class="depth-tile-sub">Party prompts</span>
+            <span class="depth-tile-name" data-i18n="depth_picker.light_name">Light</span>
+            <span class="depth-tile-sub" data-i18n="depth_picker.light_subtitle">Party prompts</span>
             <span class="depth-tile-badge">Coming soon</span>
           </li>
           <li class="depth-tile depth-selectable is-selected" data-depth="real" data-action="host-set-depth">
-            <span class="depth-tile-name">Real</span>
-            <span class="depth-tile-sub">How well do you know me?</span>
+            <span class="depth-tile-name" data-i18n="depth_picker.real_name">Real</span>
+            <span class="depth-tile-sub" data-i18n="depth_picker.real_subtitle">How well do you know me?</span>
             <span class="depth-tile-badge depth-tile-badge-active">Ready</span>
           </li>
           <li class="depth-tile depth-selectable" data-depth="deep" data-action="host-set-depth">
-            <span class="depth-tile-name">Deep</span>
-            <span class="depth-tile-sub">Know me know me</span>
+            <span class="depth-tile-name" data-i18n="depth_picker.deep_name">Deep</span>
+            <span class="depth-tile-sub" data-i18n="depth_picker.deep_subtitle">Know me know me</span>
             <span class="depth-tile-badge depth-tile-badge-active">Ready</span>
           </li>
         </ul>
@@ -283,7 +296,7 @@
 <section id="screen-explain" class="screen" aria-label="Explain step" hidden>
   <div class="sheet">
     <p class="action-eyebrow">Choice + Explain</p>
-    <h2 class="sheet-title">Subject's turn. Tell us why you picked that one.</h2>
+    <h2 class="sheet-title" data-i18n="explain.title">Subject's turn. Tell us why you picked that one.</h2>
     <p class="card-text" id="explain-card-text" style="margin:.75rem 0;"></p>
     <p class="field-label">Their answer</p>
     <p class="reveal-truth" id="explain-answer"></p>
@@ -296,7 +309,7 @@
 <!-- ================= SCREEN: GAME OVER ================= -->
 <section id="screen-game-over" class="screen" aria-label="Game over" hidden>
   <div class="game-over-inner">
-    <p class="game-over-eyebrow">Game Over</p>
+    <p class="game-over-eyebrow" data-i18n="game_over.title">Game Over</p>
     <h2 class="game-over-title" id="game-over-title">We Have A Winner</h2>
     <p class="game-over-lead" id="game-over-lead"></p>
     <ul class="final-scores" id="final-scores"></ul>

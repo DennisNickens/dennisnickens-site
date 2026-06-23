@@ -1849,23 +1849,23 @@
       "id": 62,
       "theme": "Friendship",
       "type": "mc4",
-      "text": "[Subject] is most likely to show love by:",
+      "text": "The way [Subject] shows up for people they love is mostly:",
       "options": [
         {
           "letter": "A",
-          "text": "Words (texts, voice notes, I love you)"
+          "text": "Telling them, encouragement, affirmation, \"I love you\" texts"
         },
         {
           "letter": "B",
-          "text": "Acts of service (showing up, doing things)"
+          "text": "Doing, showing up, taking tasks off their plate"
         },
         {
           "letter": "C",
-          "text": "Quality time (presence)"
+          "text": "Sitting in undistracted time together"
         },
         {
           "letter": "D",
-          "text": "Gifts (bringing thoughtful things)"
+          "text": "Bringing something meaningful when it counts"
         }
       ],
       "scoring": {
@@ -4435,7 +4435,7 @@
       "id": 148,
       "theme": "Friendship",
       "type": "mc4",
-      "text": "[Subject]'s love language for friends is closest to:",
+      "text": "The way [Subject] cares for close friends is closest to:",
       "options": [
         {
           "letter": "A",

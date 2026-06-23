@@ -1,0 +1,5006 @@
+{
+  "deck_name": "You Call Yourself A Friend",
+  "subtitle": "Una Pregunta. Una Verdad. Una Carrera.",
+  "author": "Dennis Nickens, AKA Spiritual Romeo",
+  "scoring_cap": 25,
+  "min_players": 4,
+  "max_players": 10,
+  "type_counts": {
+    "mc4": 160
+  },
+  "valid_depths": [
+    "light",
+    "real",
+    "deep"
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "¿Cuál es la forma favorita de [Subject] de pasar un sábado libre?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Viendo televisión"
+        },
+        {
+          "letter": "B",
+          "text": "Pasando tiempo con amigos y familia"
+        },
+        {
+          "letter": "C",
+          "text": "Trabajando en un proyecto personal"
+        },
+        {
+          "letter": "D",
+          "text": "Viajando a algún lugar nuevo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "CARTA BONUS. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta (puntos x2). Si no, 0.",
+      "bonus": true
+    },
+    {
+      "id": 2,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "¿Cuál es la estación favorita de [Subject]?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Primavera"
+        },
+        {
+          "letter": "B",
+          "text": "Verano"
+        },
+        {
+          "letter": "C",
+          "text": "Otoño"
+        },
+        {
+          "letter": "D",
+          "text": "Invierno"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 3,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "En un domingo libre por la mañana, lo más probable es que [Subject]:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Duerma hasta tarde lo más posible"
+        },
+        {
+          "letter": "B",
+          "text": "Vaya a la iglesia o a su versión de ella"
+        },
+        {
+          "letter": "C",
+          "text": "Haga ejercicio o mueva el cuerpo"
+        },
+        {
+          "letter": "D",
+          "text": "Prepare comida y entre al día con calma"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 4,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "Con una hora libre ahora mismo, [Subject]:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Leería o escucharía algo"
+        },
+        {
+          "letter": "B",
+          "text": "Tomaría una siesta"
+        },
+        {
+          "letter": "C",
+          "text": "Estaría revisando el celular"
+        },
+        {
+          "letter": "D",
+          "text": "Llamaría o le escribiría a alguien"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 5,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "La duración ideal de vacaciones para [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un fin de semana largo"
+        },
+        {
+          "letter": "B",
+          "text": "Una semana completa"
+        },
+        {
+          "letter": "C",
+          "text": "Dos semanas"
+        },
+        {
+          "letter": "D",
+          "text": "Un mes o más"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 6,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "El estilo de vacaciones de [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Playa y resort"
+        },
+        {
+          "letter": "B",
+          "text": "Ciudad y cultura"
+        },
+        {
+          "letter": "C",
+          "text": "Montañas y naturaleza"
+        },
+        {
+          "letter": "D",
+          "text": "Crucero"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 7,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "Cuando llegan las fiestas, [Subject]:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Las ama y se entrega por completo"
+        },
+        {
+          "letter": "B",
+          "text": "Las tolera y participa"
+        },
+        {
+          "letter": "C",
+          "text": "Las teme y las evita"
+        },
+        {
+          "letter": "D",
+          "text": "Depende de con quién esté"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 8,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "La noche de juegos ideal para [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Juegos de cartas"
+        },
+        {
+          "letter": "B",
+          "text": "Juegos de mesa"
+        },
+        {
+          "letter": "C",
+          "text": "Videojuegos"
+        },
+        {
+          "letter": "D",
+          "text": "Charadas o juegos de fiesta"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 9,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "En una noche entre semana, [Subject] suele:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ver una serie"
+        },
+        {
+          "letter": "B",
+          "text": "Trabajar en un proyecto o pasatiempo"
+        },
+        {
+          "letter": "C",
+          "text": "Pasar tiempo con la familia"
+        },
+        {
+          "letter": "D",
+          "text": "Hacer ejercicio o moverse"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 10,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "La relación de [Subject] con los deportes es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Los practica activamente"
+        },
+        {
+          "letter": "B",
+          "text": "Los ve pero no los practica"
+        },
+        {
+          "letter": "C",
+          "text": "Los practica y los ve"
+        },
+        {
+          "letter": "D",
+          "text": "No le entusiasman los deportes"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 11,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "En noche de película, [Subject] escoge:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Acción o suspenso"
+        },
+        {
+          "letter": "B",
+          "text": "Comedia"
+        },
+        {
+          "letter": "C",
+          "text": "Drama"
+        },
+        {
+          "letter": "D",
+          "text": "Documental"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 12,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "Lo que [Subject] siempre ve en TV es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Reality shows"
+        },
+        {
+          "letter": "B",
+          "text": "Series de drama"
+        },
+        {
+          "letter": "C",
+          "text": "Series de comedia"
+        },
+        {
+          "letter": "D",
+          "text": "Deportes o documentales"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 13,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "¿Qué tipo de comida elegiría [Subject] con más frecuencia?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Italiana"
+        },
+        {
+          "letter": "B",
+          "text": "Mexicana"
+        },
+        {
+          "letter": "C",
+          "text": "Soul Food (comida sureña)"
+        },
+        {
+          "letter": "D",
+          "text": "Mariscos"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "CARTA BONUS. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta (puntos x2). Si no, 0.",
+      "bonus": true
+    },
+    {
+      "id": 14,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "El género musical de cabecera de [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "R&B / Soul"
+        },
+        {
+          "letter": "B",
+          "text": "Hip Hop"
+        },
+        {
+          "letter": "C",
+          "text": "Gospel"
+        },
+        {
+          "letter": "D",
+          "text": "Pop / Rock"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 15,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "El clima favorito de [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Soleado y cálido"
+        },
+        {
+          "letter": "B",
+          "text": "Fresco y limpio"
+        },
+        {
+          "letter": "C",
+          "text": "Lluvioso, para quedarse adentro"
+        },
+        {
+          "letter": "D",
+          "text": "Día de nieve tranquilo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 16,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "¿Cuál es la bebida favorita de [Subject]?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Agua"
+        },
+        {
+          "letter": "B",
+          "text": "Café o té"
+        },
+        {
+          "letter": "C",
+          "text": "Refresco o jugo"
+        },
+        {
+          "letter": "D",
+          "text": "Algo con alcohol"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 17,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "La preferencia de postre de [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cualquier cosa con chocolate"
+        },
+        {
+          "letter": "B",
+          "text": "Algo a base de fruta"
+        },
+        {
+          "letter": "C",
+          "text": "Helado"
+        },
+        {
+          "letter": "D",
+          "text": "No le entusiasman los postres"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 18,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "La tolerancia al picante de [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Solo suave"
+        },
+        {
+          "letter": "B",
+          "text": "Medio"
+        },
+        {
+          "letter": "C",
+          "text": "Picante, que venga"
+        },
+        {
+          "letter": "D",
+          "text": "Extremo, mientras más picante mejor"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 19,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject] prefiere comida que sea:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "De restaurante"
+        },
+        {
+          "letter": "B",
+          "text": "Hecha en casa"
+        },
+        {
+          "letter": "C",
+          "text": "Una mezcla de ambas"
+        },
+        {
+          "letter": "D",
+          "text": "Depende del ánimo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 20,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "El momento favorito del día para [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La mañana"
+        },
+        {
+          "letter": "B",
+          "text": "El mediodía"
+        },
+        {
+          "letter": "C",
+          "text": "La tarde-noche"
+        },
+        {
+          "letter": "D",
+          "text": "La madrugada"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 21,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject] preferiría vivir en:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una ciudad grande"
+        },
+        {
+          "letter": "B",
+          "text": "El campo o zona rural"
+        },
+        {
+          "letter": "C",
+          "text": "Los suburbios"
+        },
+        {
+          "letter": "D",
+          "text": "Depende de la etapa de vida"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 22,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "La preferencia de [Subject] en cuanto a mascotas es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Perros sin duda"
+        },
+        {
+          "letter": "B",
+          "text": "Gatos"
+        },
+        {
+          "letter": "C",
+          "text": "Ambos funcionan"
+        },
+        {
+          "letter": "D",
+          "text": "Sin mascotas, por favor"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 23,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "La elección de colores de [Subject] al comprar ropa:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tonos cálidos (rojo, naranja, café)"
+        },
+        {
+          "letter": "B",
+          "text": "Tonos fríos (azul, verde, morado)"
+        },
+        {
+          "letter": "C",
+          "text": "Negro, blanco o neutros"
+        },
+        {
+          "letter": "D",
+          "text": "Atrevidos y brillantes"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 24,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "El estilo de [Subject] es principalmente:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Casual y cómodo"
+        },
+        {
+          "letter": "B",
+          "text": "Elegante y bien combinado"
+        },
+        {
+          "letter": "C",
+          "text": "Atlético y activo"
+        },
+        {
+          "letter": "D",
+          "text": "Siempre cambia"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 25,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "¿Cuál es la mayor fortaleza de [Subject]?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Creatividad"
+        },
+        {
+          "letter": "B",
+          "text": "Liderazgo"
+        },
+        {
+          "letter": "C",
+          "text": "Sentido del humor"
+        },
+        {
+          "letter": "D",
+          "text": "Paciencia"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "CARTA BONUS. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta (puntos x2). Si no, 0.",
+      "bonus": true
+    },
+    {
+      "id": 26,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "La personalidad de [Subject] es principalmente:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Extrovertida y sociable"
+        },
+        {
+          "letter": "B",
+          "text": "Reflexiva y tranquila"
+        },
+        {
+          "letter": "C",
+          "text": "Divertida y relajada"
+        },
+        {
+          "letter": "D",
+          "text": "Decidida y enfocada"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 27,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "Lo que la gente más le elogia a [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Su estilo"
+        },
+        {
+          "letter": "B",
+          "text": "Su ética de trabajo"
+        },
+        {
+          "letter": "C",
+          "text": "Su bondad"
+        },
+        {
+          "letter": "D",
+          "text": "Su sabiduría"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 28,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "[Subject] es más conocido/a por ser:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Confiable"
+        },
+        {
+          "letter": "B",
+          "text": "Divertido/a"
+        },
+        {
+          "letter": "C",
+          "text": "Inteligente"
+        },
+        {
+          "letter": "D",
+          "text": "Atento/a y cariñoso/a"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 29,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "[Subject] toma las decisiones grandes:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Siguiendo su instinto"
+        },
+        {
+          "letter": "B",
+          "text": "Mirando los datos"
+        },
+        {
+          "letter": "C",
+          "text": "Preguntándole a gente de confianza"
+        },
+        {
+          "letter": "D",
+          "text": "Pensándolo demasiado"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 30,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "Cuando llega el estrés, [Subject]:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Se mantiene calmado/a y firme"
+        },
+        {
+          "letter": "B",
+          "text": "Toma el control de la situación"
+        },
+        {
+          "letter": "C",
+          "text": "Se desconecta por un rato"
+        },
+        {
+          "letter": "D",
+          "text": "Lo habla con alguien"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 31,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "En un grupo, [Subject] tiende a ser:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El líder"
+        },
+        {
+          "letter": "B",
+          "text": "El que conecta a la gente"
+        },
+        {
+          "letter": "C",
+          "text": "El observador"
+        },
+        {
+          "letter": "D",
+          "text": "El que hace bromas"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 32,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "El rasgo que los amigos más cercanos de [Subject] dirían que los define es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Su bondad"
+        },
+        {
+          "letter": "B",
+          "text": "Su sabiduría"
+        },
+        {
+          "letter": "C",
+          "text": "Su humor"
+        },
+        {
+          "letter": "D",
+          "text": "Su energía"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 33,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "El verdadero superpoder de [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Leer a la gente rápidamente"
+        },
+        {
+          "letter": "B",
+          "text": "Mantener la calma bajo presión"
+        },
+        {
+          "letter": "C",
+          "text": "Hacer que los demás se sientan vistos"
+        },
+        {
+          "letter": "D",
+          "text": "Sacar las cosas adelante"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 34,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "El estilo de [Subject] frente al conflicto es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Enfrentarlo de frente"
+        },
+        {
+          "letter": "B",
+          "text": "Evitarlo si es posible"
+        },
+        {
+          "letter": "C",
+          "text": "Mediar entre los demás"
+        },
+        {
+          "letter": "D",
+          "text": "Esperar a ver qué pasa"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 35,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "La energía de [Subject] viene principalmente de:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tiempo con gente"
+        },
+        {
+          "letter": "B",
+          "text": "Soledad y descanso"
+        },
+        {
+          "letter": "C",
+          "text": "Movimiento y ejercicio"
+        },
+        {
+          "letter": "D",
+          "text": "Crear algo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 36,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "Cuando le piden hablar en público, [Subject]:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Lo ama, se entusiasma"
+        },
+        {
+          "letter": "B",
+          "text": "Lo puede hacer pero no lo busca"
+        },
+        {
+          "letter": "C",
+          "text": "Lo odia pero lo hace"
+        },
+        {
+          "letter": "D",
+          "text": "Lo evita a toda costa"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 37,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera dominar una habilidad al instante, ¿cuál sería?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tocar un instrumento"
+        },
+        {
+          "letter": "B",
+          "text": "Hablar en público"
+        },
+        {
+          "letter": "C",
+          "text": "Aprender idiomas"
+        },
+        {
+          "letter": "D",
+          "text": "Invertir y manejar finanzas"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "CARTA BONUS. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta (puntos x2). Si no, 0.",
+      "bonus": true
+    },
+    {
+      "id": 38,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si [Subject] ganara un millón de dólares mañana, ¿qué haría primero?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Comprar una casa"
+        },
+        {
+          "letter": "B",
+          "text": "Viajar por el mundo"
+        },
+        {
+          "letter": "C",
+          "text": "Invertirlo"
+        },
+        {
+          "letter": "D",
+          "text": "Ayudar a la familia y a los amigos"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 39,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "El destino soñado de viaje para [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un lugar tropical y cálido"
+        },
+        {
+          "letter": "B",
+          "text": "Europa (Italia, Grecia, etc.)"
+        },
+        {
+          "letter": "C",
+          "text": "África (tierra de origen, safari, etc.)"
+        },
+        {
+          "letter": "D",
+          "text": "Un viaje por carretera por los EE.UU."
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 40,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera intercambiar trabajo con cualquiera por un año, escogería:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un atleta famoso"
+        },
+        {
+          "letter": "B",
+          "text": "Un artista o entretenedor"
+        },
+        {
+          "letter": "C",
+          "text": "Un magnate de los negocios"
+        },
+        {
+          "letter": "D",
+          "text": "Un maestro, sanador o pastor"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 41,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si el dinero no fuera un problema, [Subject] viviría en:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una ciudad grande"
+        },
+        {
+          "letter": "B",
+          "text": "Un pueblo de playa"
+        },
+        {
+          "letter": "C",
+          "text": "Las montañas o algún lugar tranquilo"
+        },
+        {
+          "letter": "D",
+          "text": "Algún lugar internacional"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 42,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "El estilo de casa soñado de [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Moderno y elegante"
+        },
+        {
+          "letter": "B",
+          "text": "Clásico y tradicional"
+        },
+        {
+          "letter": "C",
+          "text": "Tipo granja o rústico"
+        },
+        {
+          "letter": "D",
+          "text": "Minimalista y sencillo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 43,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera viajar en el tiempo, iría:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Al pasado, para ver cómo eran las cosas"
+        },
+        {
+          "letter": "B",
+          "text": "Al futuro, para ver cómo resultan las cosas"
+        },
+        {
+          "letter": "C",
+          "text": "A otro país en la actualidad"
+        },
+        {
+          "letter": "D",
+          "text": "Se quedaría justo donde está"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 44,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "El invitado soñado a cenar de [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un atleta famoso"
+        },
+        {
+          "letter": "B",
+          "text": "Un artista o entretenedor"
+        },
+        {
+          "letter": "C",
+          "text": "Un líder o figura del mundo de los negocios"
+        },
+        {
+          "letter": "D",
+          "text": "Un teólogo o maestro sabio"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 45,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "La aspiración de legado de [Subject] es ser:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Rico/a y libre"
+        },
+        {
+          "letter": "B",
+          "text": "Recordado/a por su trabajo"
+        },
+        {
+          "letter": "C",
+          "text": "Amado/a y conocido/a a fondo"
+        },
+        {
+          "letter": "D",
+          "text": "Verdaderamente libre de obligaciones"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 46,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si [Subject] tuviera que elegir una aventura inesperada, haría:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Paracaidismo o deporte extremo"
+        },
+        {
+          "letter": "B",
+          "text": "Safari o viaje a la naturaleza salvaje"
+        },
+        {
+          "letter": "C",
+          "text": "Una clase de cocina o idioma en el extranjero"
+        },
+        {
+          "letter": "D",
+          "text": "Un retiro espiritual o de silencio"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 47,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera rehacer su trayectoria profesional:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tomaría el mismo camino otra vez"
+        },
+        {
+          "letter": "B",
+          "text": "Escogería algo completamente diferente"
+        },
+        {
+          "letter": "C",
+          "text": "Empezaría su propio negocio"
+        },
+        {
+          "letter": "D",
+          "text": "Se mudaría al servicio público o al ministerio"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 48,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Dentro de cinco años, [Subject] se ve:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "En el mismo pueblo, con raíces más profundas"
+        },
+        {
+          "letter": "B",
+          "text": "En una ciudad nueva"
+        },
+        {
+          "letter": "C",
+          "text": "Viviendo en otro país"
+        },
+        {
+          "letter": "D",
+          "text": "Mayormente en el camino"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 49,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "¿Qué motiva más a [Subject]?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El dinero"
+        },
+        {
+          "letter": "B",
+          "text": "El reconocimiento"
+        },
+        {
+          "letter": "C",
+          "text": "Ayudar a los demás"
+        },
+        {
+          "letter": "D",
+          "text": "El crecimiento personal"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "CARTA BONUS. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta (puntos x2). Si no, 0.",
+      "bonus": true
+    },
+    {
+      "id": 50,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "¿En qué es más probable que [Subject] gaste dinero extra?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ropa"
+        },
+        {
+          "letter": "B",
+          "text": "Comida"
+        },
+        {
+          "letter": "C",
+          "text": "Experiencias o viajes"
+        },
+        {
+          "letter": "D",
+          "text": "Tecnología"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 51,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "La definición de éxito para [Subject] es principalmente:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Libertad financiera"
+        },
+        {
+          "letter": "B",
+          "text": "Relaciones fuertes"
+        },
+        {
+          "letter": "C",
+          "text": "Tener un impacto"
+        },
+        {
+          "letter": "D",
+          "text": "Paz interior"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 52,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "Lo que [Subject] protegería a toda costa es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Su familia"
+        },
+        {
+          "letter": "B",
+          "text": "Su fe"
+        },
+        {
+          "letter": "C",
+          "text": "Su reputación"
+        },
+        {
+          "letter": "D",
+          "text": "Su tiempo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 53,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "[Subject] siente que su tiempo se gasta mejor en:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La familia"
+        },
+        {
+          "letter": "B",
+          "text": "El trabajo y la carrera"
+        },
+        {
+          "letter": "C",
+          "text": "Pasatiempos e intereses personales"
+        },
+        {
+          "letter": "D",
+          "text": "La fe y la adoración"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 54,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "Al tomar una decisión grande, [Subject] se guía principalmente por:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Su corazón y sus sentimientos"
+        },
+        {
+          "letter": "B",
+          "text": "Su cabeza y la lógica"
+        },
+        {
+          "letter": "C",
+          "text": "Su fe y la oración"
+        },
+        {
+          "letter": "D",
+          "text": "Sus circunstancias actuales"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 55,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "El tipo de salud que [Subject] prioriza más en este momento es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Financiera"
+        },
+        {
+          "letter": "B",
+          "text": "Espiritual"
+        },
+        {
+          "letter": "C",
+          "text": "Física"
+        },
+        {
+          "letter": "D",
+          "text": "Mental y emocional"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 56,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "[Subject] intenta vivir según:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La integridad ante todo"
+        },
+        {
+          "letter": "B",
+          "text": "El impacto y la influencia"
+        },
+        {
+          "letter": "C",
+          "text": "El gozo y la presencia"
+        },
+        {
+          "letter": "D",
+          "text": "La libertad y la flexibilidad"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 57,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "Lo que [Subject] más busca en una carrera es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Buen sueldo"
+        },
+        {
+          "letter": "B",
+          "text": "Propósito real"
+        },
+        {
+          "letter": "C",
+          "text": "Flexibilidad y libertad"
+        },
+        {
+          "letter": "D",
+          "text": "Estatus y respeto"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 58,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "La fe juega en la vida de [Subject] un papel que es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Central, el fundamento de todo"
+        },
+        {
+          "letter": "B",
+          "text": "Importante pero privada"
+        },
+        {
+          "letter": "C",
+          "text": "Importante a veces, no siempre"
+        },
+        {
+          "letter": "D",
+          "text": "No es realmente su tema"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 59,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "[Subject] es más generoso/a con:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Su tiempo"
+        },
+        {
+          "letter": "B",
+          "text": "Su dinero"
+        },
+        {
+          "letter": "C",
+          "text": "Su energía y atención"
+        },
+        {
+          "letter": "D",
+          "text": "Le cuesta dar libremente"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 60,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "Para [Subject], el autocuidado se ve principalmente como:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Descanso y sueño"
+        },
+        {
+          "letter": "B",
+          "text": "Movimiento y ejercicio"
+        },
+        {
+          "letter": "C",
+          "text": "Tiempo con gente que los llena"
+        },
+        {
+          "letter": "D",
+          "text": "Soledad y silencio"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 61,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "¿Qué es una cosa que [Subject] valora más en una amistad?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Lealtad"
+        },
+        {
+          "letter": "B",
+          "text": "Honestidad"
+        },
+        {
+          "letter": "C",
+          "text": "Diversión"
+        },
+        {
+          "letter": "D",
+          "text": "Fiabilidad"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "CARTA BONUS. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta (puntos x2). Si no, 0.",
+      "bonus": true
+    },
+    {
+      "id": 62,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "La forma en que [Subject] apoya a la gente que ama es principalmente:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Diciéndoselo, palabras de aliento, afirmación, mensajes de \"te amo\""
+        },
+        {
+          "letter": "B",
+          "text": "Haciendo, apareciendo, quitándoles tareas de encima"
+        },
+        {
+          "letter": "C",
+          "text": "Sentándose en tiempo sin distracciones, juntos"
+        },
+        {
+          "letter": "D",
+          "text": "Trayéndoles algo significativo cuando importa"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 63,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "¿Cuál es la mayor meta de [Subject] en este momento?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Éxito profesional"
+        },
+        {
+          "letter": "B",
+          "text": "Construir un negocio"
+        },
+        {
+          "letter": "C",
+          "text": "Mejorar relaciones"
+        },
+        {
+          "letter": "D",
+          "text": "Desarrollo personal"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 64,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "Cuando un amigo decepciona a [Subject]:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Lo hablan de inmediato"
+        },
+        {
+          "letter": "B",
+          "text": "Se retiran en silencio para procesarlo"
+        },
+        {
+          "letter": "C",
+          "text": "Hacen una broma y siguen adelante"
+        },
+        {
+          "letter": "D",
+          "text": "Lo guardan y lo sacan después"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 65,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "Hacer amigos nuevos siendo adulto le resulta a [Subject]:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Fácil, conectan rápido"
+        },
+        {
+          "letter": "B",
+          "text": "Posible pero lento"
+        },
+        {
+          "letter": "C",
+          "text": "Raro, se quedan con quienes ya tienen"
+        },
+        {
+          "letter": "D",
+          "text": "Depende totalmente del contexto"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 66,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "[Subject] prefiere la amistad que sea:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Pocas pero profundas"
+        },
+        {
+          "letter": "B",
+          "text": "Muchas pero casuales"
+        },
+        {
+          "letter": "C",
+          "text": "Una mezcla de ambas"
+        },
+        {
+          "letter": "D",
+          "text": "Una incondicional por encima de todo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 67,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "Cuando a un amigo le va muy bien, [Subject] se siente:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Genuinamente feliz por ellos"
+        },
+        {
+          "letter": "B",
+          "text": "Inspirado/a a esforzarse también"
+        },
+        {
+          "letter": "C",
+          "text": "Un poco envidioso/a, si es honesto/a"
+        },
+        {
+          "letter": "D",
+          "text": "Depende del amigo y de la victoria"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 68,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "El patrón de [Subject] al momento de comunicarse es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Suelen ser los primeros en escribir"
+        },
+        {
+          "letter": "B",
+          "text": "Esperan a la otra persona"
+        },
+        {
+          "letter": "C",
+          "text": "Tienen una rutina"
+        },
+        {
+          "letter": "D",
+          "text": "Esporádicos e impredecibles"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 69,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "En un desacuerdo con un amigo, [Subject]:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Escucha con atención antes de responder"
+        },
+        {
+          "letter": "B",
+          "text": "Explica su lado completamente"
+        },
+        {
+          "letter": "C",
+          "text": "Suaviza para mantener la paz"
+        },
+        {
+          "letter": "D",
+          "text": "Se mantiene firme aunque duela"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 70,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "Cuando un amigo está en crisis, [Subject]:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Se presenta en persona"
+        },
+        {
+          "letter": "B",
+          "text": "Llama de inmediato"
+        },
+        {
+          "letter": "C",
+          "text": "Manda ayuda (comida, dinero, mandados)"
+        },
+        {
+          "letter": "D",
+          "text": "Espera a que le pidan para no entrometerse"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 71,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "La forma preferida de [Subject] de comunicarse con sus amigos es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Llamada telefónica"
+        },
+        {
+          "letter": "B",
+          "text": "Mensaje de texto"
+        },
+        {
+          "letter": "C",
+          "text": "Nota de voz"
+        },
+        {
+          "letter": "D",
+          "text": "Solo en persona"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 72,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "En un entorno grupal, [Subject] suele ser:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El alma de la fiesta"
+        },
+        {
+          "letter": "B",
+          "text": "El que conecta a la gente"
+        },
+        {
+          "letter": "C",
+          "text": "Atraído/a a conversaciones uno a uno"
+        },
+        {
+          "letter": "D",
+          "text": "Tranquilo/a a un lado, observando"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 1
+      },
+      "depth": "real",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 73,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "Lo que [Subject] hace cuando está completamente a solas y nunca haría delante de nadie:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Hablar consigo mismo/a en voz alta"
+        },
+        {
+          "letter": "B",
+          "text": "Llorar con canciones o películas específicas"
+        },
+        {
+          "letter": "C",
+          "text": "Comer algo que finge que no le gusta"
+        },
+        {
+          "letter": "D",
+          "text": "Ver programas o videos de los que se avergüenza"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "CARTA BONUS. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta (puntos x2). Si no, 0.",
+      "bonus": true
+    },
+    {
+      "id": 74,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "Cuando [Subject] ha tenido una semana difícil, su reseteo secreto es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Quedarse en cama y apagar todo"
+        },
+        {
+          "letter": "B",
+          "text": "Comer la misma comida reconfortante cada vez"
+        },
+        {
+          "letter": "C",
+          "text": "Manejar a algún lugar y sentarse en el carro"
+        },
+        {
+          "letter": "D",
+          "text": "Beber o fumar más de lo que admitiría"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 75,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "Aquello en lo que [Subject] pasa más tiempo del que quiere admitir:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Las redes sociales"
+        },
+        {
+          "letter": "B",
+          "text": "Contenido deportivo o político"
+        },
+        {
+          "letter": "C",
+          "text": "Su celular en general"
+        },
+        {
+          "letter": "D",
+          "text": "Preocuparse por el dinero"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 76,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "El hábito menos productivo que [Subject] ama en secreto:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Pasar horas en el celular"
+        },
+        {
+          "letter": "B",
+          "text": "Dormir más allá de la alarma"
+        },
+        {
+          "letter": "C",
+          "text": "Picar entre horas"
+        },
+        {
+          "letter": "D",
+          "text": "Comprar en línea o solo mirar"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 77,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "Cuando [Subject] está aburrido/a, su mente va más frecuentemente a:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El pasado, arrepentimiento o recuerdo"
+        },
+        {
+          "letter": "B",
+          "text": "El futuro, planear o preocuparse"
+        },
+        {
+          "letter": "C",
+          "text": "Las vidas de otras personas"
+        },
+        {
+          "letter": "D",
+          "text": "Una fantasía de quién podría ser"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 78,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "Lo que [Subject] hace para sentirse productivo/a cuando en realidad está procrastinando:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Limpiar u organizar"
+        },
+        {
+          "letter": "B",
+          "text": "Investigar algo no relacionado"
+        },
+        {
+          "letter": "C",
+          "text": "Leer o navegar artículos"
+        },
+        {
+          "letter": "D",
+          "text": "Hacer listas que no va a usar"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 79,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "La actividad que [Subject] encuentra relajante y que otros pensarían que es rara:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Limpiar mientras escucha música específica"
+        },
+        {
+          "letter": "B",
+          "text": "Manejar sin destino"
+        },
+        {
+          "letter": "C",
+          "text": "Volver a ver lo mismo una y otra vez"
+        },
+        {
+          "letter": "D",
+          "text": "Sentarse en silencio por un largo rato"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 80,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "El tipo de música que [Subject] solo pone cuando no hay nadie cerca:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Baladas viejas o canciones de amor"
+        },
+        {
+          "letter": "B",
+          "text": "Pop vergonzoso o éxitos culposos"
+        },
+        {
+          "letter": "C",
+          "text": "Palabra hablada, motivacional o autoayuda"
+        },
+        {
+          "letter": "D",
+          "text": "Canciones de una época específica"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "CARTA BONUS. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta (puntos x2). Si no, 0.",
+      "bonus": true
+    },
+    {
+      "id": 81,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "La debilidad alimenticia secreta de [Subject] que nadie realmente conoce:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Comida rápida de la que finge que ya superó"
+        },
+        {
+          "letter": "B",
+          "text": "Dulces o comida chatarra que esconde"
+        },
+        {
+          "letter": "C",
+          "text": "Un platillo regional que se le antoja con frecuencia"
+        },
+        {
+          "letter": "D",
+          "text": "Comer de noche cuando todos ya están dormidos"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 82,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "El programa o película que [Subject] nunca admitiría que ama:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un reality show"
+        },
+        {
+          "letter": "B",
+          "text": "Una comedia romántica"
+        },
+        {
+          "letter": "C",
+          "text": "Algo de la infancia, nostálgico"
+        },
+        {
+          "letter": "D",
+          "text": "Algo violento u oscuro"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 83,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "El historial de búsquedas más vergonzoso de [Subject] sería mayormente:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Preguntas de autodiagnóstico de salud"
+        },
+        {
+          "letter": "B",
+          "text": "Buscar a personas de su pasado"
+        },
+        {
+          "letter": "C",
+          "text": "Búsquedas sobre dinero o preocupaciones financieras"
+        },
+        {
+          "letter": "D",
+          "text": "Tutoriales sobre cosas básicas que ya debería saber"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 84,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "El estilo o look que [Subject] secretamente quisiera poder lucir:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Colores y patrones audaces"
+        },
+        {
+          "letter": "B",
+          "text": "Sastreado y pulido"
+        },
+        {
+          "letter": "C",
+          "text": "Streetwear y atrevido"
+        },
+        {
+          "letter": "D",
+          "text": "Minimalista y sin esfuerzo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 85,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "La bebida que [Subject] consume demasiado, aun sabiendo que no debería:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Bebidas dulces (refresco, jugo, café con leche)"
+        },
+        {
+          "letter": "B",
+          "text": "Cafeína en general"
+        },
+        {
+          "letter": "C",
+          "text": "Alcohol"
+        },
+        {
+          "letter": "D",
+          "text": "Agua en lugar de comer"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 86,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "Lo que [Subject] cambiaría de cómo se ve si pudiera:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Su cuerpo"
+        },
+        {
+          "letter": "B",
+          "text": "Su rostro o facciones"
+        },
+        {
+          "letter": "C",
+          "text": "Su estilo o vestuario"
+        },
+        {
+          "letter": "D",
+          "text": "Honestamente, nada"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 87,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "La mayor debilidad que [Subject] trabaja duro por esconder:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Impaciencia con la gente"
+        },
+        {
+          "letter": "B",
+          "text": "Inseguridad sobre el dinero o el éxito"
+        },
+        {
+          "letter": "C",
+          "text": "Necesidad de aprobación"
+        },
+        {
+          "letter": "D",
+          "text": "Evitar las conversaciones difíciles"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "CARTA BONUS. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta (puntos x2). Si no, 0.",
+      "bonus": true
+    },
+    {
+      "id": 88,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "Aquello en lo que [Subject] es malo/a pero finge ser bueno/a:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Escuchar sin interrumpir"
+        },
+        {
+          "letter": "B",
+          "text": "Manejar su tiempo"
+        },
+        {
+          "letter": "C",
+          "text": "Manejar las críticas"
+        },
+        {
+          "letter": "D",
+          "text": "Decir que no"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 89,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "Cuando [Subject] falla en algo, su primera reacción privada es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Enojo con sí mismo/a"
+        },
+        {
+          "letter": "B",
+          "text": "Procesar el dolor en silencio y retraerse"
+        },
+        {
+          "letter": "C",
+          "text": "Fingir que no importaba"
+        },
+        {
+          "letter": "D",
+          "text": "Ya estar planeando cómo regresar"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 90,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "El cumplido que [Subject] tiene dificultad para creer sobre sí mismo/a:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que es inteligente"
+        },
+        {
+          "letter": "B",
+          "text": "Que es amable"
+        },
+        {
+          "letter": "C",
+          "text": "Que es atractivo/a"
+        },
+        {
+          "letter": "D",
+          "text": "Que es suficiente tal como es"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 91,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "El momento más inseguro de [Subject] suele girar en torno a:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El éxito de los demás"
+        },
+        {
+          "letter": "B",
+          "text": "Cómo lo están percibiendo"
+        },
+        {
+          "letter": "C",
+          "text": "Si está haciendo lo suficiente"
+        },
+        {
+          "letter": "D",
+          "text": "Si se está quedando atrás"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 92,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "Aquello sobre lo que [Subject] se pone más a la defensiva cuando le señalan algo:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cómo trata a la gente"
+        },
+        {
+          "letter": "B",
+          "text": "Su ética de trabajo"
+        },
+        {
+          "letter": "C",
+          "text": "Su crianza o decisiones familiares"
+        },
+        {
+          "letter": "D",
+          "text": "Su fe o sus creencias"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 93,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "La crítica que [Subject] tendría más dificultad de escuchar de alguien cercano:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "\"No eres tan amable como crees\""
+        },
+        {
+          "letter": "B",
+          "text": "\"No eres tan inteligente como crees\""
+        },
+        {
+          "letter": "C",
+          "text": "\"No eres tan honesto/a como crees\""
+        },
+        {
+          "letter": "D",
+          "text": "\"No eres tan amoroso/a como crees\""
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 94,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "El sueño que [Subject] solía mencionar pero dejó de hablar:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tener un tipo específico de negocio"
+        },
+        {
+          "letter": "B",
+          "text": "Vivir en otro país"
+        },
+        {
+          "letter": "C",
+          "text": "Perseguir un don creativo"
+        },
+        {
+          "letter": "D",
+          "text": "Volverse famoso/a por algo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "CARTA BONUS. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta (puntos x2). Si no, 0.",
+      "bonus": true
+    },
+    {
+      "id": 95,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "La versión de vida que [Subject] imagina cuando fantasea:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Rico/a y libre del trabajo"
+        },
+        {
+          "letter": "B",
+          "text": "Tranquila, sencilla, en la naturaleza"
+        },
+        {
+          "letter": "C",
+          "text": "Famoso/a y reconocido/a"
+        },
+        {
+          "letter": "D",
+          "text": "Rodeado/a de la familia cercana todos los días"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 96,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "La ambición secreta de [Subject] que realmente no le ha contado a nadie:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Escribir o crear algo duradero"
+        },
+        {
+          "letter": "B",
+          "text": "Hacer mucho dinero"
+        },
+        {
+          "letter": "C",
+          "text": "Ayudar a miles de personas"
+        },
+        {
+          "letter": "D",
+          "text": "Ser recordado/a por su nombre"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 97,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera borrar una parte de su pasado, sería:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una relación que lo/a lastimó"
+        },
+        {
+          "letter": "B",
+          "text": "Una mala decisión financiera"
+        },
+        {
+          "letter": "C",
+          "text": "Una versión de sí mismo/a que ya superó"
+        },
+        {
+          "letter": "D",
+          "text": "Un año específico que quisiera rehacer"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 98,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Lo que [Subject] aún no ha hecho y que cambiaría todo:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Mudarse a otro lugar"
+        },
+        {
+          "letter": "B",
+          "text": "Empezar el negocio o el proyecto"
+        },
+        {
+          "letter": "C",
+          "text": "Dejar una relación que lo/a agota"
+        },
+        {
+          "letter": "D",
+          "text": "Perdonar a alguien específico"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 99,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "El miedo que en silencio frena a [Subject] más que cualquier otro:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Fallar públicamente"
+        },
+        {
+          "letter": "B",
+          "text": "Decepcionar a las personas que ama"
+        },
+        {
+          "letter": "C",
+          "text": "No ser tan especial como esperaba"
+        },
+        {
+          "letter": "D",
+          "text": "Que se acabe el tiempo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 100,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "La edad o etapa que [Subject] más teme alcanzar:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La edad en que la vida de su padre o madre cambió"
+        },
+        {
+          "letter": "B",
+          "text": "La edad en que su padre o madre falleció"
+        },
+        {
+          "letter": "C",
+          "text": "El punto en que ya sea demasiado tarde para sus sueños"
+        },
+        {
+          "letter": "D",
+          "text": "No le preocupa una edad, le preocupa un sentimiento"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 101,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "Aquello que [Subject] valora pero realmente no predica:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La soledad"
+        },
+        {
+          "letter": "B",
+          "text": "La honestidad aunque duela"
+        },
+        {
+          "letter": "C",
+          "text": "Los límites"
+        },
+        {
+          "letter": "D",
+          "text": "Su propia paz por encima de mantener la paz"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "CARTA BONUS. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta (puntos x2). Si no, 0.",
+      "bonus": true
+    },
+    {
+      "id": 102,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "La relación de [Subject] con el dinero en privado es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Más apretada de lo que muestra en público"
+        },
+        {
+          "letter": "B",
+          "text": "Más floja de lo que debería"
+        },
+        {
+          "letter": "C",
+          "text": "Ansiosa sin importar cuánto tenga"
+        },
+        {
+          "letter": "D",
+          "text": "Cómoda, realmente sin estrés"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 103,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "El valor en el que [Subject] nunca transige, aunque no siempre lo nombra:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Lealtad a la familia"
+        },
+        {
+          "letter": "B",
+          "text": "Honrar su palabra"
+        },
+        {
+          "letter": "C",
+          "text": "Tiempo con la gente que importa"
+        },
+        {
+          "letter": "D",
+          "text": "Honestidad consigo mismo/a"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 104,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "Aquello por lo que [Subject] juzga a otras personas más de lo que debería:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cómo gastan el dinero"
+        },
+        {
+          "letter": "B",
+          "text": "Cómo crían a sus hijos"
+        },
+        {
+          "letter": "C",
+          "text": "Cómo manejan el conflicto"
+        },
+        {
+          "letter": "D",
+          "text": "Cómo expresan su fe"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 105,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "Dónde vive la mayor hipocresía de [Subject]:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Predica la honestidad pero se guarda la verdad dura"
+        },
+        {
+          "letter": "B",
+          "text": "Predica la generosidad pero lleva cuenta de quién le debe qué"
+        },
+        {
+          "letter": "C",
+          "text": "Predica el perdón pero guarda rencores en silencio"
+        },
+        {
+          "letter": "D",
+          "text": "Predica la salud pero no se cuida"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 106,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "El tipo de persona que [Subject] juzga con más dureza porque teme convertirse en él:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El acomodado/a, complaciente"
+        },
+        {
+          "letter": "B",
+          "text": "El amargado/a, que no perdona"
+        },
+        {
+          "letter": "C",
+          "text": "El superficial, impulsado/a por el estatus"
+        },
+        {
+          "letter": "D",
+          "text": "El enojado/a, controlador/a"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 107,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "Aquello que [Subject] quiere de un amigo y que casi nunca pide:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que le pregunten cómo está sin que tenga que avisar"
+        },
+        {
+          "letter": "B",
+          "text": "Retroalimentación honesta sin tener que pedirla"
+        },
+        {
+          "letter": "C",
+          "text": "Que lo/a abracen o lo/a toquen"
+        },
+        {
+          "letter": "D",
+          "text": "Que le digan en voz alta que lo/a aman"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "CARTA BONUS. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta (puntos x2). Si no, 0.",
+      "bonus": true
+    },
+    {
+      "id": 108,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "El amigo a quien [Subject] más teme perder y nunca lo ha dicho:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El que lo/a conoce desde hace más tiempo"
+        },
+        {
+          "letter": "B",
+          "text": "El que está pasando por algo pesado"
+        },
+        {
+          "letter": "C",
+          "text": "El que trata peor"
+        },
+        {
+          "letter": "D",
+          "text": "El que ya está más cerca de dejarlo/a"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 109,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "Aquello que [Subject] ha hecho en una amistad y todavía lo/a avergüenza en silencio:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Quedarse callado/a sin explicar"
+        },
+        {
+          "letter": "B",
+          "text": "Hablar de un amigo a sus espaldas"
+        },
+        {
+          "letter": "C",
+          "text": "No aparecer cuando importaba"
+        },
+        {
+          "letter": "D",
+          "text": "Amar al amigo menos de lo que el amigo lo/a amaba"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 110,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "El amigo con el que [Subject] se compara más en privado:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El amigo que tiene más dinero"
+        },
+        {
+          "letter": "B",
+          "text": "El amigo con la mejor relación"
+        },
+        {
+          "letter": "C",
+          "text": "El amigo cuyos hijos están saliendo bien"
+        },
+        {
+          "letter": "D",
+          "text": "El amigo con el éxito público"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 111,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "La verdad sobre la amistad que [Subject] nunca ha dicho en voz alta:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Se ha distanciado de alguien que amaba"
+        },
+        {
+          "letter": "B",
+          "text": "Extraña a alguien con quien se peleó"
+        },
+        {
+          "letter": "C",
+          "text": "Está más invertido/a que la otra persona"
+        },
+        {
+          "letter": "D",
+          "text": "Lleva años fingiendo que le importa"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 112,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera recibir una disculpa de un amigo que perdió, sería por:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Elegir a otra persona por encima de él/ella"
+        },
+        {
+          "letter": "B",
+          "text": "No aparecer cuando contaba"
+        },
+        {
+          "letter": "C",
+          "text": "Decirle algo hiriente que nunca retiró"
+        },
+        {
+          "letter": "D",
+          "text": "Irse sin explicar"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 2,
+        "subjectPoints": 0
+      },
+      "depth": "deep",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 2 puntos si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 113,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "La estación favorita de [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Primavera"
+        },
+        {
+          "letter": "B",
+          "text": "Verano"
+        },
+        {
+          "letter": "C",
+          "text": "Otoño"
+        },
+        {
+          "letter": "D",
+          "text": "Invierno"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 114,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "[Subject] prefiere una mañana que empieza con:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Silencio y café"
+        },
+        {
+          "letter": "B",
+          "text": "Ejercicio o una caminata"
+        },
+        {
+          "letter": "C",
+          "text": "Música y movimiento"
+        },
+        {
+          "letter": "D",
+          "text": "Dormir lo más posible"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 115,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "El ritmo ideal de vacaciones para [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Agenda llena, ver de todo"
+        },
+        {
+          "letter": "B",
+          "text": "Mezcla de planes y tiempo libre"
+        },
+        {
+          "letter": "C",
+          "text": "Mayormente relajado, algunos momentos clave"
+        },
+        {
+          "letter": "D",
+          "text": "Sin planes, sin agenda"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 116,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "Después de una semana larga, [Subject] se recupera mejor con:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Salir con gente"
+        },
+        {
+          "letter": "B",
+          "text": "Quedarse en casa a solas"
+        },
+        {
+          "letter": "C",
+          "text": "Pasar tiempo al aire libre"
+        },
+        {
+          "letter": "D",
+          "text": "Hacer algo creativo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 117,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "La noche típica de viernes de [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Salir con amigos"
+        },
+        {
+          "letter": "B",
+          "text": "Cita romántica o tiempo a solas en pareja"
+        },
+        {
+          "letter": "C",
+          "text": "En casa con una serie o un libro"
+        },
+        {
+          "letter": "D",
+          "text": "Trabajando en algo que les importa"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 118,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "[Subject] disfruta más un viaje largo en carro cuando:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La carretera está despejada y la música está fuerte"
+        },
+        {
+          "letter": "B",
+          "text": "Alguien que aman va de copiloto"
+        },
+        {
+          "letter": "C",
+          "text": "Tienen un podcast o un audiolibro reproduciéndose"
+        },
+        {
+          "letter": "D",
+          "text": "El destino importa más que el camino"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 119,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "El pedido de café de [Subject] se parece más a:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Negro o casi sin modificar"
+        },
+        {
+          "letter": "B",
+          "text": "Dulce y cremoso"
+        },
+        {
+          "letter": "C",
+          "text": "Helado sin importar el clima"
+        },
+        {
+          "letter": "D",
+          "text": "En realidad, té"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 120,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "La comida reconfortante favorita de [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Algo salado y caliente"
+        },
+        {
+          "letter": "B",
+          "text": "Algo dulce"
+        },
+        {
+          "letter": "C",
+          "text": "Algo picante"
+        },
+        {
+          "letter": "D",
+          "text": "Lo que les recuerde a su infancia"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 121,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "El gusto musical de [Subject] se inclina por:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Vieja escuela, lo que los crió"
+        },
+        {
+          "letter": "B",
+          "text": "Lo actual, lo que está sonando ahora"
+        },
+        {
+          "letter": "C",
+          "text": "De todo, depende del ánimo"
+        },
+        {
+          "letter": "D",
+          "text": "Un género específico, con profundidad y lealtad"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 122,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject] decora un espacio para que se sienta:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cálido y vivido"
+        },
+        {
+          "letter": "B",
+          "text": "Limpio y despejado"
+        },
+        {
+          "letter": "C",
+          "text": "Personal y lleno de significado"
+        },
+        {
+          "letter": "D",
+          "text": "Audaz y expresivo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 123,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "La salida ideal de [Subject] incluye:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una gran comida"
+        },
+        {
+          "letter": "B",
+          "text": "Un espectáculo o evento en vivo"
+        },
+        {
+          "letter": "C",
+          "text": "Una conversación larga con pocas personas"
+        },
+        {
+          "letter": "D",
+          "text": "Hacer algo que nunca han hecho antes"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 124,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "El atuendo favorito de [Subject] cuando quieren sentirse como ellos mismos es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cómodo, sin pensarlo"
+        },
+        {
+          "letter": "B",
+          "text": "Elegante, bien combinado"
+        },
+        {
+          "letter": "C",
+          "text": "Algo con carácter o una historia detrás"
+        },
+        {
+          "letter": "D",
+          "text": "Lo que esté limpio y funcione"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 125,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "La gente acude a [Subject] cuando necesita:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una respuesta clara a una pregunta difícil"
+        },
+        {
+          "letter": "B",
+          "text": "Alguien que escuche sin tratar de arreglar"
+        },
+        {
+          "letter": "C",
+          "text": "Ayuda para terminar algo"
+        },
+        {
+          "letter": "D",
+          "text": "Una risa y un reinicio"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 126,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "[Subject] está más en su elemento cuando:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Dirige a un grupo hacia una meta"
+        },
+        {
+          "letter": "B",
+          "text": "Resuelve un problema que nadie más pudo"
+        },
+        {
+          "letter": "C",
+          "text": "Hace que alguien se sienta cuidado"
+        },
+        {
+          "letter": "D",
+          "text": "Crea algo desde cero"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 127,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "La forma en que [Subject] toma una decisión suele ser:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Rápida, confiando en el instinto"
+        },
+        {
+          "letter": "B",
+          "text": "Lenta, sopesando cada ángulo"
+        },
+        {
+          "letter": "C",
+          "text": "Hablándolo con alguien de confianza"
+        },
+        {
+          "letter": "D",
+          "text": "Orando sobre el asunto"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 128,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "El superpoder de [Subject] en el trabajo es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Leer a las personas y al ambiente"
+        },
+        {
+          "letter": "B",
+          "text": "Llevar las cosas a la meta"
+        },
+        {
+          "letter": "C",
+          "text": "Pensar a futuro mientras los demás reaccionan"
+        },
+        {
+          "letter": "D",
+          "text": "Calmar el caos con una presencia firme"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 129,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "Cuando [Subject] comete un error:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Lo asume rápido y sigue adelante"
+        },
+        {
+          "letter": "B",
+          "text": "Lo procesa antes de decir nada"
+        },
+        {
+          "letter": "C",
+          "text": "Lo corrige con acción"
+        },
+        {
+          "letter": "D",
+          "text": "Necesita un momento a solas antes de hablar de ello"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 130,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "El cumplido que más impacta a [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "\"Eres realmente bueno/a en lo que haces.\""
+        },
+        {
+          "letter": "B",
+          "text": "\"Haces que la gente se sienta vista.\""
+        },
+        {
+          "letter": "C",
+          "text": "\"Eres la persona más confiable que conozco.\""
+        },
+        {
+          "letter": "D",
+          "text": "\"Me haces reír.\""
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 131,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera vivir en cualquier lugar, sería:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un lugar tranquilo, cerca del agua o los árboles"
+        },
+        {
+          "letter": "B",
+          "text": "Una ciudad vibrante con energía a su alrededor"
+        },
+        {
+          "letter": "C",
+          "text": "Cerca de la familia, donde sea que esté"
+        },
+        {
+          "letter": "D",
+          "text": "Un lugar donde nunca han estado"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 132,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "El viaje soñado de [Subject] se parece más a:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un tramo largo en la naturaleza, caminatas o acampada"
+        },
+        {
+          "letter": "B",
+          "text": "Una ciudad histórica, caminar y comer"
+        },
+        {
+          "letter": "C",
+          "text": "Una playa donde no pasa nada por una semana"
+        },
+        {
+          "letter": "D",
+          "text": "Un lugar donde nadie de los suyos ha estado"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 133,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera dominar una habilidad al instante:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Hablar otro idioma con fluidez"
+        },
+        {
+          "letter": "B",
+          "text": "Tocar un instrumento muy bien"
+        },
+        {
+          "letter": "C",
+          "text": "Cocinar cualquier cosa de memoria"
+        },
+        {
+          "letter": "D",
+          "text": "Construir o reparar cualquier cosa con las manos"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 134,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Lo que [Subject] haría si el dinero no fuera un problema:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Viajar por un año o más"
+        },
+        {
+          "letter": "B",
+          "text": "Empezar un negocio o proyecto que han tenido guardado"
+        },
+        {
+          "letter": "C",
+          "text": "Donar una cantidad significativa de dinero"
+        },
+        {
+          "letter": "D",
+          "text": "Recuperar tiempo, trabajar menos"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 135,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "La versión ideal de \"jubilarse algún día\" para [Subject] se ve así:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tranquilo y lento, tiempo con una o dos personas"
+        },
+        {
+          "letter": "B",
+          "text": "Sigue trabajando en algo que ama"
+        },
+        {
+          "letter": "C",
+          "text": "Rodeado de nietos o familia con frecuencia"
+        },
+        {
+          "letter": "D",
+          "text": "En movimiento, haciendo cosas que no pudieron antes"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 136,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "El gran sueño de [Subject] la mayoría de los días es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Construir algo que les sobreviva"
+        },
+        {
+          "letter": "B",
+          "text": "Estar profundamente presente con la gente que ama"
+        },
+        {
+          "letter": "C",
+          "text": "Convertirse en la versión de sí mismos que siguen vislumbrando"
+        },
+        {
+          "letter": "D",
+          "text": "Hacer una diferencia real en algo que les importa"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 137,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "[Subject] se describiría como:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Leal ante todo"
+        },
+        {
+          "letter": "B",
+          "text": "Honesto/a ante todo"
+        },
+        {
+          "letter": "C",
+          "text": "Generoso/a ante todo"
+        },
+        {
+          "letter": "D",
+          "text": "Firme ante todo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 138,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "La cualidad que [Subject] más respeta en los demás es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Bondad sin condiciones"
+        },
+        {
+          "letter": "B",
+          "text": "Cumplir, hacer lo que dijeron"
+        },
+        {
+          "letter": "C",
+          "text": "Valor para decir lo difícil"
+        },
+        {
+          "letter": "D",
+          "text": "Sabiduría que no se exhibe"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 139,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "[Subject] se siente más incómodo/a cerca de:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Drama por el drama mismo"
+        },
+        {
+          "letter": "B",
+          "text": "Movimiento lento cuando algo necesita hacerse"
+        },
+        {
+          "letter": "C",
+          "text": "Interacciones superficiales"
+        },
+        {
+          "letter": "D",
+          "text": "Críticas duras sin calidez"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 140,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "Cuando [Subject] da, prefiere:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Dar tiempo"
+        },
+        {
+          "letter": "B",
+          "text": "Dar recursos"
+        },
+        {
+          "letter": "C",
+          "text": "Dar atención y presencia"
+        },
+        {
+          "letter": "D",
+          "text": "Dar sin que nadie se entere"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 141,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "La vida de fe o espiritual de [Subject] es principalmente:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Central y visible para quienes los rodean"
+        },
+        {
+          "letter": "B",
+          "text": "Real pero privada"
+        },
+        {
+          "letter": "C",
+          "text": "Algo que aún están trabajando"
+        },
+        {
+          "letter": "D",
+          "text": "Practicada en cómo tratan a la gente"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 142,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "Lo único en lo que [Subject] no transigiría es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Su familia"
+        },
+        {
+          "letter": "B",
+          "text": "Su integridad"
+        },
+        {
+          "letter": "C",
+          "text": "Su fe o sus valores"
+        },
+        {
+          "letter": "D",
+          "text": "Su paz"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 143,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "[Subject] apoya a sus amigos principalmente:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Estando ahí en los momentos difíciles"
+        },
+        {
+          "letter": "B",
+          "text": "Recordando los detalles pequeños"
+        },
+        {
+          "letter": "C",
+          "text": "Haciendo algo práctico para ayudar"
+        },
+        {
+          "letter": "D",
+          "text": "Dándoles palabras de vida cuando lo necesitan"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 144,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "El amigo más cercano para [Subject] suele ser:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El que los conoce desde hace más tiempo"
+        },
+        {
+          "letter": "B",
+          "text": "El más honesto"
+        },
+        {
+          "letter": "C",
+          "text": "El que iguala su energía"
+        },
+        {
+          "letter": "D",
+          "text": "El que nunca los deja encogerse"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 145,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "La forma ideal de [Subject] de pasar tiempo con un amigo cercano es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una caminata larga o un paseo en carro, hablando"
+        },
+        {
+          "letter": "B",
+          "text": "Sentarse en algún lugar sin hacer nada en particular"
+        },
+        {
+          "letter": "C",
+          "text": "Trabajar en algo juntos"
+        },
+        {
+          "letter": "D",
+          "text": "Una comida que dura horas"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 146,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "[Subject] se comunica con sus amigos:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Constantemente, con mensajes pequeños"
+        },
+        {
+          "letter": "B",
+          "text": "Esporádicamente pero profundo cuando lo hace"
+        },
+        {
+          "letter": "C",
+          "text": "Cuando surge algo específico"
+        },
+        {
+          "letter": "D",
+          "text": "Menos de lo que les gustaría"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 147,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "Una amistad se siente fuera de lugar para [Subject] cuando:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La otra persona deja de aparecer"
+        },
+        {
+          "letter": "B",
+          "text": "Las conversaciones se quedan en la superficie demasiado tiempo"
+        },
+        {
+          "letter": "C",
+          "text": "Una sola persona carga con toda la relación"
+        },
+        {
+          "letter": "D",
+          "text": "La confianza se rompe en algo pequeño"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 148,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "La forma en que [Subject] cuida a sus amigos cercanos se parece más a:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tiempo de calidad, sin distracciones"
+        },
+        {
+          "letter": "B",
+          "text": "Palabras que nombran lo que ven"
+        },
+        {
+          "letter": "C",
+          "text": "Actos que aligeran la carga"
+        },
+        {
+          "letter": "D",
+          "text": "Aparecer físicamente cuando importa"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 1,
+        "subjectPoints": 1
+      },
+      "depth": "light",
+      "playNotes": "El Sujeto fija su verdad. La pareja adivina. El par gana 1 punto si la pareja acierta. Si no, 0."
+    },
+    {
+      "id": 149,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera intercambiar lugares con cualquiera por un día, ¿a quién elegiría?",
+      "optionsMale": [
+        {
+          "letter": "A",
+          "text": "Barack Obama"
+        },
+        {
+          "letter": "B",
+          "text": "Tom Brady"
+        },
+        {
+          "letter": "C",
+          "text": "Denzel Washington"
+        },
+        {
+          "letter": "D",
+          "text": "Jay-Z"
+        }
+      ],
+      "optionsFemale": [
+        {
+          "letter": "A",
+          "text": "Michelle Obama"
+        },
+        {
+          "letter": "B",
+          "text": "Serena Williams"
+        },
+        {
+          "letter": "C",
+          "text": "Oprah Winfrey"
+        },
+        {
+          "letter": "D",
+          "text": "Beyoncé"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": true,
+      "requireExplain": true,
+      "playNotes": "CARTA DE ELECCIÓN + EXPLICACIÓN. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta. Si no, 0. Después de la revelación, el Sujeto explica en 1 a 2 frases por qué eligió esa respuesta. El paso de explicar es requerido, sin temporizador, y controlado por el Sujeto."
+    },
+    {
+      "id": 150,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "¿Qué camino profesional [Subject] secretamente quisiera recorrer?",
+      "optionsMale": [
+        {
+          "letter": "A",
+          "text": "Un atleta profesional como Michael Jordan"
+        },
+        {
+          "letter": "B",
+          "text": "Un magnate de los negocios como Magic Johnson"
+        },
+        {
+          "letter": "C",
+          "text": "Un líder de fe como T.D. Jakes"
+        },
+        {
+          "letter": "D",
+          "text": "Un actor como Denzel Washington"
+        }
+      ],
+      "optionsFemale": [
+        {
+          "letter": "A",
+          "text": "Una atleta profesional como Serena Williams"
+        },
+        {
+          "letter": "B",
+          "text": "Una magnate de los medios como Oprah"
+        },
+        {
+          "letter": "C",
+          "text": "Una líder de fe como Priscilla Shirer"
+        },
+        {
+          "letter": "D",
+          "text": "Una actriz como Viola Davis"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": true,
+      "requireExplain": true,
+      "playNotes": "CARTA DE ELECCIÓN + EXPLICACIÓN. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta. Si no, 0. Después de la revelación, el Sujeto explica en 1 a 2 frases por qué eligió esa respuesta. El paso de explicar es requerido, sin temporizador, y controlado por el Sujeto."
+    },
+    {
+      "id": 151,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "¿Qué voz quisiera [Subject] como su entrenador interno?",
+      "optionsMale": [
+        {
+          "letter": "A",
+          "text": "Denzel Washington"
+        },
+        {
+          "letter": "B",
+          "text": "Obispo T.D. Jakes"
+        },
+        {
+          "letter": "C",
+          "text": "Un entrenador que lo marcó"
+        },
+        {
+          "letter": "D",
+          "text": "Su propio padre o abuelo"
+        }
+      ],
+      "optionsFemale": [
+        {
+          "letter": "A",
+          "text": "Oprah Winfrey"
+        },
+        {
+          "letter": "B",
+          "text": "Maya Angelou"
+        },
+        {
+          "letter": "C",
+          "text": "Una mentora que la marcó"
+        },
+        {
+          "letter": "D",
+          "text": "Su propia madre o abuela"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": true,
+      "requireExplain": true,
+      "playNotes": "CARTA DE ELECCIÓN + EXPLICACIÓN. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta. Si no, 0. Después de la revelación, el Sujeto explica en 1 a 2 frases por qué eligió esa respuesta. El paso de explicar es requerido, sin temporizador, y controlado por el Sujeto."
+    },
+    {
+      "id": 152,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "¿Con qué figura bíblica [Subject] más se identifica?",
+      "optionsMale": [
+        {
+          "letter": "A",
+          "text": "David (el rey-guerrero con corazón hacia Dios)"
+        },
+        {
+          "letter": "B",
+          "text": "José (el soñador que perseveró)"
+        },
+        {
+          "letter": "C",
+          "text": "Pablo (el convertido que reconstruyó su vida)"
+        },
+        {
+          "letter": "D",
+          "text": "Moisés (el líder reluctante)"
+        }
+      ],
+      "optionsFemale": [
+        {
+          "letter": "A",
+          "text": "Ester (la que dio el paso en su momento)"
+        },
+        {
+          "letter": "B",
+          "text": "Rut (la leal que se quedó)"
+        },
+        {
+          "letter": "C",
+          "text": "María (la que dijo sí)"
+        },
+        {
+          "letter": "D",
+          "text": "Débora (la juez que lideró)"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": true,
+      "requireExplain": true,
+      "playNotes": "CARTA DE ELECCIÓN + EXPLICACIÓN. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta. Si no, 0. Después de la revelación, el Sujeto explica en 1 a 2 frases por qué eligió esa respuesta. El paso de explicar es requerido, sin temporizador, y controlado por el Sujeto."
+    },
+    {
+      "id": 153,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera asistir a UN evento de campeonato en persona, ¿cuál sería?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Super Bowl"
+        },
+        {
+          "letter": "B",
+          "text": "Finales de la NBA"
+        },
+        {
+          "letter": "C",
+          "text": "Final Four de la NCAA"
+        },
+        {
+          "letter": "D",
+          "text": "Copa del Mundo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CARTA DE ELECCIÓN + EXPLICACIÓN. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta. Si no, 0. Después de la revelación, el Sujeto explica en 1 a 2 frases por qué eligió esa respuesta. El paso de explicar es requerido, sin temporizador, y controlado por el Sujeto."
+    },
+    {
+      "id": 154,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera asistir a UN concierto de la historia, ¿cuál elegiría?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Whitney Houston en su mejor momento"
+        },
+        {
+          "letter": "B",
+          "text": "Michael Jackson en la gira Bad"
+        },
+        {
+          "letter": "C",
+          "text": "Prince en Paisley Park"
+        },
+        {
+          "letter": "D",
+          "text": "Aretha Franklin en el Apollo"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CARTA DE ELECCIÓN + EXPLICACIÓN. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta. Si no, 0. Después de la revelación, el Sujeto explica en 1 a 2 frases por qué eligió esa respuesta. El paso de explicar es requerido, sin temporizador, y controlado por el Sujeto."
+    },
+    {
+      "id": 155,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera presenciar UN momento histórico en vivo, ¿cuál elegiría?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El discurso \"I Have a Dream\" de MLK"
+        },
+        {
+          "letter": "B",
+          "text": "La primera toma de posesión de Obama"
+        },
+        {
+          "letter": "C",
+          "text": "Nelson Mandela saliendo de la cárcel"
+        },
+        {
+          "letter": "D",
+          "text": "El último tiro de Michael Jordan, Juego 6 de 1998"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CARTA DE ELECCIÓN + EXPLICACIÓN. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta. Si no, 0. Después de la revelación, el Sujeto explica en 1 a 2 frases por qué eligió esa respuesta. El paso de explicar es requerido, sin temporizador, y controlado por el Sujeto."
+    },
+    {
+      "id": 156,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si [Subject] tuviera que elegir UN lugar para vacacionar cada año por el resto de su vida:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una isla caribeña"
+        },
+        {
+          "letter": "B",
+          "text": "Una ciudad europea"
+        },
+        {
+          "letter": "C",
+          "text": "Un safari africano"
+        },
+        {
+          "letter": "D",
+          "text": "Un refugio tranquilo en la montaña"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CARTA DE ELECCIÓN + EXPLICACIÓN. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta. Si no, 0. Después de la revelación, el Sujeto explica en 1 a 2 frases por qué eligió esa respuesta. El paso de explicar es requerido, sin temporizador, y controlado por el Sujeto."
+    },
+    {
+      "id": 157,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera ser de clase mundial en UNA cosa, ¿cuál sería?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Hablar (predicar, oratoria pública)"
+        },
+        {
+          "letter": "B",
+          "text": "Construir (emprendimiento, bienes raíces, negocios)"
+        },
+        {
+          "letter": "C",
+          "text": "Crear (arte, música, diseño, escritura)"
+        },
+        {
+          "letter": "D",
+          "text": "Atletismo (deporte al más alto nivel)"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CARTA DE ELECCIÓN + EXPLICACIÓN. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta. Si no, 0. Después de la revelación, el Sujeto explica en 1 a 2 frases por qué eligió esa respuesta. El paso de explicar es requerido, sin temporizador, y controlado por el Sujeto."
+    },
+    {
+      "id": 158,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "Si [Subject] tuviera que vivir en UNA ciudad por un año completo, ¿cuál elegiría?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Atlanta"
+        },
+        {
+          "letter": "B",
+          "text": "Los Ángeles"
+        },
+        {
+          "letter": "C",
+          "text": "Nueva York"
+        },
+        {
+          "letter": "D",
+          "text": "Una ciudad africana (Lagos, Acra, Ciudad del Cabo)"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CARTA DE ELECCIÓN + EXPLICACIÓN. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta. Si no, 0. Después de la revelación, el Sujeto explica en 1 a 2 frases por qué eligió esa respuesta. El paso de explicar es requerido, sin temporizador, y controlado por el Sujeto."
+    },
+    {
+      "id": 159,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "Si [Subject] tuviera que comer UNA comida cada día por un mes:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Bistec y mariscos"
+        },
+        {
+          "letter": "B",
+          "text": "La comida casera de mamá"
+        },
+        {
+          "letter": "C",
+          "text": "Soul food (mac and cheese, hojas verdes, pan de maíz, pescado frito)"
+        },
+        {
+          "letter": "D",
+          "text": "Tacos y comida mexicana"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CARTA DE ELECCIÓN + EXPLICACIÓN. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta. Si no, 0. Después de la revelación, el Sujeto explica en 1 a 2 frases por qué eligió esa respuesta. El paso de explicar es requerido, sin temporizador, y controlado por el Sujeto."
+    },
+    {
+      "id": 160,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "Si [Subject] pudiera elegir UNA persona para dar el panegírico en su funeral:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Su pastor"
+        },
+        {
+          "letter": "B",
+          "text": "Su amigo más cercano"
+        },
+        {
+          "letter": "C",
+          "text": "Su cónyuge"
+        },
+        {
+          "letter": "D",
+          "text": "Su hijo/a mayor"
+        }
+      ],
+      "scoring": {
+        "guesserPoints": 4,
+        "subjectPoints": 2
+      },
+      "depth": "real",
+      "genderedOptions": false,
+      "requireExplain": true,
+      "playNotes": "CARTA DE ELECCIÓN + EXPLICACIÓN. El Sujeto fija su verdad. La pareja adivina. El par gana 4 puntos si la pareja acierta. Si no, 0. Después de la revelación, el Sujeto explica en 1 a 2 frases por qué eligió esa respuesta. El paso de explicar es requerido, sin temporizador, y controlado por el Sujeto."
+    }
+  ],
+  "ui": {
+    "splash": {
+      "begin": "Comenzar",
+      "host": "Crear partida",
+      "join": "Unirme a una partida"
+    },
+    "host_setup": {
+      "title": "Crear partida",
+      "name_label": "Tu nombre",
+      "submit": "Crear sala",
+      "gender_label": "Tu género",
+      "gender_male": "Hombre",
+      "gender_female": "Mujer"
+    },
+    "join_setup": {
+      "title": "Unirme a una partida",
+      "code_label": "Código de sala",
+      "name_label": "Tu nombre",
+      "submit": "Unirme",
+      "gender_label": "Tu género",
+      "gender_male": "Hombre",
+      "gender_female": "Mujer"
+    },
+    "lobby": {
+      "title": "Esperando jugadores...",
+      "players_header": "En la sala",
+      "pair_button": "Emparejar",
+      "leave_button": "Salir"
+    },
+    "team_setup": {
+      "title": "Arma tu equipo",
+      "icon_label": "Elige el ícono",
+      "name_label": "Nombre del equipo",
+      "ready_button": "Listos",
+      "confirmed": "Confirmado"
+    },
+    "playing": {
+      "subject_label": "Sujeto",
+      "guesser_label": "Adivinando",
+      "partner_label": "Pareja",
+      "spectator_label": "Espectador",
+      "reveal_button": "Revelar",
+      "next_card": "Siguiente carta",
+      "bonus_banner": "BONUS, puntos x2"
+    },
+    "explain": {
+      "title": "Turno del Sujeto. Cuéntanos por qué elegiste esa.",
+      "done_button": "Listo. Siguiente carta.",
+      "spectator_note": "Escucha la respuesta."
+    },
+    "game_over": {
+      "title": "Fin del juego",
+      "knower_header": "El Conocedor",
+      "known_header": "El Conocido",
+      "rematch_button": "Otra ronda",
+      "exit_button": "Salir"
+    },
+    "depth_picker": {
+      "title": "¿Qué tan profundo quieres dibujar?",
+      "light_name": "Ligero",
+      "light_subtitle": "Para calentar",
+      "light_desc": "Preguntas más fáciles, sobre gustos y preferencias. Ideal para grupos que apenas se están conociendo o para empezar la noche.",
+      "real_name": "Real",
+      "real_subtitle": "El juego principal",
+      "real_desc": "La versión central. Lo que realmente te dice si las personas que llamas amigos te conocen.",
+      "deep_name": "Profundo",
+      "deep_subtitle": "Para los que no se sueltan",
+      "deep_desc": "Las preguntas más vulnerables. Para grupos con confianza ya construida y ganas de ir más adentro."
+    },
+    "welcome_card": {
+      "title": "Antes de Comenzar",
+      "body": [
+        "Cuatro a diez jugadores. Una baraja. Una pregunta a la vez.",
+        "Cada ronda, un jugador es el Sujeto. Los demás intentan adivinar lo que el Sujeto diría.",
+        "El Sujeto revela la verdad. Las respuestas correctas suman puntos. Las incorrectas inician las conversaciones que la mayoría está evitando.",
+        "El que más adivina es El Conocedor. El Sujeto que más es adivinado es El Conocido.",
+        "Ambos importan."
+      ]
+    }
+  }
+}

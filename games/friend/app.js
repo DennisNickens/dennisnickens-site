@@ -26,7 +26,7 @@
   function save(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {} }
   function clear(key) { try { localStorage.removeItem(key); } catch (e) {} }
 
-  var SCREENS = ['screen-router', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing', 'screen-team-setup', 'screen-playing', 'screen-explain', 'screen-game-over'];
+  var SCREENS = ['screen-router', 'screen-language', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing', 'screen-team-setup', 'screen-playing', 'screen-explain', 'screen-game-over'];
 
   // Same palette as lib/friend-state.js TEAM_ICONS. Hardcoded here so the
   // picker grid renders immediately without an extra round trip. Server is
@@ -34,6 +34,7 @@
   var TEAM_ICONS = ['🔥', '⚡', '💎', '⭐', '🚀', '🌊', '🦁', '🦊', '🐯', '🐺', '🌙', '☀️'];
   function show(id) {
     SCREENS.forEach(function (s) { var el = $(s); if (!el) return; el.hidden = (s !== id); });
+    applyI18n();
   }
 
   // ----- localStorage state (per device) -----
@@ -42,8 +43,33 @@
     playerId: 'ycyf_player_id',
     name: 'ycyf_name',
     isHost: 'ycyf_is_host',
-    gender: 'ycyf_gender'
+    gender: 'ycyf_gender',
+    lang: 'ycyf_lang'
   };
+
+  // ----- i18n -----
+  // currentLang() drives which deck file loads (cards.json vs cards.es.json)
+  // and whether UI shell strings get swapped. DECK_UI holds the loaded deck's
+  // optional `ui` block (only present in the Spanish deck). applyI18n() walks
+  // [data-i18n] elements and replaces their text from DECK_UI; it is a no-op
+  // for English (DECK_UI stays null), so the existing English HTML is untouched.
+  function currentLang() {
+    return load(K.lang, null) === 'es' ? 'es' : 'en';
+  }
+  function cardsUrl() {
+    return currentLang() === 'es' ? 'cards.es.json' : 'cards.json';
+  }
+  var DECK_UI = null;
+  function applyI18n() {
+    if (!DECK_UI) return;
+    var nodes = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < nodes.length; i++) {
+      var path = nodes[i].getAttribute('data-i18n').split('.');
+      var v = DECK_UI;
+      for (var p = 0; p < path.length && v != null; p++) v = v[path[p]];
+      if (typeof v === 'string') nodes[i].textContent = v;
+    }
+  }
 
   // ----- API helpers -----
   function api(path, opts) {
@@ -188,11 +214,14 @@
   function loadCardsOnce() {
     if (CARDS_DATA) return Promise.resolve(CARDS_DATA);
     if (cardsLoadPromise) return cardsLoadPromise;
-    cardsLoadPromise = fetch('cards.json', { credentials: 'same-origin' })
-      .then(function (r) { if (!r.ok) throw new Error('cards.json ' + r.status); return r.json(); })
+    var url = cardsUrl();
+    cardsLoadPromise = fetch(url, { credentials: 'same-origin' })
+      .then(function (r) { if (!r.ok) throw new Error(url + ' ' + r.status); return r.json(); })
       .then(function (j) {
         CARDS_DATA = j;
         (j.cards || []).forEach(function (c) { CARD_BY_ID[c.id] = c; });
+        // Spanish deck carries a `ui` block; capture it and apply shell strings.
+        if (j.ui) { DECK_UI = j.ui; applyI18n(); }
         return j;
       });
     return cardsLoadPromise;
@@ -1457,6 +1486,8 @@
       var el = e.target.closest('[data-action]');
       if (!el) return;
       var a = el.getAttribute('data-action');
+      if (a === 'lang-en')      return setLangAct('en');
+      if (a === 'lang-es')      return setLangAct('es');
       if (a === 'goto-host')    return gotoHostSetup();
       if (a === 'goto-join')    return gotoJoinSetup();
       if (a === 'back-router')  return backRouter();
@@ -1495,10 +1526,23 @@
   }
 
   // ----- boot -----
+  // Language picker: persist the choice and reload so the right deck file
+  // (cards.json / cards.es.json) and UI shell load cleanly from the top.
+  function setLangAct(lang) {
+    save(K.lang, lang === 'es' ? 'es' : 'en');
+    location.reload();
+  }
+
   function boot() {
     wire();
-    // Kick off cards.json fetch immediately so it's cached by the time the
-    // game actually starts. Silently swallow errors; renderPlaying retries.
+    // First-run language gate (mirrors LQ): if no language has been chosen,
+    // show the picker before anything else. The choice persists and reloads.
+    if (load(K.lang, null) === null) {
+      show('screen-language');
+      return;
+    }
+    // Kick off the (language-correct) deck fetch immediately so it's cached by
+    // the time the game actually starts. Silently swallow errors; retries later.
     loadCardsOnce().catch(function () {});
     var params = new URLSearchParams(location.search);
     var joinPrefilled = (params.get('join') || '').toUpperCase();

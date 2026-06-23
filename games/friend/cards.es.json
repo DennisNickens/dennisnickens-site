@@ -4936,7 +4936,8 @@
       "gender_label": "Tu género",
       "gender_male": "Hombre",
       "gender_female": "Mujer",
-      "lead": "Tu nombre aparece en la mesa. Usa como te dicen tus amigos."
+      "lead": "Tu nombre aparece en la mesa. Usa como te dicen tus amigos.",
+      "creating": "Creando..."
     },
     "join_setup": {
       "title": "Unirme a una partida",
@@ -4946,7 +4947,8 @@
       "gender_label": "Tu género",
       "gender_male": "Hombre",
       "gender_female": "Mujer",
-      "lead": "Ingresa el código de 4 letras que te dio tu anfitrión (o escanea su código QR con tu cámara)."
+      "lead": "Ingresa el código de 4 letras que te dio tu anfitrión (o escanea su código QR con tu cámara).",
+      "joining": "Uniéndote..."
     },
     "lobby": {
       "title": "Esperando jugadores...",
@@ -4957,7 +4959,11 @@
       "share_note": "Diles a tus amigos que escaneen el código o ingresen el código de sala de arriba en",
       "table_header": "En la mesa",
       "start_button": "Emparejar",
-      "host_note": "Solo el anfitrión puede empezar el juego. Avanzarás en cuanto toque Emparejar."
+      "host_note": "Solo el anfitrión puede empezar el juego. Avanzarás en cuanto toque Emparejar.",
+      "pairing": "Emparejando...",
+      "count_min": "{count} de {min} jugadores mínimo",
+      "count_full": "Sala llena ({max} jugadores)",
+      "count_room": "{count} jugadores, espacio para {extra} más"
     },
     "team_setup": {
       "title": "Arma tu equipo",
@@ -4976,7 +4982,9 @@
       "depth_eyebrow": "Profundidad de las cartas",
       "start_button": "Empezar el juego",
       "confirm_host_note": "El anfitrión está confirmando los equipos. Espera un momento.",
-      "depth_host_note": "El anfitrión elige la profundidad del mazo."
+      "depth_host_note": "El anfitrión elige la profundidad del mazo.",
+      "confirming": "Confirmando...",
+      "starting": "Empezando..."
     },
     "playing": {
       "subject_label": "Sujeto",
@@ -4987,14 +4995,44 @@
       "next_card": "Siguiente carta",
       "bonus_banner": "BONUS, puntos x2",
       "race_label": "CARRERA A 25",
-      "truth_eyebrow": "La verdad"
+      "truth_eyebrow": "La verdad",
+      "round_label": "Ronda",
+      "theme_label": "Tema",
+      "type_mc4": "4 opciones",
+      "type_mc6": "6 opciones",
+      "about": "Sobre {subject}",
+      "guesses_clause": "{partner} adivina",
+      "lock_in_guess": "Confirma tu adivinanza",
+      "guess_locked_btn": "Adivinanza confirmada",
+      "guesser_eyebrow_mc": "¿Qué eligió {subject}?",
+      "guesser_status_locked": "Adivinanza confirmada. Esperando a que {subject} revele.",
+      "reveal_the_truth": "Revela la verdad",
+      "reveal_waiting": "Esperando a {partner}",
+      "subject_eyebrow": "Te toca. Elige lo que es verdad.",
+      "subject_status_wait": "Elige tu verdad mientras tanto. Podrás revelar cuando {partner} haya adivinado.",
+      "subject_status_pick": "Elige la verdad y luego revela.",
+      "done_sharing": "Listo, ya compartí",
+      "watching": "Mirando · {label}",
+      "spectator_line": "{subject} es el Sujeto. {partner} adivina lo que {subject} eligió.",
+      "spectator_line_nopartner": "{subject} es el Sujeto.",
+      "spectator_status_locked": "{partner} confirmó. Esperando a que {subject} revele.",
+      "spectator_status_waiting": "Esperando a la pareja...",
+      "guessed_line": "{partner} adivinó: {pick}",
+      "final_results": "Ver resultados finales",
+      "reveal_status_waiting": "Esperando a que {subject} avance...",
+      "loading_deck": "Cargando el mazo...",
+      "locking_in": "Confirmando...",
+      "revealing": "Revelando...",
+      "advancing": "Avanzando..."
     },
     "explain": {
       "title": "Turno del Sujeto. Cuéntanos por qué elegiste esa.",
       "done_button": "Listo. Siguiente carta.",
       "spectator_note": "Escucha la respuesta.",
       "eyebrow": "Elección + Explicación",
-      "answer_label": "Su respuesta"
+      "answer_label": "Su respuesta",
+      "listen": "Escucha la respuesta de {name}.",
+      "advancing": "Avanzando..."
     },
     "game_over": {
       "title": "Fin del juego",
@@ -5003,7 +5041,10 @@
       "rematch_button": "Otra ronda",
       "exit_button": "Salir",
       "back_button": "Volver al inicio",
-      "host_note": "Solo el anfitrión puede empezar otra ronda."
+      "host_note": "Solo el anfitrión puede empezar otra ronda.",
+      "winner_title": "¡Tenemos un ganador!",
+      "lead": "Primer par en llegar a {n}. Se corrió la carrera.",
+      "starting_rematch": "Empezando otra ronda..."
     },
     "depth_picker": {
       "title": "¿Qué tan profundo quieres dibujar?",
@@ -5044,7 +5085,16 @@
       "title": "Elige tu pareja",
       "lead": "Toca a dos jugadores para emparejarlos. Toca un jugador emparejado para deshacer.",
       "next_button": "Siguiente: Elegir íconos",
-      "host_note": "El anfitrión está emparejando a todos. Espera un momento."
+      "host_note": "El anfitrión está emparejando a todos. Espera un momento.",
+      "loading": "Cargando..."
+    },
+    "themes": {
+      "Free Time": "Tiempo Libre",
+      "Tastes": "Gustos",
+      "Strengths": "Fortalezas",
+      "Dreams": "Sueños",
+      "Values": "Valores",
+      "Friendship": "Amistad"
     }
   }
 }

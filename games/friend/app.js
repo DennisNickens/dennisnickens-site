@@ -70,6 +70,24 @@
       if (typeof v === 'string') nodes[i].textContent = v;
     }
   }
+  // Render-time i18n lookup for strings the JS builds dynamically (round
+  // counter, role eyebrows, statuses, reveal lines, button busy-states,
+  // theme labels). Returns the Spanish string from the loaded deck's ui
+  // block with {placeholders} filled, or null so callers fall back to the
+  // inline English (the EN deck has no ui block).
+  function uiT(path, vars) {
+    if (!DECK_UI) return null;
+    var v = DECK_UI, parts = path.split('.');
+    for (var i = 0; i < parts.length && v != null; i++) v = v[parts[i]];
+    if (typeof v !== 'string') return null;
+    if (vars) v = v.replace(/\{(\w+)\}/g, function (_, k) { return vars[k] != null ? vars[k] : ''; });
+    return v;
+  }
+  // Translate a theme key (e.g. "Free Time") via ui.themes, else passthrough.
+  function themeLabel(theme) {
+    if (DECK_UI && DECK_UI.themes && DECK_UI.themes[theme]) return DECK_UI.themes[theme];
+    return theme;
+  }
 
   // ----- API helpers -----
   function api(path, opts) {
@@ -166,11 +184,11 @@
     var max = 10;
     var msg;
     if (count < min) {
-      msg = count + ' of ' + min + ' minimum players';
+      msg = uiT('lobby.count_min', { count: count, min: min }) || (count + ' of ' + min + ' minimum players');
     } else if (count >= max) {
-      msg = 'Room full (' + max + ' players)';
+      msg = uiT('lobby.count_full', { max: max }) || ('Room full (' + max + ' players)');
     } else {
-      msg = count + ' players, room for ' + (max - count) + ' more';
+      msg = uiT('lobby.count_room', { count: count, extra: (max - count) }) || (count + ' players, room for ' + (max - count) + ' more');
     }
     var c = $('lobby-count'); if (c) c.textContent = msg;
 
@@ -401,7 +419,7 @@
   }
 
   async function hostStartTeamSetupAct() {
-    var btn = $('start-game-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Loading...'; }
+    var btn = $('start-game-btn'); if (btn) { btn.disabled = true; btn.textContent = uiT('pairing.loading') || 'Loading...'; }
     try {
       var r = await api('/api/friend-start-team-setup', {
         method: 'POST',
@@ -412,11 +430,11 @@
         renderRoom(lastRoom);
       } else {
         alert('Could not advance: ' + ((r.body && r.body.error) || 'unknown'));
-        if (btn) { btn.disabled = false; btn.textContent = 'Next: Pick Icons →'; }
+        if (btn) { btn.disabled = false; btn.textContent = uiT('pairing.next_button') || 'Next: Pick Icons →'; }
       }
     } catch (e) {
       alert('Network error.');
-      if (btn) { btn.disabled = false; btn.textContent = 'Next: Pick Icons →'; }
+      if (btn) { btn.disabled = false; btn.textContent = uiT('pairing.next_button') || 'Next: Pick Icons →'; }
     }
   }
 
@@ -446,7 +464,7 @@
   }
 
   async function hostAdvanceToConfirmAct() {
-    var btn = $('confirm-icons-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Confirming...'; }
+    var btn = $('confirm-icons-btn'); if (btn) { btn.disabled = true; btn.textContent = uiT('team_setup.confirming') || 'Confirming...'; }
     try {
       var r = await api('/api/friend-advance-to-confirm', {
         method: 'POST',
@@ -458,11 +476,11 @@
         renderRoom(lastRoom);
       } else {
         alert('Could not advance: ' + ((r.body && r.body.error) || 'unknown'));
-        if (btn) { btn.disabled = false; btn.textContent = 'Next: Confirm Teams →'; }
+        if (btn) { btn.disabled = false; btn.textContent = uiT('team_setup.next_confirm_button') || 'Next: Confirm Teams →'; }
       }
     } catch (e) {
       alert('Network error.');
-      if (btn) { btn.disabled = false; btn.textContent = 'Next: Confirm Teams →'; }
+      if (btn) { btn.disabled = false; btn.textContent = uiT('team_setup.next_confirm_button') || 'Next: Confirm Teams →'; }
     }
   }
 
@@ -576,7 +594,7 @@
   function renderPlaying(room) {
     if (!CARDS_DATA) {
       loadCardsOnce().then(function () { if (lastRoom) renderPlaying(lastRoom); }).catch(function () {});
-      var ct = $('card-text'); if (ct) ct.textContent = 'Loading the deck...';
+      var ct = $('card-text'); if (ct) ct.textContent = uiT('playing.loading_deck') || 'Loading the deck...';
       return;
     }
     var me = load(K.playerId, null);
@@ -667,12 +685,12 @@
       if (listen) listen.hidden = true;
     } else {
       if (btn) btn.hidden = true;
-      if (listen) { listen.hidden = false; listen.textContent = 'Listen to ' + (subjectName(room) || 'the subject') + "'s answer."; }
+      if (listen) { listen.hidden = false; listen.textContent = uiT('explain.listen', { name: subjectName(room) || 'the subject' }) || ('Listen to ' + (subjectName(room) || 'the subject') + "'s answer."); }
     }
   }
 
   function renderRace(room) {
-    var r = $('race-round'); if (r) r.textContent = 'Round ' + (room.round || 1);
+    var r = $('race-round'); if (r) r.textContent = (uiT('playing.round_label') || 'Round') + ' ' + (room.round || 1);
     var ul = $('race-cars'); if (!ul) return;
     ul.innerHTML = '';
     var cap = room.cap || 25;
@@ -706,12 +724,12 @@
   }
 
   function renderCardFrame(room, card) {
-    var t = $('card-theme'); if (t) t.textContent = String(card.theme || '').toUpperCase();
+    var t = $('card-theme'); if (t) t.textContent = String(themeLabel(card.theme) || '').toUpperCase();
     var ty = $('card-type-label');
     if (ty) {
       var labels = {
-        mc4: '4 options',
-        mc6: '6 options',
+        mc4: uiT('playing.type_mc4') || '4 options',
+        mc6: uiT('playing.type_mc6') || '6 options',
         group_vote: 'Point at a person',
         reflection: 'Reflection · no scoring',
         discussion: 'Group discussion · no scoring'
@@ -725,8 +743,9 @@
     var h = $('card-subject-hint');
     if (h) {
       var partner = partnerNameInActivePair(room);
-      h.textContent = 'About ' + subjectName(room)
-        + (partner ? ' · ' + partner + ' guesses' : '');
+      var about = uiT('playing.about', { subject: subjectName(room) }) || ('About ' + subjectName(room));
+      var clause = partner ? (' · ' + (uiT('playing.guesses_clause', { partner: partner }) || (partner + ' guesses'))) : '';
+      h.textContent = about + clause;
     }
     var x = $('card-text');
     if (x) x.textContent = String(card.text || '').replace(/\[Subject\]/g, subjectName(room));
@@ -775,18 +794,20 @@
     var btn = $('submit-guess-btn');
     if (btn) {
       btn.disabled = !pendingPick || locked;
-      btn.textContent = locked ? 'Guess locked in' : 'Lock In Guess';
+      btn.textContent = locked
+        ? (uiT('playing.guess_locked_btn') || 'Guess locked in')
+        : (uiT('playing.lock_in_guess') || 'Lock In Guess');
     }
     var eyebrow = $('guesser-eyebrow');
     if (eyebrow) {
       eyebrow.textContent = card.type === 'group_vote'
         ? 'Who would ' + subjectName(room) + ' pick?'
-        : 'What did ' + subjectName(room) + ' pick?';
+        : (uiT('playing.guesser_eyebrow_mc', { subject: subjectName(room) }) || ('What did ' + subjectName(room) + ' pick?'));
     }
     var status = $('guesser-status');
     if (status) {
       status.textContent = locked
-        ? 'Guess locked in. Waiting on ' + subjectName(room) + ' to reveal.'
+        ? (uiT('playing.guesser_status_locked', { subject: subjectName(room) }) || ('Guess locked in. Waiting on ' + subjectName(room) + ' to reveal.'))
         : '';
     }
   }
@@ -826,15 +847,15 @@
     if (btn) {
       btn.disabled = !pendingPick || !partnerIn;
       btn.textContent = partnerIn
-        ? 'Reveal The Truth'
-        : 'Waiting on ' + (partner || 'partner');
+        ? (uiT('playing.reveal_the_truth') || 'Reveal The Truth')
+        : (uiT('playing.reveal_waiting', { partner: partner || 'partner' }) || ('Waiting on ' + (partner || 'partner')));
     }
     var eyebrow = $('subject-eyebrow');
-    if (eyebrow) eyebrow.textContent = 'You\'re up. Pick what\'s actually true.';
+    if (eyebrow) eyebrow.textContent = uiT('playing.subject_eyebrow') || 'You\'re up. Pick what\'s actually true.';
     var status = $('subject-status');
     if (status) {
-      if (!partnerIn) status.textContent = 'Pick your truth in the meantime. You can reveal once ' + (partner || 'your partner') + ' has guessed.';
-      else if (!pendingPick) status.textContent = 'Pick the truth, then reveal.';
+      if (!partnerIn) status.textContent = uiT('playing.subject_status_wait', { partner: partner || 'your partner' }) || ('Pick your truth in the meantime. You can reveal once ' + (partner || 'your partner') + ' has guessed.');
+      else if (!pendingPick) status.textContent = uiT('playing.subject_status_pick') || 'Pick the truth, then reveal.';
       else status.textContent = '';
     }
   }
@@ -862,10 +883,12 @@
     var partner = partnerNameInActivePair(room);
     var activePair = (room.pairs || []).find(function (pr) { return pr.id === room.currentPairId; });
     var icon = activePair && activePair.icon ? activePair.icon : '';
-    if (eyebrow) eyebrow.textContent = 'Watching · ' + (icon ? icon + ' ' : '') + (activePair && activePair.teamName ? activePair.teamName : (subject + ' & ' + partner));
+    var watchLabel = (icon ? icon + ' ' : '') + (activePair && activePair.teamName ? activePair.teamName : (subject + ' & ' + partner));
+    if (eyebrow) eyebrow.textContent = uiT('playing.watching', { label: watchLabel }) || ('Watching · ' + watchLabel);
     if (line) {
-      line.textContent = subject + ' is the subject. '
-        + (partner ? partner + ' is guessing what ' + subject + ' picked.' : '');
+      line.textContent = partner
+        ? (uiT('playing.spectator_line', { subject: subject, partner: partner }) || (subject + ' is the subject. ' + partner + ' is guessing what ' + subject + ' picked.'))
+        : (uiT('playing.spectator_line_nopartner', { subject: subject }) || (subject + ' is the subject. '));
     }
 
     // Read-only options grid: spectators can see the four options and play
@@ -893,8 +916,8 @@
 
     if (status) {
       status.textContent = room.partnerHasGuessed
-        ? (partner || 'Partner') + ' locked in. Waiting on ' + subject + ' to reveal.'
-        : 'Waiting on the pair...';
+        ? (uiT('playing.spectator_status_locked', { partner: partner || 'Partner', subject: subject }) || ((partner || 'Partner') + ' locked in. Waiting on ' + subject + ' to reveal.'))
+        : (uiT('playing.spectator_status_waiting') || 'Waiting on the pair...');
     }
   }
 
@@ -931,7 +954,7 @@
         var pg = detail.partnerGuess;
         var correct = !!detail.correct;
         var pgText = pickDisplay(card, pg, room);
-        partnerLine.textContent = (partner || 'Partner') + ' guessed: ' + pgText
+        partnerLine.textContent = (uiT('playing.guessed_line', { partner: partner || 'Partner', pick: pgText }) || ((partner || 'Partner') + ' guessed: ' + pgText))
           + (correct ? '  ✓ ' : '  × ');
         partnerLine.className = 'reveal-partner-line ' + (correct ? 'guess-right' : 'guess-wrong');
       }
@@ -958,11 +981,13 @@
     if (btn) {
       btn.hidden = !isSubject;
       btn.disabled = false;
-      btn.textContent = room.winnerPairId ? 'See Final Results →' : 'Next Card →';
+      btn.textContent = room.winnerPairId
+        ? (uiT('playing.final_results') || 'See Final Results →')
+        : (uiT('playing.next_card') || 'Next Card →');
     }
     var status = $('reveal-status');
     if (status) {
-      status.textContent = isSubject ? '' : 'Waiting on ' + subjectName(room) + ' to advance...';
+      status.textContent = isSubject ? '' : (uiT('playing.reveal_status_waiting', { subject: subjectName(room) }) || ('Waiting on ' + subjectName(room) + ' to advance...'));
     }
   }
 
@@ -976,7 +1001,7 @@
     if (rematchBtn) {
       rematchBtn.hidden = !isHost;
       rematchBtn.disabled = false;
-      rematchBtn.textContent = 'Rematch (Same Teams) →';
+      rematchBtn.textContent = uiT('game_over.rematch_button') || 'Rematch (Same Teams) →';
     }
     var note = $('game-over-host-note');
     if (note) note.hidden = isHost;
@@ -987,10 +1012,10 @@
         || (room.players || [])
             .filter(function (p) { return winner.playerIds.indexOf(p.id) !== -1; })
             .map(function (p) { return p.name; }).join(' & ');
-      if (titleEl) titleEl.textContent = (winner.icon || '🏎') + ' ' + wn + ' Win';
-      if (leadEl) leadEl.textContent = 'First pair to ' + (room.cap || 25) + '. The race is run.';
+      if (titleEl) titleEl.textContent = uiT('game_over.winner_title') || ((winner.icon || '🏎') + ' ' + wn + ' Win');
+      if (leadEl) leadEl.textContent = uiT('game_over.lead', { n: (room.cap || 25) }) || ('First pair to ' + (room.cap || 25) + '. The race is run.');
     } else {
-      if (titleEl) titleEl.textContent = 'Game Over';
+      if (titleEl) titleEl.textContent = uiT('game_over.title') || 'Game Over';
       if (leadEl) leadEl.textContent = '';
     }
     var sorted = (room.pairs || []).slice().sort(function (a, b) { return (b.score || 0) - (a.score || 0); });
@@ -1010,7 +1035,7 @@
     if (!pendingPick) return;
     var code = load(K.code, ''), pid = load(K.playerId, '');
     var guess = pendingPick;
-    var btn = $('submit-guess-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Locking in...'; }
+    var btn = $('submit-guess-btn'); if (btn) { btn.disabled = true; btn.textContent = uiT('playing.locking_in') || 'Locking in...'; }
     try {
       var r = await api('/api/friend-submit-guess', { method: 'POST', body: { code: code, playerId: pid, guess: guess } });
       if (r.status === 200 && r.body && r.body.ok) {
@@ -1032,7 +1057,7 @@
     if (!pendingPick) return;
     var code = load(K.code, ''), pid = load(K.playerId, '');
     var truth = pendingPick;
-    var btn = $('reveal-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Revealing...'; }
+    var btn = $('reveal-btn'); if (btn) { btn.disabled = true; btn.textContent = uiT('playing.revealing') || 'Revealing...'; }
     try {
       var r = await api('/api/friend-submit-truth', { method: 'POST', body: { code: code, playerId: pid, truth: truth } });
       if (r.status === 200 && r.body && r.body.ok) {
@@ -1056,7 +1081,7 @@
   }
 
   async function hostRematchAct() {
-    var btn = $('rematch-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Starting rematch...'; }
+    var btn = $('rematch-btn'); if (btn) { btn.disabled = true; btn.textContent = uiT('game_over.starting_rematch') || 'Starting rematch...'; }
     try {
       var r = await api('/api/friend-rematch', {
         method: 'POST',
@@ -1067,18 +1092,18 @@
         renderRoom(lastRoom);
       } else {
         alert('Could not start rematch: ' + ((r.body && r.body.error) || 'unknown'));
-        if (btn) { btn.disabled = false; btn.textContent = 'Rematch (Same Teams) →'; }
+        if (btn) { btn.disabled = false; btn.textContent = uiT('game_over.rematch_button') || 'Rematch (Same Teams) →'; }
       }
     } catch (e) {
       alert('Network error starting rematch.');
-      if (btn) { btn.disabled = false; btn.textContent = 'Rematch (Same Teams) →'; }
+      if (btn) { btn.disabled = false; btn.textContent = uiT('game_over.rematch_button') || 'Rematch (Same Teams) →'; }
     }
   }
 
   async function nextCardAct() {
     var code = load(K.code, ''), pid = load(K.playerId, '');
-    var btn = $('next-card-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Advancing...'; }
-    var dbtn = $('done-talking-btn'); if (dbtn) { dbtn.disabled = true; dbtn.textContent = 'Advancing...'; }
+    var btn = $('next-card-btn'); if (btn) { btn.disabled = true; btn.textContent = uiT('playing.advancing') || 'Advancing...'; }
+    var dbtn = $('done-talking-btn'); if (dbtn) { dbtn.disabled = true; dbtn.textContent = uiT('playing.advancing') || 'Advancing...'; }
     try {
       var r = await api('/api/friend-next-card', { method: 'POST', body: { code: code, playerId: pid } });
       if (r.status === 200 && r.body && r.body.ok) {
@@ -1087,8 +1112,8 @@
       } else {
         var msg = (r.body && r.body.error) || 'unknown';
         alert('Could not advance: ' + msg);
-        if (btn) { btn.disabled = false; btn.textContent = 'Next Card →'; }
-        if (dbtn) { dbtn.disabled = false; dbtn.textContent = 'Done Sharing'; }
+        if (btn) { btn.disabled = false; btn.textContent = uiT('playing.next_card') || 'Next Card →'; }
+        if (dbtn) { dbtn.disabled = false; dbtn.textContent = uiT('playing.done_sharing') || 'Done Sharing'; }
       }
     } catch (e) {
       alert('Network error advancing.');
@@ -1101,7 +1126,7 @@
   async function finishExplainAct() {
     var code = load(K.code, ''), pid = load(K.playerId, '');
     var cardId = lastRoom && lastRoom.currentCardId;
-    var btn = $('explain-done-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Advancing...'; }
+    var btn = $('explain-done-btn'); if (btn) { btn.disabled = true; btn.textContent = uiT('explain.advancing') || 'Advancing...'; }
     try {
       var r = await api('/api/friend-finish-explain', { method: 'POST', body: { code: code, playerId: pid, cardId: cardId } });
       if (r.status === 200 && r.body && r.body.ok) {
@@ -1110,11 +1135,11 @@
       } else {
         var msg = (r.body && r.body.error) || 'unknown';
         alert('Could not advance: ' + msg);
-        if (btn) { btn.disabled = false; btn.textContent = 'Done. Next card. →'; }
+        if (btn) { btn.disabled = false; btn.textContent = uiT('explain.done_button') || 'Done. Next card. →'; }
       }
     } catch (e) {
       alert('Network error advancing.');
-      if (btn) { btn.disabled = false; btn.textContent = 'Done. Next card. →'; }
+      if (btn) { btn.disabled = false; btn.textContent = uiT('explain.done_button') || 'Done. Next card. →'; }
     }
   }
 
@@ -1240,7 +1265,7 @@
     if (gender !== 'male' && gender !== 'female') { showErr('host-name-err', 'Pick Male or Female to continue.'); return; }
     save(K.name, name);
     var btn = $('host-create-btn') || document.querySelector('[data-action="host-create"]');
-    if (btn) { btn.disabled = true; btn.textContent = 'Creating...'; }
+    if (btn) { btn.disabled = true; btn.textContent = uiT('host_setup.creating') || 'Creating...'; }
     try {
       var r = await api('/api/friend-create-room', { method: 'POST', body: { hostName: name, gender: gender } });
       if (r.status === 200 && r.body && r.body.ok) {
@@ -1254,7 +1279,7 @@
         showErr('host-name-err', 'Could not create the room. Try again in a moment.');
       }
     } finally {
-      if (btn) { btn.disabled = false; btn.textContent = 'Create Room'; }
+      if (btn) { btn.disabled = false; btn.textContent = uiT('host_setup.submit') || 'Create Room'; }
     }
   }
 
@@ -1268,7 +1293,7 @@
     if (gender !== 'male' && gender !== 'female') { showErr('join-err', 'Pick Male or Female to continue.'); return; }
     save(K.name, name);
     var btn = $('join-go-btn') || document.querySelector('[data-action="join-go"]');
-    if (btn) { btn.disabled = true; btn.textContent = 'Joining...'; }
+    if (btn) { btn.disabled = true; btn.textContent = uiT('join_setup.joining') || 'Joining...'; }
     try {
       var r = await api('/api/friend-join-room', { method: 'POST', body: { code: code, name: name, gender: gender } });
       if (r.status === 200 && r.body && r.body.ok) {
@@ -1287,7 +1312,7 @@
         showErr('join-err', msg);
       }
     } finally {
-      if (btn) { btn.disabled = false; btn.textContent = 'Join Room'; }
+      if (btn) { btn.disabled = false; btn.textContent = uiT('join_setup.submit') || 'Join Room'; }
     }
   }
 
@@ -1372,7 +1397,7 @@
   // Host taps Pair Up. Calls the backend to transition lobby -> pairing.
   // All other devices pick up the new phase via their 2-second poll.
   async function hostStart() {
-    var btn = $('start-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Pairing...'; }
+    var btn = $('start-btn'); if (btn) { btn.disabled = true; btn.textContent = uiT('lobby.pairing') || 'Pairing...'; }
     try {
       var r = await api('/api/friend-start-pairing', {
         method: 'POST',
@@ -1386,11 +1411,11 @@
         if (msg === 'odd_player_count') msg = 'The game needs an even number of players. Remove or add one.';
         if (msg === 'too_few_players') msg = 'Need at least 4 players to start.';
         alert('Could not start pairing: ' + msg);
-        if (btn) { btn.disabled = false; btn.textContent = 'Pair Up →'; }
+        if (btn) { btn.disabled = false; btn.textContent = uiT('lobby.start_button') || 'Pair Up →'; }
       }
     } catch (err) {
       alert('Network error. Try again.');
-      if (btn) { btn.disabled = false; btn.textContent = 'Pair Up →'; }
+      if (btn) { btn.disabled = false; btn.textContent = uiT('lobby.start_button') || 'Pair Up →'; }
     }
   }
 
@@ -1460,7 +1485,7 @@
 
   // Host taps Start the Game after everyone is paired.
   async function hostStartGame() {
-    var btn = $('start-game-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Starting...'; }
+    var btn = $('start-game-btn'); if (btn) { btn.disabled = true; btn.textContent = uiT('team_setup.starting') || 'Starting...'; }
     try {
       var r = await api('/api/friend-start-game', {
         method: 'POST',
@@ -1472,11 +1497,11 @@
       } else {
         var msg = (r.body && r.body.error) || 'unknown';
         alert('Could not start game: ' + msg);
-        if (btn) { btn.disabled = false; btn.textContent = 'Start the Game'; }
+        if (btn) { btn.disabled = false; btn.textContent = uiT('team_setup.start_button') || 'Start the Game'; }
       }
     } catch (err) {
       alert('Network error. Try again.');
-      if (btn) { btn.disabled = false; btn.textContent = 'Start the Game'; }
+      if (btn) { btn.disabled = false; btn.textContent = uiT('team_setup.start_button') || 'Start the Game'; }
     }
   }
 

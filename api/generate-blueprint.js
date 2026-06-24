@@ -1067,17 +1067,17 @@ async function sendCouplesMapEmail(primaryPayload, secondaryPayload, mapUrl) {
 <body style="font-family: Inter, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 2rem; color: #07071a;">
   <h1 style="font-family: 'Playfair Display', Georgia, serif; color: #07071a; font-size: 28px;">${primaryName} and ${secondaryName}, your Couples Connection Map is ready.</h1>
 
-  <p>You both finished your individual Blueprints. This is the next piece: a Connection Map built from both of your results, showing where the two of you align, where you speak different languages, and how to bridge the gaps.</p>
+  <p>You both finished your individual Blueprints. This is the next set of plans. The Connection Map shows where your two designs line up, where they speak past each other, and where the bridges go.</p>
 
   <p style="text-align: center; margin: 2rem 0;">
-    <a href="${mapUrl}" style="display: inline-block; background: #07071a; color: #d4a957; padding: 14px 32px; text-decoration: none; font-weight: 600; border-radius: 4px;">View Your Couples Connection Map</a>
+    <a href="${mapUrl}" style="display: inline-block; background: #07071a; color: #d4a957; padding: 14px 32px; text-decoration: none; font-weight: 600; border-radius: 4px;">Open Your Connection Map</a>
   </p>
 
-  <p>Read it together. The most useful conversations come from the "Where You Speak Different Languages" and "How to Bridge the Gaps" sections, and the 30-60-90 Day Plan gives you concrete steps to start on.</p>
+  <p>Read it together. The most useful conversations live in the "Where You Speak Different Languages" and "How to Bridge the Gaps" sections. The 30-60-90 Day Plan gives you the next concrete steps.</p>
 
   <p>Reply to this email if you have questions. I read everything.</p>
 
-  <p style="margin-top: 2rem;">Dennis Nickens<br>Behavioral and Alignment Consultant<br>dennisnickens.com</p>
+  <p style="margin-top: 2rem;">Dennis Nickens, AKA Spiritual Romeo<br>The Relationship Architect<br>dennisnickens.com</p>
 </body>
 </html>`;
 
@@ -1155,7 +1155,7 @@ async function sendBlueprintEmail(payload, blueprintUrl) {
   const firstName = payload.first_name || 'Friend';
   const email = payload.email;
 
-  const subject = `${firstName}, your Alignment Blueprint is ready`;
+  const subject = `${firstName}, your Spiritual Romeo Blueprint is ready`;
 
   const htmlBody = `
 <!DOCTYPE html>
@@ -1164,25 +1164,25 @@ async function sendBlueprintEmail(payload, blueprintUrl) {
 <body style="font-family: Inter, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 2rem; color: #07071a;">
   <h1 style="font-family: 'Playfair Display', Georgia, serif; color: #07071a; font-size: 28px;">${firstName}, your Blueprint is ready.</h1>
 
-  <p>You just finished The Blueprint Assessment. Your personalized Blueprint, all six pillars analyzed and synthesized into a complete map of how you are wired, is now ready to read.</p>
+  <p>You finished. The plans of how you are wired, drawn from your actual answers across all six pillars, are ready to read.</p>
 
   <p style="text-align: center; margin: 2rem 0;">
-    <a href="${blueprintUrl}" style="display: inline-block; background: #07071a; color: #d4a957; padding: 14px 32px; text-decoration: none; font-weight: 600; border-radius: 4px;">View Your Alignment Blueprint</a>
+    <a href="${blueprintUrl}" style="display: inline-block; background: #07071a; color: #d4a957; padding: 14px 32px; text-decoration: none; font-weight: 600; border-radius: 4px;">Open Your Blueprint</a>
   </p>
 
-  <p>Bookmark the link. Your Blueprint stays available, you can come back to it any time you need a reminder of who you are and how you work best.</p>
+  <p>Bookmark the link. Your blueprint stays on file. Come back to it any time you need to remember how you are wired and where you work best.</p>
 
   <p>What to do next:</p>
 
   <ul>
-    <li>Read your Blueprint end to end at least once. The pillars connect in ways that only land when you see the whole picture.</li>
-    <li>Pay attention to Section 7 (Misalignment Map) and Section 8 (Strategic Recommendations). That is where the practical leverage lives.</li>
+    <li>Read it end to end at least once. The pillars connect in ways that only land when you see the whole drawing.</li>
+    <li>Pay attention to Section 7 (Misalignment Map) and Section 8 (Strategic Recommendations). That is where the load-bearing decisions are.</li>
     <li>Start the 30-Day Plan in Section 9 when you are ready. Small, doable steps.</li>
   </ul>
 
   <p>Reply to this email if you have questions. I read everything.</p>
 
-  <p style="margin-top: 2rem;">Dennis Nickens<br>Behavioral and Alignment Consultant<br>dennisnickens.com</p>
+  <p style="margin-top: 2rem;">Dennis Nickens, AKA Spiritual Romeo<br>The Relationship Architect<br>dennisnickens.com</p>
 </body>
 </html>`;
 
@@ -1613,8 +1613,8 @@ async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs
 // The master prompt closes with a blockquote: the "I help people understand the
 // person in the mirror..." line, then the signoff name and title on the next two
 // lines. marked renders those two name/title lines as a single paragraph (a single
-// newline collapses to a space, so "Dennis Nickens ... Behavioral and Alignment
-// Consultant" runs together on one line). This rebuilds that closing blockquote as a
+// newline collapses to a space, so "Dennis Nickens ... The Relationship Architect"
+// runs together on one line). This rebuilds that closing blockquote as a
 // centered signoff block: the name in Dancing Script (gold), the title below it in
 // Inter (smaller, muted), each on its own line.
 function styleClosingSignoff(html) {
@@ -1622,7 +1622,7 @@ function styleClosingSignoff(html) {
   // model-generated and varies, so we capture whatever the first paragraph holds and
   // keep it above the signoff rather than trying to match its exact wording.
   return html.replace(
-    /<blockquote>[\s\S]*?Behavioral and Alignment Consultant[\s\S]*?<\/blockquote>/i,
+    /<blockquote>[\s\S]*?The Relationship Architect[\s\S]*?<\/blockquote>/i,
     (block) => {
       const quoteMatch = block.match(/<p>([\s\S]*?)<\/p>/i);
       const quote = quoteMatch
@@ -1631,7 +1631,7 @@ function styleClosingSignoff(html) {
       const quoteHtml = quote ? `<p class="blueprint-signoff-quote">${quote}</p>\n  ` : '';
       return `<div class="blueprint-signoff">
   ${quoteHtml}<span class="blueprint-signoff-name">Dennis Nickens <em>(aka Spiritual Romeo)</em></span>
-  <span class="blueprint-signoff-title">Behavioral and Alignment Consultant</span>
+  <span class="blueprint-signoff-title">The Relationship Architect</span>
 </div>`;
     }
   );

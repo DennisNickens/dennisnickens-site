@@ -1,0 +1,336 @@
+{
+  "deck_name": "You Call Yourself A Friend (Sample)",
+  "subtitle": "A 12-card free sample",
+  "author": "Dennis Nickens, AKA Spiritual Romeo",
+  "ui": {
+    "lang": "en",
+    "subject_word": "your friend",
+    "splash": {
+      "badge": "12-card free sample",
+      "begin": "Begin"
+    },
+    "lead": {
+      "title": "Save your spot",
+      "sub": "Drop your name and number so we can send you the full game when it drops.",
+      "first_label": "First name",
+      "first_ph": "e.g. Brandi",
+      "phone_label": "Phone number",
+      "phone_ph": "(555) 123-4567",
+      "tcpa": "By submitting, you agree to receive SMS messages from Spiritual Romeo. Message and data rates may apply. Reply STOP to unsubscribe.",
+      "submit": "Get the Sample",
+      "saving": "Saving..."
+    },
+    "welcome": {
+      "title": "Before You Start",
+      "body": [
+        "This is a 12-card taste of You Call Yourself A Friend. The real game is multiplayer: you pair up, race to 25, and find out who actually knows you.",
+        "Right here, you are just browsing. One card at a time. As you read each one, picture a specific friend and ask yourself: would they know my answer? Would I know theirs?",
+        "No score. No teams. Just the questions, and the people they make you think about."
+      ],
+      "signoff": "Dennis Nickens, AKA Spiritual Romeo",
+      "ready": "I'm Ready"
+    },
+    "card": {
+      "next": "Next Card",
+      "of": "of",
+      "type_label": "4 options"
+    },
+    "done": {
+      "title": "That is the sample.",
+      "sub": "The full game turns cards like these into a live, multiplayer race.",
+      "note": "In the real game everyone pairs up and races to 25. One person locks in their truth, their partner guesses, and points ride on how well you actually know each other. Three depths, from light to deep.",
+      "cta": "Get the Full Game",
+      "reshuffle": "Play the Sample Again"
+    }
+  },
+  "cards": [
+    {
+      "id": 113,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "[Subject]'s favorite season is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Spring"
+        },
+        {
+          "letter": "B",
+          "text": "Summer"
+        },
+        {
+          "letter": "C",
+          "text": "Fall"
+        },
+        {
+          "letter": "D",
+          "text": "Winter"
+        }
+      ]
+    },
+    {
+      "id": 117,
+      "theme": "Free Time",
+      "type": "mc4",
+      "text": "[Subject]'s default Friday night is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Out with friends"
+        },
+        {
+          "letter": "B",
+          "text": "Date night or one-on-one time"
+        },
+        {
+          "letter": "C",
+          "text": "Home with a show or book"
+        },
+        {
+          "letter": "D",
+          "text": "Working on something they care about"
+        }
+      ]
+    },
+    {
+      "id": 119,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject]'s coffee order is closest to:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Black or barely altered"
+        },
+        {
+          "letter": "B",
+          "text": "Sweet and creamy"
+        },
+        {
+          "letter": "C",
+          "text": "Iced no matter the weather"
+        },
+        {
+          "letter": "D",
+          "text": "Tea, actually"
+        }
+      ]
+    },
+    {
+      "id": 122,
+      "theme": "Tastes",
+      "type": "mc4",
+      "text": "[Subject] decorates a space to feel:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Warm and lived-in"
+        },
+        {
+          "letter": "B",
+          "text": "Clean and uncluttered"
+        },
+        {
+          "letter": "C",
+          "text": "Personal and full of meaning"
+        },
+        {
+          "letter": "D",
+          "text": "Bold and expressive"
+        }
+      ]
+    },
+    {
+      "id": 125,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "People come to [Subject] when they need:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A clear answer to a hard question"
+        },
+        {
+          "letter": "B",
+          "text": "Someone to listen and not fix"
+        },
+        {
+          "letter": "C",
+          "text": "Help getting something done"
+        },
+        {
+          "letter": "D",
+          "text": "A laugh and a reset"
+        }
+      ]
+    },
+    {
+      "id": 129,
+      "theme": "Strengths",
+      "type": "mc4",
+      "text": "When [Subject] makes a mistake, they:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Own it fast and move forward"
+        },
+        {
+          "letter": "B",
+          "text": "Sit with it before saying anything"
+        },
+        {
+          "letter": "C",
+          "text": "Make it right with action"
+        },
+        {
+          "letter": "D",
+          "text": "Need a beat alone before talking about it"
+        }
+      ]
+    },
+    {
+      "id": 132,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "[Subject]'s bucket-list trip is closest to:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A long stretch of nature, hiking or camping"
+        },
+        {
+          "letter": "B",
+          "text": "A historic city, walking and eating"
+        },
+        {
+          "letter": "C",
+          "text": "A beach where nothing happens for a week"
+        },
+        {
+          "letter": "D",
+          "text": "Somewhere none of their people have been"
+        }
+      ]
+    },
+    {
+      "id": 136,
+      "theme": "Dreams",
+      "type": "mc4",
+      "text": "[Subject]'s big dream most days is:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Build something that outlives them"
+        },
+        {
+          "letter": "B",
+          "text": "Be deeply present with the people they love"
+        },
+        {
+          "letter": "C",
+          "text": "Become the version of themselves they keep glimpsing"
+        },
+        {
+          "letter": "D",
+          "text": "Make a real difference in something they care about"
+        }
+      ]
+    },
+    {
+      "id": 137,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "[Subject] would describe themselves as:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Loyal first"
+        },
+        {
+          "letter": "B",
+          "text": "Honest first"
+        },
+        {
+          "letter": "C",
+          "text": "Generous first"
+        },
+        {
+          "letter": "D",
+          "text": "Steady first"
+        }
+      ]
+    },
+    {
+      "id": 141,
+      "theme": "Values",
+      "type": "mc4",
+      "text": "[Subject]'s faith or spiritual life is mostly:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Central and visible to the people around them"
+        },
+        {
+          "letter": "B",
+          "text": "Real but private"
+        },
+        {
+          "letter": "C",
+          "text": "Something they're still working out"
+        },
+        {
+          "letter": "D",
+          "text": "Practiced through how they treat people"
+        }
+      ]
+    },
+    {
+      "id": 144,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "The friend [Subject] keeps closest is usually:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "The one who's known them the longest"
+        },
+        {
+          "letter": "B",
+          "text": "The one who's the most honest"
+        },
+        {
+          "letter": "C",
+          "text": "The one who matches their energy"
+        },
+        {
+          "letter": "D",
+          "text": "The one who never lets them shrink"
+        }
+      ]
+    },
+    {
+      "id": 146,
+      "theme": "Friendship",
+      "type": "mc4",
+      "text": "[Subject] reaches out to friends:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Constantly, low-effort touches"
+        },
+        {
+          "letter": "B",
+          "text": "Sporadically but deep when they do"
+        },
+        {
+          "letter": "C",
+          "text": "When something specific comes up"
+        },
+        {
+          "letter": "D",
+          "text": "Less than they wish they did"
+        }
+      ]
+    }
+  ]
+}

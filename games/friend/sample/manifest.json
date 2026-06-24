@@ -1,0 +1,15 @@
+{
+  "name": "You Call Yourself A Friend (Sample)",
+  "short_name": "Friend Sample",
+  "description": "A free 12-card sample of You Call Yourself A Friend, by Dennis Nickens.",
+  "start_url": "/games/friend/sample/",
+  "scope": "/games/friend/sample/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#08111f",
+  "theme_color": "#08111f",
+  "icons": [
+    { "src": "../icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "../icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

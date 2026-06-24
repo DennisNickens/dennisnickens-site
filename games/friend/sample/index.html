@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>You Call Yourself A Friend (Sample) | A Game of Knowing Your People</title>
+<meta name="description" content="A free 12-card sample of You Call Yourself A Friend. The full game is a real-time multiplayer race to find out who actually knows your people." />
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#08111f" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="You Call Yourself A Friend" />
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../icons/icon-192.png" />
+
+<!-- Fonts (match the full game exactly) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Reuse the full game's stylesheet so the sample matches it exactly -->
+<link rel="stylesheet" href="../style.css" />
+<style>
+  /* Sample-only chrome. Reuses the parent tokens (--bg, --coral, --sun,
+     --cream, --ff, --fn) so it reads as the same product, not a foreign page. */
+  .smp-badge{
+    margin:1rem auto 0;display:inline-block;
+    font-family:var(--fn);font-weight:600;
+    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--sun);
+    padding:.4rem 1rem;border:1px solid rgba(255,210,74,.42);border-radius:999px;
+  }
+  /* Generic centered column used by lead / language / welcome / done. */
+  .smp-col{
+    width:100%;max-width:30rem;margin:0 auto;padding:1.5rem;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    gap:.35rem;
+  }
+  .smp-h1{font-family:var(--ff);font-weight:800;color:var(--cream);font-size:1.7rem;margin:.2rem 0 .3rem;}
+  .smp-sub{font-family:var(--fn);color:var(--cream-mute);line-height:1.5;font-size:.98rem;margin-bottom:.5rem;}
+  .smp-note-sm{font-family:var(--fn);color:var(--cream-faint);font-size:.78rem;line-height:1.5;}
+  /* Lead form */
+  #lead-form{width:100%;display:flex;flex-direction:column;text-align:left;gap:.1rem;margin-top:.4rem;}
+  .smp-tcpa{font-family:var(--fn);color:var(--cream-faint);font-size:.72rem;line-height:1.5;margin:.7rem 0 .3rem;}
+  .smp-error{font-family:var(--fn);color:var(--coral);font-size:.84rem;margin:.3rem 0;}
+  #lead-form .btn{margin-top:.6rem;width:100%;}
+  /* Language picker */
+  .smp-lang-grid{display:flex;flex-direction:column;gap:.6rem;width:100%;margin:.8rem 0 .4rem;}
+  .smp-lang-grid .btn{width:100%;}
+  /* Welcome sheet body */
+  .smp-welcome-body p{font-family:var(--fn);color:var(--cream-mute);line-height:1.6;margin:.55rem 0;font-size:.98rem;text-align:left;}
+  .smp-signoff{font-family:var(--ff);font-style:italic;color:var(--cream-faint);font-size:.9rem;margin:.6rem 0 1rem;}
+  /* Card screen layout */
+  #screen-card{display:flex;flex-direction:column;}
+  .smp-topbar{display:flex;align-items:center;padding:.8rem 1rem .2rem;width:100%;max-width:40rem;margin:0 auto;box-sizing:border-box;}
+  .smp-icon-btn{
+    -webkit-appearance:none;appearance:none;background:transparent;border:1px solid var(--line);
+    color:var(--cream-mute);width:42px;height:42px;border-radius:10px;cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .smp-icon-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .smp-card-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;width:100%;max-width:34rem;margin:0 auto;padding:.5rem 1rem;box-sizing:border-box;}
+  /* The options are read-only in the sample (it is a browse, not a real round). */
+  #screen-card .answer-grid{margin-top:1rem;}
+  #screen-card .answer-tile{cursor:default;}
+  .smp-card-bottom{display:flex;flex-direction:column;align-items:center;gap:.6rem;padding:.6rem 1rem 1.4rem;width:100%;max-width:34rem;margin:0 auto;box-sizing:border-box;}
+  .smp-progress{font-family:var(--fn);color:var(--cream-faint);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;}
+  .smp-card-bottom .btn{width:100%;}
+  /* Completion CTA */
+  .smp-cta{
+    display:inline-block;margin:1.2rem 0 .2rem;text-decoration:none;
+    -webkit-appearance:none;appearance:none;
+    background:linear-gradient(135deg,var(--coral),var(--coral-2));
+    color:#08111f;font-family:var(--fn);font-weight:700;
+    font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:1rem 2rem;border-radius:10px;box-shadow:0 10px 28px rgba(232,92,26,.3);
+  }
+  .smp-cta:hover{transform:translateY(-2px);}
+</style>
+</head>
+<body>
+
+<!-- ================= SPLASH ================= -->
+<section id="screen-splash" class="screen" aria-label="Welcome">
+  <div class="confetti" aria-hidden="true">
+    <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
+    <span class="dot d4"></span><span class="dot d5"></span><span class="dot d6"></span>
+    <span class="dot d7"></span><span class="dot d8"></span><span class="dot d9"></span>
+    <span class="dot d10"></span><span class="dot d11"></span><span class="dot d12"></span>
+  </div>
+  <div class="router-inner">
+    <div class="router-cover">
+      <img src="../../../images/you-call-yourself-a-friend-cover.jpg" alt="You Call Yourself A Friend game box, by Dennis Nickens" />
+    </div>
+    <p class="brand-eyebrow" id="splash-eyebrow">A free sample of</p>
+    <h1 class="brand-title">You Call Yourself A Friend</h1>
+    <span class="smp-badge" id="splash-badge">12-card free sample</span>
+    <div class="router-actions">
+      <button class="btn btn-primary" data-action="begin" id="splash-begin">Begin</button>
+    </div>
+    <p class="brand-byline">by Dennis Nickens, AKA Spiritual Romeo</p>
+  </div>
+</section>
+
+<!-- ================= LEAD CAPTURE ================= -->
+<section id="screen-lead" class="screen" aria-label="Save your spot" hidden>
+  <div class="smp-col">
+    <h1 class="smp-h1" id="lead-title">Save your spot</h1>
+    <p class="smp-sub" id="lead-sub">Drop your name and number so we can send you the full game when it drops.</p>
+    <form id="lead-form" autocomplete="on">
+      <label class="field-label" for="lead-first-name" id="lead-first-label">First name</label>
+      <input class="text-input" type="text" id="lead-first-name" name="firstName" placeholder="e.g. Brandi" required autocomplete="given-name" maxlength="40" />
+      <label class="field-label" for="lead-phone" id="lead-phone-label">Phone number</label>
+      <input class="text-input" type="tel" id="lead-phone" name="phone" placeholder="(555) 123-4567" required autocomplete="tel" inputmode="tel" />
+      <p class="smp-tcpa" id="lead-tcpa">By submitting, you agree to receive SMS messages from Spiritual Romeo. Message and data rates may apply. Reply STOP to unsubscribe.</p>
+      <p class="smp-error" id="lead-error" hidden></p>
+      <button class="btn btn-primary" type="submit" data-action="submit-lead" id="lead-submit">Get the Sample</button>
+    </form>
+  </div>
+</section>
+
+<!-- ================= LANGUAGE PICKER ================= -->
+<section id="screen-language" class="screen" aria-label="Choose your language / Elige tu idioma" hidden>
+  <div class="smp-col">
+    <h1 class="smp-h1">Choose Your Language</h1>
+    <p class="smp-sub">Elige Tu Idioma</p>
+    <div class="smp-lang-grid">
+      <button class="btn btn-primary" data-action="lang-en">English</button>
+      <button class="btn btn-primary" data-action="lang-es">Español</button>
+    </div>
+    <p class="smp-note-sm">You can change this later. Puedes cambiarlo después.</p>
+  </div>
+</section>
+
+<!-- ================= WELCOME CARD ================= -->
+<section id="screen-welcome" class="screen" aria-label="Before You Start" hidden>
+  <div class="smp-col">
+    <h2 class="smp-h1" id="welcome-title">Before You Start</h2>
+    <div class="smp-welcome-body" id="welcome-body"></div>
+    <p class="smp-signoff" id="welcome-signoff"><em>Dennis Nickens, AKA Spiritual Romeo</em></p>
+    <button class="btn btn-primary" data-action="ready" id="welcome-ready" style="width:100%;">I'm Ready</button>
+  </div>
+</section>
+
+<!-- ================= CARD VIEW ================= -->
+<section id="screen-card" class="screen" aria-label="Card" hidden>
+  <div class="smp-topbar">
+    <button class="smp-icon-btn" data-action="back" aria-label="Previous card" id="btn-back">
+      <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg>
+    </button>
+    <span style="flex:1"></span>
+    <button class="smp-icon-btn" data-action="home-sample" aria-label="Home">
+      <svg viewBox="0 0 24 24"><path d="M3 11.5L12 4l9 7.5"/><path d="M5.5 10v9h13v-9"/></svg>
+    </button>
+  </div>
+
+  <div class="smp-card-wrap">
+    <div class="card-frame">
+      <div class="card-frame-head">
+        <p class="card-theme" id="card-theme">Theme</p>
+        <span class="card-type-label" id="card-type-label"></span>
+      </div>
+      <p class="card-text" id="card-text"></p>
+      <ul class="answer-grid" id="answer-grid"></ul>
+    </div>
+  </div>
+
+  <div class="smp-card-bottom">
+    <div class="smp-progress" id="progress-count"></div>
+    <button class="btn btn-primary" data-action="next" id="next-btn">Next Card</button>
+  </div>
+</section>
+
+<!-- ================= COMPLETION ================= -->
+<section id="screen-done" class="screen" aria-label="End of sample" hidden>
+  <div class="smp-col">
+    <h2 class="smp-h1" id="done-title">That is the sample.</h2>
+    <p class="smp-sub" id="done-sub">The full game turns cards like these into a live, multiplayer race.</p>
+    <p class="smp-note-sm" id="done-note"></p>
+    <a class="smp-cta" id="done-cta" href="/store">Get the Full Game</a>
+    <button class="btn btn-ghost" data-action="reshuffle" id="done-reshuffle" style="margin-top:1rem;">Play the Sample Again</button>
+  </div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+{
+  "deck_name": "You Call Yourself A Friend (Muestra)",
+  "subtitle": "Muestra gratis de 12 cartas",
+  "author": "Dennis Nickens, AKA Spiritual Romeo",
+  "ui": {
+    "lang": "es",
+    "subject_word": "esa persona",
+    "splash": {
+      "badge": "Muestra gratis de 12 cartas",
+      "begin": "Empezar"
+    },
+    "lead": {
+      "title": "Aparta tu lugar",
+      "sub": "Déjanos tu nombre y número para enviarte el juego completo cuando salga.",
+      "first_label": "Nombre",
+      "first_ph": "ej. Brandi",
+      "phone_label": "Número de teléfono",
+      "phone_ph": "(555) 123-4567",
+      "tcpa": "Al enviar, aceptas recibir mensajes SMS de Spiritual Romeo. Pueden aplicar tarifas de mensajes y datos. Responde STOP para cancelar.",
+      "submit": "Obtener la muestra",
+      "saving": "Guardando..."
+    },
+    "welcome": {
+      "title": "Antes de Empezar",
+      "body": [
+        "Esta es una muestra de 12 cartas de You Call Yourself A Friend. El juego real es multijugador: se emparejan, corren a 25 y descubren quién de verdad te conoce.",
+        "Aquí solo estás explorando. Una carta a la vez. Mientras lees cada una, piensa en un amigo en concreto y pregúntate: ¿sabría mi respuesta? ¿Sabría yo la suya?",
+        "Sin puntaje. Sin equipos. Solo las preguntas, y las personas en las que te hacen pensar."
+      ],
+      "signoff": "Dennis Nickens, AKA Spiritual Romeo",
+      "ready": "Estoy listo"
+    },
+    "card": {
+      "next": "Siguiente carta",
+      "of": "de",
+      "type_label": "4 opciones"
+    },
+    "done": {
+      "title": "Esa es la muestra.",
+      "sub": "El juego completo convierte cartas como estas en una carrera multijugador en vivo.",
+      "note": "En el juego real todos se emparejan y corren a 25. Una persona fija su verdad, su pareja adivina, y los puntos dependen de qué tan bien se conocen de verdad. Tres niveles, de ligero a profundo.",
+      "cta": "Obtener el juego completo",
+      "reshuffle": "Jugar la muestra otra vez"
+    }
+  },
+  "cards": [
+    {
+      "id": 113,
+      "theme": "Tiempo Libre",
+      "type": "mc4",
+      "text": "La estación favorita de [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Primavera"
+        },
+        {
+          "letter": "B",
+          "text": "Verano"
+        },
+        {
+          "letter": "C",
+          "text": "Otoño"
+        },
+        {
+          "letter": "D",
+          "text": "Invierno"
+        }
+      ]
+    },
+    {
+      "id": 117,
+      "theme": "Tiempo Libre",
+      "type": "mc4",
+      "text": "La noche típica de viernes de [Subject] es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Salir con amigos"
+        },
+        {
+          "letter": "B",
+          "text": "Cita romántica o tiempo a solas en pareja"
+        },
+        {
+          "letter": "C",
+          "text": "En casa con una serie o un libro"
+        },
+        {
+          "letter": "D",
+          "text": "Trabajando en algo que les importa"
+        }
+      ]
+    },
+    {
+      "id": 119,
+      "theme": "Gustos",
+      "type": "mc4",
+      "text": "El pedido de café de [Subject] se parece más a:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Negro o casi sin modificar"
+        },
+        {
+          "letter": "B",
+          "text": "Dulce y cremoso"
+        },
+        {
+          "letter": "C",
+          "text": "Helado sin importar el clima"
+        },
+        {
+          "letter": "D",
+          "text": "En realidad, té"
+        }
+      ]
+    },
+    {
+      "id": 122,
+      "theme": "Gustos",
+      "type": "mc4",
+      "text": "[Subject] decora un espacio para que se sienta:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cálido y vivido"
+        },
+        {
+          "letter": "B",
+          "text": "Limpio y despejado"
+        },
+        {
+          "letter": "C",
+          "text": "Personal y lleno de significado"
+        },
+        {
+          "letter": "D",
+          "text": "Audaz y expresivo"
+        }
+      ]
+    },
+    {
+      "id": 125,
+      "theme": "Fortalezas",
+      "type": "mc4",
+      "text": "La gente acude a [Subject] cuando necesita:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una respuesta clara a una pregunta difícil"
+        },
+        {
+          "letter": "B",
+          "text": "Alguien que escuche sin tratar de arreglar"
+        },
+        {
+          "letter": "C",
+          "text": "Ayuda para terminar algo"
+        },
+        {
+          "letter": "D",
+          "text": "Una risa y un reinicio"
+        }
+      ]
+    },
+    {
+      "id": 129,
+      "theme": "Fortalezas",
+      "type": "mc4",
+      "text": "Cuando [Subject] comete un error:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Lo asume rápido y sigue adelante"
+        },
+        {
+          "letter": "B",
+          "text": "Lo procesa antes de decir nada"
+        },
+        {
+          "letter": "C",
+          "text": "Lo corrige con acción"
+        },
+        {
+          "letter": "D",
+          "text": "Necesita un momento a solas antes de hablar de ello"
+        }
+      ]
+    },
+    {
+      "id": 132,
+      "theme": "Sueños",
+      "type": "mc4",
+      "text": "El viaje soñado de [Subject] se parece más a:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un tramo largo en la naturaleza, caminatas o acampada"
+        },
+        {
+          "letter": "B",
+          "text": "Una ciudad histórica, caminar y comer"
+        },
+        {
+          "letter": "C",
+          "text": "Una playa donde no pasa nada por una semana"
+        },
+        {
+          "letter": "D",
+          "text": "Un lugar donde nadie de los suyos ha estado"
+        }
+      ]
+    },
+    {
+      "id": 136,
+      "theme": "Sueños",
+      "type": "mc4",
+      "text": "El gran sueño de [Subject] la mayoría de los días es:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Construir algo que les sobreviva"
+        },
+        {
+          "letter": "B",
+          "text": "Estar profundamente presente con la gente que ama"
+        },
+        {
+          "letter": "C",
+          "text": "Convertirse en la versión de sí mismos que siguen vislumbrando"
+        },
+        {
+          "letter": "D",
+          "text": "Hacer una diferencia real en algo que les importa"
+        }
+      ]
+    },
+    {
+      "id": 137,
+      "theme": "Valores",
+      "type": "mc4",
+      "text": "[Subject] se describiría como:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Leal ante todo"
+        },
+        {
+          "letter": "B",
+          "text": "Honesto/a ante todo"
+        },
+        {
+          "letter": "C",
+          "text": "Generoso/a ante todo"
+        },
+        {
+          "letter": "D",
+          "text": "Firme ante todo"
+        }
+      ]
+    },
+    {
+      "id": 141,
+      "theme": "Valores",
+      "type": "mc4",
+      "text": "La vida de fe o espiritual de [Subject] es principalmente:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Central y visible para quienes los rodean"
+        },
+        {
+          "letter": "B",
+          "text": "Real pero privada"
+        },
+        {
+          "letter": "C",
+          "text": "Algo que aún están trabajando"
+        },
+        {
+          "letter": "D",
+          "text": "Practicada en cómo tratan a la gente"
+        }
+      ]
+    },
+    {
+      "id": 144,
+      "theme": "Amistad",
+      "type": "mc4",
+      "text": "El amigo más cercano para [Subject] suele ser:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El que los conoce desde hace más tiempo"
+        },
+        {
+          "letter": "B",
+          "text": "El más honesto"
+        },
+        {
+          "letter": "C",
+          "text": "El que iguala su energía"
+        },
+        {
+          "letter": "D",
+          "text": "El que nunca los deja encogerse"
+        }
+      ]
+    },
+    {
+      "id": 146,
+      "theme": "Amistad",
+      "type": "mc4",
+      "text": "[Subject] se comunica con sus amigos:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Constantemente, con mensajes pequeños"
+        },
+        {
+          "letter": "B",
+          "text": "Esporádicamente pero profundo cuando lo hace"
+        },
+        {
+          "letter": "C",
+          "text": "Cuando surge algo específico"
+        },
+        {
+          "letter": "D",
+          "text": "Menos de lo que les gustaría"
+        }
+      ]
+    }
+  ]
+}

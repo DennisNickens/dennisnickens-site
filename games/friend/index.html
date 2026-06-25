@@ -76,6 +76,39 @@
   </div>
 </section>
 
+<!-- ================= SCREEN: ACTIVATE (license gate, Start a Game only) ================= -->
+<section id="screen-activate" class="screen" aria-label="Activate your copy" hidden>
+  <div class="sheet">
+    <h2 class="sheet-title" data-i18n="activate.title">Activate Your Copy</h2>
+
+    <!-- Step 1: email -->
+    <div id="activate-step-email" class="activate-step">
+      <p class="sheet-lead" data-i18n="activate.email_lead">Enter the email you used to buy You Call Yourself A Friend. We will send you a 6-digit code to confirm this device.</p>
+      <label class="field-label" for="activate-email" data-i18n="activate.email_label">Email</label>
+      <input type="email" id="activate-email" class="text-input" autocomplete="email" inputmode="email" placeholder="you@example.com" />
+      <p class="error-text" id="activate-email-err" hidden></p>
+      <div class="sheet-actions">
+        <button class="btn btn-ghost" data-action="back-router" data-i18n="common.back">Back</button>
+        <button class="btn btn-primary" data-action="send-code" data-i18n="activate.send_code">Send My Code</button>
+      </div>
+      <p class="activate-help" style="margin-top:1rem;font-size:.85rem;line-height:1.5;color:var(--cream-mute);"><span data-i18n="activate.no_copy">Don't have a copy yet?</span> <a href="/store/you-call-yourself-a-friend.html" style="color:var(--sun);text-decoration:none;font-weight:600;" data-i18n="activate.get_one">Get one here.</a></p>
+    </div>
+
+    <!-- Step 2: code -->
+    <div id="activate-step-code" class="activate-step" hidden>
+      <p class="sheet-lead"><span data-i18n="activate.code_lead">Check your inbox. Enter the 6-digit code we just sent to</span> <span id="activate-email-echo" style="color:var(--sun);"></span>.</p>
+      <label class="field-label" for="activate-code" data-i18n="activate.code_label">6-digit code</label>
+      <input type="text" id="activate-code" class="text-input code-input" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" placeholder="123456" />
+      <p class="error-text" id="activate-code-err" hidden></p>
+      <div class="sheet-actions">
+        <button class="btn btn-ghost" data-action="back-to-email" data-i18n="activate.different_email">Use a different email</button>
+        <button class="btn btn-primary" data-action="verify-code" data-i18n="activate.verify">Activate</button>
+      </div>
+      <p class="activate-help" style="margin-top:1rem;font-size:.85rem;color:var(--cream-mute);"><button class="link-btn" data-action="resend-code" style="background:none;border:none;color:var(--sun);cursor:pointer;padding:0;font:inherit;" data-i18n="activate.resend">Resend code</button></p>
+    </div>
+  </div>
+</section>
+
 <!-- ================= SCREEN: LANGUAGE PICKER ================= -->
 <section id="screen-language" class="screen" aria-label="Choose your language / Elige tu idioma" hidden>
   <div class="lang-inner">
@@ -372,10 +405,16 @@
     <h2 class="game-over-title" id="game-over-title">We Have A Winner</h2>
     <p class="game-over-lead" id="game-over-lead"></p>
     <ul class="final-scores" id="final-scores"></ul>
-    <div class="game-over-actions">
-      <button class="btn btn-primary" id="rematch-btn" data-action="host-rematch" data-i18n="game_over.rematch_button" hidden>Rematch (Same Teams) &rarr;</button>
-      <button class="btn btn-ghost" data-action="leave-room" data-i18n="game_over.back_button">Back to Start</button>
-      <p class="game-over-host-note" id="game-over-host-note" data-i18n="game_over.host_note" hidden>Only the host can start a rematch.</p>
+    <!-- Host: start a fresh room (new code) or end the session -->
+    <div class="game-over-actions" id="go-host-actions" hidden>
+      <button class="btn btn-primary" id="start-another-btn" data-action="start-another" data-i18n="game_over.start_another">Start Another Game</button>
+      <button class="btn btn-ghost" data-action="end-session" data-i18n="game_over.end_session">End Session</button>
+    </div>
+    <!-- Joiner: thanks + upsell + leave (auto-disconnects after 30s) -->
+    <div class="game-over-actions" id="go-joiner-actions" hidden>
+      <p class="game-over-lead" id="go-joiner-msg" data-i18n="game_over.joiner_thanks">Thanks for playing! Want to host games like this yourself? Get You Call Yourself A Friend.</p>
+      <a class="btn btn-primary" id="go-buy-btn" href="/store/you-call-yourself-a-friend.html" data-i18n="game_over.get_game">Get the Game</a>
+      <button class="btn btn-ghost" data-action="leave-game" data-i18n="game_over.leave">Leave</button>
     </div>
   </div>
 </section>

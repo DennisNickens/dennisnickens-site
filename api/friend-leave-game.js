@@ -1,17 +1,15 @@
 /* ============================================================
-   POST /api/friend-rematch
+   POST /api/friend-leave-game
    ------------------------------------------------------------
-   Body: { code, hostId }
-   Returns: { ok, room } or { ok:false, error }
-   Errors: room_not_found, not_host, wrong_phase, pair_not_found
+   Body: { code, playerId }
+   Returns: { ok }
 
-   Host taps Rematch on the game-over screen. Same teams (icons,
-   names, members preserved), fresh deck, fresh pair turn order,
-   scores back to 0, subjectIndex back to 0 on every pair so the
-   alternation restarts. Routes back into the playing phase.
+   A joiner leaves at game-over (#82). Removes them from the room
+   roster server-side (enforced, not just a client hide). Called on
+   the Leave button and on the 30s auto-disconnect timer.
    ============================================================ */
 'use strict';
-const { rematch } = require('../lib/friend-state.js');
+const { leaveGame } = require('../lib/friend-state.js');
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -22,11 +20,11 @@ module.exports = async (req, res) => {
   catch (_) { res.status(400).json({ ok: false, error: 'invalid_json' }); return; }
   try {
     const code = String(body.code || '').trim().toUpperCase();
-    const hostId = String(body.hostId || '').trim();
-    if (!code || !hostId) { res.status(400).json({ ok: false, error: 'missing_fields' }); return; }
-    res.status(200).json(await rematch({ code, hostId }));
+    const playerId = String(body.playerId || '').trim();
+    if (!code || !playerId) { res.status(400).json({ ok: false, error: 'missing_fields' }); return; }
+    res.status(200).json(await leaveGame({ code, playerId }));
   } catch (err) {
-    console.error('[friend-rematch] error:', err);
+    console.error('[friend-leave-game] error:', err);
     res.status(500).json({ ok: false, error: 'server_error' });
   }
 };

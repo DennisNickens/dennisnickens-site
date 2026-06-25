@@ -26,7 +26,7 @@
   function save(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {} }
   function clear(key) { try { localStorage.removeItem(key); } catch (e) {} }
 
-  var SCREENS = ['screen-router', 'screen-language', 'screen-onboarding', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing', 'screen-team-setup', 'screen-playing', 'screen-explain', 'screen-game-over'];
+  var SCREENS = ['screen-router', 'screen-activate', 'screen-language', 'screen-onboarding', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing', 'screen-team-setup', 'screen-playing', 'screen-explain', 'screen-game-over'];
   // Screens that show the persistent help hamburger (lobby through game-over).
   var IN_GAME_SCREENS = ['screen-lobby', 'screen-pairing', 'screen-team-setup', 'screen-playing', 'screen-explain', 'screen-game-over'];
 
@@ -50,7 +50,12 @@
     isHost: 'ycyf_is_host',
     gender: 'ycyf_gender',
     lang: 'ycyf_lang',
-    onboarded: 'ycyf_onboarded'
+    onboarded: 'ycyf_onboarded',
+    // License (#82): gates host flow only. Joiners never touch these.
+    licenseToken: 'ycyf_license_token',
+    licenseFirstName: 'ycyf_license_first_name',
+    licenseEmail: 'ycyf_license_email',
+    deviceFingerprint: 'ycyf_device_fp'
   };
 
   // ----- i18n -----
@@ -138,6 +143,14 @@
           show('screen-router');
           stopPolling();
         }
+        return;
+      }
+      // #82: the host dissolved this room by starting another game. Eject any
+      // joiner still polling the old code back to the router.
+      if (r.body.room && r.body.room.phase === 'dissolved') {
+        clearLocalState();
+        stopPolling();
+        show('screen-router');
         return;
       }
       lastRoom = r.body.room;
@@ -1054,14 +1067,15 @@
     var ul = $('final-scores'); if (!ul) return;
     var me = load(K.playerId, null);
     var isHost = room.hostId === me;
-    var rematchBtn = $('rematch-btn');
-    if (rematchBtn) {
-      rematchBtn.hidden = !isHost;
-      rematchBtn.disabled = false;
-      rematchBtn.textContent = uiT('game_over.rematch_button') || 'Rematch (Same Teams) →';
-    }
-    var note = $('game-over-host-note');
-    if (note) note.hidden = isHost;
+    // #82: host gets "Start Another Game" + "End Session"; joiners get a thanks
+    // + buy CTA + Leave, and auto-disconnect 30s after the game ends.
+    var hostActions = $('go-host-actions');
+    var joinerActions = $('go-joiner-actions');
+    if (hostActions) hostActions.hidden = !isHost;
+    if (joinerActions) joinerActions.hidden = isHost;
+    var startBtn = $('start-another-btn');
+    if (startBtn) { startBtn.disabled = false; startBtn.textContent = uiT('game_over.start_another') || 'Start Another Game'; }
+    if (isHost) clearJoinerAutoLeave(); else scheduleJoinerAutoLeave();
     ul.innerHTML = '';
     var winner = (room.pairs || []).find(function (pr) { return pr.id === room.winnerPairId; });
     if (winner) {
@@ -1383,24 +1397,52 @@
     }
   }
 
-  async function hostRematchAct() {
-    var btn = $('rematch-btn'); if (btn) { btn.disabled = true; btn.textContent = uiT('game_over.starting_rematch') || 'Starting rematch...'; }
+  // ----- game-over continuation (#82): host vs joiner -----
+  // Host taps "Start Another Game" -> server dissolves the old room and mints a
+  // brand new one (new code + QR). Joiners from the last game do NOT carry over;
+  // they re-scan the new code to join.
+  async function startAnotherGameAct() {
+    clearJoinerAutoLeave();
+    var code = load(K.code, ''), hostId = load(K.playerId, '');
+    var btn = $('start-another-btn'); if (btn) { btn.disabled = true; btn.textContent = uiT('game_over.starting_another') || 'Starting...'; }
     try {
-      var r = await api('/api/friend-rematch', {
-        method: 'POST',
-        body: { code: load(K.code, ''), hostId: load(K.playerId, '') },
-      });
+      var r = await api('/api/friend-start-another-game', { method: 'POST', body: { code: code, hostId: hostId } });
       if (r.status === 200 && r.body && r.body.ok) {
+        save(K.code, r.body.code);
+        save(K.playerId, r.body.hostId);
+        save(K.isHost, true);
         lastRoom = r.body.room;
+        renderQR(r.body.code);
+        show('screen-lobby');
         renderRoom(lastRoom);
+        if (!pollHandle) startPolling();   // poll now reads the new K.code
       } else {
-        alert('Could not start rematch: ' + ((r.body && r.body.error) || 'unknown'));
-        if (btn) { btn.disabled = false; btn.textContent = uiT('game_over.rematch_button') || 'Rematch (Same Teams) →'; }
+        alert('Could not start another game: ' + ((r.body && r.body.error) || 'unknown'));
+        if (btn) { btn.disabled = false; btn.textContent = uiT('game_over.start_another') || 'Start Another Game'; }
       }
     } catch (e) {
-      alert('Network error starting rematch.');
-      if (btn) { btn.disabled = false; btn.textContent = uiT('game_over.rematch_button') || 'Rematch (Same Teams) →'; }
+      alert('Network error starting another game.');
+      if (btn) { btn.disabled = false; btn.textContent = uiT('game_over.start_another') || 'Start Another Game'; }
     }
+  }
+
+  // Joiner leaves at game-over: remove self from the room roster server-side,
+  // then clear local state and return to the router. Also runs on the 30s timer.
+  var joinerLeaveTimer = null;
+  function scheduleJoinerAutoLeave() {
+    if (joinerLeaveTimer) return;
+    joinerLeaveTimer = setTimeout(function () { joinerLeaveTimer = null; leaveGameAct(); }, 30000);
+  }
+  function clearJoinerAutoLeave() { if (joinerLeaveTimer) { clearTimeout(joinerLeaveTimer); joinerLeaveTimer = null; } }
+  async function leaveGameAct() {
+    clearJoinerAutoLeave();
+    var code = load(K.code, ''), pid = load(K.playerId, '');
+    if (code && pid) {
+      try { await api('/api/friend-leave-game', { method: 'POST', body: { code: code, playerId: pid } }); } catch (e) {}
+    }
+    clearLocalState();
+    stopPolling();
+    show('screen-router');
   }
 
   async function nextCardAct() {
@@ -1659,7 +1701,98 @@
     var jg = $('join-go-btn'); if (jg) jg.disabled = !valid;
   }
 
+  // ============================================================
+  //   License / activation (#82). Gates the HOST flow only.
+  //   Mirrors the Lovers Quest pattern (lib + email + device cap).
+  // ============================================================
+  function makeDeviceFingerprint() {
+    var fp = load(K.deviceFingerprint, null);
+    if (fp) return fp;
+    var bytes = new Uint8Array(12);
+    (window.crypto || window.msCrypto).getRandomValues(bytes);
+    var hex = '';
+    for (var i = 0; i < bytes.length; i++) hex += bytes[i].toString(16).padStart(2, '0');
+    save(K.deviceFingerprint, hex);
+    return hex;
+  }
+  function storeLicense(token, firstName, email) {
+    save(K.licenseToken, token);
+    save(K.licenseFirstName, firstName || '');
+    save(K.licenseEmail, email || '');
+  }
+  function clearLicense() {
+    try {
+      localStorage.removeItem(K.licenseToken);
+      localStorage.removeItem(K.licenseFirstName);
+      localStorage.removeItem(K.licenseEmail);
+    } catch (e) {}
+  }
+  function hasLicense() { return !!load(K.licenseToken, null); }
+
+  var pendingActivateEmail = '';
+  function showActivateStep(step) {
+    $('activate-step-email').hidden = (step !== 'email');
+    $('activate-step-code').hidden = (step !== 'code');
+    $('activate-email-err').hidden = true;
+    $('activate-code-err').hidden = true;
+  }
+  function showActivateError(elId, msg) { var el = $(elId); if (el) { el.textContent = msg; el.hidden = false; } }
+  function showActivateScreen() {
+    showActivateStep('email');
+    $('activate-email').value = load(K.licenseEmail, '') || '';
+    show('screen-activate');
+  }
+  async function activateWithUrlToken(urlToken) {
+    var fp = makeDeviceFingerprint();
+    var r;
+    try { r = await api('/api/ycyf-activate', { method: 'POST', body: { action: 'activate', token: urlToken, fingerprint: fp } }); }
+    catch (e) { return { ok: false, reason: 'network' }; }
+    if (r.status === 200 && r.body && r.body.ok) { storeLicense(urlToken, r.body.firstName, r.body.email); return { ok: true }; }
+    return { ok: false, reason: (r.body && r.body.error) || 'unknown' };
+  }
+  async function sendVerificationCode(email) {
+    try { var r = await api('/api/ycyf-activate', { method: 'POST', body: { action: 'send_code', email: email } }); return r.status === 200 && r.body && r.body.ok; }
+    catch (e) { return false; }
+  }
+  async function verifyCodeAndActivate(email, code) {
+    var fp = makeDeviceFingerprint();
+    var r;
+    try { r = await api('/api/ycyf-activate', { method: 'POST', body: { action: 'verify_code', email: email, code: code, fingerprint: fp } }); }
+    catch (e) { return { ok: false, reason: 'network' }; }
+    if (r.status === 200 && r.body && r.body.ok) { storeLicense(r.body.token, r.body.firstName, r.body.email); return { ok: true }; }
+    return { ok: false, reason: (r.body && r.body.error) || 'unknown' };
+  }
+  async function handleSendCode() {
+    var email = String($('activate-email').value || '').trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showActivateError('activate-email-err', 'Enter a valid email address.'); return; }
+    pendingActivateEmail = email;
+    $('activate-email-echo').textContent = email;
+    var ok = await sendVerificationCode(email);
+    if (!ok) { showActivateError('activate-email-err', 'Could not send the code. Try again in a moment.'); return; }
+    showActivateStep('code');
+  }
+  async function handleResendCode() {
+    if (!pendingActivateEmail) { showActivateStep('email'); return; }
+    await sendVerificationCode(pendingActivateEmail);
+  }
+  async function handleVerifyCode() {
+    var code = String($('activate-code').value || '').replace(/[^0-9]/g, '');
+    if (code.length !== 6) { showActivateError('activate-code-err', 'Enter the 6-digit code from the email.'); return; }
+    var result = await verifyCodeAndActivate(pendingActivateEmail, code);
+    if (!result.ok) {
+      var msg = 'That code did not work. Check the email or request a new code.';
+      if (result.reason === 'invalid_or_expired_code') msg = 'That code is expired or wrong. Request a new one.';
+      if (result.reason === 'license_not_found') msg = 'No purchase found for that email. Double-check the address.';
+      showActivateError('activate-code-err', msg);
+      return;
+    }
+    // Activated. Drop the new host into Start-a-Game (now past the gate).
+    gotoHostSetup();
+  }
+
   function gotoHostSetup() {
+    // License gate (#82): only buyers can host. Joiners never reach this.
+    if (!hasLicense()) { showActivateScreen(); return; }
     var n = load(K.name, '');
     if (n) $('host-name').value = n;
     refreshGenderUI();
@@ -1998,7 +2131,15 @@
       if (a === 'done-talking') return nextCardAct();
       if (a === 'next-card')    return nextCardAct();
       if (a === 'finish-explain') return finishExplainAct();
-      if (a === 'host-rematch') return hostRematchAct();
+      // License activation (#82)
+      if (a === 'send-code')      return handleSendCode();
+      if (a === 'verify-code')    return handleVerifyCode();
+      if (a === 'resend-code')    return handleResendCode();
+      if (a === 'back-to-email')  return showActivateStep('email');
+      // Game-over continuation (#82)
+      if (a === 'start-another')  return startAnotherGameAct();
+      if (a === 'end-session')    return leaveRoom();
+      if (a === 'leave-game')     return leaveGameAct();
     });
     // Pressing Enter inside an input submits the obvious action.
     document.body.addEventListener('keydown', function (e) {
@@ -2028,9 +2169,29 @@
     // the time the game actually starts. Silently swallow errors; retries later.
     loadCardsOnce().catch(function () {});
     var params = new URLSearchParams(location.search);
+    var urlAccess = params.get('access');
+    var activatedFlag = (params.get('activated') || '') === 'ycyf';
     var joinPrefilled = (params.get('join') || '').toUpperCase();
     var existingCode = load(K.code, null);
     var existingPid = load(K.playerId, null);
+
+    // Post-purchase email link (#82): ?access=<token> activates this device,
+    // then drops the new host straight into Start-a-Game.
+    if (urlAccess) {
+      activateWithUrlToken(urlAccess).then(function (res) {
+        try { history.replaceState({}, '', location.pathname); } catch (e) {}
+        if (res.ok) gotoHostSetup();
+        else showActivateScreen();
+      });
+      return;
+    }
+    // Stripe success redirect (#82): show the activation gate so the buyer can
+    // enter their purchase email and get a code (the access link also works).
+    if (activatedFlag) {
+      try { history.replaceState({}, '', location.pathname); } catch (e) {}
+      showActivateScreen();
+      return;
+    }
 
     if (existingCode && existingPid) {
       // Already in a room; rejoin the lobby and resume polling.
@@ -2045,6 +2206,18 @@
       return;
     }
     show('screen-router');
+
+    // Background re-verify a stored host license; if the server revoked it (e.g.
+    // bumped by a 3rd device), clear it so the next Start-a-Game re-gates.
+    if (hasLicense()) {
+      var tok = load(K.licenseToken, ''), fp = makeDeviceFingerprint();
+      api('/api/ycyf-verify', { method: 'POST', body: { token: tok, fingerprint: fp } }).then(function (r) {
+        if (r.status === 200 && r.body && r.body.ok === false &&
+            (r.body.reason === 'license_not_found' || r.body.reason === 'device_not_registered')) {
+          clearLicense();
+        }
+      }).catch(function () {});
+    }
   }
 
   boot();

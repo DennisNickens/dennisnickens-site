@@ -5049,7 +5049,26 @@
       "winner_title": "¡Tenemos un ganador!",
       "lead": "Primer par en llegar a {n}. Se corrió la carrera.",
       "won_overtime": "Ganó en muerte súbita. El desempate lo decidió.",
-      "starting_rematch": "Empezando otra ronda..."
+      "starting_rematch": "Empezando otra ronda...",
+      "start_another": "Empezar otro juego",
+      "starting_another": "Empezando...",
+      "end_session": "Terminar sesión",
+      "joiner_thanks": "¡Gracias por jugar! ¿Quieres organizar juegos como este tú mismo? Consigue You Call Yourself A Friend.",
+      "get_game": "Conseguir el juego",
+      "leave": "Salir"
+    },
+    "activate": {
+      "title": "Activa Tu Copia",
+      "email_lead": "Ingresa el correo que usaste para comprar You Call Yourself A Friend. Te enviaremos un código de 6 dígitos para confirmar este dispositivo.",
+      "email_label": "Correo",
+      "send_code": "Enviar Mi Código",
+      "no_copy": "¿Aún no tienes una copia?",
+      "get_one": "Consíguela aquí.",
+      "code_lead": "Revisa tu bandeja de entrada. Ingresa el código de 6 dígitos que enviamos a",
+      "code_label": "Código de 6 dígitos",
+      "different_email": "Usar otro correo",
+      "verify": "Activar",
+      "resend": "Reenviar código"
     },
     "overtime": {
       "badge": "MUERTE SÚBITA",

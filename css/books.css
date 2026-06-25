@@ -1,0 +1,85 @@
+/* ============================================================
+   books.css  (#91)
+   Book-specific styling for /books/. Reuses the shared store
+   chrome (navbar, .btn, .product-page-*, .section) from
+   style.css + store.css; this file only adds the books grid,
+   the per-book hero extras, and the description typography.
+   Dark theme, gold accents, matching the store pages.
+   ============================================================ */
+
+/* ---------- books index hero ---------- */
+.books-hero {
+  position: relative; z-index: 1;
+  padding: 130px 24px 30px; text-align: center;
+}
+.books-hero-inner { max-width: 760px; margin: 0 auto; }
+.books-hero-eyebrow {
+  font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #FFD700; margin-bottom: 14px;
+}
+.books-hero-title {
+  font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: clamp(2.1rem, 5vw, 3.4rem); color: #f5f1e8; line-height: 1.1; margin: 0 0 14px;
+}
+.books-hero-sub {
+  font-size: clamp(1rem, 2.2vw, 1.2rem); color: rgba(255,255,255,0.6); line-height: 1.6; margin: 0;
+}
+
+/* ---------- books grid ---------- */
+.books-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px;
+  max-width: 1080px; margin: 0 auto;
+}
+@media (max-width: 900px) { .books-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .books-grid { grid-template-columns: 1fr; } }
+
+.book-card {
+  display: flex; flex-direction: column; text-decoration: none;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; overflow: hidden;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.book-card:hover {
+  transform: translateY(-6px); border-color: rgba(255,215,0,0.45);
+  box-shadow: 0 24px 60px rgba(0,0,0,.45);
+}
+.book-card-cover {
+  background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center;
+  padding: 22px 22px 0;
+}
+.book-card-cover img {
+  width: 100%; max-width: 220px; height: auto; border-radius: 8px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(212,169,87,.12);
+}
+.book-card-body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.book-card-title {
+  font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.35rem; color: #f5f1e8; margin: 0;
+}
+.book-card-sub { font-size: 0.92rem; color: #FFD700; margin: 0; }
+.book-card-tag { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.5; margin: 6px 0 0; flex: 1; }
+.book-card-cta { margin-top: 14px; font-size: 0.85rem; font-weight: 600; color: #f5f1e8; letter-spacing: 0.03em; }
+.book-card:hover .book-card-cta { color: #FFD700; }
+
+/* ---------- per-book hero extras ---------- */
+.book-subtitle {
+  font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.15rem;
+  color: #FFD700; margin: 0 0 6px;
+}
+.book-byline { font-size: 0.9rem; color: rgba(255,255,255,0.5); margin: 0 0 24px; letter-spacing: 0.02em; }
+.book-buy-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+.book-buy { display: inline-flex; align-items: center; justify-content: center; }
+.book-fulfillment { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.02em; margin: 0; }
+
+/* ---------- per-book description ---------- */
+.book-desc-section { padding-top: 10px; padding-bottom: 80px; }
+.book-desc-body { max-width: 760px; margin: 0 auto; }
+.book-lead {
+  font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; line-height: 1.5;
+  color: #f5f1e8; border-left: 3px solid #FFD700; padding: 6px 0 6px 20px; margin: 0 0 24px;
+}
+.book-p { font-size: 1.02rem; line-height: 1.8; color: rgba(255,255,255,0.78); margin: 0 0 18px; }
+.book-ul { margin: 0 0 18px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.book-ul li {
+  position: relative; padding-left: 28px; font-size: 1.0rem; line-height: 1.6; color: rgba(255,255,255,0.78);
+}
+.book-ul li::before { content: '\2713'; position: absolute; left: 0; top: 0; color: #FFD700; font-weight: 700; }

@@ -994,15 +994,17 @@
     }
 
     var isSubject = role === 'subject';
-    var isFinal = !!room.winnerPairId || !!(room.pendingOvertime && room.pendingOvertime.length);
 
-    // Universal Explain (#86): the Subject gets a short Explain prompt right here
-    // on the reveal, on every scoring round. Partner + spectators see a waiting
-    // line. The input is for saying the reason out loud; it is not transmitted.
+    // #88: the Explain step lives on Real + Deep only. Light is warm and easy and
+    // most Light cards have no meaningful "why", so the Explain beat is dropped:
+    // Light Subjects just see the scoreboard + recognition + a Next Card button.
+    // Real + Deep keep #86's universal inline Explain exactly as before.
+    var explainOn = room.depth !== 'light';
+
     var explainBox = $('reveal-explain');
     if (explainBox) {
-      explainBox.hidden = !isSubject;
-      if (isSubject) {
+      explainBox.hidden = !isSubject || !explainOn;
+      if (isSubject && explainOn) {
         var eyb = $('reveal-explain-eyebrow');
         if (eyb) eyb.textContent = uiT('explain.inline_eyebrow', { subject: subjectName(room) }) || 'Your turn. Say why you picked that.';
         var inp = $('reveal-explain-input');
@@ -1018,19 +1020,23 @@
     if (btn) {
       btn.hidden = !isSubject;
       btn.disabled = false;
-      // Advance routes through finish-explain so the Explain step is an explicit
-      // part of the loop (server-side it advances exactly like next-card).
-      btn.setAttribute('data-action', 'finish-explain');
+      // Real/Deep advance through finish-explain (explicit Explain step). Light
+      // skips Explain and advances straight through next-card.
+      btn.setAttribute('data-action', explainOn ? 'finish-explain' : 'next-card');
       btn.textContent = room.winnerPairId
         ? (uiT('playing.final_results') || 'See Final Results →')
         : (room.pendingOvertime && room.pendingOvertime.length)
           ? (uiT('playing.to_overtime') || 'To Overtime →')
-          : (uiT('explain.done_button') || 'Done. Next card. →');
+          : explainOn
+            ? (uiT('explain.done_button') || 'Done. Next card. →')
+            : (uiT('playing.next_card') || 'Next Card →');
     }
     var status = $('reveal-status');
     if (status) {
       status.textContent = isSubject ? ''
-        : (uiT('playing.reveal_status_explain', { subject: subjectName(room) }) || ('Waiting on ' + subjectName(room) + ' to explain...'));
+        : explainOn
+          ? (uiT('playing.reveal_status_explain', { subject: subjectName(room) }) || ('Waiting on ' + subjectName(room) + ' to explain...'))
+          : (uiT('playing.reveal_status_waiting', { subject: subjectName(room) }) || ('Waiting on ' + subjectName(room) + ' to advance...'));
     }
 
     maybeFireRecognition(room, detail);

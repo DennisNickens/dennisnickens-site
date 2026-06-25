@@ -79,11 +79,32 @@
 <!-- ================= SCREEN: ACTIVATE (license gate, Start a Game only) ================= -->
 <section id="screen-activate" class="screen" aria-label="Activate your copy" hidden>
   <div class="sheet">
-    <h2 class="sheet-title" data-i18n="activate.title">Activate Your Copy</h2>
+
+    <!-- Post-purchase blocks: shown ONLY when arriving from the Stripe success
+         redirect (?activated=ycyf). Hidden on direct navigation. -->
+    <div id="activate-success" hidden>
+      <h2 class="sheet-title" data-i18n="activate.success_heading">Payment received.</h2>
+      <p class="sheet-lead" data-i18n="activate.success_sub">Welcome to You Call Yourself A Friend.</p>
+      <div style="background:rgba(255,210,74,.08);border:1px solid rgba(255,210,74,.32);border-radius:14px;padding:1.2rem 1.1rem;margin:1.2rem 0 .4rem;text-align:center;">
+        <span aria-hidden="true" style="display:inline-flex;width:46px;height:46px;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,210,74,.16);margin-bottom:.5rem;">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        </span>
+        <h3 style="font-family:var(--ff);color:var(--cream);font-size:1.25rem;margin:.2rem 0 .4rem;" data-i18n="activate.check_email_heading">Check your email.</h3>
+        <p class="sheet-lead" style="margin:0;" data-i18n="activate.check_email_body">We just sent your one-tap activation link to the email you used at checkout. Tap that link from any device to activate this device for hosting games. The link expires after 24 hours.</p>
+      </div>
+    </div>
+
+    <h2 class="sheet-title" id="activate-default-title" data-i18n="activate.title">Activate Your Copy</h2>
+
+    <!-- Fallback heading: shown above the email form ONLY in post-purchase mode. -->
+    <div id="activate-fallback" hidden style="margin-top:1.4rem;">
+      <h3 style="font-family:var(--ff);color:var(--cream);font-size:1.1rem;margin:0 0 .35rem;" data-i18n="activate.fallback_heading">Did not get the email?</h3>
+      <p class="sheet-lead" style="margin:0;" data-i18n="activate.fallback_body">Enter your purchase email below and we will send you a 6-digit activation code instead.</p>
+    </div>
 
     <!-- Step 1: email -->
     <div id="activate-step-email" class="activate-step">
-      <p class="sheet-lead" data-i18n="activate.email_lead">Enter the email you used to buy You Call Yourself A Friend. We will send you a 6-digit code to confirm this device.</p>
+      <p class="sheet-lead" id="activate-email-lead" data-i18n="activate.email_lead">Enter the email you used to buy You Call Yourself A Friend. We will send you a 6-digit code to confirm this device.</p>
       <label class="field-label" for="activate-email" data-i18n="activate.email_label">Email</label>
       <input type="email" id="activate-email" class="text-input" autocomplete="email" inputmode="email" placeholder="you@example.com" />
       <p class="error-text" id="activate-email-err" hidden></p>

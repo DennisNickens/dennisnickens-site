@@ -1737,7 +1737,16 @@
     $('activate-code-err').hidden = true;
   }
   function showActivateError(elId, msg) { var el = $(elId); if (el) { el.textContent = msg; el.hidden = false; } }
-  function showActivateScreen() {
+  // postPurchase = true when arriving from the Stripe success redirect
+  // (?activated=ycyf): show the "Payment received" + "Check your email" blocks
+  // with the email/code form framed as a fallback. Otherwise (direct navigation
+  // or the host license gate) render the plain single-form flow unchanged.
+  function showActivateScreen(postPurchase) {
+    var pp = !!postPurchase;
+    var succ = $('activate-success'); if (succ) succ.hidden = !pp;
+    var fb = $('activate-fallback'); if (fb) fb.hidden = !pp;
+    var dt = $('activate-default-title'); if (dt) dt.hidden = pp;
+    var lead = $('activate-email-lead'); if (lead) lead.hidden = pp;
     showActivateStep('email');
     $('activate-email').value = load(K.licenseEmail, '') || '';
     show('screen-activate');
@@ -2185,11 +2194,11 @@
       });
       return;
     }
-    // Stripe success redirect (#82): show the activation gate so the buyer can
-    // enter their purchase email and get a code (the access link also works).
+    // Stripe success redirect (#82/#93): show the post-purchase variant. The
+    // one-tap email link is the primary path; the email/code form is a fallback.
     if (activatedFlag) {
       try { history.replaceState({}, '', location.pathname); } catch (e) {}
-      showActivateScreen();
+      showActivateScreen(true);
       return;
     }
 

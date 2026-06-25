@@ -5068,7 +5068,13 @@
       "code_label": "Código de 6 dígitos",
       "different_email": "Usar otro correo",
       "verify": "Activar",
-      "resend": "Reenviar código"
+      "resend": "Reenviar código",
+      "success_heading": "Pago recibido.",
+      "success_sub": "Bienvenido a You Call Yourself A Friend.",
+      "check_email_heading": "Revisa tu correo.",
+      "check_email_body": "Acabamos de enviar tu enlace de activación de un toque al correo que usaste al pagar. Toca ese enlace desde cualquier dispositivo para activar este dispositivo y hospedar juegos. El enlace expira en 24 horas.",
+      "fallback_heading": "¿No recibiste el correo?",
+      "fallback_body": "Ingresa el correo de tu compra abajo y te enviaremos un código de activación de 6 dígitos."
     },
     "overtime": {
       "badge": "MUERTE SÚBITA",

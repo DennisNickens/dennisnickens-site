@@ -1009,3 +1009,89 @@ body {
 .about-by { font-family: var(--ff); font-style: italic; color: var(--cream-faint); margin: 0 0 1rem; }
 .about-link { color: var(--sun); text-decoration: none; font-weight: 600; letter-spacing: .04em; }
 .about-link:hover { text-decoration: underline; }
+
+/* ============================================================
+   #86: overtime banner, inline explain, recognition + win confetti
+   ============================================================ */
+
+/* ---------- overtime (tie-breaker) banner ---------- */
+.overtime-banner {
+  display: flex; align-items: center; justify-content: center; gap: .6rem;
+  margin: 0 0 .7rem; padding: .5rem .8rem; border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,210,74,.18), rgba(255,139,74,.12));
+  border: 1px solid rgba(255,210,74,.5);
+}
+.overtime-banner[hidden] { display: none; }
+.ot-badge {
+  font-family: var(--fn); font-weight: 700; font-size: .74rem; letter-spacing: .18em;
+  text-transform: uppercase; color: #08111f; background: var(--sun);
+  padding: .25rem .6rem; border-radius: 999px;
+}
+.ot-round {
+  font-family: var(--fn); font-weight: 600; font-size: .8rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--sun);
+}
+/* Gold accent on the race + card frame while in overtime. */
+.overtime-banner ~ .card-frame { border-color: rgba(255,210,74,.45); }
+
+/* ---------- inline explain (reveal view) ---------- */
+.reveal-explain { width: 100%; margin: .2rem 0 .9rem; text-align: left; }
+.reveal-explain[hidden] { display: none; }
+.reveal-explain .action-eyebrow { margin-bottom: .35rem; }
+#reveal-explain-input {
+  width: 100%; box-sizing: border-box; resize: none; min-height: 2.6rem;
+  font-family: var(--fn); font-size: .95rem;
+}
+
+/* ---------- confetti dot colors (shared) ---------- */
+.dot-coral { background: var(--coral); }
+.dot-sun   { background: var(--sun); }
+.dot-sky   { background: var(--sky); }
+.dot-pink  { background: var(--pink); }
+.dot-teal  { background: var(--teal); }
+
+/* ---------- recognition burst (Fix 4): ~600ms near scoring car ---------- */
+.recog-burst { position: absolute; left: 50%; top: 0; width: 0; height: 0; pointer-events: none; z-index: 6; }
+.recog-dot {
+  position: absolute; width: 7px; height: 7px; border-radius: 50%;
+  left: 0; top: 0; opacity: 0;
+  animation: recog-pop .6s ease-out forwards;
+}
+.recog-dot.rd1 { --rx: -22px; --ry: -26px; }
+.recog-dot.rd2 { --rx: 20px;  --ry: -30px; animation-delay: .04s; }
+.recog-dot.rd3 { --rx: -30px; --ry: -8px;  animation-delay: .02s; }
+.recog-dot.rd4 { --rx: 30px;  --ry: -12px; animation-delay: .06s; }
+.recog-dot.rd5 { --rx: 0px;   --ry: -36px; animation-delay: .08s; }
+@keyframes recog-pop {
+  0%   { opacity: 0; transform: translate(0,0) scale(.4); }
+  30%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--rx), var(--ry)) scale(1); }
+}
+
+/* ---------- win celebration (Fix 5): ~2.5s from top of game-over ---------- */
+.celebrate { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 4; }
+.celebrate-dot {
+  position: absolute; top: -6%; width: 10px; height: 10px; border-radius: 50%;
+  opacity: 0; animation: celebrate-fall 2.5s linear forwards;
+}
+@keyframes celebrate-fall {
+  0%   { opacity: 0; transform: translateY(0) translateX(0) rotate(0deg); }
+  8%   { opacity: 1; }
+  100% { opacity: 0; transform: translateY(105vh) translateX(var(--drift, 0)) rotate(540deg); }
+}
+
+/* Winning team highlight ring + pulse on the game-over scoreboard. */
+.final-scores li.is-winner {
+  box-shadow: 0 0 0 2px var(--sun), 0 0 22px rgba(255,210,74,.35);
+  animation: winner-pulse 1.4s ease-in-out 3;
+}
+@keyframes winner-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px var(--sun), 0 0 14px rgba(255,210,74,.25); }
+  50%      { box-shadow: 0 0 0 3px var(--sun), 0 0 30px rgba(255,210,74,.55); }
+}
+
+/* Reduced motion: drop the confetti + pulse entirely (audio still plays). */
+@media (prefers-reduced-motion: reduce) {
+  .recog-burst, .celebrate { display: none !important; }
+  .final-scores li.is-winner { animation: none !important; }
+}

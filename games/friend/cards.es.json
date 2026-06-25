@@ -5020,6 +5020,8 @@
       "guessed_line": "{partner} adivinó: {pick}",
       "final_results": "Ver resultados finales",
       "reveal_status_waiting": "Esperando a que {subject} avance...",
+      "reveal_status_explain": "Esperando a que {subject} explique...",
+      "to_overtime": "A muerte súbita",
       "loading_deck": "Cargando el mazo...",
       "locking_in": "Confirmando...",
       "revealing": "Revelando...",
@@ -5032,6 +5034,8 @@
       "eyebrow": "Elección + Explicación",
       "answer_label": "Su respuesta",
       "listen": "Escucha la respuesta de {name}.",
+      "inline_eyebrow": "Tu turno. Di por qué elegiste esa.",
+      "inline_placeholder": "Porque...",
       "advancing": "Avanzando..."
     },
     "game_over": {
@@ -5044,7 +5048,26 @@
       "host_note": "Solo el anfitrión puede empezar otra ronda.",
       "winner_title": "¡Tenemos un ganador!",
       "lead": "Primer par en llegar a {n}. Se corrió la carrera.",
+      "won_overtime": "Ganó en muerte súbita. El desempate lo decidió.",
       "starting_rematch": "Empezando otra ronda..."
+    },
+    "overtime": {
+      "badge": "MUERTE SÚBITA",
+      "eyebrow": "Muerte súbita",
+      "round_label": "Muerte súbita",
+      "round_word": "Ronda",
+      "lock_answer": "Fija Tu Respuesta",
+      "lock_guess": "Fija Tu Predicción",
+      "subject_eyebrow": "Muerte súbita. Elige lo que es verdad para ti.",
+      "subject_status": "Tu pareja está prediciendo tu respuesta. Fíjala.",
+      "partner_eyebrow": "¿Qué eligió {subject}?",
+      "locked_waiting": "Fijado. Esperando a que los demás respondan...",
+      "spectator_line": "Muerte súbita. Los equipos empatados responden la misma carta.",
+      "reveal_title": "Resultados de muerte súbita",
+      "team_truth": "eligió",
+      "see_winner": "Ver quién ganó",
+      "next_card": "Siguiente carta de muerte súbita",
+      "reveal_waiting": "Esperando a que un sujeto avance..."
     },
     "depth_picker": {
       "title": "¿Qué tan profundo quieres dibujar?",
@@ -5112,16 +5135,17 @@
         {
           "title": "Cómo Funciona una Ronda",
           "paragraphs": [
-            "Cada ronda hay un \"sujeto\". La carta pregunta algo sobre esa persona.",
-            "Su pareja lee la carta y fija la respuesta que cree correcta.",
-            "Todos los demás en la sala también responden. Quien acierte la respuesta real del sujeto, anota."
+            "Cada ronda, un jugador es el Sujeto. La carta hace una pregunta sobre esa persona.",
+            "El Sujeto elige en su teléfono la respuesta que es verdad para él. Su respuesta honesta.",
+            "Al mismo tiempo, su pareja elige en su propio teléfono lo que CREE que el Sujeto eligió. La pareja está prediciendo, no eligiendo por sí misma.",
+            "Se revela la respuesta. Si la pareja predijo bien, el equipo anota. Luego el Sujeto explica por qué la eligió. La siguiente ronda, un nuevo Sujeto toma la carta."
           ]
         },
         {
           "title": "Emparéjense. Corran a la Meta.",
           "paragraphs": [
-            "Antes de jugar, el anfitrión empareja a todos en equipos de dos. Las parejas se turnan quién es el sujeto cada ronda.",
-            "Los puntos se acumulan ronda tras ronda. La primera pareja en llegar a 25 puntos gana. Mientras mejor se lean tú y tu pareja, más rápido terminan."
+            "Antes de jugar, el anfitrión empareja a todos en equipos de dos. Los turnos se alternan estrictamente entre los equipos, un Sujeto de cada equipo por rotación.",
+            "El primer equipo en llegar a 25 puntos gana. Si el otro equipo está a una rotación de empatar cuando llegas a 25, tiene la oportunidad de empatar. Si empatan, el juego va a muerte súbita."
           ]
         },
         {

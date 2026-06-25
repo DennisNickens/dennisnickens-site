@@ -248,6 +248,12 @@
 <section id="screen-playing" class="screen play-screen" aria-label="Game in progress" hidden>
   <div class="play-inner">
 
+    <!-- Overtime banner: only visible during sudden-death tie-breaker rounds. -->
+    <div class="overtime-banner" id="overtime-banner" hidden>
+      <span class="ot-badge" data-i18n="overtime.badge">OVERTIME</span>
+      <span class="ot-round" id="overtime-round">Sudden death</span>
+    </div>
+
     <!-- Race track: one car per pair, animated to current score / cap. -->
     <div class="race-wrap" aria-label="Race to 25">
       <div class="race-header">
@@ -311,6 +317,12 @@
         <p class="reveal-truth" id="reveal-truth"></p>
         <p class="reveal-partner-line" id="reveal-partner-line"></p>
         <ul class="reveal-scores" id="reveal-scores"></ul>
+        <!-- Universal Explain (#86): the Subject explains their pick inline, every
+             scoring round. The input is a prompt to say it out loud; not stored. -->
+        <div class="reveal-explain" id="reveal-explain" hidden>
+          <p class="action-eyebrow" id="reveal-explain-eyebrow">Your turn. Say why you picked that.</p>
+          <textarea class="text-input" id="reveal-explain-input" rows="1" maxlength="140" placeholder="Because..."></textarea>
+        </div>
         <button class="btn btn-primary" id="next-card-btn" data-action="next-card">Next Card &rarr;</button>
         <p class="action-status" id="reveal-status"></p>
       </div>

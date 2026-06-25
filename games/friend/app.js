@@ -231,6 +231,9 @@
       }
       show('screen-playing');
       renderPlaying(room);
+    } else if (room.phase === 'overtime') {
+      show('screen-playing');
+      renderOvertime(room);
     } else if (room.phase === 'gameOver') {
       show('screen-game-over');
       renderGameOver(room);
@@ -637,14 +640,12 @@
     var role = roleOf(room, me);
     var isTalkCard = card.type === 'reflection' || card.type === 'discussion';
 
-    // Choice+Explain cards: once the truth is revealed, the whole table moves
-    // to the EXPLAIN panel (its own screen). The Subject controls advancing.
-    if (card.requireExplain && room.subPhase === 'reveal') {
-      renderExplain(room, card, role);
-      show('screen-explain');
-      return;
-    }
+    // Universal Explain (#86): the Explain step is now folded into the reveal
+    // view (see renderReveal) and fires on every scoring round, so there is no
+    // longer a separate full-screen Explain panel gated to requireExplain cards.
 
+    gameOverCelebrated = false;            // armed for the next game-over
+    var obMain = $('overtime-banner'); if (obMain) obMain.hidden = true;
     renderRace(room);
     renderCardFrame(room, card);
     hideElems(['guesser-view','subject-view','talk-view','spectator-view','reveal-view']);
@@ -712,6 +713,7 @@
     (room.pairs || []).forEach(function (pr) {
       var li = document.createElement('li');
       li.className = 'race-car pair-' + (pr.color || 'coral');
+      li.setAttribute('data-pair', pr.id);
       var pct = Math.max(0, Math.min(100, ((pr.score || 0) / cap) * 100));
       li.style.left = pct + '%';
       // Car is the team's chosen icon; name labels removed so they don't
@@ -992,18 +994,52 @@
     }
 
     var isSubject = role === 'subject';
+    var isFinal = !!room.winnerPairId || !!(room.pendingOvertime && room.pendingOvertime.length);
+
+    // Universal Explain (#86): the Subject gets a short Explain prompt right here
+    // on the reveal, on every scoring round. Partner + spectators see a waiting
+    // line. The input is for saying the reason out loud; it is not transmitted.
+    var explainBox = $('reveal-explain');
+    if (explainBox) {
+      explainBox.hidden = !isSubject;
+      if (isSubject) {
+        var eyb = $('reveal-explain-eyebrow');
+        if (eyb) eyb.textContent = uiT('explain.inline_eyebrow', { subject: subjectName(room) }) || 'Your turn. Say why you picked that.';
+        var inp = $('reveal-explain-input');
+        if (inp && renderReveal._explainFor !== revealKey(room)) {
+          inp.value = '';
+          inp.placeholder = uiT('explain.inline_placeholder') || 'Because...';
+        }
+      }
+    }
+    renderReveal._explainFor = revealKey(room);
+
     var btn = $('next-card-btn');
     if (btn) {
       btn.hidden = !isSubject;
       btn.disabled = false;
+      // Advance routes through finish-explain so the Explain step is an explicit
+      // part of the loop (server-side it advances exactly like next-card).
+      btn.setAttribute('data-action', 'finish-explain');
       btn.textContent = room.winnerPairId
         ? (uiT('playing.final_results') || 'See Final Results →')
-        : (uiT('playing.next_card') || 'Next Card →');
+        : (room.pendingOvertime && room.pendingOvertime.length)
+          ? (uiT('playing.to_overtime') || 'To Overtime →')
+          : (uiT('explain.done_button') || 'Done. Next card. →');
     }
     var status = $('reveal-status');
     if (status) {
-      status.textContent = isSubject ? '' : (uiT('playing.reveal_status_waiting', { subject: subjectName(room) }) || ('Waiting on ' + subjectName(room) + ' to advance...'));
+      status.textContent = isSubject ? ''
+        : (uiT('playing.reveal_status_explain', { subject: subjectName(room) }) || ('Waiting on ' + subjectName(room) + ' to explain...'));
     }
+
+    maybeFireRecognition(room, detail);
+  }
+
+  // A reveal is unique per card + round + subject. Used to fire recognition and
+  // reset the Explain input exactly once per reveal (the 2s poll re-renders).
+  function revealKey(room) {
+    return [room.currentCardId, room.round, room.currentSubjectId].join('|');
   }
 
   function renderGameOver(room) {
@@ -1028,7 +1064,11 @@
             .filter(function (p) { return winner.playerIds.indexOf(p.id) !== -1; })
             .map(function (p) { return p.name; }).join(' & ');
       if (titleEl) titleEl.textContent = uiT('game_over.winner_title') || ((winner.icon || '🏎') + ' ' + wn + ' Win');
-      if (leadEl) leadEl.textContent = uiT('game_over.lead', { n: (room.cap || 25) }) || ('First pair to ' + (room.cap || 25) + '. The race is run.');
+      if (leadEl) {
+        leadEl.textContent = room.wonInOvertime
+          ? (uiT('game_over.won_overtime') || 'Won in overtime. Sudden death decided it.')
+          : (uiT('game_over.lead', { n: (room.cap || 25) }) || ('First pair to ' + (room.cap || 25) + '. The race is run.'));
+      }
     } else {
       if (titleEl) titleEl.textContent = uiT('game_over.title') || 'Game Over';
       if (leadEl) leadEl.textContent = '';
@@ -1040,6 +1080,248 @@
       li.innerHTML = '<span class="s-name">' + esc(pairLabel(room, pr)) + '</span><span class="s-score">' + (pr.score || 0) + '</span>';
       ul.appendChild(li);
     });
+
+    // Fix 5: bigger celebration the first time we land on this game-over.
+    if (winner) fireCelebration();
+  }
+
+  // ============================================================
+  //   Overtime (sudden death) rendering, Fix 3 UI
+  //   Reuses the screen-playing sub-views. Every tied team answers
+  //   the SAME card at once: each Subject locks a truth, each Partner
+  //   predicts it, then a combined reveal.
+  // ============================================================
+  function otPickText(card, val, room) {
+    if (val == null) return '';
+    return pickDisplay(card, val, room);
+  }
+  function otSubjectNameForPartner(room, me) {
+    var ot = room.ot || {};
+    var name = '';
+    Object.keys(ot).forEach(function (pid) {
+      if (ot[pid].partnerId === me) name = playerNameById(room, ot[pid].subjectId);
+    });
+    return name || 'your subject';
+  }
+  function setOvertimeBanner(room) {
+    var ob = $('overtime-banner'); if (ob) ob.hidden = false;
+    var rl = $('overtime-round');
+    if (rl) rl.textContent = (uiT('overtime.round_label') || 'Sudden death') + ' · ' + (uiT('overtime.round_word') || 'Round') + ' ' + (room.otRound || 1);
+  }
+
+  function renderOvertime(room) {
+    if (!CARDS_DATA) {
+      loadCardsOnce().then(function () { if (lastRoom) renderOvertime(lastRoom); }).catch(function () {});
+      return;
+    }
+    gameOverCelebrated = false;
+    var me = load(K.playerId, null);
+    var card = CARD_BY_ID[room.currentCardId];
+    if (!card) return;
+
+    var otKey = room.currentCardId + '|' + (room.otRound || 1) + '|' + room.subPhase;
+    if (renderOvertime._lastKey !== otKey) { pendingPick = null; renderOvertime._lastKey = otKey; }
+
+    renderRace(room);
+    renderCardFrame(room, card);
+    setOvertimeBanner(room);
+    hideElems(['guesser-view','subject-view','talk-view','spectator-view','reveal-view']);
+
+    var ot = room.ot || {};
+    var myRole = 'spectator', mySlot = null;
+    Object.keys(ot).forEach(function (pid) {
+      var s = ot[pid];
+      if (s.subjectId === me) { myRole = 'subject'; mySlot = s; }
+      else if (s.partnerId === me) { myRole = 'partner'; mySlot = s; }
+    });
+
+    if (room.subPhase === 'reveal') {
+      renderOvertimeReveal(room, card, myRole);
+      showElem('reveal-view');
+      return;
+    }
+    if (myRole === 'subject') {
+      if (mySlot && (mySlot.truthIn || mySlot.truth != null)) { renderOvertimeWaiting(room); showElem('spectator-view'); }
+      else { renderOvertimeSubject(room, card); showElem('subject-view'); }
+    } else if (myRole === 'partner') {
+      if (mySlot && (mySlot.guessIn || mySlot.guess != null)) { renderOvertimeWaiting(room); showElem('spectator-view'); }
+      else { renderOvertimePartner(room, card, me); showElem('guesser-view'); }
+    } else {
+      renderOvertimeSpectator(room, card); showElem('spectator-view');
+    }
+  }
+
+  function renderOvertimeSubject(room, card) {
+    var grid = $('truth-grid'); if (!grid) return;
+    grid.innerHTML = '';
+    letters(card).forEach(function (L) {
+      var optText = (card.type === 'tf') ? tfLabel(L) : interp(((card.options || []).find(function (o) { return o.letter === L; }) || {}).text || '', room);
+      var li = makeAnswerTile(L, optText, pendingPick === L);
+      li.setAttribute('data-action', 'pick-truth');
+      li.setAttribute('data-value', L);
+      grid.appendChild(li);
+    });
+    var btn = $('reveal-btn');
+    if (btn) { btn.disabled = !pendingPick; btn.textContent = uiT('overtime.lock_answer') || 'Lock In Your Answer'; }
+    var eyebrow = $('subject-eyebrow'); if (eyebrow) eyebrow.textContent = uiT('overtime.subject_eyebrow') || 'Sudden death. Pick what is true for you.';
+    var status = $('subject-status'); if (status) status.textContent = uiT('overtime.subject_status') || 'Your partner is predicting your answer. Lock it in.';
+  }
+
+  function renderOvertimePartner(room, card, me) {
+    var grid = $('answer-grid'); if (!grid) return;
+    grid.innerHTML = '';
+    letters(card).forEach(function (L) {
+      var optText = (card.type === 'tf') ? tfLabel(L) : interp(((card.options || []).find(function (o) { return o.letter === L; }) || {}).text || '', room);
+      var li = makeAnswerTile(L, optText, pendingPick === L);
+      li.setAttribute('data-action', 'pick-answer');
+      li.setAttribute('data-value', L);
+      grid.appendChild(li);
+    });
+    var btn = $('submit-guess-btn');
+    if (btn) { btn.disabled = !pendingPick; btn.textContent = uiT('overtime.lock_guess') || 'Lock In Prediction'; }
+    var subjName = otSubjectNameForPartner(room, me);
+    var eyebrow = $('guesser-eyebrow'); if (eyebrow) eyebrow.textContent = uiT('overtime.partner_eyebrow', { subject: subjName }) || ('What did ' + subjName + ' pick?');
+    var status = $('guesser-status'); if (status) status.textContent = '';
+  }
+
+  function renderOvertimeWaiting(room) {
+    var eyebrow = $('spectator-eyebrow'); if (eyebrow) eyebrow.textContent = uiT('overtime.eyebrow') || 'Overtime';
+    var line = $('spectator-line'); if (line) line.textContent = uiT('overtime.locked_waiting') || 'Locked in. Waiting on the other players to answer...';
+    var grid = $('spectator-options'); if (grid) grid.innerHTML = '';
+    var status = $('spectator-status'); if (status) status.textContent = '';
+  }
+
+  function renderOvertimeSpectator(room, card) {
+    var eyebrow = $('spectator-eyebrow'); if (eyebrow) eyebrow.textContent = uiT('overtime.eyebrow') || 'Overtime';
+    var line = $('spectator-line'); if (line) line.textContent = uiT('overtime.spectator_line') || 'Sudden death. The tied teams are answering the same card.';
+    var grid = $('spectator-options');
+    if (grid) {
+      grid.innerHTML = '';
+      letters(card).forEach(function (L) {
+        var optText = (card.type === 'tf') ? tfLabel(L) : interp(((card.options || []).find(function (o) { return o.letter === L; }) || {}).text || '', room);
+        var li = makeAnswerTile(L, optText, false); li.classList.add('is-readonly'); grid.appendChild(li);
+      });
+    }
+    var status = $('spectator-status'); if (status) status.textContent = '';
+  }
+
+  function renderOvertimeReveal(room, card, myRole) {
+    var explainBox = $('reveal-explain'); if (explainBox) explainBox.hidden = true;
+    var truthEl = $('reveal-truth'); if (truthEl) truthEl.textContent = uiT('overtime.reveal_title') || 'Overtime results';
+    var pl = $('reveal-partner-line'); if (pl) { pl.textContent = ''; pl.className = 'reveal-partner-line'; }
+    var ul = $('reveal-scores');
+    if (ul) {
+      ul.innerHTML = '';
+      (room.otTeams || []).forEach(function (pid) {
+        var pr = (room.pairs || []).find(function (p) { return p.id === pid; });
+        var rev = (room.otReveal || {})[pid] || {};
+        var correct = !!rev.correct;
+        var li = document.createElement('li');
+        li.className = 'pair-' + ((pr && pr.color) || 'coral') + (correct ? ' guess-right' : ' guess-wrong');
+        var detailLine = (uiT('overtime.team_truth') || 'picked') + ' ' + esc(otPickText(card, rev.truth, room));
+        li.innerHTML =
+          '<span class="s-name">' + esc(pr ? pairLabel(room, pr) : '') + '<br><small>' + detailLine + '</small></span>' +
+          '<span class="s-score">' + (correct ? '✓' : '×') + '</span>';
+        ul.appendChild(li);
+      });
+    }
+    var scorers = (room.otTeams || []).filter(function (pid) { return (room.otReveal || {})[pid] && room.otReveal[pid].correct; });
+    var decided = scorers.length === 1;
+    var isOtSubject = myRole === 'subject';
+    var btn = $('next-card-btn');
+    if (btn) {
+      btn.hidden = !isOtSubject;
+      btn.disabled = false;
+      btn.setAttribute('data-action', 'next-card');
+      btn.textContent = decided ? (uiT('overtime.see_winner') || 'See Who Won →') : (uiT('overtime.next_card') || 'Next Overtime Card →');
+    }
+    var status = $('reveal-status');
+    if (status) status.textContent = isOtSubject ? '' : (uiT('overtime.reveal_waiting') || 'Waiting on a subject to advance...');
+  }
+
+  // ============================================================
+  //   Recognition (Fix 4) + win celebration (Fix 5)
+  //   Web Audio tones (no audio file) + CSS-animated confetti.
+  //   prefers-reduced-motion skips the confetti, keeps the audio.
+  // ============================================================
+  var gameOverCelebrated = false;
+  function reduceMotion() { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); }
+
+  var _audioCtx = null;
+  function audioCtx() {
+    if (_audioCtx) return _audioCtx;
+    try { var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null; _audioCtx = new AC(); } catch (e) { return null; }
+    return _audioCtx;
+  }
+  function resumeAudio() { var c = audioCtx(); if (c && c.state === 'suspended') { c.resume().catch(function () {}); } }
+  function tone(ctx, freq, startT, dur, type, peak) {
+    var osc = ctx.createOscillator(), g = ctx.createGain();
+    osc.type = type || 'sine'; osc.frequency.value = freq;
+    g.gain.setValueAtTime(0.0001, startT);
+    g.gain.exponentialRampToValueAtTime(peak || 0.16, startT + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, startT + dur);
+    osc.connect(g); g.connect(ctx.destination);
+    osc.start(startT); osc.stop(startT + dur + 0.03);
+  }
+  function playChime() {
+    var ctx = audioCtx(); if (!ctx) return; resumeAudio();
+    var t = ctx.currentTime;
+    tone(ctx, 988, t, 0.18, 'sine', 0.15);        // B5
+    tone(ctx, 1318.5, t + 0.10, 0.30, 'sine', 0.15); // E6
+  }
+  function playFanfare() {
+    var ctx = audioCtx(); if (!ctx) return; resumeAudio();
+    var t = ctx.currentTime;
+    [523.25, 659.25, 783.99, 1046.5].forEach(function (f, i) { tone(ctx, f, t + i * 0.16, 0.45, 'triangle', 0.15); }); // C5 E5 G5 C6
+    [523.25, 659.25, 783.99].forEach(function (f) { tone(ctx, f, t + 0.62, 0.95, 'sine', 0.10); });                   // sustained chord
+  }
+
+  var CONFETTI_COLORS = ['coral', 'sun', 'sky', 'pink', 'teal'];
+  function recognitionBurst(pairId) {
+    if (reduceMotion()) return;
+    var track = $('race-track'); if (!track) return;
+    var car = pairId ? track.querySelector('.race-car[data-pair="' + pairId + '"]') : null;
+    var host = car || track;
+    var burst = document.createElement('div'); burst.className = 'recog-burst';
+    for (var i = 0; i < 5; i++) {
+      var d = document.createElement('span');
+      d.className = 'recog-dot rd' + (i + 1) + ' dot-' + CONFETTI_COLORS[i % CONFETTI_COLORS.length];
+      burst.appendChild(d);
+    }
+    host.appendChild(burst);
+    setTimeout(function () { if (burst.parentNode) burst.parentNode.removeChild(burst); }, 700);
+  }
+  function maybeFireRecognition(room, detail) {
+    if (!detail || !detail.correct) return;
+    var key = revealKey(room);
+    if (maybeFireRecognition._last === key) return;
+    maybeFireRecognition._last = key;
+    var ba = detail.pairBeforeAfter || {}, scoredPair = null;
+    Object.keys(ba).forEach(function (pid) { if ((ba[pid].delta || 0) > 0) scoredPair = pid; });
+    recognitionBurst(scoredPair);
+    playChime();
+  }
+
+  function celebrationBurst() {
+    if (reduceMotion()) return;
+    var hostEl = $('screen-game-over'); if (!hostEl) return;
+    var wrap = document.createElement('div'); wrap.className = 'celebrate'; wrap.setAttribute('aria-hidden', 'true');
+    for (var i = 0; i < 26; i++) {
+      var d = document.createElement('span');
+      d.className = 'celebrate-dot dot-' + CONFETTI_COLORS[i % CONFETTI_COLORS.length];
+      d.style.left = ((i * 37 + 11) % 100) + '%';
+      d.style.animationDelay = ((i % 7) * 0.12).toFixed(2) + 's';
+      d.style.setProperty('--drift', (((i * 53) % 40) - 20) + 'px');
+      wrap.appendChild(d);
+    }
+    hostEl.appendChild(wrap);
+    setTimeout(function () { if (wrap.parentNode) wrap.parentNode.removeChild(wrap); }, 2800);
+  }
+  function fireCelebration() {
+    if (gameOverCelebrated) return;
+    gameOverCelebrated = true;
+    celebrationBurst();
+    playFanfare();
   }
 
   // ---------- Phase 3 action handlers ----------
@@ -1542,16 +1824,17 @@
     {
       title: 'How a Round Works',
       paragraphs: [
-        'One player is "the subject" each round. The card asks something about that person.',
-        'Their partner reads the card and locks in the answer they think is right.',
-        'Everyone else in the room answers too. Whoever matches the subject\'s real answer scores.'
+        'Each round, one player is the Subject. The card asks a question about them.',
+        'The Subject picks the answer that is true for them on their phone. Their honest answer.',
+        'At the same time, their partner picks what they THINK the Subject picked, on their own phone. The partner is predicting, not picking for themselves.',
+        'The answer is revealed. If the partner predicted right, the team scores. Then the Subject explains why they picked it. Next round, a new Subject takes the card.'
       ]
     },
     {
       title: 'Pair Up. Race the Finish.',
       paragraphs: [
-        'Before play, the host pairs everyone into teams of two. Pairs trade off who is the subject each round.',
-        'Scores rack up across rounds. First pair to reach 25 points wins. The faster you and your partner read each other, the faster you finish.'
+        'Before play, the host pairs everyone into teams of two. Turns alternate strictly between the teams, one Subject from each team per rotation.',
+        'First team to 25 points wins. If the other team is one rotation away from tying when you hit 25, they get the chance to tie. If they tie, the game goes to sudden death.'
       ]
     },
     {
@@ -1660,6 +1943,9 @@
 
   function wire() {
     document.body.addEventListener('click', function (e) {
+      // Unlock/resume the Web Audio context on the first real tap so the
+      // recognition chime and win fanfare can play later (Fix 4 + Fix 5).
+      resumeAudio();
       // Tap-out on a backdrop closes it. Checked by exact id (not closest) so a
       // tap on the drawer/modal content itself never bubbles up to a close.
       if (e.target.id === 'drawer-backdrop') { closeMenu(); return; }

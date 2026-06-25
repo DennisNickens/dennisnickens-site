@@ -5095,6 +5095,61 @@
       "Dreams": "Sueños",
       "Values": "Valores",
       "Friendship": "Amistad"
+    },
+    "onboarding": {
+      "continue": "Continuar",
+      "back": "Atrás",
+      "of": "de",
+      "open_game": "Abrir el Juego",
+      "steps": [
+        {
+          "title": "Bienvenido a You Call Yourself A Friend",
+          "paragraphs": [
+            "Tomaste este juego porque querías descubrir quién de verdad te conoce, y quién solo cree que te conoce.",
+            "Esta es una guía rápida. Cinco pantallas. Unos 60 segundos. Después estás jugando."
+          ]
+        },
+        {
+          "title": "Cómo Funciona una Ronda",
+          "paragraphs": [
+            "Cada ronda hay un \"sujeto\". La carta pregunta algo sobre esa persona.",
+            "Su pareja lee la carta y fija la respuesta que cree correcta.",
+            "Todos los demás en la sala también responden. Quien acierte la respuesta real del sujeto, anota."
+          ]
+        },
+        {
+          "title": "Emparéjense. Corran a la Meta.",
+          "paragraphs": [
+            "Antes de jugar, el anfitrión empareja a todos en equipos de dos. Las parejas se turnan quién es el sujeto cada ronda.",
+            "Los puntos se acumulan ronda tras ronda. La primera pareja en llegar a 25 puntos gana. Mientras mejor se lean tú y tu pareja, más rápido terminan."
+          ]
+        },
+        {
+          "title": "Elige Tu Profundidad",
+          "paragraphs": [
+            "Light mide qué tanto conocen tus favoritos, tus costumbres, tu día a día. Cálido y fácil.",
+            "Real mide más hondo: tu carácter, tus fortalezas, tu estilo de amistad. Las cartas bonus valen doble aquí.",
+            "Deep mide lo más difícil. Preguntas sobre las personas que mantienes cerca, las decisiones que tomarías, lo que de verdad crees. Esta profundidad incluye un paso breve de Explicar donde el sujeto dice por qué su respuesta es la que es."
+          ]
+        },
+        {
+          "title": "Estás Listo",
+          "paragraphs": [
+            "Toca Abrir el Juego para empezar. El anfitrión crea la sala, los demás se unen con el código o el QR.",
+            "Si olvidas cómo funciona algo, el menú en la esquina de arriba tiene Cómo Jugar en cualquier momento."
+          ]
+        }
+      ]
+    },
+    "drawer": {
+      "home": "Inicio",
+      "how_to_play": "Cómo Jugar",
+      "change_language": "Cambiar Idioma",
+      "about": "Acerca de",
+      "foot": "Una producción de Spiritual Romeo"
+    },
+    "about": {
+      "body": "Un juego para descubrir quién de verdad conoce a tu gente."
     }
   }
 }

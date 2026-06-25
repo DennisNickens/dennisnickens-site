@@ -26,7 +26,9 @@
   function save(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {} }
   function clear(key) { try { localStorage.removeItem(key); } catch (e) {} }
 
-  var SCREENS = ['screen-router', 'screen-language', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing', 'screen-team-setup', 'screen-playing', 'screen-explain', 'screen-game-over'];
+  var SCREENS = ['screen-router', 'screen-language', 'screen-onboarding', 'screen-host-setup', 'screen-join-setup', 'screen-lobby', 'screen-pairing', 'screen-team-setup', 'screen-playing', 'screen-explain', 'screen-game-over'];
+  // Screens that show the persistent help hamburger (lobby through game-over).
+  var IN_GAME_SCREENS = ['screen-lobby', 'screen-pairing', 'screen-team-setup', 'screen-playing', 'screen-explain', 'screen-game-over'];
 
   // Same palette as lib/friend-state.js TEAM_ICONS. Hardcoded here so the
   // picker grid renders immediately without an extra round trip. Server is
@@ -34,6 +36,9 @@
   var TEAM_ICONS = ['🔥', '⚡', '💎', '⭐', '🚀', '🌊', '🦁', '🦊', '🐯', '🐺', '🌙', '☀️'];
   function show(id) {
     SCREENS.forEach(function (s) { var el = $(s); if (!el) return; el.hidden = (s !== id); });
+    // The help hamburger rides along on in-game screens only.
+    var fab = $('menu-fab');
+    if (fab) fab.hidden = (IN_GAME_SCREENS.indexOf(id) === -1);
     applyI18n();
   }
 
@@ -44,7 +49,8 @@
     name: 'ycyf_name',
     isHost: 'ycyf_is_host',
     gender: 'ycyf_gender',
-    lang: 'ycyf_lang'
+    lang: 'ycyf_lang',
+    onboarded: 'ycyf_onboarded'
   };
 
   // ----- i18n -----
@@ -114,6 +120,10 @@
 
   // ----- room render -----
   var lastRoom = null;
+  // True while the onboarding walkthrough or the language picker sits on top of
+  // a live room. Blocks the poll's screen routing so it does not yank the
+  // player off the overlay. Closing the overlay re-renders the real screen.
+  var routeLock = false;
 
   async function refreshRoom() {
     var code = load(K.code, null);
@@ -139,6 +149,11 @@
 
   function renderRoom(room) {
     if (!room) return;
+    // While the onboarding walkthrough or the language picker is open over the
+    // top, the 2-second poll must not yank the player back to a game screen.
+    // We still let lastRoom update (the caller sets it); we just defer the
+    // screen routing until the overlay closes (finishOnboarding re-renders).
+    if (routeLock) return;
     // Phase routing: lobby for now; future phases will jump screens here.
     var pid = load(K.playerId, null);
     var isHost = room.hostId === pid;
@@ -1273,8 +1288,10 @@
         save(K.playerId, r.body.hostId);
         save(K.isHost, true);
         renderQR(r.body.code);
-        show('screen-lobby');
         startPolling();
+        // First-timers get the walkthrough before the lobby; returners go straight in.
+        if (load(K.onboarded, false)) show('screen-lobby');
+        else startOnboarding(false);
       } else {
         showErr('host-name-err', 'Could not create the room. Try again in a moment.');
       }
@@ -1301,8 +1318,10 @@
         save(K.playerId, r.body.playerId);
         save(K.isHost, false);
         renderQR(r.body.room.code);
-        show('screen-lobby');
         startPolling();
+        // First-timers get the walkthrough before the lobby; returners go straight in.
+        if (load(K.onboarded, false)) show('screen-lobby');
+        else startOnboarding(false);
       } else {
         var msg = 'Could not join the room.';
         if (r.body && r.body.error === 'room_not_found') msg = 'No room with that code. Check the letters and try again.';
@@ -1506,11 +1525,158 @@
   }
 
   // ----- wire -----
+  // ============================================================
+  //   Onboarding walkthrough (5 screens, first time only)
+  // ============================================================
+  // EN copy lives here; the Spanish equivalents live in the deck's ui.onboarding
+  // block (cards.es.json) and are picked up by onbStep() when the ES deck loads.
+  var ONBOARDING = [
+    {
+      cover: true,
+      title: 'Welcome to You Call Yourself A Friend',
+      paragraphs: [
+        'You picked up this game because you wanted to find out who actually knows you, and who only thinks they do.',
+        'This is a quick walkthrough. Five screens. About 60 seconds. Then you are playing.'
+      ]
+    },
+    {
+      title: 'How a Round Works',
+      paragraphs: [
+        'One player is "the subject" each round. The card asks something about that person.',
+        'Their partner reads the card and locks in the answer they think is right.',
+        'Everyone else in the room answers too. Whoever matches the subject\'s real answer scores.'
+      ]
+    },
+    {
+      title: 'Pair Up. Race the Finish.',
+      paragraphs: [
+        'Before play, the host pairs everyone into teams of two. Pairs trade off who is the subject each round.',
+        'Scores rack up across rounds. First pair to reach 25 points wins. The faster you and your partner read each other, the faster you finish.'
+      ]
+    },
+    {
+      title: 'Pick Your Depth',
+      paragraphs: [
+        'Light reads how well people know your favorites, your defaults, your daily life. Warm and easy.',
+        'Real reads deeper, your character, your strengths, your friendship style. Bonus cards score double here.',
+        'Deep reads the hardest. Questions about the people you keep close, the choices you would make, what you really believe. This depth includes a short Explain step where the subject says why their answer is what it is.'
+      ]
+    },
+    {
+      title: 'You Are Ready',
+      paragraphs: [
+        'Tap Open the Game to start. The host creates the room, the others join with the code or QR.',
+        'If you forget how anything works, the menu in the top corner has How to Play at any time.'
+      ]
+    }
+  ];
+  var onbIndex = 0;
+  var onbFromMenu = false;
+
+  // Returns the step's display data, preferring the Spanish ui.onboarding.steps
+  // when the ES deck is loaded, else the EN ONBOARDING entry. Cover flag always
+  // comes from the EN array (structure is identical across languages).
+  function onbStep(i) {
+    var en = ONBOARDING[i];
+    var es = DECK_UI && DECK_UI.onboarding && DECK_UI.onboarding.steps && DECK_UI.onboarding.steps[i];
+    if (es) return { cover: en.cover, title: es.title || en.title, paragraphs: es.paragraphs || en.paragraphs };
+    return en;
+  }
+  function onbLabel(key, fallback) { return uiT('onboarding.' + key) || fallback; }
+
+  function renderOnboardingStep() {
+    var step = onbStep(onbIndex);
+    var last = (onbIndex === ONBOARDING.length - 1);
+    $('onb-step-num').textContent = (onbIndex + 1) + ' ' + onbLabel('of', 'of') + ' ' + ONBOARDING.length;
+    $('onb-title').textContent = step.title;
+    var cover = $('onb-cover'), orn = $('onb-orn');
+    if (cover) cover.hidden = !step.cover;
+    if (orn) orn.hidden = !!step.cover;
+    $('onb-body').innerHTML = step.paragraphs.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+    var back = document.querySelector('.onb-back');
+    if (back) { back.hidden = (onbIndex === 0); back.textContent = onbLabel('back', 'Back'); }
+    $('onb-next-btn').textContent = last ? onbLabel('open_game', 'Open the Game') : onbLabel('continue', 'Continue');
+  }
+  // fromMenu = true means it was re-opened from the help drawer; on finish we
+  // return to wherever the player was instead of advancing into the lobby, and
+  // we do not touch the onboarded flag.
+  function startOnboarding(fromMenu) {
+    onbFromMenu = !!fromMenu;
+    onbIndex = 0;
+    routeLock = true;
+    renderOnboardingStep();
+    show('screen-onboarding');
+  }
+  function onbAdvance() {
+    if (onbIndex < ONBOARDING.length - 1) { onbIndex += 1; renderOnboardingStep(); return; }
+    finishOnboarding();
+  }
+  function onbBack() { if (onbIndex > 0) { onbIndex -= 1; renderOnboardingStep(); } }
+  function finishOnboarding() {
+    if (!onbFromMenu) save(K.onboarded, true);
+    routeLock = false;
+    if (lastRoom) {
+      // renderRoom switches screens for active phases (pairing/playing/etc.) but
+      // only updates the DOM for the lobby phase, so land on the lobby explicitly.
+      var ph = lastRoom.phase;
+      if (!ph || ph === 'lobby') show('screen-lobby');
+      renderRoom(lastRoom);
+    } else {
+      show(onbFromMenu ? 'screen-router' : 'screen-lobby');
+    }
+  }
+
+  // ----- help drawer + about modal -----
+  function openMenu() {
+    $('drawer-backdrop').hidden = false;
+    $('drawer').hidden = false;
+    requestAnimationFrame(function () {
+      $('drawer-backdrop').classList.add('show');
+      $('drawer').classList.add('show');
+    });
+  }
+  function closeMenu() {
+    $('drawer-backdrop').classList.remove('show');
+    $('drawer').classList.remove('show');
+    setTimeout(function () {
+      $('drawer-backdrop').hidden = true;
+      $('drawer').hidden = true;
+    }, 440);
+  }
+  function openAbout() {
+    $('about-backdrop').hidden = false;
+    requestAnimationFrame(function () { $('about-backdrop').classList.add('show'); });
+  }
+  function closeAbout() {
+    $('about-backdrop').classList.remove('show');
+    setTimeout(function () { $('about-backdrop').hidden = true; }, 320);
+  }
+  // Open the language picker from the drawer. Lock routing so the poll does not
+  // pull the player back into the game before they pick (picking reloads).
+  function openLanguageFromMenu() {
+    routeLock = true;
+    show('screen-language');
+  }
+
   function wire() {
     document.body.addEventListener('click', function (e) {
+      // Tap-out on a backdrop closes it. Checked by exact id (not closest) so a
+      // tap on the drawer/modal content itself never bubbles up to a close.
+      if (e.target.id === 'drawer-backdrop') { closeMenu(); return; }
+      if (e.target.id === 'about-backdrop') { closeAbout(); return; }
       var el = e.target.closest('[data-action]');
       if (!el) return;
       var a = el.getAttribute('data-action');
+      // Help menu + onboarding actions
+      if (a === 'open-menu')       return openMenu();
+      if (a === 'close-menu')      return closeMenu();
+      if (a === 'how-to-play')     { closeMenu(); return startOnboarding(true); }
+      if (a === 'drawer-home')     { closeMenu(); return leaveRoom(); }
+      if (a === 'drawer-language') { closeMenu(); return openLanguageFromMenu(); }
+      if (a === 'drawer-about')    { closeMenu(); return openAbout(); }
+      if (a === 'close-about')     return closeAbout();
+      if (a === 'onb-next')        return onbAdvance();
+      if (a === 'onb-back')        return onbBack();
       if (a === 'lang-en')      return setLangAct('en');
       if (a === 'lang-es')      return setLangAct('es');
       if (a === 'goto-host')    return gotoHostSetup();

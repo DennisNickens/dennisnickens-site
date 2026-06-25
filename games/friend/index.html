@@ -28,16 +28,17 @@
 </head>
 <body>
 
+<!-- Floating confetti dots. Body-level (fixed, behind every screen) so the
+     ambient motion persists across the whole game, not just the landing. -->
+<div class="confetti" aria-hidden="true">
+  <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
+  <span class="dot d4"></span><span class="dot d5"></span><span class="dot d6"></span>
+  <span class="dot d7"></span><span class="dot d8"></span><span class="dot d9"></span>
+  <span class="dot d10"></span><span class="dot d11"></span><span class="dot d12"></span>
+</div>
+
 <!-- ================= SCREEN: ROUTER (landing) ================= -->
 <section id="screen-router" class="screen" aria-label="Welcome">
-  <!-- Floating confetti dots for energy (purely decorative) -->
-  <div class="confetti" aria-hidden="true">
-    <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
-    <span class="dot d4"></span><span class="dot d5"></span><span class="dot d6"></span>
-    <span class="dot d7"></span><span class="dot d8"></span><span class="dot d9"></span>
-    <span class="dot d10"></span><span class="dot d11"></span><span class="dot d12"></span>
-  </div>
-
   <div class="router-inner">
     <!-- Hero cover image: the illustrated tuck box mockup -->
     <div class="router-cover">
@@ -67,6 +68,34 @@
       <button class="btn btn-primary lang-btn" data-action="lang-es">Español</button>
     </div>
     <p class="lang-note">You can change this later from the menu / Puedes cambiarlo después desde el menú</p>
+  </div>
+</section>
+
+<!-- ============== SCREEN: ONBOARDING (first-time walkthrough) ============== -->
+<section id="screen-onboarding" class="screen" aria-label="How to play walkthrough" hidden>
+  <div class="sheet onboarding-sheet">
+    <!-- Cover image on step 1, a small spark ornament on the rest -->
+    <div class="onb-cover" id="onb-cover" hidden>
+      <img src="../../images/you-call-yourself-a-friend-cover.jpg" alt="You Call Yourself A Friend game box, by Dennis Nickens" />
+    </div>
+    <div class="onb-orn" id="onb-orn" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.2L21 10l-5 4.2L17.6 21 12 17.3 6.4 21 8 14.2 3 10l6.6-1.8z"/></svg>
+    </div>
+    <div class="onboarding-step-num" id="onb-step-num">1 of 5</div>
+    <h2 class="sheet-title" id="onb-title">Welcome</h2>
+    <div class="onb-flourish" aria-hidden="true">
+      <svg viewBox="0 0 160 16">
+        <path d="M2 8h54M158 8h-54" stroke-linecap="round"/>
+        <path d="M80 3l5 5-5 5-5-5z"/>
+        <circle cx="63" cy="8" r="1.8"/>
+        <circle cx="97" cy="8" r="1.8"/>
+      </svg>
+    </div>
+    <div class="onboarding-body" id="onb-body"></div>
+    <div class="onboarding-actions">
+      <button class="btn btn-ghost onb-back" data-action="onb-back" hidden>Back</button>
+      <button class="btn btn-primary" data-action="onb-next" id="onb-next-btn">Continue</button>
+    </div>
   </div>
 </section>
 
@@ -320,6 +349,43 @@
     </div>
   </div>
 </section>
+
+<!-- ================= HELP MENU (hamburger + drawer) ================= -->
+<!-- Hamburger fab: shown only on in-game screens (lobby through game-over),
+     toggled in show(). -->
+<button class="menu-fab" id="menu-fab" data-action="open-menu" aria-label="Menu" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+</button>
+
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Menu">
+  <div class="drawer-head">
+    <span class="drawer-brand">You Call Yourself A Friend</span>
+    <button class="icon-btn" data-action="close-menu" aria-label="Close menu">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav class="drawer-nav">
+    <button class="drawer-item" data-action="drawer-home" data-i18n="drawer.home">Home</button>
+    <button class="drawer-item" data-action="how-to-play" data-i18n="drawer.how_to_play">How to Play</button>
+    <button class="drawer-item" data-action="drawer-language" data-i18n="drawer.change_language">Change Language</button>
+    <button class="drawer-item" data-action="drawer-about" data-i18n="drawer.about">About</button>
+  </nav>
+  <p class="drawer-foot" data-i18n="drawer.foot">A Spiritual Romeo Production</p>
+</aside>
+
+<!-- ================= ABOUT MODAL ================= -->
+<div class="about-backdrop" id="about-backdrop" hidden>
+  <div class="about-modal" role="dialog" aria-modal="true" aria-label="About">
+    <button class="icon-btn about-close" data-action="close-about" aria-label="Close">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <h3 class="about-title">You Call Yourself A Friend</h3>
+    <p class="about-body" data-i18n="about.body">A game of finding out who actually knows your people.</p>
+    <p class="about-by">by Dennis Nickens, AKA Spiritual Romeo</p>
+    <a class="about-link" href="https://dennisnickens.com" target="_blank" rel="noopener">dennisnickens.com</a>
+  </div>
+</div>
 
 <script src="app.js"></script>
 </body>

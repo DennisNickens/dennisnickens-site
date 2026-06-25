@@ -23,12 +23,29 @@
     "welcome": {
       "title": "Before You Start",
       "body": [
-        "This is a 12-card taste of You Call Yourself A Friend. The real game is multiplayer: you pair up, race to 25, and find out who actually knows you.",
-        "Right here, you are just browsing. One card at a time. As you read each one, picture a specific friend and ask yourself: would they know my answer? Would I know theirs?",
-        "No score. No teams. Just the questions, and the people they make you think about."
+        "This is a 12-card taste of You Call Yourself A Friend. The real game is multiplayer: you pair up with someone, race to 25 points, and find out who actually pays attention.",
+        "In the full game, one player is the subject each round. Their partner reads the card and locks in the answer they think is right. Everyone else in the room answers too. Whoever matches the subject's real answer scores.",
+        "Here in the sample, you are alone with the cards. No partner. No score. Just you, browsing.",
+        "Each card asks something about a person. Pick a specific friend in your head as you read. Look at the four options. Ask yourself: would they know my answer? Would I know theirs? Sit with the gap, if there is one.",
+        "Twelve cards. Tap Next to advance. When you are done, the buy link to the full game is on the last screen. Tap I'm Ready below to begin."
       ],
       "signoff": "Dennis Nickens, AKA Spiritual Romeo",
       "ready": "I'm Ready"
+    },
+    "menu": {
+      "open_label": "Menu"
+    },
+    "drawer": {
+      "home": "Home",
+      "how_to_play": "How to Play",
+      "change_language": "Change Language",
+      "about": "About",
+      "foot": "A Spiritual Romeo Production",
+      "home_confirm": "Leave the sample and go back to the start?"
+    },
+    "about": {
+      "title": "You Call Yourself A Friend",
+      "body": "A free sample of the game about finding out who actually knows your people."
     },
     "card": {
       "next": "Next Card",

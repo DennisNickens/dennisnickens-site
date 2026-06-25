@@ -40,6 +40,13 @@
   var pos = 0;
 
   var SCREENS = ['screen-splash', 'screen-lead', 'screen-language', 'screen-welcome', 'screen-card', 'screen-done'];
+  // Screens that carry the persistent help hamburger. Deliberately excludes the
+  // splash, lead form, language picker, and Before You Start (the fab would sit
+  // over their inputs / tiles / I'm Ready button).
+  var MENU_SCREENS = ['screen-card', 'screen-done'];
+  // Where "I'm Ready" returns to when Before You Start was re-opened from the
+  // drawer's How to Play. null = normal first-run flow (start the deck at 0).
+  var welcomeReturn = null;
 
   function shuffle(arr) {
     var a = arr.slice();
@@ -63,6 +70,8 @@
         if (s === id) { el.hidden = false; el.classList.remove('fading'); }
         else { el.hidden = true; }
       });
+      var fab = $('menu-fab');
+      if (fab) fab.hidden = (MENU_SCREENS.indexOf(id) === -1);
     }
     if (withFade) {
       var current = SCREENS.map($).filter(function (el) { return el && !el.hidden; })[0];
@@ -175,6 +184,51 @@
       });
   }
 
+  // ----- help drawer + about modal -----
+  function visibleScreen() {
+    return SCREENS.map($).filter(function (el) { return el && !el.hidden; }).map(function (el) { return el.id; })[0] || 'screen-card';
+  }
+  function openMenu() {
+    $('drawer-backdrop').hidden = false;
+    $('drawer').hidden = false;
+    requestAnimationFrame(function () {
+      $('drawer-backdrop').classList.add('show');
+      $('drawer').classList.add('show');
+    });
+  }
+  function closeMenu() {
+    $('drawer-backdrop').classList.remove('show');
+    $('drawer').classList.remove('show');
+    setTimeout(function () {
+      $('drawer-backdrop').hidden = true;
+      $('drawer').hidden = true;
+    }, 440);
+  }
+  function openAbout() {
+    $('about-backdrop').hidden = false;
+    requestAnimationFrame(function () { $('about-backdrop').classList.add('show'); });
+  }
+  function closeAbout() {
+    $('about-backdrop').classList.remove('show');
+    setTimeout(function () { $('about-backdrop').hidden = true; }, 320);
+  }
+  // Home: confirm, reset the deck position to 0, and return to the splash. The
+  // lead-capture flag is deliberately left intact so returning visitors are not
+  // asked for their info again.
+  function drawerHome() {
+    var msg = (UI.drawer && UI.drawer.home_confirm) || 'Leave the sample and go back to the start?';
+    if (!confirm(msg)) return;
+    pos = 0; save(K.pos, 0);
+    showScreen('screen-splash', true);
+  }
+  // How to Play: re-open Before You Start, remembering where we came from so
+  // I'm Ready returns the player there (card view at their spot, or done),
+  // rather than restarting the deck at card 1.
+  function openHowToPlay() {
+    welcomeReturn = visibleScreen();
+    showScreen('screen-welcome', true);
+  }
+
   function onAction(action) {
     switch (action) {
       case 'begin': {
@@ -187,10 +241,28 @@
       case 'submit-lead': submitLeadForm(); return;
       case 'lang-en': save(K.lang, 'en'); location.reload(); return;
       case 'lang-es': save(K.lang, 'es'); location.reload(); return;
+      // Help drawer + about modal. Safe before DATA loads; the fab that opens
+      // them only ever appears on the card / done screens (post-load) anyway.
+      case 'open-menu': openMenu(); return;
+      case 'close-menu': closeMenu(); return;
+      case 'drawer-about': closeMenu(); openAbout(); return;
+      case 'close-about': closeAbout(); return;
+      case 'drawer-home': closeMenu(); drawerHome(); return;
+      case 'how-to-play': closeMenu(); openHowToPlay(); return;
+      case 'drawer-language': closeMenu(); showScreen('screen-language', true); return;
     }
     if (!DATA) return;
     switch (action) {
       case 'ready':
+        // If Before You Start was re-opened from the drawer, go back to wherever
+        // the player was (card view at their spot, or the done screen). Otherwise
+        // this is the normal first-run flow: start the deck at card 1.
+        if (welcomeReturn) {
+          var back = welcomeReturn; welcomeReturn = null;
+          if (back === 'screen-done') { showScreen('screen-done', true); }
+          else { showScreen('screen-card', true); renderCard(); }
+          break;
+        }
         if (!deck.length) buildDeck();
         pos = 0; persist();
         showScreen('screen-card', true);
@@ -198,16 +270,16 @@
         break;
       case 'next': goNext(); break;
       case 'back': goBack(); break;
-      case 'home-sample':
-        save(K.pos, 0); pos = 0;
-        showScreen('screen-splash', false);
-        break;
       case 'reshuffle': startSample(); break;
     }
   }
 
   function wire() {
     document.body.addEventListener('click', function (e) {
+      // Tap-out on a backdrop closes it. Matched by exact id (not closest) so a
+      // tap on the drawer / modal content never bubbles up to a close.
+      if (e.target.id === 'drawer-backdrop') { closeMenu(); return; }
+      if (e.target.id === 'about-backdrop') { closeAbout(); return; }
       var el = e.target.closest('[data-action]');
       if (el) { onAction(el.getAttribute('data-action')); }
     });
@@ -246,6 +318,16 @@
       wb.innerHTML = '';
       (w.body || []).forEach(function (p) { var el = document.createElement('p'); el.textContent = p; wb.appendChild(el); });
     }
+    // Help drawer + about modal chrome.
+    var dr = UI.drawer || {}, mn = UI.menu || {}, ab = UI.about || {};
+    set('drawer-home', dr.home);
+    set('drawer-how', dr.how_to_play);
+    set('drawer-lang', dr.change_language);
+    set('drawer-about-item', dr.about);
+    set('drawer-foot', dr.foot);
+    set('about-title', ab.title);
+    set('about-body', ab.body);
+    var fab = $('menu-fab'); if (fab && mn.open_label) fab.setAttribute('aria-label', mn.open_label);
     set('next-btn', c.next);
     set('done-title', d.title);
     set('done-sub', d.sub);

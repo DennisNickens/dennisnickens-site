@@ -5,7 +5,7 @@
    two never step on each other. We only precache the static shell;
    there is no /api/* caching (the lead POST always hits the network).
    ============================================================ */
-var CACHE_VERSION = 'ycyfs-v2';
+var CACHE_VERSION = 'ycyfs-v3';
 var CACHE_NAME = 'ycyf-sample-' + CACHE_VERSION;
 
 function rel(p) { return new URL(p, self.location.href).toString(); }

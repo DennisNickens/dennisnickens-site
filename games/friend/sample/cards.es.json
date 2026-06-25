@@ -23,12 +23,29 @@
     "welcome": {
       "title": "Antes de Empezar",
       "body": [
-        "Esta es una muestra de 12 cartas de You Call Yourself A Friend. El juego real es multijugador: se emparejan, corren a 25 y descubren quién de verdad te conoce.",
-        "Aquí solo estás explorando. Una carta a la vez. Mientras lees cada una, piensa en un amigo en concreto y pregúntate: ¿sabría mi respuesta? ¿Sabría yo la suya?",
-        "Sin puntaje. Sin equipos. Solo las preguntas, y las personas en las que te hacen pensar."
+        "Esta es una muestra de 12 cartas de You Call Yourself A Friend. El juego real es multijugador: te emparejas con alguien, compiten hasta 25 puntos, y descubres quién realmente presta atención.",
+        "En el juego completo, un jugador es el sujeto cada ronda. Su compañero lee la carta y elige la respuesta que cree correcta. Todos los demás también responden. Quien coincide con la respuesta real del sujeto, anota.",
+        "Aquí en la muestra, estás solo con las cartas. Sin compañero. Sin puntaje. Solo tú, hojeando.",
+        "Cada carta pregunta algo sobre una persona. Piensa en un amigo específico mientras lees. Mira las cuatro opciones. Pregúntate: ¿sabrían mi respuesta? ¿Yo sabría la suya? Siéntate con la diferencia, si la hay.",
+        "Doce cartas. Toca Siguiente para avanzar. Cuando termines, el enlace de compra al juego completo está en la última pantalla. Toca Estoy Listo abajo para empezar."
       ],
       "signoff": "Dennis Nickens, AKA Spiritual Romeo",
       "ready": "Estoy listo"
+    },
+    "menu": {
+      "open_label": "Menú"
+    },
+    "drawer": {
+      "home": "Inicio",
+      "how_to_play": "Cómo Jugar",
+      "change_language": "Cambiar Idioma",
+      "about": "Acerca de",
+      "foot": "Una producción de Spiritual Romeo",
+      "home_confirm": "¿Salir de la muestra y volver al inicio?"
+    },
+    "about": {
+      "title": "You Call Yourself A Friend",
+      "body": "Una muestra gratis del juego para descubrir quién de verdad conoce a tu gente."
     },
     "card": {
       "next": "Siguiente carta",

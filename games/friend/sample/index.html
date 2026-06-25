@@ -83,14 +83,19 @@
 </head>
 <body>
 
+<!-- Ambient floating dots. Body-level so the motion persists behind every
+     screen (splash, lead, language, Before You Start, cards, done), not just
+     the splash. z-index 0, pointer-events none; reduced-motion guard lives in
+     the shared ../style.css. -->
+<div class="confetti" aria-hidden="true">
+  <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
+  <span class="dot d4"></span><span class="dot d5"></span><span class="dot d6"></span>
+  <span class="dot d7"></span><span class="dot d8"></span><span class="dot d9"></span>
+  <span class="dot d10"></span><span class="dot d11"></span><span class="dot d12"></span>
+</div>
+
 <!-- ================= SPLASH ================= -->
 <section id="screen-splash" class="screen" aria-label="Welcome">
-  <div class="confetti" aria-hidden="true">
-    <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
-    <span class="dot d4"></span><span class="dot d5"></span><span class="dot d6"></span>
-    <span class="dot d7"></span><span class="dot d8"></span><span class="dot d9"></span>
-    <span class="dot d10"></span><span class="dot d11"></span><span class="dot d12"></span>
-  </div>
   <div class="router-inner">
     <div class="router-cover">
       <img src="../../../images/you-call-yourself-a-friend-cover.jpg" alt="You Call Yourself A Friend game box, by Dennis Nickens" />
@@ -152,9 +157,8 @@
       <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg>
     </button>
     <span style="flex:1"></span>
-    <button class="smp-icon-btn" data-action="home-sample" aria-label="Home">
-      <svg viewBox="0 0 24 24"><path d="M3 11.5L12 4l9 7.5"/><path d="M5.5 10v9h13v-9"/></svg>
-    </button>
+    <!-- Home now lives in the help drawer (Fix 3). The old topbar home button
+         was removed so it does not collide with the fixed hamburger fab. -->
   </div>
 
   <div class="smp-card-wrap">
@@ -184,6 +188,44 @@
     <button class="btn btn-ghost" data-action="reshuffle" id="done-reshuffle" style="margin-top:1rem;">Play the Sample Again</button>
   </div>
 </section>
+
+<!-- ================= HELP MENU (hamburger + drawer) ================= -->
+<!-- Fab rides only the card view + completion screens (toggled in showScreen).
+     Never the splash, lead form, language picker, or Before You Start, where it
+     would block the form inputs, language tiles, or the I'm Ready button. -->
+<button class="menu-fab" id="menu-fab" data-action="open-menu" aria-label="Menu" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+</button>
+
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Menu">
+  <div class="drawer-head">
+    <span class="drawer-brand">You Call Yourself A Friend</span>
+    <button class="icon-btn" data-action="close-menu" aria-label="Close menu">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav class="drawer-nav">
+    <button class="drawer-item" data-action="drawer-home" id="drawer-home">Home</button>
+    <button class="drawer-item" data-action="how-to-play" id="drawer-how">How to Play</button>
+    <button class="drawer-item" data-action="drawer-language" id="drawer-lang">Change Language</button>
+    <button class="drawer-item" data-action="drawer-about" id="drawer-about-item">About</button>
+  </nav>
+  <p class="drawer-foot" id="drawer-foot">A Spiritual Romeo Production</p>
+</aside>
+
+<!-- ================= ABOUT MODAL ================= -->
+<div class="about-backdrop" id="about-backdrop" hidden>
+  <div class="about-modal" role="dialog" aria-modal="true" aria-label="About">
+    <button class="icon-btn about-close" data-action="close-about" aria-label="Close">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <h3 class="about-title" id="about-title">You Call Yourself A Friend</h3>
+    <p class="about-body" id="about-body">A free sample of the game about finding out who actually knows your people.</p>
+    <p class="about-by">by Dennis Nickens, AKA Spiritual Romeo</p>
+    <a class="about-link" href="https://dennisnickens.com" target="_blank" rel="noopener">dennisnickens.com</a>
+  </div>
+</div>
 
 <script src="app.js"></script>
 </body>

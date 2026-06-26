@@ -83,7 +83,9 @@
   .smp-card-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;width:100%;max-width:34rem;margin:0 auto;padding:.5rem 1rem;box-sizing:border-box;}
   /* The options are read-only in the sample (it is a browse, not a real round). */
   #screen-card .answer-grid{margin-top:1rem;}
-  #screen-card .answer-tile{cursor:default;}
+  /* Tiles are tap targets in the sample: tapping one advances the card (#95). */
+  #screen-card .answer-tile{cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease;}
+  #screen-card .answer-tile.tile-tapped{transform:scale(.96);border-color:var(--sun);box-shadow:0 0 0 2px rgba(255,210,74,.55);}
   .smp-card-bottom{display:flex;flex-direction:column;align-items:center;gap:.6rem;padding:.6rem 1rem 1.4rem;width:100%;max-width:34rem;margin:0 auto;box-sizing:border-box;}
   .smp-progress{font-family:var(--fn);color:var(--cream-faint);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;}
   .smp-card-bottom .btn{width:100%;}

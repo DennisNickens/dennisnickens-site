@@ -110,6 +110,16 @@
     var t = document.createElement('span');
     t.className = 'answer-text'; t.textContent = text;
     li.appendChild(t);
+    // The sample is a browse-through with no scoring, but customers naturally
+    // tap an option expecting it to advance (a real tester reported the sample
+    // looked broken because tiles did nothing). Make each tile a tap target:
+    // flash brief feedback, then advance to the next card. The Next Card button
+    // below still works as a secondary path.
+    li.addEventListener('click', function () {
+      if (li.classList.contains('tile-tapped')) return;   // ignore repeat taps
+      li.classList.add('tile-tapped');
+      setTimeout(goNext, 180);
+    });
     return li;
   }
 

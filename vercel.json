@@ -3,5 +3,17 @@
     "api/generate-blueprint.js": {
       "maxDuration": 800
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/apparel",
+      "destination": "https://v0yunr-10.myshopify.com",
+      "permanent": false
+    },
+    {
+      "source": "/apparel/:path*",
+      "destination": "https://v0yunr-10.myshopify.com/:path*",
+      "permanent": false
+    }
+  ]
 }

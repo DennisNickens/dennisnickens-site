@@ -1,7 +1,7 @@
 /* ============================================================
    POST /api/ycyf-stripe-webhook
    ------------------------------------------------------------
-   Mirrors api/lq-stripe-webhook.js but for the YCYF digital SKU.
+   Mirrors api/lq-stripe-webhook.mjs but for the YCYF digital SKU.
    Kept SEPARATE from the LQ webhook so Lovers Quest is untouched.
 
    On checkout.session.completed for product 'ycyf-digital':
@@ -9,20 +9,22 @@
      2. Create a ycyf:license:<token> record in KV (idempotent).
      3. Email the buyer their ?access=<token> link via Resend.
 
-   Stripe signature verification needs the raw request bytes, so we
-   disable Vercel's body parser and read the buffer ourselves.
+   Stripe verifies the signature against the RAW request bytes. This file
+   is an ES module (.mjs) so the "export const config = { api: {
+   bodyParser: false } }" below is detected by Vercel and disables the
+   default body parser, leaving the raw stream intact for constructEvent.
 
    Requires env: STRIPE_SECRET_KEY, plus STRIPE_WEBHOOK_SECRET_YCYF
-   (the signing secret for the YCYF webhook endpoint Dennis adds in
-   the Stripe Dashboard). Falls back to STRIPE_WEBHOOK_SECRET if a
-   YCYF-specific secret is not set (e.g. one shared endpoint).
+   (the signing secret for the YCYF webhook endpoint in the Stripe
+   Dashboard). Falls back to STRIPE_WEBHOOK_SECRET if a YCYF-specific
+   secret is not set (e.g. one shared endpoint).
    ============================================================ */
 
-'use strict';
+import Stripe from 'stripe';
+import { createLicense, findLicenseByEmail } from '../lib/ycyf-licenses.js';
+import { sendAccessLink } from '../lib/ycyf-emails.js';
 
-const Stripe = require('stripe');
-const { createLicense, findLicenseByEmail } = require('../lib/ycyf-licenses.js');
-const { sendAccessLink } = require('../lib/ycyf-emails.js');
+export const config = { api: { bodyParser: false } };
 
 async function readRawBody(req) {
   const chunks = [];
@@ -38,7 +40,7 @@ function firstNameFromStripe(session) {
   return String(full).trim().split(/\s+/)[0];
 }
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   if (req.method !== 'POST') { res.status(405).send('Method not allowed'); return; }
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -110,8 +112,4 @@ module.exports = async (req, res) => {
     console.error('[ycyf-stripe-webhook] handler error:', err);
     res.status(500).send('handler error');
   }
-};
-
-// Disable Vercel's default body parser; Stripe signature verification needs the
-// raw bytes. Attached after module.exports is assigned.
-module.exports.config = { api: { bodyParser: false } };
+}

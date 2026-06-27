@@ -10,17 +10,25 @@
      2. Generate a license token, store it in KV.
      3. Email the buyer their access link via Resend.
 
-   Stripe requires the request body to be verified against a
-   signing secret using the raw bytes, so we disable Vercel's
-   automatic body parsing and read the raw buffer ourselves.
+   Stripe verifies the signature against the RAW request bytes, so the
+   body must not be parsed before we read it. This file is an ES module
+   (.mjs) specifically so the "export const config = { api: { bodyParser:
+   false } }" below is detected by Vercel's build, which disables the
+   default body parser. The previous CommonJS form (module.exports.config)
+   was not being detected on this commonjs project, so Vercel parsed and
+   consumed the stream first, leaving the raw read empty and breaking
+   signature verification with "No signatures found matching".
    ============================================================ */
 
-'use strict';
+import Stripe from 'stripe';
+import { createLicense, findLicenseByEmail } from '../lib/lq-licenses.js';
+import { sendAccessLink } from '../lib/lq-emails.js';
 
-const Stripe = require('stripe');
-const { createLicense, findLicenseByEmail } = require('../lib/lq-licenses.js');
-const { sendAccessLink } = require('../lib/lq-emails.js');
+export const config = { api: { bodyParser: false } };
 
+// Read the raw request body as a Buffer. Pass this Buffer straight to
+// constructEvent. Never parse or re-stringify it; that would change the
+// bytes and break the signature.
 async function readRawBody(req) {
   const chunks = [];
   for await (const chunk of req) {
@@ -36,7 +44,7 @@ function firstNameFromStripe(session) {
   return String(full).trim().split(/\s+/)[0];
 }
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.status(405).send('Method not allowed');
     return;
@@ -119,9 +127,4 @@ module.exports = async (req, res) => {
     console.error('[lq-stripe-webhook] handler error:', err);
     res.status(500).send('handler error');
   }
-};
-
-// Disable Vercel's default body parser; Stripe signature verification needs the
-// raw bytes. This MUST be attached after the handler is assigned to
-// module.exports, otherwise the reassignment above would discard it.
-module.exports.config = { api: { bodyParser: false } };
+}

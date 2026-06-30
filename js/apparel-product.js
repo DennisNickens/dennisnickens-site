@@ -140,7 +140,7 @@
 
     // total
     var v = currentVariant();
-    var totalText = v ? money(v.price_cents * state.qty) : "Select options";
+    var totalText = v ? money((v.price_cents + (v.size_upcharge_cents || 0)) * state.qty) : "Select options";
     html += '<div class="apr-total"><span class="apr-total-label">Total</span>' +
       '<span class="apr-total-amount" id="aprTotal">' + totalText + "</span></div>";
 
@@ -193,7 +193,7 @@
   function updateTotal() {
     var v = currentVariant();
     var t = el("aprTotal");
-    if (t) t.textContent = v ? money(v.price_cents * state.qty) : "Select options";
+    if (t) t.textContent = v ? money((v.price_cents + (v.size_upcharge_cents || 0)) * state.qty) : "Select options";
     var buy = el("aprBuyBtn");
     if (buy) buy.disabled = !(v && v.is_available !== false && v.printify_variant_id);
   }

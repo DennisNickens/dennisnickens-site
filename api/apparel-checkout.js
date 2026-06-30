@@ -104,7 +104,7 @@ module.exports = async (req, res) => {
         quantity: quantity,
         price_data: {
           currency: (catalog._meta && catalog._meta.currency) || 'usd',
-          unit_amount: variant.price_cents,
+          unit_amount: variant.price_cents + (variant.size_upcharge_cents || 0),
           product_data: {
             name: product.title + (variantLabel ? ' (' + variantLabel + ')' : ''),
             images: product.hero_image ? [product.hero_image] : undefined

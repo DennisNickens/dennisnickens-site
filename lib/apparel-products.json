@@ -33,7 +33,8 @@
           "printify_variant_id": 79114,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Black",
@@ -41,7 +42,8 @@
           "printify_variant_id": 73204,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -49,7 +51,8 @@
           "printify_variant_id": 73208,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -57,7 +60,8 @@
           "printify_variant_id": 73200,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -65,7 +69,8 @@
           "printify_variant_id": 73196,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -73,7 +78,8 @@
           "printify_variant_id": 73212,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         }
       ],
       "variants_status": "fetched"
@@ -118,7 +124,8 @@
           "printify_variant_id": 79153,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "White",
@@ -126,7 +133,8 @@
           "printify_variant_id": 79169,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Black",
@@ -134,7 +142,8 @@
           "printify_variant_id": 79114,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Ivory",
@@ -142,7 +151,8 @@
           "printify_variant_id": 79142,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Pepper",
@@ -150,7 +160,8 @@
           "printify_variant_id": 79048,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -158,7 +169,8 @@
           "printify_variant_id": 78973,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -166,7 +178,8 @@
           "printify_variant_id": 78892,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ivory",
@@ -174,7 +187,8 @@
           "printify_variant_id": 78994,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -182,7 +196,8 @@
           "printify_variant_id": 78924,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -190,7 +205,8 @@
           "printify_variant_id": 73204,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -198,7 +214,8 @@
           "printify_variant_id": 79094,
           "stripe_price_id": null,
           "price_cents": 3199,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -206,7 +223,8 @@
           "printify_variant_id": 79049,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -214,7 +232,8 @@
           "printify_variant_id": 78954,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -222,7 +241,8 @@
           "printify_variant_id": 78894,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -230,7 +250,8 @@
           "printify_variant_id": 78883,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -238,7 +259,8 @@
           "printify_variant_id": 79037,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -246,7 +268,8 @@
           "printify_variant_id": 78891,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -254,7 +277,8 @@
           "printify_variant_id": 78972,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -262,7 +286,8 @@
           "printify_variant_id": 79047,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -270,7 +295,8 @@
           "printify_variant_id": 78884,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -278,7 +304,8 @@
           "printify_variant_id": 78974,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -286,7 +313,8 @@
           "printify_variant_id": 73208,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -294,7 +322,8 @@
           "printify_variant_id": 73200,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -302,7 +331,8 @@
           "printify_variant_id": 78922,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -310,7 +340,8 @@
           "printify_variant_id": 78951,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -318,7 +349,8 @@
           "printify_variant_id": 73196,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -326,7 +358,8 @@
           "printify_variant_id": 73203,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -334,7 +367,8 @@
           "printify_variant_id": 78879,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blossom",
@@ -342,7 +376,8 @@
           "printify_variant_id": 78889,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -350,7 +385,8 @@
           "printify_variant_id": 78921,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -358,7 +394,8 @@
           "printify_variant_id": 79039,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -366,7 +403,8 @@
           "printify_variant_id": 78876,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -374,7 +412,8 @@
           "printify_variant_id": 79092,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -382,7 +421,8 @@
           "printify_variant_id": 78898,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -390,7 +430,8 @@
           "printify_variant_id": 78881,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -398,7 +439,8 @@
           "printify_variant_id": 78971,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -406,7 +448,8 @@
           "printify_variant_id": 78899,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -414,7 +457,8 @@
           "printify_variant_id": 78896,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -422,7 +466,8 @@
           "printify_variant_id": 73211,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -430,7 +475,8 @@
           "printify_variant_id": 79083,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -438,7 +484,8 @@
           "printify_variant_id": 79036,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -446,7 +493,8 @@
           "printify_variant_id": 78893,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -454,7 +502,8 @@
           "printify_variant_id": 73207,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -462,7 +511,8 @@
           "printify_variant_id": 79081,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -470,7 +520,8 @@
           "printify_variant_id": 78882,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -478,7 +529,8 @@
           "printify_variant_id": 78878,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -486,7 +538,8 @@
           "printify_variant_id": 78897,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -494,7 +547,8 @@
           "printify_variant_id": 78953,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -502,7 +556,8 @@
           "printify_variant_id": 79082,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -510,7 +565,8 @@
           "printify_variant_id": 78952,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -518,7 +574,8 @@
           "printify_variant_id": 78877,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -526,7 +583,8 @@
           "printify_variant_id": 79084,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -534,7 +592,8 @@
           "printify_variant_id": 78955,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -542,7 +601,8 @@
           "printify_variant_id": 79095,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -550,7 +610,8 @@
           "printify_variant_id": 73212,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blossom",
@@ -558,7 +619,8 @@
           "printify_variant_id": 78890,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -566,7 +628,8 @@
           "printify_variant_id": 73215,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -574,7 +637,8 @@
           "printify_variant_id": 78880,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ivory",
@@ -582,7 +646,8 @@
           "printify_variant_id": 78995,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -590,7 +655,8 @@
           "printify_variant_id": 78975,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -598,7 +664,8 @@
           "printify_variant_id": 79040,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -606,7 +673,8 @@
           "printify_variant_id": 79050,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -614,7 +682,8 @@
           "printify_variant_id": 78885,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -622,7 +691,8 @@
           "printify_variant_id": 78895,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -630,7 +700,8 @@
           "printify_variant_id": 79085,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -638,7 +709,8 @@
           "printify_variant_id": 78925,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -646,7 +718,8 @@
           "printify_variant_id": 78900,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         }
       ],
       "variants_status": "fetched"
@@ -691,7 +764,8 @@
           "printify_variant_id": 79153,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "White",
@@ -699,7 +773,8 @@
           "printify_variant_id": 79169,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Black",
@@ -707,7 +782,8 @@
           "printify_variant_id": 79114,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Ivory",
@@ -715,7 +791,8 @@
           "printify_variant_id": 79142,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Pepper",
@@ -723,7 +800,8 @@
           "printify_variant_id": 79048,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -731,7 +809,8 @@
           "printify_variant_id": 78973,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -739,7 +818,8 @@
           "printify_variant_id": 78892,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ivory",
@@ -747,7 +827,8 @@
           "printify_variant_id": 78994,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -755,7 +836,8 @@
           "printify_variant_id": 78924,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -763,7 +845,8 @@
           "printify_variant_id": 73204,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -771,7 +854,8 @@
           "printify_variant_id": 79094,
           "stripe_price_id": null,
           "price_cents": 3199,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -779,7 +863,8 @@
           "printify_variant_id": 79049,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -787,7 +872,8 @@
           "printify_variant_id": 78954,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -795,7 +881,8 @@
           "printify_variant_id": 78894,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -803,7 +890,8 @@
           "printify_variant_id": 78883,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -811,7 +899,8 @@
           "printify_variant_id": 79037,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -819,7 +908,8 @@
           "printify_variant_id": 78891,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -827,7 +917,8 @@
           "printify_variant_id": 78972,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -835,7 +926,8 @@
           "printify_variant_id": 79047,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -843,7 +935,8 @@
           "printify_variant_id": 78884,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -851,7 +944,8 @@
           "printify_variant_id": 78974,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -859,7 +953,8 @@
           "printify_variant_id": 73208,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -867,7 +962,8 @@
           "printify_variant_id": 73200,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -875,7 +971,8 @@
           "printify_variant_id": 78922,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -883,7 +980,8 @@
           "printify_variant_id": 78951,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -891,7 +989,8 @@
           "printify_variant_id": 73196,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -899,7 +998,8 @@
           "printify_variant_id": 73203,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -907,7 +1007,8 @@
           "printify_variant_id": 78879,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blossom",
@@ -915,7 +1016,8 @@
           "printify_variant_id": 78889,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -923,7 +1025,8 @@
           "printify_variant_id": 78921,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -931,7 +1034,8 @@
           "printify_variant_id": 79039,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -939,7 +1043,8 @@
           "printify_variant_id": 78876,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -947,7 +1052,8 @@
           "printify_variant_id": 79092,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -955,7 +1061,8 @@
           "printify_variant_id": 78898,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -963,7 +1070,8 @@
           "printify_variant_id": 78881,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -971,7 +1079,8 @@
           "printify_variant_id": 78971,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -979,7 +1088,8 @@
           "printify_variant_id": 78899,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -987,7 +1097,8 @@
           "printify_variant_id": 78896,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -995,7 +1106,8 @@
           "printify_variant_id": 73211,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -1003,7 +1115,8 @@
           "printify_variant_id": 79083,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -1011,7 +1124,8 @@
           "printify_variant_id": 79036,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -1019,7 +1133,8 @@
           "printify_variant_id": 78893,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -1027,7 +1142,8 @@
           "printify_variant_id": 73207,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -1035,7 +1151,8 @@
           "printify_variant_id": 79081,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -1043,7 +1160,8 @@
           "printify_variant_id": 78882,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -1051,7 +1169,8 @@
           "printify_variant_id": 78878,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -1059,7 +1178,8 @@
           "printify_variant_id": 78897,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -1067,7 +1187,8 @@
           "printify_variant_id": 78953,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -1075,7 +1196,8 @@
           "printify_variant_id": 79082,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -1083,7 +1205,8 @@
           "printify_variant_id": 78952,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -1091,7 +1214,8 @@
           "printify_variant_id": 78877,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -1099,7 +1223,8 @@
           "printify_variant_id": 79084,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -1107,7 +1232,8 @@
           "printify_variant_id": 78955,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -1115,7 +1241,8 @@
           "printify_variant_id": 79095,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -1123,7 +1250,8 @@
           "printify_variant_id": 73212,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blossom",
@@ -1131,7 +1259,8 @@
           "printify_variant_id": 78890,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -1139,7 +1268,8 @@
           "printify_variant_id": 73215,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -1147,7 +1277,8 @@
           "printify_variant_id": 78880,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ivory",
@@ -1155,7 +1286,8 @@
           "printify_variant_id": 78995,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -1163,7 +1295,8 @@
           "printify_variant_id": 78975,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -1171,7 +1304,8 @@
           "printify_variant_id": 79040,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -1179,7 +1313,8 @@
           "printify_variant_id": 79050,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -1187,7 +1322,8 @@
           "printify_variant_id": 78885,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -1195,7 +1331,8 @@
           "printify_variant_id": 78895,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -1203,7 +1340,8 @@
           "printify_variant_id": 79085,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -1211,7 +1349,8 @@
           "printify_variant_id": 78925,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -1219,7 +1358,8 @@
           "printify_variant_id": 78900,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         }
       ],
       "variants_status": "fetched"
@@ -1264,7 +1404,8 @@
           "printify_variant_id": 79153,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "White",
@@ -1272,7 +1413,8 @@
           "printify_variant_id": 79169,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Black",
@@ -1280,7 +1422,8 @@
           "printify_variant_id": 79114,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Ivory",
@@ -1288,7 +1431,8 @@
           "printify_variant_id": 79142,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Pepper",
@@ -1296,7 +1440,8 @@
           "printify_variant_id": 79048,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -1304,7 +1449,8 @@
           "printify_variant_id": 78973,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -1312,7 +1458,8 @@
           "printify_variant_id": 78892,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ivory",
@@ -1320,7 +1467,8 @@
           "printify_variant_id": 78994,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -1328,7 +1476,8 @@
           "printify_variant_id": 78924,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -1336,7 +1485,8 @@
           "printify_variant_id": 73204,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -1344,7 +1494,8 @@
           "printify_variant_id": 79094,
           "stripe_price_id": null,
           "price_cents": 3199,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -1352,7 +1503,8 @@
           "printify_variant_id": 79049,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -1360,7 +1512,8 @@
           "printify_variant_id": 78954,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -1368,7 +1521,8 @@
           "printify_variant_id": 78894,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -1376,7 +1530,8 @@
           "printify_variant_id": 78883,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -1384,7 +1539,8 @@
           "printify_variant_id": 79037,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -1392,7 +1548,8 @@
           "printify_variant_id": 78891,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -1400,7 +1557,8 @@
           "printify_variant_id": 78972,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -1408,7 +1566,8 @@
           "printify_variant_id": 79047,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -1416,7 +1575,8 @@
           "printify_variant_id": 78884,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -1424,7 +1584,8 @@
           "printify_variant_id": 78974,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -1432,7 +1593,8 @@
           "printify_variant_id": 73208,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -1440,7 +1602,8 @@
           "printify_variant_id": 73200,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -1448,7 +1611,8 @@
           "printify_variant_id": 78922,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -1456,7 +1620,8 @@
           "printify_variant_id": 78951,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -1464,7 +1629,8 @@
           "printify_variant_id": 73196,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -1472,7 +1638,8 @@
           "printify_variant_id": 73203,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -1480,7 +1647,8 @@
           "printify_variant_id": 78879,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blossom",
@@ -1488,7 +1656,8 @@
           "printify_variant_id": 78889,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -1496,7 +1665,8 @@
           "printify_variant_id": 78921,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -1504,7 +1674,8 @@
           "printify_variant_id": 79039,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -1512,7 +1683,8 @@
           "printify_variant_id": 78876,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -1520,7 +1692,8 @@
           "printify_variant_id": 79092,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -1528,7 +1701,8 @@
           "printify_variant_id": 78898,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -1536,7 +1710,8 @@
           "printify_variant_id": 78881,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -1544,7 +1719,8 @@
           "printify_variant_id": 78971,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -1552,7 +1728,8 @@
           "printify_variant_id": 78899,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -1560,7 +1737,8 @@
           "printify_variant_id": 78896,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -1568,7 +1746,8 @@
           "printify_variant_id": 73211,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -1576,7 +1755,8 @@
           "printify_variant_id": 79083,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -1584,7 +1764,8 @@
           "printify_variant_id": 79036,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -1592,7 +1773,8 @@
           "printify_variant_id": 78893,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -1600,7 +1782,8 @@
           "printify_variant_id": 73207,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -1608,7 +1791,8 @@
           "printify_variant_id": 79081,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -1616,7 +1800,8 @@
           "printify_variant_id": 78882,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -1624,7 +1809,8 @@
           "printify_variant_id": 78878,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -1632,7 +1818,8 @@
           "printify_variant_id": 78897,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -1640,7 +1827,8 @@
           "printify_variant_id": 78953,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -1648,7 +1836,8 @@
           "printify_variant_id": 79082,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -1656,7 +1845,8 @@
           "printify_variant_id": 78952,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -1664,7 +1854,8 @@
           "printify_variant_id": 78877,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -1672,7 +1863,8 @@
           "printify_variant_id": 79084,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -1680,7 +1872,8 @@
           "printify_variant_id": 78955,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -1688,7 +1881,8 @@
           "printify_variant_id": 79095,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -1696,7 +1890,8 @@
           "printify_variant_id": 73212,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blossom",
@@ -1704,7 +1899,8 @@
           "printify_variant_id": 78890,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -1712,7 +1908,8 @@
           "printify_variant_id": 73215,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -1720,7 +1917,8 @@
           "printify_variant_id": 78880,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ivory",
@@ -1728,7 +1926,8 @@
           "printify_variant_id": 78995,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -1736,7 +1935,8 @@
           "printify_variant_id": 78975,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -1744,7 +1944,8 @@
           "printify_variant_id": 79040,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -1752,7 +1953,8 @@
           "printify_variant_id": 79050,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -1760,7 +1962,8 @@
           "printify_variant_id": 78885,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -1768,7 +1971,8 @@
           "printify_variant_id": 78895,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -1776,7 +1980,8 @@
           "printify_variant_id": 79085,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -1784,7 +1989,8 @@
           "printify_variant_id": 78925,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -1792,7 +1998,8 @@
           "printify_variant_id": 78900,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         }
       ],
       "variants_status": "fetched"
@@ -1837,7 +2044,8 @@
           "printify_variant_id": 79153,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "White",
@@ -1845,7 +2053,8 @@
           "printify_variant_id": 79169,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Black",
@@ -1853,7 +2062,8 @@
           "printify_variant_id": 79114,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Ivory",
@@ -1861,7 +2071,8 @@
           "printify_variant_id": 79142,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Pepper",
@@ -1869,7 +2080,8 @@
           "printify_variant_id": 79048,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -1877,7 +2089,8 @@
           "printify_variant_id": 78973,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -1885,7 +2098,8 @@
           "printify_variant_id": 78892,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ivory",
@@ -1893,7 +2107,8 @@
           "printify_variant_id": 78994,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -1901,7 +2116,8 @@
           "printify_variant_id": 78924,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -1909,7 +2125,8 @@
           "printify_variant_id": 73204,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -1917,7 +2134,8 @@
           "printify_variant_id": 79094,
           "stripe_price_id": null,
           "price_cents": 3199,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -1925,7 +2143,8 @@
           "printify_variant_id": 79049,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -1933,7 +2152,8 @@
           "printify_variant_id": 78954,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -1941,7 +2161,8 @@
           "printify_variant_id": 78894,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -1949,7 +2170,8 @@
           "printify_variant_id": 78883,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -1957,7 +2179,8 @@
           "printify_variant_id": 79037,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -1965,7 +2188,8 @@
           "printify_variant_id": 78891,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -1973,7 +2197,8 @@
           "printify_variant_id": 78972,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -1981,7 +2206,8 @@
           "printify_variant_id": 79047,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -1989,7 +2215,8 @@
           "printify_variant_id": 78884,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -1997,7 +2224,8 @@
           "printify_variant_id": 78974,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -2005,7 +2233,8 @@
           "printify_variant_id": 73208,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -2013,7 +2242,8 @@
           "printify_variant_id": 73200,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -2021,7 +2251,8 @@
           "printify_variant_id": 78922,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -2029,7 +2260,8 @@
           "printify_variant_id": 78951,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -2037,7 +2269,8 @@
           "printify_variant_id": 73196,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -2045,7 +2278,8 @@
           "printify_variant_id": 73203,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -2053,7 +2287,8 @@
           "printify_variant_id": 78879,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blossom",
@@ -2061,7 +2296,8 @@
           "printify_variant_id": 78889,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -2069,7 +2305,8 @@
           "printify_variant_id": 78921,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -2077,7 +2314,8 @@
           "printify_variant_id": 79039,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -2085,7 +2323,8 @@
           "printify_variant_id": 78876,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -2093,7 +2332,8 @@
           "printify_variant_id": 79092,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -2101,7 +2341,8 @@
           "printify_variant_id": 78898,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -2109,7 +2350,8 @@
           "printify_variant_id": 78881,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -2117,7 +2359,8 @@
           "printify_variant_id": 78971,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -2125,7 +2368,8 @@
           "printify_variant_id": 78899,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -2133,7 +2377,8 @@
           "printify_variant_id": 78896,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -2141,7 +2386,8 @@
           "printify_variant_id": 73211,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -2149,7 +2395,8 @@
           "printify_variant_id": 79083,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -2157,7 +2404,8 @@
           "printify_variant_id": 79036,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -2165,7 +2413,8 @@
           "printify_variant_id": 78893,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -2173,7 +2422,8 @@
           "printify_variant_id": 73207,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -2181,7 +2431,8 @@
           "printify_variant_id": 79081,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -2189,7 +2440,8 @@
           "printify_variant_id": 78882,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -2197,7 +2449,8 @@
           "printify_variant_id": 78878,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -2205,7 +2458,8 @@
           "printify_variant_id": 78897,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -2213,7 +2467,8 @@
           "printify_variant_id": 78953,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -2221,7 +2476,8 @@
           "printify_variant_id": 79082,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -2229,7 +2485,8 @@
           "printify_variant_id": 78952,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -2237,7 +2494,8 @@
           "printify_variant_id": 78877,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -2245,7 +2503,8 @@
           "printify_variant_id": 79084,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -2253,7 +2512,8 @@
           "printify_variant_id": 78955,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -2261,7 +2521,8 @@
           "printify_variant_id": 79095,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -2269,7 +2530,8 @@
           "printify_variant_id": 73212,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blossom",
@@ -2277,7 +2539,8 @@
           "printify_variant_id": 78890,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -2285,7 +2548,8 @@
           "printify_variant_id": 73215,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -2293,7 +2557,8 @@
           "printify_variant_id": 78880,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ivory",
@@ -2301,7 +2566,8 @@
           "printify_variant_id": 78995,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -2309,7 +2575,8 @@
           "printify_variant_id": 78975,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -2317,7 +2584,8 @@
           "printify_variant_id": 79040,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -2325,7 +2593,8 @@
           "printify_variant_id": 79050,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -2333,7 +2602,8 @@
           "printify_variant_id": 78885,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -2341,7 +2611,8 @@
           "printify_variant_id": 78895,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -2349,7 +2620,8 @@
           "printify_variant_id": 79085,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -2357,7 +2629,8 @@
           "printify_variant_id": 78925,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -2365,7 +2638,8 @@
           "printify_variant_id": 78900,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         }
       ],
       "variants_status": "fetched"
@@ -2410,7 +2684,8 @@
           "printify_variant_id": 79153,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "White",
@@ -2418,7 +2693,8 @@
           "printify_variant_id": 79169,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Black",
@@ -2426,7 +2702,8 @@
           "printify_variant_id": 79114,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Ivory",
@@ -2434,7 +2711,8 @@
           "printify_variant_id": 79142,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Pepper",
@@ -2442,7 +2720,8 @@
           "printify_variant_id": 79048,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -2450,7 +2729,8 @@
           "printify_variant_id": 78973,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -2458,7 +2738,8 @@
           "printify_variant_id": 78892,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ivory",
@@ -2466,7 +2747,8 @@
           "printify_variant_id": 78994,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -2474,7 +2756,8 @@
           "printify_variant_id": 78924,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -2482,7 +2765,8 @@
           "printify_variant_id": 73204,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -2490,7 +2774,8 @@
           "printify_variant_id": 79094,
           "stripe_price_id": null,
           "price_cents": 3199,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -2498,7 +2783,8 @@
           "printify_variant_id": 79049,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -2506,7 +2792,8 @@
           "printify_variant_id": 78954,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -2514,7 +2801,8 @@
           "printify_variant_id": 78894,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -2522,7 +2810,8 @@
           "printify_variant_id": 78883,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -2530,7 +2819,8 @@
           "printify_variant_id": 79037,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -2538,7 +2828,8 @@
           "printify_variant_id": 78891,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -2546,7 +2837,8 @@
           "printify_variant_id": 78972,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -2554,7 +2846,8 @@
           "printify_variant_id": 79047,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -2562,7 +2855,8 @@
           "printify_variant_id": 78884,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -2570,7 +2864,8 @@
           "printify_variant_id": 78974,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -2578,7 +2873,8 @@
           "printify_variant_id": 73208,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -2586,7 +2882,8 @@
           "printify_variant_id": 73200,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -2594,7 +2891,8 @@
           "printify_variant_id": 78922,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -2602,7 +2900,8 @@
           "printify_variant_id": 78951,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -2610,7 +2909,8 @@
           "printify_variant_id": 73196,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -2618,7 +2918,8 @@
           "printify_variant_id": 73203,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -2626,7 +2927,8 @@
           "printify_variant_id": 78879,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blossom",
@@ -2634,7 +2936,8 @@
           "printify_variant_id": 78889,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -2642,7 +2945,8 @@
           "printify_variant_id": 78921,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -2650,7 +2954,8 @@
           "printify_variant_id": 79039,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -2658,7 +2963,8 @@
           "printify_variant_id": 78876,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -2666,7 +2972,8 @@
           "printify_variant_id": 79092,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -2674,7 +2981,8 @@
           "printify_variant_id": 78898,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -2682,7 +2990,8 @@
           "printify_variant_id": 78881,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -2690,7 +2999,8 @@
           "printify_variant_id": 78971,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -2698,7 +3008,8 @@
           "printify_variant_id": 78899,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -2706,7 +3017,8 @@
           "printify_variant_id": 78896,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -2714,7 +3026,8 @@
           "printify_variant_id": 73211,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -2722,7 +3035,8 @@
           "printify_variant_id": 79083,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -2730,7 +3044,8 @@
           "printify_variant_id": 79036,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -2738,7 +3053,8 @@
           "printify_variant_id": 78893,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -2746,7 +3062,8 @@
           "printify_variant_id": 73207,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -2754,7 +3071,8 @@
           "printify_variant_id": 79081,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -2762,7 +3080,8 @@
           "printify_variant_id": 78882,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -2770,7 +3089,8 @@
           "printify_variant_id": 78878,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -2778,7 +3098,8 @@
           "printify_variant_id": 78897,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -2786,7 +3107,8 @@
           "printify_variant_id": 78953,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -2794,7 +3116,8 @@
           "printify_variant_id": 79082,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -2802,7 +3125,8 @@
           "printify_variant_id": 78952,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -2810,7 +3134,8 @@
           "printify_variant_id": 78877,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -2818,7 +3143,8 @@
           "printify_variant_id": 79084,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -2826,7 +3152,8 @@
           "printify_variant_id": 78955,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -2834,7 +3161,8 @@
           "printify_variant_id": 79095,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -2842,7 +3170,8 @@
           "printify_variant_id": 73212,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blossom",
@@ -2850,7 +3179,8 @@
           "printify_variant_id": 78890,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -2858,7 +3188,8 @@
           "printify_variant_id": 73215,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -2866,7 +3197,8 @@
           "printify_variant_id": 78880,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ivory",
@@ -2874,7 +3206,8 @@
           "printify_variant_id": 78995,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -2882,7 +3215,8 @@
           "printify_variant_id": 78975,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -2890,7 +3224,8 @@
           "printify_variant_id": 79040,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -2898,7 +3233,8 @@
           "printify_variant_id": 79050,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -2906,7 +3242,8 @@
           "printify_variant_id": 78885,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -2914,7 +3251,8 @@
           "printify_variant_id": 78895,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -2922,7 +3260,8 @@
           "printify_variant_id": 79085,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -2930,7 +3269,8 @@
           "printify_variant_id": 78925,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -2938,7 +3278,8 @@
           "printify_variant_id": 78900,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         }
       ],
       "variants_status": "fetched"
@@ -2982,7 +3323,8 @@
           "printify_variant_id": 79153,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "White",
@@ -2990,7 +3332,8 @@
           "printify_variant_id": 79169,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Black",
@@ -2998,7 +3341,8 @@
           "printify_variant_id": 79114,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Ivory",
@@ -3006,7 +3350,8 @@
           "printify_variant_id": 79142,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Pepper",
@@ -3014,7 +3359,8 @@
           "printify_variant_id": 79048,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -3022,7 +3368,8 @@
           "printify_variant_id": 78973,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -3030,7 +3377,8 @@
           "printify_variant_id": 78892,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ivory",
@@ -3038,7 +3386,8 @@
           "printify_variant_id": 78994,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -3046,7 +3395,8 @@
           "printify_variant_id": 78924,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -3054,7 +3404,8 @@
           "printify_variant_id": 73204,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -3062,7 +3413,8 @@
           "printify_variant_id": 79094,
           "stripe_price_id": null,
           "price_cents": 3199,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -3070,7 +3422,8 @@
           "printify_variant_id": 79049,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -3078,7 +3431,8 @@
           "printify_variant_id": 78954,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -3086,7 +3440,8 @@
           "printify_variant_id": 78894,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -3094,7 +3449,8 @@
           "printify_variant_id": 78883,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -3102,7 +3458,8 @@
           "printify_variant_id": 79037,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -3110,7 +3467,8 @@
           "printify_variant_id": 78891,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -3118,7 +3476,8 @@
           "printify_variant_id": 78972,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -3126,7 +3485,8 @@
           "printify_variant_id": 79047,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -3134,7 +3494,8 @@
           "printify_variant_id": 78884,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -3142,7 +3503,8 @@
           "printify_variant_id": 78974,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -3150,7 +3512,8 @@
           "printify_variant_id": 73208,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -3158,7 +3521,8 @@
           "printify_variant_id": 73200,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -3166,7 +3530,8 @@
           "printify_variant_id": 78922,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -3174,7 +3539,8 @@
           "printify_variant_id": 78951,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -3182,7 +3548,8 @@
           "printify_variant_id": 73196,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -3190,7 +3557,8 @@
           "printify_variant_id": 73203,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -3198,7 +3566,8 @@
           "printify_variant_id": 78879,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -3206,7 +3575,8 @@
           "printify_variant_id": 78921,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -3214,7 +3584,8 @@
           "printify_variant_id": 79039,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -3222,7 +3593,8 @@
           "printify_variant_id": 78876,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -3230,7 +3602,8 @@
           "printify_variant_id": 79092,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -3238,7 +3611,8 @@
           "printify_variant_id": 78898,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -3246,7 +3620,8 @@
           "printify_variant_id": 78881,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -3254,7 +3629,8 @@
           "printify_variant_id": 78971,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -3262,7 +3638,8 @@
           "printify_variant_id": 78899,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -3270,7 +3647,8 @@
           "printify_variant_id": 78896,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -3278,7 +3656,8 @@
           "printify_variant_id": 73211,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -3286,7 +3665,8 @@
           "printify_variant_id": 79083,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -3294,7 +3674,8 @@
           "printify_variant_id": 79036,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -3302,7 +3683,8 @@
           "printify_variant_id": 78893,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -3310,7 +3692,8 @@
           "printify_variant_id": 73207,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -3318,7 +3701,8 @@
           "printify_variant_id": 79081,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -3326,7 +3710,8 @@
           "printify_variant_id": 78882,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -3334,7 +3719,8 @@
           "printify_variant_id": 78878,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -3342,7 +3728,8 @@
           "printify_variant_id": 78897,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -3350,7 +3737,8 @@
           "printify_variant_id": 78953,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -3358,7 +3746,8 @@
           "printify_variant_id": 79082,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -3366,7 +3755,8 @@
           "printify_variant_id": 78952,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -3374,7 +3764,8 @@
           "printify_variant_id": 78877,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -3382,7 +3773,8 @@
           "printify_variant_id": 79084,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Seafoam",
@@ -3390,7 +3782,8 @@
           "printify_variant_id": 78955,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Violet",
@@ -3398,7 +3791,8 @@
           "printify_variant_id": 79095,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -3406,7 +3800,8 @@
           "printify_variant_id": 73212,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -3414,7 +3809,8 @@
           "printify_variant_id": 73215,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Bay",
@@ -3422,7 +3818,8 @@
           "printify_variant_id": 78880,
           "stripe_price_id": null,
           "price_cents": 3499,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ivory",
@@ -3430,7 +3827,8 @@
           "printify_variant_id": 78995,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -3438,7 +3836,8 @@
           "printify_variant_id": 78975,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orchid",
@@ -3446,7 +3845,8 @@
           "printify_variant_id": 79040,
           "stripe_price_id": null,
           "price_cents": 3399,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Pepper",
@@ -3454,7 +3854,8 @@
           "printify_variant_id": 79050,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Berry",
@@ -3462,7 +3863,8 @@
           "printify_variant_id": 78885,
           "stripe_price_id": null,
           "price_cents": 3699,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Jean",
@@ -3470,7 +3872,8 @@
           "printify_variant_id": 78895,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "True Navy",
@@ -3478,7 +3881,8 @@
           "printify_variant_id": 79085,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Chambray",
@@ -3486,7 +3890,8 @@
           "printify_variant_id": 78925,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Blue Spruce",
@@ -3494,7 +3899,8 @@
           "printify_variant_id": 78900,
           "stripe_price_id": null,
           "price_cents": 3599,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         }
       ],
       "variants_status": "fetched"
@@ -3540,7 +3946,8 @@
           "printify_variant_id": 21758,
           "stripe_price_id": null,
           "price_cents": 2885,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "Charcoal",
@@ -3548,7 +3955,8 @@
           "printify_variant_id": 21774,
           "stripe_price_id": null,
           "price_cents": 2885,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "White",
@@ -3556,7 +3964,8 @@
           "printify_variant_id": 22078,
           "stripe_price_id": null,
           "price_cents": 2885,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "Sand",
@@ -3564,7 +3973,8 @@
           "printify_variant_id": 22014,
           "stripe_price_id": null,
           "price_cents": 2885,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "Irish Green",
@@ -3572,7 +3982,8 @@
           "printify_variant_id": 21870,
           "stripe_price_id": null,
           "price_cents": 2885,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "Dark Chocolate",
@@ -3580,7 +3991,8 @@
           "printify_variant_id": 21806,
           "stripe_price_id": null,
           "price_cents": 2885,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "Orange",
@@ -3588,7 +4000,8 @@
           "printify_variant_id": 21950,
           "stripe_price_id": null,
           "price_cents": 2885,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "Maroon",
@@ -3596,7 +4009,8 @@
           "printify_variant_id": 21910,
           "stripe_price_id": null,
           "price_cents": 2885,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "Sand",
@@ -3604,7 +4018,8 @@
           "printify_variant_id": 22010,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -3612,7 +4027,8 @@
           "printify_variant_id": 22071,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Charcoal",
@@ -3620,7 +4036,8 @@
           "printify_variant_id": 21768,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Dark Chocolate",
@@ -3628,7 +4045,8 @@
           "printify_variant_id": 21799,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Irish Green",
@@ -3636,7 +4054,8 @@
           "printify_variant_id": 21863,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Dark Chocolate",
@@ -3644,7 +4063,8 @@
           "printify_variant_id": 21800,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Irish Green",
@@ -3652,7 +4072,8 @@
           "printify_variant_id": 21864,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Charcoal",
@@ -3660,7 +4081,8 @@
           "printify_variant_id": 21770,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Sand",
@@ -3668,7 +4090,8 @@
           "printify_variant_id": 22007,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Sand",
@@ -3676,7 +4099,8 @@
           "printify_variant_id": 22008,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ash",
@@ -3684,7 +4108,8 @@
           "printify_variant_id": 21752,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -3692,7 +4117,8 @@
           "printify_variant_id": 22072,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -3700,7 +4126,8 @@
           "printify_variant_id": 22073,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ash",
@@ -3708,7 +4135,8 @@
           "printify_variant_id": 21753,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Irish Green",
@@ -3716,7 +4144,8 @@
           "printify_variant_id": 21866,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Dark Chocolate",
@@ -3724,7 +4153,8 @@
           "printify_variant_id": 21801,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Irish Green",
@@ -3732,7 +4162,8 @@
           "printify_variant_id": 21865,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Charcoal",
@@ -3740,7 +4171,8 @@
           "printify_variant_id": 21767,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ash",
@@ -3748,7 +4180,8 @@
           "printify_variant_id": 21751,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Sand",
@@ -3756,7 +4189,8 @@
           "printify_variant_id": 22009,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -3764,7 +4198,8 @@
           "printify_variant_id": 22074,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Charcoal",
@@ -3772,7 +4207,8 @@
           "printify_variant_id": 21769,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ash",
@@ -3780,7 +4216,8 @@
           "printify_variant_id": 21754,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Dark Chocolate",
@@ -3788,7 +4225,8 @@
           "printify_variant_id": 21802,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Maroon",
@@ -3796,7 +4234,8 @@
           "printify_variant_id": 21906,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orange",
@@ -3804,7 +4243,8 @@
           "printify_variant_id": 21945,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orange",
@@ -3812,7 +4252,8 @@
           "printify_variant_id": 21944,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Maroon",
@@ -3820,7 +4261,8 @@
           "printify_variant_id": 21904,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orange",
@@ -3828,7 +4270,8 @@
           "printify_variant_id": 21946,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Maroon",
@@ -3836,7 +4279,8 @@
           "printify_variant_id": 21903,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Maroon",
@@ -3844,7 +4288,8 @@
           "printify_variant_id": 21905,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Natural",
@@ -3852,7 +4297,8 @@
           "printify_variant_id": 21922,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Natural",
@@ -3860,7 +4306,8 @@
           "printify_variant_id": 21920,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Natural",
@@ -3868,7 +4315,8 @@
           "printify_variant_id": 21919,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Natural",
@@ -3876,7 +4324,8 @@
           "printify_variant_id": 21921,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Heather Navy",
@@ -3884,7 +4333,8 @@
           "printify_variant_id": 21833,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Tan",
@@ -3892,7 +4342,8 @@
           "printify_variant_id": 22040,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Tangerine",
@@ -3900,7 +4351,8 @@
           "printify_variant_id": 22049,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Antique Cherry Red",
@@ -3908,7 +4360,8 @@
           "printify_variant_id": 21727,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Tangerine",
@@ -3916,7 +4369,8 @@
           "printify_variant_id": 22050,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Tan",
@@ -3924,7 +4378,8 @@
           "printify_variant_id": 22041,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Tan",
@@ -3932,7 +4387,8 @@
           "printify_variant_id": 22039,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Heather Navy",
@@ -3940,7 +4396,8 @@
           "printify_variant_id": 21831,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orange",
@@ -3948,7 +4405,8 @@
           "printify_variant_id": 21943,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Tangerine",
@@ -3956,7 +4414,8 @@
           "printify_variant_id": 22047,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Lime",
@@ -3964,7 +4423,8 @@
           "printify_variant_id": 22162,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Lime",
@@ -3972,7 +4432,8 @@
           "printify_variant_id": 22161,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Antique Cherry Red",
@@ -3980,7 +4441,8 @@
           "printify_variant_id": 21730,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Tangerine",
@@ -3988,7 +4450,8 @@
           "printify_variant_id": 22048,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Lime",
@@ -3996,7 +4459,8 @@
           "printify_variant_id": 22160,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Heather Navy",
@@ -4004,7 +4468,8 @@
           "printify_variant_id": 21834,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Antique Cherry Red",
@@ -4012,7 +4477,8 @@
           "printify_variant_id": 21729,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Heather Navy",
@@ -4020,7 +4486,8 @@
           "printify_variant_id": 21832,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Lime",
@@ -4028,7 +4495,8 @@
           "printify_variant_id": 22159,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Antique Cherry Red",
@@ -4036,7 +4504,8 @@
           "printify_variant_id": 21728,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Tan",
@@ -4044,7 +4513,8 @@
           "printify_variant_id": 22042,
           "stripe_price_id": null,
           "price_cents": 1752,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Charcoal",
@@ -4052,7 +4522,8 @@
           "printify_variant_id": 21771,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -4060,7 +4531,8 @@
           "printify_variant_id": 22075,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Ash",
@@ -4068,7 +4540,8 @@
           "printify_variant_id": 21755,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Dark Chocolate",
@@ -4076,7 +4549,8 @@
           "printify_variant_id": 21803,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Sand",
@@ -4084,7 +4558,8 @@
           "printify_variant_id": 22011,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Irish Green",
@@ -4092,7 +4567,8 @@
           "printify_variant_id": 21867,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Maroon",
@@ -4100,7 +4576,8 @@
           "printify_variant_id": 21907,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Natural",
@@ -4108,7 +4585,8 @@
           "printify_variant_id": 21923,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Orange",
@@ -4116,7 +4594,8 @@
           "printify_variant_id": 21947,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Tangerine",
@@ -4124,7 +4603,8 @@
           "printify_variant_id": 22051,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Lime",
@@ -4132,7 +4612,8 @@
           "printify_variant_id": 22163,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Heather Navy",
@@ -4140,7 +4621,8 @@
           "printify_variant_id": 21835,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Antique Cherry Red",
@@ -4148,7 +4630,8 @@
           "printify_variant_id": 21731,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Tan",
@@ -4156,7 +4639,8 @@
           "printify_variant_id": 22043,
           "stripe_price_id": null,
           "price_cents": 2107,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Charcoal",
@@ -4164,7 +4648,8 @@
           "printify_variant_id": 21772,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Irish Green",
@@ -4172,7 +4657,8 @@
           "printify_variant_id": 21868,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Sand",
@@ -4180,7 +4666,8 @@
           "printify_variant_id": 22012,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "White",
@@ -4188,7 +4675,8 @@
           "printify_variant_id": 22076,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Ash",
@@ -4196,7 +4684,8 @@
           "printify_variant_id": 21756,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Dark Chocolate",
@@ -4204,7 +4693,8 @@
           "printify_variant_id": 21804,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Maroon",
@@ -4212,7 +4702,8 @@
           "printify_variant_id": 21908,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Natural",
@@ -4220,7 +4711,8 @@
           "printify_variant_id": 21924,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Tangerine",
@@ -4228,7 +4720,8 @@
           "printify_variant_id": 22052,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Orange",
@@ -4236,7 +4729,8 @@
           "printify_variant_id": 21948,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Heather Navy",
@@ -4244,7 +4738,8 @@
           "printify_variant_id": 21836,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Tan",
@@ -4252,7 +4747,8 @@
           "printify_variant_id": 22044,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Lime",
@@ -4260,7 +4756,8 @@
           "printify_variant_id": 22164,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Antique Cherry Red",
@@ -4268,7 +4765,8 @@
           "printify_variant_id": 21732,
           "stripe_price_id": null,
           "price_cents": 2272,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Dark Chocolate",
@@ -4276,7 +4774,8 @@
           "printify_variant_id": 21805,
           "stripe_price_id": null,
           "price_cents": 2822,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "White",
@@ -4284,7 +4783,8 @@
           "printify_variant_id": 22077,
           "stripe_price_id": null,
           "price_cents": 2822,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "Irish Green",
@@ -4292,7 +4792,8 @@
           "printify_variant_id": 21869,
           "stripe_price_id": null,
           "price_cents": 2822,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "Charcoal",
@@ -4300,7 +4801,8 @@
           "printify_variant_id": 21773,
           "stripe_price_id": null,
           "price_cents": 2822,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "Sand",
@@ -4308,7 +4810,8 @@
           "printify_variant_id": 22013,
           "stripe_price_id": null,
           "price_cents": 2822,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "Ash",
@@ -4316,7 +4819,8 @@
           "printify_variant_id": 21757,
           "stripe_price_id": null,
           "price_cents": 2822,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "Maroon",
@@ -4324,7 +4828,8 @@
           "printify_variant_id": 21909,
           "stripe_price_id": null,
           "price_cents": 2822,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "Orange",
@@ -4332,7 +4837,8 @@
           "printify_variant_id": 21949,
           "stripe_price_id": null,
           "price_cents": 2822,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         }
       ],
       "variants_status": "fetched"
@@ -4369,7 +4875,8 @@
           "printify_variant_id": 118700,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -4377,7 +4884,8 @@
           "printify_variant_id": 118701,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -4385,7 +4893,8 @@
           "printify_variant_id": 118702,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -4393,7 +4902,8 @@
           "printify_variant_id": 118703,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Dark Navy",
@@ -4401,7 +4911,8 @@
           "printify_variant_id": 118704,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Dark Navy",
@@ -4409,7 +4920,8 @@
           "printify_variant_id": 118705,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Dark Grey",
@@ -4417,7 +4929,8 @@
           "printify_variant_id": 118706,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Dark Grey",
@@ -4425,7 +4938,8 @@
           "printify_variant_id": 118707,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -4433,7 +4947,8 @@
           "printify_variant_id": 118708,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Grey",
@@ -4441,7 +4956,8 @@
           "printify_variant_id": 118709,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Royal Blue",
@@ -4449,7 +4965,8 @@
           "printify_variant_id": 118710,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Royal Blue",
@@ -4457,7 +4974,8 @@
           "printify_variant_id": 118711,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Red",
@@ -4465,7 +4983,8 @@
           "printify_variant_id": 118712,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Red",
@@ -4473,7 +4992,8 @@
           "printify_variant_id": 118713,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Khaki",
@@ -4481,7 +5001,8 @@
           "printify_variant_id": 118714,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Khaki",
@@ -4489,7 +5010,8 @@
           "printify_variant_id": 118715,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Multicam Black",
@@ -4497,7 +5019,8 @@
           "printify_variant_id": 118716,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Multicam Black",
@@ -4505,7 +5028,8 @@
           "printify_variant_id": 118717,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Multicam Green",
@@ -4513,7 +5037,8 @@
           "printify_variant_id": 118718,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Multicam Green",
@@ -4521,7 +5046,8 @@
           "printify_variant_id": 118719,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Olive",
@@ -4529,7 +5055,8 @@
           "printify_variant_id": 118720,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Olive",
@@ -4537,7 +5064,8 @@
           "printify_variant_id": 118721,
           "stripe_price_id": null,
           "price_cents": 3299,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         }
       ],
       "variants_status": "fetched"
@@ -4576,7 +5104,8 @@
           "printify_variant_id": 118272,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Navy",
@@ -4584,7 +5113,8 @@
           "printify_variant_id": 118273,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Red",
@@ -4592,7 +5122,8 @@
           "printify_variant_id": 118274,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Steel Grey",
@@ -4600,7 +5131,8 @@
           "printify_variant_id": 118275,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Stone",
@@ -4608,7 +5140,8 @@
           "printify_variant_id": 118276,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -4616,7 +5149,8 @@
           "printify_variant_id": 118277,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -4624,7 +5158,8 @@
           "printify_variant_id": 118278,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Navy",
@@ -4632,7 +5167,8 @@
           "printify_variant_id": 118279,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Red",
@@ -4640,7 +5176,8 @@
           "printify_variant_id": 118280,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Steel Grey",
@@ -4648,7 +5185,8 @@
           "printify_variant_id": 118281,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Stone",
@@ -4656,7 +5194,8 @@
           "printify_variant_id": 118282,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -4664,7 +5203,8 @@
           "printify_variant_id": 118283,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -4672,7 +5212,8 @@
           "printify_variant_id": 118284,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Navy",
@@ -4680,7 +5221,8 @@
           "printify_variant_id": 118285,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Red",
@@ -4688,7 +5230,8 @@
           "printify_variant_id": 118286,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Steel Grey",
@@ -4696,7 +5239,8 @@
           "printify_variant_id": 118287,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Stone",
@@ -4704,7 +5248,8 @@
           "printify_variant_id": 118288,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -4712,7 +5257,8 @@
           "printify_variant_id": 118289,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -4720,7 +5266,8 @@
           "printify_variant_id": 118290,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Navy",
@@ -4728,7 +5275,8 @@
           "printify_variant_id": 118291,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Red",
@@ -4736,7 +5284,8 @@
           "printify_variant_id": 118292,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Steel Grey",
@@ -4744,7 +5293,8 @@
           "printify_variant_id": 118293,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Stone",
@@ -4752,7 +5302,8 @@
           "printify_variant_id": 118294,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -4760,7 +5311,8 @@
           "printify_variant_id": 118295,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -4768,7 +5320,8 @@
           "printify_variant_id": 118296,
           "stripe_price_id": null,
           "price_cents": 4067,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Navy",
@@ -4776,7 +5329,8 @@
           "printify_variant_id": 118297,
           "stripe_price_id": null,
           "price_cents": 4067,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Red",
@@ -4784,7 +5338,8 @@
           "printify_variant_id": 118298,
           "stripe_price_id": null,
           "price_cents": 4067,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Steel Grey",
@@ -4792,7 +5347,8 @@
           "printify_variant_id": 118299,
           "stripe_price_id": null,
           "price_cents": 4067,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Stone",
@@ -4800,7 +5356,8 @@
           "printify_variant_id": 118300,
           "stripe_price_id": null,
           "price_cents": 4067,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "White",
@@ -4808,7 +5365,8 @@
           "printify_variant_id": 118301,
           "stripe_price_id": null,
           "price_cents": 4067,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Black",
@@ -4816,7 +5374,8 @@
           "printify_variant_id": 118302,
           "stripe_price_id": null,
           "price_cents": 4373,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Navy",
@@ -4824,7 +5383,8 @@
           "printify_variant_id": 118303,
           "stripe_price_id": null,
           "price_cents": 4373,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Red",
@@ -4832,7 +5392,8 @@
           "printify_variant_id": 118304,
           "stripe_price_id": null,
           "price_cents": 4373,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Steel Grey",
@@ -4840,7 +5401,8 @@
           "printify_variant_id": 118305,
           "stripe_price_id": null,
           "price_cents": 4373,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Stone",
@@ -4848,7 +5410,8 @@
           "printify_variant_id": 118306,
           "stripe_price_id": null,
           "price_cents": 4373,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "White",
@@ -4856,7 +5419,8 @@
           "printify_variant_id": 118307,
           "stripe_price_id": null,
           "price_cents": 4373,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Black",
@@ -4864,7 +5428,8 @@
           "printify_variant_id": 118308,
           "stripe_price_id": null,
           "price_cents": 4677,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "Navy",
@@ -4872,7 +5437,8 @@
           "printify_variant_id": 118309,
           "stripe_price_id": null,
           "price_cents": 4677,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "Red",
@@ -4880,7 +5446,8 @@
           "printify_variant_id": 118310,
           "stripe_price_id": null,
           "price_cents": 4677,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "Steel Grey",
@@ -4888,7 +5455,8 @@
           "printify_variant_id": 118311,
           "stripe_price_id": null,
           "price_cents": 4677,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "Stone",
@@ -4896,7 +5464,8 @@
           "printify_variant_id": 118312,
           "stripe_price_id": null,
           "price_cents": 4677,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "White",
@@ -4904,7 +5473,8 @@
           "printify_variant_id": 118313,
           "stripe_price_id": null,
           "price_cents": 4677,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "Black",
@@ -4912,7 +5482,8 @@
           "printify_variant_id": 118314,
           "stripe_price_id": null,
           "price_cents": 4983,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "Navy",
@@ -4920,7 +5491,8 @@
           "printify_variant_id": 118315,
           "stripe_price_id": null,
           "price_cents": 4983,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "Red",
@@ -4928,7 +5500,8 @@
           "printify_variant_id": 118316,
           "stripe_price_id": null,
           "price_cents": 4983,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "Steel Grey",
@@ -4936,7 +5509,8 @@
           "printify_variant_id": 118317,
           "stripe_price_id": null,
           "price_cents": 4983,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "Stone",
@@ -4944,7 +5518,8 @@
           "printify_variant_id": 118318,
           "stripe_price_id": null,
           "price_cents": 4983,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "White",
@@ -4952,7 +5527,8 @@
           "printify_variant_id": 118319,
           "stripe_price_id": null,
           "price_cents": 4983,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         },
         {
           "color": "Cool Grey",
@@ -4960,7 +5536,8 @@
           "printify_variant_id": 118320,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Cool Grey",
@@ -4968,7 +5545,8 @@
           "printify_variant_id": 118321,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Cool Grey",
@@ -4976,7 +5554,8 @@
           "printify_variant_id": 118322,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Cool Grey",
@@ -4984,7 +5563,8 @@
           "printify_variant_id": 118323,
           "stripe_price_id": null,
           "price_cents": 3762,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Cool Grey",
@@ -4992,7 +5572,8 @@
           "printify_variant_id": 118324,
           "stripe_price_id": null,
           "price_cents": 4067,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 0
         },
         {
           "color": "Cool Grey",
@@ -5000,7 +5581,8 @@
           "printify_variant_id": 118325,
           "stripe_price_id": null,
           "price_cents": 4373,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 500
         },
         {
           "color": "Cool Grey",
@@ -5008,7 +5590,8 @@
           "printify_variant_id": 118326,
           "stripe_price_id": null,
           "price_cents": 4677,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1000
         },
         {
           "color": "Cool Grey",
@@ -5016,7 +5599,8 @@
           "printify_variant_id": 118327,
           "stripe_price_id": null,
           "price_cents": 4983,
-          "is_available": true
+          "is_available": true,
+          "size_upcharge_cents": 1500
         }
       ],
       "variants_status": "fetched"

@@ -122,6 +122,55 @@ function classify(valueMap, variant) {
   return { color: color, size: size };
 }
 
+// Build color -> mockup URL map from Printify's images array.
+// Prefers front + is_selected_for_publishing; falls back to front-only,
+// then any matching image. Returns {} when Printify has no mockup for a color.
+function buildColorImages(printifyProduct, variants) {
+  const images = printifyProduct.images || [];
+  const colorImages = {};
+
+  // Collect all variant IDs per color from our already-classified variants.
+  const colorVids = {};
+  variants.forEach(function (v) {
+    if (!v.color || !v.printify_variant_id) return;
+    (colorVids[v.color] = colorVids[v.color] || new Set()).add(v.printify_variant_id);
+  });
+
+  Object.keys(colorVids).forEach(function (color) {
+    const vids = colorVids[color];
+    let best = null;
+
+    // Pass 1: front + selected for publishing
+    for (const img of images) {
+      const overlap = (img.variant_ids || []).some(function (id) { return vids.has(id); });
+      if (!overlap) continue;
+      if ((img.position || "").toLowerCase() === "front" && img.is_selected_for_publishing) {
+        best = img.src; break;
+      }
+    }
+    // Pass 2: front only
+    if (!best) {
+      for (const img of images) {
+        const overlap = (img.variant_ids || []).some(function (id) { return vids.has(id); });
+        if (!overlap) continue;
+        if ((img.position || "").toLowerCase() === "front") { best = img.src; break; }
+      }
+    }
+    // Pass 3: any matching image
+    if (!best) {
+      for (const img of images) {
+        if ((img.variant_ids || []).some(function (id) { return vids.has(id); })) {
+          best = img.src; break;
+        }
+      }
+    }
+
+    if (best) colorImages[color] = best;
+  });
+
+  return colorImages;
+}
+
 async function maybeCreateStripePrices(productEntry) {
   if (!CREATE_STRIPE) return;
   if (!process.env.STRIPE_SECRET_KEY) die("--create-stripe-prices needs STRIPE_SECRET_KEY.");
@@ -185,7 +234,13 @@ async function main() {
       entry.variants = variants;
       entry.variants_status = variants.length ? "fetched" : "no_variants_returned";
 
-      console.log("- " + slug + ": " + variants.length + " variants, " + colors.length + " colors, " + sizes.length + " sizes");
+      const colorImages = buildColorImages(pp, variants);
+      entry.color_images = colorImages;
+      const missingColors = colors.filter(function (c) { return !colorImages[c]; });
+
+      console.log("- " + slug + ": " + variants.length + " variants, " + colors.length + " colors, " +
+        sizes.length + " sizes, " + Object.keys(colorImages).length + "/" + colors.length + " color_images" +
+        (missingColors.length ? " MISSING:" + missingColors.join(",") : ""));
 
       await maybeCreateStripePrices(entry);
     } catch (e) {

@@ -158,6 +158,21 @@
     wire();
   }
 
+  function swapHeroImage(color) {
+    var p = state.product;
+    if (!p) return;
+    var heroImg = document.querySelector(".apr-img-wrap img");
+    if (!heroImg) return;
+    var url = (p.color_images && p.color_images[color]) || p.hero_image || null;
+    if (!url || heroImg.getAttribute("src") === url) return;
+    heroImg.style.transition = "opacity 0.15s";
+    heroImg.style.opacity = "0";
+    setTimeout(function () {
+      heroImg.src = url;
+      heroImg.style.opacity = "1";
+    }, 150);
+  }
+
   function wire() {
     var colorsWrap = el("aprColors");
     if (colorsWrap) {
@@ -165,6 +180,7 @@
         btn.addEventListener("click", function () {
           if (btn.disabled) return;
           state.color = btn.getAttribute("data-color");
+          swapHeroImage(state.color);
           if (state.size && !sizeAvailable(state.size)) state.size = null;
           render();
         });

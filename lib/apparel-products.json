@@ -82,7 +82,10 @@
           "size_upcharge_cents": 0
         }
       ],
-      "variants_status": "fetched"
+      "variants_status": "fetched",
+      "color_images": {
+        "Black": "https://images.printify.com/mockup/6a3fd211e7b8a9601e0f64cd/73204/98445/leading-the-pack-tee.jpg?camera_label=front"
+      }
     },
     "silence-the-noise-tee": {
       "slug": "silence-the-noise-tee",
@@ -722,7 +725,24 @@
           "size_upcharge_cents": 0
         }
       ],
-      "variants_status": "fetched"
+      "variants_status": "fetched",
+      "color_images": {
+        "Orchid": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/79038/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "White": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/73207/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "Black": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/73204/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "Ivory": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/78993/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "Pepper": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/79048/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "Grey": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/78973/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "Blue Jean": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/78893/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "Chambray": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/78923/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "Violet": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/79093/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "Seafoam": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/78953/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "Berry": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/78883/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "Bay": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/78878/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "Blossom": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/78888/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "Blue Spruce": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/78898/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front",
+        "True Navy": "https://images.printify.com/mockup/6a343f922d7d0f30ad014bb1/79083/98445/silence-the-noise-hearing-god-and-finding-your-purpose-silence-the-noise-hear-the-call.jpg?camera_label=front"
+      }
     },
     "stepping-up-tee": {
       "slug": "stepping-up-tee",
@@ -1362,7 +1382,24 @@
           "size_upcharge_cents": 0
         }
       ],
-      "variants_status": "fetched"
+      "variants_status": "fetched",
+      "color_images": {
+        "Orchid": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/79038/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "White": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/73207/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "Black": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/73204/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "Ivory": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/78993/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "Pepper": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/79048/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "Grey": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/78973/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "Blue Jean": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/78893/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "Chambray": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/78923/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "Violet": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/79093/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "Seafoam": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/78953/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "Berry": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/78883/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "Bay": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/78878/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "Blossom": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/78888/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "Blue Spruce": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/78898/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front",
+        "True Navy": "https://images.printify.com/mockup/6a343d4d522223b800063a4d/79083/98445/stepping-up-leadership-principles-for-todays-challenges-built-to-lead.jpg?camera_label=front"
+      }
     },
     "raising-kings-tee": {
       "slug": "raising-kings-tee",
@@ -2002,7 +2039,24 @@
           "size_upcharge_cents": 0
         }
       ],
-      "variants_status": "fetched"
+      "variants_status": "fetched",
+      "color_images": {
+        "Orchid": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/79038/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "White": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/73207/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "Black": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/73204/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "Ivory": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/78993/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "Pepper": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/79048/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "Grey": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/78973/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "Blue Jean": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/78893/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "Chambray": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/78923/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "Violet": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/79093/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "Seafoam": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/78953/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "Berry": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/78883/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "Bay": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/78878/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "Blossom": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/78888/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "Blue Spruce": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/78898/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front",
+        "True Navy": "https://images.printify.com/mockup/6a34327bb93ff48eb90925b1/79083/98445/raising-kings-a-fathers-guide-to-raising-sons-raising-kings-not-just-boys.jpg?camera_label=front"
+      }
     },
     "unbroken-vows-tee": {
       "slug": "unbroken-vows-tee",
@@ -2642,7 +2696,24 @@
           "size_upcharge_cents": 0
         }
       ],
-      "variants_status": "fetched"
+      "variants_status": "fetched",
+      "color_images": {
+        "Orchid": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/79038/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "White": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/73207/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "Black": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/73204/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "Ivory": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/78993/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "Pepper": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/79048/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "Grey": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/78973/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "Blue Jean": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/78893/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "Chambray": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/78923/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "Violet": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/79093/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "Seafoam": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/78953/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "Berry": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/78883/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "Bay": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/78878/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "Blossom": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/78888/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "Blue Spruce": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/78898/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front",
+        "True Navy": "https://images.printify.com/mockup/6a342ed908f480b9860e4a7d/79083/98445/unbroken-vows-keeping-it-together-forever-means-forever.jpg?camera_label=front"
+      }
     },
     "singlehood-tee": {
       "slug": "singlehood-tee",
@@ -3282,7 +3353,24 @@
           "size_upcharge_cents": 0
         }
       ],
-      "variants_status": "fetched"
+      "variants_status": "fetched",
+      "color_images": {
+        "Orchid": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/79038/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "White": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/73207/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "Black": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/73204/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "Ivory": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/78993/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "Pepper": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/79048/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "Grey": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/78973/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "Blue Jean": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/78893/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "Chambray": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/78923/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "Violet": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/79093/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "Seafoam": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/78953/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "Berry": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/78883/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "Bay": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/78878/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "Blossom": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/78888/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "Blue Spruce": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/78898/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front",
+        "True Navy": "https://images.printify.com/mockup/6a3428f59a5c0f7d880ef5a4/79083/98445/singlehood-its-ok-to-be-selfish-solo-era-no-apologies.jpg?camera_label=front"
+      }
     },
     "doing-it-gods-way-tee": {
       "slug": "doing-it-gods-way-tee",
@@ -3903,7 +3991,22 @@
           "size_upcharge_cents": 0
         }
       ],
-      "variants_status": "fetched"
+      "variants_status": "fetched",
+      "color_images": {
+        "Orchid": "https://images.printify.com/mockup/6a341fb008f480b9860e3e50/79038/98445/doing-it-gods-way-it-works-built-on-faith-proven-by-results.jpg?camera_label=front",
+        "Black": "https://images.printify.com/mockup/6a341fb008f480b9860e3e50/73204/98445/doing-it-gods-way-it-works-built-on-faith-proven-by-results.jpg?camera_label=front",
+        "Ivory": "https://images.printify.com/mockup/6a341fb008f480b9860e3e50/78993/98445/doing-it-gods-way-it-works-built-on-faith-proven-by-results.jpg?camera_label=front",
+        "Pepper": "https://images.printify.com/mockup/6a341fb008f480b9860e3e50/79048/98445/doing-it-gods-way-it-works-built-on-faith-proven-by-results.jpg?camera_label=front",
+        "Grey": "https://images.printify.com/mockup/6a341fb008f480b9860e3e50/78973/98445/doing-it-gods-way-it-works-built-on-faith-proven-by-results.jpg?camera_label=front",
+        "Blue Jean": "https://images.printify.com/mockup/6a341fb008f480b9860e3e50/78893/98445/doing-it-gods-way-it-works-built-on-faith-proven-by-results.jpg?camera_label=front",
+        "Chambray": "https://images.printify.com/mockup/6a341fb008f480b9860e3e50/78923/98445/doing-it-gods-way-it-works-built-on-faith-proven-by-results.jpg?camera_label=front",
+        "Violet": "https://images.printify.com/mockup/6a341fb008f480b9860e3e50/79093/98445/doing-it-gods-way-it-works-built-on-faith-proven-by-results.jpg?camera_label=front",
+        "Seafoam": "https://images.printify.com/mockup/6a341fb008f480b9860e3e50/78953/98445/doing-it-gods-way-it-works-built-on-faith-proven-by-results.jpg?camera_label=front",
+        "Berry": "https://images.printify.com/mockup/6a341fb008f480b9860e3e50/78883/98445/doing-it-gods-way-it-works-built-on-faith-proven-by-results.jpg?camera_label=front",
+        "Bay": "https://images.printify.com/mockup/6a341fb008f480b9860e3e50/78878/98445/doing-it-gods-way-it-works-built-on-faith-proven-by-results.jpg?camera_label=front",
+        "Blue Spruce": "https://images.printify.com/mockup/6a341fb008f480b9860e3e50/78898/98445/doing-it-gods-way-it-works-built-on-faith-proven-by-results.jpg?camera_label=front",
+        "True Navy": "https://images.printify.com/mockup/6a341fb008f480b9860e3e50/79083/98445/doing-it-gods-way-it-works-built-on-faith-proven-by-results.jpg?camera_label=front"
+      }
     },
     "i-am-tee": {
       "slug": "i-am-tee",
@@ -4841,7 +4944,23 @@
           "size_upcharge_cents": 1000
         }
       ],
-      "variants_status": "fetched"
+      "variants_status": "fetched",
+      "color_images": {
+        "Ash": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/21753/97933/i-am-logo.jpg?camera_label=front",
+        "Charcoal": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/21769/97933/i-am-logo.jpg?camera_label=front",
+        "White": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/22073/97933/i-am-logo.jpg?camera_label=front",
+        "Sand": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/22009/97982/i-am-logo.jpg?camera_label=back",
+        "Irish Green": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/21865/97933/i-am-logo.jpg?camera_label=front",
+        "Dark Chocolate": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/21801/97982/i-am-logo.jpg?camera_label=back",
+        "Orange": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/21945/97933/i-am-logo.jpg?camera_label=front",
+        "Maroon": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/21905/97933/i-am-logo.jpg?camera_label=front",
+        "Natural": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/21921/97933/i-am-logo.jpg?camera_label=front",
+        "Heather Navy": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/21833/97933/i-am-logo.jpg?camera_label=front",
+        "Tan": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/22041/97933/i-am-logo.jpg?camera_label=front",
+        "Tangerine": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/22049/97933/i-am-logo.jpg?camera_label=front",
+        "Antique Cherry Red": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/21729/97933/i-am-logo.jpg?camera_label=front",
+        "Lime": "https://images.printify.com/mockup/689d03100d3d5ddf7401aa78/22161/97933/i-am-logo.jpg?camera_label=front"
+      }
     },
     "sr-logo-cap": {
       "slug": "sr-logo-cap",
@@ -5068,7 +5187,20 @@
           "size_upcharge_cents": 0
         }
       ],
-      "variants_status": "fetched"
+      "variants_status": "fetched",
+      "color_images": {
+        "White": "https://images.printify.com/mockup/6a3eab1ef55b1916820f697d/118701/109496/sr-logo-orange.jpg?camera_label=front",
+        "Black": "https://images.printify.com/mockup/6a3eab1ef55b1916820f697d/118703/109496/sr-logo-orange.jpg?camera_label=front",
+        "Dark Navy": "https://images.printify.com/mockup/6a3eab1ef55b1916820f697d/118705/109496/sr-logo-orange.jpg?camera_label=front",
+        "Dark Grey": "https://images.printify.com/mockup/6a3eab1ef55b1916820f697d/118707/109496/sr-logo-orange.jpg?camera_label=front",
+        "Grey": "https://images.printify.com/mockup/6a3eab1ef55b1916820f697d/118709/109496/sr-logo-orange.jpg?camera_label=front",
+        "Royal Blue": "https://images.printify.com/mockup/6a3eab1ef55b1916820f697d/118711/109496/sr-logo-orange.jpg?camera_label=front",
+        "Red": "https://images.printify.com/mockup/6a3eab1ef55b1916820f697d/118713/109496/sr-logo-orange.jpg?camera_label=front",
+        "Khaki": "https://images.printify.com/mockup/6a3eab1ef55b1916820f697d/118715/109496/sr-logo-orange.jpg?camera_label=front",
+        "Multicam Black": "https://images.printify.com/mockup/6a3eab1ef55b1916820f697d/118717/109496/sr-logo-orange.jpg?camera_label=front",
+        "Multicam Green": "https://images.printify.com/mockup/6a3eab1ef55b1916820f697d/118719/109496/sr-logo-orange.jpg?camera_label=front",
+        "Olive": "https://images.printify.com/mockup/6a3eab1ef55b1916820f697d/118721/109496/sr-logo-orange.jpg?camera_label=front"
+      }
     },
     "sr-logo-polo": {
       "slug": "sr-logo-polo",
@@ -5603,7 +5735,16 @@
           "size_upcharge_cents": 1500
         }
       ],
-      "variants_status": "fetched"
+      "variants_status": "fetched",
+      "color_images": {
+        "Black": "https://images.printify.com/mockup/6a2aca2e170dd63ebd08a330/118284/109526/sr-logo-3.jpg?camera_label=front",
+        "Navy": "https://images.printify.com/mockup/6a2aca2e170dd63ebd08a330/118285/109526/sr-logo-3.jpg?camera_label=front",
+        "Red": "https://images.printify.com/mockup/6a2aca2e170dd63ebd08a330/118286/109526/sr-logo-3.jpg?camera_label=front",
+        "Steel Grey": "https://images.printify.com/mockup/6a2aca2e170dd63ebd08a330/118287/109526/sr-logo-3.jpg?camera_label=front",
+        "Stone": "https://images.printify.com/mockup/6a2aca2e170dd63ebd08a330/118288/109526/sr-logo-3.jpg?camera_label=front",
+        "White": "https://images.printify.com/mockup/6a2aca2e170dd63ebd08a330/118289/109526/sr-logo-3.jpg?camera_label=front",
+        "Cool Grey": "https://images.printify.com/mockup/6a2aca2e170dd63ebd08a330/118322/109526/sr-logo-3.jpg?camera_label=front"
+      }
     }
   }
 }

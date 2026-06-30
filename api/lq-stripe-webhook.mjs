@@ -77,10 +77,9 @@ export default async function handler(req, res) {
 
   try {
     const session = event.data.object;
-    console.log('[lq-stripe-webhook] DIAGNOSTIC event.id=', event.id, 'session.id=', session.id, 'metadata=', JSON.stringify(session.metadata), 'mode=', session.mode, 'livemode=', event.livemode);
     const product = session.metadata && session.metadata.product;
     if (product !== 'lovers-quest-digital') {
-      console.log('[lq-stripe-webhook] IGNORED event because product=', JSON.stringify(product), 'expected lovers-quest-digital');
+      console.log('[lq-stripe-webhook] session for unrelated product:', product);
       res.status(200).send('ignored');
       return;
     }

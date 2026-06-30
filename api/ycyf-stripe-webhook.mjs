@@ -66,11 +66,9 @@ export default async function handler(req, res) {
 
   try {
     const session = event.data.object;
-    console.log('[ycyf-stripe-webhook] DIAGNOSTIC event.id=', event.id, 'session.id=', session.id, 'metadata=', JSON.stringify(session.metadata), 'mode=', session.mode, 'livemode=', event.livemode);
     const product = session.metadata && session.metadata.product;
     if (product !== 'ycyf-digital') {
       // Not ours (e.g. an LQ event also delivered to this endpoint). Ignore.
-      console.log('[ycyf-stripe-webhook] IGNORED event because product=', JSON.stringify(product), 'expected ycyf-digital');
       res.status(200).send('ignored');
       return;
     }

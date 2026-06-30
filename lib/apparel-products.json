@@ -16,7 +16,9 @@
       "hero_image": "https://images.printify.com/mockup/6a3fd211e7b8a9601e0f64cd/73204/98445/leading-the-pack-tee.jpg",
       "printify_product_id": "6a3fd211e7b8a9601e0f64cd",
       "colors": [
-        "Black"
+        "Black",
+        "White",
+        "Pepper"
       ],
       "sizes": [
         "S",
@@ -80,11 +82,103 @@
           "price_cents": 3299,
           "is_available": true,
           "size_upcharge_cents": 0
+        },
+        {
+          "color": "White",
+          "size": "M",
+          "printify_variant_id": 73203,
+          "stripe_price_id": null,
+          "price_cents": 3399,
+          "is_available": true,
+          "size_upcharge_cents": 0
+        },
+        {
+          "color": "White",
+          "size": "L",
+          "printify_variant_id": 73207,
+          "stripe_price_id": null,
+          "price_cents": 3399,
+          "is_available": true,
+          "size_upcharge_cents": 0
+        },
+        {
+          "color": "White",
+          "size": "XL",
+          "printify_variant_id": 73211,
+          "stripe_price_id": null,
+          "price_cents": 3399,
+          "is_available": true,
+          "size_upcharge_cents": 0
+        },
+        {
+          "color": "White",
+          "size": "2XL",
+          "printify_variant_id": 73215,
+          "stripe_price_id": null,
+          "price_cents": 3599,
+          "is_available": true,
+          "size_upcharge_cents": 200
+        },
+        {
+          "color": "White",
+          "size": "3XL",
+          "printify_variant_id": 79169,
+          "stripe_price_id": null,
+          "price_cents": 3699,
+          "is_available": true,
+          "size_upcharge_cents": 400
+        },
+        {
+          "color": "Pepper",
+          "size": "M",
+          "printify_variant_id": 79047,
+          "stripe_price_id": null,
+          "price_cents": 3399,
+          "is_available": true,
+          "size_upcharge_cents": 0
+        },
+        {
+          "color": "Pepper",
+          "size": "L",
+          "printify_variant_id": 79048,
+          "stripe_price_id": null,
+          "price_cents": 3399,
+          "is_available": true,
+          "size_upcharge_cents": 0
+        },
+        {
+          "color": "Pepper",
+          "size": "XL",
+          "printify_variant_id": 79049,
+          "stripe_price_id": null,
+          "price_cents": 3399,
+          "is_available": true,
+          "size_upcharge_cents": 0
+        },
+        {
+          "color": "Pepper",
+          "size": "2XL",
+          "printify_variant_id": 79050,
+          "stripe_price_id": null,
+          "price_cents": 3599,
+          "is_available": true,
+          "size_upcharge_cents": 200
+        },
+        {
+          "color": "Pepper",
+          "size": "3XL",
+          "printify_variant_id": 79155,
+          "stripe_price_id": null,
+          "price_cents": 3699,
+          "is_available": true,
+          "size_upcharge_cents": 400
         }
       ],
       "variants_status": "fetched",
       "color_images": {
-        "Black": "https://images.printify.com/mockup/6a3fd211e7b8a9601e0f64cd/73204/98445/leading-the-pack-tee.jpg?camera_label=front"
+        "Black": "https://images.printify.com/mockup/6a3fd211e7b8a9601e0f64cd/73204/98445/leading-the-pack-tee.jpg?camera_label=front",
+        "White": "https://images.printify.com/mockup/6a3fd211e7b8a9601e0f64cd/73207/98445/leading-the-pack-tee.jpg?camera_label=front",
+        "Pepper": "https://images.printify.com/mockup/6a3fd211e7b8a9601e0f64cd/79048/98445/leading-the-pack-tee.jpg?camera_label=front"
       }
     },
     "silence-the-noise-tee": {
@@ -5747,4 +5841,4 @@
       }
     }
   }
-}
+        }

@@ -186,298 +186,445 @@
           "size_upcharge_cents": 400
         },
         {
+          "color": "Grey",
+          "size": "S",
           "printify_variant_id": 78971,
-          "color": "Grey",
-          "size": "S",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Grey",
+          "size": "M",
           "printify_variant_id": 78972,
-          "color": "Grey",
-          "size": "M",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Grey",
+          "size": "L",
           "printify_variant_id": 78973,
-          "color": "Grey",
-          "size": "L",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Grey",
+          "size": "XL",
           "printify_variant_id": 78974,
-          "color": "Grey",
-          "size": "XL",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Grey",
+          "size": "2XL",
           "printify_variant_id": 78975,
-          "color": "Grey",
-          "size": "2XL",
-          "price": 35.99
+          "price_cents": 3599,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Ivory",
+          "size": "XL",
           "printify_variant_id": 78994,
-          "color": "Ivory",
-          "size": "XL",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Ivory",
+          "size": "2XL",
           "printify_variant_id": 78995,
-          "color": "Ivory",
-          "size": "2XL",
-          "price": 35.99
+          "price_cents": 3599,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Ivory",
+          "size": "3XL",
           "printify_variant_id": 79142,
-          "color": "Ivory",
-          "size": "3XL",
-          "price": 36.99
+          "price_cents": 3699,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Bay",
+          "size": "S",
           "printify_variant_id": 78876,
-          "color": "Bay",
-          "size": "S",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Bay",
+          "size": "M",
           "printify_variant_id": 78877,
-          "color": "Bay",
-          "size": "M",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Bay",
+          "size": "L",
           "printify_variant_id": 78878,
-          "color": "Bay",
-          "size": "L",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Bay",
+          "size": "XL",
           "printify_variant_id": 78879,
-          "color": "Bay",
-          "size": "XL",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Bay",
+          "size": "2XL",
           "printify_variant_id": 78880,
-          "color": "Bay",
-          "size": "2XL",
-          "price": 35.99
+          "price_cents": 3599,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Seafoam",
+          "size": "S",
           "printify_variant_id": 78951,
-          "color": "Seafoam",
-          "size": "S",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Seafoam",
+          "size": "M",
           "printify_variant_id": 78952,
-          "color": "Seafoam",
-          "size": "M",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Seafoam",
+          "size": "L",
           "printify_variant_id": 78953,
-          "color": "Seafoam",
-          "size": "L",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Seafoam",
+          "size": "XL",
           "printify_variant_id": 78954,
-          "color": "Seafoam",
-          "size": "XL",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Seafoam",
+          "size": "2XL",
           "printify_variant_id": 78955,
-          "color": "Seafoam",
-          "size": "2XL",
-          "price": 35.99
+          "price_cents": 3599,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Chambray",
+          "size": "S",
           "printify_variant_id": 78921,
-          "color": "Chambray",
-          "size": "S",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Chambray",
+          "size": "M",
           "printify_variant_id": 78922,
-          "color": "Chambray",
-          "size": "M",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Chambray",
+          "size": "XL",
           "printify_variant_id": 78924,
-          "color": "Chambray",
-          "size": "XL",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Chambray",
+          "size": "2XL",
           "printify_variant_id": 78925,
-          "color": "Chambray",
-          "size": "2XL",
-          "price": 35.99
+          "price_cents": 3599,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Blue Spruce",
+          "size": "S",
           "printify_variant_id": 78896,
-          "color": "Blue Spruce",
-          "size": "S",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Blue Spruce",
+          "size": "M",
           "printify_variant_id": 78897,
-          "color": "Blue Spruce",
-          "size": "M",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Blue Spruce",
+          "size": "L",
           "printify_variant_id": 78898,
-          "color": "Blue Spruce",
-          "size": "L",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Blue Spruce",
+          "size": "XL",
           "printify_variant_id": 78899,
-          "color": "Blue Spruce",
-          "size": "XL",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Blue Spruce",
+          "size": "2XL",
           "printify_variant_id": 78900,
-          "color": "Blue Spruce",
-          "size": "2XL",
-          "price": 35.99
+          "price_cents": 3599,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Blue Jean",
+          "size": "S",
           "printify_variant_id": 78891,
-          "color": "Blue Jean",
-          "size": "S",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Blue Jean",
+          "size": "L",
           "printify_variant_id": 78893,
-          "color": "Blue Jean",
-          "size": "L",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Blue Jean",
+          "size": "XL",
           "printify_variant_id": 78894,
-          "color": "Blue Jean",
-          "size": "XL",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 78895,
           "color": "Blue Jean",
           "size": "2XL",
-          "price": 35.99
+          "printify_variant_id": 78895,
+          "price_cents": 3599,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 79081,
           "color": "True Navy",
           "size": "S",
-          "price": 33.99
+          "printify_variant_id": 79081,
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 79082,
           "color": "True Navy",
           "size": "M",
-          "price": 33.99
+          "printify_variant_id": 79082,
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 79083,
           "color": "True Navy",
           "size": "L",
-          "price": 33.99
+          "printify_variant_id": 79083,
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 79084,
           "color": "True Navy",
           "size": "XL",
-          "price": 33.99
+          "printify_variant_id": 79084,
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 79085,
           "color": "True Navy",
           "size": "2XL",
-          "price": 35.99
+          "printify_variant_id": 79085,
+          "price_cents": 3599,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 79036,
           "color": "Orchid",
           "size": "S",
-          "price": 33.99
+          "printify_variant_id": 79036,
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 79037,
           "color": "Orchid",
           "size": "M",
-          "price": 33.99
+          "printify_variant_id": 79037,
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 79039,
           "color": "Orchid",
           "size": "XL",
-          "price": 33.99
+          "printify_variant_id": 79039,
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 79040,
           "color": "Orchid",
           "size": "2XL",
-          "price": 35.99
+          "printify_variant_id": 79040,
+          "price_cents": 3599,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 79153,
           "color": "Orchid",
           "size": "3XL",
-          "price": 36.99
+          "printify_variant_id": 79153,
+          "price_cents": 3699,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 78881,
           "color": "Berry",
           "size": "S",
-          "price": 33.99
+          "printify_variant_id": 78881,
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Berry",
+          "size": "M",
           "printify_variant_id": 78882,
-          "color": "Berry",
-          "size": "M",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Berry",
+          "size": "XL",
           "printify_variant_id": 78884,
-          "color": "Berry",
-          "size": "XL",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 79092,
           "color": "Violet",
           "size": "M",
-          "price": 33.99
+          "printify_variant_id": 79092,
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Violet",
+          "size": "XL",
           "printify_variant_id": 79094,
-          "color": "Violet",
-          "size": "XL",
-          "price": 33.99
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
+          "color": "Violet",
+          "size": "2XL",
           "printify_variant_id": 79095,
-          "color": "Violet",
-          "size": "2XL",
-          "price": 35.99
+          "price_cents": 3599,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 78889,
           "color": "Blossom",
           "size": "XL",
-          "price": 33.99
+          "printify_variant_id": 78889,
+          "price_cents": 3399,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         },
         {
-          "printify_variant_id": 78890,
           "color": "Blossom",
           "size": "2XL",
-          "price": 35.99
+          "printify_variant_id": 78890,
+          "price_cents": 3599,
+          "size_upcharge_cents": 0,
+          "is_available": true,
+          "stripe_price_id": null
         }
       ],
       "variants_status": "fetched",

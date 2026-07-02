@@ -3,7 +3,7 @@
    Global Stylesheet | 2026
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* ── TOKENS ── */
 :root {
@@ -115,27 +115,15 @@ nav.scrolled { background: rgba(15,23,42,0.98); }
 }
 .nav-brand-text { display: flex; flex-direction: column; line-height: 1.2; }
 .nav-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 15px; font-weight: 700;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.6rem; font-weight: 400;
   color: var(--gold);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.01em;
+  line-height: 1;
 }
 .nav-sub {
   font-size: 10px; color: var(--muted);
   letter-spacing: 2px; text-transform: uppercase;
-}
-.nav-title {
-  display: block;
-  font-family: var(--font-sans, 'Inter', sans-serif);
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: rgba(212, 169, 87, 0.85);
-  letter-spacing: 0.05em;
-  margin-top: 2px;
-  line-height: 1.2;
-}
-@media (max-width: 640px) {
-  .nav-title { display: none; }
 }
 
 .nav-links {

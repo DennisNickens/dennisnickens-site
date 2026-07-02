@@ -1077,7 +1077,7 @@ async function sendCouplesMapEmail(primaryPayload, secondaryPayload, mapUrl) {
 
   <p>Reply to this email if you have questions. I read everything.</p>
 
-  <p style="margin-top: 2rem;">Dennis Nickens, AKA Spiritual Romeo<br>The Relationship Architect<br>dennisnickens.com</p>
+  <p style="margin-top: 2rem;">Dennis Nickens, AKA Spiritual Romeo<br>A Communication &amp; Behavior Consultant<br>dennisnickens.com</p>
 </body>
 </html>`;
 
@@ -1182,7 +1182,7 @@ async function sendBlueprintEmail(payload, blueprintUrl) {
 
   <p>Reply to this email if you have questions. I read everything.</p>
 
-  <p style="margin-top: 2rem;">Dennis Nickens, AKA Spiritual Romeo<br>The Relationship Architect<br>dennisnickens.com</p>
+  <p style="margin-top: 2rem;">Dennis Nickens, AKA Spiritual Romeo<br>A Communication &amp; Behavior Consultant<br>dennisnickens.com</p>
 </body>
 </html>`;
 
@@ -1613,7 +1613,7 @@ async function callClaude(systemPrompt, userMessage, contactId, label, timeoutMs
 // The master prompt closes with a blockquote: the "I help people understand the
 // person in the mirror..." line, then the signoff name and title on the next two
 // lines. marked renders those two name/title lines as a single paragraph (a single
-// newline collapses to a space, so "Dennis Nickens ... The Relationship Architect"
+// newline collapses to a space, so "Dennis Nickens ... A Communication & Behavior Consultant"
 // runs together on one line). This rebuilds that closing blockquote as a
 // centered signoff block: the name in Dancing Script (gold), the title below it in
 // Inter (smaller, muted), each on its own line.
@@ -1622,7 +1622,7 @@ function styleClosingSignoff(html) {
   // model-generated and varies, so we capture whatever the first paragraph holds and
   // keep it above the signoff rather than trying to match its exact wording.
   return html.replace(
-    /<blockquote>[\s\S]*?The Relationship Architect[\s\S]*?<\/blockquote>/i,
+    /<blockquote>[\s\S]*?Communication &amp; Behavior Consultant[\s\S]*?<\/blockquote>/i,
     (block) => {
       const quoteMatch = block.match(/<p>([\s\S]*?)<\/p>/i);
       const quote = quoteMatch
@@ -1631,7 +1631,7 @@ function styleClosingSignoff(html) {
       const quoteHtml = quote ? `<p class="blueprint-signoff-quote">${quote}</p>\n  ` : '';
       return `<div class="blueprint-signoff">
   ${quoteHtml}<span class="blueprint-signoff-name">Dennis Nickens <em>(aka Spiritual Romeo)</em></span>
-  <span class="blueprint-signoff-title">The Relationship Architect</span>
+  <span class="blueprint-signoff-title">A Communication &amp; Behavior Consultant</span>
 </div>`;
     }
   );

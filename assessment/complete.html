@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Assessment Complete | The Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--purple:#7C3AED;--purple-soft:#A78BFA;--gold:#FFD700;--bg:#0F172A;--panel:#1E293B;--line:#334155;--text:#E2E8F0;--muted:#94A3B8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;overflow-x:hidden;}
+#pc{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.card{position:relative;z-index:1;max-width:560px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:46px 30px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.35);}
+.check{width:64px;height:64px;border-radius:50%;background:rgba(124,58,237,.15);border:2px solid var(--purple);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:1.8rem;color:var(--gold);}
+h1{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--gold);margin-bottom:14px;}
+p{color:var(--muted);line-height:1.7;margin-bottom:12px;}
+.home{display:inline-block;margin-top:22px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.9rem;color:#fff;background:linear-gradient(135deg,var(--purple),#6D28D9);border-radius:10px;padding:13px 26px;text-decoration:none;}
+</style>
+</head>
+<body>
+<canvas id="pc"></canvas>
+<div class="card">
+  <div class="check">&#10003;</div>
+  <h1>Your assessment is in.</h1>
+  <p>We are drawing your Blueprint now. It will arrive in your inbox shortly, usually within a few minutes.</p>
+  <p>If it has not arrived within the hour, check your spam folder, then reach out and we will make it right.</p>
+  <a class="home" href="../index.html">Back to the Homepage</a>
+</div>
+<script>
+var cv=document.getElementById('pc'),cx=cv.getContext('2d');var ps=[];function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();window.addEventListener('resize',rsz);function P(){this.reset();}P.prototype.reset=function(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;var t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';};P.prototype.update=function(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();};P.prototype.draw=function(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;};for(var i=0;i<110;i++)ps.push(new P());function ani(){cx.clearRect(0,0,cv.width,cv.height);for(var i=0;i<ps.length;i++){ps[i].update();ps[i].draw();}requestAnimationFrame(ani);}ani();
+</script>
+</body>
+</html>

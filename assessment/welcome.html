@@ -64,13 +64,14 @@ html,body{background:linear-gradient(135deg,#0D0B1E,#1a1235,#0D0B1E) fixed !impo
 window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
 function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
 
-var SURVEY_BASE='https://api.leadconnectorhq.com/widget/survey/ucgEftbHx3FqnoUYt6Ub';
+// The assessment now runs in-house (TriLens question bank) instead of
+// handing off to the GHL survey widget. The contact's tier selection
+// decides how many questions the questionnaire serves.
 var cid=(new URLSearchParams(location.search)).get('cid')||'';
 if(!cid){window.location.href='intake.html';}
 
-// Prefetch the contact's selections so we can pass them to GHL for prefill.
-// Includes both the Full Blueprint qualifier fields and the focused-funnel
-// entitlement fields, so the survey receives context regardless of path taken.
+// Prefetch the contact's selections so we can pass the tier to the
+// questionnaire without a second lookup.
 var selections={focus:'',audience:'',tier:'',purchaseType:'',focusAreas:'',packageName:''};
 fetch('/api/sr-get-contact?cid='+encodeURIComponent(cid))
   .then(function(r){return r.json();})
@@ -91,14 +92,10 @@ fetch('/api/sr-get-contact?cid='+encodeURIComponent(cid))
 
 document.getElementById('beginBtn').addEventListener('click',function(){
   this.disabled=true;this.textContent='Loading...';
-  var url=SURVEY_BASE+'?contact_id='+encodeURIComponent(cid)
-    +'&sr_qual_focus_areas='+encodeURIComponent(selections.focus)
-    +'&sr_qual_who_for='+encodeURIComponent(selections.audience)
-    +'&sr_sku_tier='+encodeURIComponent(selections.tier)
-    +'&sr_purchase_type='+encodeURIComponent(selections.purchaseType)
-    +'&sr_focus_areas='+encodeURIComponent(selections.focusAreas)
-    +'&sr_package_name='+encodeURIComponent(selections.packageName);
-  window.location.href=url;
+  var tier=String(selections.tier||'').toLowerCase();
+  if(['light','medium','deep'].indexOf(tier)===-1)tier='light';
+  window.location.href='questionnaire.html?cid='+encodeURIComponent(cid)
+    +'&tier='+encodeURIComponent(tier);
 });
 
 var cv=document.getElementById('pc'),cx=cv.getContext('2d');let ps=[];function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();window.addEventListener('resize',rsz);class P{constructor(){this.reset();}reset(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;const t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;}}for(let i=0;i<110;i++)ps.push(new P());function ani(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(ani);}ani();

@@ -109,29 +109,29 @@ main{position:relative;z-index:5;padding:4rem 1.5rem 5rem;}
 // complete Blueprint). The audience badge above the grid still shows which profile the
 // customer picked, for continuity.
 const TIERS={
-  light:{name:"Light",count:"25 Questions",btn:"ghost",
-    tagline:"A fast, clear snapshot of how you're wired across all seven dimensions.",
+  light:{name:"Light",count:"22 Questions",price:"$47",btn:"ghost",
+    tagline:"A fast, honest snapshot of how you are wired to behave.",
     items:[
-      "Your Behavior Profile and Personality Code",
-      "All seven dimensions of your wiring, in concise form",
-      "A short read you can finish in 10 minutes"
+      "Your Behavior Profile with your SR Behavior Archetype",
+      "Your full percentage breakdown across all four styles",
+      "A short read you can finish in about 10 minutes"
     ]},
-  medium:{name:"Medium",count:"50 Questions",btn:"ghost",
-    tagline:"A fuller picture. Where your wiring helps, where it gets in your way, and what to do about it.",
+  medium:{name:"Medium",count:"78 Questions",price:"$97",btn:"ghost",
+    tagline:"The full Blueprint core. How you behave, connect, learn, and what guides you.",
     items:[
       "Everything in Light at deeper depth",
-      "Your Misalignment Map (where your wiring collides with your life)",
-      "Your Career Alignment",
-      "Your Stress Response Map",
-      "Strategic Recommendations tailored to your wiring"
+      "Your Connection Currency (how you give and receive care)",
+      "Your Learning Channel and Spiritual Compass",
+      "Your SR Code and personalized recommendations",
+      "Your 30 Day Growth Plan built from your results"
     ]},
-  deep:{name:"Deep",count:"75 Questions",recommended:true,btn:"gold",
+  deep:{name:"Deep",count:"170 Questions",price:"$147",recommended:true,btn:"gold",
     tagline:"The complete picture. Everything revealed, nothing held back.",
     items:[
       "Everything in Medium at full depth",
-      "Your Relationship Alignment",
-      "Your audience-specific deep dives (Parenting, Leadership, Ministry)",
-      "Your 30 Day Alignment Plan",
+      "Partnership, Family, Career, and Ministry Dynamics",
+      "Your Ministry gift profile",
+      "Legacy planning built around your wiring",
       "The complete Blueprint with no sections held back"
     ]}
 };
@@ -152,15 +152,24 @@ const PILLAR_LABELS={singles:"Singles",married:"Married",families:"Families",edu
     card.className='tier-card'+(t.recommended?' recommended':'');
     let html='';
     if(t.recommended) html+='<div class="rec-badge">Most Complete</div>';
-    html+='<div><div class="tier-name">'+t.name+'</div><div class="tier-count">'+t.count+'</div></div>';
+    html+='<div><div class="tier-name">'+t.name+'</div><div class="tier-count">'+t.count+' &middot; '+t.price+'</div></div>';
     html+='<div class="tier-tagline">'+t.tagline+'</div>';
     html+='<div class="tier-divider"></div>';
     html+='<div class="tier-covers-lbl">What you walk away with</div>';
     html+='<ul class="tier-items">'+items.map(function(i){return'<li>'+i+'</li>';}).join('')+'</ul>';
-    html+='<button type="button" class="tier-btn '+t.btn+'" data-tier="'+key+'">Begin '+t.name+' Assessment <span class="arr">&rarr;</span></button>';
+    html+='<button type="button" class="tier-btn '+t.btn+'" data-tier="'+key+'">Get '+t.name+' for '+t.price+' <span class="arr">&rarr;</span></button>';
     card.innerHTML=html;
     grid.appendChild(card);
   });
+  // Prefetch the contact's email so Stripe checkout can prefill it.
+  let contactEmail='';
+  fetch('/api/sr-get-contact?cid='+encodeURIComponent(cid))
+    .then(function(r){return r.json();})
+    .then(function(data){
+      if(data&&data.success&&data.contact){contactEmail=data.contact.email||'';}
+    })
+    .catch(function(){});
+
   let busy=false;
   // The whole tier card is the click target. The inner button stays as a
   // visual CTA; clicking it bubbles up to this delegated handler too.
@@ -172,26 +181,56 @@ const PILLAR_LABELS={singles:"Singles",married:"Married",families:"Families",edu
     if(!btn)return;
     busy=true;
     const tier=btn.getAttribute('data-tier');
-    // Capitalize the tier value before writing to GHL. The survey's tier-routing
-    // rules match on case-sensitive "Light" / "Medium" / "Deep". Writing lowercase
-    // here causes the survey to treat the tier as blank and bypass the Light gates,
-    // which is what produced the "James Smith got 100+ questions on Light" bug.
+    // Capitalize the tier value before writing to GHL. Tier-routing rules
+    // downstream match on case-sensitive "Light" / "Medium" / "Deep".
     const tierCapitalized=tier.charAt(0).toUpperCase()+tier.slice(1);
     grid.querySelectorAll('.tier-btn').forEach(function(b){b.disabled=true;});
-    btn.textContent='Saving...';
+    btn.textContent='Heading to checkout...';
+
+    // Record the selection on the contact first, then route to Stripe.
+    // Every tier is paid (Light $47, Medium $97, Deep $147). The webhook
+    // records the entitlement, and Stripe sends the buyer back to
+    // confirm.html?paid=1.
     fetch('/api/sr-update-contact',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({contact_id:cid,sr_sku_tier:tierCapitalized})
     })
-    .then(function(r){return r.json();})
-    .then(function(data){
-      window.location.href='confirm.html?cid='+encodeURIComponent(cid);
+    .catch(function(){})
+    .then(function(){
+      return fetch('/api/sr-blueprint-checkout',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({cid:cid,tier:tier,email:contactEmail})
+      })
+      .then(function(r){return r.json();})
+      .then(function(data){
+        if(data&&data.ok&&data.url){window.location.href=data.url;}
+        else{throw new Error((data&&data.error)||'checkout_failed');}
+      });
     })
     .catch(function(){
-      window.location.href='confirm.html?cid='+encodeURIComponent(cid);
+      busy=false;
+      grid.querySelectorAll('.tier-btn').forEach(function(b){b.disabled=false;});
+      btn.innerHTML='Try Again <span class="arr">&rarr;</span>';
+      var note=document.getElementById('checkoutErr');
+      if(!note){
+        note=document.createElement('p');
+        note.id='checkoutErr';
+        note.style.cssText='text-align:center;color:#FCA5A5;font-size:.85rem;margin-top:1rem;';
+        grid.parentNode.insertBefore(note,grid.nextSibling);
+      }
+      note.textContent='We could not open checkout. Please try again, and if it keeps happening reach out to dennis@dennisnickens.com.';
     });
   });
+
+  // Returning from an abandoned Stripe checkout
+  if(params.get('canceled')==='1'){
+    var back=document.createElement('p');
+    back.style.cssText='text-align:center;color:#94A3B8;font-size:.85rem;margin-top:1rem;';
+    back.textContent='Checkout was canceled. No charge was made. Pick a tier whenever you are ready.';
+    grid.parentNode.insertBefore(back,grid.nextSibling);
+  }
 })();
 </script>
 <script>

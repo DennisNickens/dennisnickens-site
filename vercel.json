@@ -2,8 +2,17 @@
   "functions": {
     "api/generate-blueprint.js": {
       "maxDuration": 800
+    },
+    "api/sr-assessment-submit.js": {
+      "maxDuration": 60
     }
   },
+  "crons": [
+    {
+      "path": "/api/sr-followup-cron",
+      "schedule": "0 14 * * *"
+    }
+  ],
   "redirects": [
     {
       "source": "/apparel",

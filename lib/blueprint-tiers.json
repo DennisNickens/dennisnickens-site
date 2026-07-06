@@ -1,0 +1,64 @@
+{
+  "_readme": "Single source of truth for Blueprint tier facts shown on the funnel. Both assessment/tiers.html and assessment/js/discovery.js read this file. Question counts trace to assessment/questions/bank.json. Deliverables trace to Strategy/SR-DELIVERABLES-BY-TIER.md. Update here once and both surfaces follow.",
+  "order": ["light", "medium", "deep"],
+  "tiers": {
+    "light": {
+      "key": "light",
+      "name": "Solo Light",
+      "cardName": "Light",
+      "price": 47,
+      "priceDisplay": "$47",
+      "questions": 22,
+      "time": "about 10 minutes",
+      "pillars": "Behavior Profile (CORE)",
+      "tagline": "A fast, honest snapshot of how you are wired to behave.",
+      "receive": [
+        "Your SR Behavior Archetype, one of the 16",
+        "Your primary behavior style with the full percentage breakdown across all four styles",
+        "Your CORE letter, the first letter of your SR Code"
+      ],
+      "delivery": "Personalized web Blueprint, link emailed within minutes"
+    },
+    "medium": {
+      "key": "medium",
+      "name": "Solo Medium",
+      "cardName": "Medium",
+      "price": 97,
+      "priceDisplay": "$97",
+      "questions": 78,
+      "time": "about 20 minutes",
+      "pillars": "The four Blueprint pillars: Behavior Profile, Connection Currency, Learning Channel, Spiritual Compass",
+      "tagline": "The full Blueprint core. How you behave, connect, learn, and what guides you.",
+      "receive": [
+        "Everything in Light at deeper depth, with a Dual Profile on every pillar",
+        "Your Connection Currency, ranked across all five currencies",
+        "Your Learning Channel and Spiritual Compass",
+        "Your full 4 letter SR Code with personalized recommendations",
+        "Growth areas and the archetypes you pair well with",
+        "Your 30 Day Growth Plan built from your actual results"
+      ],
+      "delivery": "Personalized web Blueprint, link emailed within minutes"
+    },
+    "deep": {
+      "key": "deep",
+      "name": "Solo Deep",
+      "cardName": "Deep",
+      "price": 147,
+      "priceDisplay": "$147",
+      "questions": 170,
+      "time": "about 45 minutes",
+      "pillars": "All 8 pillars, including Partnership, Family, Career, and Ministry Dynamics",
+      "tagline": "The complete picture. Everything revealed, nothing held back.",
+      "recommended": true,
+      "badge": "Most Complete",
+      "receive": [
+        "Everything in Medium at full depth",
+        "Partnership, Family, Career, and Ministry Dynamics, each with its own Dual Profile",
+        "Your Ministry gift profile",
+        "Legacy planning built around your wiring",
+        "The Cross-Pillar Matrix: all 8 pillars read against each other"
+      ],
+      "delivery": "Personalized web Blueprint, link emailed within minutes"
+    }
+  }
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>T-PAC | The bowling coach in your pocket</title>
+<meta name="description" content="Ace T. Johnson is the AI bowling coach that knows your game, your bag, and your scores. Plus live head-to-head tournaments against bowlers anywhere. 7 days free." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Rubik:wght@400;500;700&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#111823; --panel:#1A2331; --panel2:#212D3F; --line:#2C3A50;
+  --amber:#FFB454; --amber-deep:#E08E1B; --green:#2E9E5B; --red:#E2483D;
+  --ink:#F3EFE6; --muted:#93A0B4; --faint:#5D6B80;
+  --display:'Lilita One',sans-serif; --body:'Rubik',sans-serif; --mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:640px;margin:0 auto;padding:0 18px;}
+header{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+.brand{font-family:var(--display);font-size:1.35rem;color:var(--amber);}
+.brand small{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;color:var(--muted);margin-top:-2px;}
+.loginlink{color:var(--muted);font-size:.85rem;text-decoration:none;border:1px solid var(--line);border-radius:100px;padding:8px 16px;}
+.loginlink:hover{color:var(--amber);border-color:var(--amber);}
+
+.hero{padding:34px 0 10px;text-align:center;}
+.hero h1{font-family:var(--display);font-size:clamp(2rem,8vw,3rem);line-height:1.08;letter-spacing:.01em;}
+.hero h1 em{font-style:normal;color:var(--amber);}
+.hero p.sub{color:var(--muted);max-width:440px;margin:14px auto 0;font-size:1rem;}
+.cta{display:inline-flex;align-items:center;justify-content:center;min-height:54px;border:none;border-radius:12px;padding:14px 34px;font-family:var(--display);font-size:1.05rem;letter-spacing:.03em;cursor:pointer;background:var(--amber);color:#1A1206;text-decoration:none;margin-top:22px;transition:transform .1s;}
+.cta:hover{transform:translateY(-2px);}
+.cta:focus-visible{outline:3px solid var(--ink);outline-offset:2px;}
+.trialnote{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--faint);margin-top:10px;text-transform:uppercase;}
+
+/* Signature: the live scoreboard */
+.board{background:#0A0F16;border:2px solid var(--line);border-radius:12px;overflow:hidden;margin:30px auto 8px;text-align:left;box-shadow:0 18px 50px rgba(0,0,0,.45);}
+.board .who{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-bottom:1px solid var(--line);font-size:.85rem;}
+.board .who .nm{font-weight:700;}
+.board .who .nm .pill{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;color:var(--green);border:1px solid var(--green);border-radius:100px;padding:2px 8px;margin-left:8px;vertical-align:middle;}
+.board .who .tot{font-family:var(--mono);font-weight:700;font-size:1.15rem;color:var(--amber);}
+.frames{display:grid;grid-template-columns:repeat(10,1fr);}
+.fr{border-right:1px solid var(--line);padding:5px 0 6px;text-align:center;min-height:54px;}
+.fr:last-child{border-right:none;}
+.fr .num{font-size:.55rem;color:var(--faint);}
+.fr .marks{font-family:var(--mono);font-size:.8rem;font-weight:700;letter-spacing:1px;min-height:17px;}
+.fr .marks .x{color:var(--red);}
+.fr .cum{font-family:var(--mono);font-size:.85rem;font-weight:700;color:var(--amber);min-height:17px;}
+.vs{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;color:var(--faint);text-align:center;margin:6px 0;}
+.boardcap{font-size:.78rem;color:var(--muted);text-align:center;margin-top:12px;}
+
+section{padding:44px 0 8px;}
+.eyebrow{font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--green);margin-bottom:8px;}
+h2{font-family:var(--display);font-size:clamp(1.4rem,5vw,1.9rem);line-height:1.15;margin-bottom:12px;}
+p.body{color:var(--muted);font-size:.96rem;margin-bottom:12px;}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 18px;margin-top:16px;}
+
+.ace-row{display:flex;gap:14px;align-items:flex-start;}
+.ace-avatar{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#2E9E5B,#17452A);border:3px solid var(--amber);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.8rem;color:var(--amber);flex:0 0 64px;overflow:hidden;}
+.ace-avatar img{width:100%;height:100%;object-fit:cover;}
+.bubble{background:var(--panel2);border:1px solid var(--line);border-radius:16px;border-top-left-radius:4px;padding:12px 15px;font-size:.9rem;margin-bottom:10px;}
+.bubble.me{background:var(--amber);color:#1A1206;border-radius:16px;border-bottom-right-radius:4px;margin-left:56px;}
+
+ul.feat{list-style:none;margin-top:8px;}
+ul.feat li{padding:9px 0 9px 30px;position:relative;color:var(--muted);font-size:.94rem;border-bottom:1px solid var(--line);}
+ul.feat li:last-child{border-bottom:none;}
+ul.feat li::before{content:"●";position:absolute;left:6px;color:var(--amber);font-size:.7rem;top:13px;}
+ul.feat li strong{color:var(--ink);}
+
+.price{font-family:var(--display);font-size:3rem;color:var(--amber);line-height:1;}
+.price small{font-family:var(--body);font-size:1rem;color:var(--muted);}
+.finalcta{text-align:center;padding:50px 0 30px;}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;margin-top:30px;}
+footer p{font-size:.75rem;color:var(--faint);margin-bottom:8px;}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand">T-PAC<small>TOTAL PACKAGE BOWLING</small></div>
+  <a class="loginlink" href="app.html">Sign in</a>
+</header>
+
+<div class="hero">
+  <h1>A real coach in your pocket.<br><em>A real match on your lanes.</em></h1>
+  <p class="sub">T-PAC gives you Ace T. Johnson, the AI bowling coach that knows your game, your bag, and your scores. And when you are ready to compete, it puts you head-to-head with bowlers anywhere, live, frame by frame.</p>
+  <a class="cta" href="app.html">Start Free Trial</a>
+  <div class="trialnote">7 days free · $14 a month after · cancel anytime</div>
+
+  <div class="board" id="demoBoard1"></div>
+  <div class="vs">LIVE HEAD-TO-HEAD · TWO BOWLERS · TWO CENTERS · ONE MATCH</div>
+  <div class="board" id="demoBoard2"></div>
+  <p class="boardcap">This is the live scoreboard. You bowl at your center, they bowl at theirs, and every frame lands on both phones as it happens.</p>
+</div>
+
+<section>
+  <div class="eyebrow">Meet your coach</div>
+  <h2>Ace knows YOUR game, not "a" game.</h2>
+  <p class="body">Stat-tracking apps hold your numbers and stare back at you. Ace holds your numbers and coaches. He knows you are a righty tweener with a 165 average, that your Phaze II is at 2000 grit, and that you left the 10 pin six times on Tuesday. So his advice is yours, not generic.</p>
+  <div class="card">
+    <div class="ace-row">
+      <div class="ace-avatar" id="aceAvatar">A</div>
+      <div style="flex:1;">
+        <div class="bubble me">Left three 10 pins again tonight. What gives?</div>
+        <div class="bubble">Three 10 pins means your ball is hitting flat, friend. Your Phaze II at 2000 grit is burning up early on that house shot. Two moves: slide your feet 2 boards left and keep your eyes on the same target, or add a little polish so the ball saves energy for the pocket. Try the feet first, it is free.</div>
+      </div>
+    </div>
+  </div>
+  <ul class="feat">
+    <li><strong>Remembers everything.</strong> Your profile, your bag, your scores, your last conversation. Ace picks up where you left off, days or weeks later.</li>
+    <li><strong>Coaches off your gear.</strong> Ball roles, surfaces, layouts. Ace checks your bag for gaps before he ever tells you to buy anything.</li>
+    <li><strong>Spares first.</strong> Ace pushes a repeatable spare system, because spares raise averages faster than strikes do.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="eyebrow">Compete</div>
+  <h2>Live tournaments, any center, same moment.</h2>
+  <p class="body">Create a bracket or join one. At match time both bowlers check in, bowl at their own centers, and enter scores frame by frame while each watches the other's board update live. Score-screen photos and opponent confirmation keep money brackets honest.</p>
+  <ul class="feat">
+    <li><strong>Single elimination brackets</strong> for 4, 8, or 16 bowlers. Scratch or handicap, your rules, your payout split.</li>
+    <li><strong>Pickup matches on demand.</strong> Tap "I'm bowling live" and get paired with another live bowler in seconds.</li>
+    <li><strong>Ready checks and pace clocks</strong> keep matches moving. No-shows forfeit, slow play gets flagged.</li>
+    <li><strong>Organizer ledger.</strong> The app tracks who paid in and who is owed what. The organizer settles up in person, like any league side pot.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="eyebrow">Price</div>
+  <h2>One membership. The whole package.</h2>
+  <div class="card" style="text-align:center;">
+    <div class="price">$14<small>/month</small></div>
+    <p class="body" style="margin-top:8px;">Unlimited coaching with Ace, score and bag tracking, and every tournament feature. First 7 days free.</p>
+    <a class="cta" href="app.html" style="margin-top:8px;">Start Free Trial</a>
+  </div>
+</section>
+
+<div class="finalcta">
+  <h2>Your average is not going to raise itself.</h2>
+  <a class="cta" href="app.html">Meet Ace Free For 7 Days</a>
+</div>
+
+<footer>
+  <p>T-PAC is a Total Package product by Dennis Nickens.</p>
+  <p>The monthly membership covers software access only and runs through Stripe. Tournament entry fees and prize money are collected and paid out by bracket organizers in person; T-PAC keeps the ledger and never holds or moves prize money.</p>
+</footer>
+</div>
+
+<script>
+// The hero demo: two boards replaying a real-feeling match, frame by frame.
+(function () {
+  var A = { name: 'DENNIS N.', frames: [[9,1],[10],[8,1],[10],[10],[7,3],[9,0],[10],[8,2],[9,1,10]] };
+  var B = { name: 'J. WALKER', frames: [[8,2],[9,0],[10],[7,2],[10],[8,2],[10],[9,1],[7,2],[10,9,1]] };
+
+  function scoreGame(frames) {
+    var rolls = [], starts = [], i, j;
+    for (i = 0; i < frames.length; i++) { starts.push(rolls.length); for (j = 0; j < frames[i].length; j++) rolls.push(frames[i][j]); }
+    var out = [], total = 0;
+    for (i = 0; i < frames.length; i++) {
+      var s = starts[i];
+      if (i === 9) { for (j = 0; j < frames[9].length; j++) total += frames[9][j]; out.push(total); continue; }
+      if (frames[i][0] === 10) { if (rolls.length < s + 3) { out.push(null); break; } total += 10 + rolls[s+1] + rolls[s+2]; }
+      else if (frames[i][0] + frames[i][1] === 10) { if (rolls.length < s + 3) { out.push(null); break; } total += 10 + rolls[s+2]; }
+      else total += frames[i][0] + frames[i][1];
+      out.push(total);
+    }
+    return { total: total, cum: out };
+  }
+
+  function marks(rolls, tenth) {
+    if (!rolls || !rolls.length) return '';
+    if (!tenth) {
+      if (rolls[0] === 10) return '<span class="x">X</span>';
+      var second = rolls.length > 1 ? (rolls[0] + rolls[1] === 10 ? '/' : (rolls[1] === 0 ? '-' : rolls[1])) : '';
+      return (rolls[0] === 0 ? '-' : rolls[0]) + '' + second;
+    }
+    return rolls.map(function (r, j) {
+      if (r === 10) return '<span class="x">X</span>';
+      if (j > 0 && rolls[j-1] !== 10 && rolls[j-1] + r === 10) return '/';
+      return r === 0 ? '-' : r;
+    }).join('');
+  }
+
+  function paint(el, bowler, upTo) {
+    var played = bowler.frames.slice(0, upTo);
+    var scored = scoreGame(played);
+    var cells = '';
+    for (var i = 0; i < 10; i++) {
+      cells += '<div class="fr"><div class="num">' + (i + 1) + '</div><div class="marks">' + (i < upTo ? marks(bowler.frames[i], i === 9) : '') + '</div><div class="cum">' + (scored.cum[i] === null || scored.cum[i] === undefined ? '' : scored.cum[i]) + '</div></div>';
+    }
+    el.innerHTML = '<div class="who"><span class="nm">' + bowler.name + '<span class="pill">LIVE</span></span><span class="tot">' + (upTo ? scored.total : 0) + '</span></div><div class="frames">' + cells + '</div>';
+  }
+
+  var b1 = document.getElementById('demoBoard1'), b2 = document.getElementById('demoBoard2');
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) { paint(b1, A, 10); paint(b2, B, 10); return; }
+  var step = 0;
+  function tick() {
+    var f = step % 12; // 10 frames + 2 beats of hold at the end
+    paint(b1, A, Math.min(f, 10));
+    paint(b2, B, Math.max(0, Math.min(f, 10)));
+    step++;
+    setTimeout(tick, f >= 10 ? 2200 : 900);
+  }
+  tick();
+})();
+// Ace avatar slot: when the art is ready, place it at /tpac/ace.png and
+// swap the placeholder: document.getElementById('aceAvatar').innerHTML = '<img src="ace.png" alt="Ace T. Johnson">';
+</script>
+</body>
+</html>

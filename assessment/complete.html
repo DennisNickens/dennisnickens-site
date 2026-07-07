@@ -18,6 +18,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 h1{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--gold);margin-bottom:14px;}
 p{color:var(--muted);line-height:1.7;margin-bottom:12px;}
 .home{display:inline-block;margin-top:22px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.9rem;color:#fff;background:linear-gradient(135deg,var(--purple),#6D28D9);border-radius:10px;padding:13px 26px;text-decoration:none;}
+.pair{display:none;margin-top:30px;padding-top:26px;border-top:1px solid var(--line);text-align:center;}
+.pair h2{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--text);margin-bottom:10px;}
+.code-row{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.code-box{background:rgba(124,58,237,.12);border:1px solid var(--purple);border-radius:10px;padding:12px 22px;font-family:'Courier New',monospace;font-size:1.35rem;font-weight:700;letter-spacing:.18em;color:var(--gold);}
+.copy-btn{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.04em;color:var(--text);background:transparent;border:1px solid var(--line);border-radius:8px;padding:11px 16px;min-height:44px;cursor:pointer;transition:border-color .15s,color .15s;}
+.copy-btn:hover{border-color:var(--purple-soft);color:#fff;}
+.copy-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.join-link{font-size:.85rem;color:var(--purple-soft);word-break:break-all;}
+.pair .small{font-size:.85rem;}
 </style>
 </head>
 <body>
@@ -27,8 +36,60 @@ p{color:var(--muted);line-height:1.7;margin-bottom:12px;}
   <h1>Your assessment is in.</h1>
   <p>We are drawing your Blueprint now. It will arrive in your inbox shortly, usually within a few minutes.</p>
   <p>If it has not arrived within the hour, check your spam folder, then reach out and we will make it right.</p>
+  <div class="pair" id="pairSection" aria-live="polite">
+    <h2>Bring in your person</h2>
+    <p class="small">You bought the Linked Pair. Share this code with them so they can take their own assessment and unlock your Combined Report.</p>
+    <p class="small" style="margin-bottom:0;">Their invite code:</p>
+    <div class="code-row">
+      <span class="code-box" id="pairCode"></span>
+      <button type="button" class="copy-btn" id="copyCodeBtn" aria-label="Copy invite code">Copy Code</button>
+    </div>
+    <p class="small" style="margin-top:14px;margin-bottom:4px;">Or send them this link:</p>
+    <div class="code-row">
+      <span class="join-link" id="pairLink"></span>
+      <button type="button" class="copy-btn" id="copyLinkBtn" aria-label="Copy invite link">Copy Link</button>
+    </div>
+    <p class="small" style="margin-top:14px;">Once they finish, we email you both the Combined Report.</p>
+  </div>
   <a class="home" href="../index.html">Back to the Homepage</a>
 </div>
+<script>
+// Linked Pair primaries get their person's invite code here. The
+// endpoint returns not_found for solo customers and for secondaries,
+// so this section never renders for them.
+(function(){
+  var cid=(new URLSearchParams(location.search)).get('cid')||'';
+  if(!cid)return;
+  fetch('/api/sr-blueprint-join?cid='+encodeURIComponent(cid))
+    .then(function(r){return r.ok?r.json():null;})
+    .then(function(data){
+      if(!data||!data.ok||data.role!=='primary'||!data.code)return;
+      if(data.status==='ready_for_comparison')return; // their person already finished
+      document.getElementById('pairCode').textContent=data.code;
+      document.getElementById('pairLink').textContent=data.joinUrl;
+      document.getElementById('pairSection').style.display='block';
+      function wireCopy(btnId,getText){
+        var btn=document.getElementById(btnId);
+        btn.addEventListener('click',function(){
+          var text=getText();
+          var done=function(){var old=btn.textContent;btn.textContent='Copied';setTimeout(function(){btn.textContent=old;},1600);};
+          if(navigator.clipboard&&navigator.clipboard.writeText){
+            navigator.clipboard.writeText(text).then(done).catch(function(){fallback();});
+          }else{fallback();}
+          function fallback(){
+            var ta=document.createElement('textarea');
+            ta.value=text;document.body.appendChild(ta);ta.select();
+            try{document.execCommand('copy');done();}catch(_){/* leave the text visible to copy by hand */}
+            document.body.removeChild(ta);
+          }
+        });
+      }
+      wireCopy('copyCodeBtn',function(){return data.code;});
+      wireCopy('copyLinkBtn',function(){return data.joinUrl;});
+    })
+    .catch(function(){});
+})();
+</script>
 <script>
 var cv=document.getElementById('pc'),cx=cv.getContext('2d');var ps=[];function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();window.addEventListener('resize',rsz);function P(){this.reset();}P.prototype.reset=function(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;var t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';};P.prototype.update=function(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();};P.prototype.draw=function(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;};for(var i=0;i<110;i++)ps.push(new P());function ani(){cx.clearRect(0,0,cv.width,cv.height);for(var i=0;i<ps.length;i++){ps[i].update();ps[i].draw();}requestAnimationFrame(ani);}ani();
 </script>

@@ -4,9 +4,10 @@
    Body: { cid, tier, answers }
      cid     — GHL contact id (system of record for the person)
      tier    — 'light' | 'medium' | 'deep'
-     answers — { core_q1: {a:1,b:3,c:2,d:4}, ... } ranked-choice
-               maps, one entry per question id, rank 1 = most
-               like the respondent.
+     answers — { core_q1: 'a', ... } pick-one option keys, one
+               entry per question id. Legacy ranked-choice maps
+               ({a:1,b:3,c:2,d:4}) are still accepted and scored
+               by the engine's back-compat path.
 
    Stores the raw response set in KV under sr:responses:{sessionId}
    and a session record under sr:session:{sessionId}, then runs the

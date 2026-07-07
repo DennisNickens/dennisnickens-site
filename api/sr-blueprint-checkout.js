@@ -9,15 +9,16 @@
 
    Body: { cid, tier, email? }
      cid   — GHL contact id (required, carried in metadata)
-     tier  — 'light' | 'medium' | 'deep' (all tiers are paid:
-             Light $47, Medium $97, Deep $147)
+     tier  — 'light' | 'medium' | 'deep' | 'linked_pair_light'
+             (all tiers are paid: Light $47, Medium $97, Deep
+             $147, Linked Pair Light $179 covering two people)
      email — optional, prefills the Stripe email field
 
    Response: { ok, url } -> redirect the browser here
 
    Requires env: STRIPE_SECRET_KEY, STRIPE_PRICE_BLUEPRINT_LIGHT,
    STRIPE_PRICE_BLUEPRINT_MEDIUM, STRIPE_PRICE_BLUEPRINT_DEEP,
-   PUBLIC_SITE_URL
+   STRIPE_PRICE_BLUEPRINT_LINKED_PAIR_LIGHT, PUBLIC_SITE_URL
    ============================================================ */
 
 'use strict';
@@ -28,6 +29,7 @@ const TIER_PRICES = {
   light: 'STRIPE_PRICE_BLUEPRINT_LIGHT',
   medium: 'STRIPE_PRICE_BLUEPRINT_MEDIUM',
   deep: 'STRIPE_PRICE_BLUEPRINT_DEEP',
+  linked_pair_light: 'STRIPE_PRICE_BLUEPRINT_LINKED_PAIR_LIGHT',
 };
 
 module.exports = async (req, res) => {

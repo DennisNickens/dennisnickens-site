@@ -66,6 +66,7 @@ main{position:relative;z-index:5;padding:4rem 1.5rem 5rem;}
 .tiers-back{display:flex;justify-content:center;margin-top:2.5rem;}
 .tiers-back a{font-family:var(--fl);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-s);text-decoration:none;border:1px solid var(--line);border-radius:4px;padding:.85rem 1.75rem;transition:all .3s;}
 .tiers-back a:hover{color:var(--gold);border-color:var(--gold);}
+.tier-card-wide{grid-column:1/-1;}
 .tier-specs{display:flex;flex-direction:column;gap:.65rem;}
 .spec-row{display:flex;flex-direction:column;gap:.15rem;}
 .spec-lbl{font-family:var(--fl);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-f);}
@@ -164,17 +165,18 @@ const PILLAR_LABELS={singles:"Singles",married:"Married",families:"Families",edu
     return '<div class="spec-row"><span class="spec-lbl">'+lbl+'</span><span class="spec-val">'+val+'</span></div>';
   }
   window.SR_TIERS_PROMISE.then(function(data){
-    data.order.forEach(function(key){
+    function buildCard(key,opts){
       const t=data.tiers[key];
       const card=document.createElement('div');
-      card.className='tier-card'+(t.recommended?' recommended':'');
+      card.className='tier-card'+(t.recommended?' recommended':'')+((opts&&opts.wide)?' tier-card-wide':'');
       let html='';
-      if(t.recommended) html+='<div class="rec-badge">'+(t.badge||'Most Complete')+'</div>';
-      html+='<div><div class="tier-name">'+t.cardName+'</div><div class="tier-count">'+t.questions+' Questions &middot; '+t.priceDisplay+'</div></div>';
+      if(opts&&opts.badge) html+='<div class="rec-badge">'+opts.badge+'</div>';
+      else if(t.recommended) html+='<div class="rec-badge">'+(t.badge||'Most Complete')+'</div>';
+      html+='<div><div class="tier-name">'+t.cardName+'</div><div class="tier-count">'+(t.questionsNote?t.questionsNote:t.questions+' Questions')+' &middot; '+t.priceDisplay+'</div></div>';
       html+='<div class="tier-tagline">'+t.tagline+'</div>';
       html+='<div class="tier-divider"></div>';
       html+='<div class="tier-specs">';
-      html+=specRow('Questions',t.questions+' questions');
+      html+=specRow('Questions',t.questionsNote||t.questions+' questions');
       html+=specRow('Time',t.time);
       html+=specRow('Pillars covered',t.pillars);
       html+=specRow('Delivery',t.delivery);
@@ -185,7 +187,11 @@ const PILLAR_LABELS={singles:"Singles",married:"Married",families:"Families",edu
       html+='<button type="button" class="tier-btn '+(t.recommended?'gold':'ghost')+'" data-tier="'+key+'">Get '+t.cardName+' for '+t.priceDisplay+' <span class="arr">&rarr;</span></button>';
       card.innerHTML=html;
       grid.appendChild(card);
-    });
+    }
+    data.order.forEach(function(key){buildCard(key);});
+    // Linked Pair: the two-person option renders as a full-width card
+    // below the solo tiers so the solo comparison stays three-across.
+    (data.pairOrder||[]).forEach(function(key){buildCard(key,{wide:true,badge:'For Two People'});});
   }).catch(function(){
     grid.innerHTML='<p style="grid-column:1/-1;text-align:center;color:#FCA5A5;font-size:.9rem;">We could not load the tier details. Please refresh the page, and if it keeps happening reach out to dennis@dennisnickens.com.</p>';
   });
@@ -208,11 +214,16 @@ const PILLAR_LABELS={singles:"Singles",married:"Married",families:"Families",edu
   window.srStartCheckout=function(tier){
     // Capitalize the tier value before writing to GHL. Tier-routing rules
     // downstream match on case-sensitive "Light" / "Medium" / "Deep".
-    const tierCapitalized=tier.charAt(0).toUpperCase()+tier.slice(1);
+    // A Linked Pair primary takes the Deep assessment, so their contact
+    // stamps "Deep"; the purchase type keeps the Linked Pair intent.
+    const isPair=tier==='linked_pair_light';
+    const stampTier=isPair?'Deep':tier.charAt(0).toUpperCase()+tier.slice(1);
+    const stamp={contact_id:cid,sr_sku_tier:stampTier};
+    if(isPair)stamp.sr_purchase_type='blueprint_linked_pair_light';
     return fetch('/api/sr-update-contact',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({contact_id:cid,sr_sku_tier:tierCapitalized})
+      body:JSON.stringify(stamp)
     })
     .catch(function(){})
     .then(function(){

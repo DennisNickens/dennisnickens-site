@@ -1,7 +1,27 @@
 {
   "_readme": "Single source of truth for Blueprint tier facts shown on the funnel. Both assessment/tiers.html and assessment/js/discovery.js read this file. Question counts trace to assessment/questions/bank.json. Deliverables trace to Strategy/SR-DELIVERABLES-BY-TIER.md. Update here once and both surfaces follow.",
   "order": ["light", "medium", "deep"],
+  "pairOrder": ["linked_pair_light"],
   "tiers": {
+    "linked_pair_light": {
+      "key": "linked_pair_light",
+      "name": "Linked Pair Light",
+      "cardName": "Linked Pair",
+      "price": 179,
+      "priceDisplay": "$179",
+      "questions": 170,
+      "questionsNote": "170 questions each, one full assessment per person",
+      "time": "about 45 minutes each",
+      "pillars": "All 8 pillars for both of you, two complete Deep Blueprints",
+      "tagline": "For two people. Two complete Deep Blueprints, plus a Combined Report on how your two designs interact.",
+      "receive": [
+        "Two full Deep assessments, one per person, both covered by this one purchase",
+        "Two complete individual Blueprints, all 8 pillars each",
+        "An invite code your person uses to join, no second charge",
+        "The Combined Relational Report once you have both finished"
+      ],
+      "delivery": "Each Blueprint lands within minutes of that person finishing"
+    },
     "light": {
       "key": "light",
       "name": "Solo Light",

@@ -38,18 +38,24 @@ body{
 .opt{
   display:flex;align-items:center;gap:14px;width:100%;text-align:left;
   background:var(--panel2);border:1px solid var(--line);border-radius:10px;
-  padding:14px 16px;margin-bottom:10px;color:var(--text);
+  padding:14px 16px;margin-bottom:10px;color:var(--text);min-height:44px;
   font-family:'Inter',sans-serif;font-size:.95rem;line-height:1.45;cursor:pointer;
   transition:border-color .15s,background .15s,transform .1s;
 }
 .opt:hover{border-color:var(--purple-soft);}
 .opt:active{transform:scale(.99);}
-.opt.ranked{border-color:var(--purple);background:rgba(124,58,237,.12);}
-.rank-badge{
+.opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.opt.selected{border-color:var(--purple);background:rgba(124,58,237,.12);}
+.key-badge{
   flex:0 0 30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;
   font-weight:700;font-size:.85rem;border:2px solid var(--line);color:var(--muted);
 }
-.opt.ranked .rank-badge{border-color:var(--gold);color:var(--gold);}
+.opt.selected .key-badge{border-color:var(--gold);color:var(--gold);}
+.opt .picked-check{margin-left:auto;color:var(--gold);font-size:1.05rem;opacity:0;transition:opacity .15s;}
+.opt.selected .picked-check{opacity:1;}
+.field{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:13px 15px;color:var(--text);font-family:'Inter',sans-serif;font-size:.95rem;margin-bottom:12px;}
+.field:focus{outline:2px solid var(--purple-soft);outline-offset:1px;}
+.field-label{display:block;text-align:left;font-size:.78rem;color:var(--muted);margin:0 0 6px 2px;}
 
 .controls{display:flex;justify-content:space-between;align-items:center;margin-top:22px;gap:12px;}
 .btn{
@@ -97,7 +103,7 @@ body{
 'use strict';
 
 var PILLAR_INTROS={
-  core:{title:'Behavior Profile',blurb:'How you naturally move through the world. There are no right answers here, only honest ones. Rank each set of responses from most like you to least like you.'},
+  core:{title:'Behavior Profile',blurb:'How you naturally move through the world. There are no right answers here, only honest ones. For each question, pick the one response that sounds most like you.'},
   currency:{title:'Connection Currency',blurb:'People give and receive care in different currencies. This section reveals which currencies you trade in most naturally.'},
   channel:{title:'Learning Channel',blurb:'How information reaches you best. Understanding your channel changes how you communicate and how others should communicate with you.'},
   compass:{title:'Spiritual Compass',blurb:'What actually guides your biggest decisions. This section maps the values underneath everything else.'},
@@ -109,15 +115,20 @@ var PILLAR_INTROS={
 
 var params=new URLSearchParams(location.search);
 var cid=params.get('cid')||'';
-if(!cid){window.location.href='intake.html';}
+// Linked Pair secondary arrives with ?join={CODE} instead of a cid. The
+// join flow validates the code, registers them, and hands back a cid.
+var joinCode=String(params.get('join')||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+if(!cid&&!joinCode){window.location.href='intake.html';}
 
-var STORE_KEY='sr:assessment:'+cid;
-var bank=null, tier=null, questions=[], idx=0, answers={}, pendingRanks={}, seenIntros={};
+var STORE_KEY=null;
+var bank=null, tier=null, forcedTier=null, questions=[], idx=0, answers={}, seenIntros={}, advancing=false;
 
 function saveState(){
+  if(!STORE_KEY)return;
   try{localStorage.setItem(STORE_KEY,JSON.stringify({tier:tier,idx:idx,answers:answers,seenIntros:seenIntros}));}catch(_){}
 }
 function loadState(){
+  if(!STORE_KEY)return null;
   try{return JSON.parse(localStorage.getItem(STORE_KEY)||'null');}catch(_){return null;}
 }
 
@@ -154,78 +165,89 @@ function render(){
     return;
   }
 
-  pendingRanks=answers[q.id]?Object.assign({},answers[q.id]):{};
+  var picked=answers[q.id]||'';
   var optKeys=Object.keys(q.options);
   var html='<div class="card">'
     +'<div class="qtext">'+esc(q.text)+'</div>'
-    +'<div class="hint">Tap the responses in order, most like you first. Tap a choice again to unrank it.</div>';
+    +'<div class="hint">Pick the one that fits you best. You can go back and change any answer.</div>';
   for(var i=0;i<optKeys.length;i++){
     var k=optKeys[i];
-    var r=pendingRanks[k]||'';
-    html+='<button class="opt'+(r?' ranked':'')+'" data-opt="'+k+'">'
-      +'<span class="rank-badge">'+(r||'')+'</span>'
-      +'<span>'+esc(q.options[k])+'</span></button>';
+    var sel=picked===k;
+    html+='<button type="button" class="opt'+(sel?' selected':'')+'" data-opt="'+k+'" aria-pressed="'+sel+'" aria-label="Option '+(i+1)+': '+esc(q.options[k])+'">'
+      +'<span class="key-badge" aria-hidden="true">'+(i+1)+'</span>'
+      +'<span>'+esc(q.options[k])+'</span>'
+      +'<span class="picked-check" aria-hidden="true">&#10003;</span></button>';
   }
   html+='<div class="controls">'
     +'<button class="btn btn-ghost" id="backBtn"'+(idx===0?' style="visibility:hidden"':'')+'>Back</button>'
-    +'<button class="btn btn-primary" id="nextBtn" disabled>Next</button>'
+    +'<button class="btn btn-primary" id="nextBtn"'+(picked?'':' disabled')+'>Next</button>'
     +'</div></div>';
   stage.innerHTML=html;
 
   var opts=stage.querySelectorAll('.opt');
   for(var j=0;j<opts.length;j++){
-    opts[j].addEventListener('click',onOptTap);
+    opts[j].addEventListener('click',function(e){pickOption(e.currentTarget.getAttribute('data-opt'));});
   }
-  document.getElementById('backBtn').addEventListener('click',function(){
-    if(idx>0){idx--;saveState();render();}
-  });
-  document.getElementById('nextBtn').addEventListener('click',commitAndNext);
-  refreshRankUI();
+  document.getElementById('backBtn').addEventListener('click',goBack);
+  document.getElementById('nextBtn').addEventListener('click',goNext);
   updateChrome();
 }
 
-function onOptTap(e){
-  var btn=e.currentTarget;
-  var k=btn.getAttribute('data-opt');
+// Pick-one: record the answer, flash the confirmation state, then
+// auto-advance after a beat so the click visibly landed.
+function pickOption(k){
+  if(advancing)return;
   var q=questions[idx];
-  var totalOpts=Object.keys(q.options).length;
-  if(pendingRanks[k]){
-    // Unrank this option and close the gap
-    var removed=pendingRanks[k];
-    delete pendingRanks[k];
-    for(var o in pendingRanks){if(pendingRanks[o]>removed)pendingRanks[o]--;}
-  }else{
-    var used=Object.keys(pendingRanks).length;
-    if(used>=totalOpts)return;
-    pendingRanks[k]=used+1;
-  }
-  refreshRankUI();
-}
-
-function refreshRankUI(){
-  var q=questions[idx];
-  var totalOpts=Object.keys(q.options).length;
+  if(!q||!q.options[k])return;
+  answers[q.id]=k;
+  saveState();
+  advancing=true;
   var stage=document.getElementById('stage');
   var opts=stage.querySelectorAll('.opt');
   for(var i=0;i<opts.length;i++){
-    var k=opts[i].getAttribute('data-opt');
-    var badge=opts[i].querySelector('.rank-badge');
-    if(pendingRanks[k]){opts[i].classList.add('ranked');badge.textContent=pendingRanks[k];}
-    else{opts[i].classList.remove('ranked');badge.textContent='';}
+    var sel=opts[i].getAttribute('data-opt')===k;
+    opts[i].classList.toggle('selected',sel);
+    opts[i].setAttribute('aria-pressed',String(sel));
   }
-  var done=Object.keys(pendingRanks).length===totalOpts;
   var nextBtn=document.getElementById('nextBtn');
-  if(nextBtn)nextBtn.disabled=!done;
+  if(nextBtn)nextBtn.disabled=false;
+  setTimeout(function(){
+    advancing=false;
+    idx++;
+    saveState();
+    render();
+    window.scrollTo(0,0);
+  },300);
 }
 
-function commitAndNext(){
-  var q=questions[idx];
-  answers[q.id]=Object.assign({},pendingRanks);
-  idx++;
-  saveState();
-  render();
-  window.scrollTo(0,0);
+function goBack(){
+  if(advancing||idx===0)return;
+  idx--;saveState();render();window.scrollTo(0,0);
 }
+
+// Forward through questions already answered (after using Back).
+function goNext(){
+  if(advancing||idx>=questions.length)return;
+  var q=questions[idx];
+  if(!answers[q.id])return;
+  idx++;saveState();render();window.scrollTo(0,0);
+}
+
+// Keyboard: 1-4 picks an option, arrow keys move between questions.
+document.addEventListener('keydown',function(ev){
+  if(ev.altKey||ev.ctrlKey||ev.metaKey)return;
+  var tag=(document.activeElement&&document.activeElement.tagName)||'';
+  if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT')return;
+  if(!bank||!questions.length||idx>=questions.length)return;
+  var q=questions[idx];
+  if(!seenIntros[q.pillar])return;
+  if(ev.key>='1'&&ev.key<='9'){
+    var keys=Object.keys(q.options);
+    var i=parseInt(ev.key,10)-1;
+    if(i<keys.length){ev.preventDefault();pickOption(keys[i]);}
+  }else if(ev.key==='ArrowLeft'){ev.preventDefault();goBack();}
+  else if(ev.key==='ArrowRight'){ev.preventDefault();goNext();}
+});
 
 function updateChrome(){
   var answered=Math.min(idx,questions.length);
@@ -277,26 +299,40 @@ function showErr(msg){
   el.textContent=msg;el.style.display='block';
 }
 
-// Boot: resolve tier (query param first, then contact record), load bank, restore progress
+// Boot: resolve tier (forced for Linked Pair secondaries, then query
+// param, then contact record), load bank, restore progress.
 function boot(){
+  STORE_KEY='sr:assessment:'+cid;
   var qTier=(params.get('tier')||'').toLowerCase();
-  var tierReady=qTier&&['light','medium','deep'].indexOf(qTier)!==-1
-    ? Promise.resolve(qTier)
-    : fetch('/api/sr-get-contact?cid='+encodeURIComponent(cid))
-        .then(function(r){return r.json();})
-        .then(function(data){
-          var f=(data&&data.success&&data.contact&&data.contact.fields)||{};
-          var t=String(f.sr_sku_tier||'').toLowerCase();
-          return ['light','medium','deep'].indexOf(t)!==-1?t:'light';
-        })
-        .catch(function(){return 'light';});
+  var tierReady=forcedTier
+    ? Promise.resolve(forcedTier)
+    : (qTier&&['light','medium','deep'].indexOf(qTier)!==-1
+      ? Promise.resolve(qTier)
+      : fetch('/api/sr-get-contact?cid='+encodeURIComponent(cid))
+          .then(function(r){return r.json();})
+          .then(function(data){
+            var f=(data&&data.success&&data.contact&&data.contact.fields)||{};
+            var t=String(f.sr_sku_tier||'').toLowerCase();
+            return ['light','medium','deep'].indexOf(t)!==-1?t:'light';
+          })
+          .catch(function(){return 'light';}));
 
   Promise.all([tierReady,fetch('questions/bank.json').then(function(r){return r.json();})])
     .then(function(results){
       tier=results[0];bank=results[1];
       var saved=loadState();
       if(saved&&saved.tier===tier){
-        idx=saved.idx||0;answers=saved.answers||{};seenIntros=saved.seenIntros||{};
+        // Only pick-one (string) answers restore. Ranked answers from
+        // before the pick-one UX are dropped so those questions get
+        // re-answered in the new format.
+        var savedAnswers=saved.answers||{},dropped=false;
+        answers={};
+        for(var k in savedAnswers){
+          if(typeof savedAnswers[k]==='string')answers[k]=savedAnswers[k];
+          else dropped=true;
+        }
+        idx=dropped?0:(saved.idx||0);
+        seenIntros=saved.seenIntros||{};
       }
       buildQuestionList();
       render();
@@ -305,7 +341,96 @@ function boot(){
       document.getElementById('stage').innerHTML='<div class="card interstitial"><h2>Something went wrong</h2><p>We could not load the assessment. Please refresh the page or come back in a moment.</p></div>';
     });
 }
-boot();
+
+// ------------------------------------------------------------
+// Linked Pair join flow (?join={CODE}): validate the code, greet
+// the secondary with the primary's name, register them (no
+// payment; the Linked Pair purchase covers both people), then run
+// the normal Deep assessment with the cid the server hands back.
+// ------------------------------------------------------------
+
+function joinBoot(){
+  document.getElementById('qcount').textContent='';
+  fetch('/api/sr-blueprint-join?code='+encodeURIComponent(joinCode))
+    .then(function(r){return r.json();})
+    .then(function(data){
+      if(!data||!data.ok){renderJoinError();return;}
+      if(data.status==='ready_for_comparison'){renderPairComplete();return;}
+      var savedCid='';
+      try{savedCid=localStorage.getItem('sr:join:'+joinCode)||'';}catch(_){}
+      if(savedCid){cid=savedCid;forcedTier='deep';boot();return;}
+      renderJoinWelcome(data.primaryFirstName||'');
+    })
+    .catch(function(){renderJoinError();});
+}
+
+function renderJoinWelcome(primaryName){
+  var who=primaryName?esc(primaryName)+"'s":'a Linked Pair';
+  var stage=document.getElementById('stage');
+  stage.innerHTML='<div class="card interstitial">'
+    +'<h2>You are joining '+who+' Blueprint.</h2>'
+    +'<p>Your assessment is included. Nothing to pay. You will answer the full set of questions, about 45 minutes, and your own complete Blueprint arrives by email when you finish. Tell us who you are and we will get started.</p>'
+    +'<form id="joinForm" style="max-width:380px;margin:0 auto;text-align:left;">'
+    +'<label class="field-label" for="jFirst">First name</label>'
+    +'<input class="field" id="jFirst" type="text" autocomplete="given-name" required />'
+    +'<label class="field-label" for="jLast">Last name</label>'
+    +'<input class="field" id="jLast" type="text" autocomplete="family-name" required />'
+    +'<label class="field-label" for="jEmail">Email (your Blueprint is delivered here)</label>'
+    +'<input class="field" id="jEmail" type="email" autocomplete="email" required />'
+    +'<div style="text-align:center;margin-top:8px;"><button type="submit" class="btn btn-primary" id="joinBtn">Start My Assessment</button></div>'
+    +'<div class="err" id="joinErr"></div>'
+    +'</form></div>';
+  document.getElementById('joinForm').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var first=document.getElementById('jFirst').value.trim();
+    var last=document.getElementById('jLast').value.trim();
+    var email=document.getElementById('jEmail').value.trim();
+    var errEl=document.getElementById('joinErr');
+    errEl.style.display='none';
+    if(!first||!last||!email){errEl.textContent='We need your name and email to deliver your Blueprint.';errEl.style.display='block';return;}
+    var btn=document.getElementById('joinBtn');
+    btn.disabled=true;btn.textContent='One moment...';
+    fetch('/api/sr-blueprint-join',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({code:joinCode,firstName:first,lastName:last,email:email})
+    }).then(function(r){return r.json();})
+      .then(function(data){
+        if(data&&data.ok&&data.cid){
+          try{localStorage.setItem('sr:join:'+joinCode,data.cid);}catch(_){}
+          cid=data.cid;forcedTier='deep';boot();
+        }else if(data&&data.error==='code_in_use'){
+          errEl.textContent='Someone already joined with this code. If that someone is you, use the same email you entered the first time.';
+          errEl.style.display='block';btn.disabled=false;btn.textContent='Start My Assessment';
+        }else if(data&&data.error==='already_complete'){
+          renderPairComplete();
+        }else{
+          errEl.textContent='We could not get you registered. Please try again, and if it keeps happening reach out to dennis@dennisnickens.com.';
+          errEl.style.display='block';btn.disabled=false;btn.textContent='Start My Assessment';
+        }
+      })
+      .catch(function(){
+        errEl.textContent='We could not reach the server. Please check your connection and try again.';
+        errEl.style.display='block';btn.disabled=false;btn.textContent='Start My Assessment';
+      });
+  });
+}
+
+function renderJoinError(){
+  document.getElementById('stage').innerHTML='<div class="card interstitial">'
+    +'<h2>We could not find that invite.</h2>'
+    +'<p>This link may have expired or been mistyped. Ask the person who sent it to share it again, or reach out to dennis@dennisnickens.com and we will get you in.</p>'
+    +'</div>';
+}
+
+function renderPairComplete(){
+  document.getElementById('stage').innerHTML='<div class="card interstitial">'
+    +'<h2>This pair is already complete.</h2>'
+    +'<p>Both Blueprints are delivered. Check your inbox, and if you cannot find yours reach out to dennis@dennisnickens.com.</p>'
+    +'</div>';
+}
+
+if(joinCode&&!cid){joinBoot();}else{boot();}
 
 // Particle background (matches the rest of the funnel)
 var cv=document.getElementById('pc'),cx=cv.getContext('2d');var ps=[];function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight;}rsz();window.addEventListener('resize',rsz);function P(){this.reset();}P.prototype.reset=function(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.r=Math.random()*1.6+.3;this.a=Math.random()*.45+.08;var t=Math.random();this.c=t>.65?'#7C3AED':t>.35?'#3B82F6':'#FFD700';};P.prototype.update=function(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.reset();};P.prototype.draw=function(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=this.c;cx.globalAlpha=this.a;cx.fill();cx.globalAlpha=1;};for(var i=0;i<110;i++)ps.push(new P());function ani(){cx.clearRect(0,0,cv.width,cv.height);for(var i=0;i<ps.length;i++){ps[i].update();ps[i].draw();}requestAnimationFrame(ani);}ani();

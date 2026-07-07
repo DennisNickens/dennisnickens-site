@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta http-equiv="refresh" content="0; url=intake.html" />
 <title>The Blueprint</title>
 <link rel="canonical" href="https://dennisnickens.com/assessment/intake.html" />
 </head>
 <body>
-<p>Redirecting to <a href="intake.html">the assessment intake</a>...</p>
-<script>window.location.replace('intake.html');</script>
+<p>Redirecting to <a href="intake.html" id="fallbackLink">the assessment</a>...</p>
+<script>
+// Linked Pair invites arrive as /assessment/?join={CODE}; those go to the
+// questionnaire's join flow. Everyone else goes to the intake, with any
+// query params preserved.
+(function(){
+  var search=window.location.search||'';
+  var dest=new URLSearchParams(search).get('join')?'questionnaire.html':'intake.html';
+  document.getElementById('fallbackLink').href=dest+search;
+  window.location.replace(dest+search);
+})();
+</script>
 </body>
 </html>

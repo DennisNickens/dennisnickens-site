@@ -36,6 +36,15 @@
         {key:'mid',label:'15 to 25 minutes (I want the core toolkit)'},
         {key:'full',label:'30 minutes or more (I want the full picture)'}
       ]
+    },
+    {
+      key:'who',
+      title:'Is this for you alone, or for you and someone else?',
+      options:[
+        {key:'justme',label:'Just me'},
+        {key:'pair',label:'Me and one other person (partner, business partner, family member, close friend)'},
+        {key:'group',label:'A family or team of more than two'}
+      ]
     }
   ];
 
@@ -128,7 +137,7 @@
 
   function renderStep(){
     var q=QUESTIONS[step];
-    var html='<div class="disc-progress">Question '+(step+1)+' of 3</div>';
+    var html='<div class="disc-progress">Question '+(step+1)+' of '+QUESTIONS.length+'</div>';
     html+='<h2 class="disc-title">'+esc(q.title)+'</h2>';
     q.options.forEach(function(o){
       html+='<button type="button" class="disc-opt" data-q="'+q.key+'" data-opt="'+o.key+'">'+esc(o.label)+'</button>';
@@ -140,20 +149,59 @@
     body.innerHTML=html;
   }
 
+  // Copy for the two-person recommendation. The Linked Pair covers both
+  // people in one purchase, so it wins whenever the answer is "me and
+  // one other person", whatever the earlier answers were.
+  function pairWhyCopy(a,tiers){
+    var lead;
+    if(a.pattern==='wired'){
+      lead='You want to understand how you are wired, and this is about you and one other person.';
+    }else{
+      lead='You want to work on '+PATTERN_PHRASE[a.pattern]+', and this is about you and one other person.';
+    }
+    return [
+      'Here is why: '+lead+' A pattern between two people never lives in just one of you, so one Blueprint only shows half the picture.',
+      'Linked Pair covers you both with one purchase. You each take the full Deep assessment, you each get your own complete Blueprint, and when you both finish we read your two designs together in the Combined Report.'
+    ];
+  }
+
+  function renderGroupContact(){
+    var html='<div class="disc-progress">Based on what you told us</div>';
+    html+='<h2 class="disc-title">A family or team package is built by hand.</h2>';
+    html+='<p class="disc-why">When more than two people are involved, Dennis builds the package with you directly. Every person gets their own Blueprint, and the maps read the whole household or team as one system.</p>';
+    html+='<p class="disc-why">Reach out and he will set it up with you.</p>';
+    html+='<a class="tier-btn gold" style="text-decoration:none;" href="mailto:dennis@dennisnickens.com?subject=Family%20or%20Team%20Blueprint">Contact Dennis <span class="arr">&rarr;</span></a>';
+    html+='<div class="disc-alt-lbl">Or start with a solo Blueprint:</div>';
+    html+='<div class="disc-alts">';
+    tiersData.order.forEach(function(k){
+      var t=tiersData.tiers[k];
+      html+='<button type="button" class="tier-btn ghost disc-start" data-tier="'+k+'">'+esc(t.name)+' for '+esc(t.priceDisplay)+'</button>';
+    });
+    html+='</div>';
+    html+='<div class="disc-foot"><button type="button" class="disc-back" data-act="revise">&larr; Change my answers</button><span></span></div>';
+    body.innerHTML=html;
+  }
+
   function renderResult(){
-    var rec=recommend(answers);
-    try{localStorage.setItem('sr_discovery',JSON.stringify({area:answers.area,pattern:answers.pattern,time:answers.time,recommended:rec.tier}));}catch(e){}
+    if(answers.who==='group'){
+      try{localStorage.setItem('sr_discovery',JSON.stringify({area:answers.area,pattern:answers.pattern,time:answers.time,who:answers.who,recommended:'contact_dennis'}));}catch(e){}
+      renderGroupContact();
+      return;
+    }
     var tiers=tiersData.tiers;
+    var isPair=answers.who==='pair';
+    var rec=isPair?{tier:'linked_pair_light',base:null,flags:[]}:recommend(answers);
+    try{localStorage.setItem('sr_discovery',JSON.stringify({area:answers.area,pattern:answers.pattern,time:answers.time,who:answers.who,recommended:rec.tier}));}catch(e){}
     var t=tiers[rec.tier];
     var others=tiersData.order.filter(function(k){return k!==rec.tier;});
     var html='<div class="disc-progress">Based on what you told us</div>';
     html+='<h2 class="disc-title">We recommend '+esc(t.name)+' ('+esc(t.priceDisplay)+').</h2>';
-    whyCopy(rec,answers,tiers).forEach(function(p){
+    (isPair?pairWhyCopy(answers,tiers):whyCopy(rec,answers,tiers)).forEach(function(p){
       html+='<p class="disc-why">'+esc(p)+'</p>';
     });
-    html+='<p class="disc-why disc-facts">'+esc(t.name)+' is '+t.questions+' questions, '+esc(t.time)+'. '+esc(t.delivery)+'.</p>';
+    html+='<p class="disc-why disc-facts">'+esc(t.name)+' is '+esc(t.questionsNote||t.questions+' questions')+', '+esc(t.time)+'. '+esc(t.delivery)+'.</p>';
     html+='<button type="button" class="tier-btn gold disc-start" data-tier="'+rec.tier+'">Start '+esc(t.name)+' <span class="arr">&rarr;</span></button>';
-    html+='<div class="disc-alt-lbl">Or pick a different tier:</div>';
+    html+='<div class="disc-alt-lbl">'+(isPair?'Or go solo instead:':'Or pick a different tier:')+'</div>';
     html+='<div class="disc-alts">';
     others.forEach(function(k){
       html+='<button type="button" class="tier-btn ghost disc-start" data-tier="'+k+'">'+esc(tiers[k].name)+' for '+esc(tiers[k].priceDisplay)+'</button>';

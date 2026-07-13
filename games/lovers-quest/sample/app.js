@@ -260,13 +260,13 @@
         break;
       case 'next':         goNext(); break;
       case 'back':         goBack(); break;
-      // Home button in the card topbar: confirm if mid-deck, then reset
-      // position and return to splash. Language choice (lq_lang) persists
-      // so they don't re-pick.
+      // Home button in the card topbar: reset position and return to splash.
+      // Language choice (lq_lang) persists so they don't re-pick. No
+      // confirm() here: blocking dialogs freeze the app while open and are
+      // suppressed entirely in installed PWAs and in-app browsers, which
+      // made this button read as dead. Going home is non-destructive anyway
+      // (every sample boot already restarts at card 1).
       case 'home-sample':
-        if (pos > 0 && pos < deck.length) {
-          if (!confirm('Leave this sample and go back to the start?')) break;
-        }
         save(K.pos, 0);
         save(K.opened, false);
         pos = 0;

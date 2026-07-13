@@ -3,7 +3,7 @@
    Separate cache namespace from the full deck so the two never
    step on each other.
    ============================================================ */
-var CACHE_VERSION = 'lqs-v5';
+var CACHE_VERSION = 'lqs-v6';
 var CACHE_NAME = 'lovers-quest-sample-' + CACHE_VERSION;
 
 function rel(p) { return new URL(p, self.location.href).toString(); }
